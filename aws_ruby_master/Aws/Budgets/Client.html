@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>Class: Aws::Budgets::Client &mdash; aws-sdk-ruby-master</title>
+
+<link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "Aws::Budgets::Client",
+    relpath = '../../';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../../../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../../../js/y_app.js'></script>
+
+</head>
+<body>
+<svg id='y_wait' class viewBox='0 0 90 90'></svg>
+<div id='settings' class='hidden'></div>
+<div id='y_list' class='d h'>
+  <header id='list_header'></header>
+  <nav id= 'list_nav' class='y_nav l_nav'>
+    <ul id='list_items'></ul>
+  </nav>
+</div>
+<div id='y_toc' class='f h'>
+  <header id='toc_header'></header>
+  <nav id= 'toc_nav' class='y_nav t_nav'>
+  <ol id='toc_items'></ol>
+  </nav>
+</div>
+<div id='y_main' tabindex='-1'>
+  <header id='y_header'>
+    <div id='y_menu'>
+        <a href='../../../index.html'>Home</a> &raquo; 
+        <a href='../../index.html'>aws-sdk-ruby-master</a> &raquo; 
+        <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
+        <a href="../../Aws.html" title="Aws (module)">Aws</a> &raquo; 
+        <a href="../Budgets.html" title="Aws::Budgets (module)">Budgets</a> &raquo; 
+        <span class='title'><a id='t2_doc_top' href='#'>Client&nbsp;&#x25B2;</a></span>
+      </div>
+
+    <a id='list_href' href="../../class_list.html"></a>
+    <div id='y_measure_em' class='y_measure'></div>
+    <div id='y_measure_vh' class='y_measure'></div>
+    <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+  </header>
+<div id='content' class='class'>
+<h1>Class: Aws::Budgets::Client</h1>
+<div id='t2_rel_sf_div'>
+<table id='t2_rel_sf' class='y_box'>
+  <thead>
+    <tr><td id='t2_relations' colspan='2'>Relationships & Source Files</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='box_h' colspan='2'>Super Chains via Extension / Inclusion / Inheritance</td></tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Class Chain:</div>
+        <div class='box_22'>
+          self,
+          <a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">::Seahorse::Client::Base</a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Instance Chain:</div>
+        <div class='box_22'>
+          self,
+          <a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">::Seahorse::Client::Base</a>,
+          <a href="../../Seahorse/Client/HandlerBuilder.html" title="Seahorse::Client::HandlerBuilder (module)">::Seahorse::Client::HandlerBuilder</a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td id='t2_inherits' class='box_2 o'>Inherits:</td>
+      <td class='box_rel'>
+        <span class='inheritName'><a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">Seahorse::Client::Base</a></span>
+        <ul class='fullTree'>
+          <li>Object</li>
+          <li class='next'><a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">Seahorse::Client::Base</a></li>
+          <li class='next'>Aws::Budgets::Client</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class='single'>
+      <td id='t2_defined_in' class='box_2'>Defined in:</td>
+      <td class='box_rel'>(unknown)      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h2 id='h2_overview'>Overview</h2>
+<div id='overview_ds'>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>An API client for AWS Budgets. To construct a client, you need to configure a <code>:region</code> and <code>:credentials</code>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_budgets'>budgets</span> <span class='op'>=</span> <span class='const'><a href="../../Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="../Budgets.html" title="Aws::Budgets (module)">Budgets</a></span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="Aws::Budgets::Client.new (method)">new</a></span><span class='lparen'>(</span>
+  <span class='label'>region:</span> <span class='id identifier rubyid_region_name'>region_name</span><span class='comma'>,</span>
+  <span class='label'>credentials:</span> <span class='id identifier rubyid_credentials'>credentials</span><span class='comma'>,</span>
+  <span class='comment'># ...
+</span><span class='rparen'>)</span></code></pre>
+
+<p>See <code>#initialize</code> for a full list of supported configuration options.</p>
+
+<h3>Region</h3>
+
+<p>You can configure a default region in the following locations:</p>
+
+<ul>
+<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
+<li><code>Aws.config[:region]</code></li>
+</ul>
+
+<p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
+
+<h3>Credentials</h3>
+
+<p>Default credentials are loaded automatically from the following locations:</p>
+
+<ul>
+<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
+<li><code>Aws.config[:credentials]</code></li>
+<li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
+<li>From an instance profile when running on EC2</li>
+</ul>
+
+<p>You can also construct a credentials object from one of the following
+classes:</p>
+
+<ul>
+<li><a href="../Credentials.html" title="Aws::Credentials (class)">::Aws::Credentials</a></li>
+<li><a href="../SharedCredentials.html" title="Aws::SharedCredentials (class)">::Aws::SharedCredentials</a></li>
+<li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
+<li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
+</ul>
+
+<p>Alternatively, you configure credentials with <code>:access_key_id</code> and
+<code>:secret_access_key</code>:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># load credentials from disk
+</span><span class='id identifier rubyid_creds'>creds</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/path/to/secrets</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+
+<span class='const'><a href="../../Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="../Budgets.html" title="Aws::Budgets (module)">Budgets</a></span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="Aws::Budgets::Client.new (method)">new</a></span><span class='lparen'>(</span>
+  <span class='label'>access_key_id:</span> <span class='id identifier rubyid_creds'>creds</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>access_key_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='label'>secret_access_key:</span> <span class='id identifier rubyid_creds'>creds</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>secret_access_key</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='rparen'>)</span></code></pre>
+
+<p><strong>Always load your credentials from outside your application.</strong> Avoid
+configuring credentials statically and never commit them to source control.</p>
+
+  </div>
+</div>
+</div>        
+
+<h2 class='h2_sum' id='class_Method_summary'>Class Method Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature '>
+      <a href="#new-class_method" title=".new (class method)">.<strong>new</strong>(options = {})  &#x21d2; Aws::Budgets::Client </a>
+    </span>
+    <span class='note title constructor'>constructor</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Constructs an API client.</p></div>
+    </div>
+  </li>
+</ul>
+
+<h3 class='inherited'><a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">::Seahorse::Client::Base</a> - Inherited</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../../Seahorse/Client/Base.html#add_plugin-class_method" title="Seahorse::Client::Base.add_plugin (method)">.add_plugin</a></td>
+      <td><div class='inline'><p>Registers a plugin with this client.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#api-class_method" title="Seahorse::Client::Base.api (method)">.api</a>,
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#clear_plugins-class_method" title="Seahorse::Client::Base.clear_plugins (method)">.clear_plugins</a>,
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#define-class_method" title="Seahorse::Client::Base.define (method)">.define</a>,
+      </td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../../Seahorse/Client/Base.html#extend-class_method" title="Seahorse::Client::Base.extend (method)">.extend</a></td>
+      <td><div class='inline'><p>Alias for <a href="../../Seahorse/Client/Base.html#define-class_method" title="Seahorse::Client::Base.define (method)">Seahorse::Client::Base.define</a>.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../../Seahorse/Client/Base.html#new-class_method" title="Seahorse::Client::Base.new (method)">.new</a></td>
+      <td><div class='inline'><p>See additional method definition at line 18.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../../Seahorse/Client/Base.html#plugins-class_method" title="Seahorse::Client::Base.plugins (method)">.plugins</a></td>
+      <td><div class='inline'><p>Returns the list of registered plugins for this Client.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#remove_plugin-class_method" title="Seahorse::Client::Base.remove_plugin (method)">.remove_plugin</a>,
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#set_api-class_method" title="Seahorse::Client::Base.set_api (method)">.set_api</a>,
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#set_plugins-class_method" title="Seahorse::Client::Base.set_plugins (method)">.set_plugins</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+
+<h2 class='h2_sum' id='instance_Attribute_summary'>Instance Attribute Summary</h2>
+<div class='div_sum'>
+
+<h3 class='inherited'><a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">::Seahorse::Client::Base</a> - Inherited</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ro' href="../../Seahorse/Client/Base.html#config-instance_method" title="Seahorse::Client::Base#config (method)">#config</a>,
+        <a class='i_m ro' href="../../Seahorse/Client/Base.html#handlers-instance_method" title="Seahorse::Client::Base#handlers (method)">#handlers</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+        
+
+<h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature '>
+      <a href="#create_budget-instance_method" title="#create_budget (instance method)">#<strong>create_budget</strong>(options = {})  &#x21d2; Struct </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Create a new budget.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#create_notification-instance_method" title="#create_notification (instance method)">#<strong>create_notification</strong>(options = {})  &#x21d2; Struct </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Create a new Notification with subscribers for a budget.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#create_subscriber-instance_method" title="#create_subscriber (instance method)">#<strong>create_subscriber</strong>(options = {})  &#x21d2; Struct </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Create a new Subscriber for a notification.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#delete_budget-instance_method" title="#delete_budget (instance method)">#<strong>delete_budget</strong>(options = {})  &#x21d2; Struct </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Delete a budget and related notifications.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#delete_notification-instance_method" title="#delete_notification (instance method)">#<strong>delete_notification</strong>(options = {})  &#x21d2; Struct </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Delete a notification and related subscribers.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#delete_subscriber-instance_method" title="#delete_subscriber (instance method)">#<strong>delete_subscriber</strong>(options = {})  &#x21d2; Struct </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Delete a Subscriber for a notification.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#describe_budget-instance_method" title="#describe_budget (instance method)">#<strong>describe_budget</strong>(options = {})  &#x21d2; Types::DescribeBudgetResponse </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Get a single budget.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#describe_budgets-instance_method" title="#describe_budgets (instance method)">#<strong>describe_budgets</strong>(options = {})  &#x21d2; Types::DescribeBudgetsResponse </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Get all budgets for an account.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#describe_notifications_for_budget-instance_method" title="#describe_notifications_for_budget (instance method)">#<strong>describe_notifications_for_budget</strong>(options = {})  &#x21d2; Types::DescribeNotificationsForBudgetResponse </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Get notifications of a budget.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#describe_subscribers_for_notification-instance_method" title="#describe_subscribers_for_notification (instance method)">#<strong>describe_subscribers_for_notification</strong>(options = {})  &#x21d2; Types::DescribeSubscribersForNotificationResponse </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Get subscribers of a notification.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#update_budget-instance_method" title="#update_budget (instance method)">#<strong>update_budget</strong>(options = {})  &#x21d2; Struct </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Update the information of a budget already created.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#update_notification-instance_method" title="#update_notification (instance method)">#<strong>update_notification</strong>(options = {})  &#x21d2; Struct </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Update the information about a notification already created.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#update_subscriber-instance_method" title="#update_subscriber (instance method)">#<strong>update_subscriber</strong>(options = {})  &#x21d2; Struct </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Update a subscriber.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#wait_until-instance_method" title="#wait_until (instance method)">#<strong>wait_until</strong>(waiter_name, params = {}) {|waiter| ... } &#x21d2; Boolean </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Waiters polls an API operation until a resource enters a desired state.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#waiter_names-instance_method" title="#waiter_names (instance method)">#<strong>waiter_names</strong>  &#x21d2; Array&lt;Symbol&gt; </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns the list of supported waiters.</p></div>
+    </div>
+  </li>
+</ul>
+
+<h3 class='inherited'><a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">::Seahorse::Client::Base</a> - Inherited</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../../Seahorse/Client/Base.html#build_request-instance_method" title="Seahorse::Client::Base#build_request (method)">#build_request</a></td>
+      <td><div class='inline'><p>Builds and returns a <code>Request</code> for the named operation.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#operation-instance_method" title="Seahorse::Client::Base#operation (method)">#operation</a>,
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#operation_names-instance_method" title="Seahorse::Client::Base#operation_names (method)">#operation_names</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="../../Seahorse/Client/HandlerBuilder.html" title="Seahorse::Client::HandlerBuilder (module)">::Seahorse::Client::HandlerBuilder</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="../../Seahorse/Client/HandlerBuilder.html#handle-instance_method" title="Seahorse::Client::HandlerBuilder#handle (method)">#handle</a>,
+        <a class='i_m ' href="../../Seahorse/Client/HandlerBuilder.html#handle_request-instance_method" title="Seahorse::Client::HandlerBuilder#handle_request (method)">#handle_request</a>,
+        <a class='i_m ' href="../../Seahorse/Client/HandlerBuilder.html#handle_response-instance_method" title="Seahorse::Client::HandlerBuilder#handle_response (method)">#handle_response</a>,
+      </td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../../Seahorse/Client/HandlerBuilder.html#handler-instance_method" title="Seahorse::Client::HandlerBuilder#handler (method)">#handler</a></td>
+      <td><div class='inline'><p>Alias for <a href="../../Seahorse/Client/HandlerBuilder.html#handle-instance_method" title="Seahorse::Client::HandlerBuilder#handle (method)">Seahorse::Client::HandlerBuilder#handle</a>.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+<h2 id='Constructor_Details' class='y_details'>Constructor Details</h2>
+
+  <section class='method_details first' id="new-class_method">
+  <h3 class='signature  first'>
+    .<strong>new</strong>(options = {})  &#x21d2; <a href="../../top-level-namespace.html" title="Top Level Namespace (root)">Aws::Budgets::Client</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Constructs an API client.</p>
+
+  </div>
+</div>
+<div class='tags'>
+      <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:access_key_id</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>Used to set credentials
+statically.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:convert_params</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>true</tt>          </span>
+            &mdash; <div class='inline'><p>When <code>true</code>, an attempt is made to coerce request parameters
+into the required types.  See <a href="../Plugins/ParamConverter.html" title="Aws::Plugins::ParamConverter (class)">::Aws::Plugins::ParamConverter</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:credentials</span>
+          <span class='type'>(<code>required</code>, <a href="../Credentials.html" title="Aws::Credentials (class)">Credentials</a>)</span>
+            &mdash; <div class='inline'><p>Your
+AWS credentials.  The following locations will be searched in order
+for credentials:</p>
+
+<ul>
+<li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
+<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
+<li><code>HOME/.aws/credentials</code> shared credentials file</li>
+<li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
+</ul>
+</div>        </li>
+        <li>
+          <span class='name'>:endpoint</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>A default endpoint is
+constructed from the <code>:region</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:http_continue_timeout</span>
+          <span class='type'>(<code>Float</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>1</tt>          </span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:http_idle_timeout</span>
+          <span class='type'>(<code>Integer</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>5</tt>          </span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:http_open_timeout</span>
+          <span class='type'>(<code>Integer</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>15</tt>          </span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:http_proxy</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:http_read_timeout</span>
+          <span class='type'>(<code>Integer</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>60</tt>          </span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:http_wire_trace</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>false</tt>          </span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:log_level</span>
+          <span class='type'>(<code>Symbol</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>:info</tt>          </span>
+            &mdash; <div class='inline'><p>The log level
+to send messages to the logger at.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Logging (class)">::Aws::Plugins::Logging</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:log_formatter</span>
+          <span class='type'>(<code>Logging::LogFormatter</code>)</span>
+            &mdash; <div class='inline'><p>The log
+formatter.  Defaults to Seahorse::Client::Logging::Formatter.default.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Logging (class)">::Aws::Plugins::Logging</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:logger</span>
+          <span class='type'>(<code>Logger</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>nil</tt>          </span>
+            &mdash; <div class='inline'><p>The Logger instance
+to send log messages to.  If this option is not set, logging
+will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Logging (class)">::Aws::Plugins::Logging</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:profile</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>Used when loading credentials
+from the shared credentials file at HOME/.aws/credentials.  When not
+specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:raise_response_errors</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>true</tt>          </span>
+            &mdash; <div class='inline'><p>When <code>true</code>, response errors are raised.  See <a href="../../Seahorse/Client/Plugins/RaiseResponseErrors.html" title="Seahorse::Client::Plugins::RaiseResponseErrors (class)">::Seahorse::Client::Plugins::RaiseResponseErrors</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:region</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
+the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
+Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:retry_limit</span>
+          <span class='type'>(<code>Integer</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>3</tt>          </span>
+            &mdash; <div class='inline'><p>The maximum number of times to retry failed requests.  Only
+~ 500 level server errors and certain ~ 400 level client errors
+are retried.  Generally, these are throttling errors, data
+checksum errors, networking errors, timeout errors and auth
+errors from expired credentials.  See <a href="../Plugins/RetryErrors.html" title="Aws::Plugins::RetryErrors (class)">::Aws::Plugins::RetryErrors</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:secret_access_key</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>Used to set
+credentials statically.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:session_token</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>Used to set credentials
+statically.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:simple_json</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>false</tt>          </span>
+            &mdash; <div class='inline'><p>Disables request parameter conversion, validation, and formatting.
+Also disable response data type conversions. This option is useful
+when you want to ensure the highest level of performance by
+avoiding overhead of walking request parameters and response data
+structures.</p>
+
+<p>When <code>:simple_json</code> is enabled, the request parameters hash must
+be formatted exactly as the DynamoDB API expects.  See <a href="../Plugins/Protocols/JsonRpc.html" title="Aws::Plugins::Protocols::JsonRpc (class)">::Aws::Plugins::Protocols::JsonRpc</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:ssl_ca_bundle</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:ssl_ca_directory</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:ssl_ca_store</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:ssl_verify_peer</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>true</tt>          </span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:stub_responses</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>false</tt>          </span>
+            &mdash; <div class='inline'><p>Causes the client to return stubbed responses. By default
+fake responses are generated and returned. You can specify
+the response data to return or errors to raise by calling
+<a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
+
+<p>** Please note ** When response stubbing is enabled, no HTTP
+requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:validate_params</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>true</tt>          </span>
+            &mdash; <div class='inline'><p>When <code>true</code>, request parameters are validated before
+sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::Plugins::ParamValidator (class)">::Aws::Plugins::ParamValidator</a> for more details.</p>
+</div>        </li>
+    </ul>
+
+</div>
+</section>
+
+<h2 class='y_details'>Instance Method Details</h2>
+<section class='method_details first' id="create_budget-instance_method">
+  <h3 class='signature  first'>
+    #<strong>create_budget</strong>(options = {})  &#x21d2; <code>Struct</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Create a new budget</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_create_budget'>create_budget</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>budget:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>budget_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BudgetName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='label'>budget_limit:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>      <span class='label'>amount:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NumericValue</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='label'>unit:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>cost_filters:</span> <span class='lbrace'>{</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>cost_types:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>      <span class='label'>include_tax:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='label'>include_subscription:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='label'>use_blended:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>time_unit:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MONTHLY</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts MONTHLY, QUARTERLY, ANNUALLY
+</span>    <span class='label'>time_period:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>      <span class='label'>start:</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='label'>end:</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>calculated_spend:</span> <span class='lbrace'>{</span>
+      <span class='label'>actual_spend:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>        <span class='label'>amount:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NumericValue</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>        <span class='label'>unit:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='label'>forecasted_spend:</span> <span class='lbrace'>{</span>
+        <span class='label'>amount:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NumericValue</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>        <span class='label'>unit:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>budget_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>USAGE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts USAGE, COST
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>notifications_with_subscribers:</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>notification:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>        <span class='label'>notification_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACTUAL</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts ACTUAL, FORECASTED
+</span>        <span class='label'>comparison_operator:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GREATER_THAN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts GREATER_THAN, LESS_THAN, EQUAL_TO
+</span>        <span class='label'>threshold:</span> <span class='float'>1.0</span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='label'>subscribers:</span> <span class='lbracket'>[</span> <span class='comment'># required
+</span>        <span class='lbrace'>{</span>
+          <span class='label'>subscription_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SNS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts SNS, EMAIL
+</span>          <span class='label'>address:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>        <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:budget</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Budget.html" title="Aws::Budgets::Types::Budget (class)">Types::Budget</a>)</span>
+            &mdash; <div class='inline'><p>AWS Budget model</p>
+</div>        </li>
+        <li>
+          <span class='name'>:notifications_with_subscribers</span>
+          <span class='type'>(<code>Array</code>&lt;<a href="Types/NotificationWithSubscribers.html" title="Aws::Budgets::Types::NotificationWithSubscribers (class)">Types::NotificationWithSubscribers</a>&gt;)</span>
+            &mdash; <div class='inline'><p>A list of Notifications, each with a list of subscribers.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Struct</code>)</span>
+&mdash;    <div class='inline'><p>Returns an empty <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a>.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="create_notification-instance_method">
+  <h3 class='signature '>
+    #<strong>create_notification</strong>(options = {})  &#x21d2; <code>Struct</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Create a new Notification with subscribers for a budget</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_create_notification'>create_notification</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>budget_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BudgetName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>notification:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>notification_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACTUAL</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts ACTUAL, FORECASTED
+</span>    <span class='label'>comparison_operator:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GREATER_THAN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts GREATER_THAN, LESS_THAN, EQUAL_TO
+</span>    <span class='label'>threshold:</span> <span class='float'>1.0</span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>subscribers:</span> <span class='lbracket'>[</span> <span class='comment'># required
+</span>    <span class='lbrace'>{</span>
+      <span class='label'>subscription_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SNS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts SNS, EMAIL
+</span>      <span class='label'>address:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:budget_name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>A string represents the budget name. No &quot;:&quot; character is allowed.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:notification</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Notification.html" title="Aws::Budgets::Types::Notification (class)">Types::Notification</a>)</span>
+            &mdash; <div class='inline'><p>Notification model. Each budget may contain multiple notifications with different settings.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:subscribers</span>
+          <span class='type'>(<code>required</code>, <code>Array</code>&lt;<a href="Types/Subscriber.html" title="Aws::Budgets::Types::Subscriber (class)">Types::Subscriber</a>&gt;)</span>
+            &mdash; <div class='inline'><p>A list of subscribers.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Struct</code>)</span>
+&mdash;    <div class='inline'><p>Returns an empty <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a>.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="create_subscriber-instance_method">
+  <h3 class='signature '>
+    #<strong>create_subscriber</strong>(options = {})  &#x21d2; <code>Struct</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Create a new Subscriber for a notification</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_create_subscriber'>create_subscriber</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>budget_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BudgetName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>notification:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>notification_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACTUAL</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts ACTUAL, FORECASTED
+</span>    <span class='label'>comparison_operator:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GREATER_THAN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts GREATER_THAN, LESS_THAN, EQUAL_TO
+</span>    <span class='label'>threshold:</span> <span class='float'>1.0</span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>subscriber:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>subscription_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SNS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts SNS, EMAIL
+</span>    <span class='label'>address:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:budget_name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>A string represents the budget name. No &quot;:&quot; character is allowed.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:notification</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Notification.html" title="Aws::Budgets::Types::Notification (class)">Types::Notification</a>)</span>
+            &mdash; <div class='inline'><p>Notification model. Each budget may contain multiple notifications with different settings.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:subscriber</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Subscriber.html" title="Aws::Budgets::Types::Subscriber (class)">Types::Subscriber</a>)</span>
+            &mdash; <div class='inline'><p>Subscriber model. Each notification may contain multiple subscribers with different addresses.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Struct</code>)</span>
+&mdash;    <div class='inline'><p>Returns an empty <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a>.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="delete_budget-instance_method">
+  <h3 class='signature '>
+    #<strong>delete_budget</strong>(options = {})  &#x21d2; <code>Struct</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Delete a budget and related notifications</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_delete_budget'>delete_budget</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>budget_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BudgetName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:budget_name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>A string represents the budget name. No &quot;:&quot; character is allowed.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Struct</code>)</span>
+&mdash;    <div class='inline'><p>Returns an empty <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a>.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="delete_notification-instance_method">
+  <h3 class='signature '>
+    #<strong>delete_notification</strong>(options = {})  &#x21d2; <code>Struct</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Delete a notification and related subscribers</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_delete_notification'>delete_notification</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>budget_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BudgetName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>notification:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>notification_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACTUAL</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts ACTUAL, FORECASTED
+</span>    <span class='label'>comparison_operator:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GREATER_THAN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts GREATER_THAN, LESS_THAN, EQUAL_TO
+</span>    <span class='label'>threshold:</span> <span class='float'>1.0</span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:budget_name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>A string represents the budget name. No &quot;:&quot; character is allowed.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:notification</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Notification.html" title="Aws::Budgets::Types::Notification (class)">Types::Notification</a>)</span>
+            &mdash; <div class='inline'><p>Notification model. Each budget may contain multiple notifications with different settings.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Struct</code>)</span>
+&mdash;    <div class='inline'><p>Returns an empty <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a>.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="delete_subscriber-instance_method">
+  <h3 class='signature '>
+    #<strong>delete_subscriber</strong>(options = {})  &#x21d2; <code>Struct</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Delete a Subscriber for a notification</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_delete_subscriber'>delete_subscriber</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>budget_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BudgetName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>notification:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>notification_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACTUAL</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts ACTUAL, FORECASTED
+</span>    <span class='label'>comparison_operator:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GREATER_THAN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts GREATER_THAN, LESS_THAN, EQUAL_TO
+</span>    <span class='label'>threshold:</span> <span class='float'>1.0</span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>subscriber:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>subscription_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SNS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts SNS, EMAIL
+</span>    <span class='label'>address:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:budget_name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>A string represents the budget name. No &quot;:&quot; character is allowed.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:notification</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Notification.html" title="Aws::Budgets::Types::Notification (class)">Types::Notification</a>)</span>
+            &mdash; <div class='inline'><p>Notification model. Each budget may contain multiple notifications with different settings.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:subscriber</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Subscriber.html" title="Aws::Budgets::Types::Subscriber (class)">Types::Subscriber</a>)</span>
+            &mdash; <div class='inline'><p>Subscriber model. Each notification may contain multiple subscribers with different addresses.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Struct</code>)</span>
+&mdash;    <div class='inline'><p>Returns an empty <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a>.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="describe_budget-instance_method">
+  <h3 class='signature '>
+    #<strong>describe_budget</strong>(options = {})  &#x21d2; <a href="Types/DescribeBudgetResponse.html" title="Aws::Budgets::Types::DescribeBudgetResponse (class)">Types::DescribeBudgetResponse</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Get a single budget</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_describe_budget'>describe_budget</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>budget_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BudgetName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_budget_name'>budget_name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_budget_limit'>budget_limit</span><span class='period'>.</span><span class='id identifier rubyid_amount'>amount</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_budget_limit'>budget_limit</span><span class='period'>.</span><span class='id identifier rubyid_unit'>unit</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_cost_filters'>cost_filters</span> <span class='comment'>#=&gt; Hash
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_cost_filters'>cost_filters</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_cost_filters'>cost_filters</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_cost_types'>cost_types</span><span class='period'>.</span><span class='id identifier rubyid_include_tax'>include_tax</span> <span class='comment'>#=&gt; true/false
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_cost_types'>cost_types</span><span class='period'>.</span><span class='id identifier rubyid_include_subscription'>include_subscription</span> <span class='comment'>#=&gt; true/false
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_cost_types'>cost_types</span><span class='period'>.</span><span class='id identifier rubyid_use_blended'>use_blended</span> <span class='comment'>#=&gt; true/false
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_time_unit'>time_unit</span> <span class='comment'>#=&gt; String, one of &quot;MONTHLY&quot;, &quot;QUARTERLY&quot;, &quot;ANNUALLY&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_time_period'>time_period</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_time_period'>time_period</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_calculated_spend'>calculated_spend</span><span class='period'>.</span><span class='id identifier rubyid_actual_spend'>actual_spend</span><span class='period'>.</span><span class='id identifier rubyid_amount'>amount</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_calculated_spend'>calculated_spend</span><span class='period'>.</span><span class='id identifier rubyid_actual_spend'>actual_spend</span><span class='period'>.</span><span class='id identifier rubyid_unit'>unit</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_calculated_spend'>calculated_spend</span><span class='period'>.</span><span class='id identifier rubyid_forecasted_spend'>forecasted_spend</span><span class='period'>.</span><span class='id identifier rubyid_amount'>amount</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_calculated_spend'>calculated_spend</span><span class='period'>.</span><span class='id identifier rubyid_forecasted_spend'>forecasted_spend</span><span class='period'>.</span><span class='id identifier rubyid_unit'>unit</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budget'>budget</span><span class='period'>.</span><span class='id identifier rubyid_budget_type'>budget_type</span> <span class='comment'>#=&gt; String, one of &quot;USAGE&quot;, &quot;COST&quot;</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:budget_name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>A string represents the budget name. No &quot;:&quot; character is allowed.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/DescribeBudgetResponse.html" title="Aws::Budgets::Types::DescribeBudgetResponse (class)">Types::DescribeBudgetResponse</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/DescribeBudgetResponse.html#budget-instance_method" title="Aws::Budgets::Types::DescribeBudgetResponse#budget (method)">#budget</a> =&gt; <a href="Types/Budget.html" title="Aws::Budgets::Types::Budget (class)">Types::Budget</a></li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="describe_budgets-instance_method">
+  <h3 class='signature '>
+    #<strong>describe_budgets</strong>(options = {})  &#x21d2; <a href="Types/DescribeBudgetsResponse.html" title="Aws::Budgets::Types::DescribeBudgetsResponse (class)">Types::DescribeBudgetsResponse</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Get all budgets for an account</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_describe_budgets'>describe_budgets</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>max_results:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='label'>next_token:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_budget_name'>budget_name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_budget_limit'>budget_limit</span><span class='period'>.</span><span class='id identifier rubyid_amount'>amount</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_budget_limit'>budget_limit</span><span class='period'>.</span><span class='id identifier rubyid_unit'>unit</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_cost_filters'>cost_filters</span> <span class='comment'>#=&gt; Hash
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_cost_filters'>cost_filters</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_cost_filters'>cost_filters</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_cost_types'>cost_types</span><span class='period'>.</span><span class='id identifier rubyid_include_tax'>include_tax</span> <span class='comment'>#=&gt; true/false
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_cost_types'>cost_types</span><span class='period'>.</span><span class='id identifier rubyid_include_subscription'>include_subscription</span> <span class='comment'>#=&gt; true/false
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_cost_types'>cost_types</span><span class='period'>.</span><span class='id identifier rubyid_use_blended'>use_blended</span> <span class='comment'>#=&gt; true/false
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_time_unit'>time_unit</span> <span class='comment'>#=&gt; String, one of &quot;MONTHLY&quot;, &quot;QUARTERLY&quot;, &quot;ANNUALLY&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_time_period'>time_period</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_time_period'>time_period</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_calculated_spend'>calculated_spend</span><span class='period'>.</span><span class='id identifier rubyid_actual_spend'>actual_spend</span><span class='period'>.</span><span class='id identifier rubyid_amount'>amount</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_calculated_spend'>calculated_spend</span><span class='period'>.</span><span class='id identifier rubyid_actual_spend'>actual_spend</span><span class='period'>.</span><span class='id identifier rubyid_unit'>unit</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_calculated_spend'>calculated_spend</span><span class='period'>.</span><span class='id identifier rubyid_forecasted_spend'>forecasted_spend</span><span class='period'>.</span><span class='id identifier rubyid_amount'>amount</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_calculated_spend'>calculated_spend</span><span class='period'>.</span><span class='id identifier rubyid_forecasted_spend'>forecasted_spend</span><span class='period'>.</span><span class='id identifier rubyid_unit'>unit</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_budgets'>budgets</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_budget_type'>budget_type</span> <span class='comment'>#=&gt; String, one of &quot;USAGE&quot;, &quot;COST&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_next_token'>next_token</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:max_results</span>
+          <span class='type'>(<code>Integer</code>)</span>
+            &mdash; <div class='inline'><p>An integer to represent how many entries should a pagianted response contains. Maxium is set to 100.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:next_token</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>A generic String.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/DescribeBudgetsResponse.html" title="Aws::Budgets::Types::DescribeBudgetsResponse (class)">Types::DescribeBudgetsResponse</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/DescribeBudgetsResponse.html#budgets-instance_method" title="Aws::Budgets::Types::DescribeBudgetsResponse#budgets (method)">#budgets</a> =&gt; Array&lt;<a href="Types/Budget.html" title="Aws::Budgets::Types::Budget (class)">Types::Budget</a>&gt;</li>
+<li><a href="Types/DescribeBudgetsResponse.html#next_token-instance_method" title="Aws::Budgets::Types::DescribeBudgetsResponse#next_token (method)">#next_token</a> =&gt; String</li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="describe_notifications_for_budget-instance_method">
+  <h3 class='signature '>
+    #<strong>describe_notifications_for_budget</strong>(options = {})  &#x21d2; <a href="Types/DescribeNotificationsForBudgetResponse.html" title="Aws::Budgets::Types::DescribeNotificationsForBudgetResponse (class)">Types::DescribeNotificationsForBudgetResponse</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Get notifications of a budget</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_describe_notifications_for_budget'>describe_notifications_for_budget</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>budget_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BudgetName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>max_results:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='label'>next_token:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_notifications'>notifications</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_notifications'>notifications</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_notification_type'>notification_type</span> <span class='comment'>#=&gt; String, one of &quot;ACTUAL&quot;, &quot;FORECASTED&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_notifications'>notifications</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_comparison_operator'>comparison_operator</span> <span class='comment'>#=&gt; String, one of &quot;GREATER_THAN&quot;, &quot;LESS_THAN&quot;, &quot;EQUAL_TO&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_notifications'>notifications</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_threshold'>threshold</span> <span class='comment'>#=&gt; Float
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_next_token'>next_token</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:budget_name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>A string represents the budget name. No &quot;:&quot; character is allowed.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:max_results</span>
+          <span class='type'>(<code>Integer</code>)</span>
+            &mdash; <div class='inline'><p>An integer to represent how many entries should a pagianted response contains. Maxium is set to 100.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:next_token</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>A generic String.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/DescribeNotificationsForBudgetResponse.html" title="Aws::Budgets::Types::DescribeNotificationsForBudgetResponse (class)">Types::DescribeNotificationsForBudgetResponse</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/DescribeNotificationsForBudgetResponse.html#notifications-instance_method" title="Aws::Budgets::Types::DescribeNotificationsForBudgetResponse#notifications (method)">#notifications</a> =&gt; Array&lt;<a href="Types/Notification.html" title="Aws::Budgets::Types::Notification (class)">Types::Notification</a>&gt;</li>
+<li><a href="Types/DescribeNotificationsForBudgetResponse.html#next_token-instance_method" title="Aws::Budgets::Types::DescribeNotificationsForBudgetResponse#next_token (method)">#next_token</a> =&gt; String</li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="describe_subscribers_for_notification-instance_method">
+  <h3 class='signature '>
+    #<strong>describe_subscribers_for_notification</strong>(options = {})  &#x21d2; <a href="Types/DescribeSubscribersForNotificationResponse.html" title="Aws::Budgets::Types::DescribeSubscribersForNotificationResponse (class)">Types::DescribeSubscribersForNotificationResponse</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Get subscribers of a notification</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_describe_subscribers_for_notification'>describe_subscribers_for_notification</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>budget_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BudgetName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>notification:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>notification_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACTUAL</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts ACTUAL, FORECASTED
+</span>    <span class='label'>comparison_operator:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GREATER_THAN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts GREATER_THAN, LESS_THAN, EQUAL_TO
+</span>    <span class='label'>threshold:</span> <span class='float'>1.0</span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>max_results:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='label'>next_token:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_subscribers'>subscribers</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_subscribers'>subscribers</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_subscription_type'>subscription_type</span> <span class='comment'>#=&gt; String, one of &quot;SNS&quot;, &quot;EMAIL&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_subscribers'>subscribers</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_next_token'>next_token</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:budget_name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>A string represents the budget name. No &quot;:&quot; character is allowed.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:notification</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Notification.html" title="Aws::Budgets::Types::Notification (class)">Types::Notification</a>)</span>
+            &mdash; <div class='inline'><p>Notification model. Each budget may contain multiple notifications with different settings.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:max_results</span>
+          <span class='type'>(<code>Integer</code>)</span>
+            &mdash; <div class='inline'><p>An integer to represent how many entries should a pagianted response contains. Maxium is set to 100.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:next_token</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>A generic String.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/DescribeSubscribersForNotificationResponse.html" title="Aws::Budgets::Types::DescribeSubscribersForNotificationResponse (class)">Types::DescribeSubscribersForNotificationResponse</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/DescribeSubscribersForNotificationResponse.html#subscribers-instance_method" title="Aws::Budgets::Types::DescribeSubscribersForNotificationResponse#subscribers (method)">#subscribers</a> =&gt; Array&lt;<a href="Types/Subscriber.html" title="Aws::Budgets::Types::Subscriber (class)">Types::Subscriber</a>&gt;</li>
+<li><a href="Types/DescribeSubscribersForNotificationResponse.html#next_token-instance_method" title="Aws::Budgets::Types::DescribeSubscribersForNotificationResponse#next_token (method)">#next_token</a> =&gt; String</li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="update_budget-instance_method">
+  <h3 class='signature '>
+    #<strong>update_budget</strong>(options = {})  &#x21d2; <code>Struct</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Update the information of a budget already created</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_update_budget'>update_budget</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>new_budget:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>budget_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BudgetName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='label'>budget_limit:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>      <span class='label'>amount:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NumericValue</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='label'>unit:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>cost_filters:</span> <span class='lbrace'>{</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>cost_types:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>      <span class='label'>include_tax:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='label'>include_subscription:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='label'>use_blended:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>time_unit:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MONTHLY</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts MONTHLY, QUARTERLY, ANNUALLY
+</span>    <span class='label'>time_period:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>      <span class='label'>start:</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='label'>end:</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>calculated_spend:</span> <span class='lbrace'>{</span>
+      <span class='label'>actual_spend:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>        <span class='label'>amount:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NumericValue</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>        <span class='label'>unit:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='label'>forecasted_spend:</span> <span class='lbrace'>{</span>
+        <span class='label'>amount:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NumericValue</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>        <span class='label'>unit:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>budget_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>USAGE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts USAGE, COST
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:new_budget</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Budget.html" title="Aws::Budgets::Types::Budget (class)">Types::Budget</a>)</span>
+            &mdash; <div class='inline'><p>AWS Budget model</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Struct</code>)</span>
+&mdash;    <div class='inline'><p>Returns an empty <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a>.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="update_notification-instance_method">
+  <h3 class='signature '>
+    #<strong>update_notification</strong>(options = {})  &#x21d2; <code>Struct</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Update the information about a notification already created</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_update_notification'>update_notification</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>budget_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BudgetName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>old_notification:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>notification_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACTUAL</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts ACTUAL, FORECASTED
+</span>    <span class='label'>comparison_operator:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GREATER_THAN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts GREATER_THAN, LESS_THAN, EQUAL_TO
+</span>    <span class='label'>threshold:</span> <span class='float'>1.0</span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>new_notification:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>notification_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACTUAL</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts ACTUAL, FORECASTED
+</span>    <span class='label'>comparison_operator:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GREATER_THAN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts GREATER_THAN, LESS_THAN, EQUAL_TO
+</span>    <span class='label'>threshold:</span> <span class='float'>1.0</span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:budget_name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>A string represents the budget name. No &quot;:&quot; character is allowed.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:old_notification</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Notification.html" title="Aws::Budgets::Types::Notification (class)">Types::Notification</a>)</span>
+            &mdash; <div class='inline'><p>Notification model. Each budget may contain multiple notifications with different settings.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:new_notification</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Notification.html" title="Aws::Budgets::Types::Notification (class)">Types::Notification</a>)</span>
+            &mdash; <div class='inline'><p>Notification model. Each budget may contain multiple notifications with different settings.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Struct</code>)</span>
+&mdash;    <div class='inline'><p>Returns an empty <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a>.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="update_subscriber-instance_method">
+  <h3 class='signature '>
+    #<strong>update_subscriber</strong>(options = {})  &#x21d2; <code>Struct</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Update a subscriber</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_update_subscriber'>update_subscriber</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>account_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AccountId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>budget_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BudgetName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>notification:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>notification_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACTUAL</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts ACTUAL, FORECASTED
+</span>    <span class='label'>comparison_operator:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GREATER_THAN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts GREATER_THAN, LESS_THAN, EQUAL_TO
+</span>    <span class='label'>threshold:</span> <span class='float'>1.0</span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>old_subscriber:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>subscription_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SNS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts SNS, EMAIL
+</span>    <span class='label'>address:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>new_subscriber:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>subscription_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SNS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts SNS, EMAIL
+</span>    <span class='label'>address:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GenericString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:account_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Account Id of the customer. It should be a 12 digit number.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:budget_name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>A string represents the budget name. No &quot;:&quot; character is allowed.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:notification</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Notification.html" title="Aws::Budgets::Types::Notification (class)">Types::Notification</a>)</span>
+            &mdash; <div class='inline'><p>Notification model. Each budget may contain multiple notifications with different settings.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:old_subscriber</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Subscriber.html" title="Aws::Budgets::Types::Subscriber (class)">Types::Subscriber</a>)</span>
+            &mdash; <div class='inline'><p>Subscriber model. Each notification may contain multiple subscribers with different addresses.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:new_subscriber</span>
+          <span class='type'>(<code>required</code>, <a href="Types/Subscriber.html" title="Aws::Budgets::Types::Subscriber (class)">Types::Subscriber</a>)</span>
+            &mdash; <div class='inline'><p>Subscriber model. Each notification may contain multiple subscribers with different addresses.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Struct</code>)</span>
+&mdash;    <div class='inline'><p>Returns an empty <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a>.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="wait_until-instance_method">
+  <h3 class='signature '>
+    #<strong>wait_until</strong>(waiter_name, params = {}) {|waiter| ... } &#x21d2; <code>Boolean</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Waiters polls an API operation until a resource enters a desired
+state.</p>
+
+<h3>Basic Usage</h3>
+
+<p>Waiters will poll until they are succesful, they fail by
+entering a terminal state, or until a maximum number of attempts
+are made.</p>
+
+<p># polls in a loop, sleeping between attempts
+   client.waiter_until(waiter_name, params)</p>
+
+<h3>Configuration</h3>
+
+<p>You can configure the maximum number of polling attempts, and the
+delay (in seconds) between each polling attempt. You configure
+waiters by passing a block to <code>#wait_until</code>:</p>
+
+<pre class="code ruby"><code class="ruby"># poll for ~25 seconds
+client.wait_until(...) do |w|
+  w.max_attempts = 5
+  w.delay = 5
+end</code></pre>
+
+<h3>Callbacks</h3>
+
+<p>You can be notified before each polling attempt and before each
+delay. If you throw <code>:success</code> or <code>:failure</code> from these callbacks,
+it will terminate the waiter.</p>
+
+<pre class="code ruby"><code class="ruby">started_at = Time.now
+client.wait_until(...) do |w|
+
+  # disable max attempts
+  w.max_attempts = nil
+
+  # poll for 1 hour, instead of a number of attempts
+  w.before_wait do |attempts, response|
+    throw :failure if Time.now - started_at &gt; 3600
+  end
+
+end</code></pre>
+
+<h3>Handling Errors</h3>
+
+<p>When a waiter is successful, it returns <code>true</code>. When a waiter
+fails, it raises an error. <strong>All errors raised extend from
+<a href="../Waiters/Errors/WaiterFailed.html" title="Aws::Waiters::Errors::WaiterFailed (class)">::Aws::Waiters::Errors::WaiterFailed</a></strong>.</p>
+
+<pre class="code ruby"><code class="ruby">begin
+  client.wait_until(...)
+rescue Aws::Waiters::Errors::WaiterFailed
+  # resource did not enter the desired state in time
+end</code></pre>
+
+  </div>
+</div>
+<div class='tags'>
+  <p class='tag_title'>Parameters:</p>
+<ul class='param'>
+  <li>
+    <span class='name'>waiter_name</span>
+    <span class='type'>(<code>Symbol</code>)</span>
+&mdash;    <div class='inline'><p>The name of the waiter. See <a href="#waiter_names-instance_method" title="Aws::Budgets::Client#waiter_names (method)">#waiter_names</a>
+for a full list of supported waiters.</p>
+</div>
+  </li>
+  <li>
+    <span class='name'>params</span>
+    <span class='type'>(<code>Hash</code>)</span>
+    <em class='default'>(defaults to: <tt>{}</tt>)</em>
+&mdash;    <div class='inline'><p>Additional request parameters. See the <a href="#waiter_names-instance_method" title="Aws::Budgets::Client#waiter_names (method)">#waiter_names</a>
+for a list of supported waiters and what request they call. The
+called request determines the list of accepted parameters.</p>
+</div>
+  </li>
+</ul>
+<p class='tag_title'>Yield Parameters:</p>
+<ul class='yieldparam'>
+  <li>
+    <span class='name'>waiter</span>
+    <span class='type'>(<a href="../Waiters/Waiter.html" title="Aws::Waiters::Waiter (class)">Waiters::Waiter</a>)</span>
+&mdash;    <div class='inline'><p>Yields a <a href="../Waiters/Waiter.html" title="Aws::Waiters::Waiter (class)">Waiter</a>
+object that can be configured prior to waiting.</p>
+</div>
+  </li>
+</ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Boolean</code>)</span>
+&mdash;    <div class='inline'><p>Returns <code>true</code> if the waiter was successful.</p>
+</div>
+  </li>
+</ul>
+<p class='tag_title'>Raises:</p>
+<ul class='raise'>
+  <li>
+    <span class='type'>(<code>Errors::FailureStateError</code>)</span>
+&mdash;    <div class='inline'><p>Raised when the waiter terminates
+because the waiter has entered a state that it will not transition
+out of, preventing success.</p>
+</div>
+  </li>
+  <li>
+    <span class='type'>(<code>Errors::TooManyAttemptsError</code>)</span>
+&mdash;    <div class='inline'><p>Raised when the configured
+maximum number of attempts have been made, and the waiter is not
+yet successful.</p>
+</div>
+  </li>
+  <li>
+    <span class='type'>(<code>Errors::UnexpectedError</code>)</span>
+&mdash;    <div class='inline'><p>Raised when an error is encounted
+while polling for a resource that is not expected.</p>
+</div>
+  </li>
+  <li>
+    <span class='type'>(<code>Errors::NoSuchWaiterError</code>)</span>
+&mdash;    <div class='inline'><p>Raised when you request to wait
+for an unknown state.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="waiter_names-instance_method">
+  <h3 class='signature '>
+    #<strong>waiter_names</strong>  &#x21d2; <code>Array</code>&lt;<code>Symbol</code>&gt; 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Returns the list of supported waiters. The following table lists the supported
+waiters and the client method they call:</p>
+
+<table>
+<thead>
+<tr><th>Waiter Name</th><th>Client Method</th><th>Default Delay:</th><th>Default Max Attempts:</th></tr>
+</thead>
+<tbody>
+
+</tbody>
+</table>
+
+  </div>
+</div>
+<div class='tags'>
+  <p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Array</code>&lt;<code>Symbol</code>&gt;)</span>
+&mdash;    <div class='inline'><p>the list of supported waiters.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.8 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.5.0p-1)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>

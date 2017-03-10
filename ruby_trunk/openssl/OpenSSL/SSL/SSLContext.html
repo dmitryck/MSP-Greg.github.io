@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>Class: OpenSSL::SSL::SSLContext &mdash; openssl</title>
+
+<link rel='stylesheet'  type='text/css' href='../../../../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "OpenSSL::SSL::SSLContext",
+    relpath = '../../';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../../../../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../../../../js/y_app.js'></script>
+
+</head>
+<body>
+<svg id='y_wait' class viewBox='0 0 90 90'></svg>
+<div id='settings' class='hidden'></div>
+<div id='y_list' class='d h'>
+  <header id='list_header'></header>
+  <nav id= 'list_nav' class='y_nav l_nav'>
+    <ul id='list_items'></ul>
+  </nav>
+</div>
+<div id='y_toc' class='f h'>
+  <header id='toc_header'></header>
+  <nav id= 'toc_nav' class='y_nav t_nav'>
+  <ol id='toc_items'></ol>
+  </nav>
+</div>
+<div id='y_main' tabindex='-1'>
+  <header id='y_header'>
+    <div id='y_menu'>
+        <a href='../../../../index.html'>Home</a> &raquo; 
+        <a href='../../../index.html'>Ruby-2.5.0</a> &raquo; 
+        <a href='../../index.html'>openssl</a> &raquo; 
+        <a href='../../_index.html#alpha_S'>Index (S)</a> &raquo; 
+        <a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a> &raquo; 
+        <a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a> &raquo; 
+        <span class='title'><a id='t2_doc_top' href='#'>SSLContext&nbsp;&#x25B2;</a></span>
+      </div>
+
+    <a id='list_href' href="../../class_list.html"></a>
+    <div id='y_measure_em' class='y_measure'></div>
+    <div id='y_measure_vh' class='y_measure'></div>
+    <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+  </header>
+<div id='content' class='class'>
+<h1>Class: OpenSSL::SSL::SSLContext</h1>
+<div id='t2_rel_sf_div'>
+<table id='t2_rel_sf' class='y_box'>
+  <thead>
+    <tr><td id='t2_relations' colspan='2'>Relationships & Source Files</td></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id='t2_inherits' class='box_2'>Inherits:</td>
+      <td class='box_rel'>
+        <span class='inheritName'>Object</span>
+      </td>
+    </tr>
+    <tr class='single'>
+      <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L2298'>ext/openssl/ossl_ssl.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/lib/openssl/ssl.rb#L18'>ext/openssl/lib/openssl/ssl.rb</a></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h2 id='h2_overview'>Overview</h2>
+<div id='overview_ds'>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>An SSLContext is used to set various options regarding certificates,
+algorithms, verification, session caching, etc.  The SSLContext is used to
+create an <a href="SSLSocket.html" title="OpenSSL::SSL::SSLSocket (class)">SSLSocket</a>.</p>
+
+<p>All attributes must be set before creating an <a href="SSLSocket.html" title="OpenSSL::SSL::SSLSocket (class)">SSLSocket</a> as
+the <code>SSLContext</code> will be frozen afterward.</p>
+
+  </div>
+</div>
+</div>
+<h2 id='t2_cnst' class='h2_sum'>Constant Summary</h2>
+<div>
+<ul class='constants summary full'>
+  <li>
+    <span id='DEFAULT_CERT_STORE-constant' class='summary_signature nodoc'>DEFAULT_CERT_STORE =</span>
+    <span class='nodoc note title'>Internal use only</span>
+    <br/>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/lib/openssl/ssl.rb#L70-L70'># File 'ext/openssl/lib/openssl/ssl.rb', line 70</a>    <pre class='code ruby'><span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../X509.html" title="OpenSSL::X509 (module)">X509</a></span><span class='op'>::</span><span class='const'><a href="../X509/Store.html" title="OpenSSL::X509::Store (class)">Store</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../X509/Store.html#new-class_method" title="OpenSSL::X509::Store.new (method)">new</a></span></pre>
+  </li>
+  <li>
+    <span id='DEFAULT_PARAMS-constant' class='summary_signature nodoc'>DEFAULT_PARAMS =</span>
+    <span class='nodoc note title'>Internal use only</span>
+    <br/>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/lib/openssl/ssl.rb#L19-L30'># File 'ext/openssl/lib/openssl/ssl.rb', line 19</a>    <pre class='code ruby'><span class='lbrace'>{</span> <span class='comment'># :nodoc:
+</span>  <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_version'>ssl_version</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SSLv23</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='symbeg'>:</span><span class='id identifier rubyid_verify_mode'>verify_mode</span> <span class='op'>=&gt;</span> <span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'>VERIFY_PEER</span><span class='comma'>,</span>
+  <span class='symbeg'>:</span><span class='id identifier rubyid_verify_hostname'>verify_hostname</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span>
+  <span class='symbeg'>:</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=&gt;</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span>
+    <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'>OP_ALL</span>
+    <span class='id identifier rubyid_opts'>opts</span> <span class='op'>&amp;=</span> <span class='op'>~</span><span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'>OP_DONT_INSERT_EMPTY_FRAGMENTS</span>
+    <span class='id identifier rubyid_opts'>opts</span> <span class='op'>|=</span> <span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'>OP_NO_COMPRESSION</span> <span class='kw'>if</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'>OP_NO_COMPRESSION</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_opts'>opts</span> <span class='op'>|=</span> <span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'>OP_NO_SSLv2</span> <span class='op'>|</span> <span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'>OP_NO_SSLv3</span>
+    <span class='id identifier rubyid_opts'>opts</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
+<span class='rbrace'>}</span></pre>
+  </li>
+  <li>
+    <span id='METHODS-constant' class='summary_signature'>METHODS =</span>
+    <div class='docstring'>
+  <div class='discussion'>
+    
+<p>The list of available SSL/TLS methods</p>
+
+  </div>
+</div>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L2614'># File 'ext/openssl/ossl_ssl.c', line 2614</a>    <pre class='code c'><span class='id identifier rubyid_ary'>ary</span></pre>
+  </li>
+  <li>
+    <span id='SESSION_CACHE_BOTH-constant' class='summary_signature'>SESSION_CACHE_BOTH =</span>
+    <div class='docstring'>
+  <div class='discussion'>
+    
+<p>no different than CACHE_SERVER in 0.9.8e</p>
+
+  </div>
+</div>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L2568'># File 'ext/openssl/ossl_ssl.c', line 2568</a>    <pre class='code c'><span class='const'>LONG2NUM</span><span class='lparen'>(</span><span class='const'>SSL_SESS_CACHE_BOTH</span><span class='rparen'>)</span></pre>
+  </li>
+  <li>
+    <span id='SESSION_CACHE_CLIENT-constant' class='summary_signature'>SESSION_CACHE_CLIENT =</span>
+    <div class='docstring'>
+  <div class='discussion'>
+    
+<p>doesn&#39;t actually do anything in 0.9.8e</p>
+
+  </div>
+</div>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L2558'># File 'ext/openssl/ossl_ssl.c', line 2558</a>    <pre class='code c'><span class='const'>LONG2NUM</span><span class='lparen'>(</span><span class='const'>SSL_SESS_CACHE_CLIENT</span><span class='rparen'>)</span></pre>
+  </li>
+  <li>
+    <span id='SESSION_CACHE_NO_AUTO_CLEAR-constant' class='summary_signature'>SESSION_CACHE_NO_AUTO_CLEAR =</span>
+    <div class='docstring'>
+  <div class='discussion'>
+    
+<p>Normally the session cache is checked for expired sessions every 255
+connections.  Since this may lead to a delay that cannot be controlled, the
+automatic flushing may be disabled and <a href="#flush_sessions-instance_method" title="OpenSSL::SSL::SSLContext#flush_sessions (method)">#flush_sessions</a> can be called
+explicitly.</p>
+
+  </div>
+</div>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L2576'># File 'ext/openssl/ossl_ssl.c', line 2576</a>    <pre class='code c'><span class='const'>LONG2NUM</span><span class='lparen'>(</span><span class='const'>SSL_SESS_CACHE_NO_AUTO_CLEAR</span><span class='rparen'>)</span></pre>
+  </li>
+  <li>
+    <span id='SESSION_CACHE_NO_INTERNAL-constant' class='summary_signature'>SESSION_CACHE_NO_INTERNAL =</span>
+    <div class='docstring'>
+  <div class='discussion'>
+    
+<p>Enables both <a href="#SESSION_CACHE_NO_INTERNAL_LOOKUP-constant" title="OpenSSL::SSL::SSLContext::SESSION_CACHE_NO_INTERNAL_LOOKUP (constant)">SESSION_CACHE_NO_INTERNAL_LOOKUP</a>
+and <a href="#SESSION_CACHE_NO_INTERNAL_STORE-constant" title="OpenSSL::SSL::SSLContext::SESSION_CACHE_NO_INTERNAL_STORE (constant)">SESSION_CACHE_NO_INTERNAL_STORE</a>.</p>
+
+  </div>
+</div>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L2595'># File 'ext/openssl/ossl_ssl.c', line 2595</a>    <pre class='code c'><span class='const'>LONG2NUM</span><span class='lparen'>(</span><span class='const'>SSL_SESS_CACHE_NO_INTERNAL</span><span class='rparen'>)</span></pre>
+  </li>
+  <li>
+    <span id='SESSION_CACHE_NO_INTERNAL_LOOKUP-constant' class='summary_signature'>SESSION_CACHE_NO_INTERNAL_LOOKUP =</span>
+    <div class='docstring'>
+  <div class='discussion'>
+    
+<p>Always perform external lookups of sessions even if they are in the
+internal cache.</p>
+
+<p>This flag has no effect on clients</p>
+
+  </div>
+</div>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L2584'># File 'ext/openssl/ossl_ssl.c', line 2584</a>    <pre class='code c'><span class='const'>LONG2NUM</span><span class='lparen'>(</span><span class='const'>SSL_SESS_CACHE_NO_INTERNAL_LOOKUP</span><span class='rparen'>)</span></pre>
+  </li>
+  <li>
+    <span id='SESSION_CACHE_NO_INTERNAL_STORE-constant' class='summary_signature'>SESSION_CACHE_NO_INTERNAL_STORE =</span>
+    <div class='docstring'>
+  <div class='discussion'>
+    
+<p>Never automatically store sessions in the internal store.</p>
+
+  </div>
+</div>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L2589'># File 'ext/openssl/ossl_ssl.c', line 2589</a>    <pre class='code c'><span class='const'>LONG2NUM</span><span class='lparen'>(</span><span class='const'>SSL_SESS_CACHE_NO_INTERNAL_STORE</span><span class='rparen'>)</span></pre>
+  </li>
+  <li>
+    <span id='SESSION_CACHE_OFF-constant' class='summary_signature'>SESSION_CACHE_OFF =</span>
+    <div class='docstring'>
+  <div class='discussion'>
+    
+<p>No session caching for client or server</p>
+
+  </div>
+</div>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L2553'># File 'ext/openssl/ossl_ssl.c', line 2553</a>    <pre class='code c'><span class='const'>LONG2NUM</span><span class='lparen'>(</span><span class='const'>SSL_SESS_CACHE_OFF</span><span class='rparen'>)</span></pre>
+  </li>
+  <li>
+    <span id='SESSION_CACHE_SERVER-constant' class='summary_signature'>SESSION_CACHE_SERVER =</span>
+    <div class='docstring'>
+  <div class='discussion'>
+    
+<p>Server sessions are added to the session cache</p>
+
+  </div>
+</div>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L2563'># File 'ext/openssl/ossl_ssl.c', line 2563</a>    <pre class='code c'><span class='const'>LONG2NUM</span><span class='lparen'>(</span><span class='const'>SSL_SESS_CACHE_SERVER</span><span class='rparen'>)</span></pre>
+  </li>
+</ul>
+</div>
+        
+
+<h2 class='h2_sum' id='class_Method_summary'>Class Method Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature '>
+      <a href="#new-class_method" title="new (class method)">.<strong>new</strong>  &#x21d2; ctx </a>
+    </span>
+    <span class='note title constructor'>constructor</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>You can get a list of valid methods with
+<a href="#METHODS-constant" title="OpenSSL::SSL::SSLContext::METHODS (constant)">METHODS</a></p></div>
+    </div>
+  </li>
+</ul>
+</div>
+        
+
+<h2 class='h2_sum' id='instance_Attribute_summary'>Instance Attribute Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#ciphers-instance_method" title="#ciphers (instance method)">#<strong>ciphers</strong>  &#x21d2; Array, ... </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>The list of cipher suites configured for this context.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#ciphers=-instance_method" title="#ciphers= (instance method)">#<strong>ciphers=</strong>(&quot;cipher1:cipher2:...&quot;)  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Sets the list of available cipher suites for this context.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#options-instance_method" title="#options (instance method)">#<strong>options</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Gets various <a href="../../OpenSSL.html" title="OpenSSL (module)">::OpenSSL</a> options.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#options=-instance_method" title="#options= (instance method)">#<strong>options=</strong>(options)  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Sets various <a href="../../OpenSSL.html" title="OpenSSL (module)">::OpenSSL</a> options.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#security_level-instance_method" title="#security_level (instance method)">#<strong>security_level</strong>  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns the security level for the context.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#security_level=-instance_method" title="#security_level= (instance method)">#<strong>security_level=</strong>(integer)  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Sets the security level for the context.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#servername_cb-instance_method" title="#servername_cb (instance method)">#<strong>servername_cb</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>A callback invoked at connect time to distinguish between multiple server
+names.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#session_cache_mode-instance_method" title="#session_cache_mode (instance method)">#<strong>session_cache_mode</strong>  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>The current session cache mode.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#session_cache_mode=-instance_method" title="#session_cache_mode= (instance method)">#<strong>session_cache_mode=</strong>(integer)  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Sets the <a href="../SSL.html" title="OpenSSL::SSL (module)">::OpenSSL::SSL</a> session cache mode.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#session_cache_size-instance_method" title="#session_cache_size (instance method)">#<strong>session_cache_size</strong>  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns the current session cache size.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#session_cache_size=-instance_method" title="#session_cache_size= (instance method)">#<strong>session_cache_size=</strong>(integer)  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Sets the session cache size.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#tmp_dh_callback-instance_method" title="#tmp_dh_callback (instance method)">#<strong>tmp_dh_callback</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>A callback invoked when DH parameters are required.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature wo'>
+      <a href="#ecdh_curves=-instance_method" title="#ecdh_curves= (instance method)">#<strong>ecdh_curves=</strong>(curve_list)  &#x21d2; curve_list </a>
+    </span>
+    <span class='note title writeonly'>writeonly</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Sets the list of "supported elliptic curves" for this context.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature wo'>
+      <a href="#ssl_version=-instance_method" title="#ssl_version= (instance method)">#<strong>ssl_version=</strong>(:TLSv1)  </a>
+    </span>
+    <span class='note title writeonly'>writeonly</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Sets the SSL/TLS protocol version for the context.</p></div>
+    </div>
+  </li>
+</ul>
+</div>
+        
+
+<h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature '>
+      <a href="#flush_sessions-instance_method" title="#flush_sessions (instance method)">#<strong>flush_sessions</strong>(time|nil)  &#x21d2; self </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Removes sessions in the internal cache that have expired at <code>time</code>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#freeze-instance_method" title="#setup (instance method)">#<strong>setup</strong>  &#x21d2; Qtrue #firstt time </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Alias for <a href="#setup-instance_method" title="OpenSSL::SSL::SSLContext#setup (method)">#setup</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#session_add-instance_method" title="#session_add (instance method)">#<strong>session_add</strong>(session)  &#x21d2; Boolean </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Adds <code>session</code> to the session cache.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#session_cache_stats-instance_method" title="#session_cache_stats (instance method)">#<strong>session_cache_stats</strong>  &#x21d2; Hash </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns a Hash containing the following keys:</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#session_remove-instance_method" title="#session_remove (instance method)">#<strong>session_remove</strong>(session)  &#x21d2; Boolean </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Removes <code>session</code> from the session cache.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#set_params-instance_method" title="#set_params (instance method)">#<strong>set_params</strong>(params = {})  &#x21d2; params </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Sets saner defaults optimized for the use with HTTP-like protocols.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#setup-instance_method" title="#setup (instance method)">#<strong>setup</strong>  &#x21d2; Qtrue #firstt time </a>
+      (also: #freeze)
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>This method is called automatically when a new <a href="SSLSocket.html" title="OpenSSL::SSL::SSLSocket (class)">SSLSocket</a> is
+created.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#ssl_timeout-instance_method" title="#ssl_timeout (instance method)">#<strong>ssl_timeout</strong>  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Alias for ++.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#ssl_timeout=-instance_method" title="#ssl_timeout= (instance method)">#<strong>ssl_timeout=</strong>  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Alias for ++.</p></div>
+    </div>
+  </li>
+</ul>
+</div>
+<h2 id='Constructor_Details' class='y_details'>Constructor Details</h2>
+
+  <section class='method_details first' id="new-class_method">
+  <h3 class='signature  first'>
+    <div class='inline-block'>
+      <span class='overload'>.<strong>new</strong>  &#x21d2; <code>ctx</code> </span>
+      <span class='overload'>.<strong>new</strong>(:TLSv1)  &#x21d2; <code>ctx</code> </span>
+      <span class='overload'>.<strong>new</strong>(&quot;SSLv23_client&quot;)  &#x21d2; <code>ctx</code> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>You can get a list of valid methods with
+<a href="#METHODS-constant" title="OpenSSL::SSL::SSLContext::METHODS (constant)">METHODS</a></p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/lib/openssl/ssl.rb#L98-L101'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+98
+99
+100
+101</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/lib/openssl/ssl.rb', line 98</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_version'>version</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span> <span class='op'>|=</span> <span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'>OP_ALL</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ssl_version'>ssl_version</span> <span class='op'>=</span> <span class='id identifier rubyid_version'>version</span> <span class='kw'>if</span> <span class='id identifier rubyid_version'>version</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<h2 class='y_details'>Instance Attribute Details</h2>
+<section class='method_details first' id="ciphers-instance_method">
+  <h3 class='signature rw first'>
+    #<strong>ciphers</strong>  &#x21d2; <code>Array</code>, ...  <span class="extras">(<span class='rw'>rw</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>The list of cipher suites configured for this context.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L980-L1006'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+980
+981
+982
+983
+984
+985
+986
+987
+988
+989
+990
+991
+992
+993
+994
+995
+996
+997
+998
+999
+1000
+1001
+1002
+1003
+1004
+1005
+1006</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 980</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_get_ciphers(VALUE self)
+{
+    SSL_CTX *ctx;
+    STACK_OF(SSL_CIPHER) *ciphers;
+    const SSL_CIPHER *cipher;
+    VALUE ary;
+    int i, num;
+
+    GetSSLCTX(self, ctx);
+    if(!ctx){
+        rb_warning(&quot;SSL_CTX is not initialized.&quot;);
+        return Qnil;
+    }
+    ciphers = SSL_CTX_get_ciphers(ctx);
+
+    if (!ciphers)
+        return rb_ary_new();
+
+    num = sk_SSL_CIPHER_num(ciphers);
+    ary = rb_ary_new2(num);
+    for(i = 0; i &lt; num; i++){
+        cipher = sk_SSL_CIPHER_value(ciphers, i);
+        rb_ary_push(ary, ossl_ssl_cipher_to_ary(cipher));
+    }
+    return ary;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="ciphers=-instance_method">
+  <h3 class='signature rw'>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>ciphers=</strong>(&quot;cipher1:cipher2:...&quot;)   <span class="extras">(<span class='rw'>rw</span>)</span></span>
+      <span class='overload'>#<strong>ciphers=</strong>([name, ...])  </span>
+      <span class='overload'>#<strong>ciphers=</strong>([[name, version, bits, alg_bits], ...])  </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Sets the list of available cipher suites for this context.  Note in a
+server context some ciphers require the appropriate certificates.  For
+example, an RSA cipher suite can only be chosen when an RSA certificate is
+available.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L1018-L1052'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1018
+1019
+1020
+1021
+1022
+1023
+1024
+1025
+1026
+1027
+1028
+1029
+1030
+1031
+1032
+1033
+1034
+1035
+1036
+1037
+1038
+1039
+1040
+1041
+1042
+1043
+1044
+1045
+1046
+1047
+1048
+1049
+1050
+1051
+1052</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 1018</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_set_ciphers(VALUE self, VALUE v)
+{
+    SSL_CTX *ctx;
+    VALUE str, elem;
+    int i;
+
+    rb_check_frozen(self);
+    if (NIL_P(v))
+	return v;
+    else if (RB_TYPE_P(v, T_ARRAY)) {
+        str = rb_str_new(0, 0);
+        for (i = 0; i &lt; RARRAY_LEN(v); i++) {
+            elem = rb_ary_entry(v, i);
+            if (RB_TYPE_P(elem, T_ARRAY)) elem = rb_ary_entry(elem, 0);
+            elem = rb_String(elem);
+            rb_str_append(str, elem);
+            if (i &lt; RARRAY_LEN(v)-1) rb_str_cat2(str, &quot;:&quot;);
+        }
+    } else {
+        str = v;
+        StringValue(str);
+    }
+
+    GetSSLCTX(self, ctx);
+    if(!ctx){
+        ossl_raise(eSSLError, &quot;SSL_CTX is not initialized.&quot;);
+        return Qnil;
+    }
+    if (!SSL_CTX_set_cipher_list(ctx, StringValueCStr(str))) {
+        ossl_raise(eSSLError, &quot;SSL_CTX_set_cipher_list&quot;);
+    }
+
+    return v;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="ecdh_curves=-instance_method">
+  <h3 class='signature wo'>
+    #<strong>ecdh_curves=</strong>(curve_list)  &#x21d2; <code>curve_list</code>  <span class="extras">(<span class='writeonly'>writeonly</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Sets the list of "supported elliptic curves" for this context.</p>
+
+<p>For a TLS client, the list is directly used in the Supported Elliptic
+Curves Extension. For a server, the list is used by <a href="../../OpenSSL.html" title="OpenSSL (module)">::OpenSSL</a> to determine
+the set of shared curves. <a href="../../OpenSSL.html" title="OpenSSL (module)">::OpenSSL</a> will pick the most appropriate one from
+it.</p>
+
+<p>Note that this works differently with old <a href="../../OpenSSL.html" title="OpenSSL (module)">::OpenSSL</a> (&lt;= 1.0.1). Only one
+curve can be set, and this has no effect for TLS clients.</p>
+
+<h3 id="label-Example">Example</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_ctx1'>ctx1</span> <span class='op'>=</span> <span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'>SSLContext</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenSSL::SSL::SSLContext.new (method)">new</a></span>
+<span class='id identifier rubyid_ctx1'>ctx1</span><span class='period'>.</span><span class='id identifier rubyid_ecdh_curves'>ecdh_curves</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>X25519:P-256:P-224</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_svr'>svr</span> <span class='op'>=</span> <span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'><a href="SSLServer.html" title="OpenSSL::SSL::SSLServer (class)">SSLServer</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="SSLServer.html#new-class_method" title="OpenSSL::SSL::SSLServer.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_tcp_svr'>tcp_svr</span><span class='comma'>,</span> <span class='id identifier rubyid_ctx1'>ctx1</span><span class='rparen'>)</span>
+<span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_svr'>svr</span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span> <span class='rbrace'>}</span>
+
+<span class='id identifier rubyid_ctx2'>ctx2</span> <span class='op'>=</span> <span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'>SSLContext</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenSSL::SSL::SSLContext.new (method)">new</a></span>
+<span class='id identifier rubyid_ctx2'>ctx2</span><span class='period'>.</span><span class='id identifier rubyid_ecdh_curves'>ecdh_curves</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>P-256</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_cli'>cli</span> <span class='op'>=</span> <span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'><a href="SSLSocket.html" title="OpenSSL::SSL::SSLSocket (class)">SSLSocket</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="SSLSocket.html#new-class_method" title="OpenSSL::SSL::SSLSocket.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_tcp_sock'>tcp_sock</span><span class='comma'>,</span> <span class='id identifier rubyid_ctx2'>ctx2</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_cli'>cli</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span>
+
+<span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_cli'>cli</span><span class='period'>.</span><span class='id identifier rubyid_tmp_key'>tmp_key</span><span class='period'>.</span><span class='id identifier rubyid_group'>group</span><span class='period'>.</span><span class='id identifier rubyid_curve_name'>curve_name</span>
+<span class='comment'># =&gt; &quot;prime256v1&quot; (is an alias for NIST P-256)</span></code></pre>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L1082-L1134'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1082
+1083
+1084
+1085
+1086
+1087
+1088
+1089
+1090
+1091
+1092
+1093
+1094
+1095
+1096
+1097
+1098
+1099
+1100
+1101
+1102
+1103
+1104
+1105
+1106
+1107
+1108
+1109
+1110
+1111
+1112
+1113
+1114
+1115
+1116
+1117
+1118
+1119
+1120
+1121
+1122
+1123
+1124
+1125
+1126
+1127
+1128
+1129
+1130
+1131
+1132
+1133
+1134</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 1082</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_set_ecdh_curves(VALUE self, VALUE arg)
+{
+    SSL_CTX *ctx;
+
+    rb_check_frozen(self);
+    GetSSLCTX(self, ctx);
+    StringValueCStr(arg);
+
+#if defined(HAVE_SSL_CTX_SET1_CURVES_LIST)
+    if (!SSL_CTX_set1_curves_list(ctx, RSTRING_PTR(arg)))
+	ossl_raise(eSSLError, NULL);
+#else
+    /* OpenSSL does not have SSL_CTX_set1_curves_list()... Fallback to
+     * SSL_CTX_set_tmp_ecdh(). So only the first curve is used. */
+    {
+	VALUE curve, splitted;
+	EC_KEY *ec;
+	int nid;
+
+	splitted = rb_str_split(arg, &quot;:&quot;);
+	if (!RARRAY_LEN(splitted))
+	    ossl_raise(eSSLError, &quot;invalid input format&quot;);
+	curve = RARRAY_AREF(splitted, 0);
+	StringValueCStr(curve);
+
+	/* SSL_CTX_set1_curves_list() accepts NIST names */
+	nid = EC_curve_nist2nid(RSTRING_PTR(curve));
+	if (nid == NID_undef)
+	    nid = OBJ_txt2nid(RSTRING_PTR(curve));
+	if (nid == NID_undef)
+	    ossl_raise(eSSLError, &quot;unknown curve name&quot;);
+
+	ec = EC_KEY_new_by_curve_name(nid);
+	if (!ec)
+	    ossl_raise(eSSLError, NULL);
+	EC_KEY_set_asn1_flag(ec, OPENSSL_EC_NAMED_CURVE);
+	if (!SSL_CTX_set_tmp_ecdh(ctx, ec)) {
+	    EC_KEY_free(ec);
+	    ossl_raise(eSSLError, &quot;SSL_CTX_set_tmp_ecdh&quot;);
+	}
+	EC_KEY_free(ec);
+# if defined(HAVE_SSL_CTX_SET_ECDH_AUTO)
+	/* tmp_ecdh and ecdh_auto conflict. tmp_ecdh is ignored when ecdh_auto
+	 * is enabled. So disable ecdh_auto. */
+	if (!SSL_CTX_set_ecdh_auto(ctx, 0))
+	    ossl_raise(eSSLError, &quot;SSL_CTX_set_ecdh_auto&quot;);
+# endif
+    }
+#endif
+
+    return arg;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="options-instance_method">
+  <h3 class='signature rw'>
+    #<strong>options</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Gets various <a href="../../OpenSSL.html" title="OpenSSL (module)">::OpenSSL</a> options.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L733-L739'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+733
+734
+735
+736
+737
+738
+739</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 733</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_get_options(VALUE self)
+{
+    SSL_CTX *ctx;
+    GetSSLCTX(self, ctx);
+    return LONG2NUM(SSL_CTX_get_options(ctx));
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="options=-instance_method">
+  <h3 class='signature rw'>
+    #<strong>options=</strong>(options)   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Sets various <a href="../../OpenSSL.html" title="OpenSSL (module)">::OpenSSL</a> options.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L744-L761'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 744</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_set_options(VALUE self, VALUE options)
+{
+    SSL_CTX *ctx;
+
+    rb_check_frozen(self);
+    GetSSLCTX(self, ctx);
+
+    SSL_CTX_clear_options(ctx, SSL_CTX_get_options(ctx));
+
+    if (NIL_P(options)) {
+	SSL_CTX_set_options(ctx, SSL_OP_ALL);
+    } else {
+	SSL_CTX_set_options(ctx, NUM2LONG(options));
+    }
+
+    return self;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="security_level-instance_method">
+  <h3 class='signature rw'>
+    #<strong>security_level</strong>  &#x21d2; <a href="../../Integer.html" title="Integer (class)">Integer</a>  <span class="extras">(<span class='rw'>rw</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns the security level for the context.</p>
+
+<p>See also <a href="#security_level=-instance_method" title="OpenSSL::SSL::SSLContext#security_level= (method)">#security_level=</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L1147-L1160'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1147
+1148
+1149
+1150
+1151
+1152
+1153
+1154
+1155
+1156
+1157
+1158
+1159
+1160</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 1147</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_get_security_level(VALUE self)
+{
+    SSL_CTX *ctx;
+
+    GetSSLCTX(self, ctx);
+
+#if defined(HAVE_SSL_CTX_GET_SECURITY_LEVEL)
+    return INT2NUM(SSL_CTX_get_security_level(ctx));
+#else
+    (void)ctx;
+    return INT2FIX(0);
+#endif
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="security_level=-instance_method">
+  <h3 class='signature rw'>
+    #<strong>security_level=</strong>(integer)   <span class="extras">(<span class='rw'>rw</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Sets the security level for the context. <a href="../../OpenSSL.html" title="OpenSSL (module)">::OpenSSL</a> limits parameters
+according to the level. The "parameters" include: ciphersuites, curves, key
+sizes, certificate signature algorithms, protocol version and so on. For
+example, level 1 rejects parameters offering below 80 bits of security,
+such as ciphersuites using MD5 for the MAC or RSA keys shorter than 1024
+bits.</p>
+
+<p>Note that attempts to set such parameters with insufficient security are
+also blocked. You need to lower the level first.</p>
+
+<p>This feature is not supported in <a href="../../OpenSSL.html" title="OpenSSL (module)">::OpenSSL</a> &lt; 1.1.0, and setting the
+level to other than 0 will raise NotImplementedError. Level 0 means
+everything is permitted, the same behavior as previous versions of
+<a href="../../OpenSSL.html" title="OpenSSL (module)">::OpenSSL</a>.</p>
+
+<p>See the manpage of SSL_CTX_set_security_level(3) for details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L1181-L1199'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1181
+1182
+1183
+1184
+1185
+1186
+1187
+1188
+1189
+1190
+1191
+1192
+1193
+1194
+1195
+1196
+1197
+1198
+1199</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 1181</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_set_security_level(VALUE self, VALUE value)
+{
+    SSL_CTX *ctx;
+
+    rb_check_frozen(self);
+    GetSSLCTX(self, ctx);
+
+#if defined(HAVE_SSL_CTX_GET_SECURITY_LEVEL)
+    SSL_CTX_set_security_level(ctx, NUM2INT(value));
+#else
+    (void)ctx;
+    if (NUM2INT(value) != 0)
+	ossl_raise(rb_eNotImpError, &quot;setting security level to other than 0 is &quot;
+		   &quot;not supported in this version of OpenSSL&quot;);
+#endif
+
+    return value;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="servername_cb-instance_method">
+  <h3 class='signature rw'>
+    #<strong>servername_cb</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>A callback invoked at connect time to distinguish between multiple server
+names.</p>
+
+<p>The callback is invoked with an <a href="SSLSocket.html" title="OpenSSL::SSL::SSLSocket (class)">SSLSocket</a> and a server
+name.  The callback must return an <code>SSLContext</code> for the server
+name or nil.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/lib/openssl/ssl.rb#L90-L90'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+90</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/lib/openssl/ssl.rb', line 90</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_servername_cb'>servername_cb</span> <span class='kw'>if</span> <span class='const'><a href="../ExtConfig.html" title="OpenSSL::ExtConfig (module)">ExtConfig</a></span><span class='op'>::</span><span class='const'><a href="../ExtConfig.html#HAVE_TLSEXT_HOST_NAME-constant" title="OpenSSL::ExtConfig::HAVE_TLSEXT_HOST_NAME (constant)">HAVE_TLSEXT_HOST_NAME</a></span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="session_cache_mode-instance_method">
+  <h3 class='signature rw'>
+    #<strong>session_cache_mode</strong>  &#x21d2; <a href="../../Integer.html" title="Integer (class)">Integer</a>  <span class="extras">(<span class='rw'>rw</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>The current session cache mode.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L1243-L1251'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1243
+1244
+1245
+1246
+1247
+1248
+1249
+1250
+1251</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 1243</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_get_session_cache_mode(VALUE self)
+{
+    SSL_CTX *ctx;
+
+    GetSSLCTX(self, ctx);
+
+    return LONG2NUM(SSL_CTX_get_session_cache_mode(ctx));
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="session_cache_mode=-instance_method">
+  <h3 class='signature rw'>
+    #<strong>session_cache_mode=</strong>(integer)  &#x21d2; <a href="../../Integer.html" title="Integer (class)">Integer</a>  <span class="extras">(<span class='rw'>rw</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Sets the <a href="../SSL.html" title="OpenSSL::SSL (module)">::OpenSSL::SSL</a> session cache mode.  Bitwise-or together the
+desired SESSION_CACHE_* constants to set.  See
+SSL_CTX_set_session_cache_mode(3) for details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L1261-L1271'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1261
+1262
+1263
+1264
+1265
+1266
+1267
+1268
+1269
+1270
+1271</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 1261</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_set_session_cache_mode(VALUE self, VALUE arg)
+{
+    SSL_CTX *ctx;
+
+    GetSSLCTX(self, ctx);
+
+    SSL_CTX_set_session_cache_mode(ctx, NUM2LONG(arg));
+
+    return arg;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="session_cache_size-instance_method">
+  <h3 class='signature rw'>
+    #<strong>session_cache_size</strong>  &#x21d2; <a href="../../Integer.html" title="Integer (class)">Integer</a>  <span class="extras">(<span class='rw'>rw</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns the current session cache size.  Zero is used to represent an
+unlimited cache size.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L1280-L1288'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1280
+1281
+1282
+1283
+1284
+1285
+1286
+1287
+1288</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 1280</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_get_session_cache_size(VALUE self)
+{
+    SSL_CTX *ctx;
+
+    GetSSLCTX(self, ctx);
+
+    return LONG2NUM(SSL_CTX_sess_get_cache_size(ctx));
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="session_cache_size=-instance_method">
+  <h3 class='signature rw'>
+    #<strong>session_cache_size=</strong>(integer)  &#x21d2; <a href="../../Integer.html" title="Integer (class)">Integer</a>  <span class="extras">(<span class='rw'>rw</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Sets the session cache size.  Returns the previously valid session cache
+size.  Zero is used to represent an unlimited session cache size.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L1297-L1307'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1297
+1298
+1299
+1300
+1301
+1302
+1303
+1304
+1305
+1306
+1307</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 1297</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_set_session_cache_size(VALUE self, VALUE arg)
+{
+    SSL_CTX *ctx;
+
+    GetSSLCTX(self, ctx);
+
+    SSL_CTX_sess_set_cache_size(ctx, NUM2LONG(arg));
+
+    return arg;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="ssl_version=-instance_method">
+  <h3 class='signature wo'>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>ssl_version=</strong>(:TLSv1)   <span class="extras">(<span class='writeonly'>writeonly</span>)</span></span>
+      <span class='overload'>#<strong>ssl_version=</strong>(&quot;SSLv23_client&quot;)  </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Sets the SSL/TLS protocol version for the context. This forces connections
+to use only the specified protocol version.</p>
+
+<p>You can get a list of valid versions with
+<a href="#METHODS-constant" title="OpenSSL::SSL::SSLContext::METHODS (constant)">METHODS</a></p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L154-L187'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 154</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_set_ssl_version(VALUE self, VALUE ssl_method)
+{
+    SSL_CTX *ctx;
+    const char *s;
+    VALUE m = ssl_method;
+    int i;
+
+    GetSSLCTX(self, ctx);
+    if (RB_TYPE_P(ssl_method, T_SYMBOL))
+	m = rb_sym2str(ssl_method);
+    s = StringValueCStr(m);
+    for (i = 0; i &lt; numberof(ossl_ssl_method_tab); i++) {
+        if (strcmp(ossl_ssl_method_tab[i].name, s) == 0) {
+#if defined(HAVE_SSL_CTX_SET_MIN_PROTO_VERSION)
+	    int version = ossl_ssl_method_tab[i].version;
+#endif
+	    SSL_METHOD *method = ossl_ssl_method_tab[i].func();
+
+	    if (SSL_CTX_set_ssl_version(ctx, method) != 1)
+		ossl_raise(eSSLError, &quot;SSL_CTX_set_ssl_version&quot;);
+
+#if defined(HAVE_SSL_CTX_SET_MIN_PROTO_VERSION)
+	    if (!SSL_CTX_set_min_proto_version(ctx, version))
+		ossl_raise(eSSLError, &quot;SSL_CTX_set_min_proto_version&quot;);
+	    if (!SSL_CTX_set_max_proto_version(ctx, version))
+		ossl_raise(eSSLError, &quot;SSL_CTX_set_max_proto_version&quot;);
+#endif
+	    return ssl_method;
+        }
+    }
+
+    ossl_raise(rb_eArgError, &quot;unknown SSL method `%&quot;PRIsVALUE&quot;&#39;.&quot;, m);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="tmp_dh_callback-instance_method">
+  <h3 class='signature rw'>
+    #<strong>tmp_dh_callback</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>A callback invoked when DH parameters are required.</p>
+
+<p>The callback is invoked with the <a href="Session.html" title="OpenSSL::SSL::Session (class)">Session</a> for the key
+exchange, an flag indicating the use of an export cipher and the keylength
+required.</p>
+
+<p>The callback must return an <a href="../PKey/DH.html" title="OpenSSL::PKey::DH (class)">::OpenSSL::PKey::DH</a> instance of the correct key
+length.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/lib/openssl/ssl.rb#L83-L83'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+83</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/lib/openssl/ssl.rb', line 83</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_tmp_dh_callback'>tmp_dh_callback</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<h2 class='y_details'>Instance Method Details</h2>
+<section class='method_details first' id="flush_sessions-instance_method">
+  <h3 class='signature  first'>
+    #<strong>flush_sessions</strong>(time|nil)  &#x21d2; <code>self</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Removes sessions in the internal cache that have expired at <code>time</code>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L1363-L1385'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1363
+1364
+1365
+1366
+1367
+1368
+1369
+1370
+1371
+1372
+1373
+1374
+1375
+1376
+1377
+1378
+1379
+1380
+1381
+1382
+1383
+1384
+1385</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 1363</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_flush_sessions(int argc, VALUE *argv, VALUE self)
+{
+    VALUE arg1;
+    SSL_CTX *ctx;
+    time_t tm = 0;
+
+    rb_scan_args(argc, argv, &quot;01&quot;, &amp;arg1);
+
+    GetSSLCTX(self, ctx);
+
+    if (NIL_P(arg1)) {
+        tm = time(0);
+    } else if (rb_obj_is_instance_of(arg1, rb_cTime)) {
+        tm = NUM2LONG(rb_funcall(arg1, rb_intern(&quot;to_i&quot;), 0));
+    } else {
+        ossl_raise(rb_eArgError, &quot;arg must be Time or nil&quot;);
+    }
+
+    SSL_CTX_flush_sessions(ctx, (long)tm);
+
+    return self;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="freeze-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>setup</strong>  &#x21d2; <code>Qtrue</code> #<code>firstt</code> <code>time</code> </span>
+      <span class='overload'>#<strong>setup</strong>  &#x21d2; <code>nil</code> #<code>thereafterr</code> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Alias for <a href="#setup-instance_method" title="OpenSSL::SSL::SSLContext#setup (method)">#setup</a>.</p>
+
+  </div>
+</div>
+
+</section>
+
+<section class='method_details' id="session_add-instance_method">
+  <h3 class='signature '>
+    #<strong>session_add</strong>(session)  &#x21d2; <code>Boolean</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Adds <code>session</code> to the session cache.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L1207-L1217'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1207
+1208
+1209
+1210
+1211
+1212
+1213
+1214
+1215
+1216
+1217</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 1207</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_session_add(VALUE self, VALUE arg)
+{
+    SSL_CTX *ctx;
+    SSL_SESSION *sess;
+
+    GetSSLCTX(self, ctx);
+    SafeGetSSLSession(arg, sess);
+
+    return SSL_CTX_add_session(ctx, sess) == 1 ? Qtrue : Qfalse;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="session_cache_stats-instance_method">
+  <h3 class='signature '>
+    #<strong>session_cache_stats</strong>  &#x21d2; <code>Hash</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns a Hash containing the following keys:</p>
+<dl class="rdoc-list note-list"><dt>:accept
+<dd>
+<p>Number of started SSL/TLS handshakes in server mode</p>
+</dd><dt>:accept_good
+<dd>
+<p>Number of established SSL/TLS sessions in server mode</p>
+</dd><dt>:accept_renegotiate
+<dd>
+<p>Number of start renegotiations in server mode</p>
+</dd><dt>:cache_full
+<dd>
+<p>Number of sessions that were removed due to cache overflow</p>
+</dd><dt>:cache_hits
+<dd>
+<p>Number of successfully reused connections</p>
+</dd><dt>:cache_misses
+<dd>
+<p>Number of sessions proposed by clients that were not found in the cache</p>
+</dd><dt>:cache_num
+<dd>
+<p>Number of sessions in the internal session cache</p>
+</dd><dt>:cb_hits
+<dd>
+<p>Number of sessions retrieved from the external cache in server mode</p>
+</dd><dt>:connect
+<dd>
+<p>Number of started SSL/TLS handshakes in client mode</p>
+</dd><dt>:connect_good
+<dd>
+<p>Number of established SSL/TLS sessions in client mode</p>
+</dd><dt>:connect_renegotiate
+<dd>
+<p>Number of start renegotiations in client mode</p>
+</dd><dt>:timeouts
+<dd>
+<p>Number of sessions proposed by clients that were found in the cache but had
+expired due to timeouts</p>
+</dd></dl>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L1331-L1354'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1331
+1332
+1333
+1334
+1335
+1336
+1337
+1338
+1339
+1340
+1341
+1342
+1343
+1344
+1345
+1346
+1347
+1348
+1349
+1350
+1351
+1352
+1353
+1354</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 1331</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_get_session_cache_stats(VALUE self)
+{
+    SSL_CTX *ctx;
+    VALUE hash;
+
+    GetSSLCTX(self, ctx);
+
+    hash = rb_hash_new();
+    rb_hash_aset(hash, ID2SYM(rb_intern(&quot;cache_num&quot;)), LONG2NUM(SSL_CTX_sess_number(ctx)));
+    rb_hash_aset(hash, ID2SYM(rb_intern(&quot;connect&quot;)), LONG2NUM(SSL_CTX_sess_connect(ctx)));
+    rb_hash_aset(hash, ID2SYM(rb_intern(&quot;connect_good&quot;)), LONG2NUM(SSL_CTX_sess_connect_good(ctx)));
+    rb_hash_aset(hash, ID2SYM(rb_intern(&quot;connect_renegotiate&quot;)), LONG2NUM(SSL_CTX_sess_connect_renegotiate(ctx)));
+    rb_hash_aset(hash, ID2SYM(rb_intern(&quot;accept&quot;)), LONG2NUM(SSL_CTX_sess_accept(ctx)));
+    rb_hash_aset(hash, ID2SYM(rb_intern(&quot;accept_good&quot;)), LONG2NUM(SSL_CTX_sess_accept_good(ctx)));
+    rb_hash_aset(hash, ID2SYM(rb_intern(&quot;accept_renegotiate&quot;)), LONG2NUM(SSL_CTX_sess_accept_renegotiate(ctx)));
+    rb_hash_aset(hash, ID2SYM(rb_intern(&quot;cache_hits&quot;)), LONG2NUM(SSL_CTX_sess_hits(ctx)));
+    rb_hash_aset(hash, ID2SYM(rb_intern(&quot;cb_hits&quot;)), LONG2NUM(SSL_CTX_sess_cb_hits(ctx)));
+    rb_hash_aset(hash, ID2SYM(rb_intern(&quot;cache_misses&quot;)), LONG2NUM(SSL_CTX_sess_misses(ctx)));
+    rb_hash_aset(hash, ID2SYM(rb_intern(&quot;cache_full&quot;)), LONG2NUM(SSL_CTX_sess_cache_full(ctx)));
+    rb_hash_aset(hash, ID2SYM(rb_intern(&quot;timeouts&quot;)), LONG2NUM(SSL_CTX_sess_timeouts(ctx)));
+
+    return hash;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="session_remove-instance_method">
+  <h3 class='signature '>
+    #<strong>session_remove</strong>(session)  &#x21d2; <code>Boolean</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Removes <code>session</code> from the session cache.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L1225-L1235'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1225
+1226
+1227
+1228
+1229
+1230
+1231
+1232
+1233
+1234
+1235</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 1225</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_session_remove(VALUE self, VALUE arg)
+{
+    SSL_CTX *ctx;
+    SSL_SESSION *sess;
+
+    GetSSLCTX(self, ctx);
+    SafeGetSSLSession(arg, sess);
+
+    return SSL_CTX_remove_session(ctx, sess) == 1 ? Qtrue : Qfalse;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="set_params-instance_method">
+  <h3 class='signature '>
+    #<strong>set_params</strong>(params = {})  &#x21d2; <code>params</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Sets saner defaults optimized for the use with HTTP-like protocols.</p>
+
+<p>If a Hash <code>params</code> is given, the parameters are overridden with it. The
+keys in <code>params</code> must be assignment methods on <code>SSLContext</code>.</p>
+
+<p>If the verify_mode is not VERIFY_NONE and ca_file, ca_path and cert_store
+are not set then the system default certificate store is used.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/lib/openssl/ssl.rb#L115-L124'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/lib/openssl/ssl.rb', line 115</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_params'>set_params</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='const'><a href="#DEFAULT_PARAMS-constant" title="OpenSSL::SSL::SSLContext::DEFAULT_PARAMS (constant)">DEFAULT_PARAMS</a></span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>=</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_verify_mode'>verify_mode</span> <span class='op'>!=</span> <span class='const'><a href="../../OpenSSL.html" title="OpenSSL (module)">OpenSSL</a></span><span class='op'>::</span><span class='const'><a href="../SSL.html" title="OpenSSL::SSL (module)">SSL</a></span><span class='op'>::</span><span class='const'>VERIFY_NONE</span>
+    <span class='kw'>unless</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ca_file'>ca_file</span> <span class='kw'>or</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ca_path'>ca_path</span> <span class='kw'>or</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_cert_store'>cert_store</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_cert_store'>cert_store</span> <span class='op'>=</span> <span class='const'><a href="#DEFAULT_CERT_STORE-constant" title="OpenSSL::SSL::SSLContext::DEFAULT_CERT_STORE (constant)">DEFAULT_CERT_STORE</a></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_params'>params</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="setup-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>setup</strong>  &#x21d2; <code>Qtrue</code> #<code>firstt</code> <code>time</code> </span>
+      <span class='overload'>#<strong>setup</strong>  &#x21d2; <code>nil</code> #<code>thereafterr</code> </span>
+    </div>
+    <span class='aliases'>Also known as: <span class='names'>#freeze</span></span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>This method is called automatically when a new <a href="SSLSocket.html" title="OpenSSL::SSL::SSLSocket (class)">SSLSocket</a> is
+created. However, it is not thread-safe and must be called before creating
+<a href="SSLSocket.html" title="OpenSSL::SSL::SSLSocket (class)">SSLSocket</a> objects in a multi-threaded program.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L772-L956'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900
+901
+902
+903
+904
+905
+906
+907
+908
+909
+910
+911
+912
+913
+914
+915
+916
+917
+918
+919
+920
+921
+922
+923
+924
+925
+926
+927
+928
+929
+930
+931
+932
+933
+934
+935
+936
+937
+938
+939
+940
+941
+942
+943
+944
+945
+946
+947
+948
+949
+950
+951
+952
+953
+954
+955
+956</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/openssl/ossl_ssl.c', line 772</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+ossl_sslctx_setup(VALUE self)
+{
+    SSL_CTX *ctx;
+    X509 *cert = NULL, *client_ca = NULL;
+    EVP_PKEY *key = NULL;
+    char *ca_path = NULL, *ca_file = NULL;
+    int verify_mode;
+    long i;
+    VALUE val;
+
+    if(OBJ_FROZEN(self)) return Qnil;
+    GetSSLCTX(self, ctx);
+
+#if !defined(OPENSSL_NO_DH)
+    SSL_CTX_set_tmp_dh_callback(ctx, ossl_tmp_dh_callback);
+#endif
+
+#if !defined(OPENSSL_NO_EC)
+    /* We added SSLContext#tmp_ecdh_callback= in Ruby 2.3.0,
+     * but SSL_CTX_set_tmp_ecdh_callback() was removed in OpenSSL 1.1.0. */
+    if (RTEST(rb_attr_get(self, id_i_tmp_ecdh_callback))) {
+# if defined(HAVE_SSL_CTX_SET_TMP_ECDH_CALLBACK)
+	rb_warn(&quot;#tmp_ecdh_callback= is deprecated; use #ecdh_curves= instead&quot;);
+	SSL_CTX_set_tmp_ecdh_callback(ctx, ossl_tmp_ecdh_callback);
+#  if defined(HAVE_SSL_CTX_SET_ECDH_AUTO)
+	/* tmp_ecdh_callback and ecdh_auto conflict; OpenSSL ignores
+	 * tmp_ecdh_callback. So disable ecdh_auto. */
+	if (!SSL_CTX_set_ecdh_auto(ctx, 0))
+	    ossl_raise(eSSLError, &quot;SSL_CTX_set_ecdh_auto&quot;);
+#  endif
+# else
+	ossl_raise(eSSLError, &quot;OpenSSL does not support tmp_ecdh_callback; &quot;
+		   &quot;use #ecdh_curves= instead&quot;);
+# endif
+    }
+#endif /* OPENSSL_NO_EC */
+
+    val = rb_attr_get(self, id_i_cert_store);
+    if (!NIL_P(val)) {
+	X509_STORE *store = GetX509StorePtr(val); /* NO NEED TO DUP */
+	SSL_CTX_set_cert_store(ctx, store);
+#if !defined(HAVE_X509_STORE_UP_REF)
+	/*
+         * WORKAROUND:
+	 *   X509_STORE can count references, but
+	 *   X509_STORE_free() doesn&#39;t care it.
+	 *   So we won&#39;t increment it but mark it by ex_data.
+	 */
+        SSL_CTX_set_ex_data(ctx, ossl_ssl_ex_store_p, (void *)1);
+#else /* Fixed in OpenSSL 1.0.2; bff9ce4db38b (master), 5b4b9ce976fc (1.0.2) */
+	X509_STORE_up_ref(store);
+#endif
+    }
+
+    val = rb_attr_get(self, id_i_extra_chain_cert);
+    if(!NIL_P(val)){
+	rb_block_call(val, rb_intern(&quot;each&quot;), 0, 0, ossl_sslctx_add_extra_chain_cert_i, self);
+    }
+
+    /* private key may be bundled in certificate file. */
+    val = rb_attr_get(self, id_i_cert);
+    cert = NIL_P(val) ? NULL : GetX509CertPtr(val); /* NO DUP NEEDED */
+    val = rb_attr_get(self, id_i_key);
+    key = NIL_P(val) ? NULL : GetPrivPKeyPtr(val); /* NO DUP NEEDED */
+    if (cert &amp;&amp; key) {
+        if (!SSL_CTX_use_certificate(ctx, cert)) {
+            /* Adds a ref =&gt; Safe to FREE */
+            ossl_raise(eSSLError, &quot;SSL_CTX_use_certificate&quot;);
+        }
+        if (!SSL_CTX_use_PrivateKey(ctx, key)) {
+            /* Adds a ref =&gt; Safe to FREE */
+            ossl_raise(eSSLError, &quot;SSL_CTX_use_PrivateKey&quot;);
+        }
+        if (!SSL_CTX_check_private_key(ctx)) {
+            ossl_raise(eSSLError, &quot;SSL_CTX_check_private_key&quot;);
+        }
+    }
+
+    val = rb_attr_get(self, id_i_client_ca);
+    if(!NIL_P(val)){
+	if (RB_TYPE_P(val, T_ARRAY)) {
+	    for(i = 0; i &lt; RARRAY_LEN(val); i++){
+		client_ca = GetX509CertPtr(RARRAY_AREF(val, i));
+        	if (!SSL_CTX_add_client_CA(ctx, client_ca)){
+		    /* Copies X509_NAME =&gt; FREE it. */
+        	    ossl_raise(eSSLError, &quot;SSL_CTX_add_client_CA&quot;);
+        	}
+	    }
+        }
+	else{
+	    client_ca = GetX509CertPtr(val); /* NO DUP NEEDED. */
+            if (!SSL_CTX_add_client_CA(ctx, client_ca)){
+		/* Copies X509_NAME =&gt; FREE it. */
+        	ossl_raise(eSSLError, &quot;SSL_CTX_add_client_CA&quot;);
+            }
+	}
+    }
+
+    val = rb_attr_get(self, id_i_ca_file);
+    ca_file = NIL_P(val) ? NULL : StringValueCStr(val);
+    val = rb_attr_get(self, id_i_ca_path);
+    ca_path = NIL_P(val) ? NULL : StringValueCStr(val);
+    if(ca_file || ca_path){
+	if (!SSL_CTX_load_verify_locations(ctx, ca_file, ca_path))
+	    rb_warning(&quot;can&#39;t set verify locations&quot;);
+    }
+
+    val = rb_attr_get(self, id_i_verify_mode);
+    verify_mode = NIL_P(val) ? SSL_VERIFY_NONE : NUM2INT(val);
+    SSL_CTX_set_verify(ctx, verify_mode, ossl_ssl_verify_callback);
+    if (RTEST(rb_attr_get(self, id_i_client_cert_cb)))
+	SSL_CTX_set_client_cert_cb(ctx, ossl_client_cert_cb);
+
+    val = rb_attr_get(self, id_i_timeout);
+    if(!NIL_P(val)) SSL_CTX_set_timeout(ctx, NUM2LONG(val));
+
+    val = rb_attr_get(self, id_i_verify_depth);
+    if(!NIL_P(val)) SSL_CTX_set_verify_depth(ctx, NUM2INT(val));
+
+#ifdef HAVE_SSL_CTX_SET_NEXT_PROTO_SELECT_CB
+    val = rb_attr_get(self, id_i_npn_protocols);
+    if (!NIL_P(val)) {
+	VALUE encoded = ssl_encode_npn_protocols(val);
+	rb_ivar_set(self, id_npn_protocols_encoded, encoded);
+	SSL_CTX_set_next_protos_advertised_cb(ctx, ssl_npn_advertise_cb, (void *)encoded);
+	OSSL_Debug(&quot;SSL NPN advertise callback added&quot;);
+    }
+    if (RTEST(rb_attr_get(self, id_i_npn_select_cb))) {
+	SSL_CTX_set_next_proto_select_cb(ctx, ssl_npn_select_cb, (void *) self);
+	OSSL_Debug(&quot;SSL NPN select callback added&quot;);
+    }
+#endif
+
+#ifdef HAVE_SSL_CTX_SET_ALPN_SELECT_CB
+    val = rb_attr_get(self, id_i_alpn_protocols);
+    if (!NIL_P(val)) {
+	VALUE rprotos = ssl_encode_npn_protocols(val);
+
+	/* returns 0 on success */
+	if (SSL_CTX_set_alpn_protos(ctx, (unsigned char *)RSTRING_PTR(rprotos),
+				    RSTRING_LENINT(rprotos)))
+	    ossl_raise(eSSLError, &quot;SSL_CTX_set_alpn_protos&quot;);
+	OSSL_Debug(&quot;SSL ALPN values added&quot;);
+    }
+    if (RTEST(rb_attr_get(self, id_i_alpn_select_cb))) {
+	SSL_CTX_set_alpn_select_cb(ctx, ssl_alpn_select_cb, (void *) self);
+	OSSL_Debug(&quot;SSL ALPN select callback added&quot;);
+    }
+#endif
+
+    rb_obj_freeze(self);
+
+    val = rb_attr_get(self, id_i_session_id_context);
+    if (!NIL_P(val)){
+	StringValue(val);
+	if (!SSL_CTX_set_session_id_context(ctx, (unsigned char *)RSTRING_PTR(val),
+					    RSTRING_LENINT(val))){
+	    ossl_raise(eSSLError, &quot;SSL_CTX_set_session_id_context&quot;);
+	}
+    }
+
+    if (RTEST(rb_attr_get(self, id_i_session_get_cb))) {
+	SSL_CTX_sess_set_get_cb(ctx, ossl_sslctx_session_get_cb);
+	OSSL_Debug(&quot;SSL SESSION get callback added&quot;);
+    }
+    if (RTEST(rb_attr_get(self, id_i_session_new_cb))) {
+	SSL_CTX_sess_set_new_cb(ctx, ossl_sslctx_session_new_cb);
+	OSSL_Debug(&quot;SSL SESSION new callback added&quot;);
+    }
+    if (RTEST(rb_attr_get(self, id_i_session_remove_cb))) {
+	SSL_CTX_sess_set_remove_cb(ctx, ossl_sslctx_session_remove_cb);
+	OSSL_Debug(&quot;SSL SESSION remove callback added&quot;);
+    }
+
+#ifdef HAVE_SSL_SET_TLSEXT_HOST_NAME
+    val = rb_attr_get(self, id_i_servername_cb);
+    if (!NIL_P(val)) {
+        SSL_CTX_set_tlsext_servername_callback(ctx, ssl_servername_cb);
+	OSSL_Debug(&quot;SSL TLSEXT servername callback added&quot;);
+    }
+#endif
+
+    return Qtrue;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="ssl_timeout-instance_method">
+  <h3 class='signature '>
+    #<strong>ssl_timeout</strong>  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Alias for ++.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[ <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L2538'>GitHub</a> ]</span>
+
+</section>
+
+<section class='method_details' id="ssl_timeout=-instance_method">
+  <h3 class='signature '>
+    #<strong>ssl_timeout=</strong>  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Alias for ++.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[ <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/openssl/ossl_ssl.c#L2539'>GitHub</a> ]</span>
+
+</section>
+
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.8 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.5.0p-1)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>

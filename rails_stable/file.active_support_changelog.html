@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>File: Active Support Changelog &mdash; Rails-5-0-stable</title>
+
+<link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "active_support_changelog",
+    relpath = '';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../js/y_app.js'></script>
+
+</head>
+<body>
+<svg id='y_wait' class viewBox='0 0 90 90'></svg>
+<div id='settings' class='hidden'></div>
+<div id='y_list' class='d h'>
+  <header id='list_header'></header>
+  <nav id= 'list_nav' class='y_nav l_nav'>
+    <ul id='list_items'></ul>
+  </nav>
+</div>
+<div id='y_toc' class='f h'>
+  <header id='toc_header'></header>
+  <nav id= 'toc_nav' class='y_nav t_nav'>
+  <ol id='toc_items'></ol>
+  </nav>
+</div>
+<div id='y_main' tabindex='-1'>
+  <header id='y_header'>
+    <div id='y_menu'>
+        <a href='../index.html'>Home</a> &raquo; 
+        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='_index.html'>Index</a> &raquo; 
+        <span class='title'><a id='t2_doc_top' href='#'>File: Active Support Changelog&nbsp;&#x25B2;</a></span>
+            </div>
+
+    <a id='list_href' href="class_list.html"></a>
+    <div id='y_measure_em' class='y_measure'></div>
+    <div id='y_measure_vh' class='y_measure'></div>
+    <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+  </header>
+<div id='content' class='file'>
+<ul>
+<li><p>Fix inconsistent results when parsing large durations and constructing durations from code</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/Duration.html" title="ActiveSupport::Duration (class)">Duration</a></span><span class='period'>.</span><span class='id identifier rubyid_parse'><a href="ActiveSupport/Duration.html#parse-class_method" title="ActiveSupport::Duration.parse (method)">parse</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>P3Y</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>3</span><span class='period'>.</span><span class='id identifier rubyid_years'>years</span> <span class='comment'># It should be true</span></code></pre>
+
+<p>Duration parsing made independent from any moment of time:
+Fixed length in seconds is assigned to each duration part during parsing.</p>
+
+<p>Methods on <a href="Numeric.html" title="Numeric (class)">Numeric</a> like <code>2.days</code> now use these predefined durations
+to avoid duplicating of duration constants through the codebase and
+eliminate creation of intermediate durations.</p>
+
+<p><em>Andrey Novikov, Andrew White</em></p></li>
+</ul>
+
+<h2>Rails 5.0.2 (March 01, 2017)</h2>
+
+<ul>
+<li><p>In Core Extensions, make <code>MarshalWithAutoloading#load</code> pass through the second, optional
+argument for <code>Marshal#load( source [, proc] )</code>. This way we don&#39;t have to do 
+<code>Marshal.method(:load).super_method.call(sourse, proc)</code> just to be able to pass a proc.</p>
+
+<p><em>Jeff Latz</em></p></li>
+<li><p><a href="ActiveSupport/Gzip.html#decompress-class_method" title="ActiveSupport::Gzip.decompress (method)">ActiveSupport::Gzip.decompress</a> now checks checksum and length in footer.</p>
+
+<p><em>Dylan Thacker-Smith</em></p></li>
+<li><p>Cache <a href="ActiveSupport/TimeWithZone.html#to_datetime-instance_method" title="ActiveSupport::TimeWithZone#to_datetime (method)">ActiveSupport::TimeWithZone#to_datetime</a> before freezing.</p>
+
+<p><em>Adam Rice</em></p></li>
+</ul>
+
+<h2>Rails 5.0.1 (December 21, 2016)</h2>
+
+<ul>
+<li>  No changes.</li>
+</ul>
+
+<h2>Rails 5.0.1.rc2 (December 10, 2016)</h2>
+
+<ul>
+<li>  No changes.</li>
+</ul>
+
+<h2>Rails 5.0.1.rc1 (December 01, 2016)</h2>
+
+<ul>
+<li><p>Ensure duration parsing is consistent across DST changes</p>
+
+<p>Previously <a href="ActiveSupport/Duration.html#parse-class_method" title="ActiveSupport::Duration.parse (method)">ActiveSupport::Duration.parse</a> used <a href="Time.html#current-class_method" title="Time.current (method)">Time.current</a> and
+<a href="Time.html#advance-instance_method" title="Time#advance (method)">Time#advance</a> to calculate the number of seconds in the duration
+from an arbitrary collection of parts. However as <code>advance</code> tries to
+be consistent across DST boundaries this meant that either the
+duration was shorter or longer depending on the time of year.</p>
+
+<p>This was fixed by using an absolute reference point in UTC which
+isn&#39;t subject to DST transitions. An arbitrary date of Jan 1st, 2000
+was chosen for no other reason that it seemed appropriate.</p>
+
+<p>Additionally, duration parsing should now be marginally faster as we
+are no longer creating instances of <a href="ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a>
+every time we parse a duration string.</p>
+
+<p>Fixes #26941.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Fix DateAndTime::Calculations#copy_time_to. Copy <code>nsec</code> instead of <code>usec</code>.</p>
+
+<p>Jumping forward or backward between weeks now preserves nanosecond digits.</p>
+
+<p><em>Josua Schmid</em></p></li>
+<li><p>Avoid bumping the class serial when invoking executor.</p>
+
+<p><em>Matthew Draper</em></p></li>
+<li><p>Fix <a href="ActiveSupport/TimeWithZone.html#in-instance_method" title="ActiveSupport::TimeWithZone#in (method)">ActiveSupport::TimeWithZone#in</a> across DST boundaries.</p>
+
+<p>Previously calls to <code>in</code> were being sent to the non-DST aware
+method <a href="Time.html#since-instance_method" title="Time#since (method)">Time#since</a> via <code>method_missing</code>. It is now aliased to
+the DST aware <a href="ActiveSupport/TimeWithZone.html#%2B-instance_method" title="ActiveSupport::TimeWithZone#+ (method)">ActiveSupport::TimeWithZone#+</a> which handles
+transitions across DST boundaries, e.g:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_zone'><a href="Time.html#zone-class_method" title="Time.zone (method)">zone</a></span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>US/Eastern</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_t'>t</span> <span class='op'>=</span> <span class='const'><a href="Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_zone'><a href="Time.html#zone-class_method" title="Time.zone (method)">zone</a></span><span class='period'>.</span><span class='id identifier rubyid_local'>local</span><span class='lparen'>(</span><span class='int'>2016</span><span class='comma'>,</span><span class='int'>11</span><span class='comma'>,</span><span class='int'>6</span><span class='comma'>,</span><span class='int'>1</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; Sun, 06 Nov 2016 01:00:00 EDT -05:00
+</span>
+<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_in'>in</span><span class='lparen'>(</span><span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; Sun, 06 Nov 2016 01:00:00 EST -05:00</span></code></pre>
+
+<p>Fixes #26580.</p>
+
+<p><em>Thomas Balthazar</em></p></li>
+<li><p>Fix <code>thread_mattr_accessor</code> subclass no longer overwrites parent.</p>
+
+<p>Assigning a value to a subclass using <code>thread_mattr_accessor</code> no
+longer changes the value of the parent class. This brings the
+behavior inline with the documentation.</p>
+
+<p>Given:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Account</span>
+  <span class='id identifier rubyid_thread_mattr_accessor'>thread_mattr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_user'>user</span>
+<span class='kw'>end</span>
+
+<span class='kw'>class</span> <span class='const'>Customer</span> <span class='op'>&lt;</span> <span class='const'>Account</span>
+<span class='kw'>end</span>
+
+<span class='const'>Account</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DHH</span><span class='tstring_end'>&quot;</span></span>
+<span class='const'>Customer</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Rafael</span><span class='tstring_end'>&quot;</span></span></code></pre>
+
+<p>Before:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>Account</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span>  <span class='comment'># =&gt; &quot;Rafael&quot;</span></code></pre>
+
+<p>After:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>Account</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span>  <span class='comment'># =&gt; &quot;DHH&quot;</span></code></pre>
+
+<p><em>Shinichi Maeshima</em></p></li>
+<li><p>Since weeks are no longer converted to days, add <code>:weeks</code> to the list of
+parts that <a href="ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a> will recognize as possibly being
+of variable duration to take account of DST transitions.</p>
+
+<p>Fixes #26039.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Fix <a href="ActiveSupport/TimeZone.html#strptime-instance_method" title="ActiveSupport::TimeZone#strptime (method)">ActiveSupport::TimeZone#strptime</a>. Now raises <code>ArgumentError</code> when the
+given time doesn&#39;t match the format. The error is the same as the one given
+by Ruby&#39;s <code>Date.strptime</code>. Previously it raised
+<code>NoMethodError: undefined method empty? for nil:NilClass.</code> due to a bug.</p>
+
+<p>Fixes #25701.</p>
+
+<p><em>John Gesimondo</em></p></li>
+</ul>
+
+<h2>Rails 5.0.0 (June 30, 2016)</h2>
+
+<ul>
+<li><p>Support parsing JSON time in ISO8601 local time strings in
+<a href="ActiveSupport/JSON.html#decode-class_method" title="ActiveSupport::JSON.decode (method)">ActiveSupport::JSON.decode</a> when <code>parse_json_times</code> is enabled.
+Strings in the format of <code>YYYY-MM-DD hh:mm:ss</code> (without a <code>Z</code> at
+the end) will be parsed in the local timezone (<a href="Time.html#zone-class_method" title="Time.zone (method)">Time.zone</a>). In
+addition, date strings (<code>YYYY-MM-DD</code>) are now parsed into <a href="Date.html" title="Date (class)">Date</a>
+objects.</p>
+
+<p><em>Grzegorz Witek</em></p></li>
+<li><p><a href="Date.html#to_s-instance_method" title="Date#to_s (method)">Date#to_s</a> doesn&#39;t produce too many spaces. For example, <code>to_s(:short)</code>
+will now produce <code>01 Feb</code> instead of <code>1 Feb</code>.</p>
+
+<p>Fixes #25251.</p>
+
+<p><em>Sean Griffin</em></p></li>
+<li><p>Rescuable: If a handler doesn&#39;t match the exception, check for handlers
+matching the exception&#39;s cause.</p>
+
+<p><em>Jeremy Daer</em></p></li>
+<li><p><a href="ActiveSupport/Duration.html" title="ActiveSupport::Duration (class)">::ActiveSupport::Duration</a> supports weeks and hours.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='lbracket'>[</span><span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='comma'>,</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span><span class='period'>.</span><span class='id identifier rubyid_parts'>parts</span><span class='rbracket'>]</span>
+<span class='comment'># =&gt; [&quot;3600 seconds&quot;, 3600, [[:seconds, 3600]]]   # Before
+</span><span class='comment'># =&gt; [&quot;1 hour&quot;, 3600, [[:hours, 1]]]              # After
+</span>
+<span class='lbracket'>[</span><span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_week'>week</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='comma'>,</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_week'>week</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_week'>week</span><span class='period'>.</span><span class='id identifier rubyid_parts'>parts</span><span class='rbracket'>]</span>
+<span class='comment'># =&gt; [&quot;7 days&quot;, 604800, [[:days, 7]]]             # Before
+</span><span class='comment'># =&gt; [&quot;1 week&quot;, 604800, [[:weeks, 1]]]            # After</span></code></pre>
+
+<p>This brings us into closer conformance with ISO8601 and relieves some
+astonishment about getting <code>1.hour.inspect # =&gt; 3600 seconds</code>.</p>
+
+<p>Compatibility: The duration&#39;s <code>value</code> remains the same, so apps using
+durations are oblivious to the new time periods. Apps, libraries, and
+plugins that work with the internal <code>parts</code> hash will need to broaden
+their time period handling to cover hours &amp; weeks.</p>
+
+<p><em>Andrey Novikov</em></p></li>
+<li><p>Time zones: Ensure that the UTC offset reflects DST changes that occurred
+since the app started. Removes UTC offset caching, reducing performance,
+but this is still relatively quick and isn&#39;t in any hot paths.</p>
+
+<p><em>Alexey Shein</em></p></li>
+<li><p>Make <code>getlocal</code> and <code>getutc</code> always return instances of <a href="Time.html" title="Time (class)">Time</a> for
+<a href="ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a> and <a href="DateTime.html" title="DateTime (class)">DateTime</a>. This eliminates a possible
+stack level too deep error in <code>to_time</code> where <a href="ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a>
+was wrapping a <a href="DateTime.html" title="DateTime (class)">DateTime</a> instance. As a consequence of this the internal
+time value in <a href="ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a> is now always an instance of
+<a href="Time.html" title="Time (class)">Time</a> in the UTC timezone, whether that&#39;s as the UTC time directly or
+a representation of the local time in the timezone. There should be no
+consequences of this internal change and if there are it&#39;s a bug due to
+leaky abstractions.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Add <a href="DateTime.html#subsec-instance_method" title="DateTime#subsec (method)">DateTime#subsec</a> to return the fraction of a second as a <code>Rational</code>.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Add additional aliases for <a href="DateTime.html#utc-instance_method" title="DateTime#utc (method)">DateTime#utc</a> to mirror the ones on
+<a href="ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a> and <a href="Time.html" title="Time (class)">Time</a>.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Add <a href="DateTime.html#localtime-instance_method" title="DateTime#localtime (method)">DateTime#localtime</a> to return an instance of <a href="Time.html" title="Time (class)">Time</a> in the system&#39;s
+local timezone. Also aliased to <code>getlocal</code>.</p>
+
+<p><em>Andrew White</em>, <em>Yuichiro Kaneko</em></p></li>
+<li><p>Add <a href="Time.html#sec_fraction-instance_method" title="Time#sec_fraction (method)">Time#sec_fraction</a> to return the fraction of a second as a <code>Rational</code>.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Add <a href="ActiveSupport.html#to_time_preserves_timezone-class_method" title="ActiveSupport.to_time_preserves_timezone (method)">ActiveSupport.to_time_preserves_timezone</a> config option to control
+how <code>to_time</code> handles timezones. In Ruby 2.4+ the behavior will change
+from converting to the local system timezone, to preserving the timezone
+of the receiver. This config option defaults to false so that apps made
+with earlier versions of Rails are not affected when upgrading, e.g:</p>
+
+<pre class="code ruby"><code class="ruby">&gt;&gt; ENV[&#39;TZ&#39;] = &#39;US/Eastern&#39;
+
+&gt;&gt; &quot;2016-04-23T10:23:12.000Z&quot;.to_time
+#=&gt; &quot;2016-04-23T06:23:12.000-04:00&quot;
+
+&gt;&gt; ActiveSupport.to_time_preserves_timezone = true
+
+&gt;&gt; &quot;2016-04-23T10:23:12.000Z&quot;.to_time
+#=&gt; &quot;2016-04-23T10:23:12.000Z&quot;</code></pre>
+
+<p>Fixes #24617.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p><code>ActiveSupport::TimeZone.country_zones(country_code)</code> looks up the
+country&#39;s time zones by its two-letter ISO3166 country code, e.g.</p>
+
+<pre class="code ruby"><code class="ruby">&gt;&gt; ActiveSupport::TimeZone.country_zones(:jp).map(&amp;:to_s)
+#=&gt; [&quot;(GMT+09:00) Osaka&quot;]
+
+&gt;&gt; ActiveSupport::TimeZone.country_zones(:uy).map(&amp;:to_s)
+#=&gt; [&quot;(GMT-03:00) Montevideo&quot;]</code></pre>
+
+<p><em>Andrey Novikov</em></p></li>
+<li><p><a href="Array.html#sum-instance_method" title="Array#sum (method)">Array#sum</a> compat with Ruby 2.4&#39;s native method.</p>
+
+<p>Ruby 2.4 introduces <a href="Array.html#sum-instance_method" title="Array#sum (method)">Array#sum</a>, but it only supports numeric elements,
+breaking our <a href="Enumerable.html#sum-instance_method" title="Enumerable#sum (method)">Enumerable#sum</a> which supports arbitrary <code>Object#+</code>.
+To fix, override <a href="Array.html#sum-instance_method" title="Array#sum (method)">Array#sum</a> with our compatible implementation.</p>
+
+<p>Native Ruby 2.4:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='qwords'><span class='qwords_beg'>%w[ </span><span class='tstring_content'>a</span><span class='words_sep'> </span><span class='tstring_content'>b</span><span class='words_sep'> ]</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span>
+<span class='comment'># =&gt; TypeError: String can&#39;t be coerced into Fixnum</span></code></pre>
+
+<p>With <a href="Enumerable.html#sum-instance_method" title="Enumerable#sum (method)">Enumerable#sum</a> shim:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='qwords'><span class='qwords_beg'>%w[ </span><span class='tstring_content'>a</span><span class='words_sep'> </span><span class='tstring_content'>b</span><span class='words_sep'> ]</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span>
+<span class='comment'># =&gt; &#39;ab&#39;</span></code></pre>
+
+<p>We tried shimming the fast path and falling back to the compatible path
+if it fails, but that ends up slower even in simple cases due to the cost
+of exception handling. Our only choice is to override the native <a href="Array.html#sum-instance_method" title="Array#sum (method)">Array#sum</a>
+with our <a href="Enumerable.html#sum-instance_method" title="Enumerable#sum (method)">Enumerable#sum</a>.</p>
+
+<p><em>Jeremy Daer</em></p></li>
+<li><p><a href="ActiveSupport/Duration.html" title="ActiveSupport::Duration (class)">::ActiveSupport::Duration</a> supports ISO8601 formatting and parsing.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/Duration.html" title="ActiveSupport::Duration (class)">Duration</a></span><span class='period'>.</span><span class='id identifier rubyid_parse'><a href="ActiveSupport/Duration.html#parse-class_method" title="ActiveSupport::Duration.parse (method)">parse</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>P3Y6M4DT12H30M5S</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; 3 years, 6 months, 4 days, 12 hours, 30 minutes, and 5 seconds
+</span>
+<span class='lparen'>(</span><span class='int'>3</span><span class='period'>.</span><span class='id identifier rubyid_years'>years</span> <span class='op'>+</span> <span class='int'>3</span><span class='period'>.</span><span class='id identifier rubyid_days'>days</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_iso8601'>iso8601</span>
+<span class='comment'># =&gt; &quot;P3Y3D&quot;</span></code></pre>
+
+<p>Inspired by Arnau Siches&#39; <a href="https://github.com/arnau/ISO8601/">ISO8601 gem</a>
+and rewritten by Andrey Novikov with suggestions from Andrew White. Test
+data from the ISO8601 gem redistributed under MIT license.</p>
+
+<p>(Will be used to support the PostgreSQL interval data type.)</p>
+
+<p><em>Andrey Novikov</em>, <em>Arnau Siches</em>, <em>Andrew White</em></p></li>
+<li><p><code>Cache#fetch(key, force: true)</code> forces a cache miss, so it must be called
+with a block to provide a new value to cache. Fetching with <code>force: true</code>
+but without a block now raises ArgumentError.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>key</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>force:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='comment'># =&gt; ArgumentError</span></code></pre>
+
+<p><em>Santosh Wadghule</em></p></li>
+<li><p>Fix behavior of JSON encoding for <a href="Exception.html" title="Exception (class)">Exception</a>.</p>
+
+<p><em>namusyaka</em></p></li>
+<li><p>Make <code>number_to_phone</code> format number with regexp pattern.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_number_to_phone'>number_to_phone</span><span class='lparen'>(</span><span class='int'>18812345678</span><span class='comma'>,</span> <span class='label'>pattern:</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(\d{3})(\d{4})(\d{4})</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; 188-1234-5678</span></code></pre>
+
+<p><em>Pan Gaoyong</em></p></li>
+<li><p>Match <a href="String.html#to_time-instance_method" title="String#to_time (method)">String#to_time</a>&#39;s behaviour to that of ruby&#39;s implementation for edge cases.</p>
+
+<p><code>nil</code> is now returned instead of the current date if the string provided does
+contain time information, but none that is used to build the <a href="Time.html" title="Time (class)">Time</a> object.</p>
+
+<p>Fixes #22958.</p>
+
+<p><em>Siim Liiser</em></p></li>
+<li><p>Rely on the native DateTime#&lt;=&gt; implementation to handle non-datetime like
+objects instead of returning <code>nil</code> ourselves. This restores the ability
+of <a href="DateTime.html" title="DateTime (class)">DateTime</a> instances to be compared with a <a href="Numeric.html" title="Numeric (class)">Numeric</a> that represents an
+astronomical julian day number.</p>
+
+<p>Fixes #24228.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Add <a href="String.html#upcase_first-instance_method" title="String#upcase_first (method)">String#upcase_first</a> method.</p>
+
+<p><em>Glauco Custódio</em>, <em>bogdanvlviv</em></p></li>
+<li><p>Prevent <code>Marshal.load</code> from looping infinitely when trying to autoload a constant
+which resolves to a different name.</p>
+
+<p><em>Olek Janiszewski</em></p></li>
+<li><p>Deprecate <a href="Module.html#local_constants-instance_method" title="Module#local_constants (method)">Module#local_constants</a>. Please use <code>Module.constants(false)</code> instead.</p>
+
+<p><em>Yuichiro Kaneko</em></p></li>
+<li><p>Publish <a href="ActiveSupport/Executor.html" title="ActiveSupport::Executor (class)">::ActiveSupport::Executor</a> and <a href="ActiveSupport/Reloader.html" title="ActiveSupport::Reloader (class)">::ActiveSupport::Reloader</a> APIs to allow
+components and libraries to manage, and participate in, the execution of
+application code, and the application reloading process.</p>
+
+<p><em>Matthew Draper</em></p></li>
+<li><p>Deprecate arguments on <code>assert_nothing_raised</code>.</p>
+
+<p><code>assert_nothing_raised</code> does not assert the arguments that have been passed
+in (usually a specific exception class) since the method only yields the
+block. So as not to confuse the users that the arguments have meaning, they
+are being deprecated.</p>
+
+<p><em>Tara Scherner de la Fuente</em></p></li>
+<li><p>Make <code>benchmark(&#39;something&#39;, silence: true)</code> actually work.</p>
+
+<p><em>DHH</em></p></li>
+<li><p>Add <code>#on_weekday?</code> method to <a href="Date.html" title="Date (class)">Date</a>, <a href="Time.html" title="Time (class)">Time</a>, and <a href="DateTime.html" title="DateTime (class)">DateTime</a>.</p>
+
+<p><code>#on_weekday?</code> returns <code>true</code> if the receiving date/time does not fall on a Saturday
+or Sunday.</p>
+
+<p><em>Vipul A M</em></p></li>
+<li><p>Add <a href="Array.html#second_to_last-instance_method" title="Array#second_to_last (method)">Array#second_to_last</a> and <a href="Array.html#third_to_last-instance_method" title="Array#third_to_last (method)">Array#third_to_last</a> methods.</p>
+
+<p><em>Brian Christian</em></p></li>
+<li><p>Fix regression in <code>Hash#dig</code> for HashWithIndifferentAccess.</p>
+
+<p><em>Jon Moss</em></p></li>
+<li><p>Change <code>number_to_currency</code> behavior for checking negativity.</p>
+
+<p>Used <code>to_f.negative</code> instead of using <code>to_f.phase</code> for checking negativity
+of a number in number_to_currency helper.
+This change works same for all cases except when number is &quot;-0.0&quot;.</p>
+
+<pre class="code ruby"><code class="ruby">-0.0.to_f.negative? =&gt; false
+-0.0.to_f.phase? =&gt; 3.14</code></pre>
+
+<p>This change reverts changes from <a href="https://github.com/rails/rails/pull/6512">https://github.com/rails/rails/pull/6512</a>.
+But it should be acceptable as we could not find any currency which
+supports negative zeros.</p>
+
+<p><em>Prathamesh Sonpatki</em>, <em>Rafael Mendonça França</em></p></li>
+<li><p>Match <code>HashWithIndifferentAccess#default</code>&#39;s behaviour with <code>Hash#default</code>.</p>
+
+<p><em>David Cornu</em></p></li>
+<li><p>Adds <code>:exception_object</code> key to <a href="ActiveSupport/Notifications/Instrumenter.html" title="ActiveSupport::Notifications::Instrumenter (class)">::ActiveSupport::Notifications::Instrumenter</a>
+payload when an exception is raised.</p>
+
+<p>Adds new key/value pair to payload when an exception is raised:
+e.g. <code>:exception_object =&gt; #&lt;RuntimeError: FAIL&gt;</code>.</p>
+
+<p><em>Ryan T. Hosford</em></p></li>
+<li><p>Support extended grapheme clusters and UAX 29.</p>
+
+<p><em>Adam Roben</em></p></li>
+<li><p>Add petabyte and exabyte numeric conversion.</p>
+
+<p><em>Akshay Vishnoi</em></p></li>
+<li><p>Add thread_m/cattr_accessor/reader/writer suite of methods for declaring class and module variables that live per-thread.
+This makes it easy to declare per-thread globals that are encapsulated. Note: This is a sharp edge. A wild proliferation
+of globals is A Bad Thing. But like other sharp tools, when it&#39;s right, it&#39;s right.</p>
+
+<p>Here&#39;s an example of a simple event tracking system where the object being tracked needs not pass a creator that it
+doesn&#39;t need itself along:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>module</span> <span class='const'>Current</span>
+  <span class='id identifier rubyid_thread_mattr_accessor'>thread_mattr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_account'>account</span>
+  <span class='id identifier rubyid_thread_mattr_accessor'>thread_mattr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_user'>user</span>
+
+  <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_reset'>reset</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_account'>account</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='kw'>nil</span> <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='kw'>class</span> <span class='const'>ApplicationController</span> <span class='op'>&lt;</span> <span class='const'><a href="ActionController.html" title="ActionController (module)">ActionController</a></span><span class='op'>::</span><span class='const'><a href="ActionController/Base.html" title="ActionController::Base (class)">Base</a></span>
+  <span class='id identifier rubyid_before_action'>before_action</span> <span class='symbeg'>:</span><span class='id identifier rubyid_set_current'>set_current</span>
+  <span class='id identifier rubyid_after_action'>after_action</span> <span class='lbrace'>{</span> <span class='const'>Current</span><span class='period'>.</span><span class='id identifier rubyid_reset'>reset</span> <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+    <span class='kw'>def</span> <span class='id identifier rubyid_set_current'>set_current</span>
+      <span class='const'>Current</span><span class='period'>.</span><span class='id identifier rubyid_account'>account</span> <span class='op'>=</span> <span class='const'>Account</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_account_id'>account_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='const'>Current</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span>    <span class='op'>=</span> <span class='const'>Current</span><span class='period'>.</span><span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_users'>users</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='kw'>class</span> <span class='const'>MessagesController</span> <span class='op'>&lt;</span> <span class='const'>ApplicationController</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
+    <span class='ivar'>@message</span> <span class='op'>=</span> <span class='const'>Message</span><span class='period'>.</span><span class='id identifier rubyid_create!'>create!</span><span class='lparen'>(</span><span class='id identifier rubyid_message_params'>message_params</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='kw'>class</span> <span class='const'>Message</span> <span class='op'>&lt;</span> <span class='const'>ApplicationRecord</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbeg'>:</span><span class='id identifier rubyid_events'>events</span>
+  <span class='id identifier rubyid_after_create'>after_create</span> <span class='symbeg'>:</span><span class='id identifier rubyid_track_created'>track_created</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+    <span class='kw'>def</span> <span class='id identifier rubyid_track_created'>track_created</span>
+      <span class='id identifier rubyid_events'>events</span><span class='period'>.</span><span class='id identifier rubyid_create!'>create!</span> <span class='label'>origin:</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='label'>action:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_create'>create</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='kw'>class</span> <span class='const'>Event</span> <span class='op'>&lt;</span> <span class='const'>ApplicationRecord</span>
+  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_creator'>creator</span><span class='comma'>,</span> <span class='label'>class_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>User</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_before_validation'>before_validation</span> <span class='lbrace'>{</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_creator'>creator</span> <span class='op'>||=</span> <span class='const'>Current</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></code></pre>
+
+<p><em>DHH</em></p></li>
+<li><p>Deprecated <code>Module#qualified_const_</code> in favour of the builtin Module#const_
+methods.</p>
+
+<p><em>Genadi Samokovarov</em></p></li>
+<li><p>Deprecate passing string to define callback.</p>
+
+<p><em>Yuichiro Kaneko</em></p></li>
+<li><p>ActiveSupport::Cache::Store#namespaced_key,
+<code>ActiveSupport::Cache::MemCachedStore#escape_key</code>, and
+ActiveSupport::Cache::FileStore#key_file_path
+are deprecated and replaced with <code>normalize_key</code> that now calls <code>super</code>.</p>
+
+<p><code>ActiveSupport::Cache::LocaleCache#set_cache_value</code> is deprecated and replaced with <code>write_cache_value</code>.</p>
+
+<p><em>Michael Grosser</em></p></li>
+<li><p>Implements an evented file watcher to asynchronously detect changes in the
+application source code, routes, locales, etc.</p>
+
+<p>This watcher is disabled by default, applications my enable it in the configuration:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># config/environments/development.rb
+</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_file_watcher'>file_watcher</span> <span class='op'>=</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/EventedFileUpdateChecker.html" title="ActiveSupport::EventedFileUpdateChecker (class)">EventedFileUpdateChecker</a></span></code></pre>
+
+<p>This feature depends on the <a href="https://github.com/guard/listen">listen</a> gem:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_group'>group</span> <span class='symbeg'>:</span><span class='id identifier rubyid_development'>development</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>listen</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>~&gt; 3.0.5</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></code></pre>
+
+<p><em>Puneet Agarwal</em> and <em>Xavier Noria</em></p></li>
+<li><p>Added <a href="Time.html#days_in_year-class_method" title="Time.days_in_year (method)">Time.days_in_year</a> to return the number of days in the given year, or the
+current year if no argument is provided.</p>
+
+<p><em>Jon Pascoe</em></p></li>
+<li><p>Updated <code>parameterize</code> to preserve the case of a string, optionally.</p>
+
+<p>Example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parameterize'>parameterize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Donald E. Knuth</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>separator:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;donald_e_knuth&quot;
+</span><span class='id identifier rubyid_parameterize'>parameterize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Donald E. Knuth</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>preserve_case:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;Donald-E-Knuth&quot;</span></code></pre>
+
+<p><em>Swaathi Kakarla</em></p></li>
+<li><p><code>HashWithIndifferentAccess.new</code> respects the default value or proc on objects
+that respond to <code>#to_hash</code>. <code>.new_from_hash_copying_default</code> simply invokes <code>.new</code>.
+All calls to <code>.new_from_hash_copying_default</code> are replaced with <code>.new</code>.</p>
+
+<p><em>Gordon Chan</em></p></li>
+<li><p>Change Integer#year to return a Fixnum instead of a Float to improve
+consistency.</p>
+
+<p>Integer#years returned a Float while the rest of the accompanying methods
+(days, weeks, months, etc.) return a Fixnum.</p>
+
+<p>Before:</p>
+
+<p>1.year # =&gt; 31557600.0</p>
+
+<p>After:</p>
+
+<p>1.year # =&gt; 31557600</p>
+
+<p><em>Konstantinos Rousis</em></p></li>
+<li><p>Handle invalid UTF-8 strings when HTML escaping.</p>
+
+<p>Use <a href="ActiveSupport/Multibyte/Unicode.html#tidy_bytes-instance_method" title="ActiveSupport::Multibyte::Unicode#tidy_bytes (method)">ActiveSupport::Multibyte::Unicode#tidy_bytes</a> to handle invalid UTF-8
+strings in <a href="ERB/Util.html#unwrapped_html_escape-class_method" title="ERB::Util.unwrapped_html_escape (method)">ERB::Util.unwrapped_html_escape</a> and <a href="ERB/Util.html#html_escape_once-class_method" title="ERB::Util.html_escape_once (method)">ERB::Util.html_escape_once</a>.
+Prevents user-entered input passed from a querystring into a form field from
+causing invalid byte sequence errors.</p>
+
+<p><em>Grey Baker</em></p></li>
+<li><p>Update <a href="ActiveSupport/Multibyte/Chars.html#slice!-instance_method" title="ActiveSupport::Multibyte::Chars#slice! (method)">ActiveSupport::Multibyte::Chars#slice!</a> to return <code>nil</code> if the
+arguments are out of bounds, to mirror the behavior of <code>String#slice!</code></p>
+
+<p><em>Gourav Tiwari</em></p></li>
+<li><p>Fix <code>number_to_human</code> so that 999999999 rounds to &quot;1 Billion&quot; instead of
+&quot;1000 Million&quot;.</p>
+
+<p><em>Max Jacobson</em></p></li>
+<li><p>Fix <code>ActiveSupport::Deprecation#deprecate_methods</code> to report using the
+current deprecator instance, where applicable.</p>
+
+<p><em>Brandon Dunne</em></p></li>
+<li><p><code>Cache#fetch</code> instrumentation marks whether it was a <code>:hit</code>.</p>
+
+<p><em>Robin Clowers</em></p></li>
+<li><p><code>assert_difference</code> and <code>assert_no_difference</code> now returns the result of the
+yielded block.</p>
+
+<p>Example:</p>
+
+<p>post = assert_difference -&gt; { Post.count }, 1 do
+    Post.create
+  end</p>
+
+<p><em>Lucas Mazza</em></p></li>
+<li><p>Short-circuit <code>blank?</code> on date and time values since they are never blank.</p>
+
+<p>Fixes #21657.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Replaced deprecated <code>ThreadSafe::Cache</code> with its successor <code>Concurrent::Map</code> now that
+the thread_safe gem has been merged into concurrent-ruby.</p>
+
+<p><em>Jerry D&#39;Antonio</em></p></li>
+<li><p>Updated Unicode version to 8.0.0</p>
+
+<p><em>Anshul Sharma</em></p></li>
+<li><p><code>number_to_currency</code> and <code>number_with_delimiter</code> now accept custom <code>delimiter_pattern</code> option
+ to handle placement of delimiter, to support currency formats like INR</p>
+
+<p>Example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_number_to_currency'>number_to_currency</span><span class='lparen'>(</span><span class='int'>1230000</span><span class='comma'>,</span> <span class='label'>delimiter_pattern:</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(\d?)(?=(\d\d)(\d)(?!\d))</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='label'>unit:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>₹</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>format:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%u %n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &#39;₹ 12,30,000.00&#39;</span></code></pre>
+
+<p><em>Vipul A M</em></p></li>
+<li><p>Deprecate <code>:prefix</code> option of <code>number_to_human_size</code> with no replacement.</p>
+
+<p><em>Jean Boussier</em></p></li>
+<li><p>Fix <code>TimeWithZone#eql?</code> to properly handle <code>TimeWithZone</code> created from <a href="DateTime.html" title="DateTime (class)">DateTime</a>:
+    twz = DateTime.now.in_time_zone
+    twz.eql?(twz.dup) =&gt; true</p>
+
+<p>Fixes #14178.</p>
+
+<p><em>Roque Pinel</em></p></li>
+<li><p>ActiveSupport::HashWithIndifferentAccess <code>select</code> and <code>reject</code> will now return
+enumerator if called without block.</p>
+
+<p>Fixes #20095.</p>
+
+<p><em>Bernard Potocki</em></p></li>
+<li><p>Removed <a href="ActiveSupport/Concurrency/Latch.html" title="ActiveSupport::Concurrency::Latch (class)">::ActiveSupport::Concurrency::Latch</a>, superseded by <code>Concurrent::CountDownLatch</code>
+from the concurrent-ruby gem.</p>
+
+<p><em>Jerry D&#39;Antonio</em></p></li>
+<li><p>Fix not calling <code>#default</code> on <code>HashWithIndifferentAccess#to_hash</code> when only
+<code>default_proc</code> is set, which could raise.</p>
+
+<p><em>Simon Eskildsen</em></p></li>
+<li><p>Fix setting <code>default_proc</code> on <code>HashWithIndifferentAccess#dup</code>.</p>
+
+<p><em>Simon Eskildsen</em></p></li>
+<li><p>Fix a range of values for parameters of the Time#change.</p>
+
+<p><em>Nikolay Kondratyev</em></p></li>
+<li><p>Add <a href="Enumerable.html#pluck-instance_method" title="Enumerable#pluck (method)">Enumerable#pluck</a> to get the same values from arrays as from ActiveRecord
+associations.</p>
+
+<p>Fixes #20339.</p>
+
+<p><em>Kevin Deisz</em></p></li>
+<li><p>Add a bang version to <a href="ActiveSupport/OrderedOptions.html" title="ActiveSupport::OrderedOptions (class)">::ActiveSupport::OrderedOptions</a> get methods which will raise
+an <code>KeyError</code> if the value is <code>.blank?</code>.</p>
+
+<p>Before:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_slack_url'>slack_url</span> <span class='op'>=</span> <span class='const'><a href="Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_application'><a href="Rails.html#application-class_method" title="Rails.application (method)">application</a></span><span class='period'>.</span><span class='id identifier rubyid_secrets'>secrets</span><span class='period'>.</span><span class='id identifier rubyid_slack_url'>slack_url</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span>
+  <span class='comment'># Do something worthwhile
+</span><span class='kw'>else</span>
+  <span class='comment'># Raise as important secret password is not specified
+</span><span class='kw'>end</span></code></pre>
+
+<p>After:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_slack_url'>slack_url</span> <span class='op'>=</span> <span class='const'><a href="Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_application'><a href="Rails.html#application-class_method" title="Rails.application (method)">application</a></span><span class='period'>.</span><span class='id identifier rubyid_secrets'>secrets</span><span class='period'>.</span><span class='id identifier rubyid_slack_url!'>slack_url!</span></code></pre>
+
+<p><em>Aditya Sanghi</em>, <em>Gaurish Sharma</em></p></li>
+<li><p>Remove deprecated <code>Class#superclass_delegating_accessor</code>.
+Use <a href="Class.html#class_attribute-instance_method" title="Class#class_attribute (method)">Class#class_attribute</a> instead.</p>
+
+<p><em>Akshay Vishnoi</em></p></li>
+<li><p>Patch <a href="Delegator.html" title="Delegator (class)">Delegator</a> to work with <code>#try</code>.</p>
+
+<p>Fixes #5790.</p>
+
+<p><em>Nate Smith</em></p></li>
+<li><p>Add <code>Integer#positive?</code> and <code>Integer#negative?</code> query methods
+in the vein of <code>Fixnum#zero?</code>.</p>
+
+<p>This makes it nicer to do things like <code>bunch_of_numbers.select(&amp;:positive?)</code>.</p>
+
+<p><em>DHH</em></p></li>
+<li><p>Encoding <a href="ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a> to YAML now preserves the timezone information.</p>
+
+<p>Fixes #9183.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Added <a href="ActiveSupport/TimeZone.html#strptime-instance_method" title="ActiveSupport::TimeZone#strptime (method)">ActiveSupport::TimeZone#strptime</a> to allow parsing times as if
+from a given timezone.</p>
+
+<p><em>Paul A Jungwirth</em></p></li>
+<li><p><code>ActiveSupport::Callbacks#skip_callback</code> now raises an <code>ArgumentError</code> if
+an unrecognized callback is removed.</p>
+
+<p><em>Iain Beeston</em></p></li>
+<li><p>Added <a href="ActiveSupport/ArrayInquirer.html" title="ActiveSupport::ArrayInquirer (class)">::ActiveSupport::ArrayInquirer</a> and <a href="Array.html#inquiry-instance_method" title="Array#inquiry (method)">Array#inquiry</a>.</p>
+
+<p>Wrapping an array in an <code>ArrayInquirer</code> gives a friendlier way to check its
+contents:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_variants'>variants</span> <span class='op'>=</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/ArrayInquirer.html" title="ActiveSupport::ArrayInquirer (class)">ArrayInquirer</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_phone'>phone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_tablet'>tablet</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+<span class='id identifier rubyid_variants'>variants</span><span class='period'>.</span><span class='id identifier rubyid_phone?'>phone?</span>    <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_variants'>variants</span><span class='period'>.</span><span class='id identifier rubyid_tablet?'>tablet?</span>   <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_variants'>variants</span><span class='period'>.</span><span class='id identifier rubyid_desktop?'>desktop?</span>  <span class='comment'># =&gt; false
+</span>
+<span class='id identifier rubyid_variants'>variants</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_phone'>phone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_tablet'>tablet</span><span class='rparen'>)</span>   <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_variants'>variants</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_phone'>phone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_desktop'>desktop</span><span class='rparen'>)</span>  <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_variants'>variants</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_desktop'>desktop</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_watch'>watch</span><span class='rparen'>)</span>  <span class='comment'># =&gt; false</span></code></pre>
+
+<p><a href="Array.html#inquiry-instance_method" title="Array#inquiry (method)">Array#inquiry</a> is a shortcut for wrapping the receiving array in an
+<code>ArrayInquirer</code>.</p>
+
+<p><em>George Claghorn</em></p></li>
+<li><p>Deprecate <code>alias_method_chain</code> in favour of <code>Module#prepend</code> introduced in
+Ruby 2.0.</p>
+
+<p><em>Kir Shatrov</em></p></li>
+<li><p>Added <code>#without</code> on <a href="Enumerable.html" title="Enumerable (module)">Enumerable</a> and <a href="Array.html" title="Array (class)">Array</a> to return a copy of an
+enumerable without the specified elements.</p>
+
+<p><em>Todd Bealmear</em></p></li>
+<li><p>Fixed a problem where <a href="String.html#truncate_words-instance_method" title="String#truncate_words (method)">String#truncate_words</a> would get stuck with a complex
+string.</p>
+
+<p><em>Henrik Nygren</em></p></li>
+<li><p>Fixed a roundtrip problem with <code>AS::SafeBuffer</code> where primitive-like strings
+will be dumped as primitives:</p>
+
+<p>Before:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/SafeBuffer.html" title="ActiveSupport::SafeBuffer (class)">SafeBuffer</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ActiveSupport/SafeBuffer.html#new-class_method" title="ActiveSupport::SafeBuffer.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_yaml'>to_yaml</span>  <span class='comment'># =&gt; &quot;Hello&quot;
+</span><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/SafeBuffer.html" title="ActiveSupport::SafeBuffer (class)">SafeBuffer</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ActiveSupport/SafeBuffer.html#new-class_method" title="ActiveSupport::SafeBuffer.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>true</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_yaml'>to_yaml</span>   <span class='comment'># =&gt; true
+</span><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/SafeBuffer.html" title="ActiveSupport::SafeBuffer (class)">SafeBuffer</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ActiveSupport/SafeBuffer.html#new-class_method" title="ActiveSupport::SafeBuffer.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>false</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_yaml'>to_yaml</span>  <span class='comment'># =&gt; false
+</span><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/SafeBuffer.html" title="ActiveSupport::SafeBuffer (class)">SafeBuffer</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ActiveSupport/SafeBuffer.html#new-class_method" title="ActiveSupport::SafeBuffer.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_yaml'>to_yaml</span>      <span class='comment'># =&gt; 1
+</span><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/SafeBuffer.html" title="ActiveSupport::SafeBuffer (class)">SafeBuffer</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ActiveSupport/SafeBuffer.html#new-class_method" title="ActiveSupport::SafeBuffer.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1.1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_yaml'>to_yaml</span>    <span class='comment'># =&gt; 1.1</span></code></pre>
+
+<p>After:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/SafeBuffer.html" title="ActiveSupport::SafeBuffer (class)">SafeBuffer</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ActiveSupport/SafeBuffer.html#new-class_method" title="ActiveSupport::SafeBuffer.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_yaml'>to_yaml</span>  <span class='comment'># =&gt; &quot;Hello&quot;
+</span><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/SafeBuffer.html" title="ActiveSupport::SafeBuffer (class)">SafeBuffer</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ActiveSupport/SafeBuffer.html#new-class_method" title="ActiveSupport::SafeBuffer.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>true</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_yaml'>to_yaml</span>   <span class='comment'># =&gt; &quot;true&quot;
+</span><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/SafeBuffer.html" title="ActiveSupport::SafeBuffer (class)">SafeBuffer</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ActiveSupport/SafeBuffer.html#new-class_method" title="ActiveSupport::SafeBuffer.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>false</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_yaml'>to_yaml</span>  <span class='comment'># =&gt; &quot;false&quot;
+</span><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/SafeBuffer.html" title="ActiveSupport::SafeBuffer (class)">SafeBuffer</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ActiveSupport/SafeBuffer.html#new-class_method" title="ActiveSupport::SafeBuffer.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_yaml'>to_yaml</span>      <span class='comment'># =&gt; &quot;1&quot;
+</span><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/SafeBuffer.html" title="ActiveSupport::SafeBuffer (class)">SafeBuffer</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ActiveSupport/SafeBuffer.html#new-class_method" title="ActiveSupport::SafeBuffer.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1.1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_yaml'>to_yaml</span>    <span class='comment'># =&gt; &quot;1.1&quot;</span></code></pre>
+
+<p><em>Godfrey Chan</em></p></li>
+<li><p>Enable <code>number_to_percentage</code> to keep the number&#39;s precision by allowing
+<code>:precision</code> to be <code>nil</code>.</p>
+
+<p><em>Jack Xu</em></p></li>
+<li><p><code>config_accessor</code> became a private method, as with Ruby&#39;s <code>attr_accessor</code>.</p>
+
+<p><em>Akira Matsuda</em></p></li>
+<li><p><code>AS::Testing::TimeHelpers#travel_to</code> now changes <code>DateTime.now</code> as well as
+<code>Time.now</code> and <code>Date.today</code>.</p>
+
+<p><em>Yuki Nishijima</em></p></li>
+<li><p>Add <code>file_fixture</code> to <a href="ActiveSupport/TestCase.html" title="ActiveSupport::TestCase (class)">::ActiveSupport::TestCase</a>.
+It provides a simple mechanism to access sample files in your test cases.</p>
+
+<p>By default file fixtures are stored in <code>test/fixtures/files</code>. This can be
+configured per test-case using the <code>file_fixture_path</code> class attribute.</p>
+
+<p><em>Yves Senn</em></p></li>
+<li><p>Return value of yielded block in <a href="File.html#atomic_write-class_method" title="File.atomic_write (method)">File.atomic_write</a>.</p>
+
+<p><em>Ian Ker-Seymer</em></p></li>
+<li><p>Duplicate frozen array when assigning it to a <a href="#HashWithIndifferentAccess-constant" title="HashWithIndifferentAccess (constant)">HashWithIndifferentAccess</a> so
+that it doesn&#39;t raise a <code>RuntimeError</code> when calling <code>map!</code> on it in <code>convert_value</code>.</p>
+
+<p>Fixes #18550.</p>
+
+<p><em>Aditya Kapoor</em></p></li>
+<li><p>Add missing time zone definitions for Russian Federation and sync them
+with <code>zone.tab</code> file from tzdata version 2014j (latest).</p>
+
+<p><em>Andrey Novikov</em></p></li>
+<li><p>Add <a href="SecureRandom.html#base58-class_method" title="SecureRandom.base58 (method)">SecureRandom.base58</a> for generation of random base58 strings.</p>
+
+<p><em>Matthew Draper</em>, <em>Guillermo Iguaran</em></p></li>
+<li><p>Add <code>#prev_day</code> and <code>#next_day</code> counterparts to <code>#yesterday</code> and
+<code>#tomorrow</code> for <a href="Date.html" title="Date (class)">Date</a>, <a href="Time.html" title="Time (class)">Time</a>, and <a href="DateTime.html" title="DateTime (class)">DateTime</a>.</p>
+
+<p><em>George Claghorn</em></p></li>
+<li><p>Add <code>same_time</code> option to <code>#next_week</code> and <code>#prev_week</code> for <a href="Date.html" title="Date (class)">Date</a>, <a href="Time.html" title="Time (class)">Time</a>,
+and <a href="DateTime.html" title="DateTime (class)">DateTime</a>.</p>
+
+<p><em>George Claghorn</em></p></li>
+<li><p>Add <code>#on_weekend?</code>, <code>#next_weekday</code>, <code>#prev_weekday</code> methods to <a href="Date.html" title="Date (class)">Date</a>,
+<a href="Time.html" title="Time (class)">Time</a>, and <a href="DateTime.html" title="DateTime (class)">DateTime</a>.</p>
+
+<p><code>#on_weekend?</code> returns <code>true</code> if the receiving date/time falls on a Saturday
+or Sunday.</p>
+
+<p><code>#next_weekday</code> returns a new date/time representing the next day that does
+not fall on a Saturday or Sunday.</p>
+
+<p><code>#prev_weekday</code> returns a new date/time representing the previous day that
+does not fall on a Saturday or Sunday.</p>
+
+<p><em>George Claghorn</em></p></li>
+<li><p>Added ability to <code>TaggedLogging</code> to allow loggers to be instantiated multiple times
+so that they don&#39;t share tags with each other.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_logger'><a href="Rails.html#logger-class_method" title="Rails.logger (method)">logger</a></span> <span class='op'>=</span> <span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>STDOUT</span><span class='rparen'>)</span>
+
+<span class='comment'># Before
+</span><span class='id identifier rubyid_custom_logger'>custom_logger</span> <span class='op'>=</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/TaggedLogging.html" title="ActiveSupport::TaggedLogging (module)">TaggedLogging</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ActiveSupport/TaggedLogging.html#new-class_method" title="ActiveSupport::TaggedLogging.new (method)">new</a></span><span class='lparen'>(</span><span class='const'><a href="Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_logger'><a href="Rails.html#logger-class_method" title="Rails.logger (method)">logger</a></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_custom_logger'>custom_logger</span><span class='period'>.</span><span class='id identifier rubyid_push_tags'>push_tags</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>custom_tag</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_custom_logger'>custom_logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test</span><span class='tstring_end'>&quot;</span></span>  <span class='comment'># =&gt; &quot;[custom_tag] [custom_tag] test&quot;
+</span><span class='const'><a href="Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_logger'><a href="Rails.html#logger-class_method" title="Rails.logger (method)">logger</a></span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test</span><span class='tstring_end'>&quot;</span></span>   <span class='comment'># =&gt; &quot;[custom_tag] [custom_tag] test&quot;
+</span>
+<span class='comment'># After
+</span><span class='id identifier rubyid_custom_logger'>custom_logger</span> <span class='op'>=</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/TaggedLogging.html" title="ActiveSupport::TaggedLogging (module)">TaggedLogging</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ActiveSupport/TaggedLogging.html#new-class_method" title="ActiveSupport::TaggedLogging.new (method)">new</a></span><span class='lparen'>(</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>STDOUT</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_custom_logger'>custom_logger</span><span class='period'>.</span><span class='id identifier rubyid_push_tags'>push_tags</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>custom_tag</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_custom_logger'>custom_logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test</span><span class='tstring_end'>&quot;</span></span>  <span class='comment'># =&gt; &quot;[custom_tag] test&quot;
+</span><span class='const'><a href="Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_logger'><a href="Rails.html#logger-class_method" title="Rails.logger (method)">logger</a></span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test</span><span class='tstring_end'>&quot;</span></span>   <span class='comment'># =&gt; &quot;test&quot;</span></code></pre>
+
+<p><em>Alexander Staubo</em></p></li>
+<li><p>Change the default test order from <code>:sorted</code> to <code>:random</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>ActiveSupport::JSON::Encoding::CircularReferenceError</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated methods <code>ActiveSupport::JSON::Encoding.encode_big_decimal_as_string=</code>
+and <code>ActiveSupport::JSON::Encoding.encode_big_decimal_as_string</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <a href="ActiveSupport/SafeBuffer.html#prepend-instance_method" title="ActiveSupport::SafeBuffer#prepend (method)">ActiveSupport::SafeBuffer#prepend</a>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated methods at <a href="Kernel.html" title="Kernel (module)">Kernel</a>.</p>
+
+<p><code>silence_stderr</code>, <code>silence_stream</code>, <code>capture</code> and <code>quietly</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>active_support/core_ext/big_decimal/yaml_conversions</code>
+file.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated methods ActiveSupport::Cache::Store#instrument and
+<code>ActiveSupport::Cache::Store.instrument=</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Change the way in which callback chains can be halted.</p>
+
+<p>The preferred method to halt a callback chain from now on is to explicitly
+<code>throw(:abort)</code>.
+In the past, callbacks could only be halted by explicitly providing a
+terminator and by having a callback match the conditions of the terminator.</p></li>
+<li><p>Add <a href="ActiveSupport.html#halt_callback_chains_on_return_false-class_method" title="ActiveSupport.halt_callback_chains_on_return_false (method)">ActiveSupport.halt_callback_chains_on_return_false</a></p>
+
+<p>Setting <a href="ActiveSupport.html#halt_callback_chains_on_return_false-class_method" title="ActiveSupport.halt_callback_chains_on_return_false (method)">ActiveSupport.halt_callback_chains_on_return_false</a>
+to <code>true</code> will let an app support the deprecated way of halting Active Record,
+and Active Model callback chains by returning <code>false</code>.</p>
+
+<p>Setting the value to <code>false</code> will tell the app to ignore any <code>false</code> value
+returned by those callbacks, and only halt the chain upon <code>throw(:abort)</code>.</p>
+
+<p>When the configuration option is missing, its value is <code>true</code>, so older apps
+ported to Rails 5.0 will not break (but display a deprecation warning).
+For new Rails 5.0 apps, its value is set to <code>false</code> in an initializer, so
+these apps will support the new behavior by default.</p>
+
+<p><em>claudiob</em>, <em>Roque Pinel</em></p></li>
+<li><p>Changes arguments and default value of CallbackChain&#39;s <code>:terminator</code> option</p>
+
+<p>Chains of callbacks defined without an explicit <code>:terminator</code> option will
+now be halted as soon as a <code>before_</code> callback throws <code>:abort</code>.</p>
+
+<p>Chains of callbacks defined with a <code>:terminator</code> option will maintain their
+existing behavior of halting as soon as a <code>before_</code> callback matches the
+terminator&#39;s expectation.</p>
+
+<p><em>claudiob</em></p></li>
+<li><p>Deprecate <a href="#MissingSourceFile-constant" title="MissingSourceFile (constant)">MissingSourceFile</a> in favor of <a href="LoadError.html" title="LoadError (class)">LoadError</a>.</p>
+
+<p><a href="#MissingSourceFile-constant" title="MissingSourceFile (constant)">MissingSourceFile</a> was just an alias to <a href="LoadError.html" title="LoadError (class)">LoadError</a> and was not being
+raised inside the framework.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove <code>Object#itself</code> as it is implemented in Ruby 2.2.</p>
+
+<p><em>Cristian Bica</em></p></li>
+<li><p>Add support for error dispatcher classes in <a href="ActiveSupport/Rescuable.html" title="ActiveSupport::Rescuable (module)">::ActiveSupport::Rescuable</a>.
+Now it acts closer to Ruby&#39;s rescue.</p>
+
+<p>Example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>BaseController</span> <span class='op'>&lt;</span> <span class='const'>ApplicationController</span>
+  <span class='kw'>module</span> <span class='const'>ErrorDispatcher</span>
+    <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='op'>===</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+      <span class='const'><a href="Exception.html" title="Exception (class)">Exception</a></span> <span class='op'>===</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_status'>status</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_rescue_from'>rescue_from</span> <span class='const'>ErrorDispatcher</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_error'>error</span><span class='op'>|</span>
+    <span class='id identifier rubyid_render'>render</span> <span class='label'>status:</span> <span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span><span class='comma'>,</span> <span class='label'>json:</span> <span class='lbrace'>{</span> <span class='label'>error:</span> <span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></code></pre>
+
+<p><em>Genadi Samokovarov</em></p></li>
+<li><p>Add <code>#verified</code> and <code>#valid_message?</code> methods to <a href="ActiveSupport/MessageVerifier.html" title="ActiveSupport::MessageVerifier (class)">::ActiveSupport::MessageVerifier</a></p>
+
+<p>Previously, the only way to decode a message with <a href="ActiveSupport/MessageVerifier.html" title="ActiveSupport::MessageVerifier (class)">::ActiveSupport::MessageVerifier</a>
+was to use <code>#verify</code>, which would raise an exception on invalid messages. Now
+<code>#verified</code> can also be used, which returns <code>nil</code> on messages that cannot be
+decoded.</p>
+
+<p>Previously, there was no way to check if a message&#39;s format was valid without
+attempting to decode it. <code>#valid_message?</code> is a boolean convenience method that
+checks whether the message is valid without actually decoding it.</p>
+
+<p><em>Logan Leger</em></p></li>
+</ul>
+
+<p>Please check <a href="https://github.com/rails/rails/blob/4-2-stable/activesupport/CHANGELOG.md">4-2-stable</a> for previous changes.</p>
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.8 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.5.0p-1)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>

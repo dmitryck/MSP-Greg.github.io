@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>Class: WEBrick::HTTPProxyServer &mdash; webrick  Ruby-2.3.3 p224 2016-11-24</title>
+
+<link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "WEBrick::HTTPProxyServer",
+    relpath = '../';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../../../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../../../js/y_app.js'></script>
+
+</head>
+<body>
+  <svg id='y_wait' class viewBox='0 0 90 90'></svg>
+  <div id='y_list' class='d h'>
+    <header id='list_header'>
+      <div id='list_title'>&#160;</div>
+      <div id='list_menu'>
+        <button id='list_sizer' class='y_sizer' title='LIST Resizer'></button>
+        <span>&#160;</span>
+      </div>
+      <input  id='list_search_text' type='search' placeholder='List Search' size='12' value='' autocomplete='off' class='search_input'/>
+      <svg id='list_search_icon' viewBox='0 0 30 30'>
+        <path class='s_main' d='M21.189,17.213C22.022,15.726,22.5,14.014,22.5,12.188C22.5,6.493,17.884,1.875,12.188,1.875S1.875,6.493,1.875,12.188C1.875,17.882,6.491,22.5,12.188,22.5c1.826,0,3.536-0.48,5.025-1.311l6.113,6.113C23.873,27.851,24.593,28.125,25.313,28.125s1.44-0.274,1.989-0.823c1.099-1.099,1.099-2.878,0-3.977L21.189,17.213z M12.188,19.329c-3.943,0-7.14-3.197-7.14-7.142c0.0-3.943,3.197-7.14,7.14-7.14c3.941,0,7.14,3.195,7.14,7.14C19.328,16.133,16.129,19.329,12.188,19.329z'/>
+        <path class='s_clear' d='M 4.414, 1.586 A 1,1 0 1,0 1.586, 4.414 L 21.586,24.414 A 1,1 0 1,0 24.414,21.586 z' />
+        <path class='s_clear' d='M 1.586,21.586 A 1,1 0 1,0 4.414,24.414 L 24.414, 4.414 A 1,1 0 1,0 21.586, 1.586 z' />
+      </svg>
+      <button class='y_minus' title='Collapse All'></button>
+      <button class='y_plus' title='Expand All'></button>
+    </header>
+    <nav id= 'list_nav' class='y_nav l_nav'>
+      <ul id='list_items'></ul>
+    </nav>
+  </div>
+  <div id='y_toc' class='f h'>
+    <header id='toc_header'>
+      <button id='toc_sizer' class='y_sizer' title='TOC Resizer'></button>
+      <div>Table of Contents</div>
+      <input  id='toc_search_text' type='search' placeholder='Method Search' size='12' value='' autocomplete='off' class='search_input'/>
+      <svg id='toc_search_icon' viewBox='0 0 30 30'>
+        <path class='s_main' d='M21.189,17.213C22.022,15.726,22.5,14.014,22.5,12.188C22.5,6.493,17.884,1.875,12.188,1.875S1.875,6.493,1.875,12.188C1.875,17.882,6.491,22.5,12.188,22.5c1.826,0,3.536-0.48,5.025-1.311l6.113,6.113C23.873,27.851,24.593,28.125,25.313,28.125s1.44-0.274,1.989-0.823c1.099-1.099,1.099-2.878,0-3.977L21.189,17.213z M12.188,19.329c-3.943,0-7.14-3.197-7.14-7.142c0.0-3.943,3.197-7.14,7.14-7.14c3.941,0,7.14,3.195,7.14,7.14C19.328,16.133,16.129,19.329,12.188,19.329z'/>
+        <path class='s_clear' d='M 4.414, 1.586 A 1,1 0 1,0 1.586, 4.414 L 21.586,24.414 A 1,1 0 1,0 24.414,21.586 z' />
+        <path class='s_clear' d='M 1.586,21.586 A 1,1 0 1,0 4.414,24.414 L 24.414, 4.414 A 1,1 0 1,0 21.586, 1.586 z' />
+      </svg>
+      <button class='y_minus' title='Collapse All'></button>
+      <button class='y_plus' title='Expand All' ></button>
+    </header>
+    <nav id= 'toc_nav' class='y_nav t_nav'>
+    <ol id='toc_items'></ol>
+    </nav>
+  </div>
+  <div id='y_main' tabindex='-1'>
+    <header id='y_header'>
+      <div id='y_menu'>
+          <a href='../../../index.html'>Home</a> &raquo; 
+          <a href='../../index.html'>Ruby-2.3.3</a> &raquo; 
+          <a href='../index.html'>webrick</a> &raquo; 
+          <a href='../_index.html#alpha_H'>Index (H)</a> &raquo; 
+          <a href="../WEBrick.html" title="WEBrick (module)">WEBrick</a> &raquo; 
+          <span class='title'><a id='t2_doc_top' href='#'>HTTPProxyServer&nbsp;&#x25B2;</a></span>
+        </div>
+
+      <div id='y_measure_em' class='y_measure'></div>
+      <div id='y_measure_vh' class='y_measure'></div>
+      <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+      <a id='list_href' href="../class_list.html"></a>
+      <div id='hdr_button'>
+        <button id='src' class='c' title='Source Show / Hide'>S<svg class='c' viewBox='0 0 36 28'>
+            <rect x='8'  y='12' width='28' height='4'  rx='1.0' ry='1.0'/>
+            <rect x='20' y='0'  width='4'  height='28' rx='1.0' ry='1.0'/>
+          </svg><svg class='o' viewBox='0 0 34 28'>
+            <rect x='8'  y='12' width='28' height='4'  rx='1.0' ry='1.0'/>
+          </svg></button>
+        <button id='list_loc' class='d' title='LIST Location'>L<svg class='f' viewBox='0 0 36 28'>
+          <path d='M36 0 L36 28 8 14'/></svg><svg class='d' viewBox='0 0 36 28'><path d='M 8 0 L36 14 8 28'/></svg></button>
+        <button id='toc_loc'  class='f' title='TOC Location' >T<svg class='f' viewBox='0 0 36 28'>
+          <path d='M36 0 L36 28 8 14'/></svg><svg class='d' viewBox='0 0 36 28'><path d='M 8 0 L36 14 8 28'/></svg></button>
+        <button id='list_vis' title='LIST Show / Hide'>LIST</button>
+        <button id='toc_vis' title='TOC Show / Hide'>TOC</button>
+      </div>
+      <div id='y_debug'></div>
+    </header>
+<div id='content' class='class'>
+<h1>Class: WEBrick::HTTPProxyServer</h1>
+<div id='t2_rel_sf_div'>
+<table id='t2_rel_sf' class='y_box'>
+  <thead>
+    <tr><td id='t2_relations' colspan='2'>Relationships & Source Files</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='box_h' colspan='2'>Super Chains via Extension / Inclusion / Inheritance</td></tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Class Chain:</div>
+        <div class='box_22'>
+          self, <a href="HTTPServer.html" title="WEBrick::HTTPServer (class)">HTTPServer</a>, <a href="GenericServer.html" title="WEBrick::GenericServer (class)">GenericServer</a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Instance Chain:</div>
+        <div class='box_22'>
+          self, <a href="HTTPServer.html" title="WEBrick::HTTPServer (class)">HTTPServer</a>, <a href="GenericServer.html" title="WEBrick::GenericServer (class)">GenericServer</a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td id='t2_inherits' class='box_2 o'>Inherits:</td>
+      <td class='box_rel'>
+        <span class='inheritName'><a href="HTTPServer.html" title="WEBrick::HTTPServer (class)">WEBrick::HTTPServer</a></span>
+        <ul class='fullTree'>
+          <li>Object</li>
+          <li class='next'><a href="GenericServer.html" title="WEBrick::GenericServer (class)">WEBrick::GenericServer</a></li>
+          <li class='next'><a href="HTTPServer.html" title="WEBrick::HTTPServer (class)">WEBrick::HTTPServer</a></li>
+          <li class='next'>WEBrick::HTTPProxyServer</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class='single'>
+      <td id='t2_defined_in' class='box_2'>Defined in:</td>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/ruby_2_3/lib/webrick/httpproxy.rb#L69'>lib/webrick/httpproxy.rb</a>      </td>
+    </tr>
+  </tbody>
+</table>
+</div><h2 id='h2_overview'>Overview</h2>
+<div id='overview_ds'>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>An HTTP Proxy server which proxies GET, HEAD and POST requests.</p>
+
+<p>To create a simple proxy server:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>webrick</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>webrick/httpproxy</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_proxy'>proxy</span> <span class='op'>=</span> <span class='const'><a href="../WEBrick.html" title="WEBrick (module)">WEBrick</a></span><span class='op'>::</span><span class='const'>HTTPProxyServer</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="WEBrick::HTTPProxyServer.new (method)">new</a></span> <span class='label'>Port:</span> <span class='int'>8000</span>
+
+<span class='id identifier rubyid_trap'>trap</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INT</span><span class='tstring_end'>&#39;</span></span>  <span class='kw'>do</span> <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_shutdown'>shutdown</span> <span class='kw'>end</span>
+<span class='id identifier rubyid_trap'>trap</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TERM</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span> <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_shutdown'>shutdown</span> <span class='kw'>end</span>
+
+<span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span></code></pre>
+
+<p>See <a href="#new-class_method" title="WEBrick::HTTPProxyServer.new (method)">.new</a> for proxy-specific configuration items.</p>
+
+<h3 id="label-Modifying+proxied+responses">Modifying proxied responses</h3>
+
+<p>To modify content the proxy server returns use the
+<code>:ProxyContentHandler</code> option:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_handler'>handler</span> <span class='op'>=</span> <span class='id identifier rubyid_proc'>proc</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span><span class='op'>|</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_res'>res</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>content-type</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>text/plain</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>then</span>
+    <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\nThis content was proxied!\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_proxy'>proxy</span> <span class='op'>=</span>
+  <span class='const'><a href="../WEBrick.html" title="WEBrick (module)">WEBrick</a></span><span class='op'>::</span><span class='const'>HTTPProxyServer</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="WEBrick::HTTPProxyServer.new (method)">new</a></span> <span class='label'>Port:</span> <span class='int'>8000</span><span class='comma'>,</span> <span class='label'>ProxyContentHandler:</span> <span class='id identifier rubyid_handler'>handler</span></code></pre>
+
+  </div>
+</div>
+</div><h2 id='t2_cnst' class='h2_sum'>Constant Summary</h2>
+<div>
+  <ul class='constants summary full'>
+
+  <li>
+    <span id='HopByHop-constant' class='summary_signature   '>HopByHop =</span>
+    <div class='docstring'>
+  <div class='discussion'>
+    
+<p>Some header fields should not be transferred.</p>
+
+  </div>
+</div>
+
+ 
+    <a class='repo' href='https://github.com/ruby/ruby/blob/ruby_2_3/lib/webrick/httpproxy.rb#L238-L239'># File 'lib/webrick/httpproxy.rb', line 238</a>
+    <pre class='code ruby'><span class='qwords'><span class='qwords_beg'>%w( </span><span class='tstring_content'>connection</span><span class='words_sep'> </span><span class='tstring_content'>keep-alive</span><span class='words_sep'> </span><span class='tstring_content'>proxy-authenticate</span><span class='words_sep'> </span><span class='tstring_content'>upgrade</span><span class='words_sep'>
+</span><span class='tstring_content'>proxy-authorization</span><span class='words_sep'> </span><span class='tstring_content'>te</span><span class='words_sep'> </span><span class='tstring_content'>trailers</span><span class='words_sep'> </span><span class='tstring_content'>transfer-encoding</span><span class='words_sep'> )</span></pre>
+  </li>
+
+  <li>
+    <span id='ShouldNotTransfer-constant' class='summary_signature   '>ShouldNotTransfer =</span>
+    <br/>
+ 
+    <a class='repo' href='https://github.com/ruby/ruby/blob/ruby_2_3/lib/webrick/httpproxy.rb#L240-L240'># File 'lib/webrick/httpproxy.rb', line 240</a>
+    <pre class='code ruby'><span class='qwords'><span class='qwords_beg'>%w( </span><span class='tstring_content'>set-cookie</span><span class='words_sep'> </span><span class='tstring_content'>proxy-connection</span><span class='words_sep'> )</span></pre>
+  </li>
+</ul>
+    </div>
+        
+<h2 class='h2_sum'>Class Method Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature '>
+      <a href="#new-class_method" title=".new (class method)">.<strong>new</strong>(config = {}, default = Config::HTTP)  &#x21d2; HTTPProxyServer </a>
+    </span>
+        <span class='note title constructor'>constructor</span>    <span class='summary_desc'>
+      <div class='inline'>
+<p>Proxy server configurations.</p>
+</div>
+    </span>
+  </li>
+</ul>
+<h3 class='inherited'><a href="HTTPServer.html" title="WEBrick::HTTPServer (class)">HTTPServer</a> - Inherited</h3>
+<div class='inherited'><table class='inherited'><tbody><tr class='i_ds'><td><a class='i_m ' href="HTTPServer.html#new-class_method" title="WEBrick::HTTPServer.new (method)">.new</a></td><td><div class='inline'>
+<p>Creates a new HTTP server according to <tt>config</tt>+</p>
+</div></td></tr>
+</tbody></table></div><h3 class='inherited'><a href="GenericServer.html" title="WEBrick::GenericServer (class)">GenericServer</a> - Inherited</h3>
+<div class='inherited'><table class='inherited'><tbody><tr class='i_ds'><td><a class='i_m ' href="GenericServer.html#new-class_method" title="WEBrick::GenericServer.new (method)">.new</a></td><td><div class='inline'>
+<p>Creates a new generic server from <tt>config</tt>+.</p>
+</div></td></tr>
+</tbody></table></div></div>
+<h2 class='h2_sum'>Instance Attribute Summary</h2>
+<div class='div_sum'>
+<h3 class='inherited'><a href="GenericServer.html" title="WEBrick::GenericServer (class)">GenericServer</a> - Inherited</h3>
+<div class='inherited'><table class='inherited'><tbody><tr class='i_ds'><td><a class='i_m ro' href="GenericServer.html#config-instance_method" title="WEBrick::GenericServer#config (method)">#config</a></td><td><div class='inline'>
+<p>The server configuration</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ro' href="GenericServer.html#listeners-instance_method" title="WEBrick::GenericServer#listeners (method)">#listeners</a></td><td><div class='inline'>
+<p>Sockets listening for connections.</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ro' href="GenericServer.html#logger-instance_method" title="WEBrick::GenericServer#logger (method)">#logger</a></td><td><div class='inline'>
+<p>The server logger.</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ro' href="GenericServer.html#status-instance_method" title="WEBrick::GenericServer#status (method)">#status</a></td><td><div class='inline'>
+<p>The server status.</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ro' href="GenericServer.html#tokens-instance_method" title="WEBrick::GenericServer#tokens (method)">#tokens</a></td><td><div class='inline'>
+<p>Tokens control the number of outstanding clients.</p>
+</div></td></tr>
+</tbody></table></div></div>
+<h2 class='h2_sum'>Instance Method Summary</h2>
+<div class='div_sum'>
+<h3 class='inherited'><a href="HTTPServer.html" title="WEBrick::HTTPServer (class)">HTTPServer</a> - Inherited</h3>
+<div class='inherited'><table class='inherited'><tbody><tr class='i_ds'><td><a class='i_m ' href="HTTPServer.html#access_log-instance_method" title="WEBrick::HTTPServer#access_log (method)">#access_log</a></td><td><div class='inline'>
+<p>Logs <tt>req</tt>+ and <tt>res</tt>+ in the access logs.</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="HTTPServer.html#do_OPTIONS-instance_method" title="WEBrick::HTTPServer#do_OPTIONS (method)">#do_OPTIONS</a></td><td><div class='inline'>
+<p>The default OPTIONS request handler says GET, HEAD, POST and OPTIONS
+requests are allowed.</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="HTTPServer.html#lookup_server-instance_method" title="WEBrick::HTTPServer#lookup_server (method)">#lookup_server</a></td><td><div class='inline'>
+<p>Finds the appropriate virtual host to handle <tt>req</tt>+</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="HTTPServer.html#mount-instance_method" title="WEBrick::HTTPServer#mount (method)">#mount</a></td><td><div class='inline'>
+<p>Mounts <tt>servlet</tt>+ on <tt>dir</tt>+ passing <tt>options</tt>+ to the servlet at creation
+time</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="HTTPServer.html#mount_proc-instance_method" title="WEBrick::HTTPServer#mount_proc (method)">#mount_proc</a></td><td><div class='inline'>
+<p>Mounts <tt>proc</tt>+ or <tt>block</tt>+ on <tt>dir</tt>+ and calls it with a
+<a href="HTTPRequest.html" title="WEBrick::HTTPRequest (class)">HTTPRequest</a> and <a href="HTTPResponse.html" title="WEBrick::HTTPResponse (class)">HTTPResponse</a></p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="HTTPServer.html#run-instance_method" title="WEBrick::HTTPServer#run (method)">#run</a></td><td><div class='inline'>
+<p>Processes requests on <tt>sock</tt>+</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="HTTPServer.html#search_servlet-instance_method" title="WEBrick::HTTPServer#search_servlet (method)">#search_servlet</a></td><td><div class='inline'>
+<p>Finds a servlet for <tt>path</tt>+</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="HTTPServer.html#service-instance_method" title="WEBrick::HTTPServer#service (method)">#service</a></td><td><div class='inline'>
+<p>Services <tt>req</tt>+ and fills in <tt>res</tt>+</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="HTTPServer.html#umount-instance_method" title="WEBrick::HTTPServer#umount (method)">#umount</a></td><td><div class='inline'>
+<p>Alias for <a href="HTTPServer.html#unmount-instance_method" title="WEBrick::HTTPServer#unmount (method)">HTTPServer#unmount</a>.</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="HTTPServer.html#unmount-instance_method" title="WEBrick::HTTPServer#unmount (method)">#unmount</a></td><td><div class='inline'>
+<p>Unmounts <tt>dir</tt>+</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="HTTPServer.html#virtual_host-instance_method" title="WEBrick::HTTPServer#virtual_host (method)">#virtual_host</a></td><td><div class='inline'>
+<p>Adds <tt>server</tt>+ as a virtual host.</p>
+</div></td></tr>
+</tbody></table></div><h3 class='inherited'><a href="GenericServer.html" title="WEBrick::GenericServer (class)">GenericServer</a> - Inherited</h3>
+<div class='inherited'><table class='inherited'><tbody><tr class='i_ds'><td><a class='i_m ' href="GenericServer.html#[]-instance_method" title="WEBrick::GenericServer#[] (method)">#[]</a></td><td><div class='inline'>
+<p>Retrieves <tt>key</tt>+ from the configuration</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="GenericServer.html#run-instance_method" title="WEBrick::GenericServer#run (method)">#run</a></td><td><div class='inline'>
+<p>You must subclass <a href="GenericServer.html" title="WEBrick::GenericServer (class)">GenericServer</a> and implement #run which accepts
+a TCP client socket</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="GenericServer.html#shutdown-instance_method" title="WEBrick::GenericServer#shutdown (method)">#shutdown</a></td><td><div class='inline'>
+<p>Shuts down the server and all listening sockets.</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="GenericServer.html#start-instance_method" title="WEBrick::GenericServer#start (method)">#start</a></td><td><div class='inline'>
+<p>Starts the server and runs the <tt>block</tt>+ for each connection.</p>
+</div></td></tr>
+<tr class='i_ds'><td><a class='i_m ' href="GenericServer.html#stop-instance_method" title="WEBrick::GenericServer#stop (method)">#stop</a></td><td><div class='inline'>
+<p>Stops the server from accepting new connections.</p>
+</div></td></tr>
+</tbody></table></div></div>
+<h2 id='Constructor_Details' class='y_details'>Constructor Details</h2>
+
+  <section class='method_details first' id="new-class_method">
+  <h3 class='signature  first'>
+  .<strong>new</strong>(config = {}, default = Config::HTTP)  &#x21d2; <tt>HTTPProxyServer</tt> 
+</h3>
+
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Proxy server configurations.  The proxy server handles the following
+configuration items in addition to those supported by
+<a href="HTTPServer.html" title="WEBrick::HTTPServer (class)">HTTPServer</a>:</p>
+<dl class="rdoc-list note-list"><dt>:ProxyAuthProc
+<dd>
+<p>Called with a request and response to authorize a request</p>
+</dd><dt>:ProxyVia
+<dd>
+<p>Appended to the via header</p>
+</dd><dt>:ProxyURI
+<dd>
+<p>The proxy server&#39;s URI</p>
+</dd><dt>:ProxyContentHandler
+<dd>
+<p>Called with a request and response and allows modification of the response</p>
+</dd><dt>:ProxyTimeout
+<dd>
+<p>Sets the proxy timeouts to 30 seconds for open and 60 seconds for read
+operations</p>
+</dd></dl>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/ruby_2_3/lib/webrick/httpproxy.rb#L84-L88'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+84
+85
+86
+87
+88</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'lib/webrick/httpproxy.rb', line 84</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_default'>default</span><span class='op'>=</span><span class='const'>Config</span><span class='op'>::</span><span class='const'>HTTP</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='comma'>,</span> <span class='id identifier rubyid_default'>default</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='ivar'>@config</span>
+  <span class='ivar'>@via</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_c'>c</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='const'><a href="HTTPVersion.html" title="WEBrick::HTTPVersion (class)">HTTPVersion</a></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_c'>c</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='const'>ServerName</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_c'>c</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='const'>Port</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.5 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.3.2p182)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>

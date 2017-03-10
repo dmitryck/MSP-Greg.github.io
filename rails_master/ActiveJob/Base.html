@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>Class: ActiveJob::Base &mdash; Rails-master</title>
+
+<link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "ActiveJob::Base",
+    relpath = '../';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../../js/y_app.js'></script>
+
+</head>
+<body>
+<svg id='y_wait' class viewBox='0 0 90 90'></svg>
+<div id='settings' class='hidden'></div>
+<div id='y_list' class='d h'>
+  <header id='list_header'></header>
+  <nav id= 'list_nav' class='y_nav l_nav'>
+    <ul id='list_items'></ul>
+  </nav>
+</div>
+<div id='y_toc' class='f h'>
+  <header id='toc_header'></header>
+  <nav id= 'toc_nav' class='y_nav t_nav'>
+  <ol id='toc_items'></ol>
+  </nav>
+</div>
+<div id='y_main' tabindex='-1'>
+  <header id='y_header'>
+    <div id='y_menu'>
+        <a href='../../index.html'>Home</a> &raquo; 
+        <a href='../index.html'>Rails-master</a> &raquo; 
+        <a href='../_index.html#alpha_B'>Index (B)</a> &raquo; 
+        <a href="../ActiveJob.html" title="ActiveJob (module)">ActiveJob</a> &raquo; 
+        <span class='title'><a id='t2_doc_top' href='#'>Base&nbsp;&#x25B2;</a></span>
+      </div>
+
+    <a id='list_href' href="../class_list.html"></a>
+    <div id='y_measure_em' class='y_measure'></div>
+    <div id='y_measure_vh' class='y_measure'></div>
+    <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+  </header>
+<div id='content' class='class'>
+<h1>Class: ActiveJob::Base</h1>
+<div id='t2_rel_sf_div'>
+<table id='t2_rel_sf' class='y_box'>
+  <thead>
+    <tr><td id='t2_relations' colspan='2'>Relationships & Source Files</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='box_h' colspan='2'>Extension / Inclusion / Inheritance Descendants</td></tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Subclasses:</div>
+        <div class='box_22'>
+          <a class='nodoc' href="../ActionMailer/DeliveryJob.html" title="ActionMailer::DeliveryJob (class)">ActionMailer::DeliveryJob</a>, <a class='nodoc' href="../ActionMailer/Parameterized/DeliveryJob.html" title="ActionMailer::Parameterized::DeliveryJob (class)">ActionMailer::Parameterized::DeliveryJob</a>
+        </div>
+      </td>
+    </tr>
+    <tr><td class='box_h' colspan='2'>Super Chains via Extension / Inclusion / Inheritance</td></tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Class Chain:</div>
+        <div class='box_22'>
+          self,
+          <a href="Exceptions/ClassMethods.html" title="ActiveJob::Exceptions::ClassMethods (module)">Exceptions::ClassMethods</a>,
+          <a href="Callbacks/ClassMethods.html" title="ActiveJob::Callbacks::ClassMethods (module)">Callbacks::ClassMethods</a>,
+          <a href="../ActiveSupport/DescendantsTracker.html" title="ActiveSupport::DescendantsTracker (module)">::ActiveSupport::DescendantsTracker</a>,
+          <a href="../ActiveSupport/Callbacks/ClassMethods.html" title="ActiveSupport::Callbacks::ClassMethods (module)">::ActiveSupport::Callbacks::ClassMethods</a>,
+          <a href="Execution/ClassMethods.html" title="ActiveJob::Execution::ClassMethods (module)">Execution::ClassMethods</a>,
+          <a href="../ActiveSupport/Rescuable/ClassMethods.html" title="ActiveSupport::Rescuable::ClassMethods (module)">::ActiveSupport::Rescuable::ClassMethods</a>,
+          <a href="Enqueuing/ClassMethods.html" title="ActiveJob::Enqueuing::ClassMethods (module)">Enqueuing::ClassMethods</a>,
+          <a href="QueuePriority/ClassMethods.html" title="ActiveJob::QueuePriority::ClassMethods (module)">QueuePriority::ClassMethods</a>,
+          <a href="QueueName/ClassMethods.html" title="ActiveJob::QueueName::ClassMethods (module)">QueueName::ClassMethods</a>,
+          <a href="QueueAdapter/ClassMethods.html" title="ActiveJob::QueueAdapter::ClassMethods (module)">QueueAdapter::ClassMethods</a>,
+          <a href="Core/ClassMethods.html" title="ActiveJob::Core::ClassMethods (module)">Core::ClassMethods</a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Instance Chain:</div>
+        <div class='box_22'>
+          self,
+          <a class='nodoc' href="Translation.html" title="ActiveJob::Translation (module)">Translation</a>,
+          <a class='nodoc' href="Logging.html" title="ActiveJob::Logging (module)">Logging</a>,
+          <a href="Exceptions.html" title="ActiveJob::Exceptions (module)">Exceptions</a>,
+          <a href="Callbacks.html" title="ActiveJob::Callbacks (module)">Callbacks</a>,
+          <a href="../ActiveSupport/Callbacks.html" title="ActiveSupport::Callbacks (module)">::ActiveSupport::Callbacks</a>,
+          <a href="Execution.html" title="ActiveJob::Execution (module)">Execution</a>,
+          <a href="../ActiveSupport/Rescuable.html" title="ActiveSupport::Rescuable (module)">::ActiveSupport::Rescuable</a>,
+          <a href="Enqueuing.html" title="ActiveJob::Enqueuing (module)">Enqueuing</a>,
+          <a href="QueuePriority.html" title="ActiveJob::QueuePriority (module)">QueuePriority</a>,
+          <a href="QueueName.html" title="ActiveJob::QueueName (module)">QueueName</a>,
+          <a class='nodoc' href="QueueAdapter.html" title="ActiveJob::QueueAdapter (module)">QueueAdapter</a>,
+          <a href="Core.html" title="ActiveJob::Core (module)">Core</a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td id='t2_inherits' class='box_2'>Inherits:</td>
+      <td class='box_rel'>
+        <span class='inheritName'><a href="../Object.html" title="Object (class)">Object</a></span>
+      </td>
+    </tr>
+    <tr class='single'>
+      <td id='t2_defined_in' class='box_2'>Defined in:</td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/base.rb#L58'>activejob/lib/active_job/base.rb</a>      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h2 id='h2_overview'>Overview</h2>
+<div id='overview_ds'>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Active Job objects can be configured to work with different backend queuing
+frameworks. To specify a queue adapter to use:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="../ActiveJob.html" title="ActiveJob (module)">ActiveJob</a></span><span class='op'>::</span><span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_queue_adapter'>queue_adapter</span> <span class='op'>=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_inline'>inline</span></code></pre>
+
+<p>A list of supported adapters can be found in <a href="QueueAdapters.html" title="ActiveJob::QueueAdapters (module)">QueueAdapters</a>.</p>
+
+<p>Active Job objects can be defined by creating a class that inherits from
+the <code>Base</code> class. The only necessary method to implement is the
+"perform" method.</p>
+
+<p>To define an Active Job object:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>ProcessPhotoJob</span> <span class='op'>&lt;</span> <span class='const'><a href="../ActiveJob.html" title="ActiveJob (module)">ActiveJob</a></span><span class='op'>::</span><span class='const'>Base</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_perform'>perform</span><span class='lparen'>(</span><span class='id identifier rubyid_photo'>photo</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_photo'>photo</span><span class='period'>.</span><span class='id identifier rubyid_watermark!'>watermark!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Rails</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_photo'>photo</span><span class='period'>.</span><span class='id identifier rubyid_rotate!'>rotate!</span><span class='lparen'>(</span><span class='int'>90</span><span class='period'>.</span><span class='id identifier rubyid_degrees'>degrees</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_photo'>photo</span><span class='period'>.</span><span class='id identifier rubyid_resize_to_fit!'>resize_to_fit!</span><span class='lparen'>(</span><span class='int'>300</span><span class='comma'>,</span> <span class='int'>300</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_photo'>photo</span><span class='period'>.</span><span class='id identifier rubyid_upload!'>upload!</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></code></pre>
+
+<p>Records that are passed in are serialized/deserialized using Global ID.
+More information can be found in <a href="Arguments.html" title="ActiveJob::Arguments (module)">Arguments</a>.</p>
+
+<p>To enqueue a job to be performed as soon as the queueing system is free:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>ProcessPhotoJob</span><span class='period'>.</span><span class='id identifier rubyid_perform_later'>perform_later</span><span class='lparen'>(</span><span class='id identifier rubyid_photo'>photo</span><span class='rparen'>)</span></code></pre>
+
+<p>To enqueue a job to be processed at some point in the future:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>ProcessPhotoJob</span><span class='period'>.</span><span class='id identifier rubyid_set'>set</span><span class='lparen'>(</span><span class='label'>wait_until:</span> <span class='const'><a href="../Date.html" title="Date (class)">Date</a></span><span class='period'>.</span><span class='id identifier rubyid_tomorrow'><a href="../Date.html#tomorrow-class_method" title="Date.tomorrow (method)">tomorrow</a></span><span class='period'>.</span><span class='id identifier rubyid_noon'>noon</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_perform_later'>perform_later</span><span class='lparen'>(</span><span class='id identifier rubyid_photo'>photo</span><span class='rparen'>)</span></code></pre>
+
+<p>More information can be found in <a href="Core/ClassMethods.html#set-instance_method" title="ActiveJob::Core::ClassMethods#set (method)">Core::ClassMethods#set</a></p>
+
+<p>A job can also be processed immediately without sending to the queue:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>ProcessPhotoJob</span><span class='period'>.</span><span class='id identifier rubyid_perform_now'>perform_now</span><span class='lparen'>(</span><span class='id identifier rubyid_photo'>photo</span><span class='rparen'>)</span></code></pre>
+
+<h3 id="label-7BActiveJob-3A-3AExceptions-7D"><a href="Exceptions.html" title="ActiveJob::Exceptions (module)">Exceptions</a></h3>
+<ul><li>
+<p><a href="DeserializationError.html" title="ActiveJob::DeserializationError (class)">DeserializationError</a> - Error class for deserialization errors.</p>
+</li><li>
+<p><a href="SerializationError.html" title="ActiveJob::SerializationError (class)">SerializationError</a> - Error class for serialization errors.</p>
+</li></ul>
+
+  </div>
+</div>
+</div>
+<h2 id='t2_cnst' class='h2_sum'>Constant Summary</h2>
+<div>
+  <h3 class='inherited'><a href="../ActiveSupport/Callbacks.html" title="ActiveSupport::Callbacks (module)">::ActiveSupport::Callbacks</a> - Included</h3>
+  <p  class='inherited'>
+    <a href="../ActiveSupport/Callbacks.html#CALLBACK_FILTER_TYPES-constant" title="ActiveSupport::Callbacks::CALLBACK_FILTER_TYPES (constant)">CALLBACK_FILTER_TYPES</a>
+  </p>
+</div>
+
+<h2 class='h2_sum'><a href="Core.html" title="ActiveJob::Core (module)">Core</a> - Attributes &amp; Methods</h2>
+<div>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#arguments-instance_method" title="#arguments (instance method)">#<strong>arguments</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Job arguments.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#executions-instance_method" title="#executions (instance method)">#<strong>executions</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Number of times this job has been executed (which increments on every
+retry, like after an exception).</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#job_id-instance_method" title="#job_id (instance method)">#<strong>job_id</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Job Identifier.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#locale-instance_method" title="#locale (instance method)">#<strong>locale</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><code>I18n.locale</code> to be used during the job.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature wo'>
+      <a href="#priority=-instance_method" title="#priority= (instance method)">#<strong>priority=</strong>(value)  </a>
+    </span>
+    <span class='note title writeonly'>writeonly</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Priority that the job will have (lower is more priority).</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#provider_job_id-instance_method" title="#provider_job_id (instance method)">#<strong>provider_job_id</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>ID optionally provided by adapter.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature wo'>
+      <a href="#queue_name=-instance_method" title="#queue_name= (instance method)">#<strong>queue_name=</strong>(value)  </a>
+    </span>
+    <span class='note title writeonly'>writeonly</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Queue in which the job will reside.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#scheduled_at-instance_method" title="#scheduled_at (instance method)">#<strong>scheduled_at</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Timestamp when the job should be performed.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature wo'>
+      <a href="#serialized_arguments=-instance_method" title="#serialized_arguments= (instance method)">#<strong>serialized_arguments=</strong>(value)  </a>
+    </span>
+    <span class='note title writeonly'>writeonly</span>
+  </li>
+</ul>
+</div>
+
+<h2 class='h2_sum nodoc'><a href="Logging.html" title="ActiveJob::Logging (module)">Logging</a> - Attributes &amp; Methods</h2>
+<div>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#logger-class_method" title=".logger (class method)">.<strong>logger</strong>  </a>
+      (also: #logger)
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#logger-instance_method" title="#logger (instance method)">#<strong>logger</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+</ul>
+</div>
+
+<h2 class='h2_sum nodoc'><a href="QueueAdapter.html" title="ActiveJob::QueueAdapter (module)">QueueAdapter</a> - Attributes &amp; Methods</h2>
+<div>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#_queue_adapter-class_method" title="._queue_adapter (class method)">.<strong>_queue_adapter</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+</ul>
+</div>
+
+<h2 class='h2_sum'><a href="QueueName.html" title="ActiveJob::QueueName (module)">QueueName</a> - Attributes &amp; Methods</h2>
+<div>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#queue_name-class_method" title=".queue_name (class method)">.<strong>queue_name</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#queue_name%3F-class_method" title=".queue_name? (class method)">.<strong>queue_name?</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#queue_name_delimiter-class_method" title=".queue_name_delimiter (class method)">.<strong>queue_name_delimiter</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#queue_name_delimiter%3F-class_method" title=".queue_name_delimiter? (class method)">.<strong>queue_name_delimiter?</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+</ul>
+</div>
+
+<h2 class='h2_sum'><a href="QueuePriority.html" title="ActiveJob::QueuePriority (module)">QueuePriority</a> - Attributes &amp; Methods</h2>
+<div>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#priority-class_method" title=".priority (class method)">.<strong>priority</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#priority%3F-class_method" title=".priority? (class method)">.<strong>priority?</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+</ul>
+</div>
+
+<h2 class='h2_sum' id='class_Attribute_summary'>Class Attribute Summary</h2>
+<div class='div_sum'>
+
+<h3 class='inherited'><a href="QueuePriority/ClassMethods.html" title="ActiveJob::QueuePriority::ClassMethods (module)">QueuePriority::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m rw' href="QueuePriority/ClassMethods.html#default_priority-instance_method" title="ActiveJob::QueuePriority::ClassMethods#default_priority (method)">default_priority</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="QueueName/ClassMethods.html" title="ActiveJob::QueueName::ClassMethods (module)">QueueName::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m rw' href="QueueName/ClassMethods.html#default_queue_name-instance_method" title="ActiveJob::QueueName::ClassMethods#default_queue_name (method)">default_queue_name</a>,
+        <a class='i_m rw' href="QueueName/ClassMethods.html#queue_name_prefix-instance_method" title="ActiveJob::QueueName::ClassMethods#queue_name_prefix (method)">queue_name_prefix</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="QueueAdapter/ClassMethods.html" title="ActiveJob::QueueAdapter::ClassMethods (module)">QueueAdapter::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m rw' href="QueueAdapter/ClassMethods.html#queue_adapter=-instance_method" title="ActiveJob::QueueAdapter::ClassMethods#queue_adapter= (method)">queue_adapter=</a></td>
+      <td><div class='inline'><p>Specify the backend queue provider.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m rw priv' href="QueueAdapter/ClassMethods.html#queue_adapter%3F-instance_method" title="ActiveJob::QueueAdapter::ClassMethods#queue_adapter? (method)">queue_adapter?</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+
+<h2 class='h2_sum' id='class_Method_summary'>Class Method Summary</h2>
+<div class='div_sum'>
+
+<h3 class='inherited'><a href="Exceptions/ClassMethods.html" title="ActiveJob::Exceptions::ClassMethods (module)">Exceptions::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Exceptions/ClassMethods.html#discard_on-instance_method" title="ActiveJob::Exceptions::ClassMethods#discard_on (method)">discard_on</a></td>
+      <td><div class='inline'><p>Discard the job with no attempts to retry, if the exception is raised.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Exceptions/ClassMethods.html#retry_on-instance_method" title="ActiveJob::Exceptions::ClassMethods#retry_on (method)">retry_on</a></td>
+      <td><div class='inline'><p>Catch the exception and reschedule job for re-execution after so many
+seconds, for a specific number of attempts.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="Callbacks/ClassMethods.html" title="ActiveJob::Callbacks::ClassMethods (module)">Callbacks::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Callbacks/ClassMethods.html#after_enqueue-instance_method" title="ActiveJob::Callbacks::ClassMethods#after_enqueue (method)">after_enqueue</a></td>
+      <td><div class='inline'><p>Defines a callback that will get called right after the job is enqueued.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Callbacks/ClassMethods.html#after_perform-instance_method" title="ActiveJob::Callbacks::ClassMethods#after_perform (method)">after_perform</a></td>
+      <td><div class='inline'><p>Defines a callback that will get called right after the job&#39;s perform
+method has finished.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Callbacks/ClassMethods.html#around_enqueue-instance_method" title="ActiveJob::Callbacks::ClassMethods#around_enqueue (method)">around_enqueue</a></td>
+      <td><div class='inline'><p>Defines a callback that will get called around the enqueueing of the job.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Callbacks/ClassMethods.html#around_perform-instance_method" title="ActiveJob::Callbacks::ClassMethods#around_perform (method)">around_perform</a></td>
+      <td><div class='inline'><p>Defines a callback that will get called around the job&#39;s perform
+method.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Callbacks/ClassMethods.html#before_enqueue-instance_method" title="ActiveJob::Callbacks::ClassMethods#before_enqueue (method)">before_enqueue</a></td>
+      <td><div class='inline'><p>Defines a callback that will get called right before the job is enqueued.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Callbacks/ClassMethods.html#before_perform-instance_method" title="ActiveJob::Callbacks::ClassMethods#before_perform (method)">before_perform</a></td>
+      <td><div class='inline'><p>Defines a callback that will get called right before the job&#39;s perform
+method is executed.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="../ActiveSupport/DescendantsTracker.html" title="ActiveSupport::DescendantsTracker (module)">::ActiveSupport::DescendantsTracker</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="../ActiveSupport/DescendantsTracker.html#descendants-instance_method" title="ActiveSupport::DescendantsTracker#descendants (method)">descendants</a>,
+        <a class='i_m ' href="../ActiveSupport/DescendantsTracker.html#direct_descendants-instance_method" title="ActiveSupport::DescendantsTracker#direct_descendants (method)">direct_descendants</a>,
+        <a class='i_m ' href="../ActiveSupport/DescendantsTracker.html#inherited-instance_method" title="ActiveSupport::DescendantsTracker#inherited (method)">inherited</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="../ActiveSupport/Callbacks/ClassMethods.html" title="ActiveSupport::Callbacks::ClassMethods (module)">::ActiveSupport::Callbacks::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActiveSupport/Callbacks/ClassMethods.html#define_callbacks-instance_method" title="ActiveSupport::Callbacks::ClassMethods#define_callbacks (method)">define_callbacks</a></td>
+      <td><div class='inline'><p>Define sets of events in the object life cycle that support callbacks.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActiveSupport/Callbacks/ClassMethods.html#reset_callbacks-instance_method" title="ActiveSupport::Callbacks::ClassMethods#reset_callbacks (method)">reset_callbacks</a></td>
+      <td><div class='inline'><p>Remove all set callbacks for the given event.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActiveSupport/Callbacks/ClassMethods.html#set_callback-instance_method" title="ActiveSupport::Callbacks::ClassMethods#set_callback (method)">set_callback</a></td>
+      <td><div class='inline'><p>Install a callback for the given event.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActiveSupport/Callbacks/ClassMethods.html#skip_callback-instance_method" title="ActiveSupport::Callbacks::ClassMethods#skip_callback (method)">skip_callback</a></td>
+      <td><div class='inline'><p>Skip a previously set callback.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m nodoc' href="../ActiveSupport/Callbacks/ClassMethods.html#__update_callbacks-instance_method" title="ActiveSupport::Callbacks::ClassMethods#__update_callbacks (method)">__update_callbacks</a></td>
+      <td><div class='inline'><p>This is used internally to append, prepend and skip callbacks to the
+CallbackChain.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m nodoc' href="../ActiveSupport/Callbacks/ClassMethods.html#normalize_callback_params-instance_method" title="ActiveSupport::Callbacks::ClassMethods#normalize_callback_params (method)">normalize_callback_params</a>,
+        <a class='i_m prot nodoc' href="../ActiveSupport/Callbacks/ClassMethods.html#get_callbacks-instance_method" title="ActiveSupport::Callbacks::ClassMethods#get_callbacks (method)">get_callbacks</a>,
+        <a class='i_m prot nodoc' href="../ActiveSupport/Callbacks/ClassMethods.html#set_callbacks-instance_method" title="ActiveSupport::Callbacks::ClassMethods#set_callbacks (method)">set_callbacks</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="Execution/ClassMethods.html" title="ActiveJob::Execution::ClassMethods (module)">Execution::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Execution/ClassMethods.html#perform_now-instance_method" title="ActiveJob::Execution::ClassMethods#perform_now (method)">perform_now</a></td>
+      <td><div class='inline'><p>Performs the job immediately.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m nodoc' href="Execution/ClassMethods.html#execute-instance_method" title="ActiveJob::Execution::ClassMethods#execute (method)">execute</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="../ActiveSupport/Rescuable/ClassMethods.html" title="ActiveSupport::Rescuable::ClassMethods (module)">::ActiveSupport::Rescuable::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActiveSupport/Rescuable/ClassMethods.html#rescue_from-instance_method" title="ActiveSupport::Rescuable::ClassMethods#rescue_from (method)">rescue_from</a></td>
+      <td><div class='inline'><p>Rescue exceptions raised in controller actions.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActiveSupport/Rescuable/ClassMethods.html#rescue_with_handler-instance_method" title="ActiveSupport::Rescuable::ClassMethods#rescue_with_handler (method)">rescue_with_handler</a></td>
+      <td><div class='inline'><p>Matches an exception to a handler based on the exception class.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m priv' href="../ActiveSupport/Rescuable/ClassMethods.html#constantize_rescue_handler_class-instance_method" title="ActiveSupport::Rescuable::ClassMethods#constantize_rescue_handler_class (method)">constantize_rescue_handler_class</a>,
+        <a class='i_m priv' href="../ActiveSupport/Rescuable/ClassMethods.html#find_rescue_handler-instance_method" title="ActiveSupport::Rescuable::ClassMethods#find_rescue_handler (method)">find_rescue_handler</a>,
+        <a class='i_m nodoc' href="../ActiveSupport/Rescuable/ClassMethods.html#handler_for_rescue-instance_method" title="ActiveSupport::Rescuable::ClassMethods#handler_for_rescue (method)">handler_for_rescue</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="Enqueuing/ClassMethods.html" title="ActiveJob::Enqueuing::ClassMethods (module)">Enqueuing::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Enqueuing/ClassMethods.html#perform_later-instance_method" title="ActiveJob::Enqueuing::ClassMethods#perform_later (method)">perform_later</a></td>
+      <td><div class='inline'><p>Push a job onto the queue.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m priv' href="Enqueuing/ClassMethods.html#job_or_instantiate-instance_method" title="ActiveJob::Enqueuing::ClassMethods#job_or_instantiate (method)">job_or_instantiate</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="QueuePriority/ClassMethods.html" title="ActiveJob::QueuePriority::ClassMethods (module)">QueuePriority::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="QueuePriority/ClassMethods.html#queue_with_priority-instance_method" title="ActiveJob::QueuePriority::ClassMethods#queue_with_priority (method)">queue_with_priority</a></td>
+      <td><div class='inline'><p>Specifies the priority of the queue to create the job with.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="QueueName/ClassMethods.html" title="ActiveJob::QueueName::ClassMethods (module)">QueueName::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="QueueName/ClassMethods.html#queue_as-instance_method" title="ActiveJob::QueueName::ClassMethods#queue_as (method)">queue_as</a></td>
+      <td><div class='inline'><p>Specifies the name of the queue to process the job on.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m nodoc' href="QueueName/ClassMethods.html#queue_name_from_part-instance_method" title="ActiveJob::QueueName::ClassMethods#queue_name_from_part (method)">queue_name_from_part</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="QueueAdapter/ClassMethods.html" title="ActiveJob::QueueAdapter::ClassMethods (module)">QueueAdapter::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m rw' href="QueueAdapter/ClassMethods.html#queue_adapter-instance_method" title="ActiveJob::QueueAdapter::ClassMethods#queue_adapter (method)">queue_adapter</a></td>
+      <td><div class='inline'><p>Returns the backend queue provider.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m priv' href="QueueAdapter/ClassMethods.html#interpret_adapter-instance_method" title="ActiveJob::QueueAdapter::ClassMethods#interpret_adapter (method)">interpret_adapter</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="Core/ClassMethods.html" title="ActiveJob::Core::ClassMethods (module)">Core::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Core/ClassMethods.html#deserialize-instance_method" title="ActiveJob::Core::ClassMethods#deserialize (method)">deserialize</a></td>
+      <td><div class='inline'><p>Creates a new job instance from a hash created with <code>serialize</code></p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Core/ClassMethods.html#set-instance_method" title="ActiveJob::Core::ClassMethods#set (method)">set</a></td>
+      <td><div class='inline'><p>Creates a job preconfigured with the given options.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+
+<h2 class='h2_sum' id='instance_Attribute_summary'>Instance Attribute Summary</h2>
+<div class='div_sum'>
+
+<h3 class='inherited nodoc'><a href="Logging.html" title="ActiveJob::Logging (module)">Logging</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ro priv nodoc' href="Logging.html#logger_tagged_by_active_job%3F-instance_method" title="ActiveJob::Logging#logger_tagged_by_active_job? (method)">#logger_tagged_by_active_job?</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="Callbacks.html" title="ActiveJob::Callbacks (module)">Callbacks</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ro' href="Callbacks.html#__callbacks-instance_method" title="ActiveJob::Callbacks#__callbacks (method)">#__callbacks</a>,
+        <a class='i_m ro' href="Callbacks.html#__callbacks%3F-instance_method" title="ActiveJob::Callbacks#__callbacks? (method)">#__callbacks?</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="Execution.html" title="ActiveJob::Execution (module)">Execution</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m rw' href="Execution.html#rescue_handlers-instance_method" title="ActiveJob::Execution#rescue_handlers (method)">#rescue_handlers</a>,
+        <a class='i_m rw' href="Execution.html#rescue_handlers%3F-instance_method" title="ActiveJob::Execution#rescue_handlers? (method)">#rescue_handlers?</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+
+<h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
+<div class='div_sum'>
+
+<h3 class='inherited nodoc'><a href="Logging.html" title="ActiveJob::Logging (module)">Logging</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m priv nodoc' href="Logging.html#tag_logger-instance_method" title="ActiveJob::Logging#tag_logger (method)">#tag_logger</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="Exceptions.html" title="ActiveJob::Exceptions (module)">Exceptions</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Exceptions.html#retry_job-instance_method" title="ActiveJob::Exceptions#retry_job (method)">#retry_job</a></td>
+      <td><div class='inline'><p>Reschedules the job to be re-executed.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m priv' href="Exceptions.html#determine_delay-instance_method" title="ActiveJob::Exceptions#determine_delay (method)">#determine_delay</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="../ActiveSupport/Callbacks.html" title="ActiveSupport::Callbacks (module)">::ActiveSupport::Callbacks</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActiveSupport/Callbacks.html#run_callbacks-instance_method" title="ActiveSupport::Callbacks#run_callbacks (method)">#run_callbacks</a></td>
+      <td><div class='inline'><p>Runs the callbacks for the given event.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m priv' href="../ActiveSupport/Callbacks.html#halted_callback_hook-instance_method" title="ActiveSupport::Callbacks#halted_callback_hook (method)">#halted_callback_hook</a></td>
+      <td><div class='inline'><p>A hook invoked every time a before callback is halted.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="Execution.html" title="ActiveJob::Execution (module)">Execution</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="Execution.html#perform-instance_method" title="ActiveJob::Execution#perform (method)">#perform</a>,
+      </td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Execution.html#perform_now-instance_method" title="ActiveJob::Execution#perform_now (method)">#perform_now</a></td>
+      <td><div class='inline'><p>Performs the job immediately.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="../ActiveSupport/Rescuable.html" title="ActiveSupport::Rescuable (module)">::ActiveSupport::Rescuable</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActiveSupport/Rescuable.html#rescue_with_handler-instance_method" title="ActiveSupport::Rescuable#rescue_with_handler (method)">#rescue_with_handler</a></td>
+      <td><div class='inline'><p>Delegates to the class method, but uses the instance as the subject for
+rescue_from handlers (method calls, instance_exec blocks).</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m nodoc' href="../ActiveSupport/Rescuable.html#handler_for_rescue-instance_method" title="ActiveSupport::Rescuable#handler_for_rescue (method)">#handler_for_rescue</a></td>
+      <td><div class='inline'><p>Internal handler lookup.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="Enqueuing.html" title="ActiveJob::Enqueuing (module)">Enqueuing</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Enqueuing.html#enqueue-instance_method" title="ActiveJob::Enqueuing#enqueue (method)">#enqueue</a></td>
+      <td><div class='inline'><p>Enqueues the job to be performed by the queue adapter.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="QueuePriority.html" title="ActiveJob::QueuePriority (module)">QueuePriority</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="QueuePriority.html#priority-instance_method" title="ActiveJob::QueuePriority#priority (method)">#priority</a></td>
+      <td><div class='inline'><p>Returns the priority that the job will be created with.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="QueueName.html" title="ActiveJob::QueueName (module)">QueueName</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="QueueName.html#queue_name-instance_method" title="ActiveJob::QueueName#queue_name (method)">#queue_name</a></td>
+      <td><div class='inline'><p>Returns the name of the queue the job will be run on.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="Core.html" title="ActiveJob::Core (module)">Core</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Core.html#deserialize-instance_method" title="ActiveJob::Core#deserialize (method)">#deserialize</a></td>
+      <td><div class='inline'><p>Attaches the stored job data to the current instance.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Core.html#initialize-instance_method" title="ActiveJob::Core#initialize (method)">#initialize</a></td>
+      <td><div class='inline'><p>Creates a new job instance.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Core.html#serialize-instance_method" title="ActiveJob::Core#serialize (method)">#serialize</a></td>
+      <td><div class='inline'><p>Returns a hash with the job data that can safely be passed to the queueing
+adapter.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m priv' href="Core.html#deserialize_arguments-instance_method" title="ActiveJob::Core#deserialize_arguments (method)">#deserialize_arguments</a>,
+        <a class='i_m priv' href="Core.html#deserialize_arguments_if_needed-instance_method" title="ActiveJob::Core#deserialize_arguments_if_needed (method)">#deserialize_arguments_if_needed</a>,
+        <a class='i_m priv' href="Core.html#serialize_arguments-instance_method" title="ActiveJob::Core#serialize_arguments (method)">#serialize_arguments</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+<h2 class='y_details'>Class Attribute Details</h2>
+<section class='method_details first' id="_queue_adapter-class_method">
+  <h3 class='signature rw first'>
+    .<strong>_queue_adapter</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_adapter.rb#L10-L10'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+10</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/queue_adapter.rb', line 10</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__queue_adapter'>_queue_adapter</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>instance_predicate:</span> <span class='kw'>false</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="logger-class_method">
+  <h3 class='signature rw'>
+    .<strong>logger</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+    <span class='aliases'>Also known as: <span class='names'>#logger</span></span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/logging.rb#L11-L11'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+11</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/logging.rb', line 11</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_cattr_accessor'>cattr_accessor</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_logger'>logger</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='const'><a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../ActiveSupport/TaggedLogging.html" title="ActiveSupport::TaggedLogging (module)">TaggedLogging</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../ActiveSupport/TaggedLogging.html#new-class_method" title="ActiveSupport::TaggedLogging.new (method)">new</a></span><span class='lparen'>(</span><span class='const'><a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../ActiveSupport/Logger.html" title="ActiveSupport::Logger (class)">Logger</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../ActiveSupport/Logger.html#new-class_method" title="ActiveSupport::Logger.new (method)">new</a></span><span class='lparen'>(</span><span class='const'>STDOUT</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="priority-class_method">
+  <h3 class='signature rw'>
+    .<strong>priority</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_priority.rb#L30-L30'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+30</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/queue_priority.rb', line 30</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_priority'>priority</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="priority?-class_method">
+  <h3 class='signature rw'>
+    .<strong>priority?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_priority.rb#L30-L30'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+30</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/queue_priority.rb', line 30</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_priority'>priority</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="queue_name-class_method">
+  <h3 class='signature rw'>
+    .<strong>queue_name</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_name.rb#L35-L35'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+35</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/queue_name.rb', line 35</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_queue_name'>queue_name</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="queue_name?-class_method">
+  <h3 class='signature rw'>
+    .<strong>queue_name?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_name.rb#L35-L35'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+35</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/queue_name.rb', line 35</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_queue_name'>queue_name</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="queue_name_delimiter-class_method">
+  <h3 class='signature rw'>
+    .<strong>queue_name_delimiter</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_name.rb#L36-L36'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+36</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/queue_name.rb', line 36</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_queue_name_delimiter'>queue_name_delimiter</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="queue_name_delimiter?-class_method">
+  <h3 class='signature rw'>
+    .<strong>queue_name_delimiter?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_name.rb#L36-L36'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+36</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/queue_name.rb', line 36</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_queue_name_delimiter'>queue_name_delimiter</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<h2 class='y_details'>Instance Attribute Details</h2>
+<section class='method_details first' id="arguments-instance_method">
+  <h3 class='signature rw first'>
+    #<strong>arguments</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Job arguments</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/core.rb#L9-L9'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+9</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/core.rb', line 9</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_arguments'>arguments</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="executions-instance_method">
+  <h3 class='signature rw'>
+    #<strong>executions</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Number of times this job has been executed (which increments on every
+retry, like after an exception).</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/core.rb#L28-L28'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+28</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/core.rb', line 28</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_executions'>executions</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="job_id-instance_method">
+  <h3 class='signature rw'>
+    #<strong>job_id</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Job Identifier</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/core.rb#L16-L16'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+16</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/core.rb', line 16</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_job_id'>job_id</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="locale-instance_method">
+  <h3 class='signature rw'>
+    #<strong>locale</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p><code>I18n.locale</code> to be used during the job.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/core.rb#L31-L31'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+31</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/core.rb', line 31</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale'>locale</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="logger-instance_method">
+  <h3 class='signature rw'>
+    #<strong>logger</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/logging.rb#L11-L11'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+11</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/logging.rb', line 11</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_cattr_accessor'>cattr_accessor</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_logger'>logger</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='const'><a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../ActiveSupport/TaggedLogging.html" title="ActiveSupport::TaggedLogging (module)">TaggedLogging</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../ActiveSupport/TaggedLogging.html#new-class_method" title="ActiveSupport::TaggedLogging.new (method)">new</a></span><span class='lparen'>(</span><span class='const'><a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../ActiveSupport/Logger.html" title="ActiveSupport::Logger (class)">Logger</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../ActiveSupport/Logger.html#new-class_method" title="ActiveSupport::Logger.new (method)">new</a></span><span class='lparen'>(</span><span class='const'>STDOUT</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="priority=-instance_method">
+  <h3 class='signature wo'>
+    #<strong>priority=</strong>(value)   <span class="extras">(<span class='writeonly'>writeonly</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Priority that the job will have (lower is more priority).</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/core.rb#L22-L22'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+22</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/core.rb', line 22</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_writer'>attr_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_priority'>priority</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="provider_job_id-instance_method">
+  <h3 class='signature rw'>
+    #<strong>provider_job_id</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>ID optionally provided by adapter</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/core.rb#L25-L25'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+25</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/core.rb', line 25</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_provider_job_id'>provider_job_id</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="queue_name=-instance_method">
+  <h3 class='signature wo'>
+    #<strong>queue_name=</strong>(value)   <span class="extras">(<span class='writeonly'>writeonly</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Queue in which the job will reside.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/core.rb#L19-L19'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+19</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/core.rb', line 19</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_writer'>attr_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_queue_name'>queue_name</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="scheduled_at-instance_method">
+  <h3 class='signature rw'>
+    #<strong>scheduled_at</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Timestamp when the job should be performed</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/core.rb#L13-L13'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+13</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/core.rb', line 13</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_scheduled_at'>scheduled_at</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="serialized_arguments=-instance_method">
+  <h3 class='signature wo'>
+    #<strong>serialized_arguments=</strong>(value)   <span class="extras">(<span class='writeonly'>writeonly</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/core.rb#L10-L10'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+10</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activejob/lib/active_job/core.rb', line 10</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_writer'>attr_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_serialized_arguments'>serialized_arguments</span>
+</pre>
+  </div>
+</div>
+</section>
+
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.8 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.5.0p-1)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>

@@ -1,0 +1,3286 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>Class: StringIO &mdash; stringio</title>
+
+<link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "StringIO",
+    relpath = '';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../../js/y_app.js'></script>
+
+</head>
+<body>
+<svg id='y_wait' class viewBox='0 0 90 90'></svg>
+<div id='settings' class='hidden'></div>
+<div id='y_list' class='d h'>
+  <header id='list_header'></header>
+  <nav id= 'list_nav' class='y_nav l_nav'>
+    <ul id='list_items'></ul>
+  </nav>
+</div>
+<div id='y_toc' class='f h'>
+  <header id='toc_header'></header>
+  <nav id= 'toc_nav' class='y_nav t_nav'>
+  <ol id='toc_items'></ol>
+  </nav>
+</div>
+<div id='y_main' tabindex='-1'>
+  <header id='y_header'>
+    <div id='y_menu'>
+        <a href='../../index.html'>Home</a> &raquo; 
+        <a href='../index.html'>Ruby-2.5.0</a> &raquo; 
+        <a href='index.html'>stringio</a> &raquo; 
+        <a href='_index.html#alpha_S'>Index (S)</a> &raquo; 
+        <span class='title'><a id='t2_doc_top' href='#'>StringIO&nbsp;&#x25B2;</a></span>
+      </div>
+
+    <a id='list_href' href="class_list.html"></a>
+    <div id='y_measure_em' class='y_measure'></div>
+    <div id='y_measure_vh' class='y_measure'></div>
+    <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+  </header>
+<div id='content' class='class'>
+<h1>Class: StringIO</h1>
+<div id='t2_rel_sf_div'>
+<table id='t2_rel_sf' class='y_box'>
+  <thead>
+    <tr><td id='t2_relations' colspan='2'>Relationships & Source Files</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='box_h' colspan='2'>Super Chains via Extension / Inclusion / Inheritance</td></tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Class Chain:</div>
+        <div class='box_22'>
+          self,
+          Data
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Instance Chain:</div>
+        <div class='box_22'>
+          self,
+          Enumerable,
+          <a href="IO/generic_readable.html" title="IO::generic_readable (module)">::IO::generic_readable</a>,
+          <a href="IO/generic_writable.html" title="IO::generic_writable (module)">::IO::generic_writable</a>,
+          Data
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td id='t2_inherits' class='box_2 o'>Inherits:</td>
+      <td class='box_rel'>
+        <span class='inheritName'>Data</span>
+        <ul class='fullTree'>
+          <li>Object</li>
+          <li class='next'>Data</li>
+          <li class='next'>StringIO</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class='single'>
+      <td id='t2_defined_in' class='box_2'>Defined in:</td>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1604'>ext/stringio/stringio.c</a>      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h2 id='h2_overview'>Overview</h2>
+<div id='overview_ds'>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Pseudo I/O on String object.</p>
+
+<p>Commonly used to simulate `$stdio` or `$stderr`</p>
+
+<h3 id="label-Examples">Examples</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>stringio</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_io'>io</span> <span class='op'>=</span> <span class='const'>StringIO</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="StringIO.new (method)">new</a></span>
+<span class='id identifier rubyid_io'>io</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello World</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_io'>io</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='comment'>#=&gt; &quot;Hello World\n&quot;</span></code></pre>
+
+  </div>
+</div>
+</div>        
+
+<h2 class='h2_sum' id='class_Method_summary'>Class Method Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature '>
+      <a href="#open-class_method" title="open (class method)">.<strong>open</strong>(string = &quot;&quot;[, mode]) {|strio| ... } </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Equivalent to <a href="#new-class_method" title="StringIO.new (method)">.new</a> except that when it is called with a block, it
+yields with the new instance and closes it, and returns the result which
+returned from the block.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature nodoc'>
+      <a href="#new-class_method" title=".new (class method)">.<strong>new</strong>(*args)  </a>
+    </span>
+    <span class='note title constructor'>constructor</span>
+    <span class='nodoc note title'>Internal use only</span>
+  </li>
+</ul>
+</div>
+        
+
+<h2 class='h2_sum' id='instance_Attribute_summary'>Instance Attribute Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#lineno-instance_method" title="#lineno (instance method)">#<strong>lineno</strong>  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns the current line number in <strong>strio</strong>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#lineno=-instance_method" title="#lineno= (instance method)">#<strong>lineno=</strong>(integer)  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Manually sets the current line number to the given value.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#pos-instance_method" title="#pos (instance method)">#<strong>pos</strong>  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns the current offset (in bytes) of <strong>strio</strong>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#pos=-instance_method" title="#pos= (instance method)">#<strong>pos=</strong>(integer)  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Seeks to the given position (in bytes) in <strong>strio</strong>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#string-instance_method" title="#string (instance method)">#<strong>string</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns underlying String object, the subject of <a href="IO.html" title="IO (class)">::IO</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#string=-instance_method" title="#string= (instance method)">#<strong>string=</strong>(string)  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Changes underlying String object, the subject of <a href="IO.html" title="IO (class)">::IO</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature ro'>
+      <a href="#closed%3F-instance_method" title="#closed? (instance method)">#<strong>closed?</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title readonly'>readonly</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns <code>true</code> if <strong>strio</strong> is completely closed, <code>false</code>
+otherwise.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature ro'>
+      <a href="#closed_read%3F-instance_method" title="#closed_read? (instance method)">#<strong>closed_read?</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title readonly'>readonly</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns <code>true</code> if <strong>strio</strong> is not readable, <code>false</code>
+otherwise.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature ro'>
+      <a href="#closed_write%3F-instance_method" title="#closed_write? (instance method)">#<strong>closed_write?</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title readonly'>readonly</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns <code>true</code> if <strong>strio</strong> is not writable, <code>false</code>
+otherwise.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature ro'>
+      <a href="#eof-instance_method" title="#eof (instance method)">#<strong>eof</strong>  &#x21d2; Boolean </a>
+      (also: #eof?)
+    </span>
+    <span class='note title readonly'>readonly</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns true if <strong>strio</strong> is at end of file.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature ro'>
+      <a href="#eof%3F-instance_method" title="#eof? (instance method)">#<strong>eof?</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title readonly'>readonly</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Alias for <a href="#eof-instance_method" title="StringIO#eof (method)">#eof</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature ro'>
+      <a href="#tty%3F-instance_method" title="#tty? (instance method)">#<strong>tty?</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title readonly'>readonly</span>
+  </li>
+</ul>
+</div>
+        
+
+<h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature '>
+      <a href="#binmode-instance_method" title="#binmode (instance method)">#<strong>binmode</strong>  &#x21d2; true </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#bytes-instance_method" title="#bytes (instance method)">#<strong>bytes</strong>  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>This is a deprecated alias for <a href="#each_byte-instance_method" title="StringIO#each_byte (method)">#each_byte</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#chars-instance_method" title="#chars (instance method)">#<strong>chars</strong>  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>This is a deprecated alias for <a href="#each_char-instance_method" title="StringIO#each_char (method)">#each_char</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#close-instance_method" title="#close (instance method)">#<strong>close</strong>  &#x21d2; nil </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Closes strio.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#close_read-instance_method" title="#close_read (instance method)">#<strong>close_read</strong>  &#x21d2; nil </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Closes the read end of a <code>StringIO</code>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#close_write-instance_method" title="#close_write (instance method)">#<strong>close_write</strong>  &#x21d2; nil </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Closes the write end of a <code>StringIO</code>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#codepoints-instance_method" title="#codepoints (instance method)">#<strong>codepoints</strong>  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>This is a deprecated alias for <a href="#each_codepoint-instance_method" title="StringIO#each_codepoint (method)">#each_codepoint</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#each-instance_method" title="#each (instance method)">#<strong>each</strong>(sep = $/) {|line| ... } &#x21d2; strio </a>
+      (also: #each_line)
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>strio.each_line(sep=$/) {|line| block }    -&gt; strio.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#each_byte-instance_method" title="#each_byte (instance method)">#<strong>each_byte</strong> {|byte| ... } &#x21d2; strio </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>See <code>IO#each_byte</code>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#each_char-instance_method" title="#each_char (instance method)">#<strong>each_char</strong> {|char| ... } &#x21d2; strio </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>See <code>IO#each_char</code>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#each_codepoint-instance_method" title="#each_codepoint (instance method)">#<strong>each_codepoint</strong> {|c| ... } &#x21d2; strio </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>See <code>IO#each_codepoint</code>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#each_line-instance_method" title="#each (instance method)">#<strong>each</strong>(sep = $/) {|line| ... } &#x21d2; strio </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Alias for <a href="#each-instance_method" title="StringIO#each (method)">#each</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#external_encoding-instance_method" title="#external_encoding (instance method)">#<strong>external_encoding</strong>  &#x21d2; Encoding </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns the Encoding object that represents the encoding of the file.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#fcntl-instance_method" title="#fcntl (instance method)">#<strong>fcntl</strong>  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#fileno-instance_method" title="#fileno (instance method)">#<strong>fileno</strong>  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#flush-instance_method" title="#flush (instance method)">#<strong>flush</strong>  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#fsync-instance_method" title="#fsync (instance method)">#<strong>fsync</strong>  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#getbyte-instance_method" title="#getbyte (instance method)">#<strong>getbyte</strong>  &#x21d2; Fixnum<sup>?</sup> </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>See <code>IO#getbyte</code>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#getc-instance_method" title="#getc (instance method)">#<strong>getc</strong>  &#x21d2; String<sup>?</sup> </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>See <code>IO#getc</code>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#gets-instance_method" title="#gets (instance method)">#<strong>gets</strong>(sep = $/)  &#x21d2; String<sup>?</sup> </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>See <code>IO#gets</code>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#initialize-instance_method" title="#new (instance method)">#<strong>new</strong>(string = &quot;&quot;[, mode])  </a>
+    </span>
+    <span class='note title constructor'>constructor</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Creates new <code>StringIO</code> instance from with <em>string</em> and
+<em>mode</em>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#internal_encoding-instance_method" title="#internal_encoding (instance method)">#<strong>internal_encoding</strong>  &#x21d2; Encoding </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns the Encoding of the internal string if conversion is specified.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#isatty-instance_method" title="#isatty (instance method)">#<strong>isatty</strong>  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#length-instance_method" title="#length (instance method)">#<strong>length</strong>  &#x21d2; Integer </a>
+      (also: #size)
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns the size of the buffer string.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#lines-instance_method" title="#lines (instance method)">#<strong>lines</strong>(*args)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>This is a deprecated alias for <a href="#each_line-instance_method" title="StringIO#each_line (method)">#each_line</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#pid-instance_method" title="#pid (instance method)">#<strong>pid</strong>  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#putc-instance_method" title="#putc (instance method)">#<strong>putc</strong>(obj)  &#x21d2; Object </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>See <code>IO#putc</code>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#read-instance_method" title="#read (instance method)">#<strong>read</strong>([length [, outbuf]])  &#x21d2; String, ... </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>See <code>IO#read</code>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#readlines-instance_method" title="#readlines (instance method)">#<strong>readlines</strong>(sep = $/)  &#x21d2; Array </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>See <code>IO#readlines</code>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#reopen-instance_method" title="#reopen (instance method)">#<strong>reopen</strong>(other_StrIO)  &#x21d2; strio </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Reinitializes <strong>strio</strong> with the given <em>other_StrIO</em> or
+<em>string</em> and <em>mode</em> (see <code>StringIO#new</code>).</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#rewind-instance_method" title="#rewind (instance method)">#<strong>rewind</strong>  &#x21d2; 0 </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Positions <strong>strio</strong> to the beginning of input, resetting
+<a href="#lineno-instance_method" title="StringIO#lineno (method)">#lineno</a> to zero.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#seek-instance_method" title="#seek (instance method)">#<strong>seek</strong>(amount, whence = SEEK_SET)  &#x21d2; 0 </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Seeks to a given offset <em>amount</em> in the stream according to the
+value of <em>whence</em> (see <code>IO#seek</code>).</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#set_encoding-instance_method" title="#set_encoding (instance method)">#<strong>set_encoding</strong>(ext_enc, [int_enc[, opt]])  &#x21d2; strio </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Specify the encoding of the <code>StringIO</code> as <em>ext_enc</em>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#size-instance_method" title="#size (instance method)">#<strong>size</strong>  &#x21d2; Integer </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Alias for <a href="#length-instance_method" title="StringIO#length (method)">#length</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#sync-instance_method" title="#sync (instance method)">#<strong>sync</strong>  &#x21d2; true </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns <code>true</code> always.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#sync=-instance_method" title="#sync= (instance method)">#<strong>sync=</strong>  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#tell-instance_method" title="#tell (instance method)">#<strong>tell</strong>  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#truncate-instance_method" title="#truncate (instance method)">#<strong>truncate</strong>(integer)  &#x21d2; 0 </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Truncates the buffer string to at most <em>integer</em> bytes.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#ungetbyte-instance_method" title="#ungetbyte (instance method)">#<strong>ungetbyte</strong>(fixnum)  &#x21d2; nil </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>See <code>IO#ungetbyte</code></p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#ungetc-instance_method" title="#ungetc (instance method)">#<strong>ungetc</strong>(string)  &#x21d2; nil </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Pushes back one character (passed as a parameter) onto
+<strong>strio</strong> such that a subsequent buffered read will return it.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#write-instance_method" title="#write (instance method)">#<strong>write</strong>(string)  &#x21d2; Integer </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Appends the given string to the underlying buffer string of
+<strong>strio</strong>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature nodoc'>
+      <a href="#initialize_copy-instance_method" title="#initialize_copy (instance method)">#<strong>initialize_copy</strong>(orig)  </a>
+    </span>
+    <span class='nodoc note title'>Internal use only</span>
+  </li>
+</ul>
+
+<h3 class='inherited'><a href="IO/generic_readable.html" title="IO::generic_readable (module)">::IO::generic_readable</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="IO/generic_readable.html#read_nonblock-instance_method" title="IO::generic_readable#read_nonblock (method)">#read_nonblock</a></td>
+      <td><div class='inline'><p>Similar to <a href="#read-instance_method" title="StringIO#read (method)">#read</a>, but raises <code>EOFError</code> at end of string unless the
+<tt>exception: false</tt> option is passed in.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="IO/generic_readable.html#readbyte-instance_method" title="IO::generic_readable#readbyte (method)">#readbyte</a></td>
+      <td><div class='inline'><p>See <code>IO#readbyte</code>.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="IO/generic_readable.html#readchar-instance_method" title="IO::generic_readable#readchar (method)">#readchar</a></td>
+      <td><div class='inline'><p>See <code>IO#readchar</code>.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="IO/generic_readable.html#readline-instance_method" title="IO::generic_readable#readline (method)">#readline</a></td>
+      <td><div class='inline'><p>See <code>IO#readline</code>.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="IO/generic_readable.html#readpartial-instance_method" title="IO::generic_readable#readpartial (method)">#readpartial</a></td>
+      <td><div class='inline'><p>Alias for <a href="IO/generic_readable.html#sysread-instance_method" title="IO::generic_readable#sysread (method)">IO::generic_readable#sysread</a>.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="IO/generic_readable.html#sysread-instance_method" title="IO::generic_readable#sysread (method)">#sysread</a></td>
+      <td><div class='inline'><p>Similar to <a href="#read-instance_method" title="StringIO#read (method)">#read</a>, but raises <code>EOFError</code> at end of string instead of
+returning <code>nil</code>, as well as <code>IO#sysread</code> does.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="IO/generic_writable.html" title="IO::generic_writable (module)">::IO::generic_writable</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="IO/generic_writable.html#<<-instance_method" title="IO::generic_writable#&lt;&lt; (method)">#<<</a>,
+        <a class='i_m ' href="IO/generic_writable.html#print-instance_method" title="IO::generic_writable#print (method)">#print</a>,
+        <a class='i_m ' href="IO/generic_writable.html#printf-instance_method" title="IO::generic_writable#printf (method)">#printf</a>,
+        <a class='i_m ' href="IO/generic_writable.html#puts-instance_method" title="IO::generic_writable#puts (method)">#puts</a>,
+        <a class='i_m ' href="IO/generic_writable.html#syswrite-instance_method" title="IO::generic_writable#syswrite (method)">#syswrite</a>,
+        <a class='i_m ' href="IO/generic_writable.html#write_nonblock-instance_method" title="IO::generic_writable#write_nonblock (method)">#write_nonblock</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+<h2 id='Constructor_Details' class='y_details'>Constructor Details</h2>
+
+  <section class='method_details first' id="new-class_method">
+  <h3 class='signature nodoc first'>
+    .<strong>new</strong>(*args)  
+  </h3>
+  <div class='note nodoc inline-block'>
+    <strong>This method is for internal use only.</strong>
+  </div><div></div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L253-L263'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 253</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_s_new(int argc, VALUE *argv, VALUE klass)
+{
+    if (rb_block_given_p()) {
+	VALUE cname = rb_obj_as_string(klass);
+
+	rb_warn(&quot;%&quot;PRIsVALUE&quot;::new() does not take block; use %&quot;PRIsVALUE&quot;::open() instead&quot;,
+		cname, cname);
+    }
+    return rb_class_new_instance(argc, argv, klass);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+  <section class='method_details' id="initialize-instance_method">
+  <h3 class='signature '>
+    #<strong>new</strong>(string = &quot;&quot;[, mode])    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Creates new <code>StringIO</code> instance from with <em>string</em> and
+<em>mode</em>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L173-L183'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 173</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_initialize(int argc, VALUE *argv, VALUE self)
+{
+    struct StringIO *ptr = check_strio(self);
+
+    if (!ptr) {
+	DATA_PTR(self) = ptr = strio_alloc();
+    }
+    rb_call_super(0, 0);
+    return strio_init(argc, argv, ptr, self);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<h2 class='y_details'>Class Method Details</h2>
+<section class='method_details first' id="open-class_method">
+  <h3 class='signature  first'>
+    .<strong>open</strong>(string = &quot;&quot;[, mode]) {|strio| ... }   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Equivalent to <a href="#new-class_method" title="StringIO.new (method)">.new</a> except that when it is called with a block, it
+yields with the new instance and closes it, and returns the result which
+returned from the block.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L244-L250'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+244
+245
+246
+247
+248
+249
+250</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 244</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_s_open(int argc, VALUE *argv, VALUE klass)
+{
+    VALUE obj = rb_class_new_instance(argc, argv, klass);
+    if (!rb_block_given_p()) return obj;
+    return rb_ensure(rb_yield, obj, strio_finalize, obj);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<h2 class='y_details'>Instance Attribute Details</h2>
+<section class='method_details first' id="closed?-instance_method">
+  <h3 class='signature ro first'>
+    #<strong>closed?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns <code>true</code> if <strong>strio</strong> is completely closed, <code>false</code>
+otherwise.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L415-L421'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+415
+416
+417
+418
+419
+420
+421</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 415</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_closed(VALUE self)
+{
+    StringIO(self);
+    if (!CLOSED(self)) return Qfalse;
+    return Qtrue;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="closed_read?-instance_method">
+  <h3 class='signature ro'>
+    #<strong>closed_read?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns <code>true</code> if <strong>strio</strong> is not readable, <code>false</code>
+otherwise.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L429-L435'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+429
+430
+431
+432
+433
+434
+435</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 429</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_closed_read(VALUE self)
+{
+    StringIO(self);
+    if (READABLE(self)) return Qfalse;
+    return Qtrue;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="closed_write?-instance_method">
+  <h3 class='signature ro'>
+    #<strong>closed_write?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns <code>true</code> if <strong>strio</strong> is not writable, <code>false</code>
+otherwise.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L443-L449'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+443
+444
+445
+446
+447
+448
+449</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 443</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_closed_write(VALUE self)
+{
+    StringIO(self);
+    if (WRITABLE(self)) return Qfalse;
+    return Qtrue;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="eof-instance_method">
+  <h3 class='signature ro'>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>eof</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span></span>
+      <span class='overload'>#<strong>eof?</strong>  &#x21d2; <code>Boolean</code> </span>
+    </div>
+    <span class='aliases'>Also known as: <span class='names'>#eof?</span></span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns true if <strong>strio</strong> is at end of file. The stringio must
+be opened for reading or an <code>IOError</code> will be raised.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L459-L465'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+459
+460
+461
+462
+463
+464
+465</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 459</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_eof(VALUE self)
+{
+    struct StringIO *ptr = readable(self);
+    if (ptr-&gt;pos &lt; RSTRING_LEN(ptr-&gt;string)) return Qfalse;
+    return Qtrue;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="eof?-instance_method">
+  <h3 class='signature ro'>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>eof</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span></span>
+      <span class='overload'>#<strong>eof?</strong>  &#x21d2; <code>Boolean</code> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Alias for <a href="#eof-instance_method" title="StringIO#eof (method)">#eof</a>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1629-L1629'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1629</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1629</span></pre>
+<pre class='code cpp'>
+
+rb_define_method(StringIO, &quot;eof?&quot;, strio_eof, 0);
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="lineno-instance_method">
+  <h3 class='signature rw'>
+    #<strong>lineno</strong>  &#x21d2; <code>Integer</code>  <span class="extras">(<span class='rw'>rw</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns the current line number in <strong>strio</strong>. The stringio
+must be opened for reading. <code>lineno</code> counts the number of times 
+<a href="#gets-instance_method" title="StringIO#gets (method)">#gets</a> is called, rather than the number of newlines  encountered. The two
+values will differ if <a href="#gets-instance_method" title="StringIO#gets (method)">#gets</a> is  called with a separator other than
+newline.  See also the  <code>$.</code> variable.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L497-L501'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+497
+498
+499
+500
+501</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 497</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_get_lineno(VALUE self)
+{
+    return LONG2NUM(StringIO(self)-&gt;lineno);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="lineno=-instance_method">
+  <h3 class='signature rw'>
+    #<strong>lineno=</strong>(integer)  &#x21d2; <code>Integer</code>  <span class="extras">(<span class='rw'>rw</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Manually sets the current line number to the given value. <code>$.</code>
+is updated only on the next read.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L510-L515'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+510
+511
+512
+513
+514
+515</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 510</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_set_lineno(VALUE self, VALUE lineno)
+{
+    StringIO(self)-&gt;lineno = NUM2LONG(lineno);
+    return lineno;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="pos-instance_method">
+  <h3 class='signature rw'>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>pos</strong>  &#x21d2; <code>Integer</code>  <span class="extras">(<span class='rw'>rw</span>)</span></span>
+      <span class='overload'>#<strong>tell</strong>  &#x21d2; <code>Integer</code> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns the current offset (in bytes) of <strong>strio</strong>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L561-L565'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+561
+562
+563
+564
+565</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 561</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_get_pos(VALUE self)
+{
+    return LONG2NUM(StringIO(self)-&gt;pos);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="pos=-instance_method">
+  <h3 class='signature rw'>
+    #<strong>pos=</strong>(integer)  &#x21d2; <code>Integer</code>  <span class="extras">(<span class='rw'>rw</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Seeks to the given position (in bytes) in <strong>strio</strong>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L573-L583'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 573</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_set_pos(VALUE self, VALUE pos)
+{
+    struct StringIO *ptr = StringIO(self);
+    long p = NUM2LONG(pos);
+    if (p &lt; 0) {
+	error_inval(0);
+    }
+    ptr-&gt;pos = p;
+    return pos;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="string-instance_method">
+  <h3 class='signature rw'>
+    #<strong>string</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns underlying String object, the subject of <a href="IO.html" title="IO (class)">::IO</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L332-L336'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+332
+333
+334
+335
+336</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 332</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_get_string(VALUE self)
+{
+    return StringIO(self)-&gt;string;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="string=-instance_method">
+  <h3 class='signature rw'>
+    #<strong>string=</strong>(string)  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Changes underlying String object, the subject of <a href="IO.html" title="IO (class)">::IO</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L344-L356'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 344</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_set_string(VALUE self, VALUE string)
+{
+    struct StringIO *ptr = StringIO(self);
+
+    rb_io_taint_check(self);
+    ptr-&gt;flags &amp;= ~FMODE_READWRITE;
+    StringValue(string);
+    ptr-&gt;flags = OBJ_FROZEN(string) ? FMODE_READABLE : FMODE_READWRITE;
+    ptr-&gt;pos = 0;
+    ptr-&gt;lineno = 0;
+    return ptr-&gt;string = string;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="tty?-instance_method">
+  <h3 class='signature ro'>
+    #<strong>tty?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1672-L1672'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1672</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1672</span></pre>
+<pre class='code cpp'>
+
+rb_define_method(StringIO, &quot;tty?&quot;, strio_isatty, 0);
+</pre>
+  </div>
+</div>
+</section>
+
+<h2 class='y_details'>Instance Method Details</h2>
+<section class='method_details first' id="binmode-instance_method">
+  <h3 class='signature  first'>
+    #<strong>binmode</strong>  &#x21d2; <code>true</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L517-L528'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 517</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_binmode(VALUE self)
+{
+    struct StringIO *ptr = StringIO(self);
+    rb_encoding *enc = rb_ascii8bit_encoding();
+
+    ptr-&gt;enc = enc;
+    if (WRITABLE(self)) {
+	rb_enc_associate(ptr-&gt;string, enc);
+    }
+    return self;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="bytes-instance_method">
+  <h3 class='signature '>
+    #<strong>bytes</strong>  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>This is a deprecated alias for <a href="#each_byte-instance_method" title="StringIO#each_byte (method)">#each_byte</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L681-L688'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+681
+682
+683
+684
+685
+686
+687
+688</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 681</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_bytes(VALUE self)
+{
+    rb_warn(&quot;StringIO#bytes is deprecated; use #each_byte instead&quot;);
+    if (!rb_block_given_p())
+	return rb_enumeratorize(self, ID2SYM(rb_intern(&quot;each_byte&quot;)), 0, 0);
+    return strio_each_byte(self);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="chars-instance_method">
+  <h3 class='signature '>
+    #<strong>chars</strong>  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>This is a deprecated alias for <a href="#each_char-instance_method" title="StringIO#each_char (method)">#each_char</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L903-L910'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+903
+904
+905
+906
+907
+908
+909
+910</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 903</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_chars(VALUE self)
+{
+    rb_warn(&quot;StringIO#chars is deprecated; use #each_char instead&quot;);
+    if (!rb_block_given_p())
+	return rb_enumeratorize(self, ID2SYM(rb_intern(&quot;each_char&quot;)), 0, 0);
+    return strio_each_char(self);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="close-instance_method">
+  <h3 class='signature '>
+    #<strong>close</strong>  &#x21d2; <code>nil</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Closes strio.  The <strong>strio</strong> is unavailable for any further
+data operations; an <code>IOError</code> is raised if such an attempt is made.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L365-L371'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+365
+366
+367
+368
+369
+370
+371</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 365</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_close(VALUE self)
+{
+    StringIO(self);
+    RBASIC(self)-&gt;flags &amp;= ~STRIO_READWRITE;
+    return Qnil;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="close_read-instance_method">
+  <h3 class='signature '>
+    #<strong>close_read</strong>  &#x21d2; <code>nil</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Closes the read end of a <code>StringIO</code>.  Will raise an <code>IOError</code> if
+the <strong>strio</strong> is not readable.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L380-L389'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 380</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_close_read(VALUE self)
+{
+    struct StringIO *ptr = StringIO(self);
+    if (!(ptr-&gt;flags &amp; FMODE_READABLE)) {
+	rb_raise(rb_eIOError, &quot;closing non-duplex IO for reading&quot;);
+    }
+    RBASIC(self)-&gt;flags &amp;= ~STRIO_READABLE;
+    return Qnil;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="close_write-instance_method">
+  <h3 class='signature '>
+    #<strong>close_write</strong>  &#x21d2; <code>nil</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Closes the write end of a <code>StringIO</code>.  Will raise an  <code>IOError</code>
+if the <strong>strio</strong> is not writeable.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L398-L407'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 398</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_close_write(VALUE self)
+{
+    struct StringIO *ptr = StringIO(self);
+    if (!(ptr-&gt;flags &amp; FMODE_WRITABLE)) {
+	rb_raise(rb_eIOError, &quot;closing non-duplex IO for writing&quot;);
+    }
+    RBASIC(self)-&gt;flags &amp;= ~STRIO_WRITABLE;
+    return Qnil;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="codepoints-instance_method">
+  <h3 class='signature '>
+    #<strong>codepoints</strong>  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>This is a deprecated alias for <a href="#each_codepoint-instance_method" title="StringIO#each_codepoint (method)">#each_codepoint</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L947-L954'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+947
+948
+949
+950
+951
+952
+953
+954</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 947</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_codepoints(VALUE self)
+{
+    rb_warn(&quot;StringIO#codepoints is deprecated; use #each_codepoint instead&quot;);
+    if (!rb_block_given_p())
+	return rb_enumeratorize(self, ID2SYM(rb_intern(&quot;each_codepoint&quot;)), 0, 0);
+    return strio_each_codepoint(self);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="each-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>each</strong>(sep = $/) {|line| ... } &#x21d2; <code>strio</code> </span>
+      <span class='overload'>#<strong>each</strong>(limit) {|line| ... } &#x21d2; <code>strio</code> </span>
+      <span class='overload'>#<strong>each</strong>(sep, limit) {|line| ... } &#x21d2; <code>strio</code> </span>
+      <span class='overload'>#<strong>each</strong>(...)  &#x21d2; <code>Enumerator</code> </span>
+    </div>
+    <span class='aliases'>Also known as: <span class='names'>#each_line</span></span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>strio.each_line(sep=$/) {|line| block }    -&gt; strio</p>
+
+<pre class="code ruby"><code class="ruby">strio.each_line(limit) {|line| block }     -&gt; strio
+strio.each_line(sep,limit) {|line| block } -&gt; strio
+strio.each_line(...)                       -&gt; anEnumerator</code></pre>
+
+<p>See <code>IO#each</code>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1185-L1202'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1185
+1186
+1187
+1188
+1189
+1190
+1191
+1192
+1193
+1194
+1195
+1196
+1197
+1198
+1199
+1200
+1201
+1202</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1185</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_each(int argc, VALUE *argv, VALUE self)
+{
+    VALUE line;
+    struct getline_arg arg;
+
+    StringIO(self);
+    RETURN_ENUMERATOR(self, argc, argv);
+
+    if (prepare_getline_args(&amp;arg, argc, argv)-&gt;limit == 0) {
+	rb_raise(rb_eArgError, &quot;invalid limit: 0 for each_line&quot;);
+    }
+
+    while (!NIL_P(line = strio_getline(&amp;arg, readable(self)))) {
+	rb_yield(line);
+    }
+    return self;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="each_byte-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>each_byte</strong> {|byte| ... } &#x21d2; <code>strio</code> </span>
+      <span class='overload'>#<strong>each_byte</strong>  &#x21d2; <code>Enumerator</code> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>See <code>IO#each_byte</code>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L664-L676'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 664</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_each_byte(VALUE self)
+{
+    struct StringIO *ptr = readable(self);
+
+    RETURN_ENUMERATOR(self, 0, 0);
+
+    while (ptr-&gt;pos &lt; RSTRING_LEN(ptr-&gt;string)) {
+	char c = RSTRING_PTR(ptr-&gt;string)[ptr-&gt;pos++];
+	rb_yield(CHR2FIX(c));
+    }
+    return self;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="each_char-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>each_char</strong> {|char| ... } &#x21d2; <code>strio</code> </span>
+      <span class='overload'>#<strong>each_char</strong>  &#x21d2; <code>Enumerator</code> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>See <code>IO#each_char</code>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L887-L898'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 887</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_each_char(VALUE self)
+{
+    VALUE c;
+
+    RETURN_ENUMERATOR(self, 0, 0);
+
+    while (!NIL_P(c = strio_getc(self))) {
+	rb_yield(c);
+    }
+    return self;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="each_codepoint-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>each_codepoint</strong> {|c| ... } &#x21d2; <code>strio</code> </span>
+      <span class='overload'>#<strong>each_codepoint</strong>  &#x21d2; <code>Enumerator</code> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>See <code>IO#each_codepoint</code>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L919-L942'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+919
+920
+921
+922
+923
+924
+925
+926
+927
+928
+929
+930
+931
+932
+933
+934
+935
+936
+937
+938
+939
+940
+941
+942</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 919</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_each_codepoint(VALUE self)
+{
+    struct StringIO *ptr;
+    rb_encoding *enc;
+    unsigned int c;
+    int n;
+
+    RETURN_ENUMERATOR(self, 0, 0);
+
+    ptr = readable(self);
+    enc = get_enc(ptr);
+    for (;;) {
+	if (ptr-&gt;pos &gt;= RSTRING_LEN(ptr-&gt;string)) {
+	    return self;
+	}
+
+	c = rb_enc_codepoint_len(RSTRING_PTR(ptr-&gt;string)+ptr-&gt;pos,
+				 RSTRING_END(ptr-&gt;string), &amp;n, enc);
+	rb_yield(UINT2NUM(c));
+	ptr-&gt;pos += n;
+    }
+    return self;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="each_line-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>each</strong>(sep = $/) {|line| ... } &#x21d2; <code>strio</code> </span>
+      <span class='overload'>#<strong>each</strong>(limit) {|line| ... } &#x21d2; <code>strio</code> </span>
+      <span class='overload'>#<strong>each</strong>(sep, limit) {|line| ... } &#x21d2; <code>strio</code> </span>
+      <span class='overload'>#<strong>each</strong>(...)  &#x21d2; <code>Enumerator</code> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Alias for <a href="#each-instance_method" title="StringIO#each (method)">#each</a>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1646-L1646'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1646</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1646</span></pre>
+<pre class='code cpp'>
+
+rb_define_method(StringIO, &quot;each_line&quot;, strio_each, -1);
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="external_encoding-instance_method">
+  <h3 class='signature '>
+    #<strong>external_encoding</strong>  &#x21d2; <code>Encoding</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns the Encoding object that represents the encoding of the file. If
+strio is write mode and no encoding is specified, returns <code>nil</code>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1534-L1539'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1534
+1535
+1536
+1537
+1538
+1539</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1534</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_external_encoding(VALUE self)
+{
+    struct StringIO *ptr = StringIO(self);
+    return rb_enc_from_encoding(get_enc(ptr));
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="fcntl-instance_method">
+  <h3 class='signature '>
+    #<strong>fcntl</strong>  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1631-L1631'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1631</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1631</span></pre>
+<pre class='code cpp'>
+
+rb_define_method(StringIO, &quot;fcntl&quot;, strio_fcntl, -1);
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="fileno-instance_method">
+  <h3 class='signature '>
+    #<strong>fileno</strong>  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1678-L1678'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1678</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1678</span></pre>
+<pre class='code cpp'>
+
+rb_define_method(StringIO, &quot;fileno&quot;, strio_fileno, 0);
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="flush-instance_method">
+  <h3 class='signature '>
+    #<strong>flush</strong>  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1633-L1633'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1633</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1633</span></pre>
+<pre class='code cpp'>
+
+rb_define_method(StringIO, &quot;flush&quot;, strio_flush, 0);
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="fsync-instance_method">
+  <h3 class='signature '>
+    #<strong>fsync</strong>  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1635-L1635'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1635</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1635</span></pre>
+<pre class='code cpp'>
+
+rb_define_method(StringIO, &quot;fsync&quot;, strio_fsync, 0);
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="getbyte-instance_method">
+  <h3 class='signature '>
+    #<strong>getbyte</strong>  &#x21d2; <code>Fixnum</code><sup>?</sup>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>See <code>IO#getbyte</code>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L721-L731'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 721</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_getbyte(VALUE self)
+{
+    struct StringIO *ptr = readable(self);
+    int c;
+    if (ptr-&gt;pos &gt;= RSTRING_LEN(ptr-&gt;string)) {
+	return Qnil;
+    }
+    c = RSTRING_PTR(ptr-&gt;string)[ptr-&gt;pos++];
+    return CHR2FIX(c);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="getc-instance_method">
+  <h3 class='signature '>
+    #<strong>getc</strong>  &#x21d2; <code>String</code><sup>?</sup>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>See <code>IO#getc</code>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L696-L713'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 696</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_getc(VALUE self)
+{
+    struct StringIO *ptr = readable(self);
+    rb_encoding *enc = get_enc(ptr);
+    VALUE str = ptr-&gt;string;
+    long pos = ptr-&gt;pos;
+    int len;
+    char *p;
+
+    if (pos &gt;= RSTRING_LEN(str)) {
+	return Qnil;
+    }
+    p = RSTRING_PTR(str)+pos;
+    len = rb_enc_mbclen(p, RSTRING_END(str), enc);
+    ptr-&gt;pos += len;
+    return enc_subseq(str, pos, len, enc);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="gets-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>gets</strong>(sep = $/)  &#x21d2; <code>String</code><sup>?</sup> </span>
+      <span class='overload'>#<strong>gets</strong>(limit)  &#x21d2; <code>String</code><sup>?</sup> </span>
+      <span class='overload'>#<strong>gets</strong>(sep, limit)  &#x21d2; <code>String</code><sup>?</sup> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>See <code>IO#gets</code>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1140-L1153'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1140
+1141
+1142
+1143
+1144
+1145
+1146
+1147
+1148
+1149
+1150
+1151
+1152
+1153</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1140</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_gets(int argc, VALUE *argv, VALUE self)
+{
+    struct getline_arg arg;
+    VALUE str;
+
+    if (prepare_getline_args(&amp;arg, argc, argv)-&gt;limit == 0) {
+	return rb_str_new(0, 0);
+    }
+
+    str = strio_getline(&amp;arg, readable(self));
+    rb_lastline_set(str);
+    return str;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="initialize_copy-instance_method">
+  <h3 class='signature nodoc'>
+    #<strong>initialize_copy</strong>(orig)  
+  </h3>
+  <div class='note nodoc inline-block'>
+    <strong>This method is for internal use only.</strong>
+  </div><div></div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L468-L485'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 468</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_copy(VALUE copy, VALUE orig)
+{
+    struct StringIO *ptr;
+
+    orig = rb_convert_type(orig, T_DATA, &quot;StringIO&quot;, &quot;to_strio&quot;);
+    if (copy == orig) return copy;
+    ptr = StringIO(orig);
+    if (check_strio(copy)) {
+	strio_free(DATA_PTR(copy));
+    }
+    DATA_PTR(copy) = ptr;
+    OBJ_INFECT(copy, orig);
+    RBASIC(copy)-&gt;flags &amp;= ~STRIO_READWRITE;
+    RBASIC(copy)-&gt;flags |= RBASIC(orig)-&gt;flags &amp; STRIO_READWRITE;
+    ++ptr-&gt;count;
+    return copy;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="internal_encoding-instance_method">
+  <h3 class='signature '>
+    #<strong>internal_encoding</strong>  &#x21d2; <code>Encoding</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns the Encoding of the internal string if conversion is specified. 
+Otherwise returns nil.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1549-L1553'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1549
+1550
+1551
+1552
+1553</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1549</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_internal_encoding(VALUE self)
+{
+     return Qnil;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="isatty-instance_method">
+  <h3 class='signature '>
+    #<strong>isatty</strong>  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1671-L1671'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1671</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1671</span></pre>
+<pre class='code cpp'>
+
+rb_define_method(StringIO, &quot;isatty&quot;, strio_isatty, 0);
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="length-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>length</strong>  &#x21d2; <code>Integer</code> </span>
+      <span class='overload'>#<strong>size</strong>  &#x21d2; <code>Integer</code> </span>
+    </div>
+    <span class='aliases'>Also known as: <span class='names'>#size</span></span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns the size of the buffer string.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1493-L1501'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1493
+1494
+1495
+1496
+1497
+1498
+1499
+1500
+1501</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1493</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_size(VALUE self)
+{
+    VALUE string = StringIO(self)-&gt;string;
+    if (NIL_P(string)) {
+	rb_raise(rb_eIOError, &quot;not opened&quot;);
+    }
+    return ULONG2NUM(RSTRING_LEN(string));
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="lines-instance_method">
+  <h3 class='signature '>
+    #<strong>lines</strong>(*args)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>This is a deprecated alias for <a href="#each_line-instance_method" title="StringIO#each_line (method)">#each_line</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1207-L1214'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1207
+1208
+1209
+1210
+1211
+1212
+1213
+1214</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1207</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_lines(int argc, VALUE *argv, VALUE self)
+{
+    rb_warn(&quot;StringIO#lines is deprecated; use #each_line instead&quot;);
+    if (!rb_block_given_p())
+	return rb_enumeratorize(self, ID2SYM(rb_intern(&quot;each_line&quot;)), argc, argv);
+    return strio_each(argc, argv, self);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="pid-instance_method">
+  <h3 class='signature '>
+    #<strong>pid</strong>  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1675-L1675'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1675</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1675</span></pre>
+<pre class='code cpp'>
+
+rb_define_method(StringIO, &quot;pid&quot;, strio_pid, 0);
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="putc-instance_method">
+  <h3 class='signature '>
+    #<strong>putc</strong>(obj)  &#x21d2; <code>Object</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>See <code>IO#putc</code>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1325-L1341'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1325
+1326
+1327
+1328
+1329
+1330
+1331
+1332
+1333
+1334
+1335
+1336
+1337
+1338
+1339
+1340
+1341</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1325</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_putc(VALUE self, VALUE ch)
+{
+    struct StringIO *ptr = writable(self);
+    VALUE str;
+
+    check_modifiable(ptr);
+    if (RB_TYPE_P(ch, T_STRING)) {
+	str = rb_str_substr(ch, 0, 1);
+    }
+    else {
+	char c = NUM2CHR(ch);
+	str = rb_str_new(&amp;c, 1);
+    }
+    strio_write(self, str);
+    return ch;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="read-instance_method">
+  <h3 class='signature '>
+    #<strong>read</strong>([length [, outbuf]])  &#x21d2; <code>String</code>, ...   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>See <code>IO#read</code>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1357-L1419'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1357
+1358
+1359
+1360
+1361
+1362
+1363
+1364
+1365
+1366
+1367
+1368
+1369
+1370
+1371
+1372
+1373
+1374
+1375
+1376
+1377
+1378
+1379
+1380
+1381
+1382
+1383
+1384
+1385
+1386
+1387
+1388
+1389
+1390
+1391
+1392
+1393
+1394
+1395
+1396
+1397
+1398
+1399
+1400
+1401
+1402
+1403
+1404
+1405
+1406
+1407
+1408
+1409
+1410
+1411
+1412
+1413
+1414
+1415
+1416
+1417
+1418
+1419</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1357</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_read(int argc, VALUE *argv, VALUE self)
+{
+    struct StringIO *ptr = readable(self);
+    VALUE str = Qnil;
+    long len;
+    int binary = 0;
+
+    rb_check_arity(argc, 0, 2);
+    switch (argc) {
+      case 2:
+	str = argv[1];
+	if (!NIL_P(str)) {
+	    StringValue(str);
+	    rb_str_modify(str);
+	}
+      case 1:
+	if (!NIL_P(argv[0])) {
+	    len = NUM2LONG(argv[0]);
+	    if (len &lt; 0) {
+		rb_raise(rb_eArgError, &quot;negative length %ld given&quot;, len);
+	    }
+	    if (len &gt; 0 &amp;&amp; ptr-&gt;pos &gt;= RSTRING_LEN(ptr-&gt;string)) {
+		if (!NIL_P(str)) rb_str_resize(str, 0);
+		return Qnil;
+	    }
+	    binary = 1;
+	    break;
+	}
+	/* fall through */
+      case 0:
+	len = RSTRING_LEN(ptr-&gt;string);
+	if (len &lt;= ptr-&gt;pos) {
+	    if (NIL_P(str)) {
+		str = rb_str_new(0, 0);
+	    }
+	    else {
+		rb_str_resize(str, 0);
+	    }
+	    return str;
+	}
+	else {
+	    len -= ptr-&gt;pos;
+	}
+	break;
+    }
+    if (NIL_P(str)) {
+	str = strio_substr(ptr, ptr-&gt;pos, len);
+	if (binary) rb_enc_associate(str, rb_ascii8bit_encoding());
+    }
+    else {
+	long rest = RSTRING_LEN(ptr-&gt;string) - ptr-&gt;pos;
+	if (len &gt; rest) len = rest;
+	rb_str_resize(str, len);
+	MEMCPY(RSTRING_PTR(str), RSTRING_PTR(ptr-&gt;string) + ptr-&gt;pos, char, len);
+	if (binary)
+	    rb_enc_associate(str, rb_ascii8bit_encoding());
+	else
+	    rb_enc_copy(str, ptr-&gt;string);
+    }
+    ptr-&gt;pos += RSTRING_LEN(str);
+    return str;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="readlines-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>readlines</strong>(sep = $/)  &#x21d2; <code>Array</code> </span>
+      <span class='overload'>#<strong>readlines</strong>(limit)  &#x21d2; <code>Array</code> </span>
+      <span class='overload'>#<strong>readlines</strong>(sep, limit)  &#x21d2; <code>Array</code> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>See <code>IO#readlines</code>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1224-L1240'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1224
+1225
+1226
+1227
+1228
+1229
+1230
+1231
+1232
+1233
+1234
+1235
+1236
+1237
+1238
+1239
+1240</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1224</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_readlines(int argc, VALUE *argv, VALUE self)
+{
+    VALUE ary, line;
+    struct getline_arg arg;
+
+    StringIO(self);
+    ary = rb_ary_new();
+    if (prepare_getline_args(&amp;arg, argc, argv)-&gt;limit == 0) {
+	rb_raise(rb_eArgError, &quot;invalid limit: 0 for readlines&quot;);
+    }
+
+    while (!NIL_P(line = strio_getline(&amp;arg, readable(self)))) {
+	rb_ary_push(ary, line);
+    }
+    return ary;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="reopen-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>reopen</strong>(other_StrIO)  &#x21d2; <code>strio</code> </span>
+      <span class='overload'>#<strong>reopen</strong>(string, mode)  &#x21d2; <code>strio</code> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Reinitializes <strong>strio</strong> with the given <em>other_StrIO</em> or
+<em>string</em> and <em>mode</em> (see <code>StringIO#new</code>).</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L544-L552'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+544
+545
+546
+547
+548
+549
+550
+551
+552</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 544</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_reopen(int argc, VALUE *argv, VALUE self)
+{
+    rb_io_taint_check(self);
+    if (argc == 1 &amp;&amp; !RB_TYPE_P(*argv, T_STRING)) {
+	return strio_copy(self, *argv);
+    }
+    return strio_init(argc, argv, StringIO(self), self);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="rewind-instance_method">
+  <h3 class='signature '>
+    #<strong>rewind</strong>  &#x21d2; <code>0</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Positions <strong>strio</strong> to the beginning of input, resetting
+<a href="#lineno-instance_method" title="StringIO#lineno (method)">#lineno</a> to zero.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L592-L599'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+592
+593
+594
+595
+596
+597
+598
+599</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 592</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_rewind(VALUE self)
+{
+    struct StringIO *ptr = StringIO(self);
+    ptr-&gt;pos = 0;
+    ptr-&gt;lineno = 0;
+    return INT2FIX(0);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="seek-instance_method">
+  <h3 class='signature '>
+    #<strong>seek</strong>(amount, whence = SEEK_SET)  &#x21d2; <code>0</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Seeks to a given offset <em>amount</em> in the stream according to the
+value of <em>whence</em> (see <code>IO#seek</code>).</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L608-L638'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 608</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_seek(int argc, VALUE *argv, VALUE self)
+{
+    VALUE whence;
+    struct StringIO *ptr = StringIO(self);
+    long amount, offset;
+
+    rb_scan_args(argc, argv, &quot;11&quot;, NULL, &amp;whence);
+    amount = NUM2LONG(argv[0]);
+    if (CLOSED(self)) {
+	rb_raise(rb_eIOError, &quot;closed stream&quot;);
+    }
+    switch (NIL_P(whence) ? 0 : NUM2LONG(whence)) {
+      case 0:
+	offset = 0;
+	break;
+      case 1:
+	offset = ptr-&gt;pos;
+	break;
+      case 2:
+	offset = RSTRING_LEN(ptr-&gt;string);
+	break;
+      default:
+	error_inval(&quot;invalid whence&quot;);
+    }
+    if (amount &gt; LONG_MAX - offset || amount + offset &lt; 0) {
+	error_inval(0);
+    }
+    ptr-&gt;pos = amount + offset;
+    return INT2FIX(0);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="set_encoding-instance_method">
+  <h3 class='signature '>
+    #<strong>set_encoding</strong>(ext_enc, [int_enc[, opt]])  &#x21d2; <code>strio</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Specify the encoding of the <code>StringIO</code> as <em>ext_enc</em>. Use
+the default external encoding if <em>ext_enc</em> is nil. 2nd argument
+<em>int_enc</em> and optional hash <em>opt</em> argument are ignored; they
+are for API compatibility to <a href="IO.html" title="IO (class)">::IO</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1565-L1586'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1565
+1566
+1567
+1568
+1569
+1570
+1571
+1572
+1573
+1574
+1575
+1576
+1577
+1578
+1579
+1580
+1581
+1582
+1583
+1584
+1585
+1586</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1565</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_set_encoding(int argc, VALUE *argv, VALUE self)
+{
+    rb_encoding* enc;
+    struct StringIO *ptr = StringIO(self);
+    VALUE ext_enc, int_enc, opt;
+
+    argc = rb_scan_args(argc, argv, &quot;11:&quot;, &amp;ext_enc, &amp;int_enc, &amp;opt);
+
+    if (NIL_P(ext_enc)) {
+	enc = rb_default_external_encoding();
+    }
+    else {
+	enc = rb_to_encoding(ext_enc);
+    }
+    ptr-&gt;enc = enc;
+    if (WRITABLE(self)) {
+	rb_enc_associate(ptr-&gt;string, enc);
+    }
+
+    return self;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="size-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>length</strong>  &#x21d2; <code>Integer</code> </span>
+      <span class='overload'>#<strong>size</strong>  &#x21d2; <code>Integer</code> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Alias for <a href="#length-instance_method" title="StringIO#length (method)">#length</a>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="sync-instance_method">
+  <h3 class='signature '>
+    #<strong>sync</strong>  &#x21d2; <code>true</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns <code>true</code> always.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L646-L651'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+646
+647
+648
+649
+650
+651</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 646</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_get_sync(VALUE self)
+{
+    StringIO(self);
+    return Qtrue;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="sync=-instance_method">
+  <h3 class='signature '>
+    #<strong>sync=</strong>  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1642-L1642'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1642</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1642</span></pre>
+<pre class='code cpp'>
+
+rb_define_method(StringIO, &quot;sync=&quot;, strio_set_sync, 1);
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="tell-instance_method">
+  <h3 class='signature '>
+    #<strong>tell</strong>  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1643-L1643'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1643</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1643</span></pre>
+<pre class='code cpp'>
+
+rb_define_method(StringIO, &quot;tell&quot;, strio_tell, 0);
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="truncate-instance_method">
+  <h3 class='signature '>
+    #<strong>truncate</strong>(integer)  &#x21d2; <code>0</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Truncates the buffer string to at most <em>integer</em> bytes. The
+<strong>strio</strong> must be opened for writing.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1510-L1524'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1510
+1511
+1512
+1513
+1514
+1515
+1516
+1517
+1518
+1519
+1520
+1521
+1522
+1523
+1524</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1510</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_truncate(VALUE self, VALUE len)
+{
+    VALUE string = writable(self)-&gt;string;
+    long l = NUM2LONG(len);
+    long plen = RSTRING_LEN(string);
+    if (l &lt; 0) {
+	error_inval(&quot;negative length&quot;);
+    }
+    rb_str_resize(string, l);
+    if (plen &lt; l) {
+	MEMZERO(RSTRING_PTR(string) + plen, char, l - plen);
+    }
+    return len;
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="ungetbyte-instance_method">
+  <h3 class='signature '>
+    #<strong>ungetbyte</strong>(fixnum)  &#x21d2; <code>nil</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>See <code>IO#ungetbyte</code></p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L797-L819'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 797</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_ungetbyte(VALUE self, VALUE c)
+{
+    struct StringIO *ptr = readable(self);
+    char buf[1], *cp = buf;
+    long cl = 1;
+
+    check_modifiable(ptr);
+    if (NIL_P(c)) return Qnil;
+    if (FIXNUM_P(c)) {
+	buf[0] = (char)FIX2INT(c);
+	return strio_unget_bytes(ptr, buf, 1);
+    }
+    else {
+	SafeStringValue(c);
+	cp = RSTRING_PTR(c);
+	cl = RSTRING_LEN(c);
+	if (cl == 0) return Qnil;
+	strio_unget_bytes(ptr, cp, cl);
+	RB_GC_GUARD(c);
+	return Qnil;
+    }
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="ungetc-instance_method">
+  <h3 class='signature '>
+    #<strong>ungetc</strong>(string)  &#x21d2; <code>nil</code>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Pushes back one character (passed as a parameter) onto
+<strong>strio</strong> such that a subsequent buffered read will return it.
+There is no limitation for multiple pushbacks including pushing back behind
+the beginning of the buffer string.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L762-L789'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 762</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_ungetc(VALUE self, VALUE c)
+{
+    struct StringIO *ptr = readable(self);
+    rb_encoding *enc, *enc2;
+
+    check_modifiable(ptr);
+    if (NIL_P(c)) return Qnil;
+    if (FIXNUM_P(c)) {
+	int cc = FIX2INT(c);
+	char buf[16];
+
+	enc = rb_enc_get(ptr-&gt;string);
+	rb_enc_mbcput(cc, buf, enc);
+	return strio_unget_bytes(ptr, buf, rb_enc_codelen(cc, enc));
+    }
+    else {
+	SafeStringValue(c);
+	enc = rb_enc_get(ptr-&gt;string);
+	enc2 = rb_enc_get(c);
+	if (enc != enc2 &amp;&amp; enc != rb_ascii8bit_encoding()) {
+	    c = rb_str_conv_enc(c, enc2, enc);
+	}
+	strio_unget_bytes(ptr, RSTRING_PTR(c), RSTRING_LEN(c));
+	RB_GC_GUARD(c);
+	return Qnil;
+    }
+}
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="write-instance_method">
+  <h3 class='signature '>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>write</strong>(string)  &#x21d2; <code>Integer</code> </span>
+      <span class='overload'>#<strong>syswrite</strong>(string)  &#x21d2; <code>Integer</code> </span>
+    </div>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Appends the given string to the underlying buffer string of
+<strong>strio</strong>. The stream must be opened for writing.  If the
+argument is not a string, it will be converted to a string using <code>to_s</code>.
+Returns the number of bytes written.  See <code>IO#write</code>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/stringio/stringio.c#L1252-L1292'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1252
+1253
+1254
+1255
+1256
+1257
+1258
+1259
+1260
+1261
+1262
+1263
+1264
+1265
+1266
+1267
+1268
+1269
+1270
+1271
+1272
+1273
+1274
+1275
+1276
+1277
+1278
+1279
+1280
+1281
+1282
+1283
+1284
+1285
+1286
+1287
+1288
+1289
+1290
+1291
+1292</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'ext/stringio/stringio.c', line 1252</span></pre>
+<pre class='code cpp'>
+
+static VALUE
+strio_write(VALUE self, VALUE str)
+{
+    struct StringIO *ptr = writable(self);
+    long len, olen;
+    rb_encoding *enc, *enc2;
+    rb_encoding *const ascii8bit = rb_ascii8bit_encoding();
+
+    if (!RB_TYPE_P(str, T_STRING))
+	str = rb_obj_as_string(str);
+    enc = get_enc(ptr);
+    enc2 = rb_enc_get(str);
+    if (enc != enc2 &amp;&amp; enc != ascii8bit) {
+	str = rb_str_conv_enc(str, enc2, enc);
+    }
+    len = RSTRING_LEN(str);
+    if (len == 0) return INT2FIX(0);
+    check_modifiable(ptr);
+    olen = RSTRING_LEN(ptr-&gt;string);
+    if (ptr-&gt;flags &amp; FMODE_APPEND) {
+	ptr-&gt;pos = olen;
+    }
+    if (ptr-&gt;pos == olen) {
+	if (enc == ascii8bit || enc2 == ascii8bit) {
+	    rb_enc_str_buf_cat(ptr-&gt;string, RSTRING_PTR(str), len, enc);
+	    OBJ_INFECT(ptr-&gt;string, str);
+	}
+	else {
+	    rb_str_buf_append(ptr-&gt;string, str);
+	}
+    }
+    else {
+	strio_extend(ptr, ptr-&gt;pos, len);
+	memmove(RSTRING_PTR(ptr-&gt;string)+ptr-&gt;pos, RSTRING_PTR(str), len);
+	OBJ_INFECT(ptr-&gt;string, str);
+    }
+    OBJ_INFECT(ptr-&gt;string, self);
+    RB_GC_GUARD(str);
+    ptr-&gt;pos += len;
+    return LONG2NUM(len);
+}
+</pre>
+  </div>
+</div>
+</section>
+
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.8 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.5.0p-1)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>

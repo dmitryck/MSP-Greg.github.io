@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>File: Active Model Changelog &mdash; Rails-5.0.2</title>
+
+<link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "active_model_changelog",
+    relpath = '';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../js/y_app.js'></script>
+
+</head>
+<body>
+<svg id='y_wait' class viewBox='0 0 90 90'></svg>
+<div id='settings' class='hidden'></div>
+<div id='y_list' class='d h'>
+  <header id='list_header'></header>
+  <nav id= 'list_nav' class='y_nav l_nav'>
+    <ul id='list_items'></ul>
+  </nav>
+</div>
+<div id='y_toc' class='f h'>
+  <header id='toc_header'></header>
+  <nav id= 'toc_nav' class='y_nav t_nav'>
+  <ol id='toc_items'></ol>
+  </nav>
+</div>
+<div id='y_main' tabindex='-1'>
+  <header id='y_header'>
+    <div id='y_menu'>
+        <a href='../index.html'>Home</a> &raquo; 
+        <a href='index.html'>Rails-5.0.2</a> &raquo; 
+        <a href='_index.html'>Index</a> &raquo; 
+        <span class='title'><a id='t2_doc_top' href='#'>File: Active Model Changelog&nbsp;&#x25B2;</a></span>
+            </div>
+
+    <a id='list_href' href="class_list.html"></a>
+    <div id='y_measure_em' class='y_measure'></div>
+    <div id='y_measure_vh' class='y_measure'></div>
+    <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+  </header>
+<div id='content' class='file'>
+<h2>Rails 5.0.2 (March 01, 2017)</h2>
+
+<ul>
+<li>  No changes.</li>
+</ul>
+
+<h2>Rails 5.0.1 (December 21, 2016)</h2>
+
+<ul>
+<li>  No changes.</li>
+</ul>
+
+<h2>Rails 5.0.1.rc2 (December 10, 2016)</h2>
+
+<ul>
+<li>  No changes.</li>
+</ul>
+
+<h2>Rails 5.0.1.rc1 (December 01, 2016)</h2>
+
+<ul>
+<li><p>Fix <code>Type::Date#serialize</code> to cast a value to a date object properly.
+This casting fixes queries for finding records by date column.</p>
+
+<p>Fixes #25354.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+</ul>
+
+<h2>Rails 5.0.0 (June 30, 2016)</h2>
+
+<ul>
+<li><p><code>Dirty</code>&#39;s <code>*_changed?</code> methods now return an actual singleton, never <code>nil</code>, as in 4.2.
+Fixes #24220.</p>
+
+<p><em>Sen-Zhang</em></p></li>
+<li><p>Ensure that instances of <a href="ActiveModel/Errors.html" title="ActiveModel::Errors (class)">::ActiveModel::Errors</a> can be marshalled.
+Fixes #25165.</p>
+
+<p><em>Sean Griffin</em></p></li>
+<li><p>Allow passing record being validated to the message proc to generate
+customized error messages for that object using I18n helper.</p>
+
+<p><em>Prathamesh Sonpatki</em></p></li>
+<li><p>Validate multiple contexts on <code>valid?</code> and <code>invalid?</code> at once.</p>
+
+<p>Example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Person</span>
+  <span class='id identifier rubyid_include'>include</span> <span class='const'><a href="ActiveModel.html" title="ActiveModel (module)">ActiveModel</a></span><span class='op'>::</span><span class='const'><a href="ActiveModel/Validations.html" title="ActiveModel::Validations (module)">Validations</a></span>
+
+  <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_title'>title</span>
+  <span class='id identifier rubyid_validates_presence_of'>validates_presence_of</span> <span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='label'>on:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_create'>create</span>
+  <span class='id identifier rubyid_validates_presence_of'>validates_presence_of</span> <span class='symbeg'>:</span><span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='label'>on:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_update'>update</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_create'>create</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_update'>update</span><span class='rbracket'>]</span><span class='rparen'>)</span>    <span class='comment'># =&gt; false
+</span><span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_messages'>messages</span>               <span class='comment'># =&gt; {:name=&gt;[&quot;can&#39;t be blank&quot;], :title=&gt;[&quot;can&#39;t be blank&quot;]}</span></code></pre>
+
+<p><em>Dmitry Polushkin</em></p></li>
+<li><p>Add case_sensitive option for confirmation validator in models.</p>
+
+<p><em>Akshat Sharma</em></p></li>
+<li><p>Ensure <code>method_missing</code> is called for methods passed to
+<a href="ActiveModel/Serialization.html#serializable_hash-instance_method" title="ActiveModel::Serialization#serializable_hash (method)">ActiveModel::Serialization#serializable_hash</a> that don&#39;t exist.</p>
+
+<p><em>Jay Elaraj</em></p></li>
+<li><p>Remove <code>ActiveModel::Serializers::Xml</code> from core.</p>
+
+<p><em>Zachary Scott</em></p></li>
+<li><p>Add <code>ActiveModel::Dirty#[attr_name]_previously_changed?</code> and
+<code>ActiveModel::Dirty#[attr_name]_previous_change</code> to improve access
+to recorded changes after the model has been saved.</p>
+
+<p>It makes the dirty-attributes query methods consistent before and after
+saving.</p>
+
+<p><em>Fernando Tapia Rico</em></p></li>
+<li><p>Deprecate the <code>:tokenizer</code> option for <code>validates_length_of</code>, in favor of
+plain Ruby.</p>
+
+<p><em>Sean Griffin</em></p></li>
+<li><p>Deprecate <a href="ActiveModel/Errors.html#add_on_empty-instance_method" title="ActiveModel::Errors#add_on_empty (method)">ActiveModel::Errors#add_on_empty</a> and <a href="ActiveModel/Errors.html#add_on_blank-instance_method" title="ActiveModel::Errors#add_on_blank (method)">ActiveModel::Errors#add_on_blank</a>
+with no replacement.</p>
+
+<p><em>Wojciech Wnętrzak</em></p></li>
+<li><p>Deprecate <a href="ActiveModel/Errors.html#get-instance_method" title="ActiveModel::Errors#get (method)">ActiveModel::Errors#get</a>, <a href="ActiveModel/Errors.html#set-instance_method" title="ActiveModel::Errors#set (method)">ActiveModel::Errors#set</a> and
+<a href="ActiveModel/Errors.html#[]=-instance_method" title="ActiveModel::Errors#[]= (method)">ActiveModel::Errors#[]=</a> methods that have inconsistent behavior.</p>
+
+<p><em>Wojciech Wnętrzak</em></p></li>
+<li><p>Allow symbol as values for <code>tokenize</code> of <code>LengthValidator</code>.</p>
+
+<p><em>Kensuke Naito</em></p></li>
+<li><p>Assigning an unknown attribute key to an <a href="ActiveModel.html" title="ActiveModel (module)">ActiveModel</a> instance during initialization
+will now raise <code>ActiveModel::AttributeAssignment::UnknownAttributeError</code> instead of
+<code>NoMethodError</code>.</p>
+
+<p>Example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>foo:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>some value</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; ActiveModel::AttributeAssignment::UnknownAttributeError: unknown attribute &#39;foo&#39; for User.</span></code></pre>
+
+<p><em>Eugene Gilburg</em></p></li>
+<li><p>Extracted <a href="ActiveRecord/AttributeAssignment.html" title="ActiveRecord::AttributeAssignment (module)">::ActiveRecord::AttributeAssignment</a> to <a href="ActiveModel/AttributeAssignment.html" title="ActiveModel::AttributeAssignment (module)">::ActiveModel::AttributeAssignment</a>
+allowing to use it for any object as an includable module.</p>
+
+<p>Example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Cat</span>
+  <span class='id identifier rubyid_include'>include</span> <span class='const'><a href="ActiveModel.html" title="ActiveModel (module)">ActiveModel</a></span><span class='op'>::</span><span class='const'><a href="ActiveModel/AttributeAssignment.html" title="ActiveModel::AttributeAssignment (module)">AttributeAssignment</a></span>
+  <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_status'>status</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_cat'>cat</span> <span class='op'>=</span> <span class='const'>Cat</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_cat'>cat</span><span class='period'>.</span><span class='id identifier rubyid_assign_attributes'>assign_attributes</span><span class='lparen'>(</span><span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Gorby</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>status:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>yawning</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_cat'>cat</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>   <span class='comment'># =&gt; &#39;Gorby&#39;
+</span><span class='id identifier rubyid_cat'>cat</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span> <span class='comment'># =&gt; &#39;yawning&#39;
+</span><span class='id identifier rubyid_cat'>cat</span><span class='period'>.</span><span class='id identifier rubyid_assign_attributes'>assign_attributes</span><span class='lparen'>(</span><span class='label'>status:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sleeping</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_cat'>cat</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>   <span class='comment'># =&gt; &#39;Gorby&#39;
+</span><span class='id identifier rubyid_cat'>cat</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span> <span class='comment'># =&gt; &#39;sleeping&#39;</span></code></pre>
+
+<p><em>Bogdan Gusiev</em></p></li>
+<li><p>Add <a href="ActiveModel/Errors.html#details-instance_method" title="ActiveModel::Errors#details (method)">ActiveModel::Errors#details</a></p>
+
+<p>To be able to return type of used validator, one can now call <code>details</code>
+on errors instance.</p>
+
+<p>Example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>User</span> <span class='op'>&lt;</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Base.html" title="ActiveRecord::Base (class)">Base</a></span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='semicolon'>;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span><span class='semicolon'>;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_details'>details</span>
+<span class='comment'>#=&gt; {name: [{error: :blank}]}</span></code></pre>
+
+<p><em>Wojciech Wnętrzak</em></p></li>
+<li><p>Change <code>validates_acceptance_of</code> to accept <code>true</code> by default besides <code>&#39;1&#39;</code>.</p>
+
+<p>The default for <code>validates_acceptance_of</code> is now <code>&#39;1&#39;</code> and <code>true</code>.
+In the past, only <code>&quot;1&quot;</code> was the default and you were required to pass
+<code>accept: true</code> separately.</p>
+
+<p><em>mokhan</em></p></li>
+<li><p>Remove deprecated <code>ActiveModel::Dirty#reset_#{attribute</code>} and
+<code>ActiveModel::Dirty#reset_changes</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Change the way in which callback chains can be halted.</p>
+
+<p>The preferred method to halt a callback chain from now on is to explicitly
+<code>throw(:abort)</code>.
+In the past, returning <code>false</code> in an Active Model <code>before_</code> callback had
+the side effect of halting the callback chain.
+This is not recommended anymore and, depending on the value of the
+<a href="ActiveSupport.html#halt_callback_chains_on_return_false-class_method" title="ActiveSupport.halt_callback_chains_on_return_false (method)">ActiveSupport.halt_callback_chains_on_return_false</a> option, will
+either not work at all or display a deprecation warning.</p>
+
+<p><em>claudiob</em></p></li>
+</ul>
+
+<p>Please check <a href="https://github.com/rails/rails/blob/4-2-stable/activemodel/CHANGELOG.md">4-2-stable</a> for previous changes.</p>
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.8 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.5.0p-1)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>

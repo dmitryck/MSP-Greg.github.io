@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>Class: Aws::OpsWorksCM::Types::CreateServerRequest &mdash; aws-sdk-ruby-master</title>
+
+<link rel='stylesheet'  type='text/css' href='../../../../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "Aws::OpsWorksCM::Types::CreateServerRequest",
+    relpath = '../../../';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../../../../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../../../../js/y_app.js'></script>
+
+</head>
+<body>
+<svg id='y_wait' class viewBox='0 0 90 90'></svg>
+<div id='settings' class='hidden'></div>
+<div id='y_list' class='d h'>
+  <header id='list_header'></header>
+  <nav id= 'list_nav' class='y_nav l_nav'>
+    <ul id='list_items'></ul>
+  </nav>
+</div>
+<div id='y_toc' class='f h'>
+  <header id='toc_header'></header>
+  <nav id= 'toc_nav' class='y_nav t_nav'>
+  <ol id='toc_items'></ol>
+  </nav>
+</div>
+<div id='y_main' tabindex='-1'>
+  <header id='y_header'>
+    <div id='y_menu'>
+        <a href='../../../../index.html'>Home</a> &raquo; 
+        <a href='../../../index.html'>aws-sdk-ruby-master</a> &raquo; 
+        <a href='../../../_index.html#alpha_C'>Index (C)</a> &raquo; 
+        <a href="../../../Aws.html" title="Aws (module)">Aws</a> &raquo; 
+        <a href="../../OpsWorksCM.html" title="Aws::OpsWorksCM (module)">OpsWorksCM</a> &raquo; 
+        <a href="../Types.html" title="Aws::OpsWorksCM::Types (module)">Types</a> &raquo; 
+        <span class='title'><a id='t2_doc_top' href='#'>CreateServerRequest&nbsp;&#x25B2;</a></span>
+      </div>
+
+    <a id='list_href' href="../../../class_list.html"></a>
+    <div id='y_measure_em' class='y_measure'></div>
+    <div id='y_measure_vh' class='y_measure'></div>
+    <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+  </header>
+<div id='content' class='class'>
+<h1>Class: Aws::OpsWorksCM::Types::CreateServerRequest</h1>
+<div id='t2_rel_sf_div'>
+<table id='t2_rel_sf' class='y_box'>
+  <thead>
+    <tr><td id='t2_relations' colspan='2'>Relationships & Source Files</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='box_h' colspan='2'>Super Chains via Extension / Inclusion / Inheritance</td></tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Class Chain:</div>
+        <div class='box_22'>
+          self,
+          Struct
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Instance Chain:</div>
+        <div class='box_22'>
+          self,
+          Struct
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td id='t2_inherits' class='box_2 o'>Inherits:</td>
+      <td class='box_rel'>
+        <span class='inheritName'>Struct</span>
+        <ul class='fullTree'>
+          <li>Object</li>
+          <li class='next'>Struct</li>
+          <li class='next'>Aws::OpsWorksCM::Types::CreateServerRequest</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class='single'>
+      <td id='t2_defined_in' class='box_2'>Defined in:</td>
+      <td class='box_rel'>(unknown)      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h2 id='h2_overview'>Overview</h2>
+<div id='overview_ds'>
+<div class='docstring'>
+  <div class='discussion'>
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>When passing CreateServerRequest as input to an Aws::Client method, you can use a
+vanilla Hash:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='lbrace'>{</span>
+  <span class='label'>associate_public_ip_address:</span> <span class='kw'>false</span><span class='comma'>,</span>
+  <span class='label'>disable_automated_backup:</span> <span class='kw'>false</span><span class='comma'>,</span>
+  <span class='label'>engine:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>engine_model:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>engine_version:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>engine_attributes:</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>EngineAttributeName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+      <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>EngineAttributeValue</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='label'>backup_retention_count:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='label'>server_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ServerName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>instance_profile_arn:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>InstanceProfileArn</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>instance_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>key_pair:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>KeyPair</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>preferred_maintenance_window:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TimeWindowDefinition</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>preferred_backup_window:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TimeWindowDefinition</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>security_group_ids:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='label'>service_role_arn:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ServiceRoleArn</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>subnet_ids:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='label'>backup_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BackupId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span></code></pre>
+</div>
+  </div>
+
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div></div>        
+
+<h2 class='h2_sum' id='instance_Attribute_summary'>Instance Attribute Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#associate_public_ip_address-instance_method" title="#associate_public_ip_address (instance method)">#<strong>associate_public_ip_address</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> Associate a public IP address with a server that you are launching.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#backup_id-instance_method" title="#backup_id (instance method)">#<strong>backup_id</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> If you specify this field, AWS OpsWorks for Chef Automate creates the server by using the backup represented by BackupId.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#backup_retention_count-instance_method" title="#backup_retention_count (instance method)">#<strong>backup_retention_count</strong>  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> The number of automated backups that you want to keep.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#disable_automated_backup-instance_method" title="#disable_automated_backup (instance method)">#<strong>disable_automated_backup</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> Enable or disable scheduled backups.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#engine-instance_method" title="#engine (instance method)">#<strong>engine</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> The configuration management engine to use.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#engine_attributes-instance_method" title="#engine_attributes (instance method)">#<strong>engine_attributes</strong>  &#x21d2; Array&lt;Types::EngineAttribute&gt; </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Optional engine attributes on a specified server.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#engine_model-instance_method" title="#engine_model (instance method)">#<strong>engine_model</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> The engine model, or option.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#engine_version-instance_method" title="#engine_version (instance method)">#<strong>engine_version</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> The major release version of the engine that you want to use.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#instance_profile_arn-instance_method" title="#instance_profile_arn (instance method)">#<strong>instance_profile_arn</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> The ARN of the instance profile that your Amazon EC2 instances use.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#instance_type-instance_method" title="#instance_type (instance method)">#<strong>instance_type</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> The Amazon EC2 instance type to use.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#key_pair-instance_method" title="#key_pair (instance method)">#<strong>key_pair</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> The Amazon EC2 key pair to set for the instance.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#preferred_backup_window-instance_method" title="#preferred_backup_window (instance method)">#<strong>preferred_backup_window</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> The start time for a one-hour period during which AWS OpsWorks for Chef Automate backs up application-level data on your server if automated backups are enabled.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#preferred_maintenance_window-instance_method" title="#preferred_maintenance_window (instance method)">#<strong>preferred_maintenance_window</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> The start time for a one-hour period each week during which AWS OpsWorks for Chef Automate performs maintenance on the instance.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#security_group_ids-instance_method" title="#security_group_ids (instance method)">#<strong>security_group_ids</strong>  &#x21d2; Array&lt;String&gt; </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> A list of security group IDs to attach to the Amazon EC2 instance.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#server_name-instance_method" title="#server_name (instance method)">#<strong>server_name</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> The name of the server.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#service_role_arn-instance_method" title="#service_role_arn (instance method)">#<strong>service_role_arn</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> The service role that the AWS OpsWorks for Chef Automate service backend uses to work with your account.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#subnet_ids-instance_method" title="#subnet_ids (instance method)">#<strong>subnet_ids</strong>  &#x21d2; Array&lt;String&gt; </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p> The IDs of subnets in which to launch the server EC2 instance.</p></div>
+    </div>
+  </li>
+</ul>
+</div>
+<h2 class='y_details'>Instance Attribute Details</h2>
+<section class='method_details first' id="associate_public_ip_address-instance_method">
+  <h3 class='signature rw first'>
+    #<strong>associate_public_ip_address</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> Associate a public IP address with a server that you are launching. Valid values are <code>true</code> or <code>false</code>. The default value is <code>true</code>. </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="backup_id-instance_method">
+  <h3 class='signature rw'>
+    #<strong>backup_id</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> If you specify this field, AWS OpsWorks for Chef Automate creates the server by using the backup represented by BackupId. </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="backup_retention_count-instance_method">
+  <h3 class='signature rw'>
+    #<strong>backup_retention_count</strong>  &#x21d2; <code>Integer</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> The number of automated backups that you want to keep. Whenever a new backup is created, AWS OpsWorks for Chef Automate deletes the oldest backups if this number is exceeded. The default value is <code>1</code>. </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="disable_automated_backup-instance_method">
+  <h3 class='signature rw'>
+    #<strong>disable_automated_backup</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> Enable or disable scheduled backups. Valid values are <code>true</code> or <code>false</code>. The default value is <code>true</code>. </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="engine-instance_method">
+  <h3 class='signature rw'>
+    #<strong>engine</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> The configuration management engine to use. Valid values include <code>Chef</code>. </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="engine_attributes-instance_method">
+  <h3 class='signature rw'>
+    #<strong>engine_attributes</strong>  &#x21d2; <code>Array</code>&lt;<a href="EngineAttribute.html" title="Aws::OpsWorksCM::Types::EngineAttribute (class)">Types::EngineAttribute</a>&gt;  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p><p>Optional engine attributes on a specified server. </p> <p class="title"> <b>Attributes accepted in a createServer request:</b> </p> <ul> <li> <p> <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated and returned in the response. </p> </li> <li> <p> <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate GUI. The password length is a minimum of eight characters, and a maximum of 32. The password can contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower case letter, one upper case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated and returned in the response.</p> </li> </ul></p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="engine_model-instance_method">
+  <h3 class='signature rw'>
+    #<strong>engine_model</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> The engine model, or option. Valid values include <code>Single</code>. </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="engine_version-instance_method">
+  <h3 class='signature rw'>
+    #<strong>engine_version</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> The major release version of the engine that you want to use. Values depend on the engine that you choose. </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="instance_profile_arn-instance_method">
+  <h3 class='signature rw'>
+    #<strong>instance_profile_arn</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> The ARN of the instance profile that your Amazon EC2 instances use. Although the AWS OpsWorks console typically creates the instance profile for you, if you are using API commands instead, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml. This template creates a CloudFormation stack that includes the instance profile you need. </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="instance_type-instance_method">
+  <h3 class='signature rw'>
+    #<strong>instance_type</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> The Amazon EC2 instance type to use. Valid values must be specified in the following format: <code>^([cm][34]|t2).*</code> For example, <code>m4.large</code>. Valid values are <code>t2.medium</code>, <code>m4.large</code>, or <code>m4.2xlarge</code>. </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="key_pair-instance_method">
+  <h3 class='signature rw'>
+    #<strong>key_pair</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> The Amazon EC2 key pair to set for the instance. This parameter is optional; if desired, you may specify this parameter to connect to your instances by using SSH. </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="preferred_backup_window-instance_method">
+  <h3 class='signature rw'>
+    #<strong>preferred_backup_window</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> The start time for a one-hour period during which AWS OpsWorks for Chef Automate backs up application-level data on your server if automated backups are enabled. Valid values must be specified in one of the following formats: </p> <ul> <li> <p> <code>HH:MM</code> for daily backups</p> </li> <li> <p> <code>DDD:HH:MM</code> for weekly backups</p> </li> </ul> <p>The specified time is in coordinated universal time (UTC). The default value is a random, daily start time.</p> <p> <b>Example:</b> <code>08:00</code>, which represents a daily start time of 08:00 UTC.</p> <p> <b>Example:</b> <code>Mon:08:00</code>, which represents a start time of every Monday at 08:00 UTC. (8:00 a.m.)</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="preferred_maintenance_window-instance_method">
+  <h3 class='signature rw'>
+    #<strong>preferred_maintenance_window</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> The start time for a one-hour period each week during which AWS OpsWorks for Chef Automate performs maintenance on the instance. Valid values must be specified in the following format: <code>DDD:HH:MM</code>. The specified time is in coordinated universal time (UTC). The default value is a random one-hour period on Tuesday, Wednesday, or Friday. See <code>TimeWindowDefinition</code> for more information. </p> <p> <b>Example:</b> <code>Mon:08:00</code>, which represents a start time of every Monday at 08:00 UTC. (8:00 a.m.) </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="security_group_ids-instance_method">
+  <h3 class='signature rw'>
+    #<strong>security_group_ids</strong>  &#x21d2; <code>Array</code>&lt;<code>String</code>&gt;  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> A list of security group IDs to attach to the Amazon EC2 instance. If you add this parameter, the specified security groups must be within the VPC that is specified by <code>SubnetIds</code>. </p> <p> If you do not specify this parameter, AWS OpsWorks for Chef Automate creates one new security group that uses TCP ports 22 and 443, open to 0.0.0.0/0 (everyone). </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="server_name-instance_method">
+  <h3 class='signature rw'>
+    #<strong>server_name</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> The name of the server. The server name must be unique within your AWS account, within each region. Server names must start with a letter; then letters, numbers, or hyphens (-) are allowed, up to a maximum of 40 characters. </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="service_role_arn-instance_method">
+  <h3 class='signature rw'>
+    #<strong>service_role_arn</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> The service role that the AWS OpsWorks for Chef Automate service backend uses to work with your account. Although the AWS OpsWorks management console typically creates the service role for you, if you are using the AWS CLI or API commands, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-stuff/latest/service-role-creation.yaml. This template creates a CloudFormation stack that includes the service role that you need. </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="subnet_ids-instance_method">
+  <h3 class='signature rw'>
+    #<strong>subnet_ids</strong>  &#x21d2; <code>Array</code>&lt;<code>String</code>&gt;  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p> The IDs of subnets in which to launch the server EC2 instance. </p> <p> Amazon EC2-Classic customers: This field is required. All servers must run within a VPC. The VPC must have "Auto Assign Public IP" enabled. </p> <p> EC2-VPC customers: This field is optional. If you do not specify subnet IDs, your EC2 instances are created in a default subnet that is selected by Amazon EC2. If you specify subnet IDs, the VPC must have "Auto Assign Public IP" enabled. </p> <p>For more information about supported Amazon EC2 platforms, see <a href="http://docs.aws.amazon.com/https:/docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.8 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.5.0p-1)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>

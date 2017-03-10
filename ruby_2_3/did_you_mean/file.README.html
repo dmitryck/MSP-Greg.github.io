@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>File: README &mdash; did_you_mean  Ruby-2.3.3 p222</title>
+
+<link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "README",
+    relpath = '';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../../js/y_app.js'></script>
+
+</head>
+<body>
+<svg id='y_wait' class viewBox='0 0 90 90'></svg>
+<div id='settings' class='hidden'></div>
+<div id='y_list' class='d h'>
+  <header id='list_header'></header>
+  <nav id= 'list_nav' class='y_nav l_nav'>
+    <ul id='list_items'></ul>
+  </nav>
+</div>
+<div id='y_toc' class='f h'>
+  <header id='toc_header'></header>
+  <nav id= 'toc_nav' class='y_nav t_nav'>
+  <ol id='toc_items'></ol>
+  </nav>
+</div>
+<div id='y_main' tabindex='-1'>
+  <header id='y_header'>
+    <div id='y_menu'>
+        <a href='../../index.html'>Home</a> &raquo; 
+        <a href='../index.html'>Ruby-2.3.3</a> &raquo; 
+        <a href='index.html'>did_you_mean</a> &raquo; 
+        <a href='_index.html'>Index</a> &raquo; 
+        <span class='title'><a id='t2_doc_top' href='#'>File: README&nbsp;&#x25B2;</a></span>
+            </div>
+
+    <a id='list_href' href="class_list.html"></a>
+    <div id='y_measure_em' class='y_measure'></div>
+    <div id='y_measure_vh' class='y_measure'></div>
+    <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+  </header>
+<div id='content' class='file'>
+<h1>did_you_mean <a href="https://rubygems.org/gems/did_you_mean"><img src="https://badge.fury.io/rb/did_you_mean.svg" alt="Gem Version"></a> <a href="https://travis-ci.org/yuki24/did_you_mean"><img src="https://travis-ci.org/yuki24/did_you_mean.svg?branch=master" alt="Build Status"></a></h1>
+
+<p>&#39;Did you mean?&#39; experience in Ruby. No, Really.</p>
+
+<h2>Installation</h2>
+
+<p>This gem will automatically be activated when a Ruby process starts up. No special setup is required.</p>
+
+<h2>Examples</h2>
+
+<h3>NameError</h3>
+
+<h4>Correcting a Misspelled Method Name</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>User</span>
+  <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_first_name'>first_name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_last_name'>last_name</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_f1rst_name'>f1rst_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_last_name'>last_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='comment'># f1rst_name ???
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+<span class='comment'># =&gt; NameError: undefined local variable or method `f1rst_name&#39; for #&lt;User:0x0000000928fad8&gt;
+</span><span class='comment'>#
+</span><span class='comment'>#     Did you mean? #first_name
+</span><span class='comment'>#</span></code></pre>
+
+<h4>Correcting a Misspelled Class Name</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Book</span>
+  <span class='kw'>class</span> <span class='const'>TableOfContents</span>
+    <span class='comment'># ...
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='const'>Book</span><span class='op'>::</span><span class='const'>TableofContents</span> <span class='comment'># TableofContents ???
+</span><span class='comment'># =&gt; NameError: uninitialized constant Book::TableofContents
+</span><span class='comment'>#
+</span><span class='comment'>#     Did you mean? Book::TableOfContents
+</span><span class='comment'>#</span></code></pre>
+
+<h4>Suggesting an instance variable name</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='ivar'>@full_name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Yuki Nishijima</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_first_name'>first_name</span><span class='comma'>,</span> <span class='id identifier rubyid_last_name'>last_name</span> <span class='op'>=</span> <span class='id identifier rubyid_full_name'>full_name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; NameError: undefined local variable or method `full_name&#39; for main:Object
+</span><span class='comment'>#
+</span><span class='comment'>#     Did you mean? @full_name
+</span><span class='comment'>#</span></code></pre>
+
+<h3>NoMethodError</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># In a Rails controller:
+</span><span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_with_inddiferent_access'>with_inddiferent_access</span>
+<span class='comment'># =&gt; NoMethodError: undefined method `with_inddiferent_access&#39; for {}:Hash
+</span><span class='comment'>#
+</span><span class='comment'>#     Did you mean? #with_indifferent_access
+</span><span class='comment'>#</span></code></pre>
+
+<h2>&#39;Did You Mean&#39; Experience is Everywhere</h2>
+
+<p><em>did_you_mean</em> gem automagically puts method corrections into the error message. This means you&#39;ll have the &quot;Did you mean?&quot; experience almost everywhere:</p>
+
+<p><img src="https://raw.githubusercontent.com/yuki24/did_you_mean/master/doc/did_you_mean_example.png" alt="Did you mean? on BetterErrors"></p>
+
+<h2>Contributing</h2>
+
+<ol>
+<li>Fork it (<a href="http://github.com/yuki24/did_you_mean/fork">http://github.com/yuki24/did_you_mean/fork</a>)</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am &#39;Add some feature&#39;</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+
+<h2>License</h2>
+
+<p>Copyright (c) 2015 Yuki Nishijima. See MIT-LICENSE for further details.</p>
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.8 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.5.0p-1)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>

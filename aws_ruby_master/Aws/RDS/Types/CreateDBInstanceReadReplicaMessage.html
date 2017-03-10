@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>Class: Aws::RDS::Types::CreateDBInstanceReadReplicaMessage &mdash; aws-sdk-ruby-master</title>
+
+<link rel='stylesheet'  type='text/css' href='../../../../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../../../../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "Aws::RDS::Types::CreateDBInstanceReadReplicaMessage",
+    relpath = '../../../';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../../../../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../../../../js/y_app.js'></script>
+
+</head>
+<body>
+<svg id='y_wait' class viewBox='0 0 90 90'></svg>
+<div id='settings' class='hidden'></div>
+<div id='y_list' class='d h'>
+  <header id='list_header'></header>
+  <nav id= 'list_nav' class='y_nav l_nav'>
+    <ul id='list_items'></ul>
+  </nav>
+</div>
+<div id='y_toc' class='f h'>
+  <header id='toc_header'></header>
+  <nav id= 'toc_nav' class='y_nav t_nav'>
+  <ol id='toc_items'></ol>
+  </nav>
+</div>
+<div id='y_main' tabindex='-1'>
+  <header id='y_header'>
+    <div id='y_menu'>
+        <a href='../../../../index.html'>Home</a> &raquo; 
+        <a href='../../../index.html'>aws-sdk-ruby-master</a> &raquo; 
+        <a href='../../../_index.html#alpha_C'>Index (C)</a> &raquo; 
+        <a href="../../../Aws.html" title="Aws (module)">Aws</a> &raquo; 
+        <a href="../../RDS.html" title="Aws::RDS (module)">RDS</a> &raquo; 
+        <a href="../Types.html" title="Aws::RDS::Types (module)">Types</a> &raquo; 
+        <span class='title'><a id='t2_doc_top' href='#'>CreateDBInstanceReadReplicaMessage&nbsp;&#x25B2;</a></span>
+      </div>
+
+    <a id='list_href' href="../../../class_list.html"></a>
+    <div id='y_measure_em' class='y_measure'></div>
+    <div id='y_measure_vh' class='y_measure'></div>
+    <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+  </header>
+<div id='content' class='class'>
+<h1>Class: Aws::RDS::Types::CreateDBInstanceReadReplicaMessage</h1>
+<div id='t2_rel_sf_div'>
+<table id='t2_rel_sf' class='y_box'>
+  <thead>
+    <tr><td id='t2_relations' colspan='2'>Relationships & Source Files</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='box_h' colspan='2'>Super Chains via Extension / Inclusion / Inheritance</td></tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Class Chain:</div>
+        <div class='box_22'>
+          self,
+          Struct
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Instance Chain:</div>
+        <div class='box_22'>
+          self,
+          Struct
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td id='t2_inherits' class='box_2 o'>Inherits:</td>
+      <td class='box_rel'>
+        <span class='inheritName'>Struct</span>
+        <ul class='fullTree'>
+          <li>Object</li>
+          <li class='next'>Struct</li>
+          <li class='next'>Aws::RDS::Types::CreateDBInstanceReadReplicaMessage</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class='single'>
+      <td id='t2_defined_in' class='box_2'>Defined in:</td>
+      <td class='box_rel'>(unknown)      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h2 id='h2_overview'>Overview</h2>
+<div id='overview_ds'>
+<div class='docstring'>
+  <div class='discussion'>
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>When passing CreateDBInstanceReadReplicaMessage as input to an Aws::Client method, you can use a
+vanilla Hash:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='lbrace'>{</span>
+  <span class='label'>db_instance_identifier:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>source_db_instance_identifier:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>db_instance_class:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>availability_zone:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>port:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='label'>auto_minor_version_upgrade:</span> <span class='kw'>false</span><span class='comma'>,</span>
+  <span class='label'>iops:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='label'>option_group_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>publicly_accessible:</span> <span class='kw'>false</span><span class='comma'>,</span>
+  <span class='label'>tags:</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>key:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+      <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='label'>db_subnet_group_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>storage_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>copy_tags_to_snapshot:</span> <span class='kw'>false</span><span class='comma'>,</span>
+  <span class='label'>monitoring_interval:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='label'>monitoring_role_arn:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>kms_key_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>pre_signed_url:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>destination_region:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>source_region:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span></code></pre>
+</div>
+  </div>
+
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div></div>        
+
+<h2 class='h2_sum' id='instance_Attribute_summary'>Instance Attribute Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#auto_minor_version_upgrade-instance_method" title="#auto_minor_version_upgrade (instance method)">#<strong>auto_minor_version_upgrade</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Indicates that minor engine upgrades will be applied automatically to the Read Replica during the maintenance window.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#availability_zone-instance_method" title="#availability_zone (instance method)">#<strong>availability_zone</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The Amazon EC2 Availability Zone that the Read Replica will be created in.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#copy_tags_to_snapshot-instance_method" title="#copy_tags_to_snapshot (instance method)">#<strong>copy_tags_to_snapshot</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>True to copy all tags from the Read Replica to snapshots of the Read Replica; otherwise false.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#db_instance_class-instance_method" title="#db_instance_class (instance method)">#<strong>db_instance_class</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The compute and memory capacity of the Read Replica.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#db_instance_identifier-instance_method" title="#db_instance_identifier (instance method)">#<strong>db_instance_identifier</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The DB instance identifier of the Read Replica.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#db_subnet_group_name-instance_method" title="#db_subnet_group_name (instance method)">#<strong>db_subnet_group_name</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Specifies a DB subnet group for the DB instance.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#destination_region-instance_method" title="#destination_region (instance method)">#<strong>destination_region</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#iops-instance_method" title="#iops (instance method)">#<strong>iops</strong>  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for the DB instance.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#kms_key_id-instance_method" title="#kms_key_id (instance method)">#<strong>kms_key_id</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The AWS KMS key ID for an encrypted Read Replica.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#monitoring_interval-instance_method" title="#monitoring_interval (instance method)">#<strong>monitoring_interval</strong>  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read Replica.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#monitoring_role_arn-instance_method" title="#monitoring_role_arn (instance method)">#<strong>monitoring_role_arn</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#option_group_name-instance_method" title="#option_group_name (instance method)">#<strong>option_group_name</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The option group the DB instance will be associated with.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#port-instance_method" title="#port (instance method)">#<strong>port</strong>  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The port number that the DB instance uses for connections.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#pre_signed_url-instance_method" title="#pre_signed_url (instance method)">#<strong>pre_signed_url</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The URL that contains a Signature Version 4 signed request for the <code> CreateDBInstanceReadReplica</code> API action in the AWS region that contains the source DB instance.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#publicly_accessible-instance_method" title="#publicly_accessible (instance method)">#<strong>publicly_accessible</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Specifies the accessibility options for the DB instance.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#source_db_instance_identifier-instance_method" title="#source_db_instance_identifier (instance method)">#<strong>source_db_instance_identifier</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The identifier of the DB instance that will act as the source for the Read Replica.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#source_region-instance_method" title="#source_region (instance method)">#<strong>source_region</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The region which you are copying an encrypted snapshot from.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#storage_type-instance_method" title="#storage_type (instance method)">#<strong>storage_type</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Specifies the storage type to be associated with the Read Replica.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#tags-instance_method" title="#tags (instance method)">#<strong>tags</strong>  &#x21d2; Array&lt;Types::Tag&gt; </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>A list of tags.</p>.</p></div>
+    </div>
+  </li>
+</ul>
+</div>
+<h2 class='y_details'>Instance Attribute Details</h2>
+<section class='method_details first' id="auto_minor_version_upgrade-instance_method">
+  <h3 class='signature rw first'>
+    #<strong>auto_minor_version_upgrade</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Indicates that minor engine upgrades will be applied automatically to the Read Replica during the maintenance window.</p> <p>Default: Inherits from the source DB instance</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="availability_zone-instance_method">
+  <h3 class='signature rw'>
+    #<strong>availability_zone</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The Amazon EC2 Availability Zone that the Read Replica will be created in.</p> <p>Default: A random, system-chosen Availability Zone in the endpoint's region.</p> <p> Example: <code>us-east-1d</code> </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="copy_tags_to_snapshot-instance_method">
+  <h3 class='signature rw'>
+    #<strong>copy_tags_to_snapshot</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>True to copy all tags from the Read Replica to snapshots of the Read Replica; otherwise false. The default is false.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="db_instance_class-instance_method">
+  <h3 class='signature rw'>
+    #<strong>db_instance_class</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The compute and memory capacity of the Read Replica. Note that not all instance classes are available in all regions for all DB engines.</p> <p> Valid Values: <code>db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code> </p> <p>Default: Inherits from the source DB instance.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="db_instance_identifier-instance_method">
+  <h3 class='signature rw'>
+    #<strong>db_instance_identifier</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB instance. This parameter is stored as a lowercase string.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="db_subnet_group_name-instance_method">
+  <h3 class='signature rw'>
+    #<strong>db_subnet_group_name</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Specifies a DB subnet group for the DB instance. The new DB instance will be created in the VPC associated with the DB subnet group. If no DB subnet group is specified, then the new DB instance is not created in a VPC.</p> <p>Constraints:</p> <ul> <li> <p>Can only be specified if the source DB instance identifier specifies a DB instance in another region.</p> </li> <li> <p>The specified DB subnet group must be in the same region in which the operation is running.</p> </li> <li> <p>All Read Replicas in one region that are created from the same source DB instance must either:&gt;</p> <ul> <li> <p>Specify DB subnet groups from the same VPC. All these Read Replicas will be created in the same VPC.</p> </li> <li> <p>Not specify a DB subnet group. All these Read Replicas will be created outside of any VPC.</p> </li> </ul> </li> </ul> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.</p> <p>Example: <code>mySubnetgroup</code> </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="destination_region-instance_method">
+  <h3 class='signature rw'>
+    #<strong>destination_region</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+
+</section>
+
+<section class='method_details' id="iops-instance_method">
+  <h3 class='signature rw'>
+    #<strong>iops</strong>  &#x21d2; <code>Integer</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for the DB instance.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="kms_key_id-instance_method">
+  <h3 class='signature rw'>
+    #<strong>kms_key_id</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key. </p> <p>If you create an unencrypted Read Replica and specify a value for the <code>KmsKeyId</code> parameter, Amazon RDS encrypts the target Read Replica using the specified KMS encryption key. </p> <p>If you create an encrypted Read Replica from your AWS account, you can specify a value for <code>KmsKeyId</code> to encrypt the Read Replica with a new KMS encryption key. If you don't specify a value for <code>KmsKeyId</code>, then the Read Replica is encrypted with the same KMS key as the source DB instance. </p> <p> If you create an encrypted Read Replica in a different AWS region, then you must specify a KMS key for the destination AWS region. KMS encryption keys are specific to the region that they are created in, and you cannot use encryption keys from one region in another region.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="monitoring_interval-instance_method">
+  <h3 class='signature rw'>
+    #<strong>monitoring_interval</strong>  &#x21d2; <code>Integer</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read Replica. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.</p> <p>If <code>MonitoringRoleArn</code> is specified, then you must also set <code>MonitoringInterval</code> to a value other than 0.</p> <p>Valid Values: <code>0, 1, 5, 10, 15, 30, 60</code> </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="monitoring_role_arn-instance_method">
+  <h3 class='signature rw'>
+    #<strong>monitoring_role_arn</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring role, go to <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole">To create an IAM role for Amazon RDS Enhanced Monitoring</a>.</p> <p>If <code>MonitoringInterval</code> is set to a value other than 0, then you must supply a <code>MonitoringRoleArn</code> value.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="option_group_name-instance_method">
+  <h3 class='signature rw'>
+    #<strong>option_group_name</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The option group the DB instance will be associated with. If omitted, the default option group for the engine specified will be used.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="port-instance_method">
+  <h3 class='signature rw'>
+    #<strong>port</strong>  &#x21d2; <code>Integer</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The port number that the DB instance uses for connections.</p> <p>Default: Inherits from the source DB instance</p> <p>Valid Values: <code>1150-65535</code> </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="pre_signed_url-instance_method">
+  <h3 class='signature rw'>
+    #<strong>pre_signed_url</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The URL that contains a Signature Version 4 signed request for the <code> CreateDBInstanceReadReplica</code> API action in the AWS region that contains the source DB instance. The <code>PreSignedUrl</code> parameter must be used when encrypting a Read Replica from another AWS region.</p> <p>The presigned URL must be a valid request for the <code>CreateDBInstanceReadReplica</code> API action that can be executed in the source region that contains the encrypted DB instance. The presigned URL request must contain the following parameter values:</p> <ul> <li> <p> <code>DestinationRegion</code> - The AWS Region that the Read Replica is created in. This region is the same one where the <code>CreateDBInstanceReadReplica</code> action is called that contains this presigned URL. </p> <p> For example, if you create an encrypted Read Replica in the us-east-1 region, and the source DB instance is in the west-2 region, then you call the <code>CreateDBInstanceReadReplica</code> action in the us-east-1 region and provide a presigned URL that contains a call to the <code>CreateDBInstanceReadReplica</code> action in the us-west-2 region. For this example, the <code>DestinationRegion</code> in the presigned URL must be set to the us-east-1 region.</p> </li> <li> <p> <code>KmsKeyId</code> - The KMS key identifier for the key to use to encrypt the Read Replica in the destination region. This is the same identifier for both the <code>CreateDBInstanceReadReplica</code> action that is called in the destination region, and the action contained in the presigned URL.</p> </li> <li> <p> <code>SourceDBInstanceIdentifier</code> - The DB instance identifier for the encrypted Read Replica to be created. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you create an encrypted Read Replica from a DB instance in the us-west-2 region, then your <code>SourceDBInstanceIdentifier</code> would look like this example: <code> arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-instance-20161115</code>.</p> </li> </ul> <p>To learn how to generate a Signature Version 4 signed request, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html"> Authenticating Requests: Using Query Parameters (AWS Signature Version 4)</a> and <a href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html"> Signature Version 4 Signing Process</a>.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="publicly_accessible-instance_method">
+  <h3 class='signature rw'>
+    #<strong>publicly_accessible</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.</p> <p>Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.</p> <ul> <li> <p> <b>Default VPC:</b>true</p> </li> <li> <p> <b>VPC:</b>false</p> </li> </ul> <p>If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="source_db_instance_identifier-instance_method">
+  <h3 class='signature rw'>
+    #<strong>source_db_instance_identifier</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p><p>The identifier of the DB instance that will act as the source for the Read Replica. Each DB instance can have up to five Read Replicas.</p> <p>Constraints:</p> <ul> <li> <p>Must be the identifier of an existing MySQL, MariaDB, or PostgreSQL DB instance.</p> </li> <li> <p>Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6.</p> </li> <li> <p>Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later.</p> </li> <li> <p>The specified DB instance must have automatic backups enabled, its backup retention period must be greater than 0.</p> </li> <li> <p>If the source DB instance is in the same region as the Read Replica, specify a valid DB instance identifier.</p> </li> <li> <p>If the source DB instance is in a different region than the Read Replica, specify a valid DB instance ARN. For more information, go to <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"> Constructing a Amazon RDS Amazon Resource Name (ARN)</a>.</p> </li> </ul></p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="source_region-instance_method">
+  <h3 class='signature rw'>
+    #<strong>source_region</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The region which you are copying an encrypted snapshot from.</p><p>This is a required paramter that allows SDK to compute a pre-signed Url and populate <code>PreSignedURL</code> parameter on your behalf.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="storage_type-instance_method">
+  <h3 class='signature rw'>
+    #<strong>storage_type</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Specifies the storage type to be associated with the Read Replica.</p> <p> Valid values: <code>standard | gp2 | io1</code> </p> <p> If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter. </p> <p> Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise <code>standard</code> </p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="tags-instance_method">
+  <h3 class='signature rw'>
+    #<strong>tags</strong>  &#x21d2; <code>Array</code>&lt;<a href="Tag.html" title="Aws::RDS::Types::Tag (class)">Types::Tag</a>&gt;  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>A list of tags.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.8 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.5.0p-1)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>

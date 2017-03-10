@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>Class: ActiveRecord::Relation::Merger &mdash; Rails-master</title>
+
+<link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "ActiveRecord::Relation::Merger",
+    relpath = '../../';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../../../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../../../js/y_app.js'></script>
+
+</head>
+<body>
+<svg id='y_wait' class viewBox='0 0 90 90'></svg>
+<div id='settings' class='hidden'></div>
+<div id='y_list' class='d h'>
+  <header id='list_header'></header>
+  <nav id= 'list_nav' class='y_nav l_nav'>
+    <ul id='list_items'></ul>
+  </nav>
+</div>
+<div id='y_toc' class='f h'>
+  <header id='toc_header'></header>
+  <nav id= 'toc_nav' class='y_nav t_nav'>
+  <ol id='toc_items'></ol>
+  </nav>
+</div>
+<div id='y_main' tabindex='-1'>
+  <header id='y_header'>
+    <div id='y_menu'>
+        <a href='../../../index.html'>Home</a> &raquo; 
+        <a href='../../index.html'>Rails-master</a> &raquo; 
+        <a href='../../_index.html#alpha_M'>Index (M)</a> &raquo; 
+        <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
+        <a href="../Relation.html" title="ActiveRecord::Relation (class)">Relation</a> &raquo; 
+        <span class='title'><a class='nodoc' id='t2_doc_top' href='#'>Merger&nbsp;&#x25B2;</a></span>
+      </div>
+
+    <a id='list_href' href="../../class_list.html"></a>
+    <div id='y_measure_em' class='y_measure'></div>
+    <div id='y_measure_vh' class='y_measure'></div>
+    <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+  </header>
+<div id='content' class='class'>
+<h1>Class: ActiveRecord::Relation::Merger</h1>
+  <div class='note nodoc inline-block'>
+    <strong>Do not use.  This class is for internal use only.</strong>
+  </div>
+<div id='t2_rel_sf_div'>
+<table id='t2_rel_sf' class='y_box'>
+  <thead>
+    <tr><td id='t2_relations' colspan='2'>Relationships & Source Files</td></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id='t2_inherits' class='box_2'>Inherits:</td>
+      <td class='box_rel'>
+        <span class='inheritName'><a href="../../Object.html" title="Object (class)">Object</a></span>
+      </td>
+    </tr>
+    <tr class='single'>
+      <td id='t2_defined_in' class='box_2'>Defined in:</td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L42'>activerecord/lib/active_record/relation/merger.rb</a>      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h2 id='t2_cnst' class='h2_sum'>Constant Summary</h2>
+<div>
+<ul class='constants summary full nodoc'>
+  <li>
+    <span id='NORMAL_VALUES-constant' class='summary_signature nodoc'>NORMAL_VALUES =</span>
+    <br/>
+    <a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L51-L53'># File 'activerecord/lib/active_record/relation/merger.rb', line 51</a>    <pre class='code ruby'><span class='const'><a href="../Relation.html" title="ActiveRecord::Relation (class)">Relation</a></span><span class='op'>::</span><span class='const'><a href="../Relation.html#VALUE_METHODS-constant" title="ActiveRecord::Relation::VALUE_METHODS (constant)">VALUE_METHODS</a></span> <span class='op'>-</span>
+<span class='const'><a href="../Relation.html" title="ActiveRecord::Relation (class)">Relation</a></span><span class='op'>::</span><span class='const'><a href="../Relation.html#CLAUSE_METHODS-constant" title="ActiveRecord::Relation::CLAUSE_METHODS (constant)">CLAUSE_METHODS</a></span> <span class='op'>-</span>
+<span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_includes'>includes</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_preload'>preload</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_joins'>joins</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_order'>order</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reverse_order'>reverse_order</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_lock'>lock</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_create_with'>create_with</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reordering'>reordering</span><span class='rbracket'>]</span></pre>
+  </li>
+</ul>
+</div>
+        
+
+<h2 class='h2_sum' id='class_Method_summary'>Class Method Summary</h2>
+<div class='div_sum'>
+<ul class='summary full nodoc'>
+  <li>
+    <span class='summary_signature nodoc'>
+      <a href="#new-class_method" title=".new (class method)">.<strong>new</strong>(relation, other)  &#x21d2; Merger </a>
+    </span>
+    <span class='note title constructor'>constructor</span>
+  </li>
+</ul>
+</div>
+        
+
+<h2 class='h2_sum' id='instance_Attribute_summary'>Instance Attribute Summary</h2>
+<div class='div_sum'>
+<ul class='summary full nodoc'>
+  <li>
+    <span class='summary_signature ro nodoc'>
+      <a href="#other-instance_method" title="#other (instance method)">#<strong>other</strong>  </a>
+    </span>
+    <span class='note title readonly'>readonly</span>
+  </li>
+  <li>
+    <span class='summary_signature ro nodoc'>
+      <a href="#relation-instance_method" title="#relation (instance method)">#<strong>relation</strong>  </a>
+    </span>
+    <span class='note title readonly'>readonly</span>
+  </li>
+  <li>
+    <span class='summary_signature ro nodoc'>
+      <a href="#values-instance_method" title="#values (instance method)">#<strong>values</strong>  </a>
+    </span>
+    <span class='note title readonly'>readonly</span>
+  </li>
+</ul>
+</div>
+        
+
+<h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
+<div class='div_sum'>
+<ul class='summary full nodoc'>
+  <li>
+    <span class='summary_signature nodoc'>
+      <a href="#merge-instance_method" title="#merge (instance method)">#<strong>merge</strong>  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature nodoc'>
+      <a href="#normal_values-instance_method" title="#normal_values (instance method)">#<strong>normal_values</strong>  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature priv nodoc'>
+      <a href="#merge_clauses-instance_method" title="#merge_clauses (instance method)">#<strong>merge_clauses</strong>  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
+    <span class='summary_signature priv nodoc'>
+      <a href="#merge_joins-instance_method" title="#merge_joins (instance method)">#<strong>merge_joins</strong>  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
+    <span class='summary_signature priv nodoc'>
+      <a href="#merge_multi_values-instance_method" title="#merge_multi_values (instance method)">#<strong>merge_multi_values</strong>  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
+    <span class='summary_signature priv nodoc'>
+      <a href="#merge_preloads-instance_method" title="#merge_preloads (instance method)">#<strong>merge_preloads</strong>  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
+    <span class='summary_signature priv nodoc'>
+      <a href="#merge_single_values-instance_method" title="#merge_single_values (instance method)">#<strong>merge_single_values</strong>  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+</ul>
+</div>
+<h2 id='Constructor_Details' class='y_details'>Constructor Details</h2>
+
+  <section class='method_details first' id="new-class_method">
+  <h3 class='signature nodoc first'>
+    .<strong>new</strong>(relation, other)  &#x21d2; <code>Merger</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+  </div>
+</div>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L45-L49'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+45
+46
+47
+48
+49</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/merger.rb', line 45</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_relation'>relation</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='ivar'>@relation</span> <span class='op'>=</span> <span class='id identifier rubyid_relation'>relation</span>
+  <span class='ivar'>@values</span>   <span class='op'>=</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>
+  <span class='ivar'>@other</span>    <span class='op'>=</span> <span class='id identifier rubyid_other'>other</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<h2 class='y_details'>Instance Attribute Details</h2>
+<section class='method_details first' id="other-instance_method">
+  <h3 class='signature ro  nodoc first'>
+    #<strong>other</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L43-L43'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+43</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/merger.rb', line 43</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_relation'>relation</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_values'>values</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_other'>other</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="relation-instance_method">
+  <h3 class='signature ro  nodoc'>
+    #<strong>relation</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L43-L43'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+43</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/merger.rb', line 43</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_relation'>relation</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_values'>values</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_other'>other</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="values-instance_method">
+  <h3 class='signature ro  nodoc'>
+    #<strong>values</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L43-L43'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+43</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/merger.rb', line 43</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_relation'>relation</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_values'>values</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_other'>other</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<h2 class='y_details'>Instance Method Details</h2>
+<section class='method_details first' id="merge-instance_method">
+  <h3 class='signature nodoc first'>
+    #<strong>merge</strong>  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L59-L82'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/merger.rb', line 59</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_merge'>merge</span>
+  <span class='id identifier rubyid_normal_values'>normal_values</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+    <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+    <span class='comment'># The unless clause is here mostly for performance reasons (since the `send` call might be moderately
+</span>    <span class='comment'># expensive), most of the time the value is going to be `nil` or `.blank?`, the only catch is that
+</span>    <span class='comment'># `false.blank?` returns `true`, so there needs to be an extra check so that explicit `false` values
+</span>    <span class='comment'># don&#39;t fall through the cracks.
+</span>    <span class='kw'>unless</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>&amp;&amp;</span> <span class='kw'>false</span> <span class='op'>!=</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='symbeg'>:</span><span class='id identifier rubyid_select'>select</span>
+        <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid__select!'>_select!</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>!</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_merge_multi_values'>merge_multi_values</span>
+  <span class='id identifier rubyid_merge_single_values'>merge_single_values</span>
+  <span class='id identifier rubyid_merge_clauses'>merge_clauses</span>
+  <span class='id identifier rubyid_merge_preloads'>merge_preloads</span>
+  <span class='id identifier rubyid_merge_joins'>merge_joins</span>
+
+  <span class='id identifier rubyid_relation'>relation</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="merge_clauses-instance_method">
+  <h3 class='signature priv  nodoc'>
+    #<strong>merge_clauses</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L154-L160'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+154
+155
+156
+157
+158
+159
+160</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/merger.rb', line 154</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_merge_clauses'>merge_clauses</span>
+  <span class='const'><a href="../Relation.html#CLAUSE_METHODS-constant" title="ActiveRecord::Relation::CLAUSE_METHODS (constant)">CLAUSE_METHODS</a></span><span class='period'>.</span><span class='id identifier rubyid_each'><a href="../Delegation.html#each-instance_method" title="ActiveRecord::Delegation#each (method)">each</a></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_method'>method</span><span class='op'>|</span>
+    <span class='id identifier rubyid_clause'>clause</span> <span class='op'>=</span> <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_get_value'>get_value</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_other_clause'>other_clause</span> <span class='op'>=</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_get_value'>get_value</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_set_value'>set_value</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_clause'>clause</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_other_clause'>other_clause</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="merge_joins-instance_method">
+  <h3 class='signature priv  nodoc'>
+    #<strong>merge_joins</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L107-L129'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/merger.rb', line 107</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_merge_joins'>merge_joins</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_joins_values'>joins_values</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_klass'>klass</span> <span class='op'>==</span> <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_klass'>klass</span>
+    <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_joins!'>joins!</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_joins_values'>joins_values</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_joins_dependency'>joins_dependency</span><span class='comma'>,</span> <span class='id identifier rubyid_rest'>rest</span> <span class='op'>=</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_joins_values'>joins_values</span><span class='period'>.</span><span class='id identifier rubyid_partition'>partition</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_join'>join</span><span class='op'>|</span>
+      <span class='kw'>case</span> <span class='id identifier rubyid_join'>join</span>
+      <span class='kw'>when</span> <span class='const'><a href="../../Hash.html" title="Hash (class)">Hash</a></span><span class='comma'>,</span> <span class='const'><a href="../../Symbol.html" title="Symbol (class)">Symbol</a></span><span class='comma'>,</span> <span class='const'><a href="../../Array.html" title="Array (class)">Array</a></span>
+        <span class='kw'>true</span>
+      <span class='kw'>else</span>
+        <span class='kw'>false</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_join_dependency'>join_dependency</span> <span class='op'>=</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Associations.html" title="ActiveRecord::Associations (module)">Associations</a></span><span class='op'>::</span><span class='const'><a href="../Associations/JoinDependency.html" title="ActiveRecord::Associations::JoinDependency (class)">JoinDependency</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../Associations/JoinDependency.html#new-class_method" title="ActiveRecord::Associations::JoinDependency.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span>
+                                                                     <span class='id identifier rubyid_joins_dependency'>joins_dependency</span><span class='comma'>,</span>
+                                                                     <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_joins!'>joins!</span> <span class='id identifier rubyid_rest'>rest</span>
+
+    <span class='ivar'>@relation</span> <span class='op'>=</span> <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_joins'>joins</span> <span class='id identifier rubyid_join_dependency'>join_dependency</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="merge_multi_values-instance_method">
+  <h3 class='signature priv  nodoc'>
+    #<strong>merge_multi_values</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L131-L141'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/merger.rb', line 131</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_merge_multi_values'>merge_multi_values</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_reordering_value'>reordering_value</span>
+    <span class='comment'># override any order specified in the original relation
+</span>    <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_reorder!'>reorder!</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_order_values'>order_values</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_order_values'>order_values</span>
+    <span class='comment'># merge in order_values from relation
+</span>    <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_order!'>order!</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_order_values'>order_values</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_extend'>extend</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_extending_values'>extending_values</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_extending_values'>extending_values</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="merge_preloads-instance_method">
+  <h3 class='signature priv  nodoc'>
+    #<strong>merge_preloads</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L86-L105'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/merger.rb', line 86</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_merge_preloads'>merge_preloads</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_preload_values'>preload_values</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_includes_values'>includes_values</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_klass'>klass</span> <span class='op'>==</span> <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_klass'>klass</span>
+    <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_preload!'>preload!</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_preload_values'>preload_values</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_preload_values'>preload_values</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_includes!'>includes!</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_includes_values'>includes_values</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_includes_values'>includes_values</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_reflection'>reflection</span> <span class='op'>=</span> <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_reflect_on_all_associations'>reflect_on_all_associations</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+      <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+    <span class='kw'>end</span> <span class='op'>||</span> <span class='kw'>return</span>
+
+    <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_preload_values'>preload_values</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+      <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_preload!'>preload!</span> <span class='id identifier rubyid_reflection'>reflection</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_preload_values'>preload_values</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_includes_values'>includes_values</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+      <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_includes!'>includes!</span> <span class='id identifier rubyid_reflection'>reflection</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_includes_values'>includes_values</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="merge_single_values-instance_method">
+  <h3 class='signature priv  nodoc'>
+    #<strong>merge_single_values</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L143-L152'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/merger.rb', line 143</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_merge_single_values'>merge_single_values</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_from_clause'>from_clause</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_from_clause'>from_clause</span> <span class='op'>=</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_from_clause'>from_clause</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_lock_value'>lock_value</span> <span class='op'>||=</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_lock_value'>lock_value</span>
+
+  <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_create_with_value'>create_with_value</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+    <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_create_with_value'>create_with_value</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_create_with_value'>create_with_value</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_create_with_value'>create_with_value</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="normal_values-instance_method">
+  <h3 class='signature nodoc'>
+    #<strong>normal_values</strong>  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/merger.rb#L55-L57'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+55
+56
+57</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/merger.rb', line 55</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_normal_values'>normal_values</span>
+  <span class='const'><a href="#NORMAL_VALUES-constant" title="ActiveRecord::Relation::Merger::NORMAL_VALUES (constant)">NORMAL_VALUES</a></span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.8 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.5.0p-1)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>

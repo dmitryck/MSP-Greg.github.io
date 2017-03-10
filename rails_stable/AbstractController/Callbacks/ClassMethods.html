@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>Module: AbstractController::Callbacks::ClassMethods &mdash; Rails-5-0-stable</title>
+
+<link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "AbstractController::Callbacks::ClassMethods",
+    relpath = '../../';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../../../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../../../js/y_app.js'></script>
+
+</head>
+<body>
+<svg id='y_wait' class viewBox='0 0 90 90'></svg>
+<div id='settings' class='hidden'></div>
+<div id='y_list' class='d h'>
+  <header id='list_header'></header>
+  <nav id= 'list_nav' class='y_nav l_nav'>
+    <ul id='list_items'></ul>
+  </nav>
+</div>
+<div id='y_toc' class='f h'>
+  <header id='toc_header'></header>
+  <nav id= 'toc_nav' class='y_nav t_nav'>
+  <ol id='toc_items'></ol>
+  </nav>
+</div>
+<div id='y_main' tabindex='-1'>
+  <header id='y_header'>
+    <div id='y_menu'>
+        <a href='../../../index.html'>Home</a> &raquo; 
+        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
+        <a href="../../AbstractController.html" title="AbstractController (module)">AbstractController</a> &raquo; 
+        <a href="../Callbacks.html" title="AbstractController::Callbacks (module)">Callbacks</a> &raquo; 
+        <span class='title'><a id='t2_doc_top' href='#'>ClassMethods&nbsp;&#x25B2;</a></span>
+      </div>
+
+    <a id='list_href' href="../../class_list.html"></a>
+    <div id='y_measure_em' class='y_measure'></div>
+    <div id='y_measure_vh' class='y_measure'></div>
+    <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+  </header>
+<div id='content' class='module'>
+<h1>Module: AbstractController::Callbacks::ClassMethods</h1>
+<div id='t2_rel_sf_div'>
+<table id='t2_rel_sf' class='y_box'>
+  <thead>
+    <tr><td id='t2_relations' colspan='2'>Relationships & Source Files</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='box_h' colspan='2'>Extension / Inclusion / Inheritance Descendants</td></tr>
+    <tr><td colspan='2'>
+      <div class='box_1'>Extended In:</div>
+      <div class='box_11'>
+        <a href="../../ActionController/API.html" title="ActionController::API (class)">::ActionController::API</a>,
+          <a href="../../ActionController/Base.html" title="ActionController::Base (class)">::ActionController::Base</a>,
+          <a href="../../ActionController/ForceSSL.html" title="ActionController::ForceSSL (module)">::ActionController::ForceSSL</a>,
+          <a href="../../ActionController/RequestForgeryProtection.html" title="ActionController::RequestForgeryProtection (module)">::ActionController::RequestForgeryProtection</a>,
+          <a href="../../ActionMailer/Base.html" title="ActionMailer::Base (class)">::ActionMailer::Base</a>,
+          <a href="../../ActionView/TestCase/TestController.html" title="ActionView::TestCase::TestController (class)">::ActionView::TestCase::TestController</a>
+      </div>
+    </td></tr>
+    <tr class='single'>
+      <td id='t2_defined_in' class='box_2'>Defined in:</td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L24'>actionpack/lib/abstract_controller/callbacks.rb</a>      </td>
+    </tr>
+  </tbody>
+</table>
+</div>        
+
+<h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature '>
+      <a href="#_insert_callbacks-instance_method" title="#_insert_callbacks (instance method)">#<strong>_insert_callbacks</strong>(callbacks, block = nil)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Take callback names and an optional callback proc, normalize them, then
+call the block with each callback.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#_normalize_callback_options-instance_method" title="#_normalize_callback_options (instance method)">#<strong>_normalize_callback_options</strong>(options)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>If <code>:only</code> or <code>:except</code> are used, convert the options
+into the <code>:if</code> and <code>:unless</code> options of
+<a href="../../ActiveSupport/Callbacks.html" title="ActiveSupport::Callbacks (module)">::ActiveSupport::Callbacks</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#after_action-instance_method" title="#after_action (instance method)">#<strong>after_action</strong>(names, block)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Append a callback after actions.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#append_after_action-instance_method" title="#append_after_action (instance method)">#<strong>append_after_action</strong>(names, block)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Append a callback after actions.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#append_around_action-instance_method" title="#append_around_action (instance method)">#<strong>append_around_action</strong>(names, block)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Append a callback around actions.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#append_before_action-instance_method" title="#append_before_action (instance method)">#<strong>append_before_action</strong>(names, block)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Append a callback before actions.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#around_action-instance_method" title="#around_action (instance method)">#<strong>around_action</strong>(names, block)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Append a callback around actions.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#before_action-instance_method" title="#before_action (instance method)">#<strong>before_action</strong>(names, block)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Append a callback before actions.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#prepend_after_action-instance_method" title="#prepend_after_action (instance method)">#<strong>prepend_after_action</strong>(names, block)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Prepend a callback after actions.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#prepend_around_action-instance_method" title="#prepend_around_action (instance method)">#<strong>prepend_around_action</strong>(names, block)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Prepend a callback around actions.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#prepend_before_action-instance_method" title="#prepend_before_action (instance method)">#<strong>prepend_before_action</strong>(names, block)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Prepend a callback before actions.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#skip_action_callback-instance_method" title="#skip_action_callback (instance method)">#<strong>skip_action_callback</strong>(*names)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Skip before, after, and around action callbacks matching any of the names.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#skip_after_action-instance_method" title="#skip_after_action (instance method)">#<strong>skip_after_action</strong>(names)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Skip a callback after actions.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#skip_around_action-instance_method" title="#skip_around_action (instance method)">#<strong>skip_around_action</strong>(names)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Skip a callback around actions.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#skip_before_action-instance_method" title="#skip_before_action (instance method)">#<strong>skip_before_action</strong>(names)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Skip a callback before actions.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#skip_filter-instance_method" title="#skip_filter (instance method)">#<strong>skip_filter</strong>(*names)  </a>
+    </span>
+  </li>
+</ul>
+</div>
+<h2 class='y_details'>Instance Method Details</h2>
+<section class='method_details first' id="_insert_callbacks-instance_method">
+  <h3 class='signature  first'>
+    #<strong>_insert_callbacks</strong>(callbacks, block = nil)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Take callback names and an optional callback proc, normalize them, then
+call the block with each callback. This allows us to abstract the
+normalization across several methods that use it.</p>
+
+<h4 id="label-Parameters">Parameters</h4>
+<ul><li>
+<p><code>callbacks</code> - An array of callbacks, with an optional options hash as the
+last parameter.</p>
+</li><li>
+<p><code>block</code>    - A proc that should be added to the callbacks.</p>
+</li></ul>
+
+<h4 id="label-Block+Parameters">Block Parameters</h4>
+<ul><li>
+<p><code>name</code>     - The callback to be added.</p>
+</li><li>
+<p><code>options</code>  - A hash of options to be used when adding the callback.</p>
+</li></ul>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L90-L97'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+90
+91
+92
+93
+94
+95
+96
+97</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 90</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid__insert_callbacks'>_insert_callbacks</span><span class='lparen'>(</span><span class='id identifier rubyid_callbacks'>callbacks</span><span class='comma'>,</span> <span class='id identifier rubyid_block'>block</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_callbacks'>callbacks</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span>
+  <span class='id identifier rubyid__normalize_callback_options'>_normalize_callback_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_callbacks'>callbacks</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_block'>block</span>
+  <span class='id identifier rubyid_callbacks'>callbacks</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_callback'>callback</span><span class='op'>|</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_callback'>callback</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="_normalize_callback_options-instance_method">
+  <h3 class='signature '>
+    #<strong>_normalize_callback_options</strong>(options)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>If <code>:only</code> or <code>:except</code> are used, convert the options
+into the <code>:if</code> and <code>:unless</code> options of
+<a href="../../ActiveSupport/Callbacks.html" title="ActiveSupport::Callbacks (module)">::ActiveSupport::Callbacks</a>.</p>
+
+<p>The basic idea is that <code>:only =&gt; :index</code> gets converted to
+<code>:if =&gt; proc {|c| c.action_name == &quot;index&quot; }</code>.</p>
+
+<p>Note that <code>:only</code> has priority over <code>:if</code> in case
+they are used together.</p>
+
+<pre class="code ruby"><code class="ruby">only: :index, if: -&gt; { true } # the :if option will be ignored.</code></pre>
+
+<p>Note that <code>:if</code> has priority over <code>:except</code> in case
+they are used together.</p>
+
+<pre class="code ruby"><code class="ruby">except: :index, if: -&gt; { true } # the :except option will be ignored.</code></pre>
+
+<h4 id="label-Options">Options</h4>
+<ul><li>
+<p><code>only</code>   - The callback should be run only for this action.</p>
+</li><li>
+<p><code>except</code>  - The callback should be run for all actions except this action.</p>
+</li></ul>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L44-L47'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+44
+45
+46
+47</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 44</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid__normalize_callback_options'>_normalize_callback_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid__normalize_callback_option'>_normalize_callback_option</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_only'>only</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='kw'>if</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid__normalize_callback_option'>_normalize_callback_option</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_except'>except</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='kw'>unless</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="after_action-instance_method">
+  <h3 class='signature '>
+    #<strong>after_action</strong>(names, block)    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Append a callback after actions. See _insert_callbacks for parameter
+details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L128-L128'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+128</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 128</span></pre>
+<pre class='code ruby'>
+
+rdoc_method :method: after_action
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="append_after_action-instance_method">
+  <h3 class='signature '>
+    #<strong>append_after_action</strong>(names, block)    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Append a callback after actions. See _insert_callbacks for parameter
+details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L149-L149'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+149</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 149</span></pre>
+<pre class='code ruby'>
+
+rdoc_method :method: append_after_action
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="append_around_action-instance_method">
+  <h3 class='signature '>
+    #<strong>append_around_action</strong>(names, block)    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Append a callback around actions. See _insert_callbacks for parameter
+details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L177-L177'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+177</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 177</span></pre>
+<pre class='code ruby'>
+
+rdoc_method :method: append_around_action
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="append_before_action-instance_method">
+  <h3 class='signature '>
+    #<strong>append_before_action</strong>(names, block)    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Append a callback before actions. See _insert_callbacks for parameter
+details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L121-L121'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+121</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 121</span></pre>
+<pre class='code ruby'>
+
+rdoc_method :method: append_before_action
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="around_action-instance_method">
+  <h3 class='signature '>
+    #<strong>around_action</strong>(names, block)    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Append a callback around actions. See _insert_callbacks for parameter
+details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L156-L156'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+156</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 156</span></pre>
+<pre class='code ruby'>
+
+rdoc_method :method: around_action
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="before_action-instance_method">
+  <h3 class='signature '>
+    #<strong>before_action</strong>(names, block)    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Append a callback before actions. See _insert_callbacks for parameter
+details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L100-L100'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+100</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 100</span></pre>
+<pre class='code ruby'>
+
+rdoc_method :method: before_action
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="prepend_after_action-instance_method">
+  <h3 class='signature '>
+    #<strong>prepend_after_action</strong>(names, block)    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Prepend a callback after actions. See _insert_callbacks for parameter
+details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L135-L135'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+135</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 135</span></pre>
+<pre class='code ruby'>
+
+rdoc_method :method: prepend_after_action
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="prepend_around_action-instance_method">
+  <h3 class='signature '>
+    #<strong>prepend_around_action</strong>(names, block)    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Prepend a callback around actions. See _insert_callbacks for parameter
+details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L163-L163'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+163</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 163</span></pre>
+<pre class='code ruby'>
+
+rdoc_method :method: prepend_around_action
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="prepend_before_action-instance_method">
+  <h3 class='signature '>
+    #<strong>prepend_before_action</strong>(names, block)    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Prepend a callback before actions. See _insert_callbacks for parameter
+details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L107-L107'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+107</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 107</span></pre>
+<pre class='code ruby'>
+
+rdoc_method :method: prepend_before_action
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="skip_action_callback-instance_method">
+  <h3 class='signature '>
+    #<strong>skip_action_callback</strong>(*names)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Skip before, after, and around action callbacks matching any of the names.</p>
+
+<h4 id="label-Parameters">Parameters</h4>
+<ul><li>
+<p><code>names</code> - A list of valid names that could be used for callbacks. Note that
+skipping uses Ruby equality, so it&#39;s impossible to skip a callback
+defined using an anonymous proc using #skip_action_callback.</p>
+</li></ul>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L64-L69'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+64
+65
+66
+67
+68
+69</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 64</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_skip_action_callback'>skip_action_callback</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_names'>names</span><span class='rparen'>)</span>
+  <span class='const'><a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../../ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='period'>.</span><span class='id identifier rubyid_warn'><a href="../../ActiveSupport/Deprecation/Reporting.html#warn-instance_method" title="ActiveSupport::Deprecation::Reporting#warn (method)">warn</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>`skip_action_callback` is deprecated and will be removed in Rails 5.1. Please use skip_before_action, skip_after_action or skip_around_action instead.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_skip_before_action'>skip_before_action</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_names'>names</span><span class='comma'>,</span> <span class='label'>raise:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_skip_after_action'>skip_after_action</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_names'>names</span><span class='comma'>,</span> <span class='label'>raise:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_skip_around_action'>skip_around_action</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_names'>names</span><span class='comma'>,</span> <span class='label'>raise:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="skip_after_action-instance_method">
+  <h3 class='signature '>
+    #<strong>skip_after_action</strong>(names)    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Skip a callback after actions. See _insert_callbacks for parameter details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L142-L142'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+142</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 142</span></pre>
+<pre class='code ruby'>
+
+rdoc_method :method: skip_after_action
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="skip_around_action-instance_method">
+  <h3 class='signature '>
+    #<strong>skip_around_action</strong>(names)    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Skip a callback around actions. See _insert_callbacks for parameter
+details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L170-L170'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+170</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 170</span></pre>
+<pre class='code ruby'>
+
+rdoc_method :method: skip_around_action
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="skip_before_action-instance_method">
+  <h3 class='signature '>
+    #<strong>skip_before_action</strong>(names)    </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Skip a callback before actions. See _insert_callbacks for parameter
+details.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L114-L114'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+114</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 114</span></pre>
+<pre class='code ruby'>
+
+rdoc_method :method: skip_before_action
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="skip_filter-instance_method">
+  <h3 class='signature '>
+    #<strong>skip_filter</strong>(*names)  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/callbacks.rb#L71-L76'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+71
+72
+73
+74
+75
+76</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/callbacks.rb', line 71</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_skip_filter'>skip_filter</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_names'>names</span><span class='rparen'>)</span>
+  <span class='const'><a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../../ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='period'>.</span><span class='id identifier rubyid_warn'><a href="../../ActiveSupport/Deprecation/Reporting.html#warn-instance_method" title="ActiveSupport::Deprecation::Reporting#warn (method)">warn</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>`skip_filter` is deprecated and will be removed in Rails 5.1. Use skip_before_action, skip_after_action or skip_around_action instead.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_skip_before_action'>skip_before_action</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_names'>names</span><span class='comma'>,</span> <span class='label'>raise:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_skip_after_action'>skip_after_action</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_names'>names</span><span class='comma'>,</span> <span class='label'>raise:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_skip_around_action'>skip_around_action</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_names'>names</span><span class='comma'>,</span> <span class='label'>raise:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.8 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.5.0p-1)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>

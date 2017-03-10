@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+<meta name='apple-touch-fullscreen'       content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
+
+<title>Class: Aws::CodeBuild::Client &mdash; aws-sdk-ruby-master</title>
+
+<link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_style.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_list.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/y_color.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/custom.css' />
+<link rel='stylesheet'  type='text/css' href='../../../css/common.css' />
+
+<script type='text/javascript'>
+  var pathId = "Aws::CodeBuild::Client",
+    relpath = '../../';
+
+  var t2Info = {
+    CSEP: '.',
+    ISEP: '#',
+    NSEP: '::'
+  };
+</script>
+
+<script type='text/javascript' charset='utf-8' src='../../../js/highlight.pack.js'></script>
+<script type='text/javascript' charset='utf-8' src='../../../js/y_app.js'></script>
+
+</head>
+<body>
+<svg id='y_wait' class viewBox='0 0 90 90'></svg>
+<div id='settings' class='hidden'></div>
+<div id='y_list' class='d h'>
+  <header id='list_header'></header>
+  <nav id= 'list_nav' class='y_nav l_nav'>
+    <ul id='list_items'></ul>
+  </nav>
+</div>
+<div id='y_toc' class='f h'>
+  <header id='toc_header'></header>
+  <nav id= 'toc_nav' class='y_nav t_nav'>
+  <ol id='toc_items'></ol>
+  </nav>
+</div>
+<div id='y_main' tabindex='-1'>
+  <header id='y_header'>
+    <div id='y_menu'>
+        <a href='../../../index.html'>Home</a> &raquo; 
+        <a href='../../index.html'>aws-sdk-ruby-master</a> &raquo; 
+        <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
+        <a href="../../Aws.html" title="Aws (module)">Aws</a> &raquo; 
+        <a href="../CodeBuild.html" title="Aws::CodeBuild (module)">CodeBuild</a> &raquo; 
+        <span class='title'><a id='t2_doc_top' href='#'>Client&nbsp;&#x25B2;</a></span>
+      </div>
+
+    <a id='list_href' href="../../class_list.html"></a>
+    <div id='y_measure_em' class='y_measure'></div>
+    <div id='y_measure_vh' class='y_measure'></div>
+    <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
+  </header>
+<div id='content' class='class'>
+<h1>Class: Aws::CodeBuild::Client</h1>
+<div id='t2_rel_sf_div'>
+<table id='t2_rel_sf' class='y_box'>
+  <thead>
+    <tr><td id='t2_relations' colspan='2'>Relationships & Source Files</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='box_h' colspan='2'>Super Chains via Extension / Inclusion / Inheritance</td></tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Class Chain:</div>
+        <div class='box_22'>
+          self,
+          <a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">::Seahorse::Client::Base</a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Instance Chain:</div>
+        <div class='box_22'>
+          self,
+          <a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">::Seahorse::Client::Base</a>,
+          <a href="../../Seahorse/Client/HandlerBuilder.html" title="Seahorse::Client::HandlerBuilder (module)">::Seahorse::Client::HandlerBuilder</a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td id='t2_inherits' class='box_2 o'>Inherits:</td>
+      <td class='box_rel'>
+        <span class='inheritName'><a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">Seahorse::Client::Base</a></span>
+        <ul class='fullTree'>
+          <li>Object</li>
+          <li class='next'><a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">Seahorse::Client::Base</a></li>
+          <li class='next'>Aws::CodeBuild::Client</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class='single'>
+      <td id='t2_defined_in' class='box_2'>Defined in:</td>
+      <td class='box_rel'>(unknown)      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h2 id='h2_overview'>Overview</h2>
+<div id='overview_ds'>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>An API client for AWS CodeBuild. To construct a client, you need to configure a <code>:region</code> and <code>:credentials</code>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_codebuild'>codebuild</span> <span class='op'>=</span> <span class='const'><a href="../../Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="../CodeBuild.html" title="Aws::CodeBuild (module)">CodeBuild</a></span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="Aws::CodeBuild::Client.new (method)">new</a></span><span class='lparen'>(</span>
+  <span class='label'>region:</span> <span class='id identifier rubyid_region_name'>region_name</span><span class='comma'>,</span>
+  <span class='label'>credentials:</span> <span class='id identifier rubyid_credentials'>credentials</span><span class='comma'>,</span>
+  <span class='comment'># ...
+</span><span class='rparen'>)</span></code></pre>
+
+<p>See <code>#initialize</code> for a full list of supported configuration options.</p>
+
+<h3>Region</h3>
+
+<p>You can configure a default region in the following locations:</p>
+
+<ul>
+<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
+<li><code>Aws.config[:region]</code></li>
+</ul>
+
+<p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
+
+<h3>Credentials</h3>
+
+<p>Default credentials are loaded automatically from the following locations:</p>
+
+<ul>
+<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
+<li><code>Aws.config[:credentials]</code></li>
+<li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
+<li>From an instance profile when running on EC2</li>
+</ul>
+
+<p>You can also construct a credentials object from one of the following
+classes:</p>
+
+<ul>
+<li><a href="../Credentials.html" title="Aws::Credentials (class)">::Aws::Credentials</a></li>
+<li><a href="../SharedCredentials.html" title="Aws::SharedCredentials (class)">::Aws::SharedCredentials</a></li>
+<li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
+<li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
+</ul>
+
+<p>Alternatively, you configure credentials with <code>:access_key_id</code> and
+<code>:secret_access_key</code>:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># load credentials from disk
+</span><span class='id identifier rubyid_creds'>creds</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/path/to/secrets</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+
+<span class='const'><a href="../../Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="../CodeBuild.html" title="Aws::CodeBuild (module)">CodeBuild</a></span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="Aws::CodeBuild::Client.new (method)">new</a></span><span class='lparen'>(</span>
+  <span class='label'>access_key_id:</span> <span class='id identifier rubyid_creds'>creds</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>access_key_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='label'>secret_access_key:</span> <span class='id identifier rubyid_creds'>creds</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>secret_access_key</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='rparen'>)</span></code></pre>
+
+<p><strong>Always load your credentials from outside your application.</strong> Avoid
+configuring credentials statically and never commit them to source control.</p>
+
+  </div>
+</div>
+</div>        
+
+<h2 class='h2_sum' id='class_Method_summary'>Class Method Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature '>
+      <a href="#new-class_method" title=".new (class method)">.<strong>new</strong>(options = {})  &#x21d2; Aws::CodeBuild::Client </a>
+    </span>
+    <span class='note title constructor'>constructor</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Constructs an API client.</p></div>
+    </div>
+  </li>
+</ul>
+
+<h3 class='inherited'><a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">::Seahorse::Client::Base</a> - Inherited</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../../Seahorse/Client/Base.html#add_plugin-class_method" title="Seahorse::Client::Base.add_plugin (method)">.add_plugin</a></td>
+      <td><div class='inline'><p>Registers a plugin with this client.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#api-class_method" title="Seahorse::Client::Base.api (method)">.api</a>,
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#clear_plugins-class_method" title="Seahorse::Client::Base.clear_plugins (method)">.clear_plugins</a>,
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#define-class_method" title="Seahorse::Client::Base.define (method)">.define</a>,
+      </td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../../Seahorse/Client/Base.html#extend-class_method" title="Seahorse::Client::Base.extend (method)">.extend</a></td>
+      <td><div class='inline'><p>Alias for <a href="../../Seahorse/Client/Base.html#define-class_method" title="Seahorse::Client::Base.define (method)">Seahorse::Client::Base.define</a>.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../../Seahorse/Client/Base.html#new-class_method" title="Seahorse::Client::Base.new (method)">.new</a></td>
+      <td><div class='inline'><p>See additional method definition at line 18.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../../Seahorse/Client/Base.html#plugins-class_method" title="Seahorse::Client::Base.plugins (method)">.plugins</a></td>
+      <td><div class='inline'><p>Returns the list of registered plugins for this Client.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#remove_plugin-class_method" title="Seahorse::Client::Base.remove_plugin (method)">.remove_plugin</a>,
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#set_api-class_method" title="Seahorse::Client::Base.set_api (method)">.set_api</a>,
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#set_plugins-class_method" title="Seahorse::Client::Base.set_plugins (method)">.set_plugins</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+
+<h2 class='h2_sum' id='instance_Attribute_summary'>Instance Attribute Summary</h2>
+<div class='div_sum'>
+
+<h3 class='inherited'><a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">::Seahorse::Client::Base</a> - Inherited</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ro' href="../../Seahorse/Client/Base.html#config-instance_method" title="Seahorse::Client::Base#config (method)">#config</a>,
+        <a class='i_m ro' href="../../Seahorse/Client/Base.html#handlers-instance_method" title="Seahorse::Client::Base#handlers (method)">#handlers</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+        
+
+<h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature '>
+      <a href="#batch_get_builds-instance_method" title="#batch_get_builds (instance method)">#<strong>batch_get_builds</strong>(options = {})  &#x21d2; Types::BatchGetBuildsOutput </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Gets information about builds.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#batch_get_projects-instance_method" title="#batch_get_projects (instance method)">#<strong>batch_get_projects</strong>(options = {})  &#x21d2; Types::BatchGetProjectsOutput </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Gets information about build projects.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#create_project-instance_method" title="#create_project (instance method)">#<strong>create_project</strong>(options = {})  &#x21d2; Types::CreateProjectOutput </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Creates a build project.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#delete_project-instance_method" title="#delete_project (instance method)">#<strong>delete_project</strong>(options = {})  &#x21d2; Struct </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Deletes a build project.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#list_builds-instance_method" title="#list_builds (instance method)">#<strong>list_builds</strong>(options = {})  &#x21d2; Types::ListBuildsOutput </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Gets a list of build IDs, with each build ID representing a single build.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#list_builds_for_project-instance_method" title="#list_builds_for_project (instance method)">#<strong>list_builds_for_project</strong>(options = {})  &#x21d2; Types::ListBuildsForProjectOutput </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Gets a list of build IDs for the specified build project, with each build ID representing a single build.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#list_curated_environment_images-instance_method" title="#list_curated_environment_images (instance method)">#<strong>list_curated_environment_images</strong>(options = {})  &#x21d2; Types::ListCuratedEnvironmentImagesOutput </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Gets information about Docker images that are managed by AWS CodeBuild.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#list_projects-instance_method" title="#list_projects (instance method)">#<strong>list_projects</strong>(options = {})  &#x21d2; Types::ListProjectsOutput </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Gets a list of build project names, with each build project name representing a single build project.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#start_build-instance_method" title="#start_build (instance method)">#<strong>start_build</strong>(options = {})  &#x21d2; Types::StartBuildOutput </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Starts running a build.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#stop_build-instance_method" title="#stop_build (instance method)">#<strong>stop_build</strong>(options = {})  &#x21d2; Types::StopBuildOutput </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Attempts to stop running a build.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#update_project-instance_method" title="#update_project (instance method)">#<strong>update_project</strong>(options = {})  &#x21d2; Types::UpdateProjectOutput </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Changes the settings of a build project.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#wait_until-instance_method" title="#wait_until (instance method)">#<strong>wait_until</strong>(waiter_name, params = {}) {|waiter| ... } &#x21d2; Boolean </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Waiters polls an API operation until a resource enters a desired state.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#waiter_names-instance_method" title="#waiter_names (instance method)">#<strong>waiter_names</strong>  &#x21d2; Array&lt;Symbol&gt; </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns the list of supported waiters.</p></div>
+    </div>
+  </li>
+</ul>
+
+<h3 class='inherited'><a href="../../Seahorse/Client/Base.html" title="Seahorse::Client::Base (class)">::Seahorse::Client::Base</a> - Inherited</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../../Seahorse/Client/Base.html#build_request-instance_method" title="Seahorse::Client::Base#build_request (method)">#build_request</a></td>
+      <td><div class='inline'><p>Builds and returns a <code>Request</code> for the named operation.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#operation-instance_method" title="Seahorse::Client::Base#operation (method)">#operation</a>,
+        <a class='i_m ' href="../../Seahorse/Client/Base.html#operation_names-instance_method" title="Seahorse::Client::Base#operation_names (method)">#operation_names</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="../../Seahorse/Client/HandlerBuilder.html" title="Seahorse::Client::HandlerBuilder (module)">::Seahorse::Client::HandlerBuilder</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="../../Seahorse/Client/HandlerBuilder.html#handle-instance_method" title="Seahorse::Client::HandlerBuilder#handle (method)">#handle</a>,
+        <a class='i_m ' href="../../Seahorse/Client/HandlerBuilder.html#handle_request-instance_method" title="Seahorse::Client::HandlerBuilder#handle_request (method)">#handle_request</a>,
+        <a class='i_m ' href="../../Seahorse/Client/HandlerBuilder.html#handle_response-instance_method" title="Seahorse::Client::HandlerBuilder#handle_response (method)">#handle_response</a>,
+      </td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../../Seahorse/Client/HandlerBuilder.html#handler-instance_method" title="Seahorse::Client::HandlerBuilder#handler (method)">#handler</a></td>
+      <td><div class='inline'><p>Alias for <a href="../../Seahorse/Client/HandlerBuilder.html#handle-instance_method" title="Seahorse::Client::HandlerBuilder#handle (method)">Seahorse::Client::HandlerBuilder#handle</a>.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+<h2 id='Constructor_Details' class='y_details'>Constructor Details</h2>
+
+  <section class='method_details first' id="new-class_method">
+  <h3 class='signature  first'>
+    .<strong>new</strong>(options = {})  &#x21d2; <a href="../../top-level-namespace.html" title="Top Level Namespace (root)">Aws::CodeBuild::Client</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Constructs an API client.</p>
+
+  </div>
+</div>
+<div class='tags'>
+      <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:access_key_id</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>Used to set credentials
+statically.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:convert_params</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>true</tt>          </span>
+            &mdash; <div class='inline'><p>When <code>true</code>, an attempt is made to coerce request parameters
+into the required types.  See <a href="../Plugins/ParamConverter.html" title="Aws::Plugins::ParamConverter (class)">::Aws::Plugins::ParamConverter</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:credentials</span>
+          <span class='type'>(<code>required</code>, <a href="../Credentials.html" title="Aws::Credentials (class)">Credentials</a>)</span>
+            &mdash; <div class='inline'><p>Your
+AWS credentials.  The following locations will be searched in order
+for credentials:</p>
+
+<ul>
+<li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
+<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
+<li><code>HOME/.aws/credentials</code> shared credentials file</li>
+<li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
+</ul>
+</div>        </li>
+        <li>
+          <span class='name'>:endpoint</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>A default endpoint is
+constructed from the <code>:region</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:http_continue_timeout</span>
+          <span class='type'>(<code>Float</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>1</tt>          </span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:http_idle_timeout</span>
+          <span class='type'>(<code>Integer</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>5</tt>          </span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:http_open_timeout</span>
+          <span class='type'>(<code>Integer</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>15</tt>          </span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:http_proxy</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:http_read_timeout</span>
+          <span class='type'>(<code>Integer</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>60</tt>          </span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:http_wire_trace</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>false</tt>          </span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:log_level</span>
+          <span class='type'>(<code>Symbol</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>:info</tt>          </span>
+            &mdash; <div class='inline'><p>The log level
+to send messages to the logger at.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Logging (class)">::Aws::Plugins::Logging</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:log_formatter</span>
+          <span class='type'>(<code>Logging::LogFormatter</code>)</span>
+            &mdash; <div class='inline'><p>The log
+formatter.  Defaults to Seahorse::Client::Logging::Formatter.default.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Logging (class)">::Aws::Plugins::Logging</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:logger</span>
+          <span class='type'>(<code>Logger</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>nil</tt>          </span>
+            &mdash; <div class='inline'><p>The Logger instance
+to send log messages to.  If this option is not set, logging
+will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Logging (class)">::Aws::Plugins::Logging</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:profile</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>Used when loading credentials
+from the shared credentials file at HOME/.aws/credentials.  When not
+specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:raise_response_errors</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>true</tt>          </span>
+            &mdash; <div class='inline'><p>When <code>true</code>, response errors are raised.  See <a href="../../Seahorse/Client/Plugins/RaiseResponseErrors.html" title="Seahorse::Client::Plugins::RaiseResponseErrors (class)">::Seahorse::Client::Plugins::RaiseResponseErrors</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:region</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
+the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
+Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:retry_limit</span>
+          <span class='type'>(<code>Integer</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>3</tt>          </span>
+            &mdash; <div class='inline'><p>The maximum number of times to retry failed requests.  Only
+~ 500 level server errors and certain ~ 400 level client errors
+are retried.  Generally, these are throttling errors, data
+checksum errors, networking errors, timeout errors and auth
+errors from expired credentials.  See <a href="../Plugins/RetryErrors.html" title="Aws::Plugins::RetryErrors (class)">::Aws::Plugins::RetryErrors</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:secret_access_key</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>Used to set
+credentials statically.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:session_token</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>Used to set credentials
+statically.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:simple_json</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>false</tt>          </span>
+            &mdash; <div class='inline'><p>Disables request parameter conversion, validation, and formatting.
+Also disable response data type conversions. This option is useful
+when you want to ensure the highest level of performance by
+avoiding overhead of walking request parameters and response data
+structures.</p>
+
+<p>When <code>:simple_json</code> is enabled, the request parameters hash must
+be formatted exactly as the DynamoDB API expects.  See <a href="../Plugins/Protocols/JsonRpc.html" title="Aws::Plugins::Protocols::JsonRpc (class)">::Aws::Plugins::Protocols::JsonRpc</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:ssl_ca_bundle</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:ssl_ca_directory</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:ssl_ca_store</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:ssl_verify_peer</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>true</tt>          </span>
+            &mdash; <div class='inline'><p>See <a href="../../Seahorse/Client/Plugins/NetHttp.html" title="Seahorse::Client::Plugins::NetHttp (class)">::Seahorse::Client::Plugins::NetHttp</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:stub_responses</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>false</tt>          </span>
+            &mdash; <div class='inline'><p>Causes the client to return stubbed responses. By default
+fake responses are generated and returned. You can specify
+the response data to return or errors to raise by calling
+<a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">Aws::ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
+
+<p>** Please note ** When response stubbing is enabled, no HTTP
+requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:validate_params</span>
+          <span class='type'>(<code>Boolean</code>)</span>
+          <span class='default'> &mdash; default:
+              <tt>true</tt>          </span>
+            &mdash; <div class='inline'><p>When <code>true</code>, request parameters are validated before
+sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::Plugins::ParamValidator (class)">::Aws::Plugins::ParamValidator</a> for more details.</p>
+</div>        </li>
+    </ul>
+
+</div>
+</section>
+
+<h2 class='y_details'>Instance Method Details</h2>
+<section class='method_details first' id="batch_get_builds-instance_method">
+  <h3 class='signature  first'>
+    #<strong>batch_get_builds</strong>(options = {})  &#x21d2; <a href="Types/BatchGetBuildsOutput.html" title="Aws::CodeBuild::Types::BatchGetBuildsOutput (class)">Types::BatchGetBuildsOutput</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Gets information about builds.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_batch_get_builds'>batch_get_builds</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>ids:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'># required
+</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_arn'>arn</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_start_time'>start_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_end_time'>end_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_current_phase'>current_phase</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_build_status'>build_status</span> <span class='comment'>#=&gt; String, one of &quot;SUCCEEDED&quot;, &quot;FAILED&quot;, &quot;FAULT&quot;, &quot;TIMED_OUT&quot;, &quot;IN_PROGRESS&quot;, &quot;STOPPED&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_source_version'>source_version</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_project_name'>project_name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phase_type'>phase_type</span> <span class='comment'>#=&gt; String, one of &quot;SUBMITTED&quot;, &quot;PROVISIONING&quot;, &quot;DOWNLOAD_SOURCE&quot;, &quot;INSTALL&quot;, &quot;PRE_BUILD&quot;, &quot;BUILD&quot;, &quot;POST_BUILD&quot;, &quot;UPLOAD_ARTIFACTS&quot;, &quot;FINALIZING&quot;, &quot;COMPLETED&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phase_status'>phase_status</span> <span class='comment'>#=&gt; String, one of &quot;SUCCEEDED&quot;, &quot;FAILED&quot;, &quot;FAULT&quot;, &quot;TIMED_OUT&quot;, &quot;IN_PROGRESS&quot;, &quot;STOPPED&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_start_time'>start_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_end_time'>end_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_duration_in_seconds'>duration_in_seconds</span> <span class='comment'>#=&gt; Integer
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_contexts'>contexts</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_contexts'>contexts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_status_code'>status_code</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_contexts'>contexts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;CODECOMMIT&quot;, &quot;CODEPIPELINE&quot;, &quot;GITHUB&quot;, &quot;S3&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_buildspec'>buildspec</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;OAUTH&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_resource'>resource</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_sha256sum'>sha256sum</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_md5sum'>md5sum</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;LINUX_CONTAINER&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_compute_type'>compute_type</span> <span class='comment'>#=&gt; String, one of &quot;BUILD_GENERAL1_SMALL&quot;, &quot;BUILD_GENERAL1_MEDIUM&quot;, &quot;BUILD_GENERAL1_LARGE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_logs'>logs</span><span class='period'>.</span><span class='id identifier rubyid_group_name'>group_name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_logs'>logs</span><span class='period'>.</span><span class='id identifier rubyid_stream_name'>stream_name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_logs'>logs</span><span class='period'>.</span><span class='id identifier rubyid_deep_link'>deep_link</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_timeout_in_minutes'>timeout_in_minutes</span> <span class='comment'>#=&gt; Integer
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_build_complete'>build_complete</span> <span class='comment'>#=&gt; true/false
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds'>builds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_initiator'>initiator</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds_not_found'>builds_not_found</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_builds_not_found'>builds_not_found</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:ids</span>
+          <span class='type'>(<code>required</code>, <code>Array</code>&lt;<code>String</code>&gt;)</span>
+            &mdash; <div class='inline'><p>The IDs of the builds.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/BatchGetBuildsOutput.html" title="Aws::CodeBuild::Types::BatchGetBuildsOutput (class)">Types::BatchGetBuildsOutput</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/BatchGetBuildsOutput.html#builds-instance_method" title="Aws::CodeBuild::Types::BatchGetBuildsOutput#builds (method)">#builds</a> =&gt; Array&lt;<a href="Types/Build.html" title="Aws::CodeBuild::Types::Build (class)">Types::Build</a>&gt;</li>
+<li><a href="Types/BatchGetBuildsOutput.html#builds_not_found-instance_method" title="Aws::CodeBuild::Types::BatchGetBuildsOutput#builds_not_found (method)">#builds_not_found</a> =&gt; Array&lt;String&gt;</li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="batch_get_projects-instance_method">
+  <h3 class='signature '>
+    #<strong>batch_get_projects</strong>(options = {})  &#x21d2; <a href="Types/BatchGetProjectsOutput.html" title="Aws::CodeBuild::Types::BatchGetProjectsOutput (class)">Types::BatchGetProjectsOutput</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Gets information about build projects.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_batch_get_projects'>batch_get_projects</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>names:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'># required
+</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_arn'>arn</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;CODECOMMIT&quot;, &quot;CODEPIPELINE&quot;, &quot;GITHUB&quot;, &quot;S3&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_buildspec'>buildspec</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;OAUTH&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_resource'>resource</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;CODEPIPELINE&quot;, &quot;S3&quot;, &quot;NO_ARTIFACTS&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_namespace_type'>namespace_type</span> <span class='comment'>#=&gt; String, one of &quot;NONE&quot;, &quot;BUILD_ID&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_packaging'>packaging</span> <span class='comment'>#=&gt; String, one of &quot;NONE&quot;, &quot;ZIP&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;LINUX_CONTAINER&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_compute_type'>compute_type</span> <span class='comment'>#=&gt; String, one of &quot;BUILD_GENERAL1_SMALL&quot;, &quot;BUILD_GENERAL1_MEDIUM&quot;, &quot;BUILD_GENERAL1_LARGE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_service_role'>service_role</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_timeout_in_minutes'>timeout_in_minutes</span> <span class='comment'>#=&gt; Integer
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_encryption_key'>encryption_key</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_tags'>tags</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_tags'>tags</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_tags'>tags</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_created'>created</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_last_modified'>last_modified</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects_not_found'>projects_not_found</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects_not_found'>projects_not_found</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:names</span>
+          <span class='type'>(<code>required</code>, <code>Array</code>&lt;<code>String</code>&gt;)</span>
+            &mdash; <div class='inline'><p>The names of the build projects.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/BatchGetProjectsOutput.html" title="Aws::CodeBuild::Types::BatchGetProjectsOutput (class)">Types::BatchGetProjectsOutput</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/BatchGetProjectsOutput.html#projects-instance_method" title="Aws::CodeBuild::Types::BatchGetProjectsOutput#projects (method)">#projects</a> =&gt; Array&lt;<a href="Types/Project.html" title="Aws::CodeBuild::Types::Project (class)">Types::Project</a>&gt;</li>
+<li><a href="Types/BatchGetProjectsOutput.html#projects_not_found-instance_method" title="Aws::CodeBuild::Types::BatchGetProjectsOutput#projects_not_found (method)">#projects_not_found</a> =&gt; Array&lt;String&gt;</li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="create_project-instance_method">
+  <h3 class='signature '>
+    #<strong>create_project</strong>(options = {})  &#x21d2; <a href="Types/CreateProjectOutput.html" title="Aws::CodeBuild::Types::CreateProjectOutput (class)">Types::CreateProjectOutput</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Creates a build project.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_create_project'>create_project</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ProjectName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>description:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ProjectDescription</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>source:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CODECOMMIT</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts CODECOMMIT, CODEPIPELINE, GITHUB, S3
+</span>    <span class='label'>location:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>buildspec:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>auth:</span> <span class='lbrace'>{</span>
+      <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OAUTH</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts OAUTH
+</span>      <span class='label'>resource:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>artifacts:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CODEPIPELINE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts CODEPIPELINE, S3, NO_ARTIFACTS
+</span>    <span class='label'>location:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>namespace_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NONE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts NONE, BUILD_ID
+</span>    <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>packaging:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NONE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts NONE, ZIP
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>environment:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>LINUX_CONTAINER</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts LINUX_CONTAINER
+</span>    <span class='label'>image:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='label'>compute_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BUILD_GENERAL1_SMALL</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE
+</span>    <span class='label'>environment_variables:</span> <span class='lbracket'>[</span>
+      <span class='lbrace'>{</span>
+        <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>        <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>service_role:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>timeout_in_minutes:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='label'>encryption_key:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>tags:</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>key:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>KeyInput</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+      <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ValueInput</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_arn'>arn</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;CODECOMMIT&quot;, &quot;CODEPIPELINE&quot;, &quot;GITHUB&quot;, &quot;S3&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_buildspec'>buildspec</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;OAUTH&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_resource'>resource</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;CODEPIPELINE&quot;, &quot;S3&quot;, &quot;NO_ARTIFACTS&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_namespace_type'>namespace_type</span> <span class='comment'>#=&gt; String, one of &quot;NONE&quot;, &quot;BUILD_ID&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_packaging'>packaging</span> <span class='comment'>#=&gt; String, one of &quot;NONE&quot;, &quot;ZIP&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;LINUX_CONTAINER&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_compute_type'>compute_type</span> <span class='comment'>#=&gt; String, one of &quot;BUILD_GENERAL1_SMALL&quot;, &quot;BUILD_GENERAL1_MEDIUM&quot;, &quot;BUILD_GENERAL1_LARGE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_service_role'>service_role</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_timeout_in_minutes'>timeout_in_minutes</span> <span class='comment'>#=&gt; Integer
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_encryption_key'>encryption_key</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_tags'>tags</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_tags'>tags</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_tags'>tags</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_created'>created</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_last_modified'>last_modified</span> <span class='comment'>#=&gt; Time</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>The name of the build project.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:description</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>A description that makes the build project easy to identify.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:source</span>
+          <span class='type'>(<code>required</code>, <a href="Types/ProjectSource.html" title="Aws::CodeBuild::Types::ProjectSource (class)">Types::ProjectSource</a>)</span>
+            &mdash; <div class='inline'><p>Information about the build input source code for the build project.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:artifacts</span>
+          <span class='type'>(<code>required</code>, <a href="Types/ProjectArtifacts.html" title="Aws::CodeBuild::Types::ProjectArtifacts (class)">Types::ProjectArtifacts</a>)</span>
+            &mdash; <div class='inline'><p>Information about the build output artifacts for the build project.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:environment</span>
+          <span class='type'>(<code>required</code>, <a href="Types/ProjectEnvironment.html" title="Aws::CodeBuild::Types::ProjectEnvironment (class)">Types::ProjectEnvironment</a>)</span>
+            &mdash; <div class='inline'><p>Information about the build environment for the build project.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:service_role</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:timeout_in_minutes</span>
+          <span class='type'>(<code>Integer</code>)</span>
+            &mdash; <div class='inline'><p>How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any build that has not been marked as completed. The default is 60 minutes.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:encryption_key</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.</p> <p>You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format <code>alias/<i>alias-name</i> </code>).</p>
+</div>        </li>
+        <li>
+          <span class='name'>:tags</span>
+          <span class='type'>(<code>Array</code>&lt;<a href="Types/Tag.html" title="Aws::CodeBuild::Types::Tag (class)">Types::Tag</a>&gt;)</span>
+            &mdash; <div class='inline'><p>A set of tags for this build project.</p> <p>These tags are available for use by AWS services that support AWS CodeBuild build project tags.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/CreateProjectOutput.html" title="Aws::CodeBuild::Types::CreateProjectOutput (class)">Types::CreateProjectOutput</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/CreateProjectOutput.html#project-instance_method" title="Aws::CodeBuild::Types::CreateProjectOutput#project (method)">#project</a> =&gt; <a href="Types/Project.html" title="Aws::CodeBuild::Types::Project (class)">Types::Project</a></li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="delete_project-instance_method">
+  <h3 class='signature '>
+    #<strong>delete_project</strong>(options = {})  &#x21d2; <code>Struct</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Deletes a build project.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_delete_project'>delete_project</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>The name of the build project.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Struct</code>)</span>
+&mdash;    <div class='inline'><p>Returns an empty <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a>.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="list_builds-instance_method">
+  <h3 class='signature '>
+    #<strong>list_builds</strong>(options = {})  &#x21d2; <a href="Types/ListBuildsOutput.html" title="Aws::CodeBuild::Types::ListBuildsOutput (class)">Types::ListBuildsOutput</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Gets a list of build IDs, with each build ID representing a single build.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_list_builds'>list_builds</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>sort_order:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ASCENDING</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts ASCENDING, DESCENDING
+</span>  <span class='label'>next_token:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_ids'>ids</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_ids'>ids</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_next_token'>next_token</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:sort_order</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p><p>The order to list build IDs. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build IDs in ascending order by build ID.</p> </li> <li> <p> <code>DESCENDING</code>: List the build IDs in descending order by build ID.</p> </li> </ul></p>
+</div>        </li>
+        <li>
+          <span class='name'>:next_token</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/ListBuildsOutput.html" title="Aws::CodeBuild::Types::ListBuildsOutput (class)">Types::ListBuildsOutput</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/ListBuildsOutput.html#ids-instance_method" title="Aws::CodeBuild::Types::ListBuildsOutput#ids (method)">#ids</a> =&gt; Array&lt;String&gt;</li>
+<li><a href="Types/ListBuildsOutput.html#next_token-instance_method" title="Aws::CodeBuild::Types::ListBuildsOutput#next_token (method)">#next_token</a> =&gt; String</li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="list_builds_for_project-instance_method">
+  <h3 class='signature '>
+    #<strong>list_builds_for_project</strong>(options = {})  &#x21d2; <a href="Types/ListBuildsForProjectOutput.html" title="Aws::CodeBuild::Types::ListBuildsForProjectOutput (class)">Types::ListBuildsForProjectOutput</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Gets a list of build IDs for the specified build project, with each build ID representing a single build.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_list_builds_for_project'>list_builds_for_project</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>project_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>sort_order:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ASCENDING</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts ASCENDING, DESCENDING
+</span>  <span class='label'>next_token:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_ids'>ids</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_ids'>ids</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_next_token'>next_token</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:project_name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>The name of the build project.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:sort_order</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p><p>The order to list build IDs. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build IDs in ascending order by build ID.</p> </li> <li> <p> <code>DESCENDING</code>: List the build IDs in descending order by build ID.</p> </li> </ul></p>
+</div>        </li>
+        <li>
+          <span class='name'>:next_token</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/ListBuildsForProjectOutput.html" title="Aws::CodeBuild::Types::ListBuildsForProjectOutput (class)">Types::ListBuildsForProjectOutput</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/ListBuildsForProjectOutput.html#ids-instance_method" title="Aws::CodeBuild::Types::ListBuildsForProjectOutput#ids (method)">#ids</a> =&gt; Array&lt;String&gt;</li>
+<li><a href="Types/ListBuildsForProjectOutput.html#next_token-instance_method" title="Aws::CodeBuild::Types::ListBuildsForProjectOutput#next_token (method)">#next_token</a> =&gt; String</li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="list_curated_environment_images-instance_method">
+  <h3 class='signature '>
+    #<strong>list_curated_environment_images</strong>(options = {})  &#x21d2; <a href="Types/ListCuratedEnvironmentImagesOutput.html" title="Aws::CodeBuild::Types::ListCuratedEnvironmentImagesOutput (class)">Types::ListCuratedEnvironmentImagesOutput</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Gets information about Docker images that are managed by AWS CodeBuild.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_list_curated_environment_images'>list_curated_environment_images</span><span class='lparen'>(</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_platforms'>platforms</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_platforms'>platforms</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_platform'>platform</span> <span class='comment'>#=&gt; String, one of &quot;DEBIAN&quot;, &quot;AMAZON_LINUX&quot;, &quot;UBUNTU&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_platforms'>platforms</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_languages'>languages</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_platforms'>platforms</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_languages'>languages</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_language'>language</span> <span class='comment'>#=&gt; String, one of &quot;JAVA&quot;, &quot;PYTHON&quot;, &quot;NODE_JS&quot;, &quot;RUBY&quot;, &quot;GOLANG&quot;, &quot;DOCKER&quot;, &quot;ANDROID&quot;, &quot;BASE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_platforms'>platforms</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_languages'>languages</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_images'>images</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_platforms'>platforms</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_languages'>languages</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_images'>images</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_platforms'>platforms</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_languages'>languages</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_images'>images</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/ListCuratedEnvironmentImagesOutput.html" title="Aws::CodeBuild::Types::ListCuratedEnvironmentImagesOutput (class)">Types::ListCuratedEnvironmentImagesOutput</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/ListCuratedEnvironmentImagesOutput.html#platforms-instance_method" title="Aws::CodeBuild::Types::ListCuratedEnvironmentImagesOutput#platforms (method)">#platforms</a> =&gt; Array&lt;<a href="Types/EnvironmentPlatform.html" title="Aws::CodeBuild::Types::EnvironmentPlatform (class)">Types::EnvironmentPlatform</a>&gt;</li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="list_projects-instance_method">
+  <h3 class='signature '>
+    #<strong>list_projects</strong>(options = {})  &#x21d2; <a href="Types/ListProjectsOutput.html" title="Aws::CodeBuild::Types::ListProjectsOutput (class)">Types::ListProjectsOutput</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Gets a list of build project names, with each build project name representing a single build project.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_list_projects'>list_projects</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>sort_by:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NAME</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts NAME, CREATED_TIME, LAST_MODIFIED_TIME
+</span>  <span class='label'>sort_order:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ASCENDING</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts ASCENDING, DESCENDING
+</span>  <span class='label'>next_token:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_next_token'>next_token</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:sort_by</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>The criterion to be used to list build project names. Valid values include:</p> <ul> <li> <p> <code>CREATED_TIME</code>: List the build project names based on when each build project was created.</p> </li> <li> <p> <code>LAST_MODIFIED_TIME</code>: List the build project names based on when information about each build project was last changed.</p> </li> <li> <p> <code>NAME</code>: List the build project names based on each build project's name.</p> </li> </ul> <p>Use <code>sortOrder</code> to specify in what order to list the build project names based on the preceding criteria.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:sort_order</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>The order in which to list build projects. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build project names in ascending order.</p> </li> <li> <p> <code>DESCENDING</code>: List the build project names in descending order.</p> </li> </ul> <p>Use <code>sortBy</code> to specify the criterion to be used to list build project names.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:next_token</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/ListProjectsOutput.html" title="Aws::CodeBuild::Types::ListProjectsOutput (class)">Types::ListProjectsOutput</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/ListProjectsOutput.html#next_token-instance_method" title="Aws::CodeBuild::Types::ListProjectsOutput#next_token (method)">#next_token</a> =&gt; String</li>
+<li><a href="Types/ListProjectsOutput.html#projects-instance_method" title="Aws::CodeBuild::Types::ListProjectsOutput#projects (method)">#projects</a> =&gt; Array&lt;String&gt;</li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="start_build-instance_method">
+  <h3 class='signature '>
+    #<strong>start_build</strong>(options = {})  &#x21d2; <a href="Types/StartBuildOutput.html" title="Aws::CodeBuild::Types::StartBuildOutput (class)">Types::StartBuildOutput</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Starts running a build.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_start_build'>start_build</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>project_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>source_version:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>artifacts_override:</span> <span class='lbrace'>{</span>
+    <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CODEPIPELINE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts CODEPIPELINE, S3, NO_ARTIFACTS
+</span>    <span class='label'>location:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>namespace_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NONE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts NONE, BUILD_ID
+</span>    <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>packaging:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NONE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts NONE, ZIP
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>environment_variables_override:</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='label'>buildspec_override:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>timeout_in_minutes_override:</span> <span class='int'>1</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_arn'>arn</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_start_time'>start_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_end_time'>end_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_current_phase'>current_phase</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_build_status'>build_status</span> <span class='comment'>#=&gt; String, one of &quot;SUCCEEDED&quot;, &quot;FAILED&quot;, &quot;FAULT&quot;, &quot;TIMED_OUT&quot;, &quot;IN_PROGRESS&quot;, &quot;STOPPED&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_source_version'>source_version</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_project_name'>project_name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phase_type'>phase_type</span> <span class='comment'>#=&gt; String, one of &quot;SUBMITTED&quot;, &quot;PROVISIONING&quot;, &quot;DOWNLOAD_SOURCE&quot;, &quot;INSTALL&quot;, &quot;PRE_BUILD&quot;, &quot;BUILD&quot;, &quot;POST_BUILD&quot;, &quot;UPLOAD_ARTIFACTS&quot;, &quot;FINALIZING&quot;, &quot;COMPLETED&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phase_status'>phase_status</span> <span class='comment'>#=&gt; String, one of &quot;SUCCEEDED&quot;, &quot;FAILED&quot;, &quot;FAULT&quot;, &quot;TIMED_OUT&quot;, &quot;IN_PROGRESS&quot;, &quot;STOPPED&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_start_time'>start_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_end_time'>end_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_duration_in_seconds'>duration_in_seconds</span> <span class='comment'>#=&gt; Integer
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_contexts'>contexts</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_contexts'>contexts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_status_code'>status_code</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_contexts'>contexts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;CODECOMMIT&quot;, &quot;CODEPIPELINE&quot;, &quot;GITHUB&quot;, &quot;S3&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_buildspec'>buildspec</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;OAUTH&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_resource'>resource</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_sha256sum'>sha256sum</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_md5sum'>md5sum</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;LINUX_CONTAINER&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_compute_type'>compute_type</span> <span class='comment'>#=&gt; String, one of &quot;BUILD_GENERAL1_SMALL&quot;, &quot;BUILD_GENERAL1_MEDIUM&quot;, &quot;BUILD_GENERAL1_LARGE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_logs'>logs</span><span class='period'>.</span><span class='id identifier rubyid_group_name'>group_name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_logs'>logs</span><span class='period'>.</span><span class='id identifier rubyid_stream_name'>stream_name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_logs'>logs</span><span class='period'>.</span><span class='id identifier rubyid_deep_link'>deep_link</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_timeout_in_minutes'>timeout_in_minutes</span> <span class='comment'>#=&gt; Integer
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_build_complete'>build_complete</span> <span class='comment'>#=&gt; true/false
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_initiator'>initiator</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:project_name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>The name of the build project to start running a build.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:source_version</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p><p>A version of the build input to be built, for this build only. If not specified, the latest version will be used. If specified, must be one of:</p> <ul> <li> <p>For AWS CodeCommit or GitHub: the commit ID to use.</p> </li> <li> <p>For Amazon Simple Storage Service (Amazon S3): the version ID of the object representing the build input ZIP file to use.</p> </li> </ul></p>
+</div>        </li>
+        <li>
+          <span class='name'>:artifacts_override</span>
+          <span class='type'>(<a href="Types/ProjectArtifacts.html" title="Aws::CodeBuild::Types::ProjectArtifacts (class)">Types::ProjectArtifacts</a>)</span>
+            &mdash; <div class='inline'><p>Build output artifact settings that override, for this build only, the latest ones already defined in the build project.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:environment_variables_override</span>
+          <span class='type'>(<code>Array</code>&lt;<a href="Types/EnvironmentVariable.html" title="Aws::CodeBuild::Types::EnvironmentVariable (class)">Types::EnvironmentVariable</a>&gt;)</span>
+            &mdash; <div class='inline'><p>A set of environment variables that overrides, for this build only, the latest ones already defined in the build project.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:buildspec_override</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>A build spec declaration that overrides, for this build only, the latest one already defined in the build project.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:timeout_in_minutes_override</span>
+          <span class='type'>(<code>Integer</code>)</span>
+            &mdash; <div class='inline'><p>The number of build timeout minutes, from 5 to 480 (8 hours), that overrides, for this build only, the latest setting already defined in the build project.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/StartBuildOutput.html" title="Aws::CodeBuild::Types::StartBuildOutput (class)">Types::StartBuildOutput</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/StartBuildOutput.html#build-instance_method" title="Aws::CodeBuild::Types::StartBuildOutput#build (method)">#build</a> =&gt; <a href="Types/Build.html" title="Aws::CodeBuild::Types::Build (class)">Types::Build</a></li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="stop_build-instance_method">
+  <h3 class='signature '>
+    #<strong>stop_build</strong>(options = {})  &#x21d2; <a href="Types/StopBuildOutput.html" title="Aws::CodeBuild::Types::StopBuildOutput (class)">Types::StopBuildOutput</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Attempts to stop running a build.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_stop_build'>stop_build</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_arn'>arn</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_start_time'>start_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_end_time'>end_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_current_phase'>current_phase</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_build_status'>build_status</span> <span class='comment'>#=&gt; String, one of &quot;SUCCEEDED&quot;, &quot;FAILED&quot;, &quot;FAULT&quot;, &quot;TIMED_OUT&quot;, &quot;IN_PROGRESS&quot;, &quot;STOPPED&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_source_version'>source_version</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_project_name'>project_name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phase_type'>phase_type</span> <span class='comment'>#=&gt; String, one of &quot;SUBMITTED&quot;, &quot;PROVISIONING&quot;, &quot;DOWNLOAD_SOURCE&quot;, &quot;INSTALL&quot;, &quot;PRE_BUILD&quot;, &quot;BUILD&quot;, &quot;POST_BUILD&quot;, &quot;UPLOAD_ARTIFACTS&quot;, &quot;FINALIZING&quot;, &quot;COMPLETED&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_phase_status'>phase_status</span> <span class='comment'>#=&gt; String, one of &quot;SUCCEEDED&quot;, &quot;FAILED&quot;, &quot;FAULT&quot;, &quot;TIMED_OUT&quot;, &quot;IN_PROGRESS&quot;, &quot;STOPPED&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_start_time'>start_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_end_time'>end_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_duration_in_seconds'>duration_in_seconds</span> <span class='comment'>#=&gt; Integer
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_contexts'>contexts</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_contexts'>contexts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_status_code'>status_code</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_phases'>phases</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_contexts'>contexts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;CODECOMMIT&quot;, &quot;CODEPIPELINE&quot;, &quot;GITHUB&quot;, &quot;S3&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_buildspec'>buildspec</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;OAUTH&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_resource'>resource</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_sha256sum'>sha256sum</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_md5sum'>md5sum</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;LINUX_CONTAINER&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_compute_type'>compute_type</span> <span class='comment'>#=&gt; String, one of &quot;BUILD_GENERAL1_SMALL&quot;, &quot;BUILD_GENERAL1_MEDIUM&quot;, &quot;BUILD_GENERAL1_LARGE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_logs'>logs</span><span class='period'>.</span><span class='id identifier rubyid_group_name'>group_name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_logs'>logs</span><span class='period'>.</span><span class='id identifier rubyid_stream_name'>stream_name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_logs'>logs</span><span class='period'>.</span><span class='id identifier rubyid_deep_link'>deep_link</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_timeout_in_minutes'>timeout_in_minutes</span> <span class='comment'>#=&gt; Integer
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_build_complete'>build_complete</span> <span class='comment'>#=&gt; true/false
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_initiator'>initiator</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>The ID of the build.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/StopBuildOutput.html" title="Aws::CodeBuild::Types::StopBuildOutput (class)">Types::StopBuildOutput</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/StopBuildOutput.html#build-instance_method" title="Aws::CodeBuild::Types::StopBuildOutput#build (method)">#build</a> =&gt; <a href="Types/Build.html" title="Aws::CodeBuild::Types::Build (class)">Types::Build</a></li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="update_project-instance_method">
+  <h3 class='signature '>
+    #<strong>update_project</strong>(options = {})  &#x21d2; <a href="Types/UpdateProjectOutput.html" title="Aws::CodeBuild::Types::UpdateProjectOutput (class)">Types::UpdateProjectOutput</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Changes the settings of a build project.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_update_project'>update_project</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>description:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ProjectDescription</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>source:</span> <span class='lbrace'>{</span>
+    <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CODECOMMIT</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts CODECOMMIT, CODEPIPELINE, GITHUB, S3
+</span>    <span class='label'>location:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>buildspec:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>auth:</span> <span class='lbrace'>{</span>
+      <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OAUTH</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts OAUTH
+</span>      <span class='label'>resource:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>artifacts:</span> <span class='lbrace'>{</span>
+    <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CODEPIPELINE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts CODEPIPELINE, S3, NO_ARTIFACTS
+</span>    <span class='label'>location:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>namespace_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NONE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts NONE, BUILD_ID
+</span>    <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>packaging:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NONE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts NONE, ZIP
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>environment:</span> <span class='lbrace'>{</span>
+    <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>LINUX_CONTAINER</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts LINUX_CONTAINER
+</span>    <span class='label'>image:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='label'>compute_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BUILD_GENERAL1_SMALL</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required, accepts BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE
+</span>    <span class='label'>environment_variables:</span> <span class='lbracket'>[</span>
+      <span class='lbrace'>{</span>
+        <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>        <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>service_role:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>timeout_in_minutes:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='label'>encryption_key:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NonEmptyString</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>tags:</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>key:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>KeyInput</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+      <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ValueInput</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_arn'>arn</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;CODECOMMIT&quot;, &quot;CODEPIPELINE&quot;, &quot;GITHUB&quot;, &quot;S3&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_buildspec'>buildspec</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;OAUTH&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_resource'>resource</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;CODEPIPELINE&quot;, &quot;S3&quot;, &quot;NO_ARTIFACTS&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_namespace_type'>namespace_type</span> <span class='comment'>#=&gt; String, one of &quot;NONE&quot;, &quot;BUILD_ID&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_artifacts'>artifacts</span><span class='period'>.</span><span class='id identifier rubyid_packaging'>packaging</span> <span class='comment'>#=&gt; String, one of &quot;NONE&quot;, &quot;ZIP&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='comment'>#=&gt; String, one of &quot;LINUX_CONTAINER&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_compute_type'>compute_type</span> <span class='comment'>#=&gt; String, one of &quot;BUILD_GENERAL1_SMALL&quot;, &quot;BUILD_GENERAL1_MEDIUM&quot;, &quot;BUILD_GENERAL1_LARGE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_environment_variables'>environment_variables</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_service_role'>service_role</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_timeout_in_minutes'>timeout_in_minutes</span> <span class='comment'>#=&gt; Integer
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_encryption_key'>encryption_key</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_tags'>tags</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_tags'>tags</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_tags'>tags</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_created'>created</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_last_modified'>last_modified</span> <span class='comment'>#=&gt; Time</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:name</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p><p>The name of the build project.</p> <note> <p>You cannot change a build project&#39;s name.</p> </note></p>
+</div>        </li>
+        <li>
+          <span class='name'>:description</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>A new or replacement description of the build project.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:source</span>
+          <span class='type'>(<a href="Types/ProjectSource.html" title="Aws::CodeBuild::Types::ProjectSource (class)">Types::ProjectSource</a>)</span>
+            &mdash; <div class='inline'><p>Information to be changed about the build input source code for the build project.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:artifacts</span>
+          <span class='type'>(<a href="Types/ProjectArtifacts.html" title="Aws::CodeBuild::Types::ProjectArtifacts (class)">Types::ProjectArtifacts</a>)</span>
+            &mdash; <div class='inline'><p>Information to be changed about the build output artifacts for the build project.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:environment</span>
+          <span class='type'>(<a href="Types/ProjectEnvironment.html" title="Aws::CodeBuild::Types::ProjectEnvironment (class)">Types::ProjectEnvironment</a>)</span>
+            &mdash; <div class='inline'><p>Information to be changed about the build environment for the build project.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:service_role</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>The replacement ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:timeout_in_minutes</span>
+          <span class='type'>(<code>Integer</code>)</span>
+            &mdash; <div class='inline'><p>The replacement value in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before timing out any related build that did not get marked as completed.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:encryption_key</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>The replacement AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.</p> <p>You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format <code>alias/<i>alias-name</i> </code>).</p>
+</div>        </li>
+        <li>
+          <span class='name'>:tags</span>
+          <span class='type'>(<code>Array</code>&lt;<a href="Types/Tag.html" title="Aws::CodeBuild::Types::Tag (class)">Types::Tag</a>&gt;)</span>
+            &mdash; <div class='inline'><p>The replacement set of tags for this build project.</p> <p>These tags are available for use by AWS services that support AWS CodeBuild build project tags.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/UpdateProjectOutput.html" title="Aws::CodeBuild::Types::UpdateProjectOutput (class)">Types::UpdateProjectOutput</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/UpdateProjectOutput.html#project-instance_method" title="Aws::CodeBuild::Types::UpdateProjectOutput#project (method)">#project</a> =&gt; <a href="Types/Project.html" title="Aws::CodeBuild::Types::Project (class)">Types::Project</a></li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="wait_until-instance_method">
+  <h3 class='signature '>
+    #<strong>wait_until</strong>(waiter_name, params = {}) {|waiter| ... } &#x21d2; <code>Boolean</code> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Waiters polls an API operation until a resource enters a desired
+state.</p>
+
+<h3>Basic Usage</h3>
+
+<p>Waiters will poll until they are succesful, they fail by
+entering a terminal state, or until a maximum number of attempts
+are made.</p>
+
+<p># polls in a loop, sleeping between attempts
+   client.waiter_until(waiter_name, params)</p>
+
+<h3>Configuration</h3>
+
+<p>You can configure the maximum number of polling attempts, and the
+delay (in seconds) between each polling attempt. You configure
+waiters by passing a block to <code>#wait_until</code>:</p>
+
+<pre class="code ruby"><code class="ruby"># poll for ~25 seconds
+client.wait_until(...) do |w|
+  w.max_attempts = 5
+  w.delay = 5
+end</code></pre>
+
+<h3>Callbacks</h3>
+
+<p>You can be notified before each polling attempt and before each
+delay. If you throw <code>:success</code> or <code>:failure</code> from these callbacks,
+it will terminate the waiter.</p>
+
+<pre class="code ruby"><code class="ruby">started_at = Time.now
+client.wait_until(...) do |w|
+
+  # disable max attempts
+  w.max_attempts = nil
+
+  # poll for 1 hour, instead of a number of attempts
+  w.before_wait do |attempts, response|
+    throw :failure if Time.now - started_at &gt; 3600
+  end
+
+end</code></pre>
+
+<h3>Handling Errors</h3>
+
+<p>When a waiter is successful, it returns <code>true</code>. When a waiter
+fails, it raises an error. <strong>All errors raised extend from
+<a href="../Waiters/Errors/WaiterFailed.html" title="Aws::Waiters::Errors::WaiterFailed (class)">::Aws::Waiters::Errors::WaiterFailed</a></strong>.</p>
+
+<pre class="code ruby"><code class="ruby">begin
+  client.wait_until(...)
+rescue Aws::Waiters::Errors::WaiterFailed
+  # resource did not enter the desired state in time
+end</code></pre>
+
+  </div>
+</div>
+<div class='tags'>
+  <p class='tag_title'>Parameters:</p>
+<ul class='param'>
+  <li>
+    <span class='name'>waiter_name</span>
+    <span class='type'>(<code>Symbol</code>)</span>
+&mdash;    <div class='inline'><p>The name of the waiter. See <a href="#waiter_names-instance_method" title="Aws::CodeBuild::Client#waiter_names (method)">#waiter_names</a>
+for a full list of supported waiters.</p>
+</div>
+  </li>
+  <li>
+    <span class='name'>params</span>
+    <span class='type'>(<code>Hash</code>)</span>
+    <em class='default'>(defaults to: <tt>{}</tt>)</em>
+&mdash;    <div class='inline'><p>Additional request parameters. See the <a href="#waiter_names-instance_method" title="Aws::CodeBuild::Client#waiter_names (method)">#waiter_names</a>
+for a list of supported waiters and what request they call. The
+called request determines the list of accepted parameters.</p>
+</div>
+  </li>
+</ul>
+<p class='tag_title'>Yield Parameters:</p>
+<ul class='yieldparam'>
+  <li>
+    <span class='name'>waiter</span>
+    <span class='type'>(<a href="../Waiters/Waiter.html" title="Aws::Waiters::Waiter (class)">Waiters::Waiter</a>)</span>
+&mdash;    <div class='inline'><p>Yields a <a href="../Waiters/Waiter.html" title="Aws::Waiters::Waiter (class)">Waiter</a>
+object that can be configured prior to waiting.</p>
+</div>
+  </li>
+</ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Boolean</code>)</span>
+&mdash;    <div class='inline'><p>Returns <code>true</code> if the waiter was successful.</p>
+</div>
+  </li>
+</ul>
+<p class='tag_title'>Raises:</p>
+<ul class='raise'>
+  <li>
+    <span class='type'>(<code>Errors::FailureStateError</code>)</span>
+&mdash;    <div class='inline'><p>Raised when the waiter terminates
+because the waiter has entered a state that it will not transition
+out of, preventing success.</p>
+</div>
+  </li>
+  <li>
+    <span class='type'>(<code>Errors::TooManyAttemptsError</code>)</span>
+&mdash;    <div class='inline'><p>Raised when the configured
+maximum number of attempts have been made, and the waiter is not
+yet successful.</p>
+</div>
+  </li>
+  <li>
+    <span class='type'>(<code>Errors::UnexpectedError</code>)</span>
+&mdash;    <div class='inline'><p>Raised when an error is encounted
+while polling for a resource that is not expected.</p>
+</div>
+  </li>
+  <li>
+    <span class='type'>(<code>Errors::NoSuchWaiterError</code>)</span>
+&mdash;    <div class='inline'><p>Raised when you request to wait
+for an unknown state.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="waiter_names-instance_method">
+  <h3 class='signature '>
+    #<strong>waiter_names</strong>  &#x21d2; <code>Array</code>&lt;<code>Symbol</code>&gt; 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Returns the list of supported waiters. The following table lists the supported
+waiters and the client method they call:</p>
+
+<table>
+<thead>
+<tr><th>Waiter Name</th><th>Client Method</th><th>Default Delay:</th><th>Default Max Attempts:</th></tr>
+</thead>
+<tbody>
+
+</tbody>
+</table>
+
+  </div>
+</div>
+<div class='tags'>
+  <p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<code>Array</code>&lt;<code>Symbol</code>&gt;)</span>
+&mdash;    <div class='inline'><p>the list of supported waiters.</p>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+
+<div id='footer'>
+  Generated by
+  <a href='http://yardoc.org' title='Yay! A Ruby Documentation Tool' target="_parent">yard</a>
+  0.9.8 with <a href='https://msp-greg.github.io/yard-t2/' title='yard-t2' target="_parent">yard-t2</a> 0.9.0 (ruby-2.5.0p-1)
+</div>
+</div> <!-- content  -->
+</div> <!-- y_main   -->
+</body>
+</html>
