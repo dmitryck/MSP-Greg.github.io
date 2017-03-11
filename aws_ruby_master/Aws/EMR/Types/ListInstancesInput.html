@@ -124,6 +124,8 @@ vanilla Hash:</p>
   <span class='label'>cluster_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ClusterId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
 </span>  <span class='label'>instance_group_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>InstanceGroupId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
   <span class='label'>instance_group_types:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MASTER</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'># accepts MASTER, CORE, TASK
+</span>  <span class='label'>instance_fleet_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>InstanceFleetId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>instance_fleet_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MASTER</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts MASTER, CORE, TASK
 </span>  <span class='label'>instance_states:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AWAITING_FULFILLMENT</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'># accepts AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING, TERMINATED
 </span>  <span class='label'>marker:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Marker</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
 <span class='rbrace'>}</span></code></pre>
@@ -131,6 +133,7 @@ vanilla Hash:</p>
   </div>
 
 <p>This input determines which instances to list.</p>
+
 
   </div>
 </div>
@@ -147,7 +150,31 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The identifier of the cluster for which to list the instances.</p>.</p></div>
+      <div class='inline'><p>The identifier of the cluster for which to list the instances.</p>
+
+
+<p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#instance_fleet_id-instance_method" title="#instance_fleet_id (instance method)">#<strong>instance_fleet_id</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>The unique identifier of the instance fleet.</p>
+
+
+<p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#instance_fleet_type-instance_method" title="#instance_fleet_type (instance method)">#<strong>instance_fleet_type</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The node type of the instance fleet.</p></div>
     </div>
   </li>
   <li>
@@ -156,7 +183,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The identifier of the instance group for which to list the instances.</p>.</p></div>
+      <div class='inline'><p>The identifier of the instance group for which to list the instances.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -165,7 +195,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The type of instance group for which to list the instances.</p>.</p></div>
+      <div class='inline'><p>The type of instance group for which to list the instances.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -174,7 +207,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>A list of instance states that will filter the instances returned with this request.</p>.</p></div>
+      <div class='inline'><p>A list of instance states that will filter the instances returned with this request.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -183,7 +219,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The pagination token that indicates the next set of results to retrieve.</p>.</p></div>
+      <div class='inline'><p>The pagination token that indicates the next set of results to retrieve.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
 </ul>
@@ -196,6 +235,45 @@ vanilla Hash:</p>
 <div class='docstring'>
   <div class='discussion'>
     <p>The identifier of the cluster for which to list the instances.</p>
+
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="instance_fleet_id-instance_method">
+  <h3 class='signature rw'>
+    #<strong>instance_fleet_id</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The unique identifier of the instance fleet.</p>
+
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="instance_fleet_type-instance_method">
+  <h3 class='signature rw'>
+    #<strong>instance_fleet_type</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The node type of the instance fleet. For example MASTER, CORE, or TASK.</p>
+
+
+<p>Possible values:</p>
+
+
+<ul><li><tt>MASTER</tt></li><li><tt>CORE</tt></li><li><tt>TASK</tt></li></ul>
+
 
   </div>
 </div>
@@ -212,6 +290,7 @@ vanilla Hash:</p>
   <div class='discussion'>
     <p>The identifier of the instance group for which to list the instances.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -226,6 +305,7 @@ vanilla Hash:</p>
 <div class='docstring'>
   <div class='discussion'>
     <p>The type of instance group for which to list the instances.</p>
+
 
   </div>
 </div>
@@ -242,6 +322,7 @@ vanilla Hash:</p>
   <div class='discussion'>
     <p>A list of instance states that will filter the instances returned with this request.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -256,6 +337,7 @@ vanilla Hash:</p>
 <div class='docstring'>
   <div class='discussion'>
     <p>The pagination token that indicates the next set of results to retrieve.</p>
+
 
   </div>
 </div>

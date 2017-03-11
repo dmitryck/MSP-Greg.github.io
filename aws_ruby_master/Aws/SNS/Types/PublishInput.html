@@ -140,6 +140,7 @@ vanilla Hash:</p>
 
 <p>Input for Publish action.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -155,7 +156,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The message you want to send to the topic.</p>.</p></div>
+      <div class='inline'><p>The message you want to send to the topic.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -164,7 +168,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Message attributes for Publish action.</p>.</p></div>
+      <div class='inline'><p>Message attributes for Publish action.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -191,7 +198,7 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Optional parameter to be used as the &quot;Subject&quot; line when the message is delivered to email endpoints.</p></div>
+      <div class='inline'><p><p>Optional parameter to be used as the "Subject" line when the message is delivered to email endpoints.</p></div>
     </div>
   </li>
   <li>
@@ -200,7 +207,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Either TopicArn or EndpointArn, but not both.</p>.</p></div>
+      <div class='inline'><p>Either TopicArn or EndpointArn, but not both.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -209,7 +219,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The topic you want to publish to.</p>.</p></div>
+      <div class='inline'><p>The topic you want to publish to.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
 </ul>
@@ -221,7 +234,10 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p><p>The message you want to send to the topic.</p> <p>If you want to send the same message to all transport protocols, include the text of the message as a String value.</p> <p>If you want to send different messages for each transport protocol, set the value of the <code>MessageStructure</code> parameter to <code>json</code> and use a JSON object for the <code>Message</code> parameter. </p> <p>Constraints: Messages must be UTF-8 encoded strings at most 256 KB in size (262144 bytes, not 262144 characters).</p> <p>JSON-specific constraints:</p> <ul> <li> <p>Keys in the JSON object that correspond to supported transport protocols must have simple JSON string values.</p> </li> <li> <p>The values will be parsed (unescaped) before they are used in outgoing messages.</p> </li> <li> <p>Outbound notifications are JSON encoded (meaning that the characters will be reescaped for sending).</p> </li> <li> <p>Values have a minimum length of 0 (the empty string, &quot;&quot;, is allowed).</p> </li> <li> <p>Values have a maximum length bounded by the overall message size (so, including multiple protocols may limit message sizes).</p> </li> <li> <p>Non-string values will cause the key to be ignored.</p> </li> <li> <p>Keys that do not correspond to supported transport protocols are ignored.</p> </li> <li> <p>Duplicate keys are not allowed.</p> </li> <li> <p>Failure to parse or validate any key or value in the message will cause the <code>Publish</code> call to return an error (no partial delivery).</p> </li> </ul></p>
+    <p>The message you want to send to the topic.</p>
+
+
+<p> <p>If you want to send the same message to all transport protocols, include the text of the message as a String value.</p> <p>If you want to send different messages for each transport protocol, set the value of the <code>MessageStructure</code> parameter to <code>json</code> and use a JSON object for the <code>Message</code> parameter. </p> <p>Constraints: Messages must be UTF-8 encoded strings at most 256 KB in size (262144 bytes, not 262144 characters).</p> <p>JSON-specific constraints:</p> <ul> <li> <p>Keys in the JSON object that correspond to supported transport protocols must have simple JSON string values.</p> </li> <li> <p>The values will be parsed (unescaped) before they are used in outgoing messages.</p> </li> <li> <p>Outbound notifications are JSON encoded (meaning that the characters will be reescaped for sending).</p> </li> <li> <p>Values have a minimum length of 0 (the empty string, "", is allowed).</p> </li> <li> <p>Values have a maximum length bounded by the overall message size (so, including multiple protocols may limit message sizes).</p> </li> <li> <p>Non-string values will cause the key to be ignored.</p> </li> <li> <p>Keys that do not correspond to supported transport protocols are ignored.</p> </li> <li> <p>Duplicate keys are not allowed.</p> </li> <li> <p>Failure to parse or validate any key or value in the message will cause the <code>Publish</code> call to return an error (no partial delivery).</p> </li> </ul></p>
 
   </div>
 </div>
@@ -238,6 +254,7 @@ vanilla Hash:</p>
   <div class='discussion'>
     <p>Message attributes for Publish action.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -251,7 +268,10 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Set <code>MessageStructure</code> to <code>json</code> if you want to send a different message for each protocol. For example, using one publish action, you can send a short message to your SMS subscribers and a longer message to your email subscribers. If you set <code>MessageStructure</code> to <code>json</code>, the value of the <code>Message</code> parameter must: </p> <ul> <li> <p>be a syntactically valid JSON object; and</p> </li> <li> <p>contain at least a top-level JSON key of "default" with a value that is a string.</p> </li> </ul> <p>You can define other top-level keys that define the message you want to send to a specific transport protocol (e.g., "http").</p> <p>For information about sending different messages for each protocol using the AWS Management Console, go to <a href="http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create Different Messages for Each Protocol</a> in the <i>Amazon Simple Notification Service Getting Started Guide</i>. </p> <p>Valid value: <code>json</code> </p>
+    <p>Set <code>MessageStructure</code> to <code>json</code> if you want to send a different message for each protocol. For example, using one publish action, you can send a short message to your SMS subscribers and a longer message to your email subscribers. If you set <code>MessageStructure</code> to <code>json</code>, the value of the <code>Message</code> parameter must: </p>
+
+
+<p> <ul> <li> <p>be a syntactically valid JSON object; and</p> </li> <li> <p>contain at least a top-level JSON key of "default" with a value that is a string.</p> </li> </ul> <p>You can define other top-level keys that define the message you want to send to a specific transport protocol (e.g., "http").</p> <p>For information about sending different messages for each protocol using the AWS Management Console, go to <a href="http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create Different Messages for Each Protocol</a> in the <i>Amazon Simple Notification Service Getting Started Guide</i>. </p> <p>Valid value: <code>json</code> </p></p>
 
   </div>
 </div>
@@ -266,7 +286,10 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The phone number to which you want to deliver an SMS message. Use E.164 format.</p> <p>If you don't specify a value for the <code>PhoneNumber</code> parameter, you must specify a value for the <code>TargetArn</code> or <code>TopicArn</code> parameters.</p>
+    <p>The phone number to which you want to deliver an SMS message. Use E.164 format.</p>
+
+
+<p> <p>If you don't specify a value for the <code>PhoneNumber</code> parameter, you must specify a value for the <code>TargetArn</code> or <code>TopicArn</code> parameters.</p></p>
 
   </div>
 </div>
@@ -281,7 +304,10 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Optional parameter to be used as the "Subject" line when the message is delivered to email endpoints. This field will also be included, if present, in the standard JSON messages delivered to other endpoints.</p> <p>Constraints: Subjects must be ASCII text that begins with a letter, number, or punctuation mark; must not include line breaks or control characters; and must be less than 100 characters long.</p>
+    <p>Optional parameter to be used as the "Subject" line when the message is delivered to email endpoints. This field will also be included, if present, in the standard JSON messages delivered to other endpoints.</p>
+
+
+<p> <p>Constraints: Subjects must be ASCII text that begins with a letter, number, or punctuation mark; must not include line breaks or control characters; and must be less than 100 characters long.</p></p>
 
   </div>
 </div>
@@ -296,7 +322,10 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Either TopicArn or EndpointArn, but not both.</p> <p>If you don't specify a value for the <code>TargetArn</code> parameter, you must specify a value for the <code>PhoneNumber</code> or <code>TopicArn</code> parameters.</p>
+    <p>Either TopicArn or EndpointArn, but not both.</p>
+
+
+<p> <p>If you don't specify a value for the <code>TargetArn</code> parameter, you must specify a value for the <code>PhoneNumber</code> or <code>TopicArn</code> parameters.</p></p>
 
   </div>
 </div>
@@ -311,7 +340,10 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The topic you want to publish to.</p> <p>If you don't specify a value for the <code>TopicArn</code> parameter, you must specify a value for the <code>PhoneNumber</code> or <code>TargetArn</code> parameters.</p>
+    <p>The topic you want to publish to.</p>
+
+
+<p> <p>If you don't specify a value for the <code>TopicArn</code> parameter, you must specify a value for the <code>PhoneNumber</code> or <code>TargetArn</code> parameters.</p></p>
 
   </div>
 </div>

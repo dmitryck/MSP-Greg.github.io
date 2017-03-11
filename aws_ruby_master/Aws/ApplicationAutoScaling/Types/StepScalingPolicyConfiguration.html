@@ -136,7 +136,14 @@ vanilla Hash:</p>
 </div>
   </div>
 
-<p><p>Represents a step scaling policy configuration.</p><p>Returned by:</p><ul><li><a href="PutScalingPolicyRequest.html#step_scaling_policy_configuration-instance_method" title="Aws::ApplicationAutoScaling::Types::PutScalingPolicyRequest#step_scaling_policy_configuration (method)">PutScalingPolicyRequest#step_scaling_policy_configuration</a></li><li><a href="ScalingPolicy.html#step_scaling_policy_configuration-instance_method" title="Aws::ApplicationAutoScaling::Types::ScalingPolicy#step_scaling_policy_configuration (method)">ScalingPolicy#step_scaling_policy_configuration</a></li></ul></p>
+<p>Represents a step scaling policy configuration.</p>
+
+
+<p>Returned by:</p>
+
+
+<ul><li><a href="PutScalingPolicyRequest.html#step_scaling_policy_configuration-instance_method" title="Aws::ApplicationAutoScaling::Types::PutScalingPolicyRequest#step_scaling_policy_configuration (method)">PutScalingPolicyRequest#step_scaling_policy_configuration</a></li><li><a href="ScalingPolicy.html#step_scaling_policy_configuration-instance_method" title="Aws::ApplicationAutoScaling::Types::ScalingPolicy#step_scaling_policy_configuration (method)">ScalingPolicy#step_scaling_policy_configuration</a></li></ul>
+
 
   </div>
 </div>
@@ -153,7 +160,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The adjustment type, which specifies how the <code>ScalingAdjustment</code> parameter in a <a>StepAdjustment</a> is interpreted.</p>.</p></div>
+      <div class='inline'><p>The adjustment type, which specifies how the <code>ScalingAdjustment</code> parameter in a <a>StepAdjustment</a> is interpreted.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -162,7 +172,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The amount of time, in seconds, after a scaling activity completes where previous trigger-related scaling activities can influence future scaling events.</p>.</p></div>
+      <div class='inline'><p>The amount of time, in seconds, after a scaling activity completes where previous trigger-related scaling activities can influence future scaling events.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -189,7 +202,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>A set of adjustments that enable you to scale based on the size of the alarm breach.</p>.</p></div>
+      <div class='inline'><p>A set of adjustments that enable you to scale based on the size of the alarm breach.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
 </ul>
@@ -201,7 +217,14 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p><p>The adjustment type, which specifies how the <code>ScalingAdjustment</code> parameter in a <a>StepAdjustment</a> is interpreted.</p><p>Possible values:</p><ul><li><tt>ChangeInCapacity</tt></li><li><tt>PercentChangeInCapacity</tt></li><li><tt>ExactCapacity</tt></li></ul></p>
+    <p>The adjustment type, which specifies how the <code>ScalingAdjustment</code> parameter in a <a>StepAdjustment</a> is interpreted.</p>
+
+
+<p>Possible values:</p>
+
+
+<ul><li><tt>ChangeInCapacity</tt></li><li><tt>PercentChangeInCapacity</tt></li><li><tt>ExactCapacity</tt></li></ul>
+
 
   </div>
 </div>
@@ -216,7 +239,10 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The amount of time, in seconds, after a scaling activity completes where previous trigger-related scaling activities can influence future scaling events.</p> <p>For scale out policies, while <code>Cooldown</code> is in effect, the capacity that has been added by the previous scale out event that initiated the <code>Cooldown</code> is calculated as part of the desired capacity for the next scale out. The intention is to continuously (but not excessively) scale out. For example, an alarm triggers a step scaling policy to scale out an Amazon ECS service by 2 tasks, the scaling activity completes successfully, and a <code>Cooldown</code> period of 5 minutes starts. During the <code>Cooldown</code> period, if the alarm triggers the same policy again but at a more aggressive step adjustment to scale out the service by 3 tasks, the 2 tasks that were added in the previous scale out event are considered part of that capacity and only 1 additional task is added to the desired count.</p> <p>For scale in policies, the <code>Cooldown</code> period is used to block subsequent scale in requests until it has expired. The intention is to scale in conservatively to protect your application's availability. However, if another alarm triggers a scale out policy during the <code>Cooldown</code> period after a scale-in, Application Auto Scaling scales out your scalable target immediately.</p>
+    <p>The amount of time, in seconds, after a scaling activity completes where previous trigger-related scaling activities can influence future scaling events.</p>
+
+
+<p> <p>For scale out policies, while <code>Cooldown</code> is in effect, the capacity that has been added by the previous scale out event that initiated the <code>Cooldown</code> is calculated as part of the desired capacity for the next scale out. The intention is to continuously (but not excessively) scale out. For example, an alarm triggers a step scaling policy to scale out an Amazon ECS service by 2 tasks, the scaling activity completes successfully, and a <code>Cooldown</code> period of 5 minutes starts. During the <code>Cooldown</code> period, if the alarm triggers the same policy again but at a more aggressive step adjustment to scale out the service by 3 tasks, the 2 tasks that were added in the previous scale out event are considered part of that capacity and only 1 additional task is added to the desired count.</p> <p>For scale in policies, the <code>Cooldown</code> period is used to block subsequent scale in requests until it has expired. The intention is to scale in conservatively to protect your application's availability. However, if another alarm triggers a scale out policy during the <code>Cooldown</code> period after a scale-in, Application Auto Scaling scales out your scalable target immediately.</p></p>
 
   </div>
 </div>
@@ -231,7 +257,14 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p><p>The aggregation type for the CloudWatch metrics. Valid values are <code>Minimum</code>, <code>Maximum</code>, and <code>Average</code>.</p><p>Possible values:</p><ul><li><tt>Average</tt></li><li><tt>Minimum</tt></li><li><tt>Maximum</tt></li></ul></p>
+    <p>The aggregation type for the CloudWatch metrics. Valid values are <code>Minimum</code>, <code>Maximum</code>, and <code>Average</code>.</p>
+
+
+<p>Possible values:</p>
+
+
+<ul><li><tt>Average</tt></li><li><tt>Minimum</tt></li><li><tt>Maximum</tt></li></ul>
+
 
   </div>
 </div>
@@ -248,6 +281,7 @@ vanilla Hash:</p>
   <div class='discussion'>
     <p>The minimum number to adjust your scalable dimension as a result of a scaling activity. If the adjustment type is <code>PercentChangeInCapacity</code>, the scaling policy changes the scalable dimension of the scalable target by this amount.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -262,6 +296,7 @@ vanilla Hash:</p>
 <div class='docstring'>
   <div class='discussion'>
     <p>A set of adjustments that enable you to scale based on the size of the alarm breach.</p>
+
 
   </div>
 </div>

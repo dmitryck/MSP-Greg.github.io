@@ -168,7 +168,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Name of the Lambda function whose resource policy you are updating by adding a new permission.</p>.</p></div>
+      <div class='inline'><p>Name of the Lambda function whose resource policy you are updating by adding a new permission.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -213,7 +216,10 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>A unique statement identifier.</p>.</p></div>
+      <div class='inline'><p>A unique statement identifier.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
 </ul>
@@ -226,6 +232,7 @@ vanilla Hash:</p>
 <div class='docstring'>
   <div class='discussion'>
     <p>The AWS Lambda action you want to allow in this statement. Each Lambda action is a string starting with <code>lambda:</code> followed by the API name . For example, <code>lambda:CreateFunction</code>. You can use wildcard (<code>lambda:*</code>) to grant permission for all AWS Lambda actions. </p>
+
 
   </div>
 </div>
@@ -242,6 +249,7 @@ vanilla Hash:</p>
   <div class='discussion'>
     <p>A unique token that must be supplied by the principal invoking the function. This is currently only used for Alexa Smart Home functions.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -255,7 +263,10 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Name of the Lambda function whose resource policy you are updating by adding a new permission.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+    <p>Name of the Lambda function whose resource policy you are updating by adding a new permission.</p>
+
+
+<p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p></p>
 
   </div>
 </div>
@@ -272,6 +283,7 @@ vanilla Hash:</p>
   <div class='discussion'>
     <p>The principal who is getting this permission. It can be Amazon S3 service Principal (<code>s3.amazonaws.com</code>) if you want Amazon S3 to invoke the function, an AWS account ID if you are granting cross-account permission, or any valid AWS service principal such as <code>sns.amazonaws.com</code>. For example, you might want to allow a custom application in another AWS account to push events to AWS Lambda by invoking your function. </p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -285,7 +297,10 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>You can use this optional query parameter to describe a qualified ARN using a function version or an alias name. The permission will then apply to the specific qualified ARN. For example, if you specify function version 2 as the qualifier, then permission applies only when request is made using qualified function ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:2</code> </p> <p>If you specify an alias name, for example <code>PROD</code>, then the permission is valid only for requests made using the alias ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:PROD</code> </p> <p>If the qualifier is not specified, the permission is valid only when requests is made using unqualified function ARN.</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name</code> </p>
+    <p>You can use this optional query parameter to describe a qualified ARN using a function version or an alias name. The permission will then apply to the specific qualified ARN. For example, if you specify function version 2 as the qualifier, then permission applies only when request is made using qualified function ARN:</p>
+
+
+<p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:2</code> </p> <p>If you specify an alias name, for example <code>PROD</code>, then the permission is valid only for requests made using the alias ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:PROD</code> </p> <p>If the qualifier is not specified, the permission is valid only when requests is made using unqualified function ARN.</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name</code> </p></p>
 
   </div>
 </div>
@@ -302,6 +317,7 @@ vanilla Hash:</p>
   <div class='discussion'>
     <p>This parameter is used for S3, SES, CloudWatch Logs and CloudWatch Rules only. The AWS account ID (without a hyphen) of the source owner. For example, if the <code>SourceArn</code> identifies a bucket, then this is the bucket owner's account ID. You can use this additional condition to ensure the bucket you specify is owned by a specific account (it is possible the bucket owner deleted the bucket and some other AWS account created the bucket). You can also use this condition to specify all sources (that is, you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -315,7 +331,10 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p><p>This is optional; however, when granting Amazon S3 permission to invoke your function, you should specify this field with the Amazon Resource Name (ARN) as its value. This ensures that only events generated from the specified source can invoke the function.</p> <important><p>If you add a permission for the Amazon S3 principal without providing the source ARN, any AWS account that creates a mapping to your function ARN can send events to invoke your Lambda function from Amazon S3.</p> </important></p>
+    <p>This is optional; however, when granting Amazon S3 permission to invoke your function, you should specify this field with the Amazon Resource Name (ARN) as its value. This ensures that only events generated from the specified source can invoke the function.</p>
+
+
+<p> <important><p>If you add a permission for the Amazon S3 principal without providing the source ARN, any AWS account that creates a mapping to your function ARN can send events to invoke your Lambda function from Amazon S3.</p> </important></p>
 
   </div>
 </div>
@@ -331,6 +350,7 @@ vanilla Hash:</p>
 <div class='docstring'>
   <div class='discussion'>
     <p>A unique statement identifier.</p>
+
 
   </div>
 </div>

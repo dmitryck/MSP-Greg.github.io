@@ -129,9 +129,10 @@
 <p>You can configure a default region in the following locations:</p>
 
 <ul>
-<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
+<li><code>ENV['AWS_REGION']</code></li>
 <li><code>Aws.config[:region]</code></li>
 </ul>
+
 
 <p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
 
@@ -140,11 +141,12 @@
 <p>Default credentials are loaded automatically from the following locations:</p>
 
 <ul>
-<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
+<li><code>ENV['AWS_ACCESS_KEY_ID']</code> and <code>ENV['AWS_SECRET_ACCESS_KEY']</code></li>
 <li><code>Aws.config[:credentials]</code></li>
 <li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
 <li>From an instance profile when running on EC2</li>
 </ul>
+
 
 <p>You can also construct a credentials object from one of the following
 classes:</p>
@@ -155,6 +157,7 @@ classes:</p>
 <li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
 <li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
 </ul>
+
 
 <p>Alternatively, you configure credentials with <code>:access_key_id</code> and
 <code>:secret_access_key</code>:</p>
@@ -282,7 +285,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#detect_faces-instance_method" title="#detect_faces (instance method)">#<strong>detect_faces</strong>(options = {})  &#x21d2; Types::DetectFacesResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Detects faces within an image (JPEG or PNG) that is provided as input.</p>.</p></div>
+      <div class='inline'><p>Detects faces within an image (JPEG or PNG) that is provided as input.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -422,10 +428,11 @@ for credentials:</p>
 
 <ul>
 <li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
-<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
+<li>ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']</li>
 <li><code>HOME/.aws/credentials</code> shared credentials file</li>
 <li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
 </ul>
+
 </div>        </li>
         <li>
           <span class='name'>:endpoint</span>
@@ -501,7 +508,7 @@ will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Lo
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Used when loading credentials
 from the shared credentials file at HOME/.aws/credentials.  When not
-specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
 </div>        </li>
         <li>
           <span class='name'>:raise_response_errors</span>
@@ -514,7 +521,7 @@ specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.htm
           <span class='name'>:region</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
-the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
+the client endpoint.  Defaults to <code>ENV['AWS_REGION']</code>.
 Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
 </div>        </li>
         <li>
@@ -586,7 +593,7 @@ fake responses are generated and returned. You can specify
 the response data to return or errors to raise by calling
 <a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
 
-<p>** Please note ** When response stubbing is enabled, no HTTP
+<p><strong> Please note </strong> When response stubbing is enabled, no HTTP
 requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
 </div>        </li>
         <li>
@@ -609,7 +616,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Compares a face in the <i>source</i> input image with each face detected in the <i>target</i> input image. </p> <note> <p> If the source image contains multiple faces, the service detects the largest face and uses it to compare with each face detected in the target image. </p> </note> <p>In response, the operation returns an array of face matches ordered by similarity score with the highest similarity scores first. For each face match, the response provides a bounding box of the face and <code>confidence</code> value (indicating the level of confidence that the bounding box contains a face). The response also provides a <code>similarity</code> score, which indicates how closely the faces match. </p> <note> <p>By default, only faces with the similarity score of greater than or equal to 80% are returned in the response. You can change this value.</p> </note> <p>In addition to the face matches, the response returns information about the face in the source image, including the bounding box of the face and confidence value.</p> <note> <p> This is a stateless API operation. That is, the operation does not persist any data.</p> </note> <p>For an example, see <a>get-started-exercise-compare-faces</a> </p> <p>This operation requires permissions to perform the <code>rekognition:CompareFaces</code> action.</p>
+    <p>Compares a face in the <i>source</i> input image with each face detected in the <i>target</i> input image. </p>
+
+
+<p> <note> <p> If the source image contains multiple faces, the service detects the largest face and uses it to compare with each face detected in the target image. </p> </note> <p>In response, the operation returns an array of face matches ordered by similarity score with the highest similarity scores first. For each face match, the response provides a bounding box of the face and <code>confidence</code> value (indicating the level of confidence that the bounding box contains a face). The response also provides a <code>similarity</code> score, which indicates how closely the faces match. </p> <note> <p>By default, only faces with the similarity score of greater than or equal to 80% are returned in the response. You can change this value.</p> </note> <p>In addition to the face matches, the response returns information about the face in the source image, including the bounding box of the face and confidence value.</p> <note> <p> This is a stateless API operation. That is, the operation does not persist any data.</p> </note> <p>For an example, see <a>get-started-exercise-compare-faces</a> </p> <p>This operation requires permissions to perform the <code>rekognition:CompareFaces</code> action.</p></p>
 
   </div>
 </div>
@@ -704,16 +714,19 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:source_image</span>
           <span class='type'>(<code>required</code>, <a href="Types/Image.html" title="Aws::Rekognition::Types::Image (class)">Types::Image</a>)</span>
             &mdash; <div class='inline'><p>Source image either as bytes or an S3 object</p>
+
 </div>        </li>
         <li>
           <span class='name'>:target_image</span>
           <span class='type'>(<code>required</code>, <a href="Types/Image.html" title="Aws::Rekognition::Types::Image (class)">Types::Image</a>)</span>
             &mdash; <div class='inline'><p>Target image either as bytes or an S3 object</p>
+
 </div>        </li>
         <li>
           <span class='name'>:similarity_threshold</span>
           <span class='type'>(<code>Float</code>)</span>
             &mdash; <div class='inline'><p>The minimum level of confidence in the match you want included in the result.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -723,9 +736,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CompareFacesResponse.html#source_image_face-instance_method" title="Aws::Rekognition::Types::CompareFacesResponse#source_image_face (method)">#source_image_face</a> =&gt; <a href="Types/ComparedSourceImageFace.html" title="Aws::Rekognition::Types::ComparedSourceImageFace (class)">Types::ComparedSourceImageFace</a></li>
-<li><a href="Types/CompareFacesResponse.html#face_matches-instance_method" title="Aws::Rekognition::Types::CompareFacesResponse#face_matches (method)">#face_matches</a> =&gt; Array&lt;<a href="Types/CompareFacesMatch.html" title="Aws::Rekognition::Types::CompareFacesMatch (class)">Types::CompareFacesMatch</a>&gt;</li>
+<li><a href="Types/CompareFacesResponse.html#source_image_face-instance_method" title="Aws::Rekognition::Types::CompareFacesResponse#source_image_face (method)">#source_image_face</a> => <a href="Types/ComparedSourceImageFace.html" title="Aws::Rekognition::Types::ComparedSourceImageFace (class)">Types::ComparedSourceImageFace</a></li>
+<li><a href="Types/CompareFacesResponse.html#face_matches-instance_method" title="Aws::Rekognition::Types::CompareFacesResponse#face_matches (method)">#face_matches</a> => Array&lt;<a href="Types/CompareFacesMatch.html" title="Aws::Rekognition::Types::CompareFacesMatch (class)">Types::CompareFacesMatch</a>&gt;</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -739,7 +753,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Creates a collection in an AWS Region. You can add faces to the collection using the operation. </p> <p>For example, you might create collections, one for each of your application users. A user can then index faces using the <code>IndexFaces</code> operation and persist results in a specific collection. Then, a user can search the collection for faces in the user-specific container. </p> <p>For an example, see <a>example1</a>. </p> <p>This operation requires permissions to perform the <code>rekognition:CreateCollection</code> action.</p>
+    <p>Creates a collection in an AWS Region. You can add faces to the collection using the operation. </p>
+
+
+<p> <p>For example, you might create collections, one for each of your application users. A user can then index faces using the <code>IndexFaces</code> operation and persist results in a specific collection. Then, a user can search the collection for faces in the user-specific container. </p> <p>For an example, see <a>example1</a>. </p> <p>This operation requires permissions to perform the <code>rekognition:CreateCollection</code> action.</p></p>
 
   </div>
 </div>
@@ -775,6 +792,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:collection_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>ID for the collection that you are creating.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -784,9 +802,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateCollectionResponse.html#status_code-instance_method" title="Aws::Rekognition::Types::CreateCollectionResponse#status_code (method)">#status_code</a> =&gt; Integer</li>
-<li><a href="Types/CreateCollectionResponse.html#collection_arn-instance_method" title="Aws::Rekognition::Types::CreateCollectionResponse#collection_arn (method)">#collection_arn</a> =&gt; String</li>
+<li><a href="Types/CreateCollectionResponse.html#status_code-instance_method" title="Aws::Rekognition::Types::CreateCollectionResponse#status_code (method)">#status_code</a> => Integer</li>
+<li><a href="Types/CreateCollectionResponse.html#collection_arn-instance_method" title="Aws::Rekognition::Types::CreateCollectionResponse#collection_arn (method)">#collection_arn</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -800,7 +819,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Deletes the specified collection. Note that this operation removes all faces in the collection. For an example, see <a>example1</a>.</p> <p>This operation requires permissions to perform the <code>rekognition:DeleteCollection</code> action.</p>
+    <p>Deletes the specified collection. Note that this operation removes all faces in the collection. For an example, see <a>example1</a>.</p>
+
+
+<p> <p>This operation requires permissions to perform the <code>rekognition:DeleteCollection</code> action.</p></p>
 
   </div>
 </div>
@@ -834,6 +856,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:collection_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>ID of the collection to delete.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -843,8 +866,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DeleteCollectionResponse.html#status_code-instance_method" title="Aws::Rekognition::Types::DeleteCollectionResponse#status_code (method)">#status_code</a> =&gt; Integer</li>
+<li><a href="Types/DeleteCollectionResponse.html#status_code-instance_method" title="Aws::Rekognition::Types::DeleteCollectionResponse#status_code (method)">#status_code</a> => Integer</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -858,7 +882,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Deletes faces from a collection. You specify a collection ID and an array of face IDs to remove from the collection.</p> <p>This operation requires permissions to perform the <code>rekognition:DeleteFaces</code> action.</p>
+    <p>Deletes faces from a collection. You specify a collection ID and an array of face IDs to remove from the collection.</p>
+
+
+<p> <p>This operation requires permissions to perform the <code>rekognition:DeleteFaces</code> action.</p></p>
 
   </div>
 </div>
@@ -899,11 +926,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:collection_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Collection from which to remove the specific faces.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:face_ids</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>An array of face IDs to delete.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -913,8 +942,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DeleteFacesResponse.html#deleted_faces-instance_method" title="Aws::Rekognition::Types::DeleteFacesResponse#deleted_faces (method)">#deleted_faces</a> =&gt; Array&lt;String&gt;</li>
+<li><a href="Types/DeleteFacesResponse.html#deleted_faces-instance_method" title="Aws::Rekognition::Types::DeleteFacesResponse#deleted_faces (method)">#deleted_faces</a> => Array&lt;String&gt;</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -928,7 +958,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Detects faces within an image (JPEG or PNG) that is provided as input.</p> <p> For each face detected, the operation returns face details including a bounding box of the face, a confidence value (that the bounding box contains a face), and a fixed set of attributes such as facial landmarks (for example, coordinates of eye and mouth), gender, presence of beard, sunglasses, etc. </p> <p>The face-detection algorithm is most effective on frontal faces. For non-frontal or obscured faces, the algorithm may not detect the faces or might detect faces with lower confidence. </p> <note> <p>This is a stateless API operation. That is, the operation does not persist any data.</p> </note> <p>For an example, see <a>get-started-exercise-detect-faces</a>.</p> <p>This operation requires permissions to perform the <code>rekognition:DetectFaces</code> action. </p>
+    <p>Detects faces within an image (JPEG or PNG) that is provided as input.</p>
+
+
+<p> <p> For each face detected, the operation returns face details including a bounding box of the face, a confidence value (that the bounding box contains a face), and a fixed set of attributes such as facial landmarks (for example, coordinates of eye and mouth), gender, presence of beard, sunglasses, etc. </p> <p>The face-detection algorithm is most effective on frontal faces. For non-frontal or obscured faces, the algorithm may not detect the faces or might detect faces with lower confidence. </p> <note> <p>This is a stateless API operation. That is, the operation does not persist any data.</p> </note> <p>For an example, see <a>get-started-exercise-detect-faces</a>.</p> <p>This operation requires permissions to perform the <code>rekognition:DetectFaces</code> action. </p></p>
 
   </div>
 </div>
@@ -1058,11 +1091,15 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:image</span>
           <span class='type'>(<code>required</code>, <a href="Types/Image.html" title="Aws::Rekognition::Types::Image (class)">Types::Image</a>)</span>
             &mdash; <div class='inline'><p>The image in which you want to detect faces. You can specify a blob or an S3 object. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:attributes</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p>A list of facial attributes you would like to be returned. By default, the API returns subset of facial attributes. </p> <p>For example, you can specify the value as, ["ALL"] or ["DEFAULT"]. If you provide both, ["ALL", "DEFAULT"], the service uses a logical AND operator to determine which attributes to return (in this case, it is all attributes). If you specify all attributes, Amazon Rekognition performs additional detection. </p>
+            &mdash; <div class='inline'><p>A list of facial attributes you would like to be returned. By default, the API returns subset of facial attributes. </p>
+
+
+<p> <p>For example, you can specify the value as, ["ALL"] or ["DEFAULT"]. If you provide both, ["ALL", "DEFAULT"], the service uses a logical AND operator to determine which attributes to return (in this case, it is all attributes). If you specify all attributes, Amazon Rekognition performs additional detection. </p></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1072,9 +1109,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DetectFacesResponse.html#face_details-instance_method" title="Aws::Rekognition::Types::DetectFacesResponse#face_details (method)">#face_details</a> =&gt; Array&lt;<a href="Types/FaceDetail.html" title="Aws::Rekognition::Types::FaceDetail (class)">Types::FaceDetail</a>&gt;</li>
-<li><a href="Types/DetectFacesResponse.html#orientation_correction-instance_method" title="Aws::Rekognition::Types::DetectFacesResponse#orientation_correction (method)">#orientation_correction</a> =&gt; String</li>
+<li><a href="Types/DetectFacesResponse.html#face_details-instance_method" title="Aws::Rekognition::Types::DetectFacesResponse#face_details (method)">#face_details</a> => Array&lt;<a href="Types/FaceDetail.html" title="Aws::Rekognition::Types::FaceDetail (class)">Types::FaceDetail</a>&gt;</li>
+<li><a href="Types/DetectFacesResponse.html#orientation_correction-instance_method" title="Aws::Rekognition::Types::DetectFacesResponse#orientation_correction (method)">#orientation_correction</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1088,7 +1126,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Detects instances of real-world labels within an image (JPEG or PNG) provided as input. This includes objects like flower, tree, and table; events like wedding, graduation, and birthday party; and concepts like landscape, evening, and nature. For an example, see <a>get-started-exercise-detect-labels</a>.</p> <p> For each object, scene, and concept the API returns one or more labels. Each label provides the object name, and the level of confidence that the image contains the object. For example, suppose the input image has a lighthouse, the sea, and a rock. The response will include all three labels, one for each object. </p> <p> <code>{Name: lighthouse, Confidence: 98.4629}</code> </p> <p> <code>{Name: rock,Confidence: 79.2097}</code> </p> <p> <code> {Name: sea,Confidence: 75.061}</code> </p> <p> In the preceding example, the operation returns one label for each of the three objects. The operation can also return multiple labels for the same object in the image. For example, if the input image shows a flower (for example, a tulip), the operation might return the following three labels. </p> <p> <code>{Name: flower,Confidence: 99.0562}</code> </p> <p> <code>{Name: plant,Confidence: 99.0562}</code> </p> <p> <code>{Name: tulip,Confidence: 99.0562}</code> </p> <p>In this example, the detection algorithm more precisely identifies the flower as a tulip.</p> <p>You can provide the input image as an S3 object or as base64-encoded bytes. In response, the API returns an array of labels. In addition, the response also includes the orientation correction. Optionally, you can specify <code>MinConfidence</code> to control the confidence threshold for the labels returned. The default is 50%. You can also add the <code>MaxLabels</code> parameter to limit the number of labels returned. </p> <note> <p>If the object detected is a person, the operation doesn't provide the same facial details that the <a>DetectFaces</a> operation provides.</p> </note> <p>This is a stateless API operation. That is, the operation does not persist any data.</p> <p>This operation requires permissions to perform the <code>rekognition:DetectLabels</code> action. </p>
+    <p>Detects instances of real-world labels within an image (JPEG or PNG) provided as input. This includes objects like flower, tree, and table; events like wedding, graduation, and birthday party; and concepts like landscape, evening, and nature. For an example, see <a>get-started-exercise-detect-labels</a>.</p>
+
+
+<p> <p> For each object, scene, and concept the API returns one or more labels. Each label provides the object name, and the level of confidence that the image contains the object. For example, suppose the input image has a lighthouse, the sea, and a rock. The response will include all three labels, one for each object. </p> <p> <code>{Name: lighthouse, Confidence: 98.4629}</code> </p> <p> <code>{Name: rock,Confidence: 79.2097}</code> </p> <p> <code> {Name: sea,Confidence: 75.061}</code> </p> <p> In the preceding example, the operation returns one label for each of the three objects. The operation can also return multiple labels for the same object in the image. For example, if the input image shows a flower (for example, a tulip), the operation might return the following three labels. </p> <p> <code>{Name: flower,Confidence: 99.0562}</code> </p> <p> <code>{Name: plant,Confidence: 99.0562}</code> </p> <p> <code>{Name: tulip,Confidence: 99.0562}</code> </p> <p>In this example, the detection algorithm more precisely identifies the flower as a tulip.</p> <p>You can provide the input image as an S3 object or as base64-encoded bytes. In response, the API returns an array of labels. In addition, the response also includes the orientation correction. Optionally, you can specify <code>MinConfidence</code> to control the confidence threshold for the labels returned. The default is 50%. You can also add the <code>MaxLabels</code> parameter to limit the number of labels returned. </p> <note> <p>If the object detected is a person, the operation doesn't provide the same facial details that the <a>DetectFaces</a> operation provides.</p> </note> <p>This is a stateless API operation. That is, the operation does not persist any data.</p> <p>This operation requires permissions to perform the <code>rekognition:DetectLabels</code> action. </p></p>
 
   </div>
 </div>
@@ -1150,16 +1191,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:image</span>
           <span class='type'>(<code>required</code>, <a href="Types/Image.html" title="Aws::Rekognition::Types::Image (class)">Types::Image</a>)</span>
             &mdash; <div class='inline'><p>The input image. You can provide a blob of image bytes or an S3 object.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_labels</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of labels you want the service to return in the response. The service returns the specified number of highest confidence labels. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:min_confidence</span>
           <span class='type'>(<code>Float</code>)</span>
-            &mdash; <div class='inline'><p>Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with confidence lower than this specified value.</p> <p>If <code>minConfidence</code> is not specified, the operation returns labels with a confidence values greater than or equal to 50 percent.</p>
+            &mdash; <div class='inline'><p>Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with confidence lower than this specified value.</p>
+
+
+<p> <p>If <code>minConfidence</code> is not specified, the operation returns labels with a confidence values greater than or equal to 50 percent.</p></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1169,9 +1215,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DetectLabelsResponse.html#labels-instance_method" title="Aws::Rekognition::Types::DetectLabelsResponse#labels (method)">#labels</a> =&gt; Array&lt;<a href="Types/Label.html" title="Aws::Rekognition::Types::Label (class)">Types::Label</a>&gt;</li>
-<li><a href="Types/DetectLabelsResponse.html#orientation_correction-instance_method" title="Aws::Rekognition::Types::DetectLabelsResponse#orientation_correction (method)">#orientation_correction</a> =&gt; String</li>
+<li><a href="Types/DetectLabelsResponse.html#labels-instance_method" title="Aws::Rekognition::Types::DetectLabelsResponse#labels (method)">#labels</a> => Array&lt;<a href="Types/Label.html" title="Aws::Rekognition::Types::Label (class)">Types::Label</a>&gt;</li>
+<li><a href="Types/DetectLabelsResponse.html#orientation_correction-instance_method" title="Aws::Rekognition::Types::DetectLabelsResponse#orientation_correction (method)">#orientation_correction</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1185,7 +1232,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Detects faces in the input image and adds them to the specified collection. </p> <p> Amazon Rekognition does not save the actual faces detected. Instead, the underlying detection algorithm first detects the faces in the input image, and for each face extracts facial features into a feature vector, and stores it in the back-end database. Amazon Rekognition uses feature vectors when performing face match and search operations using the and operations. </p> <p>If you provide the optional <code>externalImageID</code> for the input image you provided, Amazon Rekognition associates this ID with all faces that it detects. When you call the operation, the response returns the external ID. You can use this external image ID to create a client-side index to associate the faces with each image. You can then use the index to find all faces in an image. </p> <p>In response, the operation returns an array of metadata for all detected faces. This includes, the bounding box of the detected face, confidence value (indicating the bounding box contains a face), a face ID assigned by the service for each face that is detected and stored, and an image ID assigned by the service for the input image If you request all facial attributes (using the <code>detectionAttributes</code> parameter, Amazon Rekognition returns detailed facial attributes such as facial landmarks (for example, location of eye and mount) and other facial attributes such gender. If you provide the same image, specify the same collection, and use the same external ID in the <code>IndexFaces</code> operation, Amazon Rekognition doesn't save duplicate face metadata. </p> <p>For an example, see <a>example2</a>.</p> <p>This operation requires permissions to perform the <code>rekognition:IndexFaces</code> action.</p>
+    <p>Detects faces in the input image and adds them to the specified collection. </p>
+
+
+<p> <p> Amazon Rekognition does not save the actual faces detected. Instead, the underlying detection algorithm first detects the faces in the input image, and for each face extracts facial features into a feature vector, and stores it in the back-end database. Amazon Rekognition uses feature vectors when performing face match and search operations using the and operations. </p> <p>If you provide the optional <code>externalImageID</code> for the input image you provided, Amazon Rekognition associates this ID with all faces that it detects. When you call the operation, the response returns the external ID. You can use this external image ID to create a client-side index to associate the faces with each image. You can then use the index to find all faces in an image. </p> <p>In response, the operation returns an array of metadata for all detected faces. This includes, the bounding box of the detected face, confidence value (indicating the bounding box contains a face), a face ID assigned by the service for each face that is detected and stored, and an image ID assigned by the service for the input image If you request all facial attributes (using the <code>detectionAttributes</code> parameter, Amazon Rekognition returns detailed facial attributes such as facial landmarks (for example, location of eye and mount) and other facial attributes such gender. If you provide the same image, specify the same collection, and use the same external ID in the <code>IndexFaces</code> operation, Amazon Rekognition doesn't save duplicate face metadata. </p> <p>For an example, see <a>example2</a>.</p> <p>This operation requires permissions to perform the <code>rekognition:IndexFaces</code> action.</p></p>
 
   </div>
 </div>
@@ -1400,21 +1450,29 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:collection_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>ID of an existing collection to which you want to add the faces that are detected in the input images.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:image</span>
           <span class='type'>(<code>required</code>, <a href="Types/Image.html" title="Aws::Rekognition::Types::Image (class)">Types::Image</a>)</span>
-            &mdash; <div class='inline'><p>Provides the source image either as bytes or an S3 object.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>You may need to Base64-encode the image bytes depending on the language you are using and whether or not you are using the AWS SDK. For more information, see <a>example4</a>.</p> <p>If you use the Amazon CLI to call Amazon Rekognition operations, passing image bytes using the Bytes property is not supported. You must first upload the image to an Amazon S3 bucket and then call the operation using the S3Object property.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>
+            &mdash; <div class='inline'><p>Provides the source image either as bytes or an S3 object.</p>
+
+
+<p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>You may need to Base64-encode the image bytes depending on the language you are using and whether or not you are using the AWS SDK. For more information, see <a>example4</a>.</p> <p>If you use the Amazon CLI to call Amazon Rekognition operations, passing image bytes using the Bytes property is not supported. You must first upload the image to an Amazon S3 bucket and then call the operation using the S3Object property.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p></p>
 </div>        </li>
         <li>
           <span class='name'>:external_image_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>ID you want to assign to all the faces detected in the image.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:detection_attributes</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p>(Optional) Returns detailed attributes of indexed faces. By default, the operation returns a subset of the facial attributes. </p> <p>For example, you can specify the value as, ["ALL"] or ["DEFAULT"]. If you provide both, ["ALL", "DEFAULT"], Amazon Rekognition uses the logical AND operator to determine which attributes to return (in this case, it is all attributes). If you specify all attributes, the service performs additional detection, in addition to the default. </p>
+            &mdash; <div class='inline'><p>(Optional) Returns detailed attributes of indexed faces. By default, the operation returns a subset of the facial attributes. </p>
+
+
+<p> <p>For example, you can specify the value as, ["ALL"] or ["DEFAULT"]. If you provide both, ["ALL", "DEFAULT"], Amazon Rekognition uses the logical AND operator to determine which attributes to return (in this case, it is all attributes). If you specify all attributes, the service performs additional detection, in addition to the default. </p></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1424,9 +1482,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/IndexFacesResponse.html#face_records-instance_method" title="Aws::Rekognition::Types::IndexFacesResponse#face_records (method)">#face_records</a> =&gt; Array&lt;<a href="Types/FaceRecord.html" title="Aws::Rekognition::Types::FaceRecord (class)">Types::FaceRecord</a>&gt;</li>
-<li><a href="Types/IndexFacesResponse.html#orientation_correction-instance_method" title="Aws::Rekognition::Types::IndexFacesResponse#orientation_correction (method)">#orientation_correction</a> =&gt; String</li>
+<li><a href="Types/IndexFacesResponse.html#face_records-instance_method" title="Aws::Rekognition::Types::IndexFacesResponse#face_records (method)">#face_records</a> => Array&lt;<a href="Types/FaceRecord.html" title="Aws::Rekognition::Types::FaceRecord (class)">Types::FaceRecord</a>&gt;</li>
+<li><a href="Types/IndexFacesResponse.html#orientation_correction-instance_method" title="Aws::Rekognition::Types::IndexFacesResponse#orientation_correction (method)">#orientation_correction</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1440,7 +1499,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns list of collection IDs in your account. If the result is truncated, the response also provides a <code>NextToken</code> that you can use in the subsequent request to fetch the next set of collection IDs.</p> <p>For an example, see <a>example1</a>.</p> <p>This operation requires permissions to perform the <code>rekognition:ListCollections</code> action.</p>
+    <p>Returns list of collection IDs in your account. If the result is truncated, the response also provides a <code>NextToken</code> that you can use in the subsequent request to fetch the next set of collection IDs.</p>
+
+
+<p> <p>For an example, see <a>example1</a>.</p> <p>This operation requires permissions to perform the <code>rekognition:ListCollections</code> action.</p></p>
 
   </div>
 </div>
@@ -1478,11 +1540,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Pagination token from the previous response.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_results</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of collection IDs to return.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1492,9 +1556,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListCollectionsResponse.html#collection_ids-instance_method" title="Aws::Rekognition::Types::ListCollectionsResponse#collection_ids (method)">#collection_ids</a> =&gt; Array&lt;String&gt;</li>
-<li><a href="Types/ListCollectionsResponse.html#next_token-instance_method" title="Aws::Rekognition::Types::ListCollectionsResponse#next_token (method)">#next_token</a> =&gt; String</li>
+<li><a href="Types/ListCollectionsResponse.html#collection_ids-instance_method" title="Aws::Rekognition::Types::ListCollectionsResponse#collection_ids (method)">#collection_ids</a> => Array&lt;String&gt;</li>
+<li><a href="Types/ListCollectionsResponse.html#next_token-instance_method" title="Aws::Rekognition::Types::ListCollectionsResponse#next_token (method)">#next_token</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1508,7 +1573,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns metadata for faces in the specified collection. This metadata includes information such as the bounding box coordinates, the confidence (that the bounding box contains a face), and face ID. For an example, see <a>example3</a>. </p> <p>This operation requires permissions to perform the <code>rekognition:ListFaces</code> action.</p>
+    <p>Returns metadata for faces in the specified collection. This metadata includes information such as the bounding box coordinates, the confidence (that the bounding box contains a face), and face ID. For an example, see <a>example3</a>. </p>
+
+
+<p> <p>This operation requires permissions to perform the <code>rekognition:ListFaces</code> action.</p></p>
 
   </div>
 </div>
@@ -1676,16 +1744,19 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:collection_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>ID of the collection from which to list the faces.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>If the previous response was incomplete (because there is more data to retrieve), Amazon Rekognition returns a pagination token in the response. You can use this pagination token to retrieve the next set of faces.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_results</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of faces to return.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1695,9 +1766,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListFacesResponse.html#faces-instance_method" title="Aws::Rekognition::Types::ListFacesResponse#faces (method)">#faces</a> =&gt; Array&lt;<a href="Types/Face.html" title="Aws::Rekognition::Types::Face (class)">Types::Face</a>&gt;</li>
-<li><a href="Types/ListFacesResponse.html#next_token-instance_method" title="Aws::Rekognition::Types::ListFacesResponse#next_token (method)">#next_token</a> =&gt; String</li>
+<li><a href="Types/ListFacesResponse.html#faces-instance_method" title="Aws::Rekognition::Types::ListFacesResponse#faces (method)">#faces</a> => Array&lt;<a href="Types/Face.html" title="Aws::Rekognition::Types::Face (class)">Types::Face</a>&gt;</li>
+<li><a href="Types/ListFacesResponse.html#next_token-instance_method" title="Aws::Rekognition::Types::ListFacesResponse#next_token (method)">#next_token</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1711,7 +1783,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>For a given input face ID, searches for matching faces in the collection the face belongs to. You get a face ID when you add a face to the collection using the <a>IndexFaces</a> operation. The operation compares the features of the input face with faces in the specified collection. </p> <note> <p>You can also search faces without indexing faces by using the <code>SearchFacesByImage</code> operation.</p> </note> <p> The operation response returns an array of faces that match, ordered by similarity score with the highest similarity first. More specifically, it is an array of metadata for each face match that is found. Along with the metadata, the response also includes a <code>confidence</code> value for each face match, indicating the confidence that the specific face matches the input face. </p> <p>For an example, see <a>example3</a>.</p> <p>This operation requires permissions to perform the <code>rekognition:SearchFaces</code> action.</p>
+    <p>For a given input face ID, searches for matching faces in the collection the face belongs to. You get a face ID when you add a face to the collection using the <a>IndexFaces</a> operation. The operation compares the features of the input face with faces in the specified collection. </p>
+
+
+<p> <note> <p>You can also search faces without indexing faces by using the <code>SearchFacesByImage</code> operation.</p> </note> <p> The operation response returns an array of faces that match, ordered by similarity score with the highest similarity first. More specifically, it is an array of metadata for each face match that is found. Along with the metadata, the response also includes a <code>confidence</code> value for each face match, indicating the confidence that the specific face matches the input face. </p> <p>For an example, see <a>example3</a>.</p> <p>This operation requires permissions to perform the <code>rekognition:SearchFaces</code> action.</p></p>
 
   </div>
 </div>
@@ -1805,21 +1880,25 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:collection_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>ID of the collection the face belongs to.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:face_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>ID of a face to find matches for in the collection.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_faces</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:face_match_threshold</span>
           <span class='type'>(<code>Float</code>)</span>
             &mdash; <div class='inline'><p>Optional value specifying the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1829,9 +1908,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/SearchFacesResponse.html#searched_face_id-instance_method" title="Aws::Rekognition::Types::SearchFacesResponse#searched_face_id (method)">#searched_face_id</a> =&gt; String</li>
-<li><a href="Types/SearchFacesResponse.html#face_matches-instance_method" title="Aws::Rekognition::Types::SearchFacesResponse#face_matches (method)">#face_matches</a> =&gt; Array&lt;<a href="Types/FaceMatch.html" title="Aws::Rekognition::Types::FaceMatch (class)">Types::FaceMatch</a>&gt;</li>
+<li><a href="Types/SearchFacesResponse.html#searched_face_id-instance_method" title="Aws::Rekognition::Types::SearchFacesResponse#searched_face_id (method)">#searched_face_id</a> => String</li>
+<li><a href="Types/SearchFacesResponse.html#face_matches-instance_method" title="Aws::Rekognition::Types::SearchFacesResponse#face_matches (method)">#face_matches</a> => Array&lt;<a href="Types/FaceMatch.html" title="Aws::Rekognition::Types::FaceMatch (class)">Types::FaceMatch</a>&gt;</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1845,7 +1925,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces. The operation compares the features of the input face with faces in the specified collection. </p> <note> <p> To search for all faces in an input image, you might first call the operation, and then use the face IDs returned in subsequent calls to the operation. </p> <p> You can also call the <code>DetectFaces</code> operation and use the bounding boxes in the response to make face crops, which then you can pass in to the <code>SearchFacesByImage</code> operation. </p> </note> <p> The response returns an array of faces that match, ordered by similarity score with the highest similarity first. More specifically, it is an array of metadata for each face match found. Along with the metadata, the response also includes a <code>similarity</code> indicating how similar the face is to the input face. In the response, the operation also returns the bounding box (and a confidence level that the bounding box contains a face) of the face that Amazon Rekognition used for the input image. </p> <p>For an example, see <a>example3</a>.</p> <p>This operation requires permissions to perform the <code>rekognition:SearchFacesByImage</code> action.</p>
+    <p>For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces. The operation compares the features of the input face with faces in the specified collection. </p>
+
+
+<p> <note> <p> To search for all faces in an input image, you might first call the operation, and then use the face IDs returned in subsequent calls to the operation. </p> <p> You can also call the <code>DetectFaces</code> operation and use the bounding boxes in the response to make face crops, which then you can pass in to the <code>SearchFacesByImage</code> operation. </p> </note> <p> The response returns an array of faces that match, ordered by similarity score with the highest similarity first. More specifically, it is an array of metadata for each face match found. Along with the metadata, the response also includes a <code>similarity</code> indicating how similar the face is to the input face. In the response, the operation also returns the bounding box (and a confidence level that the bounding box contains a face) of the face that Amazon Rekognition used for the input image. </p> <p>For an example, see <a>example3</a>.</p> <p>This operation requires permissions to perform the <code>rekognition:SearchFacesByImage</code> action.</p></p>
 
   </div>
 </div>
@@ -1933,21 +2016,27 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:collection_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>ID of the collection to search.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:image</span>
           <span class='type'>(<code>required</code>, <a href="Types/Image.html" title="Aws::Rekognition::Types::Image (class)">Types::Image</a>)</span>
-            &mdash; <div class='inline'><p>Provides the source image either as bytes or an S3 object.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>You may need to Base64-encode the image bytes depending on the language you are using and whether or not you are using the AWS SDK. For more information, see <a>example4</a>.</p> <p>If you use the Amazon CLI to call Amazon Rekognition operations, passing image bytes using the Bytes property is not supported. You must first upload the image to an Amazon S3 bucket and then call the operation using the S3Object property.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>
+            &mdash; <div class='inline'><p>Provides the source image either as bytes or an S3 object.</p>
+
+
+<p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>You may need to Base64-encode the image bytes depending on the language you are using and whether or not you are using the AWS SDK. For more information, see <a>example4</a>.</p> <p>If you use the Amazon CLI to call Amazon Rekognition operations, passing image bytes using the Bytes property is not supported. You must first upload the image to an Amazon S3 bucket and then call the operation using the S3Object property.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p></p>
 </div>        </li>
         <li>
           <span class='name'>:max_faces</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:face_match_threshold</span>
           <span class='type'>(<code>Float</code>)</span>
             &mdash; <div class='inline'><p>(Optional) Specifies the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1957,10 +2046,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/SearchFacesByImageResponse.html#searched_face_bounding_box-instance_method" title="Aws::Rekognition::Types::SearchFacesByImageResponse#searched_face_bounding_box (method)">#searched_face_bounding_box</a> =&gt; <a href="Types/BoundingBox.html" title="Aws::Rekognition::Types::BoundingBox (class)">Types::BoundingBox</a></li>
-<li><a href="Types/SearchFacesByImageResponse.html#searched_face_confidence-instance_method" title="Aws::Rekognition::Types::SearchFacesByImageResponse#searched_face_confidence (method)">#searched_face_confidence</a> =&gt; Float</li>
-<li><a href="Types/SearchFacesByImageResponse.html#face_matches-instance_method" title="Aws::Rekognition::Types::SearchFacesByImageResponse#face_matches (method)">#face_matches</a> =&gt; Array&lt;<a href="Types/FaceMatch.html" title="Aws::Rekognition::Types::FaceMatch (class)">Types::FaceMatch</a>&gt;</li>
+<li><a href="Types/SearchFacesByImageResponse.html#searched_face_bounding_box-instance_method" title="Aws::Rekognition::Types::SearchFacesByImageResponse#searched_face_bounding_box (method)">#searched_face_bounding_box</a> => <a href="Types/BoundingBox.html" title="Aws::Rekognition::Types::BoundingBox (class)">Types::BoundingBox</a></li>
+<li><a href="Types/SearchFacesByImageResponse.html#searched_face_confidence-instance_method" title="Aws::Rekognition::Types::SearchFacesByImageResponse#searched_face_confidence (method)">#searched_face_confidence</a> => Float</li>
+<li><a href="Types/SearchFacesByImageResponse.html#face_matches-instance_method" title="Aws::Rekognition::Types::SearchFacesByImageResponse#face_matches (method)">#face_matches</a> => Array&lt;<a href="Types/FaceMatch.html" title="Aws::Rekognition::Types::FaceMatch (class)">Types::FaceMatch</a>&gt;</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1983,7 +2073,7 @@ state.</p>
 entering a terminal state, or until a maximum number of attempts
 are made.</p>
 
-<p># polls in a loop, sleeping between attempts
+<p>   # polls in a loop, sleeping between attempts
    client.waiter_until(waiter_name, params)</p>
 
 <h3>Configuration</h3>
@@ -2119,6 +2209,7 @@ waiters and the client method they call:</p>
 
 </tbody>
 </table>
+
 
   </div>
 </div>

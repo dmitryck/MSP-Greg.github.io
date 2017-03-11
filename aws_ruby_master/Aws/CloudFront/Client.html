@@ -129,9 +129,10 @@
 <p>You can configure a default region in the following locations:</p>
 
 <ul>
-<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
+<li><code>ENV['AWS_REGION']</code></li>
 <li><code>Aws.config[:region]</code></li>
 </ul>
+
 
 <p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
 
@@ -140,11 +141,12 @@
 <p>Default credentials are loaded automatically from the following locations:</p>
 
 <ul>
-<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
+<li><code>ENV['AWS_ACCESS_KEY_ID']</code> and <code>ENV['AWS_SECRET_ACCESS_KEY']</code></li>
 <li><code>Aws.config[:credentials]</code></li>
 <li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
 <li>From an instance profile when running on EC2</li>
 </ul>
+
 
 <p>You can also construct a credentials object from one of the following
 classes:</p>
@@ -155,6 +157,7 @@ classes:</p>
 <li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
 <li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
 </ul>
+
 
 <p>Alternatively, you configure credentials with <code>:access_key_id</code> and
 <code>:secret_access_key</code>:</p>
@@ -266,7 +269,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#create_distribution_with_tags-instance_method" title="#create_distribution_with_tags (instance method)">#<strong>create_distribution_with_tags</strong>(options = {})  &#x21d2; Types::CreateDistributionWithTagsResult </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Create a new distribution with tags.</p>.</p></div>
+      <div class='inline'><p>Create a new distribution with tags.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -290,7 +296,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#create_streaming_distribution_with_tags-instance_method" title="#create_streaming_distribution_with_tags (instance method)">#<strong>create_streaming_distribution_with_tags</strong>(options = {})  &#x21d2; Types::CreateStreamingDistributionWithTagsResult </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Create a new streaming distribution with tags.</p>.</p></div>
+      <div class='inline'><p>Create a new streaming distribution with tags.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -362,7 +371,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#get_streaming_distribution-instance_method" title="#get_streaming_distribution (instance method)">#<strong>get_streaming_distribution</strong>(options = {})  &#x21d2; Types::GetStreamingDistributionResult </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Gets information about a specified RTMP distribution, including the distribution configuration.</p>.</p></div>
+      <div class='inline'><p>Gets information about a specified RTMP distribution, including the distribution configuration.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -378,7 +390,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#list_cloud_front_origin_access_identities-instance_method" title="#list_cloud_front_origin_access_identities (instance method)">#<strong>list_cloud_front_origin_access_identities</strong>(options = {})  &#x21d2; Types::ListCloudFrontOriginAccessIdentitiesResult </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Lists origin access identities.</p>.</p></div>
+      <div class='inline'><p>Lists origin access identities.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -418,7 +433,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#list_tags_for_resource-instance_method" title="#list_tags_for_resource (instance method)">#<strong>list_tags_for_resource</strong>(options = {})  &#x21d2; Types::ListTagsForResourceResult </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>List tags for a CloudFront resource.</p>.</p></div>
+      <div class='inline'><p>List tags for a CloudFront resource.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -426,7 +444,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#tag_resource-instance_method" title="#tag_resource (instance method)">#<strong>tag_resource</strong>(options = {})  &#x21d2; Struct </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Add tags to a CloudFront resource.</p>.</p></div>
+      <div class='inline'><p>Add tags to a CloudFront resource.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -434,7 +455,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#untag_resource-instance_method" title="#untag_resource (instance method)">#<strong>untag_resource</strong>(options = {})  &#x21d2; Struct </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Remove tags from a CloudFront resource.</p>.</p></div>
+      <div class='inline'><p>Remove tags from a CloudFront resource.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -550,10 +574,11 @@ for credentials:</p>
 
 <ul>
 <li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
-<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
+<li>ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']</li>
 <li><code>HOME/.aws/credentials</code> shared credentials file</li>
 <li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
 </ul>
+
 </div>        </li>
         <li>
           <span class='name'>:endpoint</span>
@@ -629,7 +654,7 @@ will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Lo
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Used when loading credentials
 from the shared credentials file at HOME/.aws/credentials.  When not
-specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
 </div>        </li>
         <li>
           <span class='name'>:raise_response_errors</span>
@@ -642,7 +667,7 @@ specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.htm
           <span class='name'>:region</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
-the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
+the client endpoint.  Defaults to <code>ENV['AWS_REGION']</code>.
 Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
 </div>        </li>
         <li>
@@ -700,7 +725,7 @@ fake responses are generated and returned. You can specify
 the response data to return or errors to raise by calling
 <a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">Aws::ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
 
-<p>** Please note ** When response stubbing is enabled, no HTTP
+<p><strong> Please note </strong> When response stubbing is enabled, no HTTP
 requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
 </div>        </li>
         <li>
@@ -724,6 +749,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Creates a new origin access identity. If you're using Amazon S3 for your origin, you can use an origin access identity to require users to access your content using a CloudFront URL instead of the Amazon S3 URL. For more information about how to use origin access identities, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">Serving Private Content through CloudFront</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+
 
   </div>
 </div>
@@ -753,6 +779,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:cloud_front_origin_access_identity_config</span>
           <span class='type'>(<code>required</code>, <a href="Types/CloudFrontOriginAccessIdentityConfig.html" title="Aws::CloudFront::Types::CloudFrontOriginAccessIdentityConfig (class)">Types::CloudFrontOriginAccessIdentityConfig</a>)</span>
             &mdash; <div class='inline'><p>The current configuration information for the identity.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -762,10 +789,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateCloudFrontOriginAccessIdentityResult.html#cloud_front_origin_access_identity-instance_method" title="Aws::CloudFront::Types::CreateCloudFrontOriginAccessIdentityResult#cloud_front_origin_access_identity (method)">#cloud_front_origin_access_identity</a> =&gt; <a href="Types/CloudFrontOriginAccessIdentity.html" title="Aws::CloudFront::Types::CloudFrontOriginAccessIdentity (class)">Types::CloudFrontOriginAccessIdentity</a></li>
-<li><a href="Types/CreateCloudFrontOriginAccessIdentityResult.html#location-instance_method" title="Aws::CloudFront::Types::CreateCloudFrontOriginAccessIdentityResult#location (method)">#location</a> =&gt; String</li>
-<li><a href="Types/CreateCloudFrontOriginAccessIdentityResult.html#etag-instance_method" title="Aws::CloudFront::Types::CreateCloudFrontOriginAccessIdentityResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/CreateCloudFrontOriginAccessIdentityResult.html#cloud_front_origin_access_identity-instance_method" title="Aws::CloudFront::Types::CreateCloudFrontOriginAccessIdentityResult#cloud_front_origin_access_identity (method)">#cloud_front_origin_access_identity</a> => <a href="Types/CloudFrontOriginAccessIdentity.html" title="Aws::CloudFront::Types::CloudFrontOriginAccessIdentity (class)">Types::CloudFrontOriginAccessIdentity</a></li>
+<li><a href="Types/CreateCloudFrontOriginAccessIdentityResult.html#location-instance_method" title="Aws::CloudFront::Types::CreateCloudFrontOriginAccessIdentityResult#location (method)">#location</a> => String</li>
+<li><a href="Types/CreateCloudFrontOriginAccessIdentityResult.html#etag-instance_method" title="Aws::CloudFront::Types::CreateCloudFrontOriginAccessIdentityResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -780,6 +808,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Creates a new web distribution. Send a <code>GET</code> request to the <code>/<i>CloudFront API version</i>/distribution</code>/<code>distribution ID</code> resource.</p>
+
 
   </div>
 </div>
@@ -1111,6 +1140,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:distribution_config</span>
           <span class='type'>(<code>required</code>, <a href="Types/DistributionConfig.html" title="Aws::CloudFront::Types::DistributionConfig (class)">Types::DistributionConfig</a>)</span>
             &mdash; <div class='inline'><p>The distribution's configuration information.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1120,10 +1150,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateDistributionResult.html#distribution-instance_method" title="Aws::CloudFront::Types::CreateDistributionResult#distribution (method)">#distribution</a> =&gt; <a href="Types/Distribution.html" title="Aws::CloudFront::Types::Distribution (class)">Types::Distribution</a></li>
-<li><a href="Types/CreateDistributionResult.html#location-instance_method" title="Aws::CloudFront::Types::CreateDistributionResult#location (method)">#location</a> =&gt; String</li>
-<li><a href="Types/CreateDistributionResult.html#etag-instance_method" title="Aws::CloudFront::Types::CreateDistributionResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/CreateDistributionResult.html#distribution-instance_method" title="Aws::CloudFront::Types::CreateDistributionResult#distribution (method)">#distribution</a> => <a href="Types/Distribution.html" title="Aws::CloudFront::Types::Distribution (class)">Types::Distribution</a></li>
+<li><a href="Types/CreateDistributionResult.html#location-instance_method" title="Aws::CloudFront::Types::CreateDistributionResult#location (method)">#location</a> => String</li>
+<li><a href="Types/CreateDistributionResult.html#etag-instance_method" title="Aws::CloudFront::Types::CreateDistributionResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1138,6 +1169,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Create a new distribution with tags.</p>
+
 
   </div>
 </div>
@@ -1479,6 +1511,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:distribution_config_with_tags</span>
           <span class='type'>(<code>required</code>, <a href="Types/DistributionConfigWithTags.html" title="Aws::CloudFront::Types::DistributionConfigWithTags (class)">Types::DistributionConfigWithTags</a>)</span>
             &mdash; <div class='inline'><p>The distribution's configuration information. </p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1488,10 +1521,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateDistributionWithTagsResult.html#distribution-instance_method" title="Aws::CloudFront::Types::CreateDistributionWithTagsResult#distribution (method)">#distribution</a> =&gt; <a href="Types/Distribution.html" title="Aws::CloudFront::Types::Distribution (class)">Types::Distribution</a></li>
-<li><a href="Types/CreateDistributionWithTagsResult.html#location-instance_method" title="Aws::CloudFront::Types::CreateDistributionWithTagsResult#location (method)">#location</a> =&gt; String</li>
-<li><a href="Types/CreateDistributionWithTagsResult.html#etag-instance_method" title="Aws::CloudFront::Types::CreateDistributionWithTagsResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/CreateDistributionWithTagsResult.html#distribution-instance_method" title="Aws::CloudFront::Types::CreateDistributionWithTagsResult#distribution (method)">#distribution</a> => <a href="Types/Distribution.html" title="Aws::CloudFront::Types::Distribution (class)">Types::Distribution</a></li>
+<li><a href="Types/CreateDistributionWithTagsResult.html#location-instance_method" title="Aws::CloudFront::Types::CreateDistributionWithTagsResult#location (method)">#location</a> => String</li>
+<li><a href="Types/CreateDistributionWithTagsResult.html#etag-instance_method" title="Aws::CloudFront::Types::CreateDistributionWithTagsResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1506,6 +1540,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Create a new invalidation. </p>
+
 
   </div>
 </div>
@@ -1541,11 +1576,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:distribution_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The distribution's id.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:invalidation_batch</span>
           <span class='type'>(<code>required</code>, <a href="Types/InvalidationBatch.html" title="Aws::CloudFront::Types::InvalidationBatch (class)">Types::InvalidationBatch</a>)</span>
             &mdash; <div class='inline'><p>The batch information for the invalidation.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1555,9 +1592,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateInvalidationResult.html#location-instance_method" title="Aws::CloudFront::Types::CreateInvalidationResult#location (method)">#location</a> =&gt; String</li>
-<li><a href="Types/CreateInvalidationResult.html#invalidation-instance_method" title="Aws::CloudFront::Types::CreateInvalidationResult#invalidation (method)">#invalidation</a> =&gt; <a href="Types/Invalidation.html" title="Aws::CloudFront::Types::Invalidation (class)">Types::Invalidation</a></li>
+<li><a href="Types/CreateInvalidationResult.html#location-instance_method" title="Aws::CloudFront::Types::CreateInvalidationResult#location (method)">#location</a> => String</li>
+<li><a href="Types/CreateInvalidationResult.html#invalidation-instance_method" title="Aws::CloudFront::Types::CreateInvalidationResult#invalidation (method)">#invalidation</a> => <a href="Types/Invalidation.html" title="Aws::CloudFront::Types::Invalidation (class)">Types::Invalidation</a></li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1571,7 +1609,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p><p>Creates a new RMTP distribution. An RTMP distribution is similar to a web distribution, but an RTMP distribution streams media files using the Adobe Real-Time Messaging Protocol (RTMP) instead of serving files using HTTP. </p> <p>To create a new web distribution, submit a <code>POST</code> request to the <i>CloudFront API version</i>/distribution resource. The request body must include a document with a <i>StreamingDistributionConfig</i> element. The response echoes the <code>StreamingDistributionConfig</code> element and returns other information about the RTMP distribution.</p> <p>To get the status of your request, use the <i>GET StreamingDistribution</i> API action. When the value of <code>Enabled</code> is <code>true</code> and the value of <code>Status</code> is <code>Deployed</code>, your distribution is ready. A distribution usually deploys in less than 15 minutes.</p> <p>For more information about web distributions, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-rtmp.html">Working with RTMP Distributions</a> in the <i>Amazon CloudFront Developer Guide</i>.</p> <important> <p>Beginning with the 2012-05-05 version of the CloudFront API, we made substantial changes to the format of the XML document that you include in the request body when you create or update a web distribution or an RTMP distribution, and when you invalidate objects. With previous versions of the API, we discovered that it was too easy to accidentally delete one or more values for an element that accepts multiple values, for example, CNAMEs and trusted signers. Our changes for the 2012-05-05 release are intended to prevent these accidental deletions and to notify you when there&#39;s a mismatch between the number of values you say you&#39;re specifying in the <code>Quantity</code> element and the number of values specified.</p> </important></p>
+    <p>Creates a new RMTP distribution. An RTMP distribution is similar to a web distribution, but an RTMP distribution streams media files using the Adobe Real-Time Messaging Protocol (RTMP) instead of serving files using HTTP. </p>
+
+
+<p> <p>To create a new web distribution, submit a <code>POST</code> request to the <i>CloudFront API version</i>/distribution resource. The request body must include a document with a <i>StreamingDistributionConfig</i> element. The response echoes the <code>StreamingDistributionConfig</code> element and returns other information about the RTMP distribution.</p> <p>To get the status of your request, use the <i>GET StreamingDistribution</i> API action. When the value of <code>Enabled</code> is <code>true</code> and the value of <code>Status</code> is <code>Deployed</code>, your distribution is ready. A distribution usually deploys in less than 15 minutes.</p> <p>For more information about web distributions, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-rtmp.html">Working with RTMP Distributions</a> in the <i>Amazon CloudFront Developer Guide</i>.</p> <important> <p>Beginning with the 2012-05-05 version of the CloudFront API, we made substantial changes to the format of the XML document that you include in the request body when you create or update a web distribution or an RTMP distribution, and when you invalidate objects. With previous versions of the API, we discovered that it was too easy to accidentally delete one or more values for an element that accepts multiple values, for example, CNAMEs and trusted signers. Our changes for the 2012-05-05 release are intended to prevent these accidental deletions and to notify you when there's a mismatch between the number of values you say you're specifying in the <code>Quantity</code> element and the number of values specified.</p> </important></p>
 
   </div>
 </div>
@@ -1645,6 +1686,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:streaming_distribution_config</span>
           <span class='type'>(<code>required</code>, <a href="Types/StreamingDistributionConfig.html" title="Aws::CloudFront::Types::StreamingDistributionConfig (class)">Types::StreamingDistributionConfig</a>)</span>
             &mdash; <div class='inline'><p>The streaming distribution's configuration information.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1654,10 +1696,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateStreamingDistributionResult.html#streaming_distribution-instance_method" title="Aws::CloudFront::Types::CreateStreamingDistributionResult#streaming_distribution (method)">#streaming_distribution</a> =&gt; <a href="Types/StreamingDistribution.html" title="Aws::CloudFront::Types::StreamingDistribution (class)">Types::StreamingDistribution</a></li>
-<li><a href="Types/CreateStreamingDistributionResult.html#location-instance_method" title="Aws::CloudFront::Types::CreateStreamingDistributionResult#location (method)">#location</a> =&gt; String</li>
-<li><a href="Types/CreateStreamingDistributionResult.html#etag-instance_method" title="Aws::CloudFront::Types::CreateStreamingDistributionResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/CreateStreamingDistributionResult.html#streaming_distribution-instance_method" title="Aws::CloudFront::Types::CreateStreamingDistributionResult#streaming_distribution (method)">#streaming_distribution</a> => <a href="Types/StreamingDistribution.html" title="Aws::CloudFront::Types::StreamingDistribution (class)">Types::StreamingDistribution</a></li>
+<li><a href="Types/CreateStreamingDistributionResult.html#location-instance_method" title="Aws::CloudFront::Types::CreateStreamingDistributionResult#location (method)">#location</a> => String</li>
+<li><a href="Types/CreateStreamingDistributionResult.html#etag-instance_method" title="Aws::CloudFront::Types::CreateStreamingDistributionResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1672,6 +1715,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Create a new streaming distribution with tags.</p>
+
 
   </div>
 </div>
@@ -1755,6 +1799,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:streaming_distribution_config_with_tags</span>
           <span class='type'>(<code>required</code>, <a href="Types/StreamingDistributionConfigWithTags.html" title="Aws::CloudFront::Types::StreamingDistributionConfigWithTags (class)">Types::StreamingDistributionConfigWithTags</a>)</span>
             &mdash; <div class='inline'><p> The streaming distribution's configuration information. </p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1764,10 +1809,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateStreamingDistributionWithTagsResult.html#streaming_distribution-instance_method" title="Aws::CloudFront::Types::CreateStreamingDistributionWithTagsResult#streaming_distribution (method)">#streaming_distribution</a> =&gt; <a href="Types/StreamingDistribution.html" title="Aws::CloudFront::Types::StreamingDistribution (class)">Types::StreamingDistribution</a></li>
-<li><a href="Types/CreateStreamingDistributionWithTagsResult.html#location-instance_method" title="Aws::CloudFront::Types::CreateStreamingDistributionWithTagsResult#location (method)">#location</a> =&gt; String</li>
-<li><a href="Types/CreateStreamingDistributionWithTagsResult.html#etag-instance_method" title="Aws::CloudFront::Types::CreateStreamingDistributionWithTagsResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/CreateStreamingDistributionWithTagsResult.html#streaming_distribution-instance_method" title="Aws::CloudFront::Types::CreateStreamingDistributionWithTagsResult#streaming_distribution (method)">#streaming_distribution</a> => <a href="Types/StreamingDistribution.html" title="Aws::CloudFront::Types::StreamingDistribution (class)">Types::StreamingDistribution</a></li>
+<li><a href="Types/CreateStreamingDistributionWithTagsResult.html#location-instance_method" title="Aws::CloudFront::Types::CreateStreamingDistributionWithTagsResult#location (method)">#location</a> => String</li>
+<li><a href="Types/CreateStreamingDistributionWithTagsResult.html#etag-instance_method" title="Aws::CloudFront::Types::CreateStreamingDistributionWithTagsResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1782,6 +1828,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Delete an origin access identity. </p>
+
 
   </div>
 </div>
@@ -1801,11 +1848,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The origin access identity's ID.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:if_match</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The value of the <code>ETag</code> header you received from a previous <code>GET</code> or <code>PUT</code> request. For example: <code>E2QWRUHAPOMQZL</code>.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1828,6 +1877,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   <div class='discussion'>
     <p>Delete a distribution. </p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -1846,11 +1896,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The distribution ID. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:if_match</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The value of the <code>ETag</code> header that you received when you disabled the distribution. For example: <code>E2QWRUHAPOMQZL</code>. </p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1871,7 +1923,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Delete a streaming distribution. To delete an RTMP distribution using the CloudFront API, perform the following steps.</p> <p> <b>To delete an RTMP distribution using the CloudFront API</b>:</p> <ol> <li> <p>Disable the RTMP distribution.</p> </li> <li> <p>Submit a <code>GET Streaming Distribution Config</code> request to get the current configuration and the <code>Etag</code> header for the distribution. </p> </li> <li> <p>Update the XML document that was returned in the response to your <code>GET Streaming Distribution Config</code> request to change the value of <code>Enabled</code> to <code>false</code>.</p> </li> <li> <p>Submit a <code>PUT Streaming Distribution Config</code> request to update the configuration for your distribution. In the request body, include the XML document that you updated in Step 3. Then set the value of the HTTP <code>If-Match</code> header to the value of the <code>ETag</code> header that CloudFront returned when you submitted the <code>GET Streaming Distribution Config</code> request in Step 2.</p> </li> <li> <p>Review the response to the <code>PUT Streaming Distribution Config</code> request to confirm that the distribution was successfully disabled.</p> </li> <li> <p>Submit a <code>GET Streaming Distribution Config</code> request to confirm that your changes have propagated. When propagation is complete, the value of <code>Status</code> is <code>Deployed</code>.</p> </li> <li> <p>Submit a <code>DELETE Streaming Distribution</code> request. Set the value of the HTTP <code>If-Match</code> header to the value of the <code>ETag</code> header that CloudFront returned when you submitted the <code>GET Streaming Distribution Config</code> request in Step 2.</p> </li> <li> <p>Review the response to your <code>DELETE Streaming Distribution</code> request to confirm that the distribution was successfully deleted.</p> </li> </ol> <p>For information about deleting a distribution using the CloudFront console, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html">Deleting a Distribution</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+    <p>Delete a streaming distribution. To delete an RTMP distribution using the CloudFront API, perform the following steps.</p>
+
+
+<p> <p> <b>To delete an RTMP distribution using the CloudFront API</b>:</p> <ol> <li> <p>Disable the RTMP distribution.</p> </li> <li> <p>Submit a <code>GET Streaming Distribution Config</code> request to get the current configuration and the <code>Etag</code> header for the distribution. </p> </li> <li> <p>Update the XML document that was returned in the response to your <code>GET Streaming Distribution Config</code> request to change the value of <code>Enabled</code> to <code>false</code>.</p> </li> <li> <p>Submit a <code>PUT Streaming Distribution Config</code> request to update the configuration for your distribution. In the request body, include the XML document that you updated in Step 3. Then set the value of the HTTP <code>If-Match</code> header to the value of the <code>ETag</code> header that CloudFront returned when you submitted the <code>GET Streaming Distribution Config</code> request in Step 2.</p> </li> <li> <p>Review the response to the <code>PUT Streaming Distribution Config</code> request to confirm that the distribution was successfully disabled.</p> </li> <li> <p>Submit a <code>GET Streaming Distribution Config</code> request to confirm that your changes have propagated. When propagation is complete, the value of <code>Status</code> is <code>Deployed</code>.</p> </li> <li> <p>Submit a <code>DELETE Streaming Distribution</code> request. Set the value of the HTTP <code>If-Match</code> header to the value of the <code>ETag</code> header that CloudFront returned when you submitted the <code>GET Streaming Distribution Config</code> request in Step 2.</p> </li> <li> <p>Review the response to your <code>DELETE Streaming Distribution</code> request to confirm that the distribution was successfully deleted.</p> </li> </ol> <p>For information about deleting a distribution using the CloudFront console, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html">Deleting a Distribution</a> in the <i>Amazon CloudFront Developer Guide</i>.</p></p>
 
   </div>
 </div>
@@ -1891,11 +1946,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The distribution ID. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:if_match</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The value of the <code>ETag</code> header that you received when you disabled the streaming distribution. For example: <code>E2QWRUHAPOMQZL</code>.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1917,6 +1974,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Get the information about an origin access identity. </p>
+
 
   </div>
 </div>
@@ -1942,6 +2000,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The identity's ID.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1951,9 +2010,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetCloudFrontOriginAccessIdentityResult.html#cloud_front_origin_access_identity-instance_method" title="Aws::CloudFront::Types::GetCloudFrontOriginAccessIdentityResult#cloud_front_origin_access_identity (method)">#cloud_front_origin_access_identity</a> =&gt; <a href="Types/CloudFrontOriginAccessIdentity.html" title="Aws::CloudFront::Types::CloudFrontOriginAccessIdentity (class)">Types::CloudFrontOriginAccessIdentity</a></li>
-<li><a href="Types/GetCloudFrontOriginAccessIdentityResult.html#etag-instance_method" title="Aws::CloudFront::Types::GetCloudFrontOriginAccessIdentityResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/GetCloudFrontOriginAccessIdentityResult.html#cloud_front_origin_access_identity-instance_method" title="Aws::CloudFront::Types::GetCloudFrontOriginAccessIdentityResult#cloud_front_origin_access_identity (method)">#cloud_front_origin_access_identity</a> => <a href="Types/CloudFrontOriginAccessIdentity.html" title="Aws::CloudFront::Types::CloudFrontOriginAccessIdentity (class)">Types::CloudFrontOriginAccessIdentity</a></li>
+<li><a href="Types/GetCloudFrontOriginAccessIdentityResult.html#etag-instance_method" title="Aws::CloudFront::Types::GetCloudFrontOriginAccessIdentityResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1968,6 +2028,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Get the configuration information about an origin access identity. </p>
+
 
   </div>
 </div>
@@ -1991,6 +2052,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The identity's ID. </p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2000,9 +2062,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetCloudFrontOriginAccessIdentityConfigResult.html#cloud_front_origin_access_identity_config-instance_method" title="Aws::CloudFront::Types::GetCloudFrontOriginAccessIdentityConfigResult#cloud_front_origin_access_identity_config (method)">#cloud_front_origin_access_identity_config</a> =&gt; <a href="Types/CloudFrontOriginAccessIdentityConfig.html" title="Aws::CloudFront::Types::CloudFrontOriginAccessIdentityConfig (class)">Types::CloudFrontOriginAccessIdentityConfig</a></li>
-<li><a href="Types/GetCloudFrontOriginAccessIdentityConfigResult.html#etag-instance_method" title="Aws::CloudFront::Types::GetCloudFrontOriginAccessIdentityConfigResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/GetCloudFrontOriginAccessIdentityConfigResult.html#cloud_front_origin_access_identity_config-instance_method" title="Aws::CloudFront::Types::GetCloudFrontOriginAccessIdentityConfigResult#cloud_front_origin_access_identity_config (method)">#cloud_front_origin_access_identity_config</a> => <a href="Types/CloudFrontOriginAccessIdentityConfig.html" title="Aws::CloudFront::Types::CloudFrontOriginAccessIdentityConfig (class)">Types::CloudFrontOriginAccessIdentityConfig</a></li>
+<li><a href="Types/GetCloudFrontOriginAccessIdentityConfigResult.html#etag-instance_method" title="Aws::CloudFront::Types::GetCloudFrontOriginAccessIdentityConfigResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2017,6 +2080,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Get the information about a distribution. </p>
+
 
   </div>
 </div>
@@ -2166,6 +2230,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The distribution's ID.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2175,9 +2240,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetDistributionResult.html#distribution-instance_method" title="Aws::CloudFront::Types::GetDistributionResult#distribution (method)">#distribution</a> =&gt; <a href="Types/Distribution.html" title="Aws::CloudFront::Types::Distribution (class)">Types::Distribution</a></li>
-<li><a href="Types/GetDistributionResult.html#etag-instance_method" title="Aws::CloudFront::Types::GetDistributionResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/GetDistributionResult.html#distribution-instance_method" title="Aws::CloudFront::Types::GetDistributionResult#distribution (method)">#distribution</a> => <a href="Types/Distribution.html" title="Aws::CloudFront::Types::Distribution (class)">Types::Distribution</a></li>
+<li><a href="Types/GetDistributionResult.html#etag-instance_method" title="Aws::CloudFront::Types::GetDistributionResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2192,6 +2258,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Get the configuration information about a distribution. </p>
+
 
   </div>
 </div>
@@ -2328,6 +2395,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The distribution's ID.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2337,9 +2405,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetDistributionConfigResult.html#distribution_config-instance_method" title="Aws::CloudFront::Types::GetDistributionConfigResult#distribution_config (method)">#distribution_config</a> =&gt; <a href="Types/DistributionConfig.html" title="Aws::CloudFront::Types::DistributionConfig (class)">Types::DistributionConfig</a></li>
-<li><a href="Types/GetDistributionConfigResult.html#etag-instance_method" title="Aws::CloudFront::Types::GetDistributionConfigResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/GetDistributionConfigResult.html#distribution_config-instance_method" title="Aws::CloudFront::Types::GetDistributionConfigResult#distribution_config (method)">#distribution_config</a> => <a href="Types/DistributionConfig.html" title="Aws::CloudFront::Types::DistributionConfig (class)">Types::DistributionConfig</a></li>
+<li><a href="Types/GetDistributionConfigResult.html#etag-instance_method" title="Aws::CloudFront::Types::GetDistributionConfigResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2354,6 +2423,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Get the information about an invalidation. </p>
+
 
   </div>
 </div>
@@ -2382,11 +2452,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:distribution_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The distribution's ID.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The identifier for the invalidation request, for example, <code>IDFDVBD632BHDS5</code>.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2396,8 +2468,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetInvalidationResult.html#invalidation-instance_method" title="Aws::CloudFront::Types::GetInvalidationResult#invalidation (method)">#invalidation</a> =&gt; <a href="Types/Invalidation.html" title="Aws::CloudFront::Types::Invalidation (class)">Types::Invalidation</a></li>
+<li><a href="Types/GetInvalidationResult.html#invalidation-instance_method" title="Aws::CloudFront::Types::GetInvalidationResult#invalidation (method)">#invalidation</a> => <a href="Types/Invalidation.html" title="Aws::CloudFront::Types::Invalidation (class)">Types::Invalidation</a></li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2412,6 +2485,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Gets information about a specified RTMP distribution, including the distribution configuration.</p>
+
 
   </div>
 </div>
@@ -2461,6 +2535,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The streaming distribution's ID.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2470,9 +2545,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetStreamingDistributionResult.html#streaming_distribution-instance_method" title="Aws::CloudFront::Types::GetStreamingDistributionResult#streaming_distribution (method)">#streaming_distribution</a> =&gt; <a href="Types/StreamingDistribution.html" title="Aws::CloudFront::Types::StreamingDistribution (class)">Types::StreamingDistribution</a></li>
-<li><a href="Types/GetStreamingDistributionResult.html#etag-instance_method" title="Aws::CloudFront::Types::GetStreamingDistributionResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/GetStreamingDistributionResult.html#streaming_distribution-instance_method" title="Aws::CloudFront::Types::GetStreamingDistributionResult#streaming_distribution (method)">#streaming_distribution</a> => <a href="Types/StreamingDistribution.html" title="Aws::CloudFront::Types::StreamingDistribution (class)">Types::StreamingDistribution</a></li>
+<li><a href="Types/GetStreamingDistributionResult.html#etag-instance_method" title="Aws::CloudFront::Types::GetStreamingDistributionResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2487,6 +2563,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Get the configuration information about a streaming distribution. </p>
+
 
   </div>
 </div>
@@ -2524,6 +2601,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The streaming distribution's ID.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2533,9 +2611,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetStreamingDistributionConfigResult.html#streaming_distribution_config-instance_method" title="Aws::CloudFront::Types::GetStreamingDistributionConfigResult#streaming_distribution_config (method)">#streaming_distribution_config</a> =&gt; <a href="Types/StreamingDistributionConfig.html" title="Aws::CloudFront::Types::StreamingDistributionConfig (class)">Types::StreamingDistributionConfig</a></li>
-<li><a href="Types/GetStreamingDistributionConfigResult.html#etag-instance_method" title="Aws::CloudFront::Types::GetStreamingDistributionConfigResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/GetStreamingDistributionConfigResult.html#streaming_distribution_config-instance_method" title="Aws::CloudFront::Types::GetStreamingDistributionConfigResult#streaming_distribution_config (method)">#streaming_distribution_config</a> => <a href="Types/StreamingDistributionConfig.html" title="Aws::CloudFront::Types::StreamingDistributionConfig (class)">Types::StreamingDistributionConfig</a></li>
+<li><a href="Types/GetStreamingDistributionConfigResult.html#etag-instance_method" title="Aws::CloudFront::Types::GetStreamingDistributionConfigResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2550,6 +2629,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Lists origin access identities.</p>
+
 
   </div>
 </div>
@@ -2580,6 +2660,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:marker</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Use this when paginating results to indicate where to begin in your list of origin access identities. The results include identities in the list that occur after the marker. To get the next page of results, set the <code>Marker</code> to the value of the <code>NextMarker</code> from the current page's response (which is also the ID of the last identity on that page).</p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_items</span>
@@ -2593,8 +2674,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListCloudFrontOriginAccessIdentitiesResult.html#cloud_front_origin_access_identity_list-instance_method" title="Aws::CloudFront::Types::ListCloudFrontOriginAccessIdentitiesResult#cloud_front_origin_access_identity_list (method)">#cloud_front_origin_access_identity_list</a> =&gt; <a href="Types/CloudFrontOriginAccessIdentityList.html" title="Aws::CloudFront::Types::CloudFrontOriginAccessIdentityList (class)">Types::CloudFrontOriginAccessIdentityList</a></li>
+<li><a href="Types/ListCloudFrontOriginAccessIdentitiesResult.html#cloud_front_origin_access_identity_list-instance_method" title="Aws::CloudFront::Types::ListCloudFrontOriginAccessIdentitiesResult#cloud_front_origin_access_identity_list (method)">#cloud_front_origin_access_identity_list</a> => <a href="Types/CloudFrontOriginAccessIdentityList.html" title="Aws::CloudFront::Types::CloudFrontOriginAccessIdentityList (class)">Types::CloudFrontOriginAccessIdentityList</a></li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2609,6 +2691,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>List distributions. </p>
+
 
   </div>
 </div>
@@ -2750,6 +2833,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:marker</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Use this when paginating results to indicate where to begin in your list of distributions. The results include distributions in the list that occur after the marker. To get the next page of results, set the <code>Marker</code> to the value of the <code>NextMarker</code> from the current page's response (which is also the ID of the last distribution on that page).</p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_items</span>
@@ -2763,8 +2847,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListDistributionsResult.html#distribution_list-instance_method" title="Aws::CloudFront::Types::ListDistributionsResult#distribution_list (method)">#distribution_list</a> =&gt; <a href="Types/DistributionList.html" title="Aws::CloudFront::Types::DistributionList (class)">Types::DistributionList</a></li>
+<li><a href="Types/ListDistributionsResult.html#distribution_list-instance_method" title="Aws::CloudFront::Types::ListDistributionsResult#distribution_list (method)">#distribution_list</a> => <a href="Types/DistributionList.html" title="Aws::CloudFront::Types::DistributionList (class)">Types::DistributionList</a></li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2779,6 +2864,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>List the distributions that are associated with a specified AWS WAF web ACL. </p>
+
 
   </div>
 </div>
@@ -2921,6 +3007,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:marker</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Use <code>Marker</code> and <code>MaxItems</code> to control pagination of results. If you have more than <code>MaxItems</code> distributions that satisfy the request, the response includes a <code>NextMarker</code> element. To get the next page of results, submit another request. For the value of <code>Marker</code>, specify the value of <code>NextMarker</code> from the last response. (For the first request, omit <code>Marker</code>.) </p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_items</span>
@@ -2930,6 +3017,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:web_acl_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The ID of the AWS WAF web ACL that you want to list the associated distributions. If you specify "null" for the ID, the request returns a list of the distributions that aren't associated with a web ACL. </p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2939,8 +3027,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListDistributionsByWebACLIdResult.html#distribution_list-instance_method" title="Aws::CloudFront::Types::ListDistributionsByWebACLIdResult#distribution_list (method)">#distribution_list</a> =&gt; <a href="Types/DistributionList.html" title="Aws::CloudFront::Types::DistributionList (class)">Types::DistributionList</a></li>
+<li><a href="Types/ListDistributionsByWebACLIdResult.html#distribution_list-instance_method" title="Aws::CloudFront::Types::ListDistributionsByWebACLIdResult#distribution_list (method)">#distribution_list</a> => <a href="Types/DistributionList.html" title="Aws::CloudFront::Types::DistributionList (class)">Types::DistributionList</a></li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2955,6 +3044,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Lists invalidation batches. </p>
+
 
   </div>
 </div>
@@ -2986,11 +3076,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:distribution_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The distribution's ID.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:marker</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Use this parameter when paginating results to indicate where to begin in your list of invalidation batches. Because the results are returned in decreasing order from most recent to oldest, the most recent results are on the first page, the second page will contain earlier results, and so on. To get the next page of results, set <code>Marker</code> to the value of the <code>NextMarker</code> from the current page's response. This value is the same as the ID of the last invalidation batch on that page. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_items</span>
@@ -3004,8 +3096,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListInvalidationsResult.html#invalidation_list-instance_method" title="Aws::CloudFront::Types::ListInvalidationsResult#invalidation_list (method)">#invalidation_list</a> =&gt; <a href="Types/InvalidationList.html" title="Aws::CloudFront::Types::InvalidationList (class)">Types::InvalidationList</a></li>
+<li><a href="Types/ListInvalidationsResult.html#invalidation_list-instance_method" title="Aws::CloudFront::Types::ListInvalidationsResult#invalidation_list (method)">#invalidation_list</a> => <a href="Types/InvalidationList.html" title="Aws::CloudFront::Types::InvalidationList (class)">Types::InvalidationList</a></li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -3020,6 +3113,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>List streaming distributions. </p>
+
 
   </div>
 </div>
@@ -3064,6 +3158,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:marker</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The value that you provided for the <code>Marker</code> request parameter.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_items</span>
@@ -3077,8 +3172,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListStreamingDistributionsResult.html#streaming_distribution_list-instance_method" title="Aws::CloudFront::Types::ListStreamingDistributionsResult#streaming_distribution_list (method)">#streaming_distribution_list</a> =&gt; <a href="Types/StreamingDistributionList.html" title="Aws::CloudFront::Types::StreamingDistributionList (class)">Types::StreamingDistributionList</a></li>
+<li><a href="Types/ListStreamingDistributionsResult.html#streaming_distribution_list-instance_method" title="Aws::CloudFront::Types::ListStreamingDistributionsResult#streaming_distribution_list (method)">#streaming_distribution_list</a> => <a href="Types/StreamingDistributionList.html" title="Aws::CloudFront::Types::StreamingDistributionList (class)">Types::StreamingDistributionList</a></li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -3093,6 +3189,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>List tags for a CloudFront resource.</p>
+
 
   </div>
 </div>
@@ -3116,6 +3213,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:resource</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p> An ARN of a CloudFront resource.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3125,8 +3223,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListTagsForResourceResult.html#tags-instance_method" title="Aws::CloudFront::Types::ListTagsForResourceResult#tags (method)">#tags</a> =&gt; <a href="Types/Tags.html" title="Aws::CloudFront::Types::Tags (class)">Types::Tags</a></li>
+<li><a href="Types/ListTagsForResourceResult.html#tags-instance_method" title="Aws::CloudFront::Types::ListTagsForResourceResult#tags (method)">#tags</a> => <a href="Types/Tags.html" title="Aws::CloudFront::Types::Tags (class)">Types::Tags</a></li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -3141,6 +3240,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Add tags to a CloudFront resource.</p>
+
 
   </div>
 </div>
@@ -3167,11 +3267,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:resource</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p> An ARN of a CloudFront resource.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:tags</span>
           <span class='type'>(<code>required</code>, <a href="Types/Tags.html" title="Aws::CloudFront::Types::Tags (class)">Types::Tags</a>)</span>
             &mdash; <div class='inline'><p> A complex type that contains zero or more <code>Tag</code> elements.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3194,6 +3296,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   <div class='discussion'>
     <p>Remove tags from a CloudFront resource.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -3214,11 +3317,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:resource</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p> An ARN of a CloudFront resource.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:tag_keys</span>
           <span class='type'>(<code>required</code>, <a href="Types/TagKeys.html" title="Aws::CloudFront::Types::TagKeys (class)">Types::TagKeys</a>)</span>
             &mdash; <div class='inline'><p> A complex type that contains zero or more <code>Tag</code> key elements.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3240,6 +3345,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Update an origin access identity. </p>
+
 
   </div>
 </div>
@@ -3270,16 +3376,19 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:cloud_front_origin_access_identity_config</span>
           <span class='type'>(<code>required</code>, <a href="Types/CloudFrontOriginAccessIdentityConfig.html" title="Aws::CloudFront::Types::CloudFrontOriginAccessIdentityConfig (class)">Types::CloudFrontOriginAccessIdentityConfig</a>)</span>
             &mdash; <div class='inline'><p>The identity's configuration information.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The identity's id.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:if_match</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The value of the <code>ETag</code> header that you received when retrieving the identity's configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3289,9 +3398,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateCloudFrontOriginAccessIdentityResult.html#cloud_front_origin_access_identity-instance_method" title="Aws::CloudFront::Types::UpdateCloudFrontOriginAccessIdentityResult#cloud_front_origin_access_identity (method)">#cloud_front_origin_access_identity</a> =&gt; <a href="Types/CloudFrontOriginAccessIdentity.html" title="Aws::CloudFront::Types::CloudFrontOriginAccessIdentity (class)">Types::CloudFrontOriginAccessIdentity</a></li>
-<li><a href="Types/UpdateCloudFrontOriginAccessIdentityResult.html#etag-instance_method" title="Aws::CloudFront::Types::UpdateCloudFrontOriginAccessIdentityResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/UpdateCloudFrontOriginAccessIdentityResult.html#cloud_front_origin_access_identity-instance_method" title="Aws::CloudFront::Types::UpdateCloudFrontOriginAccessIdentityResult#cloud_front_origin_access_identity (method)">#cloud_front_origin_access_identity</a> => <a href="Types/CloudFrontOriginAccessIdentity.html" title="Aws::CloudFront::Types::CloudFrontOriginAccessIdentity (class)">Types::CloudFrontOriginAccessIdentity</a></li>
+<li><a href="Types/UpdateCloudFrontOriginAccessIdentityResult.html#etag-instance_method" title="Aws::CloudFront::Types::UpdateCloudFrontOriginAccessIdentityResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -3306,6 +3416,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Update a distribution. </p>
+
 
   </div>
 </div>
@@ -3638,16 +3749,19 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:distribution_config</span>
           <span class='type'>(<code>required</code>, <a href="Types/DistributionConfig.html" title="Aws::CloudFront::Types::DistributionConfig (class)">Types::DistributionConfig</a>)</span>
             &mdash; <div class='inline'><p>The distribution's configuration information.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The distribution's id.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:if_match</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The value of the <code>ETag</code> header that you received when retrieving the distribution's configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3657,9 +3771,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateDistributionResult.html#distribution-instance_method" title="Aws::CloudFront::Types::UpdateDistributionResult#distribution (method)">#distribution</a> =&gt; <a href="Types/Distribution.html" title="Aws::CloudFront::Types::Distribution (class)">Types::Distribution</a></li>
-<li><a href="Types/UpdateDistributionResult.html#etag-instance_method" title="Aws::CloudFront::Types::UpdateDistributionResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/UpdateDistributionResult.html#distribution-instance_method" title="Aws::CloudFront::Types::UpdateDistributionResult#distribution (method)">#distribution</a> => <a href="Types/Distribution.html" title="Aws::CloudFront::Types::Distribution (class)">Types::Distribution</a></li>
+<li><a href="Types/UpdateDistributionResult.html#etag-instance_method" title="Aws::CloudFront::Types::UpdateDistributionResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -3674,6 +3789,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Update a streaming distribution. </p>
+
 
   </div>
 </div>
@@ -3748,16 +3864,19 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:streaming_distribution_config</span>
           <span class='type'>(<code>required</code>, <a href="Types/StreamingDistributionConfig.html" title="Aws::CloudFront::Types::StreamingDistributionConfig (class)">Types::StreamingDistributionConfig</a>)</span>
             &mdash; <div class='inline'><p>The streaming distribution's configuration information.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The streaming distribution's id.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:if_match</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The value of the <code>ETag</code> header that you received when retrieving the streaming distribution's configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3767,9 +3886,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateStreamingDistributionResult.html#streaming_distribution-instance_method" title="Aws::CloudFront::Types::UpdateStreamingDistributionResult#streaming_distribution (method)">#streaming_distribution</a> =&gt; <a href="Types/StreamingDistribution.html" title="Aws::CloudFront::Types::StreamingDistribution (class)">Types::StreamingDistribution</a></li>
-<li><a href="Types/UpdateStreamingDistributionResult.html#etag-instance_method" title="Aws::CloudFront::Types::UpdateStreamingDistributionResult#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/UpdateStreamingDistributionResult.html#streaming_distribution-instance_method" title="Aws::CloudFront::Types::UpdateStreamingDistributionResult#streaming_distribution (method)">#streaming_distribution</a> => <a href="Types/StreamingDistribution.html" title="Aws::CloudFront::Types::StreamingDistribution (class)">Types::StreamingDistribution</a></li>
+<li><a href="Types/UpdateStreamingDistributionResult.html#etag-instance_method" title="Aws::CloudFront::Types::UpdateStreamingDistributionResult#etag (method)">#etag</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -3792,7 +3912,7 @@ state.</p>
 entering a terminal state, or until a maximum number of attempts
 are made.</p>
 
-<p># polls in a loop, sleeping between attempts
+<p>   # polls in a loop, sleeping between attempts
    client.waiter_until(waiter_name, params)</p>
 
 <h3>Configuration</h3>
@@ -3928,6 +4048,7 @@ waiters and the client method they call:</p>
 <tr><td><tt>:distribution_deployed</tt></td><td><a href="#get_distribution-instance_method" title="Aws::CloudFront::Client#get_distribution (method)">#get_distribution</a></td><td>60</td><td>25</td></tr><tr><td><tt>:invalidation_completed</tt></td><td><a href="#get_invalidation-instance_method" title="Aws::CloudFront::Client#get_invalidation (method)">#get_invalidation</a></td><td>20</td><td>30</td></tr><tr><td><tt>:streaming_distribution_deployed</tt></td><td><a href="#get_streaming_distribution-instance_method" title="Aws::CloudFront::Client#get_streaming_distribution (method)">#get_streaming_distribution</a></td><td>60</td><td>25</td></tr>
 </tbody>
 </table>
+
 
   </div>
 </div>

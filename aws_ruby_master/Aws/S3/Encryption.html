@@ -100,8 +100,8 @@
     <p>Provides an encryption client that encrypts and decrypts data client-side,
 storing the encrypted data in Amazon S3.</p>
 
-<p>This client uses a process called &quot;envelope encryption&quot;. Your private
-encryption keys and your data&#39;s plain-text are <strong>never</strong> sent to
+<p>This client uses a process called "envelope encryption". Your private
+encryption keys and your data's plain-text are <strong>never</strong> sent to
 Amazon S3. <strong>If you lose you encryption keys, you will not be able to
 decrypt your data.</strong></p>
 
@@ -157,6 +157,7 @@ provide a <code>:client</code>, then a client will be constructed for you.</p>
 <li>A KMS encryption key id</li>
 </ul>
 
+
 <h4>An Encryption Key</h4>
 
 <p>You can pass a single encryption key. This is used as a master key
@@ -194,6 +195,7 @@ then KMS will be used to generate, encrypt and decrypt object keys.</p>
 <li><code>#encryption_materials</code></li>
 <li><code>#key_for(materials_description)</code></li>
 </ul>
+
 
 <p>Here is a trivial implementation of an in-memory key provider.
 This is provided as a demonstration of the key provider interface,
@@ -240,7 +242,7 @@ and simplifies key rotation.</p>
 
 <p>A materials description is JSON document string that is stored
 in the metadata (or instruction file) of an encrypted object.
-The DefaultKeyProvider uses the empty JSON document <code>&quot;{}&quot;</code>.</p>
+The DefaultKeyProvider uses the empty JSON document <code>"{}"</code>.</p>
 
 <p>When building a key provider, you are free to store whatever
 information you need to identify the master key that was used
@@ -250,9 +252,9 @@ to encrypt the object.</p>
 
 <p>By default, the encryption client store the encryption envelope
 with the object, as metadata. You can choose to have the envelope
-stored in a separate &quot;instruction file&quot;. An instruction file
+stored in a separate "instruction file". An instruction file
 is an object, with the key of the encrypted object, suffixed with
-<code>&quot;.instruction&quot;</code>.</p>
+<code>".instruction"</code>.</p>
 
 <p>Specify the <code>:envelope_location</code> option as <code>:instruction_file</code> to
 use an instruction file for storing the envelope.</p>

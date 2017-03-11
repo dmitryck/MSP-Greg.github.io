@@ -129,9 +129,10 @@
 <p>You can configure a default region in the following locations:</p>
 
 <ul>
-<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
+<li><code>ENV['AWS_REGION']</code></li>
 <li><code>Aws.config[:region]</code></li>
 </ul>
+
 
 <p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
 
@@ -140,11 +141,12 @@
 <p>Default credentials are loaded automatically from the following locations:</p>
 
 <ul>
-<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
+<li><code>ENV['AWS_ACCESS_KEY_ID']</code> and <code>ENV['AWS_SECRET_ACCESS_KEY']</code></li>
 <li><code>Aws.config[:credentials]</code></li>
 <li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
 <li>From an instance profile when running on EC2</li>
 </ul>
+
 
 <p>You can also construct a credentials object from one of the following
 classes:</p>
@@ -155,6 +157,7 @@ classes:</p>
 <li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
 <li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
 </ul>
+
 
 <p>Alternatively, you configure credentials with <code>:access_key_id</code> and
 <code>:secret_access_key</code>:</p>
@@ -298,7 +301,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#delete_function-instance_method" title="#delete_function (instance method)">#<strong>delete_function</strong>(options = {})  &#x21d2; Struct </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Deletes the specified Lambda function code and configuration.</p>.</p></div>
+      <div class='inline'><p>Deletes the specified Lambda function code and configuration.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -306,7 +312,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#get_account_settings-instance_method" title="#get_account_settings (instance method)">#<strong>get_account_settings</strong>(options = {})  &#x21d2; Types::GetAccountSettingsResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Returns a customer&#39;s account settings.</p>.</p></div>
+      <div class='inline'><p>Returns a customer's account settings.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -322,7 +331,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#get_event_source_mapping-instance_method" title="#get_event_source_mapping (instance method)">#<strong>get_event_source_mapping</strong>(options = {})  &#x21d2; Types::EventSourceMappingConfiguration </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Returns configuration information for the specified event source mapping (see <a>CreateEventSourceMapping</a>).</p>.</p></div>
+      <div class='inline'><p>Returns configuration information for the specified event source mapping (see <a>CreateEventSourceMapping</a>).</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -346,7 +358,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#get_policy-instance_method" title="#get_policy (instance method)">#<strong>get_policy</strong>(options = {})  &#x21d2; Types::GetPolicyResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Returns the resource policy associated with the specified Lambda function.</p>.</p></div>
+      <div class='inline'><p>Returns the resource policy associated with the specified Lambda function.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -410,7 +425,10 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#remove_permission-instance_method" title="#remove_permission (instance method)">#<strong>remove_permission</strong>(options = {})  &#x21d2; Struct </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>You can remove individual permissions from an resource policy associated with a Lambda function by providing a statement ID that you provided when you added the permission.</p>.</p></div>
+      <div class='inline'><p>You can remove individual permissions from an resource policy associated with a Lambda function by providing a statement ID that you provided when you added the permission.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -534,10 +552,11 @@ for credentials:</p>
 
 <ul>
 <li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
-<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
+<li>ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']</li>
 <li><code>HOME/.aws/credentials</code> shared credentials file</li>
 <li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
 </ul>
+
 </div>        </li>
         <li>
           <span class='name'>:endpoint</span>
@@ -613,7 +632,7 @@ will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Lo
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Used when loading credentials
 from the shared credentials file at HOME/.aws/credentials.  When not
-specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
 </div>        </li>
         <li>
           <span class='name'>:raise_response_errors</span>
@@ -626,7 +645,7 @@ specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.htm
           <span class='name'>:region</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
-the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
+the client endpoint.  Defaults to <code>ENV['AWS_REGION']</code>.
 Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
 </div>        </li>
         <li>
@@ -684,7 +703,7 @@ fake responses are generated and returned. You can specify
 the response data to return or errors to raise by calling
 <a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
 
-<p>** Please note ** When response stubbing is enabled, no HTTP
+<p><strong> Please note </strong> When response stubbing is enabled, no HTTP
 requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
 </div>        </li>
         <li>
@@ -707,7 +726,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Adds a permission to the resource policy associated with the specified AWS Lambda function. You use resource policies to grant permissions to event sources that use <i>push</i> model. In a <i>push</i> model, event sources (such as Amazon S3 and custom applications) invoke your Lambda function. Each permission you add to the resource policy allows an event source, permission to invoke the Lambda function. </p> <p>For information about the push model, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a>. </p> <p>If you are using versioning, the permissions you add are specific to the Lambda function version or alias you specify in the <code>AddPermission</code> request via the <code>Qualifier</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:AddPermission</code> action.</p>
+    <p>Adds a permission to the resource policy associated with the specified AWS Lambda function. You use resource policies to grant permissions to event sources that use <i>push</i> model. In a <i>push</i> model, event sources (such as Amazon S3 and custom applications) invoke your Lambda function. Each permission you add to the resource policy allows an event source, permission to invoke the Lambda function. </p>
+
+
+<p> <p>For information about the push model, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a>. </p> <p>If you are using versioning, the permissions you add are specific to the Lambda function version or alias you specify in the <code>AddPermission</code> request via the <code>Qualifier</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:AddPermission</code> action.</p></p>
 
   </div>
 </div>
@@ -752,42 +774,56 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Name of the Lambda function whose resource policy you are updating by adding a new permission.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+            &mdash; <div class='inline'><p>Name of the Lambda function whose resource policy you are updating by adding a new permission.</p>
+
+
+<p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p></p>
 </div>        </li>
         <li>
           <span class='name'>:statement_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A unique statement identifier.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:action</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS Lambda action you want to allow in this statement. Each Lambda action is a string starting with <code>lambda:</code> followed by the API name . For example, <code>lambda:CreateFunction</code>. You can use wildcard (<code>lambda:*</code>) to grant permission for all AWS Lambda actions. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:principal</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The principal who is getting this permission. It can be Amazon S3 service Principal (<code>s3.amazonaws.com</code>) if you want Amazon S3 to invoke the function, an AWS account ID if you are granting cross-account permission, or any valid AWS service principal such as <code>sns.amazonaws.com</code>. For example, you might want to allow a custom application in another AWS account to push events to AWS Lambda by invoking your function. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:source_arn</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p><p>This is optional; however, when granting Amazon S3 permission to invoke your function, you should specify this field with the Amazon Resource Name (ARN) as its value. This ensures that only events generated from the specified source can invoke the function.</p> <important><p>If you add a permission for the Amazon S3 principal without providing the source ARN, any AWS account that creates a mapping to your function ARN can send events to invoke your Lambda function from Amazon S3.</p> </important></p>
+            &mdash; <div class='inline'><p>This is optional; however, when granting Amazon S3 permission to invoke your function, you should specify this field with the Amazon Resource Name (ARN) as its value. This ensures that only events generated from the specified source can invoke the function.</p>
+
+
+<p> <important><p>If you add a permission for the Amazon S3 principal without providing the source ARN, any AWS account that creates a mapping to your function ARN can send events to invoke your Lambda function from Amazon S3.</p> </important></p>
 </div>        </li>
         <li>
           <span class='name'>:source_account</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>This parameter is used for S3, SES, CloudWatch Logs and CloudWatch Rules only. The AWS account ID (without a hyphen) of the source owner. For example, if the <code>SourceArn</code> identifies a bucket, then this is the bucket owner's account ID. You can use this additional condition to ensure the bucket you specify is owned by a specific account (it is possible the bucket owner deleted the bucket and some other AWS account created the bucket). You can also use this condition to specify all sources (that is, you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:event_source_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>A unique token that must be supplied by the principal invoking the function. This is currently only used for Alexa Smart Home functions.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:qualifier</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>You can use this optional query parameter to describe a qualified ARN using a function version or an alias name. The permission will then apply to the specific qualified ARN. For example, if you specify function version 2 as the qualifier, then permission applies only when request is made using qualified function ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:2</code> </p> <p>If you specify an alias name, for example <code>PROD</code>, then the permission is valid only for requests made using the alias ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:PROD</code> </p> <p>If the qualifier is not specified, the permission is valid only when requests is made using unqualified function ARN.</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name</code> </p>
+            &mdash; <div class='inline'><p>You can use this optional query parameter to describe a qualified ARN using a function version or an alias name. The permission will then apply to the specific qualified ARN. For example, if you specify function version 2 as the qualifier, then permission applies only when request is made using qualified function ARN:</p>
+
+
+<p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:2</code> </p> <p>If you specify an alias name, for example <code>PROD</code>, then the permission is valid only for requests made using the alias ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:PROD</code> </p> <p>If the qualifier is not specified, the permission is valid only when requests is made using unqualified function ARN.</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name</code> </p></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -797,8 +833,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/AddPermissionResponse.html#statement-instance_method" title="Aws::Lambda::Types::AddPermissionResponse#statement (method)">#statement</a> =&gt; String</li>
+<li><a href="Types/AddPermissionResponse.html#statement-instance_method" title="Aws::Lambda::Types::AddPermissionResponse#statement (method)">#statement</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -812,7 +849,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Creates an alias that points to the specified Lambda function version. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.</p> <p>Alias names are unique for a given function. This requires permission for the lambda:CreateAlias action.</p>
+    <p>Creates an alias that points to the specified Lambda function version. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.</p>
+
+
+<p> <p>Alias names are unique for a given function. This requires permission for the lambda:CreateAlias action.</p></p>
 
   </div>
 </div>
@@ -840,21 +880,25 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Name of the Lambda function for which you want to create an alias.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Name for the alias you are creating.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:function_version</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Lambda function version for which you are creating the alias.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:description</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Description of the alias.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -864,11 +908,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/AliasConfiguration.html#alias_arn-instance_method" title="Aws::Lambda::Types::AliasConfiguration#alias_arn (method)">#alias_arn</a> =&gt; String</li>
-<li><a href="Types/AliasConfiguration.html#name-instance_method" title="Aws::Lambda::Types::AliasConfiguration#name (method)">#name</a> =&gt; String</li>
-<li><a href="Types/AliasConfiguration.html#function_version-instance_method" title="Aws::Lambda::Types::AliasConfiguration#function_version (method)">#function_version</a> =&gt; String</li>
-<li><a href="Types/AliasConfiguration.html#description-instance_method" title="Aws::Lambda::Types::AliasConfiguration#description (method)">#description</a> =&gt; String</li>
+<li><a href="Types/AliasConfiguration.html#alias_arn-instance_method" title="Aws::Lambda::Types::AliasConfiguration#alias_arn (method)">#alias_arn</a> => String</li>
+<li><a href="Types/AliasConfiguration.html#name-instance_method" title="Aws::Lambda::Types::AliasConfiguration#name (method)">#name</a> => String</li>
+<li><a href="Types/AliasConfiguration.html#function_version-instance_method" title="Aws::Lambda::Types::AliasConfiguration#function_version (method)">#function_version</a> => String</li>
+<li><a href="Types/AliasConfiguration.html#description-instance_method" title="Aws::Lambda::Types::AliasConfiguration#description (method)">#description</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -882,7 +927,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Identifies a stream as an event source for a Lambda function. It can be either an Amazon Kinesis stream or an Amazon DynamoDB stream. AWS Lambda invokes the specified function when records are posted to the stream.</p> <p>This association between a stream source and a Lambda function is called the event source mapping.</p> <important><p>This event source mapping is relevant only in the AWS Lambda pull model, where AWS Lambda invokes the function. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a> in the <i>AWS Lambda Developer Guide</i>.</p> </important> <p>You provide mapping information (for example, which stream to read from and which Lambda function to invoke) in the request body.</p> <p>Each event source, such as an Amazon Kinesis or a DynamoDB stream, can be associated with multiple AWS Lambda function. A given Lambda function can be associated with multiple AWS event sources.</p> <p>If you are using versioning, you can specify a specific function version or an alias via the function name parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:CreateEventSourceMapping</code> action.</p>
+    <p>Identifies a stream as an event source for a Lambda function. It can be either an Amazon Kinesis stream or an Amazon DynamoDB stream. AWS Lambda invokes the specified function when records are posted to the stream.</p>
+
+
+<p> <p>This association between a stream source and a Lambda function is called the event source mapping.</p> <important><p>This event source mapping is relevant only in the AWS Lambda pull model, where AWS Lambda invokes the function. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a> in the <i>AWS Lambda Developer Guide</i>.</p> </important> <p>You provide mapping information (for example, which stream to read from and which Lambda function to invoke) in the request body.</p> <p>Each event source, such as an Amazon Kinesis or a DynamoDB stream, can be associated with multiple AWS Lambda function. A given Lambda function can be associated with multiple AWS event sources.</p> <p>If you are using versioning, you can specify a specific function version or an alias via the function name parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:CreateEventSourceMapping</code> action.</p></p>
 
   </div>
 </div>
@@ -916,31 +964,39 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:event_source_arn</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB stream that is the event source. Any record added to this stream could cause AWS Lambda to invoke your Lambda function, it depends on the <code>BatchSize</code>. AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda function as JSON.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>The Lambda function to invoke when AWS Lambda detects an event on the stream.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p> If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length.</p>
+            &mdash; <div class='inline'><p>The Lambda function to invoke when AWS Lambda detects an event on the stream.</p>
+
+
+<p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p> If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length.</p></p>
 </div>        </li>
         <li>
           <span class='name'>:enabled</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Indicates whether AWS Lambda should begin polling the event source. By default, <code>Enabled</code> is true. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:batch_size</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records. The default is 100 records.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:starting_position</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The position in the stream where AWS Lambda should start reading. Valid only for Kinesis streams. For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">ShardIteratorType</a> in the <i>Amazon Kinesis API Reference</i>. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:starting_position_timestamp</span>
           <span class='type'>(<code>Time</code>)</span>
             &mdash; <div class='inline'><p>The timestamp of the data record from which to start reading. Used with <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">shard iterator type</a> AT_TIMESTAMP. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON). Valid only for Kinesis streams. </p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -950,15 +1006,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/EventSourceMappingConfiguration.html#uuid-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#uuid (method)">#uuid</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#batch_size-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#batch_size (method)">#batch_size</a> =&gt; Integer</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#event_source_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#event_source_arn (method)">#event_source_arn</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#function_arn (method)">#function_arn</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_modified (method)">#last_modified</a> =&gt; Time</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#last_processing_result-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_processing_result (method)">#last_processing_result</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#state-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state (method)">#state</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#state_transition_reason-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state_transition_reason (method)">#state_transition_reason</a> =&gt; String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#uuid-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#uuid (method)">#uuid</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#batch_size-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#batch_size (method)">#batch_size</a> => Integer</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#event_source_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#event_source_arn (method)">#event_source_arn</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#function_arn (method)">#function_arn</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_modified (method)">#last_modified</a> => Time</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#last_processing_result-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_processing_result (method)">#last_processing_result</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#state-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state (method)">#state</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#state_transition_reason-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state_transition_reason (method)">#state_transition_reason</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -972,7 +1029,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Creates a new Lambda function. The function metadata is created from the request parameters, and the code for the function is provided by a .zip file in the request body. If the function name already exists, the operation will fail. Note that the function name is case-sensitive.</p> <p> If you are using versioning, you can also publish a version of the Lambda function you are creating using the <code>Publish</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:CreateFunction</code> action.</p>
+    <p>Creates a new Lambda function. The function metadata is created from the request parameters, and the code for the function is provided by a .zip file in the request body. If the function name already exists, the operation will fail. Note that the function name is case-sensitive.</p>
+
+
+<p> <p> If you are using versioning, you can also publish a version of the Lambda function you are creating using the <code>Publish</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:CreateFunction</code> action.</p></p>
 
   </div>
 </div>
@@ -1078,66 +1138,81 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name you want to assign to the function you are uploading. The function names appear in the console and are returned in the <a>ListFunctions</a> API. Function names are used to specify functions to other AWS Lambda API operations, such as <a>Invoke</a>. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:runtime</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p><p>The runtime environment for the Lambda function you are uploading.</p> <p>To use the Node.js runtime v4.3, set the value to &quot;nodejs4.3&quot;. To use earlier runtime (v0.10.42), set the value to &quot;nodejs&quot;.</p> <note> <p>You can no longer create functions using the v0.10.42 runtime version as of November, 2016. Existing functions will be supported until early 2017, but we recommend you migrate them to nodejs4.3 runtime version as soon as possible.</p> </note></p>
+            &mdash; <div class='inline'><p>The runtime environment for the Lambda function you are uploading.</p>
+
+
+<p> <p>To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the value to "nodejs".</p> <note> <p>You can no longer create functions using the v0.10.42 runtime version as of November, 2016. Existing functions will be supported until early 2017, but we recommend you migrate them to nodejs4.3 runtime version as soon as possible.</p> </note></p>
 </div>        </li>
         <li>
           <span class='name'>:role</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it executes your function to access any other Amazon Web Services (AWS) resources. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a>. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:handler</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The function within your code that Lambda calls to begin execution. For Node.js, it is the <i>module-name</i>.<i>export</i> value in your function. For Java, it can be <code>package.class-name::handler</code> or <code>package.class-name</code>. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-handler-types.html">Lambda Function Handler (Java)</a>. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:code</span>
           <span class='type'>(<code>required</code>, <a href="Types/FunctionCode.html" title="Aws::Lambda::Types::FunctionCode (class)">Types::FunctionCode</a>)</span>
             &mdash; <div class='inline'><p>The code for the Lambda function.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:description</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>A short, user-defined function description. Lambda does not use this value. Assign a meaningful description as you see fit.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:timeout</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The function execution time at which Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:memory_size</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The amount of memory, in MB, your Lambda function is given. Lambda uses this memory size to infer the amount of CPU and memory allocated to your function. Your function use-case determines your CPU and memory requirements. For example, a database operation might need less memory compared to an image processing function. The default value is 128 MB. The value must be a multiple of 64 MB.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:publish</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>This boolean parameter can be used to request AWS Lambda to create the Lambda function and publish a version as an atomic operation.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:vpc_config</span>
           <span class='type'>(<a href="Types/VpcConfig.html" title="Aws::Lambda::Types::VpcConfig (class)">Types::VpcConfig</a>)</span>
             &mdash; <div class='inline'><p>If your Lambda function accesses resources in a VPC, you provide this parameter identifying the list of security group IDs and subnet IDs. These must belong to the same VPC. You must provide at least one security group and one subnet ID.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:dead_letter_config</span>
           <span class='type'>(<a href="Types/DeadLetterConfig.html" title="Aws::Lambda::Types::DeadLetterConfig (class)">Types::DeadLetterConfig</a>)</span>
             &mdash; <div class='inline'><p>The parent object that contains the target Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:environment</span>
           <span class='type'>(<a href="Types/Environment.html" title="Aws::Lambda::Types::Environment (class)">Types::Environment</a>)</span>
             &mdash; <div class='inline'><p>The parent object that contains your environment's configuration settings.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:kms_key_arn</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If not provided, AWS Lambda will use a default service key.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1147,23 +1222,24 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/FunctionConfiguration.html#function_name-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_name (method)">#function_name</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_arn (method)">#function_arn</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#runtime-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#runtime (method)">#runtime</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#role-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#role (method)">#role</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#handler-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#handler (method)">#handler</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#code_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_size (method)">#code_size</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#description-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#description (method)">#description</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#timeout-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#timeout (method)">#timeout</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#memory_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#memory_size (method)">#memory_size</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#last_modified (method)">#last_modified</a> =&gt; Time</li>
-<li><a href="Types/FunctionConfiguration.html#code_sha_256-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_sha_256 (method)">#code_sha_256</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#version-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#version (method)">#version</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#vpc_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#vpc_config (method)">#vpc_config</a> =&gt; <a href="Types/VpcConfigResponse.html" title="Aws::Lambda::Types::VpcConfigResponse (class)">Types::VpcConfigResponse</a></li>
-<li><a href="Types/FunctionConfiguration.html#dead_letter_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#dead_letter_config (method)">#dead_letter_config</a> =&gt; <a href="Types/DeadLetterConfig.html" title="Aws::Lambda::Types::DeadLetterConfig (class)">Types::DeadLetterConfig</a></li>
-<li><a href="Types/FunctionConfiguration.html#environment-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#environment (method)">#environment</a> =&gt; <a href="Types/EnvironmentResponse.html" title="Aws::Lambda::Types::EnvironmentResponse (class)">Types::EnvironmentResponse</a></li>
-<li><a href="Types/FunctionConfiguration.html#kms_key_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#kms_key_arn (method)">#kms_key_arn</a> =&gt; String</li>
+<li><a href="Types/FunctionConfiguration.html#function_name-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_name (method)">#function_name</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_arn (method)">#function_arn</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#runtime-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#runtime (method)">#runtime</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#role-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#role (method)">#role</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#handler-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#handler (method)">#handler</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#code_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_size (method)">#code_size</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#description-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#description (method)">#description</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#timeout-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#timeout (method)">#timeout</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#memory_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#memory_size (method)">#memory_size</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#last_modified (method)">#last_modified</a> => Time</li>
+<li><a href="Types/FunctionConfiguration.html#code_sha_256-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_sha_256 (method)">#code_sha_256</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#version-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#version (method)">#version</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#vpc_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#vpc_config (method)">#vpc_config</a> => <a href="Types/VpcConfigResponse.html" title="Aws::Lambda::Types::VpcConfigResponse (class)">Types::VpcConfigResponse</a></li>
+<li><a href="Types/FunctionConfiguration.html#dead_letter_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#dead_letter_config (method)">#dead_letter_config</a> => <a href="Types/DeadLetterConfig.html" title="Aws::Lambda::Types::DeadLetterConfig (class)">Types::DeadLetterConfig</a></li>
+<li><a href="Types/FunctionConfiguration.html#environment-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#environment (method)">#environment</a> => <a href="Types/EnvironmentResponse.html" title="Aws::Lambda::Types::EnvironmentResponse (class)">Types::EnvironmentResponse</a></li>
+<li><a href="Types/FunctionConfiguration.html#kms_key_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#kms_key_arn (method)">#kms_key_arn</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1177,7 +1253,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Deletes the specified Lambda function alias. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.</p> <p>This requires permission for the lambda:DeleteAlias action.</p>
+    <p>Deletes the specified Lambda function alias. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.</p>
+
+
+<p> <p>This requires permission for the lambda:DeleteAlias action.</p></p>
 
   </div>
 </div>
@@ -1205,11 +1284,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The Lambda function name for which the alias is created. Deleting an alias does not delete the function version to which it is pointing.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Name of the alias to delete.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1230,7 +1311,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Removes an event source mapping. This means AWS Lambda will no longer invoke the function for events in the associated source.</p> <p>This operation requires permission for the <code>lambda:DeleteEventSourceMapping</code> action.</p>
+    <p>Removes an event source mapping. This means AWS Lambda will no longer invoke the function for events in the associated source.</p>
+
+
+<p> <p>This operation requires permission for the <code>lambda:DeleteEventSourceMapping</code> action.</p></p>
 
   </div>
 </div>
@@ -1278,6 +1362,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:uuid</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The event source mapping ID.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1287,15 +1372,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/EventSourceMappingConfiguration.html#uuid-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#uuid (method)">#uuid</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#batch_size-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#batch_size (method)">#batch_size</a> =&gt; Integer</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#event_source_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#event_source_arn (method)">#event_source_arn</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#function_arn (method)">#function_arn</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_modified (method)">#last_modified</a> =&gt; Time</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#last_processing_result-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_processing_result (method)">#last_processing_result</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#state-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state (method)">#state</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#state_transition_reason-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state_transition_reason (method)">#state_transition_reason</a> =&gt; String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#uuid-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#uuid (method)">#uuid</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#batch_size-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#batch_size (method)">#batch_size</a> => Integer</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#event_source_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#event_source_arn (method)">#event_source_arn</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#function_arn (method)">#function_arn</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_modified (method)">#last_modified</a> => Time</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#last_processing_result-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_processing_result (method)">#last_processing_result</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#state-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state (method)">#state</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#state_transition_reason-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state_transition_reason (method)">#state_transition_reason</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1309,7 +1395,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Deletes the specified Lambda function code and configuration.</p> <p>If you are using the versioning feature and you don't specify a function version in your <code>DeleteFunction</code> request, AWS Lambda will delete the function, including all its versions, and any aliases pointing to the function versions. To delete a specific function version, you must provide the function version via the <code>Qualifier</code> parameter. For information about function versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>When you delete a function the associated resource policy is also deleted. You will need to delete the event source mappings explicitly.</p> <p>This operation requires permission for the <code>lambda:DeleteFunction</code> action.</p>
+    <p>Deletes the specified Lambda function code and configuration.</p>
+
+
+<p> <p>If you are using the versioning feature and you don't specify a function version in your <code>DeleteFunction</code> request, AWS Lambda will delete the function, including all its versions, and any aliases pointing to the function versions. To delete a specific function version, you must provide the function version via the <code>Qualifier</code> parameter. For information about function versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>When you delete a function the associated resource policy is also deleted. You will need to delete the event source mappings explicitly.</p> <p>This operation requires permission for the <code>lambda:DeleteFunction</code> action.</p></p>
 
   </div>
 </div>
@@ -1336,12 +1425,18 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>The Lambda function to delete.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+            &mdash; <div class='inline'><p>The Lambda function to delete.</p>
+
+
+<p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p></p>
 </div>        </li>
         <li>
           <span class='name'>:qualifier</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Using this optional parameter you can specify a function version (but not the <code>$LATEST</code> version) to direct AWS Lambda to delete a specific function version. If the function version has one or more aliases pointing to it, you will get an error because you cannot have aliases pointing to it. You can delete any function version but not the <code>$LATEST</code>, that is, you cannot specify <code>$LATEST</code> as the value of this parameter. The <code>$LATEST</code> version can be deleted only when you want to delete all the function versions and aliases.</p> <p>You can only specify a function version, not an alias name, using this parameter. You cannot delete a function version using its alias.</p> <p>If you don't specify this parameter, AWS Lambda will delete the function, including all of its versions and aliases.</p>
+            &mdash; <div class='inline'><p>Using this optional parameter you can specify a function version (but not the <code>$LATEST</code> version) to direct AWS Lambda to delete a specific function version. If the function version has one or more aliases pointing to it, you will get an error because you cannot have aliases pointing to it. You can delete any function version but not the <code>$LATEST</code>, that is, you cannot specify <code>$LATEST</code> as the value of this parameter. The <code>$LATEST</code> version can be deleted only when you want to delete all the function versions and aliases.</p>
+
+
+<p> <p>You can only specify a function version, not an alias name, using this parameter. You cannot delete a function version using its alias.</p> <p>If you don't specify this parameter, AWS Lambda will delete the function, including all of its versions and aliases.</p></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1362,14 +1457,17 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns a customer's account settings.</p> <p>You can use this operation to retrieve Lambda limits information, such as code size and concurrency limits. For more information about limits, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">AWS Lambda Limits</a>. You can also retrieve resource usage statistics, such as code storage usage and function count.</p>
+    <p>Returns a customer's account settings.</p>
+
+
+<p> <p>You can use this operation to retrieve Lambda limits information, such as code size and concurrency limits. For more information about limits, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">AWS Lambda Limits</a>. You can also retrieve resource usage statistics, such as code storage usage and function count.</p></p>
 
   </div>
 </div>
 <div class='tags'>
     <div class='examples'>
     <p class='tag_title'>Examples:</p>
-        <p class='example_title'><div class='inline'><p>Example: To retrieves a Lambda customer&#39;s account settings</p>
+        <p class='example_title'><div class='inline'><p>Example: To retrieves a Lambda customer's account settings</p>
 </div></p>
       <pre class='example code ruby'><code><span class='comment'># This operation retrieves a Lambda customer&#39;s account settings
 </span>
@@ -1402,9 +1500,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetAccountSettingsResponse.html#account_limit-instance_method" title="Aws::Lambda::Types::GetAccountSettingsResponse#account_limit (method)">#account_limit</a> =&gt; <a href="Types/AccountLimit.html" title="Aws::Lambda::Types::AccountLimit (class)">Types::AccountLimit</a></li>
-<li><a href="Types/GetAccountSettingsResponse.html#account_usage-instance_method" title="Aws::Lambda::Types::GetAccountSettingsResponse#account_usage (method)">#account_usage</a> =&gt; <a href="Types/AccountUsage.html" title="Aws::Lambda::Types::AccountUsage (class)">Types::AccountUsage</a></li>
+<li><a href="Types/GetAccountSettingsResponse.html#account_limit-instance_method" title="Aws::Lambda::Types::GetAccountSettingsResponse#account_limit (method)">#account_limit</a> => <a href="Types/AccountLimit.html" title="Aws::Lambda::Types::AccountLimit (class)">Types::AccountLimit</a></li>
+<li><a href="Types/GetAccountSettingsResponse.html#account_usage-instance_method" title="Aws::Lambda::Types::GetAccountSettingsResponse#account_usage (method)">#account_usage</a> => <a href="Types/AccountUsage.html" title="Aws::Lambda::Types::AccountUsage (class)">Types::AccountUsage</a></li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1418,7 +1517,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns the specified alias information such as the alias ARN, description, and function version it is pointing to. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.</p> <p>This requires permission for the <code>lambda:GetAlias</code> action.</p>
+    <p>Returns the specified alias information such as the alias ARN, description, and function version it is pointing to. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.</p>
+
+
+<p> <p>This requires permission for the <code>lambda:GetAlias</code> action.</p></p>
 
   </div>
 </div>
@@ -1460,11 +1562,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Function name for which the alias is created. An alias is a subresource that exists only in the context of an existing Lambda function so you must specify the function name.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Name of the alias for which you want to retrieve information.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1474,11 +1578,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/AliasConfiguration.html#alias_arn-instance_method" title="Aws::Lambda::Types::AliasConfiguration#alias_arn (method)">#alias_arn</a> =&gt; String</li>
-<li><a href="Types/AliasConfiguration.html#name-instance_method" title="Aws::Lambda::Types::AliasConfiguration#name (method)">#name</a> =&gt; String</li>
-<li><a href="Types/AliasConfiguration.html#function_version-instance_method" title="Aws::Lambda::Types::AliasConfiguration#function_version (method)">#function_version</a> =&gt; String</li>
-<li><a href="Types/AliasConfiguration.html#description-instance_method" title="Aws::Lambda::Types::AliasConfiguration#description (method)">#description</a> =&gt; String</li>
+<li><a href="Types/AliasConfiguration.html#alias_arn-instance_method" title="Aws::Lambda::Types::AliasConfiguration#alias_arn (method)">#alias_arn</a> => String</li>
+<li><a href="Types/AliasConfiguration.html#name-instance_method" title="Aws::Lambda::Types::AliasConfiguration#name (method)">#name</a> => String</li>
+<li><a href="Types/AliasConfiguration.html#function_version-instance_method" title="Aws::Lambda::Types::AliasConfiguration#function_version (method)">#function_version</a> => String</li>
+<li><a href="Types/AliasConfiguration.html#description-instance_method" title="Aws::Lambda::Types::AliasConfiguration#description (method)">#description</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1492,14 +1597,17 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns configuration information for the specified event source mapping (see <a>CreateEventSourceMapping</a>).</p> <p>This operation requires permission for the <code>lambda:GetEventSourceMapping</code> action.</p>
+    <p>Returns configuration information for the specified event source mapping (see <a>CreateEventSourceMapping</a>).</p>
+
+
+<p> <p>This operation requires permission for the <code>lambda:GetEventSourceMapping</code> action.</p></p>
 
   </div>
 </div>
 <div class='tags'>
     <div class='examples'>
     <p class='tag_title'>Examples:</p>
-        <p class='example_title'><div class='inline'><p>Example: To retrieve a Lambda function&#39;s event source mapping</p>
+        <p class='example_title'><div class='inline'><p>Example: To retrieve a Lambda function's event source mapping</p>
 </div></p>
       <pre class='example code ruby'><code><span class='comment'># This operation retrieves a Lambda function&#39;s event source mapping
 </span>
@@ -1540,6 +1648,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:uuid</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS Lambda assigned ID of the event source mapping.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1549,15 +1658,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/EventSourceMappingConfiguration.html#uuid-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#uuid (method)">#uuid</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#batch_size-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#batch_size (method)">#batch_size</a> =&gt; Integer</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#event_source_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#event_source_arn (method)">#event_source_arn</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#function_arn (method)">#function_arn</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_modified (method)">#last_modified</a> =&gt; Time</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#last_processing_result-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_processing_result (method)">#last_processing_result</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#state-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state (method)">#state</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#state_transition_reason-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state_transition_reason (method)">#state_transition_reason</a> =&gt; String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#uuid-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#uuid (method)">#uuid</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#batch_size-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#batch_size (method)">#batch_size</a> => Integer</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#event_source_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#event_source_arn (method)">#event_source_arn</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#function_arn (method)">#function_arn</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_modified (method)">#last_modified</a> => Time</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#last_processing_result-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_processing_result (method)">#last_processing_result</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#state-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state (method)">#state</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#state_transition_reason-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state_transition_reason (method)">#state_transition_reason</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1571,14 +1681,17 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns the configuration information of the Lambda function and a presigned URL link to the .zip file you uploaded with <a>CreateFunction</a> so you can download the .zip file. Note that the URL is valid for up to 10 minutes. The configuration information is the same information you provided as parameters when uploading the function.</p> <p>Using the optional <code>Qualifier</code> parameter, you can specify a specific function version for which you want this information. If you don't specify this parameter, the API uses unqualified function ARN which return information about the <code>$LATEST</code> version of the Lambda function. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.</p> <p>This operation requires permission for the <code>lambda:GetFunction</code> action.</p>
+    <p>Returns the configuration information of the Lambda function and a presigned URL link to the .zip file you uploaded with <a>CreateFunction</a> so you can download the .zip file. Note that the URL is valid for up to 10 minutes. The configuration information is the same information you provided as parameters when uploading the function.</p>
+
+
+<p> <p>Using the optional <code>Qualifier</code> parameter, you can specify a specific function version for which you want this information. If you don't specify this parameter, the API uses unqualified function ARN which return information about the <code>$LATEST</code> version of the Lambda function. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.</p> <p>This operation requires permission for the <code>lambda:GetFunction</code> action.</p></p>
 
   </div>
 </div>
 <div class='tags'>
     <div class='examples'>
     <p class='tag_title'>Examples:</p>
-        <p class='example_title'><div class='inline'><p>Example: To retrieve a Lambda function&#39;s event source mapping</p>
+        <p class='example_title'><div class='inline'><p>Example: To retrieve a Lambda function's event source mapping</p>
 </div></p>
       <pre class='example code ruby'><code><span class='comment'># This operation retrieves a Lambda function&#39;s event source mapping
 </span>
@@ -1658,12 +1771,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>The Lambda function name.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+            &mdash; <div class='inline'><p>The Lambda function name.</p>
+
+
+<p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p></p>
 </div>        </li>
         <li>
           <span class='name'>:qualifier</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Using this optional parameter to specify a function version or an alias name. If you specify function version, the API uses qualified function ARN for the request and returns information about the specific Lambda function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points. If you don't provide this parameter, the API uses unqualified function ARN and returns information about the <code>$LATEST</code> version of the Lambda function.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1673,9 +1790,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetFunctionResponse.html#configuration-instance_method" title="Aws::Lambda::Types::GetFunctionResponse#configuration (method)">#configuration</a> =&gt; <a href="Types/FunctionConfiguration.html" title="Aws::Lambda::Types::FunctionConfiguration (class)">Types::FunctionConfiguration</a></li>
-<li><a href="Types/GetFunctionResponse.html#code-instance_method" title="Aws::Lambda::Types::GetFunctionResponse#code (method)">#code</a> =&gt; <a href="Types/FunctionCodeLocation.html" title="Aws::Lambda::Types::FunctionCodeLocation (class)">Types::FunctionCodeLocation</a></li>
+<li><a href="Types/GetFunctionResponse.html#configuration-instance_method" title="Aws::Lambda::Types::GetFunctionResponse#configuration (method)">#configuration</a> => <a href="Types/FunctionConfiguration.html" title="Aws::Lambda::Types::FunctionConfiguration (class)">Types::FunctionConfiguration</a></li>
+<li><a href="Types/GetFunctionResponse.html#code-instance_method" title="Aws::Lambda::Types::GetFunctionResponse#code (method)">#code</a> => <a href="Types/FunctionCodeLocation.html" title="Aws::Lambda::Types::FunctionCodeLocation (class)">Types::FunctionCodeLocation</a></li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1689,14 +1807,17 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns the configuration information of the Lambda function. This the same information you provided as parameters when uploading the function by using <a>CreateFunction</a>.</p> <p>If you are using the versioning feature, you can retrieve this information for a specific function version by using the optional <code>Qualifier</code> parameter and specifying the function version or alias that points to it. If you don't provide it, the API returns information about the $LATEST version of the function. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.</p> <p>This operation requires permission for the <code>lambda:GetFunctionConfiguration</code> operation.</p>
+    <p>Returns the configuration information of the Lambda function. This the same information you provided as parameters when uploading the function by using <a>CreateFunction</a>.</p>
+
+
+<p> <p>If you are using the versioning feature, you can retrieve this information for a specific function version by using the optional <code>Qualifier</code> parameter and specifying the function version or alias that points to it. If you don't provide it, the API returns information about the $LATEST version of the function. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.</p> <p>This operation requires permission for the <code>lambda:GetFunctionConfiguration</code> operation.</p></p>
 
   </div>
 </div>
 <div class='tags'>
     <div class='examples'>
     <p class='tag_title'>Examples:</p>
-        <p class='example_title'><div class='inline'><p>Example: To retrieve a Lambda function&#39;s event source mapping</p>
+        <p class='example_title'><div class='inline'><p>Example: To retrieve a Lambda function's event source mapping</p>
 </div></p>
       <pre class='example code ruby'><code><span class='comment'># This operation retrieves a Lambda function&#39;s event source mapping
 </span>
@@ -1764,12 +1885,18 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>The name of the Lambda function for which you want to retrieve the configuration information.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+            &mdash; <div class='inline'><p>The name of the Lambda function for which you want to retrieve the configuration information.</p>
+
+
+<p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p></p>
 </div>        </li>
         <li>
           <span class='name'>:qualifier</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Using this optional parameter you can specify a function version or an alias name. If you specify function version, the API uses qualified function ARN and returns information about the specific function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points.</p> <p>If you don't specify this parameter, the API uses unqualified function ARN, and returns information about the <code>$LATEST</code> function version.</p>
+            &mdash; <div class='inline'><p>Using this optional parameter you can specify a function version or an alias name. If you specify function version, the API uses qualified function ARN and returns information about the specific function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points.</p>
+
+
+<p> <p>If you don't specify this parameter, the API uses unqualified function ARN, and returns information about the <code>$LATEST</code> function version.</p></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1779,23 +1906,24 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/FunctionConfiguration.html#function_name-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_name (method)">#function_name</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_arn (method)">#function_arn</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#runtime-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#runtime (method)">#runtime</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#role-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#role (method)">#role</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#handler-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#handler (method)">#handler</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#code_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_size (method)">#code_size</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#description-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#description (method)">#description</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#timeout-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#timeout (method)">#timeout</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#memory_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#memory_size (method)">#memory_size</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#last_modified (method)">#last_modified</a> =&gt; Time</li>
-<li><a href="Types/FunctionConfiguration.html#code_sha_256-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_sha_256 (method)">#code_sha_256</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#version-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#version (method)">#version</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#vpc_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#vpc_config (method)">#vpc_config</a> =&gt; <a href="Types/VpcConfigResponse.html" title="Aws::Lambda::Types::VpcConfigResponse (class)">Types::VpcConfigResponse</a></li>
-<li><a href="Types/FunctionConfiguration.html#dead_letter_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#dead_letter_config (method)">#dead_letter_config</a> =&gt; <a href="Types/DeadLetterConfig.html" title="Aws::Lambda::Types::DeadLetterConfig (class)">Types::DeadLetterConfig</a></li>
-<li><a href="Types/FunctionConfiguration.html#environment-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#environment (method)">#environment</a> =&gt; <a href="Types/EnvironmentResponse.html" title="Aws::Lambda::Types::EnvironmentResponse (class)">Types::EnvironmentResponse</a></li>
-<li><a href="Types/FunctionConfiguration.html#kms_key_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#kms_key_arn (method)">#kms_key_arn</a> =&gt; String</li>
+<li><a href="Types/FunctionConfiguration.html#function_name-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_name (method)">#function_name</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_arn (method)">#function_arn</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#runtime-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#runtime (method)">#runtime</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#role-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#role (method)">#role</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#handler-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#handler (method)">#handler</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#code_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_size (method)">#code_size</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#description-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#description (method)">#description</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#timeout-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#timeout (method)">#timeout</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#memory_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#memory_size (method)">#memory_size</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#last_modified (method)">#last_modified</a> => Time</li>
+<li><a href="Types/FunctionConfiguration.html#code_sha_256-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_sha_256 (method)">#code_sha_256</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#version-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#version (method)">#version</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#vpc_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#vpc_config (method)">#vpc_config</a> => <a href="Types/VpcConfigResponse.html" title="Aws::Lambda::Types::VpcConfigResponse (class)">Types::VpcConfigResponse</a></li>
+<li><a href="Types/FunctionConfiguration.html#dead_letter_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#dead_letter_config (method)">#dead_letter_config</a> => <a href="Types/DeadLetterConfig.html" title="Aws::Lambda::Types::DeadLetterConfig (class)">Types::DeadLetterConfig</a></li>
+<li><a href="Types/FunctionConfiguration.html#environment-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#environment (method)">#environment</a> => <a href="Types/EnvironmentResponse.html" title="Aws::Lambda::Types::EnvironmentResponse (class)">Types::EnvironmentResponse</a></li>
+<li><a href="Types/FunctionConfiguration.html#kms_key_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#kms_key_arn (method)">#kms_key_arn</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1809,7 +1937,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns the resource policy associated with the specified Lambda function.</p> <p> If you are using the versioning feature, you can get the resource policy associated with the specific Lambda function version or alias by specifying the version or alias name using the <code>Qualifier</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>For information about adding permissions, see <a>AddPermission</a>.</p> <p>You need permission for the <code>lambda:GetPolicy action.</code> </p>
+    <p>Returns the resource policy associated with the specified Lambda function.</p>
+
+
+<p> <p> If you are using the versioning feature, you can get the resource policy associated with the specific Lambda function version or alias by specifying the version or alias name using the <code>Qualifier</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>For information about adding permissions, see <a>AddPermission</a>.</p> <p>You need permission for the <code>lambda:GetPolicy action.</code> </p></p>
 
   </div>
 </div>
@@ -1844,12 +1975,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Function name whose resource policy you want to retrieve.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+            &mdash; <div class='inline'><p>Function name whose resource policy you want to retrieve.</p>
+
+
+<p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p></p>
 </div>        </li>
         <li>
           <span class='name'>:qualifier</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>You can specify this optional query parameter to specify a function version or an alias name in which case this API will return all permissions associated with the specific qualified ARN. If you don't provide this parameter, the API will return permissions that apply to the unqualified function ARN.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1859,8 +1994,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetPolicyResponse.html#policy-instance_method" title="Aws::Lambda::Types::GetPolicyResponse#policy (method)">#policy</a> =&gt; String</li>
+<li><a href="Types/GetPolicyResponse.html#policy-instance_method" title="Aws::Lambda::Types::GetPolicyResponse#policy (method)">#policy</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -1874,7 +2010,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Invokes a specific Lambda function. For an example, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/with-dynamodb-create-function.html#with-dbb-invoke-manually">Create the Lambda Function and Test It Manually</a>. </p> <p>If you are using the versioning feature, you can invoke the specific function version by providing function version or alias name that is pointing to the function version using the <code>Qualifier</code> parameter in the request. If you don't provide the <code>Qualifier</code> parameter, the <code>$LATEST</code> version of the Lambda function is invoked. Invocations occur at least once in response to an event and functions must be idempotent to handle this. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:InvokeFunction</code> action.</p>
+    <p>Invokes a specific Lambda function. For an example, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/with-dynamodb-create-function.html#with-dbb-invoke-manually">Create the Lambda Function and Test It Manually</a>. </p>
+
+
+<p> <p>If you are using the versioning feature, you can invoke the specific function version by providing function version or alias name that is pointing to the function version using the <code>Qualifier</code> parameter in the request. If you don't provide the <code>Qualifier</code> parameter, the <code>$LATEST</code> version of the Lambda function is invoked. Invocations occur at least once in response to an event and functions must be idempotent to handle this. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:InvokeFunction</code> action.</p></p>
 
   </div>
 </div>
@@ -1923,32 +2062,44 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>The Lambda function name.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+            &mdash; <div class='inline'><p>The Lambda function name.</p>
+
+
+<p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p></p>
 </div>        </li>
         <li>
           <span class='name'>:invocation_type</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>By default, the <code>Invoke</code> API assumes <code>RequestResponse</code> invocation type. You can optionally request asynchronous execution by specifying <code>Event</code> as the <code>InvocationType</code>. You can also use this parameter to request AWS Lambda to not execute the function but do some verification, such as if the caller is authorized to invoke the function and if the inputs are valid. You request this by specifying <code>DryRun</code> as the <code>InvocationType</code>. This is useful in a cross-account scenario when you want to verify access to a function without running it. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:log_type</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>You can set this optional parameter to <code>Tail</code> in the request only if you specify the <code>InvocationType</code> parameter with value <code>RequestResponse</code>. In this case, AWS Lambda returns the base64-encoded last 4 KB of log data produced by your Lambda function in the <code>x-amz-log-result</code> header. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:client_context</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Using the <code>ClientContext</code> you can pass client-specific information to the Lambda function you are invoking. You can then process the client information in your Lambda function as you choose through the context variable. For an example of a <code>ClientContext</code> JSON, see <a href="http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html">PutEvents</a> in the <i>Amazon Mobile Analytics API Reference and User Guide</i>.</p> <p>The ClientContext JSON must be base64-encoded.</p>
+            &mdash; <div class='inline'><p>Using the <code>ClientContext</code> you can pass client-specific information to the Lambda function you are invoking. You can then process the client information in your Lambda function as you choose through the context variable. For an example of a <code>ClientContext</code> JSON, see <a href="http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html">PutEvents</a> in the <i>Amazon Mobile Analytics API Reference and User Guide</i>.</p>
+
+
+<p> <p>The ClientContext JSON must be base64-encoded.</p></p>
 </div>        </li>
         <li>
           <span class='name'>:payload</span>
           <span class='type'>(<code>IO</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>JSON that you want to provide to your Lambda function as input.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:qualifier</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>You can use this optional parameter to specify a Lambda function version or alias name. If you specify a function version, the API uses the qualified function ARN to invoke a specific Lambda function. If you specify an alias name, the API uses the alias ARN to invoke the Lambda function version to which the alias points.</p> <p>If you don't provide this parameter, then the API uses unqualified function ARN which results in invocation of the <code>$LATEST</code> version.</p>
+            &mdash; <div class='inline'><p>You can use this optional parameter to specify a Lambda function version or alias name. If you specify a function version, the API uses the qualified function ARN to invoke a specific Lambda function. If you specify an alias name, the API uses the alias ARN to invoke the Lambda function version to which the alias points.</p>
+
+
+<p> <p>If you don't provide this parameter, then the API uses unqualified function ARN which results in invocation of the <code>$LATEST</code> version.</p></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1958,11 +2109,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/InvocationResponse.html#status_code-instance_method" title="Aws::Lambda::Types::InvocationResponse#status_code (method)">#status_code</a> =&gt; Integer</li>
-<li><a href="Types/InvocationResponse.html#function_error-instance_method" title="Aws::Lambda::Types::InvocationResponse#function_error (method)">#function_error</a> =&gt; String</li>
-<li><a href="Types/InvocationResponse.html#log_result-instance_method" title="Aws::Lambda::Types::InvocationResponse#log_result (method)">#log_result</a> =&gt; String</li>
-<li><a href="Types/InvocationResponse.html#payload-instance_method" title="Aws::Lambda::Types::InvocationResponse#payload (method)">#payload</a> =&gt; String</li>
+<li><a href="Types/InvocationResponse.html#status_code-instance_method" title="Aws::Lambda::Types::InvocationResponse#status_code (method)">#status_code</a> => Integer</li>
+<li><a href="Types/InvocationResponse.html#function_error-instance_method" title="Aws::Lambda::Types::InvocationResponse#function_error (method)">#function_error</a> => String</li>
+<li><a href="Types/InvocationResponse.html#log_result-instance_method" title="Aws::Lambda::Types::InvocationResponse#log_result (method)">#log_result</a> => String</li>
+<li><a href="Types/InvocationResponse.html#payload-instance_method" title="Aws::Lambda::Types::InvocationResponse#payload (method)">#payload</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2012,11 +2164,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The Lambda function name.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:invoke_args</span>
           <span class='type'>(<code>required</code>, <code>IO</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>JSON that you want to provide to your Lambda function as input.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2026,8 +2180,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/InvokeAsyncResponse.html#status-instance_method" title="Aws::Lambda::Types::InvokeAsyncResponse#status (method)">#status</a> =&gt; Integer</li>
+<li><a href="Types/InvokeAsyncResponse.html#status-instance_method" title="Aws::Lambda::Types::InvokeAsyncResponse#status (method)">#status</a> => Integer</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2041,7 +2196,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns list of aliases created for a Lambda function. For each alias, the response includes information such as the alias ARN, description, alias name, and the function version to which it points. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.</p> <p>This requires permission for the lambda:ListAliases action.</p>
+    <p>Returns list of aliases created for a Lambda function. For each alias, the response includes information such as the alias ARN, description, alias name, and the function version to which it points. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.</p>
+
+
+<p> <p>This requires permission for the lambda:ListAliases action.</p></p>
 
   </div>
 </div>
@@ -2088,21 +2246,25 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Lambda function name for which the alias is created.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:function_version</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>If you specify this optional parameter, the API returns only the aliases that are pointing to the specific Lambda function version, otherwise the API returns all of the aliases created for the Lambda function.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:marker</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Optional string. An opaque pagination token returned from a previous <code>ListAliases</code> operation. If present, indicates where to continue the listing.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_items</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Optional integer. Specifies the maximum number of aliases to return in response. This parameter value must be greater than 0.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2112,9 +2274,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListAliasesResponse.html#next_marker-instance_method" title="Aws::Lambda::Types::ListAliasesResponse#next_marker (method)">#next_marker</a> =&gt; String</li>
-<li><a href="Types/ListAliasesResponse.html#aliases-instance_method" title="Aws::Lambda::Types::ListAliasesResponse#aliases (method)">#aliases</a> =&gt; Array&lt;<a href="Types/AliasConfiguration.html" title="Aws::Lambda::Types::AliasConfiguration (class)">Types::AliasConfiguration</a>&gt;</li>
+<li><a href="Types/ListAliasesResponse.html#next_marker-instance_method" title="Aws::Lambda::Types::ListAliasesResponse#next_marker (method)">#next_marker</a> => String</li>
+<li><a href="Types/ListAliasesResponse.html#aliases-instance_method" title="Aws::Lambda::Types::ListAliasesResponse#aliases (method)">#aliases</a> => Array&lt;<a href="Types/AliasConfiguration.html" title="Aws::Lambda::Types::AliasConfiguration (class)">Types::AliasConfiguration</a>&gt;</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2128,7 +2291,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns a list of event source mappings you created using the <code>CreateEventSourceMapping</code> (see <a>CreateEventSourceMapping</a>). </p> <p>For each mapping, the API returns configuration information. You can optionally specify filters to retrieve specific event source mappings.</p> <p>If you are using the versioning feature, you can get list of event source mappings for a specific Lambda function version or an alias as described in the <code>FunctionName</code> parameter. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:ListEventSourceMappings</code> action.</p>
+    <p>Returns a list of event source mappings you created using the <code>CreateEventSourceMapping</code> (see <a>CreateEventSourceMapping</a>). </p>
+
+
+<p> <p>For each mapping, the API returns configuration information. You can optionally specify filters to retrieve specific event source mappings.</p> <p>If you are using the versioning feature, you can get list of event source mappings for a specific Lambda function version or an alias as described in the <code>FunctionName</code> parameter. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:ListEventSourceMappings</code> action.</p></p>
 
   </div>
 </div>
@@ -2162,21 +2328,27 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:event_source_arn</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter is optional.)</p>
+
 </div>        </li>
         <li>
           <span class='name'>:function_name</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>The name of the Lambda function.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+            &mdash; <div class='inline'><p>The name of the Lambda function.</p>
+
+
+<p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p></p>
 </div>        </li>
         <li>
           <span class='name'>:marker</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Optional string. An opaque pagination token returned from a previous <code>ListEventSourceMappings</code> operation. If present, specifies to continue the list from where the returning call left off. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_items</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Optional integer. Specifies the maximum number of event sources to return in response. This value must be greater than 0.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2186,9 +2358,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListEventSourceMappingsResponse.html#next_marker-instance_method" title="Aws::Lambda::Types::ListEventSourceMappingsResponse#next_marker (method)">#next_marker</a> =&gt; String</li>
-<li><a href="Types/ListEventSourceMappingsResponse.html#event_source_mappings-instance_method" title="Aws::Lambda::Types::ListEventSourceMappingsResponse#event_source_mappings (method)">#event_source_mappings</a> =&gt; Array&lt;<a href="Types/EventSourceMappingConfiguration.html" title="Aws::Lambda::Types::EventSourceMappingConfiguration (class)">Types::EventSourceMappingConfiguration</a>&gt;</li>
+<li><a href="Types/ListEventSourceMappingsResponse.html#next_marker-instance_method" title="Aws::Lambda::Types::ListEventSourceMappingsResponse#next_marker (method)">#next_marker</a> => String</li>
+<li><a href="Types/ListEventSourceMappingsResponse.html#event_source_mappings-instance_method" title="Aws::Lambda::Types::ListEventSourceMappingsResponse#event_source_mappings (method)">#event_source_mappings</a> => Array&lt;<a href="Types/EventSourceMappingConfiguration.html" title="Aws::Lambda::Types::EventSourceMappingConfiguration (class)">Types::EventSourceMappingConfiguration</a>&gt;</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2202,7 +2375,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns a list of your Lambda functions. For each function, the response includes the function configuration information. You must use <a>GetFunction</a> to retrieve the code for your function.</p> <p>This operation requires permission for the <code>lambda:ListFunctions</code> action.</p> <p>If you are using versioning feature, the response returns list of $LATEST versions of your functions. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p>
+    <p>Returns a list of your Lambda functions. For each function, the response includes the function configuration information. You must use <a>GetFunction</a> to retrieve the code for your function.</p>
+
+
+<p> <p>This operation requires permission for the <code>lambda:ListFunctions</code> action.</p> <p>If you are using versioning feature, the response returns list of $LATEST versions of your functions. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p></p>
 
   </div>
 </div>
@@ -2264,11 +2440,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:marker</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Optional string. An opaque pagination token returned from a previous <code>ListFunctions</code> operation. If present, indicates where to continue the listing. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_items</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Optional integer. Specifies the maximum number of AWS Lambda functions to return in response. This parameter value must be greater than 0.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2278,9 +2456,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListFunctionsResponse.html#next_marker-instance_method" title="Aws::Lambda::Types::ListFunctionsResponse#next_marker (method)">#next_marker</a> =&gt; String</li>
-<li><a href="Types/ListFunctionsResponse.html#functions-instance_method" title="Aws::Lambda::Types::ListFunctionsResponse#functions (method)">#functions</a> =&gt; Array&lt;<a href="Types/FunctionConfiguration.html" title="Aws::Lambda::Types::FunctionConfiguration (class)">Types::FunctionConfiguration</a>&gt;</li>
+<li><a href="Types/ListFunctionsResponse.html#next_marker-instance_method" title="Aws::Lambda::Types::ListFunctionsResponse#next_marker (method)">#next_marker</a> => String</li>
+<li><a href="Types/ListFunctionsResponse.html#functions-instance_method" title="Aws::Lambda::Types::ListFunctionsResponse#functions (method)">#functions</a> => Array&lt;<a href="Types/FunctionConfiguration.html" title="Aws::Lambda::Types::FunctionConfiguration (class)">Types::FunctionConfiguration</a>&gt;</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2295,6 +2474,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>List all versions of a function. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p>
+
 
   </div>
 </div>
@@ -2358,16 +2538,19 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Function name whose versions to list. You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:marker</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p> Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code> operation. If present, indicates where to continue the listing. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:max_items</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This parameter value must be greater than 0.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2377,9 +2560,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListVersionsByFunctionResponse.html#next_marker-instance_method" title="Aws::Lambda::Types::ListVersionsByFunctionResponse#next_marker (method)">#next_marker</a> =&gt; String</li>
-<li><a href="Types/ListVersionsByFunctionResponse.html#versions-instance_method" title="Aws::Lambda::Types::ListVersionsByFunctionResponse#versions (method)">#versions</a> =&gt; Array&lt;<a href="Types/FunctionConfiguration.html" title="Aws::Lambda::Types::FunctionConfiguration (class)">Types::FunctionConfiguration</a>&gt;</li>
+<li><a href="Types/ListVersionsByFunctionResponse.html#next_marker-instance_method" title="Aws::Lambda::Types::ListVersionsByFunctionResponse#next_marker (method)">#next_marker</a> => String</li>
+<li><a href="Types/ListVersionsByFunctionResponse.html#versions-instance_method" title="Aws::Lambda::Types::ListVersionsByFunctionResponse#versions (method)">#versions</a> => Array&lt;<a href="Types/FunctionConfiguration.html" title="Aws::Lambda::Types::FunctionConfiguration (class)">Types::FunctionConfiguration</a>&gt;</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2394,6 +2578,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Publishes a version of your function from the current snapshot of $LATEST. That is, AWS Lambda takes a snapshot of the function code and configuration information from $LATEST and publishes a new version. The code and configuration cannot be modified after publication. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p>
+
 
   </div>
 </div>
@@ -2466,16 +2651,19 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The Lambda function name. You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:code_sha_256</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The SHA256 hash of the deployment package you want to publish. This provides validation on the code you are publishing. If you provide this parameter value must match the SHA256 of the $LATEST version for the publication to succeed.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:description</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The description for the version you are publishing. If not provided, AWS Lambda copies the description from the $LATEST version.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2485,23 +2673,24 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/FunctionConfiguration.html#function_name-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_name (method)">#function_name</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_arn (method)">#function_arn</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#runtime-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#runtime (method)">#runtime</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#role-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#role (method)">#role</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#handler-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#handler (method)">#handler</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#code_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_size (method)">#code_size</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#description-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#description (method)">#description</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#timeout-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#timeout (method)">#timeout</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#memory_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#memory_size (method)">#memory_size</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#last_modified (method)">#last_modified</a> =&gt; Time</li>
-<li><a href="Types/FunctionConfiguration.html#code_sha_256-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_sha_256 (method)">#code_sha_256</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#version-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#version (method)">#version</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#vpc_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#vpc_config (method)">#vpc_config</a> =&gt; <a href="Types/VpcConfigResponse.html" title="Aws::Lambda::Types::VpcConfigResponse (class)">Types::VpcConfigResponse</a></li>
-<li><a href="Types/FunctionConfiguration.html#dead_letter_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#dead_letter_config (method)">#dead_letter_config</a> =&gt; <a href="Types/DeadLetterConfig.html" title="Aws::Lambda::Types::DeadLetterConfig (class)">Types::DeadLetterConfig</a></li>
-<li><a href="Types/FunctionConfiguration.html#environment-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#environment (method)">#environment</a> =&gt; <a href="Types/EnvironmentResponse.html" title="Aws::Lambda::Types::EnvironmentResponse (class)">Types::EnvironmentResponse</a></li>
-<li><a href="Types/FunctionConfiguration.html#kms_key_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#kms_key_arn (method)">#kms_key_arn</a> =&gt; String</li>
+<li><a href="Types/FunctionConfiguration.html#function_name-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_name (method)">#function_name</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_arn (method)">#function_arn</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#runtime-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#runtime (method)">#runtime</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#role-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#role (method)">#role</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#handler-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#handler (method)">#handler</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#code_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_size (method)">#code_size</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#description-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#description (method)">#description</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#timeout-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#timeout (method)">#timeout</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#memory_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#memory_size (method)">#memory_size</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#last_modified (method)">#last_modified</a> => Time</li>
+<li><a href="Types/FunctionConfiguration.html#code_sha_256-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_sha_256 (method)">#code_sha_256</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#version-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#version (method)">#version</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#vpc_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#vpc_config (method)">#vpc_config</a> => <a href="Types/VpcConfigResponse.html" title="Aws::Lambda::Types::VpcConfigResponse (class)">Types::VpcConfigResponse</a></li>
+<li><a href="Types/FunctionConfiguration.html#dead_letter_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#dead_letter_config (method)">#dead_letter_config</a> => <a href="Types/DeadLetterConfig.html" title="Aws::Lambda::Types::DeadLetterConfig (class)">Types::DeadLetterConfig</a></li>
+<li><a href="Types/FunctionConfiguration.html#environment-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#environment (method)">#environment</a> => <a href="Types/EnvironmentResponse.html" title="Aws::Lambda::Types::EnvironmentResponse (class)">Types::EnvironmentResponse</a></li>
+<li><a href="Types/FunctionConfiguration.html#kms_key_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#kms_key_arn (method)">#kms_key_arn</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2515,14 +2704,17 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>You can remove individual permissions from an resource policy associated with a Lambda function by providing a statement ID that you provided when you added the permission.</p> <p>If you are using versioning, the permissions you remove are specific to the Lambda function version or alias you specify in the <code>AddPermission</code> request via the <code>Qualifier</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>Note that removal of a permission will cause an active event source to lose permission to the function.</p> <p>You need permission for the <code>lambda:RemovePermission</code> action.</p>
+    <p>You can remove individual permissions from an resource policy associated with a Lambda function by providing a statement ID that you provided when you added the permission.</p>
+
+
+<p> <p>If you are using versioning, the permissions you remove are specific to the Lambda function version or alias you specify in the <code>AddPermission</code> request via the <code>Qualifier</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>Note that removal of a permission will cause an active event source to lose permission to the function.</p> <p>You need permission for the <code>lambda:RemovePermission</code> action.</p></p>
 
   </div>
 </div>
 <div class='tags'>
     <div class='examples'>
     <p class='tag_title'>Examples:</p>
-        <p class='example_title'><div class='inline'><p>Example: To remove a Lambda function&#39;s permissions</p>
+        <p class='example_title'><div class='inline'><p>Example: To remove a Lambda function's permissions</p>
 </div></p>
       <pre class='example code ruby'><code><span class='comment'># This operation removes a Lambda function&#39;s permissions
 </span>
@@ -2544,17 +2736,22 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Lambda function whose resource policy you want to remove a permission from.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+            &mdash; <div class='inline'><p>Lambda function whose resource policy you want to remove a permission from.</p>
+
+
+<p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p></p>
 </div>        </li>
         <li>
           <span class='name'>:statement_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Statement ID of the permission to remove.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:qualifier</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>You can specify this optional parameter to remove permission associated with a specific function version or function alias. If you don't specify this parameter, the API removes permission associated with the unqualified function ARN.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2575,7 +2772,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Using this API you can update the function version to which the alias points and the alias description. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.</p> <p>This requires permission for the lambda:UpdateAlias action.</p>
+    <p>Using this API you can update the function version to which the alias points and the alias description. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>.</p>
+
+
+<p> <p>This requires permission for the lambda:UpdateAlias action.</p></p>
 
   </div>
 </div>
@@ -2621,21 +2821,25 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The function name for which the alias is created.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The alias name.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:function_version</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Using this parameter you can change the Lambda function version to which the alias points.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:description</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>You can change the description of the alias using this parameter.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2645,11 +2849,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/AliasConfiguration.html#alias_arn-instance_method" title="Aws::Lambda::Types::AliasConfiguration#alias_arn (method)">#alias_arn</a> =&gt; String</li>
-<li><a href="Types/AliasConfiguration.html#name-instance_method" title="Aws::Lambda::Types::AliasConfiguration#name (method)">#name</a> =&gt; String</li>
-<li><a href="Types/AliasConfiguration.html#function_version-instance_method" title="Aws::Lambda::Types::AliasConfiguration#function_version (method)">#function_version</a> =&gt; String</li>
-<li><a href="Types/AliasConfiguration.html#description-instance_method" title="Aws::Lambda::Types::AliasConfiguration#description (method)">#description</a> =&gt; String</li>
+<li><a href="Types/AliasConfiguration.html#alias_arn-instance_method" title="Aws::Lambda::Types::AliasConfiguration#alias_arn (method)">#alias_arn</a> => String</li>
+<li><a href="Types/AliasConfiguration.html#name-instance_method" title="Aws::Lambda::Types::AliasConfiguration#name (method)">#name</a> => String</li>
+<li><a href="Types/AliasConfiguration.html#function_version-instance_method" title="Aws::Lambda::Types::AliasConfiguration#function_version (method)">#function_version</a> => String</li>
+<li><a href="Types/AliasConfiguration.html#description-instance_method" title="Aws::Lambda::Types::AliasConfiguration#description (method)">#description</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2663,7 +2868,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>You can update an event source mapping. This is useful if you want to change the parameters of the existing mapping without losing your position in the stream. You can change which function will receive the stream records, but to change the stream itself, you must create a new mapping.</p> <p>If you are using the versioning feature, you can update the event source mapping to map to a specific Lambda function version or alias as described in the <code>FunctionName</code> parameter. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>If you disable the event source mapping, AWS Lambda stops polling. If you enable again, it will resume polling from the time it had stopped polling, so you don't lose processing of any records. However, if you delete event source mapping and create it again, it will reset.</p> <p>This operation requires permission for the <code>lambda:UpdateEventSourceMapping</code> action.</p>
+    <p>You can update an event source mapping. This is useful if you want to change the parameters of the existing mapping without losing your position in the stream. You can change which function will receive the stream records, but to change the stream itself, you must create a new mapping.</p>
+
+
+<p> <p>If you are using the versioning feature, you can update the event source mapping to map to a specific Lambda function version or alias as described in the <code>FunctionName</code> parameter. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>If you disable the event source mapping, AWS Lambda stops polling. If you enable again, it will resume polling from the time it had stopped polling, so you don't lose processing of any records. However, if you delete event source mapping and create it again, it will reset.</p> <p>This operation requires permission for the <code>lambda:UpdateEventSourceMapping</code> action.</p></p>
 
   </div>
 </div>
@@ -2717,21 +2925,27 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:uuid</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The event source mapping identifier.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:function_name</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>The Lambda function to which you want the stream records sent.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). </p> <p>If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length.</p>
+            &mdash; <div class='inline'><p>The Lambda function to which you want the stream records sent.</p>
+
+
+<p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). </p> <p>If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length.</p></p>
 </div>        </li>
         <li>
           <span class='name'>:enabled</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Specifies whether AWS Lambda should actively poll the stream or not. If disabled, AWS Lambda will not poll the stream.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:batch_size</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The maximum number of stream records that can be sent to your Lambda function for a single invocation.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2741,15 +2955,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/EventSourceMappingConfiguration.html#uuid-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#uuid (method)">#uuid</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#batch_size-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#batch_size (method)">#batch_size</a> =&gt; Integer</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#event_source_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#event_source_arn (method)">#event_source_arn</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#function_arn (method)">#function_arn</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_modified (method)">#last_modified</a> =&gt; Time</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#last_processing_result-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_processing_result (method)">#last_processing_result</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#state-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state (method)">#state</a> =&gt; String</li>
-<li><a href="Types/EventSourceMappingConfiguration.html#state_transition_reason-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state_transition_reason (method)">#state_transition_reason</a> =&gt; String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#uuid-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#uuid (method)">#uuid</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#batch_size-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#batch_size (method)">#batch_size</a> => Integer</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#event_source_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#event_source_arn (method)">#event_source_arn</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#function_arn (method)">#function_arn</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_modified (method)">#last_modified</a> => Time</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#last_processing_result-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#last_processing_result (method)">#last_processing_result</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#state-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state (method)">#state</a> => String</li>
+<li><a href="Types/EventSourceMappingConfiguration.html#state_transition_reason-instance_method" title="Aws::Lambda::Types::EventSourceMappingConfiguration#state_transition_reason (method)">#state_transition_reason</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2763,14 +2978,17 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Updates the code for the specified Lambda function. This operation must only be used on an existing Lambda function and cannot be used to update the function configuration.</p> <p>If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:UpdateFunctionCode</code> action.</p>
+    <p>Updates the code for the specified Lambda function. This operation must only be used on an existing Lambda function and cannot be used to update the function configuration.</p>
+
+
+<p> <p>If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:UpdateFunctionCode</code> action.</p></p>
 
   </div>
 </div>
 <div class='tags'>
     <div class='examples'>
     <p class='tag_title'>Examples:</p>
-        <p class='example_title'><div class='inline'><p>Example: To update a Lambda function&#39;s code</p>
+        <p class='example_title'><div class='inline'><p>Example: To update a Lambda function's code</p>
 </div></p>
       <pre class='example code ruby'><code><span class='comment'># This operation updates a Lambda function&#39;s code
 </span>
@@ -2841,32 +3059,40 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>The existing Lambda function name whose code you want to replace.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+            &mdash; <div class='inline'><p>The existing Lambda function name whose code you want to replace.</p>
+
+
+<p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p></p>
 </div>        </li>
         <li>
           <span class='name'>:zip_file</span>
           <span class='type'>(<code>IO</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>.zip file containing your packaged source code.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:s3_bucket</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS Region where you are creating the Lambda function.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:s3_key</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The Amazon S3 object (the deployment package) key name you want to upload.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:s3_object_version</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The Amazon S3 object (the deployment package) version you want to upload.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:publish</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>This boolean parameter can be used to request AWS Lambda to update the Lambda function and publish a version as an atomic operation.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2876,23 +3102,24 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/FunctionConfiguration.html#function_name-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_name (method)">#function_name</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_arn (method)">#function_arn</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#runtime-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#runtime (method)">#runtime</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#role-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#role (method)">#role</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#handler-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#handler (method)">#handler</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#code_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_size (method)">#code_size</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#description-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#description (method)">#description</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#timeout-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#timeout (method)">#timeout</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#memory_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#memory_size (method)">#memory_size</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#last_modified (method)">#last_modified</a> =&gt; Time</li>
-<li><a href="Types/FunctionConfiguration.html#code_sha_256-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_sha_256 (method)">#code_sha_256</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#version-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#version (method)">#version</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#vpc_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#vpc_config (method)">#vpc_config</a> =&gt; <a href="Types/VpcConfigResponse.html" title="Aws::Lambda::Types::VpcConfigResponse (class)">Types::VpcConfigResponse</a></li>
-<li><a href="Types/FunctionConfiguration.html#dead_letter_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#dead_letter_config (method)">#dead_letter_config</a> =&gt; <a href="Types/DeadLetterConfig.html" title="Aws::Lambda::Types::DeadLetterConfig (class)">Types::DeadLetterConfig</a></li>
-<li><a href="Types/FunctionConfiguration.html#environment-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#environment (method)">#environment</a> =&gt; <a href="Types/EnvironmentResponse.html" title="Aws::Lambda::Types::EnvironmentResponse (class)">Types::EnvironmentResponse</a></li>
-<li><a href="Types/FunctionConfiguration.html#kms_key_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#kms_key_arn (method)">#kms_key_arn</a> =&gt; String</li>
+<li><a href="Types/FunctionConfiguration.html#function_name-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_name (method)">#function_name</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_arn (method)">#function_arn</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#runtime-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#runtime (method)">#runtime</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#role-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#role (method)">#role</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#handler-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#handler (method)">#handler</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#code_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_size (method)">#code_size</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#description-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#description (method)">#description</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#timeout-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#timeout (method)">#timeout</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#memory_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#memory_size (method)">#memory_size</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#last_modified (method)">#last_modified</a> => Time</li>
+<li><a href="Types/FunctionConfiguration.html#code_sha_256-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_sha_256 (method)">#code_sha_256</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#version-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#version (method)">#version</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#vpc_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#vpc_config (method)">#vpc_config</a> => <a href="Types/VpcConfigResponse.html" title="Aws::Lambda::Types::VpcConfigResponse (class)">Types::VpcConfigResponse</a></li>
+<li><a href="Types/FunctionConfiguration.html#dead_letter_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#dead_letter_config (method)">#dead_letter_config</a> => <a href="Types/DeadLetterConfig.html" title="Aws::Lambda::Types::DeadLetterConfig (class)">Types::DeadLetterConfig</a></li>
+<li><a href="Types/FunctionConfiguration.html#environment-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#environment (method)">#environment</a> => <a href="Types/EnvironmentResponse.html" title="Aws::Lambda::Types::EnvironmentResponse (class)">Types::EnvironmentResponse</a></li>
+<li><a href="Types/FunctionConfiguration.html#kms_key_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#kms_key_arn (method)">#kms_key_arn</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -2906,14 +3133,17 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Updates the configuration parameters for the specified Lambda function by using the values provided in the request. You provide only the parameters you want to change. This operation must only be used on an existing Lambda function and cannot be used to update the function's code.</p> <p>If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:UpdateFunctionConfiguration</code> action.</p>
+    <p>Updates the configuration parameters for the specified Lambda function by using the values provided in the request. You provide only the parameters you want to change. This operation must only be used on an existing Lambda function and cannot be used to update the function's code.</p>
+
+
+<p> <p>If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. </p> <p>This operation requires permission for the <code>lambda:UpdateFunctionConfiguration</code> action.</p></p>
 
   </div>
 </div>
 <div class='tags'>
     <div class='examples'>
     <p class='tag_title'>Examples:</p>
-        <p class='example_title'><div class='inline'><p>Example: To update a Lambda function&#39;s configuration</p>
+        <p class='example_title'><div class='inline'><p>Example: To update a Lambda function's configuration</p>
 </div></p>
       <pre class='example code ruby'><code><span class='comment'># This operation updates a Lambda function&#39;s configuration
 </span>
@@ -3001,57 +3231,72 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:function_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>The name of the Lambda function.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+            &mdash; <div class='inline'><p>The name of the Lambda function.</p>
+
+
+<p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p></p>
 </div>        </li>
         <li>
           <span class='name'>:role</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The Amazon Resource Name (ARN) of the IAM role that Lambda will assume when it executes your function.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:handler</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The function that Lambda calls to begin executing your function. For Node.js, it is the <code>module-name.export</code> value in your function. </p>
+
 </div>        </li>
         <li>
           <span class='name'>:description</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>A short user-defined function description. AWS Lambda does not use this value. Assign a meaningful description as you see fit.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:timeout</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The function execution time at which AWS Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:memory_size</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The amount of memory, in MB, your Lambda function is given. AWS Lambda uses this memory size to infer the amount of CPU allocated to your function. Your function use-case determines your CPU and memory requirements. For example, a database operation might need less memory compared to an image processing function. The default value is 128 MB. The value must be a multiple of 64 MB.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:vpc_config</span>
           <span class='type'>(<a href="Types/VpcConfig.html" title="Aws::Lambda::Types::VpcConfig (class)">Types::VpcConfig</a>)</span>
             &mdash; <div class='inline'><p>If your Lambda function accesses resources in a VPC, you provide this parameter identifying the list of security group IDs and subnet IDs. These must belong to the same VPC. You must provide at least one security group and one subnet ID.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:environment</span>
           <span class='type'>(<a href="Types/Environment.html" title="Aws::Lambda::Types::Environment (class)">Types::Environment</a>)</span>
             &mdash; <div class='inline'><p>The parent object that contains your environment's configuration settings.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:runtime</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p><p>The runtime environment for the Lambda function.</p> <p>To use the Node.js runtime v4.3, set the value to &quot;nodejs4.3&quot;. To use earlier runtime (v0.10.42), set the value to &quot;nodejs&quot;.</p> <note> <p>You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as of early 2017.</p> </note></p>
+            &mdash; <div class='inline'><p>The runtime environment for the Lambda function.</p>
+
+
+<p> <p>To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the value to "nodejs".</p> <note> <p>You can no longer downgrade to the v0.10.42 runtime version. This version will no longer be supported as of early 2017.</p> </note></p>
 </div>        </li>
         <li>
           <span class='name'>:dead_letter_config</span>
           <span class='type'>(<a href="Types/DeadLetterConfig.html" title="Aws::Lambda::Types::DeadLetterConfig (class)">Types::DeadLetterConfig</a>)</span>
             &mdash; <div class='inline'><p>The parent object that contains the target Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:kms_key_arn</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If you elect to use the AWS Lambda default service key, pass in an empty string ("") for this parameter.</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3061,23 +3306,24 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/FunctionConfiguration.html#function_name-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_name (method)">#function_name</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_arn (method)">#function_arn</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#runtime-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#runtime (method)">#runtime</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#role-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#role (method)">#role</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#handler-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#handler (method)">#handler</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#code_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_size (method)">#code_size</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#description-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#description (method)">#description</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#timeout-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#timeout (method)">#timeout</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#memory_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#memory_size (method)">#memory_size</a> =&gt; Integer</li>
-<li><a href="Types/FunctionConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#last_modified (method)">#last_modified</a> =&gt; Time</li>
-<li><a href="Types/FunctionConfiguration.html#code_sha_256-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_sha_256 (method)">#code_sha_256</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#version-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#version (method)">#version</a> =&gt; String</li>
-<li><a href="Types/FunctionConfiguration.html#vpc_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#vpc_config (method)">#vpc_config</a> =&gt; <a href="Types/VpcConfigResponse.html" title="Aws::Lambda::Types::VpcConfigResponse (class)">Types::VpcConfigResponse</a></li>
-<li><a href="Types/FunctionConfiguration.html#dead_letter_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#dead_letter_config (method)">#dead_letter_config</a> =&gt; <a href="Types/DeadLetterConfig.html" title="Aws::Lambda::Types::DeadLetterConfig (class)">Types::DeadLetterConfig</a></li>
-<li><a href="Types/FunctionConfiguration.html#environment-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#environment (method)">#environment</a> =&gt; <a href="Types/EnvironmentResponse.html" title="Aws::Lambda::Types::EnvironmentResponse (class)">Types::EnvironmentResponse</a></li>
-<li><a href="Types/FunctionConfiguration.html#kms_key_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#kms_key_arn (method)">#kms_key_arn</a> =&gt; String</li>
+<li><a href="Types/FunctionConfiguration.html#function_name-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_name (method)">#function_name</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#function_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#function_arn (method)">#function_arn</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#runtime-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#runtime (method)">#runtime</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#role-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#role (method)">#role</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#handler-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#handler (method)">#handler</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#code_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_size (method)">#code_size</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#description-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#description (method)">#description</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#timeout-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#timeout (method)">#timeout</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#memory_size-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#memory_size (method)">#memory_size</a> => Integer</li>
+<li><a href="Types/FunctionConfiguration.html#last_modified-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#last_modified (method)">#last_modified</a> => Time</li>
+<li><a href="Types/FunctionConfiguration.html#code_sha_256-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#code_sha_256 (method)">#code_sha_256</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#version-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#version (method)">#version</a> => String</li>
+<li><a href="Types/FunctionConfiguration.html#vpc_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#vpc_config (method)">#vpc_config</a> => <a href="Types/VpcConfigResponse.html" title="Aws::Lambda::Types::VpcConfigResponse (class)">Types::VpcConfigResponse</a></li>
+<li><a href="Types/FunctionConfiguration.html#dead_letter_config-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#dead_letter_config (method)">#dead_letter_config</a> => <a href="Types/DeadLetterConfig.html" title="Aws::Lambda::Types::DeadLetterConfig (class)">Types::DeadLetterConfig</a></li>
+<li><a href="Types/FunctionConfiguration.html#environment-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#environment (method)">#environment</a> => <a href="Types/EnvironmentResponse.html" title="Aws::Lambda::Types::EnvironmentResponse (class)">Types::EnvironmentResponse</a></li>
+<li><a href="Types/FunctionConfiguration.html#kms_key_arn-instance_method" title="Aws::Lambda::Types::FunctionConfiguration#kms_key_arn (method)">#kms_key_arn</a> => String</li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -3100,7 +3346,7 @@ state.</p>
 entering a terminal state, or until a maximum number of attempts
 are made.</p>
 
-<p># polls in a loop, sleeping between attempts
+<p>   # polls in a loop, sleeping between attempts
    client.waiter_until(waiter_name, params)</p>
 
 <h3>Configuration</h3>
@@ -3236,6 +3482,7 @@ waiters and the client method they call:</p>
 
 </tbody>
 </table>
+
 
   </div>
 </div>

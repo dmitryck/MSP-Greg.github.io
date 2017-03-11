@@ -84,87 +84,83 @@
 <p>Version 2 differs from version 1 in a number of important ways.</p>
 
 <ul>
-<li>Different root namespace, <a href="Aws.html" title="Aws (module)">Aws</a> vs <code>AWS</code>. This enables side-by-side usage.</li>
-<li><a href="Aws.html#config-class_method" title="Aws.config (method)">Aws.config</a> is now a vanilla Ruby hash, instead of a method.</li>
-<li><strong>Strict constructor options</strong> - When constructing a client or resource object in the version 1 SDK, unknown constructor options are ignored. In version 2, unknown constructor options trigger an <code>ArgumentError</code>.  For example:</li>
-</ul>
+<li>Different root namespace, <code>Aws</code> vs <code>AWS</code>. This enables side-by-side usage.</li>
+<li><code>Aws.config</code> is now a vanilla Ruby hash, instead of a method.</li>
+<li><p><strong>Strict constructor options</strong> - When constructing a client or resource object in the version 1 SDK, unknown constructor options are ignored. In version 2, unknown constructor options trigger an <code>ArgumentError</code>.  For example:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='comment'># version 1
-</span>  <span class='const'>AWS</span><span class='op'>::</span><span class='const'>S3</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>http_reed_timeout:</span> <span class='int'>10</span><span class='rparen'>)</span>
-  <span class='comment'># oops, typo&#39;d option is ignored
+</span><span class='const'>AWS</span><span class='op'>::</span><span class='const'>S3</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>http_reed_timeout:</span> <span class='int'>10</span><span class='rparen'>)</span>
+<span class='comment'># oops, typo&#39;d option is ignored
 </span>
-  <span class='comment'># version 2
-</span>  <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3.html" title="Aws::S3 (module)">S3</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3/Client.html" title="Aws::S3::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/S3/Client.html#new-class_method" title="Aws::S3::Client.new (method)">new</a></span><span class='lparen'>(</span><span class='label'>http_reed_timeout:</span> <span class='int'>10</span><span class='rparen'>)</span>
-  <span class='comment'># =&gt; raises ArgumentError</span></code></pre>
+<span class='comment'># version 2
+</span><span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3.html" title="Aws::S3 (module)">S3</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3/Client.html" title="Aws::S3::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/S3/Client.html#new-class_method" title="Aws::S3::Client.new (method)">new</a></span><span class='lparen'>(</span><span class='label'>http_reed_timeout:</span> <span class='int'>10</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; raises ArgumentError</span></code></pre></li>
+</ul>
+
 
 <h2>Client Differences</h2>
 
 <p>Between version 1 and version 2, the client classes have the fewest external differences. Many service clients will have compatible interfaces after client construction. Some important differences:</p>
 
 <ul>
-<li><strong><a href="Aws/S3/Client.html" title="Aws::S3::Client (class)">::Aws::S3::Client</a></strong> - The version 1 S3 client class was hand-coded. Version 2 is generated from a service model. Method names an inputs are very different in version 2.</li>
-<li><strong><a href="Aws/EC2/Client.html" title="Aws::EC2::Client (class)">::Aws::EC2::Client</a></strong> - Version 2 uses plural names for output lists, version 1 uses the suffix <code>_set</code>. For example:</li>
-</ul>
+<li><strong><code>Aws::S3::Client</code></strong> - The version 1 S3 client class was hand-coded. Version 2 is generated from a service model. Method names an inputs are very different in version 2.</li>
+<li><p><strong><code>Aws::EC2::Client</code></strong> - Version 2 uses plural names for output lists, version 1 uses the suffix <code>_set</code>. For example:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='comment'># version 1
-</span>  <span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='const'>AWS</span><span class='op'>::</span><span class='const'>EC2</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='period'>.</span><span class='id identifier rubyid_describe_security_groups'>describe_security_groups</span>
-  <span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_security_group_set'>security_group_set</span>
-  <span class='comment'>#=&gt; [...]
+</span><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='const'>AWS</span><span class='op'>::</span><span class='const'>EC2</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='period'>.</span><span class='id identifier rubyid_describe_security_groups'>describe_security_groups</span>
+<span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_security_group_set'>security_group_set</span>
+<span class='comment'>#=&gt; [...]
 </span>
-  <span class='comment'># version 2
-</span>  <span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/EC2.html" title="Aws::EC2 (module)">EC2</a></span><span class='op'>::</span><span class='const'><a href="Aws/EC2/Client.html" title="Aws::EC2::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/EC2/Client.html#new-class_method" title="Aws::EC2::Client.new (method)">new</a></span><span class='period'>.</span><span class='id identifier rubyid_describe_security_groups'><a href="Aws/EC2/Client.html#describe_security_groups-instance_method" title="Aws::EC2::Client#describe_security_groups (method)">describe_security_groups</a></span>
-  <span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_security_groups'>security_groups</span>
-  <span class='comment'>#=&gt; [...]</span></code></pre>
-
-<ul>
-<li><strong><a href="Aws/SWF/Client.html" title="Aws::SWF::Client (class)">::Aws::SWF::Client</a></strong> - Version two uses structured responses, where version 1 uses vanilla Ruby hashes.</li>
+<span class='comment'># version 2
+</span><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/EC2.html" title="Aws::EC2 (module)">EC2</a></span><span class='op'>::</span><span class='const'><a href="Aws/EC2/Client.html" title="Aws::EC2::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/EC2/Client.html#new-class_method" title="Aws::EC2::Client.new (method)">new</a></span><span class='period'>.</span><span class='id identifier rubyid_describe_security_groups'><a href="Aws/EC2/Client.html#describe_security_groups-instance_method" title="Aws::EC2::Client#describe_security_groups (method)">describe_security_groups</a></span>
+<span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_security_groups'>security_groups</span>
+<span class='comment'>#=&gt; [...]</span></code></pre></li>
+<li><strong><code>Aws::SWF::Client</code></strong> - Version two uses structured responses, where version 1 uses vanilla Ruby hashes.</li>
 <li><p><strong>Service class renames</strong> - Version 2 uses a different name for multiple services:</p>
 
 <ul>
-<li><code>AWS::SimpleWorkflow</code> =&gt; <a href="Aws/SWF.html" title="Aws::SWF (module)">::Aws::SWF</a></li>
-<li><code>AWS::ELB</code> =&gt; <a href="Aws/ElasticLoadBalancing.html" title="Aws::ElasticLoadBalancing (module)">::Aws::ElasticLoadBalancing</a></li>
-<li><code>AWS::SimpleEmailService</code> =&gt; <a href="Aws/SES.html" title="Aws::SES (module)">::Aws::SES</a></li>
-</ul></li>
+<li><code>AWS::SimpleWorkflow</code> => <code>Aws::SWF</code></li>
+<li><code>AWS::ELB</code> => <code>Aws::ElasticLoadBalancing</code></li>
+<li><code>AWS::SimpleEmailService</code> => <code>Aws::SES</code></li>
+</ul>
+</li>
 <li><p><strong>Client configuration options</strong> - Some of the version 1 configuration options have been renamed in version 2. Others have been removed or replaced. Here are the primary changes:</p>
 
 <ul>
 <li><code>:use_ssl</code> has been removed. Version 2 uses SSL everywhere. To disable SSL you must configure an <code>:endpoint</code> that uses <code>http://</code>.</li>
-<li><code>:ssl_ca_file</code> =&gt; <code>:ssl_ca_bundle</code></li>
-<li><code>:ssl_ca_path</code> =&gt; <code>:ssl_ca_directory</code></li>
+<li><code>:ssl_ca_file</code> => <code>:ssl_ca_bundle</code></li>
+<li><code>:ssl_ca_path</code> => <code>:ssl_ca_directory</code></li>
 <li>Added <code>:ssl_ca_store</code>.</li>
 <li><code>:endpoint</code> must now be a fully qualified HTTP or HTTPS uri instead of a hostname.</li>
 <li>Removed <code>:*_port</code> options for each service, replaced by <code>:endpoint</code>.</li>
 <li><code>:user_agent_prefix</code> is now <code>:user_agent_suffix</code></li>
-</ul></li>
 </ul>
+</li>
+</ul>
+
 
 <h2>Resource Differences</h2>
 
 <p>There are significant differences between the resource interfaces in version 1 and version 2. Version 1 was entirely hand-coded, where as version 2 resource interfaces are generated from a model. Version 2 resource interfaces are significantly more consistent. Some of the systemic differences include:</p>
 
 <ul>
-<li><strong>Separate resource class</strong> - In version 2, the service name is a module and not a class. In this module is the resource interface:</li>
-</ul>
+<li><p><strong>Separate resource class</strong> - In version 2, the service name is a module and not a class. In this module is the resource interface:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='comment'># version 1
-</span>  <span class='id identifier rubyid_s3'>s3</span> <span class='op'>=</span> <span class='const'>AWS</span><span class='op'>::</span><span class='const'>S3</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+</span><span class='id identifier rubyid_s3'>s3</span> <span class='op'>=</span> <span class='const'>AWS</span><span class='op'>::</span><span class='const'>S3</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 
-  <span class='comment'># version 2
-</span>  <span class='id identifier rubyid_s3'>s3</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3.html" title="Aws::S3 (module)">S3</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3/Resource.html" title="Aws::S3::Resource (class)">Resource</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/S3/Resource.html#new-class_method" title="Aws::S3::Resource.new (method)">new</a></span></code></pre>
-
-<ul>
-<li><strong>Referencing resources</strong> - The version 2 SDK separates collections and individual resource getters into two different methods:</li>
-</ul>
+<span class='comment'># version 2
+</span><span class='id identifier rubyid_s3'>s3</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3.html" title="Aws::S3 (module)">S3</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3/Resource.html" title="Aws::S3::Resource (class)">Resource</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/S3/Resource.html#new-class_method" title="Aws::S3::Resource.new (method)">new</a></span></code></pre></li>
+<li><p><strong>Referencing resources</strong> - The version 2 SDK separates collections and individual resource getters into two different methods:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='comment'># version 1
-</span>  <span class='id identifier rubyid_s3'>s3</span><span class='period'>.</span><span class='id identifier rubyid_buckets'>buckets</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bucket-name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_objects'>objects</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>key</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span>
+</span><span class='id identifier rubyid_s3'>s3</span><span class='period'>.</span><span class='id identifier rubyid_buckets'>buckets</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bucket-name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_objects'>objects</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>key</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span>
 
-  <span class='comment'># version 2
-</span>  <span class='id identifier rubyid_s3'>s3</span><span class='period'>.</span><span class='id identifier rubyid_bucket'>bucket</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bucket-name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_object'>object</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>key</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span></code></pre>
-
-<ul>
-<li><strong>Batch operations</strong> - In version 1, all batch operations were hand-coded utilities. In version 2, many batch operations are auto-generated batching operations over the API. <strong>Version 2 batching interfaces are very different from version 1.</strong></li>
+<span class='comment'># version 2
+</span><span class='id identifier rubyid_s3'>s3</span><span class='period'>.</span><span class='id identifier rubyid_bucket'>bucket</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bucket-name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_object'>object</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>key</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span></code></pre></li>
+<li><p><strong>Batch operations</strong> - In version 1, all batch operations were hand-coded utilities. In version 2, many batch operations are auto-generated batching operations over the API. <strong>Version 2 batching interfaces are very different from version 1.</strong></p></li>
 </ul>
+
 
 <div id='footer'>
   Generated by

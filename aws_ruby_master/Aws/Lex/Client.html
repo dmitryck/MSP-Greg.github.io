@@ -129,9 +129,10 @@
 <p>You can configure a default region in the following locations:</p>
 
 <ul>
-<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
+<li><code>ENV['AWS_REGION']</code></li>
 <li><code>Aws.config[:region]</code></li>
 </ul>
+
 
 <p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
 
@@ -140,11 +141,12 @@
 <p>Default credentials are loaded automatically from the following locations:</p>
 
 <ul>
-<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
+<li><code>ENV['AWS_ACCESS_KEY_ID']</code> and <code>ENV['AWS_SECRET_ACCESS_KEY']</code></li>
 <li><code>Aws.config[:credentials]</code></li>
 <li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
 <li>From an instance profile when running on EC2</li>
 </ul>
+
 
 <p>You can also construct a credentials object from one of the following
 classes:</p>
@@ -155,6 +157,7 @@ classes:</p>
 <li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
 <li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
 </ul>
+
 
 <p>Alternatively, you configure credentials with <code>:access_key_id</code> and
 <code>:secret_access_key</code>:</p>
@@ -342,10 +345,11 @@ for credentials:</p>
 
 <ul>
 <li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
-<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
+<li>ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']</li>
 <li><code>HOME/.aws/credentials</code> shared credentials file</li>
 <li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
 </ul>
+
 </div>        </li>
         <li>
           <span class='name'>:endpoint</span>
@@ -421,7 +425,7 @@ will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Lo
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Used when loading credentials
 from the shared credentials file at HOME/.aws/credentials.  When not
-specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
 </div>        </li>
         <li>
           <span class='name'>:raise_response_errors</span>
@@ -434,7 +438,7 @@ specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.htm
           <span class='name'>:region</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
-the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
+the client endpoint.  Defaults to <code>ENV['AWS_REGION']</code>.
 Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
 </div>        </li>
         <li>
@@ -492,7 +496,7 @@ fake responses are generated and returned. You can specify
 the response data to return or errors to raise by calling
 <a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
 
-<p>** Please note ** When response stubbing is enabled, no HTTP
+<p><strong> Please note </strong> When response stubbing is enabled, no HTTP
 requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
 </div>        </li>
         <li>
@@ -515,7 +519,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p><p>Sends user input text to Amazon Lex at runtime. Amazon Lex uses the machine learning model that the service built for the application to interpret user input. </p> <p> In response, Amazon Lex returns the next message to convey to the user (based on the context of the user interaction) and whether to expect a user response to the message (<code>dialogState</code>). For example, consider the following response messages: </p> <ul> <li> <p>&quot;What pizza toppings would you like?&quot; – In this case, the <code>dialogState</code> would be <code>ElicitSlot</code> (that is, a user response is expected). </p> </li> <li> <p>&quot;Your order has been placed.&quot; – In this case, Amazon Lex returns one of the following <code>dialogState</code> values depending on how the intent fulfillment is configured (see <code>fulfillmentActivity</code> in <code>CreateIntent</code>): </p> <ul> <li> <p> <code>FulFilled</code> – The intent fulfillment is configured through a Lambda function. </p> </li> <li> <p> <code>ReadyForFulfilment</code> – The intent&#39;s <code>fulfillmentActivity</code> is to simply return the intent data back to the client application. </p> </li> </ul> </li> </ul></p>
+    <p>Sends user input text to Amazon Lex at runtime. Amazon Lex uses the machine learning model that the service built for the application to interpret user input. </p>
+
+
+<p> <p> In response, Amazon Lex returns the next message to convey to the user (based on the context of the user interaction) and whether to expect a user response to the message (<code>dialogState</code>). For example, consider the following response messages: </p> <ul> <li> <p>"What pizza toppings would you like?" – In this case, the <code>dialogState</code> would be <code>ElicitSlot</code> (that is, a user response is expected). </p> </li> <li> <p>"Your order has been placed." – In this case, Amazon Lex returns one of the following <code>dialogState</code> values depending on how the intent fulfillment is configured (see <code>fulfillmentActivity</code> in <code>CreateIntent</code>): </p> <ul> <li> <p> <code>FulFilled</code> – The intent fulfillment is configured through a Lambda function. </p> </li> <li> <p> <code>ReadyForFulfilment</code> – The intent's <code>fulfillmentActivity</code> is to simply return the intent data back to the client application. </p> </li> </ul> </li> </ul></p>
 
   </div>
 </div>
@@ -560,26 +567,35 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:bot_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Name of the Amazon Lex bot.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:bot_alias</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Alias of the Amazon Lex bot.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:user_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p><p>User ID of your client application. Typically, each of your application users should have a unique ID. Note the following considerations: </p> <ul> <li> <p> If you want a user to start a conversation on one mobile device and continue the conversation on another device, you might choose a user-specific identifier, such as a login or Amazon Cognito user ID (assuming your application is using Amazon Cognito). </p> </li> <li> <p> If you want the same user to be able to have two independent conversations on two different devices, you might choose a device-specific identifier, such as device ID, or some globally unique identifier. </p> </li> </ul></p>
+            &mdash; <div class='inline'><p>User ID of your client application. Typically, each of your application users should have a unique ID. Note the following considerations: </p>
+
+
+<p> <ul> <li> <p> If you want a user to start a conversation on one mobile device and continue the conversation on another device, you might choose a user-specific identifier, such as a login or Amazon Cognito user ID (assuming your application is using Amazon Cognito). </p> </li> <li> <p> If you want the same user to be able to have two independent conversations on two different devices, you might choose a device-specific identifier, such as device ID, or some globally unique identifier. </p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:session_attributes</span>
           <span class='type'>(<code>Hash</code>&lt;<code>String</code>,<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p><p> A session represents the dialog between a user and Amazon Lex. At runtime, a client application can pass contextual information (session attributes) in the request. For example, <code>&quot;FirstName&quot; : &quot;Joe&quot;</code>. Amazon Lex passes these session attributes to the AWS Lambda functions configured for the intent (see <code>dialogCodeHook</code> and <code>fulfillmentActivity.codeHook</code> in <code>CreateIntent</code>). </p> <p>In your Lambda function, you can use the session attributes for customization. Some examples are:</p> <ul> <li> <p> In a pizza ordering application, if you can pass user location as a session attribute (for example, <code>&quot;Location&quot; : &quot;111 Maple street&quot;</code>), your Lambda function might use this information to determine the closest pizzeria to place the order. </p> </li> <li> <p> Use session attributes to personalize prompts. For example, you pass in user name as a session attribute (<code>&quot;FirstName&quot; : &quot;Joe&quot;</code>), you might configure subsequent prompts to refer to this attribute, as <code>$session.FirstName&quot;</code>. At runtime, Amazon Lex substitutes a real value when it generates a prompt, such as &quot;Hello Joe, what would you like to order?&quot; </p> </li> </ul> <note> <p> Amazon Lex does not persist session attributes. </p> <p> If the intent is configured without a Lambda function to process the intent (that is, the client application to process the intent), Amazon Lex simply returns the session attributes back to the client application. </p> <p> If the intent is configured with a Lambda function to process the intent, Amazon Lex passes the incoming session attributes to the Lambda function. The Lambda function must return these session attributes if you want Amazon Lex to return them back to the client. </p> </note></p>
+            &mdash; <div class='inline'><p> A session represents the dialog between a user and Amazon Lex. At runtime, a client application can pass contextual information (session attributes) in the request. For example, <code>"FirstName" : "Joe"</code>. Amazon Lex passes these session attributes to the AWS Lambda functions configured for the intent (see <code>dialogCodeHook</code> and <code>fulfillmentActivity.codeHook</code> in <code>CreateIntent</code>). </p>
+
+
+<p> <p>In your Lambda function, you can use the session attributes for customization. Some examples are:</p> <ul> <li> <p> In a pizza ordering application, if you can pass user location as a session attribute (for example, <code>"Location" : "111 Maple street"</code>), your Lambda function might use this information to determine the closest pizzeria to place the order. </p> </li> <li> <p> Use session attributes to personalize prompts. For example, you pass in user name as a session attribute (<code>"FirstName" : "Joe"</code>), you might configure subsequent prompts to refer to this attribute, as <code>$session.FirstName"</code>. At runtime, Amazon Lex substitutes a real value when it generates a prompt, such as "Hello Joe, what would you like to order?" </p> </li> </ul> <note> <p> Amazon Lex does not persist session attributes. </p> <p> If the intent is configured without a Lambda function to process the intent (that is, the client application to process the intent), Amazon Lex simply returns the session attributes back to the client application. </p> <p> If the intent is configured with a Lambda function to process the intent, Amazon Lex passes the incoming session attributes to the Lambda function. The Lambda function must return these session attributes if you want Amazon Lex to return them back to the client. </p> </note></p>
 </div>        </li>
         <li>
           <span class='name'>:input_text</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Text user entered (Amazon Lex interprets this text).</p>
+
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -589,14 +605,15 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/PostTextResponse.html#intent_name-instance_method" title="Aws::Lex::Types::PostTextResponse#intent_name (method)">#intent_name</a> =&gt; String</li>
-<li><a href="Types/PostTextResponse.html#slots-instance_method" title="Aws::Lex::Types::PostTextResponse#slots (method)">#slots</a> =&gt; Hash&lt;String,String&gt;</li>
-<li><a href="Types/PostTextResponse.html#session_attributes-instance_method" title="Aws::Lex::Types::PostTextResponse#session_attributes (method)">#session_attributes</a> =&gt; Hash&lt;String,String&gt;</li>
-<li><a href="Types/PostTextResponse.html#message-instance_method" title="Aws::Lex::Types::PostTextResponse#message (method)">#message</a> =&gt; String</li>
-<li><a href="Types/PostTextResponse.html#dialog_state-instance_method" title="Aws::Lex::Types::PostTextResponse#dialog_state (method)">#dialog_state</a> =&gt; String</li>
-<li><a href="Types/PostTextResponse.html#slot_to_elicit-instance_method" title="Aws::Lex::Types::PostTextResponse#slot_to_elicit (method)">#slot_to_elicit</a> =&gt; String</li>
-<li><a href="Types/PostTextResponse.html#response_card-instance_method" title="Aws::Lex::Types::PostTextResponse#response_card (method)">#response_card</a> =&gt; <a href="Types/ResponseCard.html" title="Aws::Lex::Types::ResponseCard (class)">Types::ResponseCard</a></li>
+<li><a href="Types/PostTextResponse.html#intent_name-instance_method" title="Aws::Lex::Types::PostTextResponse#intent_name (method)">#intent_name</a> => String</li>
+<li><a href="Types/PostTextResponse.html#slots-instance_method" title="Aws::Lex::Types::PostTextResponse#slots (method)">#slots</a> => Hash&lt;String,String&gt;</li>
+<li><a href="Types/PostTextResponse.html#session_attributes-instance_method" title="Aws::Lex::Types::PostTextResponse#session_attributes (method)">#session_attributes</a> => Hash&lt;String,String&gt;</li>
+<li><a href="Types/PostTextResponse.html#message-instance_method" title="Aws::Lex::Types::PostTextResponse#message (method)">#message</a> => String</li>
+<li><a href="Types/PostTextResponse.html#dialog_state-instance_method" title="Aws::Lex::Types::PostTextResponse#dialog_state (method)">#dialog_state</a> => String</li>
+<li><a href="Types/PostTextResponse.html#slot_to_elicit-instance_method" title="Aws::Lex::Types::PostTextResponse#slot_to_elicit (method)">#slot_to_elicit</a> => String</li>
+<li><a href="Types/PostTextResponse.html#response_card-instance_method" title="Aws::Lex::Types::PostTextResponse#response_card (method)">#response_card</a> => <a href="Types/ResponseCard.html" title="Aws::Lex::Types::ResponseCard (class)">Types::ResponseCard</a></li>
 </ul>
+
 </div>
   </li>
 </ul>
@@ -619,7 +636,7 @@ state.</p>
 entering a terminal state, or until a maximum number of attempts
 are made.</p>
 
-<p># polls in a loop, sleeping between attempts
+<p>   # polls in a loop, sleeping between attempts
    client.waiter_until(waiter_name, params)</p>
 
 <h3>Configuration</h3>
@@ -755,6 +772,7 @@ waiters and the client method they call:</p>
 
 </tbody>
 </table>
+
 
   </div>
 </div>

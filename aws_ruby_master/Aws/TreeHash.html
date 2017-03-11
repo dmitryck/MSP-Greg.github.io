@@ -90,7 +90,7 @@
   <div class='discussion'>
     <p>Used for computing a tree hash SHA256 checksum of an object.</p>
 
-<p>tree_hash = TreeHash.new
+<p>   tree_hash = TreeHash.new
    tree_hash.update(file.read(1024 * 1024)) until file.eof?
    tree_hash.digest</p>
 
@@ -103,10 +103,11 @@
 compute a tree hash of a large object.  Join their hashes at the end into
 a single TreeHash and then call <a href="#digest-instance_method" title="Aws::TreeHash#digest (method)">#digest</a></p>
 
-<p>TreeHash.new(tree_hashes.map(&amp;:hashes).flatten)</p></li>
+<p>   TreeHash.new(tree_hashes.map(&amp;:hashes).flatten)</p></li>
 <li><p>You must call <a href="#update-instance_method" title="Aws::TreeHash#update (method)">#update</a> with 1MB chunks of data.  Only the final
 chunk may be smaller than 1MB.</p></li>
 </ul>
+
 
 <p>If you have a large object/file, and you would like to compute the
 chunks concurrently, you must break the original file/data into sections
@@ -169,6 +170,7 @@ into a single TreeHash, then call <a href="#digest-instance_method" title="Aws::
 <div class='docstring'>
   <div class='discussion'>
     
+
   </div>
 </div>
 <div class='tags'>
@@ -203,6 +205,7 @@ into a single TreeHash, then call <a href="#digest-instance_method" title="Aws::
 <div class='docstring'>
   <div class='discussion'>
     
+
   </div>
 </div>
 <div class='tags'>
@@ -292,6 +295,7 @@ a sha255 digest of a 1MB chunk.</p>
 <div class='docstring'>
   <div class='discussion'>
     
+
   </div>
 </div>
 <div class='tags'>

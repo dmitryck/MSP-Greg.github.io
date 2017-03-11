@@ -114,7 +114,14 @@
 <div id='overview_ds'>
 <div class='docstring'>
   <div class='discussion'>
-    <p><p>The configuration settings for a workflow execution including timeout values, tasklist etc. These configuration settings are determined from the defaults specified when registering the workflow type and those specified when starting the workflow execution.</p><p>Returned by:</p><ul><li><a href="WorkflowExecutionDetail.html#execution_configuration-instance_method" title="Aws::SWF::Types::WorkflowExecutionDetail#execution_configuration (method)">WorkflowExecutionDetail#execution_configuration</a></li></ul></p>
+    <p>The configuration settings for a workflow execution including timeout values, tasklist etc. These configuration settings are determined from the defaults specified when registering the workflow type and those specified when starting the workflow execution.</p>
+
+
+<p>Returned by:</p>
+
+
+<ul><li><a href="WorkflowExecutionDetail.html#execution_configuration-instance_method" title="Aws::SWF::Types::WorkflowExecutionDetail#execution_configuration (method)">WorkflowExecutionDetail#execution_configuration</a></li></ul>
+
 
   </div>
 </div>
@@ -129,7 +136,10 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The policy to use for the child workflow executions if this workflow execution is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout.</p>.</p></div>
+      <div class='inline'><p>The policy to use for the child workflow executions if this workflow execution is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -138,7 +148,10 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The total duration for this workflow execution.</p>.</p></div>
+      <div class='inline'><p>The total duration for this workflow execution.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -147,7 +160,10 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The IAM role used by this workflow execution when invoking AWS Lambda functions.</p>.</p></div>
+      <div class='inline'><p>The IAM role used by this workflow execution when invoking AWS Lambda functions.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -156,7 +172,10 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The task list used for the decision tasks generated for this workflow execution.</p>.</p></div>
+      <div class='inline'><p>The task list used for the decision tasks generated for this workflow execution.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -174,7 +193,10 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The maximum duration allowed for decision tasks for this workflow execution.</p>.</p></div>
+      <div class='inline'><p>The maximum duration allowed for decision tasks for this workflow execution.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
 </ul>
@@ -186,7 +208,10 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p><p>The policy to use for the child workflow executions if this workflow execution is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul><p>Possible values:</p><ul><li><tt>TERMINATE</tt></li><li><tt>REQUEST_CANCEL</tt></li><li><tt>ABANDON</tt></li></ul></p>
+    <p>The policy to use for the child workflow executions if this workflow execution is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout.</p>
+
+
+<p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul><p>Possible values:</p><ul><li><tt>TERMINATE</tt></li><li><tt>REQUEST_CANCEL</tt></li><li><tt>ABANDON</tt></li></ul></p>
 
   </div>
 </div>
@@ -201,7 +226,10 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The total duration for this workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+    <p>The total duration for this workflow execution.</p>
+
+
+<p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p></p>
 
   </div>
 </div>
@@ -218,6 +246,7 @@
   <div class='discussion'>
     <p>The IAM role used by this workflow execution when invoking AWS Lambda functions.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -233,6 +262,7 @@
   <div class='discussion'>
     <p>The task list used for the decision tasks generated for this workflow execution.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -246,7 +276,10 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The priority assigned to decision tasks for this workflow execution. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+    <p>The priority assigned to decision tasks for this workflow execution. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p>
+
+
+<p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p></p>
 
   </div>
 </div>
@@ -261,7 +294,10 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The maximum duration allowed for decision tasks for this workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+    <p>The maximum duration allowed for decision tasks for this workflow execution.</p>
+
+
+<p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p></p>
 
   </div>
 </div>

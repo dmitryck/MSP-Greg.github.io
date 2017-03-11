@@ -192,7 +192,10 @@
     </span>
     <span class='note title readonly'>readonly</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>A POSIX timestamp when the last log entry was written.</p>.</p></div>
+      <div class='inline'><p>A POSIX timestamp when the last log entry was written.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -201,7 +204,10 @@
     </span>
     <span class='note title readonly'>readonly</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The name of the log file for the specified DB instance.</p>.</p></div>
+      <div class='inline'><p>The name of the log file for the specified DB instance.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -216,7 +222,10 @@
     </span>
     <span class='note title readonly'>readonly</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The size, in bytes, of the log file for the specified DB instance.</p>.</p></div>
+      <div class='inline'><p>The size, in bytes, of the log file for the specified DB instance.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
 </ul>
@@ -250,7 +259,10 @@
       <a href="#download-instance_method" title="#download (instance method)">#<strong>download</strong>(options = {})  &#x21d2; Types::DownloadDBLogFilePortionDetails </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Downloads all or a portion of the specified log file, up to 1 MB in size.</p>.</p></div>
+      <div class='inline'><p>Downloads all or a portion of the specified log file, up to 1 MB in size.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
 </ul>
@@ -290,6 +302,7 @@
 <div class='docstring'>
   <div class='discussion'>
     
+
   </div>
 </div>
 <div class='tags'>
@@ -301,6 +314,7 @@
         <div class='docstring'>
   <div class='discussion'>
     
+
   </div>
 </div>
 <div class='tags'>
@@ -333,6 +347,7 @@ is used to construct a new <a href="Client.html" title="Aws::RDS::Client (class)
         <div class='docstring'>
   <div class='discussion'>
     
+
   </div>
 </div>
 <div class='tags'>
@@ -377,6 +392,7 @@ is used to construct a new <a href="Client.html" title="Aws::RDS::Client (class)
   <div class='discussion'>
     <p>A POSIX timestamp when the last log entry was written.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -391,6 +407,7 @@ is used to construct a new <a href="Client.html" title="Aws::RDS::Client (class)
 <div class='docstring'>
   <div class='discussion'>
     <p>The name of the log file for the specified DB instance.</p>
+
 
   </div>
 </div>
@@ -414,6 +431,7 @@ is used to construct a new <a href="Client.html" title="Aws::RDS::Client (class)
   <div class='discussion'>
     <p>The size, in bytes, of the log file for the specified DB instance.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -429,6 +447,7 @@ is used to construct a new <a href="Client.html" title="Aws::RDS::Client (class)
 <div class='docstring'>
   <div class='discussion'>
     <p>Downloads all or a portion of the specified log file, up to 1 MB in size.</p>
+
 
   </div>
 </div>
@@ -448,11 +467,15 @@ is used to construct a new <a href="Client.html" title="Aws::RDS::Client (class)
           <span class='name'>:marker</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The pagination token provided in the previous request or "0". If the Marker parameter is specified the response includes only records beyond the marker until the end of the file or up to NumberOfLines.</p>
+
 </div>        </li>
         <li>
           <span class='name'>:number_of_lines</span>
           <span class='type'>(<code>Integer</code>)</span>
-            &mdash; <div class='inline'><p><p>The number of lines to download. If the number of lines specified results in a file over 1 MB in size, the file will be truncated at 1 MB in size.</p> <p>If the NumberOfLines parameter is specified, then the block of lines returned can be from the beginning or the end of the log file, depending on the value of the Marker parameter.</p> <ul> <li> <p>If neither Marker or NumberOfLines are specified, the entire log file is returned up to a maximum of 10000 lines, starting with the most recent log entries first.</p> </li> <li> <p>If NumberOfLines is specified and Marker is not specified, then the most recent lines from the end of the log file are returned.</p> </li> <li> <p>If Marker is specified as &quot;0&quot;, then the specified number of lines from the beginning of the log file are returned.</p> </li> <li> <p>You can download the log file in blocks of lines by specifying the size of the block using the NumberOfLines parameter, and by specifying a value of &quot;0&quot; for the Marker parameter in your first request. Include the Marker value returned in the response as the Marker value for the next request, continuing until the AdditionalDataPending response element returns false.</p> </li> </ul></p>
+            &mdash; <div class='inline'><p>The number of lines to download. If the number of lines specified results in a file over 1 MB in size, the file will be truncated at 1 MB in size.</p>
+
+
+<p> <p>If the NumberOfLines parameter is specified, then the block of lines returned can be from the beginning or the end of the log file, depending on the value of the Marker parameter.</p> <ul> <li> <p>If neither Marker or NumberOfLines are specified, the entire log file is returned up to a maximum of 10000 lines, starting with the most recent log entries first.</p> </li> <li> <p>If NumberOfLines is specified and Marker is not specified, then the most recent lines from the end of the log file are returned.</p> </li> <li> <p>If Marker is specified as "0", then the specified number of lines from the beginning of the log file are returned.</p> </li> <li> <p>You can download the log file in blocks of lines by specifying the size of the block using the NumberOfLines parameter, and by specifying a value of "0" for the Marker parameter in your first request. Include the Marker value returned in the response as the Marker value for the next request, continuing until the AdditionalDataPending response element returns false.</p> </li> </ul></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -462,10 +485,11 @@ is used to construct a new <a href="Client.html" title="Aws::RDS::Client (class)
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DownloadDBLogFilePortionDetails.html#log_file_data-instance_method" title="Aws::RDS::Types::DownloadDBLogFilePortionDetails#log_file_data (method)">#log_file_data</a> =&gt; String</li>
-<li><a href="Types/DownloadDBLogFilePortionDetails.html#marker-instance_method" title="Aws::RDS::Types::DownloadDBLogFilePortionDetails#marker (method)">#marker</a> =&gt; String</li>
-<li><a href="Types/DownloadDBLogFilePortionDetails.html#additional_data_pending-instance_method" title="Aws::RDS::Types::DownloadDBLogFilePortionDetails#additional_data_pending (method)">#additional_data_pending</a> =&gt; Boolean</li>
+<li><a href="Types/DownloadDBLogFilePortionDetails.html#log_file_data-instance_method" title="Aws::RDS::Types::DownloadDBLogFilePortionDetails#log_file_data (method)">#log_file_data</a> => String</li>
+<li><a href="Types/DownloadDBLogFilePortionDetails.html#marker-instance_method" title="Aws::RDS::Types::DownloadDBLogFilePortionDetails#marker (method)">#marker</a> => String</li>
+<li><a href="Types/DownloadDBLogFilePortionDetails.html#additional_data_pending-instance_method" title="Aws::RDS::Types::DownloadDBLogFilePortionDetails#additional_data_pending (method)">#additional_data_pending</a> => Boolean</li>
 </ul>
+
 </div>
   </li>
 </ul>

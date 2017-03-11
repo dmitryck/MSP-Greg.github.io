@@ -68,30 +68,30 @@
 <h2><code>aws-sdk-core</code> - v2.5.0</h2>
 
 <ul>
-<li>Due to customer requests, and an analysis of the tradeoffs, we&#39;re changing the
+<li><p>Due to customer requests, and an analysis of the tradeoffs, we're changing the
 shared configuration features from an opt-in feature to an opt-out feature.
 With this version, the changes to default region support and to the default
 credential provider chain are on by default, and the <code>AWS_SDK_LOAD_CONFIG</code>
-environment variable will not be used for any purpose.</li>
-</ul>
+environment variable will not be used for any purpose.</p>
 
 <p>If you wish to opt-out of the new functionality for backwards compatibility
-  reasons, set the <code>AWS_SDK_CONFIG_OPT_OUT</code> environment variable to any value.
-  That will return shared configuration and credential provider chain behavior
-  to the behaviors present before version <code>2.4.0</code> of the SDK.</p>
+reasons, set the <code>AWS_SDK_CONFIG_OPT_OUT</code> environment variable to any value.
+That will return shared configuration and credential provider chain behavior
+to the behaviors present before version <code>2.4.0</code> of the SDK.</p></li>
+</ul>
+
 
 <h2><code>aws-sdk-core</code> - v2.4.0</h2>
 
 <ul>
-<li>We are adding support for the shared configuration file used by the CLI,
+<li><p>We are adding support for the shared configuration file used by the CLI,
 <code>~/.aws/config</code>. This support provides new credential sources for the default
 credential provider chain, and for default region selection. Since these
 changes could technically be a breaking change to default (and commonly used)
-behavior, there is a feature flag around this functionality.</li>
-</ul>
+behavior, there is a feature flag around this functionality.</p>
 
 <p>To use these new features, you must set the <code>AWS_SDK_LOAD_CONFIG</code> environment
-  variable. If not set, the existing default behavior will continue.</p>
+variable. If not set, the existing default behavior will continue.</p>
 
 <p>Two other upgrading notes are worth keeping in mind for this release:</p>
 
@@ -108,52 +108,57 @@ should have been whitespace sensitive all along. If you find behavior
 changes after upgrading, remove leading whitespace from your shared
 credential files.</li>
 </ul>
+</li>
+</ul>
+
 
 <h2><code>aws-sdk-core</code> - v2.3.0</h2>
 
 <ul>
-<li>We have replaced the previous <code>endpoints.json</code> document that shipped with
+<li><p>We have replaced the previous <code>endpoints.json</code> document that shipped with
 the <code>aws-sdk-core</code> gem. The old file defined mapping heuristic for
 constructing regionalized endpoints for services. The new document
-defines explicit regions and services within partitions.</li>
-</ul>
+defines explicit regions and services within partitions.</p>
 
 <p>The old and new document and interfaces were private implementation
-  details and were not documented. Any usage of the old document
-  or classes would be broken in a 2.3.0 update. Normal SDK usage should
-  be completely unaffected by the update. This upgrading note
-  exists only as a warning to users who were reaching into the
-  internals.</p>
+details and were not documented. Any usage of the old document
+or classes would be broken in a 2.3.0 update. Normal SDK usage should
+be completely unaffected by the update. This upgrading note
+exists only as a warning to users who were reaching into the
+internals.</p></li>
+</ul>
+
 
 <h2><code>aws-sdk-core</code> - v2.2.0</h2>
 
 <ul>
-<li>We are moving the <a href="Aws/S3/Client.html" title="Aws::S3::Client (class)">::Aws::S3::Client</a> class to use Signature Version 4 by
+<li><p>We are moving the <code>Aws::S3::Client</code> class to use Signature Version 4 by
 default in all regions. This replaces the previous behavior, in which
 some regions would default to a previous signature version, which we called
-the &#39;s3&#39; signer. This signer would then attempt to upgrade to the &#39;v4&#39; signer
-only when necessary.</li>
-</ul>
+the 's3' signer. This signer would then attempt to upgrade to the 'v4' signer
+only when necessary.</p>
 
 <p>This signature switching behavior has required an increasing amount of special
-  support code, and risks the creation of unexpected API calls when we have to
-  upgrade signature versions on the fly. It also has been prone to creating
-  issues, the most recent of which was visible when using AWS Key Management
-  Service alongside the Amazon S3 client for multipart uploads. KMS requires
-  signature version 4, and the current Amazon S3 client logic had difficulty
-  &#39;raising&#39; the part upload requests to SigV4 with the current code path.
-  Defaulting to signature version 4 across S3 should help simplify these issues,
-  improve maintainability, and reduce unexpected extra API calls.</p>
+support code, and risks the creation of unexpected API calls when we have to
+upgrade signature versions on the fly. It also has been prone to creating
+issues, the most recent of which was visible when using AWS Key Management
+Service alongside the Amazon S3 client for multipart uploads. KMS requires
+signature version 4, and the current Amazon S3 client logic had difficulty
+'raising' the part upload requests to SigV4 with the current code path.
+Defaulting to signature version 4 across S3 should help simplify these issues,
+improve maintainability, and reduce unexpected extra API calls.</p>
 
 <p>Existing code should continue to work with this change. The new signature
-  version doesn&#39;t require anything different from you as the caller of the
-  client code. If you wish, however, you still have the option to use the
-  previous signature version, though there will be no fallbacks to signature
-  version 4 - you are responsible for ensuring that your operation supports the
-  old signature version in the region your client is operating in, and handling
-  any errors that are thrown. You can use the previous signer like so:</p>
+version doesn't require anything different from you as the caller of the
+client code. If you wish, however, you still have the option to use the
+previous signature version, though there will be no fallbacks to signature
+version 4 - you are responsible for ensuring that your operation supports the
+old signature version in the region your client is operating in, and handling
+any errors that are thrown. You can use the previous signer like so:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3.html" title="Aws::S3 (module)">S3</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3/Client.html" title="Aws::S3::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/S3/Client.html#new-class_method" title="Aws::S3::Client.new (method)">new</a></span><span class='lparen'>(</span><span class='label'>signature_version:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>s3</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3.html" title="Aws::S3 (module)">S3</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3/Client.html" title="Aws::S3::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/S3/Client.html#new-class_method" title="Aws::S3::Client.new (method)">new</a></span><span class='lparen'>(</span><span class='label'>signature_version:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>s3</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></code></pre></li>
+</ul>
+
 
 <h2><code>aws-sdk-resources</code> - v2.2</h2>
 
@@ -162,242 +167,246 @@ only when necessary.</li>
 that they operate in batches on the entire collection.</p>
 
 <ul>
-<li>All batch operations are now prefixed with <code>batch_</code>, e.g. <code>#start</code>
-is now <code>#batch_start</code>.</li>
-<li>All batch operations named &quot;delete&quot; or &quot;terminate&quot; are now suffixed
-with a <code>!</code>, e.g. <code>#delete</code> is now <code>#batch_delete!</code></li>
-</ul></li>
+<li><p>All batch operations are now prefixed with <code>batch_</code>, e.g. <code>#start</code>
+is now <code>#batch_start</code>.</p></li>
+<li><p>All batch operations named "delete" or "terminate" are now suffixed
+with a <code>!</code>, e.g. <code>#delete</code> is now <code>#batch_delete!</code></p></li>
 </ul>
 
+
 <p>For backwards compatibility, existing batch methods still respond
-  to their old names with a deprecation warning. New batch operations
-  will strictly follow the new conventions.</p>
+to their old names with a deprecation warning. New batch operations
+will strictly follow the new conventions.</p></li>
+</ul>
+
 
 <h2><code>aws-sdk-resources</code> - v2.1.31</h2>
 
 <ul>
-<li>A bug was discovered in <a href="Aws/S3/Object.html#copy_from-instance_method" title="Aws::S3::Object#copy_from (method)">Aws::S3::Object#copy_from</a> and
-<a href="Aws/S3/Object.html#copy_to-instance_method" title="Aws::S3::Object#copy_to (method)">Aws::S3::Object#copy_to</a> where source and target keys were not getting
-properly URL encoded. This would result in a signature error.</li>
-</ul>
+<li><p>A bug was discovered in <code>Aws::S3::Object#copy_from</code> and
+<code>Aws::S3::Object#copy_to</code> where source and target keys were not getting
+properly URL encoded. This would result in a signature error.</p>
 
 <p>If you have written code to work around this bug, you should remove the
-  URL encoding of your key or it will be double encoded. This works for
-  all three calling patterns.</p>
+URL encoding of your key or it will be double encoded. This works for
+all three calling patterns.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_s3'>s3</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3.html" title="Aws::S3 (module)">S3</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3/Resource.html" title="Aws::S3::Resource (class)">Resource</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/S3/Resource.html#new-class_method" title="Aws::S3::Resource.new (method)">new</a></span>
-  <span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='id identifier rubyid_s3'>s3</span><span class='period'>.</span><span class='id identifier rubyid_bucket'>bucket</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>target-bucket</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_object'>object</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>target-key</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='id identifier rubyid_s3'>s3</span><span class='period'>.</span><span class='id identifier rubyid_bucket'>bucket</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>target-bucket</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_object'>object</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>target-key</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
-  <span class='comment'># the key will now correctly be encoded as &#39;unescaped/key%20path&#39;
-</span>  <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_copy_from'>copy_from</span><span class='lparen'>(</span><span class='label'>bucket:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>source-bucket</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>key:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>unescaped/key path</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='comment'># the key will now correctly be encoded as &#39;unescaped/key%20path&#39;
+</span><span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_copy_from'>copy_from</span><span class='lparen'>(</span><span class='label'>bucket:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>source-bucket</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>key:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>unescaped/key path</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
-  <span class='comment'># the key will now correctly be encoded as &#39;unescaped/key%20path&#39;
-</span>  <span class='id identifier rubyid_src'>src</span> <span class='op'>=</span> <span class='const'>S3</span><span class='op'>::</span><span class='const'>Object</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>source-bucket</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>unescaped/key path</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_copy_from'>copy_from</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='rparen'>)</span>
+<span class='comment'># the key will now correctly be encoded as &#39;unescaped/key%20path&#39;
+</span><span class='id identifier rubyid_src'>src</span> <span class='op'>=</span> <span class='const'>S3</span><span class='op'>::</span><span class='const'>Object</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>source-bucket</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>unescaped/key path</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_copy_from'>copy_from</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='rparen'>)</span>
 
-  <span class='comment'># the key will now correctly be encoded as &#39;unescaped/key%20path&#39;
-</span>  <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_copy_from'>copy_from</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>source-bucket/unescaped/key path</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></code></pre>
+<span class='comment'># the key will now correctly be encoded as &#39;unescaped/key%20path&#39;
+</span><span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_copy_from'>copy_from</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>source-bucket/unescaped/key path</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></code></pre></li>
+</ul>
+
 
 <h2><code>aws-sdk-core</code> - v2.0.38</h2>
 
 <ul>
-<li>AWS Lambda is exiting their preview period and has made changes to
+<li><p>AWS Lambda is exiting their preview period and has made changes to
 their control plane APIs. If you are invoking methods outside
-of <a href="Aws/Lambda/Client.html#invoke_async-instance_method" title="Aws::Lambda::Client#invoke_async (method)">Aws::Lambda::Client#invoke_async</a>, you should switch to the
-<a href="Aws/LambdaPreview/Client.html" title="Aws::LambdaPreview::Client (class)">::Aws::LambdaPreview::Client</a> until you can upgrade.</li>
-</ul>
+of <code>Aws::Lambda::Client#invoke_async</code>, you should switch to the
+<code>Aws::LambdaPreview::Client</code> until you can upgrade.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='comment'># returns the stable 2015-03-01 API client
-</span>  <span class='id identifier rubyid_lambda'>lambda</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/Lambda.html" title="Aws::Lambda (module)">Lambda</a></span><span class='op'>::</span><span class='const'><a href="Aws/Lambda/Client.html" title="Aws::Lambda::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/Lambda/Client.html#new-class_method" title="Aws::Lambda::Client.new (method)">new</a></span>
+</span><span class='id identifier rubyid_lambda'>lambda</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/Lambda.html" title="Aws::Lambda (module)">Lambda</a></span><span class='op'>::</span><span class='const'><a href="Aws/Lambda/Client.html" title="Aws::Lambda::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/Lambda/Client.html#new-class_method" title="Aws::Lambda::Client.new (method)">new</a></span>
 
-  <span class='comment'># returns the preview API client
-</span>  <span class='id identifier rubyid_lambda'>lambda</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/LambdaPreview.html" title="Aws::LambdaPreview (module)">LambdaPreview</a></span><span class='op'>::</span><span class='const'><a href="Aws/LambdaPreview/Client.html" title="Aws::LambdaPreview::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/LambdaPreview/Client.html#new-class_method" title="Aws::LambdaPreview::Client.new (method)">new</a></span></code></pre>
-
-<ul>
+<span class='comment'># returns the preview API client
+</span><span class='id identifier rubyid_lambda'>lambda</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/LambdaPreview.html" title="Aws::LambdaPreview (module)">LambdaPreview</a></span><span class='op'>::</span><span class='const'><a href="Aws/LambdaPreview/Client.html" title="Aws::LambdaPreview::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/LambdaPreview/Client.html#new-class_method" title="Aws::LambdaPreview::Client.new (method)">new</a></span></code></pre></li>
 <li><p>Deprecated two methods:</p>
 
 <ul>
-<li><a href="Aws/S3/Client.html#put_bucket_notification-instance_method" title="Aws::S3::Client#put_bucket_notification (method)">Aws::S3::Client#put_bucket_notification</a></li>
-<li><a href="Aws/S3/Client.html#get_bucket_notification-instance_method" title="Aws::S3::Client#get_bucket_notification (method)">Aws::S3::Client#get_bucket_notification</a></li>
-</ul></li>
+<li><code>Aws::S3::Client#put_bucket_notification</code></li>
+<li><code>Aws::S3::Client#get_bucket_notification</code></li>
 </ul>
+
 
 <p>These methods have been replaced by:</p>
 
 <ul>
-<li><a href="Aws/S3/Client.html#put_bucket_notification_configuration-instance_method" title="Aws::S3::Client#put_bucket_notification_configuration (method)">Aws::S3::Client#put_bucket_notification_configuration</a></li>
-<li><a href="Aws/S3/Client.html#get_bucket_notification_configuration-instance_method" title="Aws::S3::Client#get_bucket_notification_configuration (method)">Aws::S3::Client#get_bucket_notification_configuration</a></li>
+<li><code>Aws::S3::Client#put_bucket_notification_configuration</code></li>
+<li><code>Aws::S3::Client#get_bucket_notification_configuration</code></li>
 </ul>
 
+
 <p>The method signatures for the old two methods did not correctly allow users
-  to specify multiple topic, queue, and lambda function configurations. The
-  new methods, suffixed by <code>_notification</code> correct these errors. The new
-  methods now also support resource based permissions on notifications to
-  lambda functions.</p>
+to specify multiple topic, queue, and lambda function configurations. The
+new methods, suffixed by <code>_notification</code> correct these errors. The new
+methods now also support resource based permissions on notifications to
+lambda functions.</p>
 
 <pre class="code ruby"><code class="ruby">s3 = Aws::S3::Client.new
 
-  # old
-  s3.put_bucket_notification(
-    bucket: &#39;aws-sdk&#39;,
-    notification_configuration: {
-      topic_configuration: { id:&#39;id1&#39;, events:[...] },
-      queue_configuration: { id:&#39;id2&#39;, events:[...] },
-      cloud_function_configuration: { id:&#39;id3&#39;, events:[...], invocation_role: &#39;...&#39; },
-    }
-  )
+# old
+s3.put_bucket_notification(
+  bucket: &#39;aws-sdk&#39;,
+  notification_configuration: {
+    topic_configuration: { id:&#39;id1&#39;, events:[...] },
+    queue_configuration: { id:&#39;id2&#39;, events:[...] },
+    cloud_function_configuration: { id:&#39;id3&#39;, events:[...], invocation_role: &#39;...&#39; },
+  }
+)
 
-  # new
-  s3.put_bucket_notification_configuration(
-    bucket: &#39;aws-sdk&#39;,
-    notification_configuration: {
-      topic_configurations: [
-        { id:&#39;id1&#39;, events:[...] }
-      ],
-      queue_configurations: [
-        { id:&#39;id2&#39;, events:[...] }
-      ],
-      lambda_function_configurations: [
-        { id:&#39;id3&#39;, events:[...] }
-      ]
-    }
-  )</code></pre>
+# new
+s3.put_bucket_notification_configuration(
+  bucket: &#39;aws-sdk&#39;,
+  notification_configuration: {
+    topic_configurations: [
+      { id:&#39;id1&#39;, events:[...] }
+    ],
+    queue_configurations: [
+      { id:&#39;id2&#39;, events:[...] }
+    ],
+    lambda_function_configurations: [
+      { id:&#39;id3&#39;, events:[...] }
+    ]
+  }
+)</code></pre>
 
 <p>Notice the <code>:lambda_function_configurations</code> does not take an
-  <code>:invocation_role</code> and that each of the configuration types now takes
-  a list of configurations.</p>
+<code>:invocation_role</code> and that each of the configuration types now takes
+a list of configurations.</p></li>
+</ul>
+
 
 <h2><code>aws-sdk-core</code> - v2.0.25</h2>
 
 <ul>
-<li>Increased the default number of attempts to make when loading credentials from the
+<li><p>Increased the default number of attempts to make when loading credentials from the
 Amazon EC2 instance metadata service before failing from 0 to 5. Also increased
 the default open and read timeouts from 1 to 5 seconds each. This increases the
-reliability of loading instance credentials.</li>
-</ul>
+reliability of loading instance credentials.</p>
 
 <p>These new defaults only affect users who are constructing <code>Aws::InstanceProfileCredential</code>
-  objects directly. If you are using the default credential provider chain, the original
-  defaults remain un-changed.</p>
+objects directly. If you are using the default credential provider chain, the original
+defaults remain un-changed.</p>
 
 <p>To revert to default values:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='period'>.</span><span class='id identifier rubyid_config'><a href="Aws.html#config-class_method" title="Aws.config (method)">config</a></span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_credentials'>credentials</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">InstanceProfileCredentials</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/InstanceProfileCredentials.html#new-class_method" title="Aws::InstanceProfileCredentials.new (method)">new</a></span><span class='lparen'>(</span>
-    <span class='label'>retries:</span> <span class='int'>0</span><span class='comma'>,</span>
-    <span class='label'>http_open_timeout:</span> <span class='int'>1</span><span class='comma'>,</span>
-    <span class='label'>http_read_timeout:</span> <span class='int'>1</span>
-  <span class='rparen'>)</span></code></pre>
+  <span class='label'>retries:</span> <span class='int'>0</span><span class='comma'>,</span>
+  <span class='label'>http_open_timeout:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='label'>http_read_timeout:</span> <span class='int'>1</span>
+<span class='rparen'>)</span></code></pre></li>
+</ul>
+
 
 <h2><code>aws-sdk-resources</code> - v2.0.22</h2>
 
 <ul>
-<li><p>Removed the <a href="Aws/SQS/Resource.html" title="Aws::SQS::Resource (class)">::Aws::SQS::Resource</a> interfaces. These have not been formalized,
+<li><p>Removed the <code>Aws::SQS::Resource</code> interfaces. These have not been formalized,
 so they have been removed as part of the stable release of the
 <code>aws-sdk-resources</code> gem.</p></li>
-<li><p>Removed the <a href="Aws/SQS/Resource.html" title="Aws::SQS::Resource (class)">::Aws::SQS::Resource</a> interfaces. These are unstable, so they have
+<li><p>Removed the <code>Aws::SQS::Resource</code> interfaces. These are unstable, so they have
 been removed for the public release of <code>aws-sdk-resources</code>.</p></li>
 </ul>
+
 
 <h2><code>aws-sdk-resources</code> - v2.0.18.pre</h2>
 
 <ul>
-<li>Moved <code>Aws::IAM::Role#update_assume_role_policy</code> to a new resource class.</li>
-</ul>
+<li><p>Moved <code>Aws::IAM::Role#update_assume_role_policy</code> to a new resource class.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_iam'>iam</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/IAM.html" title="Aws::IAM (module)">IAM</a></span><span class='op'>::</span><span class='const'><a href="Aws/IAM/Resource.html" title="Aws::IAM::Resource (class)">Resource</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/IAM/Resource.html#new-class_method" title="Aws::IAM::Resource.new (method)">new</a></span>
 
-  <span class='comment'># old
-</span>  <span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_role'>role</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_update_assume_role_policy'>update_assume_role_policy</span><span class='lparen'>(</span><span class='label'>policy_document:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='comment'># old
+</span><span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_role'>role</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_update_assume_role_policy'>update_assume_role_policy</span><span class='lparen'>(</span><span class='label'>policy_document:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
-  <span class='comment'># new
-</span>  <span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_role'>role</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_assume_role_policy'>assume_role_policy</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='label'>policy_document:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></code></pre>
-
-<ul>
+<span class='comment'># new
+</span><span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_role'>role</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_assume_role_policy'>assume_role_policy</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='label'>policy_document:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></code></pre></li>
 <li><p>Renamed two methods on <code>Aws::IAM::MFADevice</code>.</p>
 
 <ul>
-<li><code>#enable</code> -&gt; <code>#associate</code></li>
-<li><code>#disable</code> -&gt; <code>#disassociate</code></li>
-</ul></li>
-<li><p>Removed <a href="Aws/IAM/AccountSummary.html" title="Aws::IAM::AccountSummary (class)">::Aws::IAM::AccountSummary</a>. Calling
-<code>Aws::IAM::Resource#create_account_summary</code> no longer returns a resource
-object.</p></li>
+<li><code>#enable</code> -> <code>#associate</code></li>
+<li><code>#disable</code> -> <code>#disassociate</code></li>
 </ul>
+</li>
+<li><p>Removed <code>Aws::IAM::AccountSummary</code>. Calling
+<code>Aws::IAM::Resource#create_account_summary</code> no longer returns a resource
+object.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_iam'>iam</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/IAM.html" title="Aws::IAM (module)">IAM</a></span><span class='op'>::</span><span class='const'><a href="Aws/IAM/Resource.html" title="Aws::IAM::Resource (class)">Resource</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/IAM/Resource.html#new-class_method" title="Aws::IAM::Resource.new (method)">new</a></span>
 
-  <span class='comment'># old
-</span>  <span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_create_account_alias'>create_account_alias</span><span class='lparen'>(</span><span class='label'>account_alias:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>alias</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_account_alias'>account_alias</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>alias</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span>
+<span class='comment'># old
+</span><span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_create_account_alias'>create_account_alias</span><span class='lparen'>(</span><span class='label'>account_alias:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>alias</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_account_alias'>account_alias</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>alias</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span>
 
-  <span class='comment'># new (no need to specify the alias when deleting)
-</span>  <span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_create_account_alias'>create_account_alias</span><span class='lparen'>(</span><span class='label'>account_alias:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>alias</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_delete_account_alias'>delete_account_alias</span></code></pre>
+<span class='comment'># new (no need to specify the alias when deleting)
+</span><span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_create_account_alias'>create_account_alias</span><span class='lparen'>(</span><span class='label'>account_alias:</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>alias</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_delete_account_alias'>delete_account_alias</span></code></pre>
 
 <p>Also, the <code>Aws::IAM::Resource#account_aliases</code> method has been removed.
-  There is no replacement. IAM does not permit more than one account
-  alias.</p>
+There is no replacement. IAM does not permit more than one account
+alias.</p></li>
+</ul>
+
 
 <h2><code>aws-sdk-resources</code> - v2.0.14.pre</h2>
 
 <ul>
-<li>Removed <code>:topic_arn</code> from the list of identifiers required
-to construct an <a href="Aws/SNS/Subscription.html" title="Aws::SNS::Subscription (class)">::Aws::SNS::Subscription</a>. Subscription
-is no longer a sub-resource of Topic.</li>
-</ul>
+<li><p>Removed <code>:topic_arn</code> from the list of identifiers required
+to construct an <code>Aws::SNS::Subscription</code>. Subscription
+is no longer a sub-resource of Topic.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sns'>sns</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/SNS.html" title="Aws::SNS (module)">SNS</a></span><span class='op'>::</span><span class='const'><a href="Aws/SNS/Resource.html" title="Aws::SNS::Resource (class)">Resource</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/SNS/Resource.html#new-class_method" title="Aws::SNS::Resource.new (method)">new</a></span>
 
-  <span class='comment'># old
-</span>  <span class='id identifier rubyid_subscription'>subscription</span> <span class='op'>=</span> <span class='id identifier rubyid_sns'>sns</span><span class='period'>.</span><span class='id identifier rubyid_topic'>topic</span><span class='lparen'>(</span><span class='id identifier rubyid_topic_arn'>topic_arn</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span><span class='lparen'>(</span><span class='id identifier rubyid_subscription_arn'>subscription_arn</span><span class='rparen'>)</span>
+<span class='comment'># old
+</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='op'>=</span> <span class='id identifier rubyid_sns'>sns</span><span class='period'>.</span><span class='id identifier rubyid_topic'>topic</span><span class='lparen'>(</span><span class='id identifier rubyid_topic_arn'>topic_arn</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span><span class='lparen'>(</span><span class='id identifier rubyid_subscription_arn'>subscription_arn</span><span class='rparen'>)</span>
 
-  <span class='comment'># new
-</span>  <span class='id identifier rubyid_subscription'>subscription</span> <span class='op'>=</span> <span class='id identifier rubyid_sns'>sns</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span><span class='lparen'>(</span><span class='id identifier rubyid_subscription_arn'>subscription_arn</span><span class='rparen'>)</span></code></pre>
+<span class='comment'># new
+</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='op'>=</span> <span class='id identifier rubyid_sns'>sns</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span><span class='lparen'>(</span><span class='id identifier rubyid_subscription_arn'>subscription_arn</span><span class='rparen'>)</span></code></pre></li>
+</ul>
+
 
 <h2><code>aws-sdk-resources</code> - v2.0.11.pre</h2>
 
 <ul>
-<li>Renamed <code>Aws::IAM::User#create_access_key</code> to <code>#create_access_key_pair</code>.
+<li><p>Renamed <code>Aws::IAM::User#create_access_key</code> to <code>#create_access_key_pair</code>.
 The return value from this method has changed from an instance of
 <code>AccessKey</code> to <code>AccessKeyPair</code> and now has an additional method,
-<code>#secret</code>.</li>
-</ul>
+<code>#secret</code>.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_iam'>iam</span> <span class='op'>=</span> <span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/IAM.html" title="Aws::IAM (module)">IAM</a></span><span class='op'>::</span><span class='const'><a href="Aws/IAM/Resource.html" title="Aws::IAM::Resource (class)">Resource</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/IAM/Resource.html#new-class_method" title="Aws::IAM::Resource.new (method)">new</a></span>
 
-  <span class='comment'># old
-</span>  <span class='id identifier rubyid_key_pair'>key_pair</span> <span class='op'>=</span> <span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_create_access_key'>create_access_key</span>
-  <span class='id identifier rubyid_key_pair'>key_pair</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>     <span class='comment'>#=&gt; access key id
-</span>  <span class='id identifier rubyid_key_pair'>key_pair</span><span class='period'>.</span><span class='id identifier rubyid_secret'>secret</span> <span class='comment'>#=&gt; raises NoMethodError, oops
+<span class='comment'># old
+</span><span class='id identifier rubyid_key_pair'>key_pair</span> <span class='op'>=</span> <span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_create_access_key'>create_access_key</span>
+<span class='id identifier rubyid_key_pair'>key_pair</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>     <span class='comment'>#=&gt; access key id
+</span><span class='id identifier rubyid_key_pair'>key_pair</span><span class='period'>.</span><span class='id identifier rubyid_secret'>secret</span> <span class='comment'>#=&gt; raises NoMethodError, oops
 </span>
-  <span class='comment'># new
-</span>  <span class='id identifier rubyid_key_pair'>key_pair</span> <span class='op'>=</span> <span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_create_access_key_pair'>create_access_key_pair</span>
-  <span class='id identifier rubyid_key_pair'>key_pair</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>     <span class='comment'>#=&gt; access key id
-</span>  <span class='id identifier rubyid_key_pair'>key_pair</span><span class='period'>.</span><span class='id identifier rubyid_secret'>secret</span> <span class='comment'>#=&gt; secret_access_key</span></code></pre>
+<span class='comment'># new
+</span><span class='id identifier rubyid_key_pair'>key_pair</span> <span class='op'>=</span> <span class='id identifier rubyid_iam'>iam</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_create_access_key_pair'>create_access_key_pair</span>
+<span class='id identifier rubyid_key_pair'>key_pair</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>     <span class='comment'>#=&gt; access key id
+</span><span class='id identifier rubyid_key_pair'>key_pair</span><span class='period'>.</span><span class='id identifier rubyid_secret'>secret</span> <span class='comment'>#=&gt; secret_access_key</span></code></pre></li>
+</ul>
+
 
 <h2><code>aws-sdk-resources</code> - v2.0.7.pre</h2>
 
 <ul>
-<li>Moved <code>Aws::S3::MultipartUpload#upload_part</code> and <code>#copy_part</code> to
-<a href="Aws/S3/MultipartUploadPart.html#upload-instance_method" title="Aws::S3::MultipartUploadPart#upload (method)">Aws::S3::MultipartUploadPart#upload</a> and <code>#copy</code>.</li>
-</ul>
+<li><p>Moved <code>Aws::S3::MultipartUpload#upload_part</code> and <code>#copy_part</code> to
+<code>Aws::S3::MultipartUploadPart#upload</code> and <code>#copy</code>.</p>
 
 <pre class="code ruby"><code class="ruby">mpu = s3.bucket(&#39;name&#39;).object(&#39;key&#39;).multipart_upload(&#39;id&#39;)
 
-  # old
-  mpu.upload_part(part_number:1, body:data)
-  mpu.copy_part(part_number:1, copy_source:...)
+# old
+mpu.upload_part(part_number:1, body:data)
+mpu.copy_part(part_number:1, copy_source:...)
 
-  # new
-  mpu.part(1).upload(body:data)
-  mpu.part(1).copy(copy_source:...)</code></pre>
-
-<ul>
-<li>Renamed <code>Aws::OpsWorksStack#get_summary</code> to <a href="Aws/OpsWorks/Stack.html#summary-instance_method" title="Aws::OpsWorks::Stack#summary (method)">Aws::OpsWorks::Stack#summary</a>.
+# new
+mpu.part(1).upload(body:data)
+mpu.part(1).copy(copy_source:...)</code></pre></li>
+<li><p>Renamed <code>Aws::OpsWorksStack#get_summary</code> to <code>Aws::OpsWorks::Stack#summary</code>.
 Additionally, this now returns a resource object of type
-<a href="Aws/OpsWorks/StackSummary.html" title="Aws::OpsWorks::StackSummary (class)">::Aws::OpsWorks::StackSummary</a>. This new object should have all of the same
-methods and the previous.</li>
+<code>Aws::OpsWorks::StackSummary</code>. This new object should have all of the same
+methods and the previous.</p></li>
 </ul>
+
 
 <h2><code>aws-sdk-core</code> - v2.0.0</h2>
 
@@ -407,25 +416,26 @@ release. Deprecated interfaces have been removed.</p>
 <ul>
 <li><p>2.0.0 stable release of <code>aws-sdk-core</code> is now available</p>
 
-<p>gem install aws-sdk-core</p></li>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_aws'>aws</span><span class='op'>-</span><span class='id identifier rubyid_sdk'>sdk</span><span class='op'>-</span><span class='id identifier rubyid_core'>core</span></code></pre></li>
 <li><p>2.0.0 previews of <code>aws-sdk</code> and <code>aws-sdk-resources</code> are now available</p>
 
-<p>gem install aws-sdk --pre</p></li>
+<pre class="code ruby"><code class="ruby">gem install aws-sdk --pre</code></pre></li>
 <li><p>Removed deprecated constructor on service modules.</p>
 
-<p>Aws::EC2.new # removed</p>
-
-<p>Aws::EC2::Client.new # do this</p></li>
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/EC2.html" title="Aws::EC2 (module)">EC2</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='comment'># removed
+</span>
+<span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/EC2.html" title="Aws::EC2 (module)">EC2</a></span><span class='op'>::</span><span class='const'><a href="Aws/EC2/Client.html" title="Aws::EC2::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/EC2/Client.html#new-class_method" title="Aws::EC2::Client.new (method)">new</a></span> <span class='comment'># do this</span></code></pre></li>
 <li><p>Removed deprecated service helpers on Aws module.</p>
 
-<p>Aws.ec2 # removed</p>
-
-<p>Aws::EC2::Client.new # use this</p></li>
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='period'>.</span><span class='id identifier rubyid_ec2'>ec2</span> <span class='comment'># removed
+</span>
+<span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/EC2.html" title="Aws::EC2 (module)">EC2</a></span><span class='op'>::</span><span class='const'><a href="Aws/EC2/Client.html" title="Aws::EC2::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/EC2/Client.html#new-class_method" title="Aws::EC2::Client.new (method)">new</a></span> <span class='comment'># use this</span></code></pre></li>
 </ul>
+
 
 <h2><code>aws-sdk-core</code> - v2.0.0.rc15</h2>
 
-<p>RC15 updates the <a href="Aws/DynamoDB/Client.html" title="Aws::DynamoDB::Client (class)">::Aws::DynamoDB::Client</a> API operations to accept and return
+<p>RC15 updates the <code>Aws::DynamoDB::Client</code> API operations to accept and return
 simple attribute values. Prior to rc14 values were specified as:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='lbrace'>{</span> <span class='label'>s:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>string-value</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
@@ -455,16 +465,17 @@ when configuring raw endpoints.</p>
 
 <ul>
 <li><p>Versioned client classes removed, e.g. <code>Aws::S3::Client::V20060301.new</code> should
-be replaced with <a href="Aws/S3/Client.html#new-class_method" title="Aws::S3::Client.new (method)">Aws::S3::Client.new</a> The <code>:api_version</code> constructor option
+be replaced with <code>Aws::S3::Client.new</code> The <code>:api_version</code> constructor option
 is no longer accepted.</p></li>
 <li><p>Aws helper methods for client construction deprecated; For example,
-calling <code>Aws.s3</code> will generate a deprecation warning. Call <a href="Aws/S3/Client.html#new-class_method" title="Aws::S3::Client.new (method)">Aws::S3::Client.new</a>
+calling <code>Aws.s3</code> will generate a deprecation warning. Call <code>Aws::S3::Client.new</code>
 instead. Top-level helpers will be removed as of v2.0.0 final.</p></li>
 <li><p>When configuring an <code>:endpoint</code> directly, you must now specify the
-HTTP scheme, e.g. &quot;<a href="http://localhost:3000">http://localhost:3000</a>&quot;, instead of &quot;localhost:3000&quot;.
+HTTP scheme, e.g. "<a href="http://localhost:3000">http://localhost:3000</a>", instead of "localhost:3000".
 Please note, this should only be done for testing. Normally you only
 need to configure a <code>:region</code>.</p></li>
 </ul>
+
 
 <h2><code>aws-sdk-core</code> - v2.0.0.rc11</h2>
 
@@ -475,16 +486,17 @@ changes before 2.0.0 final.</p>
 <li><p>The prefered constructor for services is now using the client
 class, example:</p>
 
-<p># deprecated, will be removed for 2.0.0 final
-  Aws::S3.new</p>
+<pre class="code ruby"><code class="ruby"><span class='comment'># deprecated, will be removed for 2.0.0 final
+</span><span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3.html" title="Aws::S3 (module)">S3</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 
-<p># preferred
-  Aws::S3::Client.new</p></li>
+<span class='comment'># preferred
+</span><span class='const'><a href="Aws.html" title="Aws (module)">Aws</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3.html" title="Aws::S3 (module)">S3</a></span><span class='op'>::</span><span class='const'><a href="Aws/S3/Client.html" title="Aws::S3::Client (class)">Client</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Aws/S3/Client.html#new-class_method" title="Aws::S3::Client.new (method)">new</a></span></code></pre></li>
 <li><p>The <code>:raw_json</code> option for JSON protocol based services has been
 renamed to <code>:simple_json</code></p></li>
 <li><p>The short name for Aws::SimpleDB has been renamed from <code>sdb</code> to
 <code>simpledb</code>.</p></li>
 </ul>
+
 
 <h1>Upgrading from v1?</h1>
 

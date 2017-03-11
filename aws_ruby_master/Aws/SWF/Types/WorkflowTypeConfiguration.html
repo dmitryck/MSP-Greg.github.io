@@ -114,7 +114,14 @@
 <div id='overview_ds'>
 <div class='docstring'>
   <div class='discussion'>
-    <p><p>The configuration settings of a workflow type.</p><p>Returned by:</p><ul><li><a href="WorkflowTypeDetail.html#configuration-instance_method" title="Aws::SWF::Types::WorkflowTypeDetail#configuration (method)">WorkflowTypeDetail#configuration</a></li></ul></p>
+    <p>The configuration settings of a workflow type.</p>
+
+
+<p>Returned by:</p>
+
+
+<ul><li><a href="WorkflowTypeDetail.html#configuration-instance_method" title="Aws::SWF::Types::WorkflowTypeDetail#configuration (method)">WorkflowTypeDetail#configuration</a></li></ul>
+
 
   </div>
 </div>
@@ -147,7 +154,10 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The default IAM role to use when a workflow execution invokes a AWS Lambda function.</p>.</p></div>
+      <div class='inline'><p>The default IAM role to use when a workflow execution invokes a AWS Lambda function.</p>
+
+
+<p>.</p></div>
     </div>
   </li>
   <li>
@@ -186,7 +196,10 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p><p><i>Optional.</i> The default policy to use for the child workflow executions when a workflow execution of this type is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul><p>Possible values:</p><ul><li><tt>TERMINATE</tt></li><li><tt>REQUEST_CANCEL</tt></li><li><tt>ABANDON</tt></li></ul></p>
+    <p><i>Optional.</i> The default policy to use for the child workflow executions when a workflow execution of this type is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p>
+
+
+<p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul><p>Possible values:</p><ul><li><tt>TERMINATE</tt></li><li><tt>REQUEST_CANCEL</tt></li><li><tt>ABANDON</tt></li></ul></p>
 
   </div>
 </div>
@@ -201,7 +214,10 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p><i>Optional.</i> The default maximum duration, specified when registering the workflow type, for executions of this workflow type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+    <p><i>Optional.</i> The default maximum duration, specified when registering the workflow type, for executions of this workflow type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p>
+
+
+<p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p></p>
 
   </div>
 </div>
@@ -218,6 +234,7 @@
   <div class='discussion'>
     <p>The default IAM role to use when a workflow execution invokes a AWS Lambda function.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -233,6 +250,7 @@
   <div class='discussion'>
     <p><i>Optional.</i> The default task list, specified when registering the workflow type, for decisions tasks scheduled for workflow executions of this type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p>
 
+
   </div>
 </div>
 <div class='tags'>
@@ -246,7 +264,10 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p><i>Optional.</i> The default task priority, specified when registering the workflow type, for all decision tasks of this workflow type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+    <p><i>Optional.</i> The default task priority, specified when registering the workflow type, for all decision tasks of this workflow type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p>
+
+
+<p> <p>Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p></p>
 
   </div>
 </div>
@@ -261,7 +282,10 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p><i>Optional.</i> The default maximum duration, specified when registering the workflow type, that a decision task for executions of this workflow type might take before returning completion or failure. If the task does not close in the specified time then the task is automatically timed out and rescheduled. If the decider eventually reports a completion or failure, it is ignored. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+    <p><i>Optional.</i> The default maximum duration, specified when registering the workflow type, that a decision task for executions of this workflow type might take before returning completion or failure. If the task does not close in the specified time then the task is automatically timed out and rescheduled. If the decider eventually reports a completion or failure, it is ignored. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p>
+
+
+<p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p></p>
 
   </div>
 </div>

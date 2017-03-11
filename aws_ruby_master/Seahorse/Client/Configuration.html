@@ -171,20 +171,20 @@ option, an <code>ArgumentError</code> is raised.</p>
 value.  Default values can be passed as a static positional argument
 or via a block.</p>
 
-<p># defaults to nil
+<p>   # defaults to nil
    configuration.add_option(:name)</p>
 
-<p># with a string default
-   configuration.add_option(:name, &#39;John Doe&#39;)</p>
+<p>   # with a string default
+   configuration.add_option(:name, 'John Doe')</p>
 
-<p># with a dynamic default value, evaluated once when calling #build!
-   configuration.add_option(:name, &#39;John Doe&#39;)
+<p>   # with a dynamic default value, evaluated once when calling #build!
+   configuration.add_option(:name, 'John Doe')
    configuration.add_option(:username) do |config|
-      config.name.gsub(/\W+/, &#39;&#39;).downcase
+      config.name.gsub(/\W+/, '').downcase
    end
    cfg = configuration.build!
-   cfg.name #=&gt; &#39;John Doe&#39;
-   cfg.username #=&gt; &#39;johndoe&#39;</p>
+   cfg.name #=> 'John Doe'
+   cfg.username #=> 'johndoe'</p>
 
   </div>
 </div>
