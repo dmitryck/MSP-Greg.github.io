@@ -79,7 +79,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L73'>lib/ostruct.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L75'>lib/ostruct.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -94,55 +94,57 @@ definition of arbitrary attributes with their accompanying values. This is
 accomplished by using Ruby&#39;s metaprogramming to define methods on the
 class itself.</p>
 
-<h3 id="label-Examples-3A">Examples:</h3>
+<h3 id="label-Examples">Examples</h3>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&#39;</span></span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&quot;</span></span>
 
 <span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span>
-<span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>    <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&quot;</span></span>
-<span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_age'>age</span>     <span class='op'>=</span> <span class='int'>70</span>
-<span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_pension'>pension</span> <span class='op'>=</span> <span class='int'>300</span>
+<span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_age'>age</span>  <span class='op'>=</span> <span class='int'>70</span>
 
-<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>     <span class='comment'># -&gt; &quot;John Smith&quot;
-</span><span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_age'>age</span>      <span class='comment'># -&gt; 70
-</span><span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span>  <span class='comment'># -&gt; nil</span></code></pre>
+<span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>      <span class='comment'># =&gt; &quot;John Smith&quot;
+</span><span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_age'>age</span>       <span class='comment'># =&gt; 70
+</span><span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span>   <span class='comment'># =&gt; nil</span></code></pre>
 
-<p>An OpenStruct employs a Hash internally to store the methods and values and
-can even be initialized with one:</p>
+<p>An OpenStruct employs a Hash internally to store the attributes and values
+and can even be initialized with one:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_australia'>australia</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_country'>country</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Australia</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_population'>population</span> <span class='op'>=&gt;</span> <span class='int'>20_000_000</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_australia'>australia</span>   <span class='comment'># -&gt; &lt;OpenStruct country=&quot;Australia&quot; population=20000000&gt;</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_australia'>australia</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_country'>country</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Australia</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_capital'>capital</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Canberra</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='comment'># =&gt; #&lt;OpenStruct country=&quot;Australia&quot;, capital=&quot;Canberra&quot;&gt;</span></code></pre>
 
-<p>Hash keys with spaces or characters that would normally not be able to use
-for method calls (e.g. ()[]*) will not be immediately available on the
-<code>OpenStruct</code> object as a method for retrieval or assignment, but
-can be still be reached through the <code>Object#send</code> method.</p>
+<p>Hash keys with spaces or characters that could normally not be used for
+method calls (e.g. <code>()[]*</code>) will not be immediately available on
+the <code>OpenStruct</code> object as a method for retrieval or assignment,
+but can still be reached through the <code>Object#send</code> method.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_measurements'>measurements</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>length (in inches)</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='int'>24</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_measurements'>measurements</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>length (in inches)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># -&gt; 24
+<span class='id identifier rubyid_measurements'>measurements</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>length (in inches)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'># =&gt; 24
 </span>
-<span class='id identifier rubyid_data_point'>data_point</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_queued?'>queued?</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_data_point'>data_point</span><span class='period'>.</span><span class='id identifier rubyid_queued?'>queued?</span>                       <span class='comment'># -&gt; true
-</span><span class='id identifier rubyid_data_point'>data_point</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>queued?=</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='kw'>false</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_data_point'>data_point</span><span class='period'>.</span><span class='id identifier rubyid_queued?'>queued?</span>                       <span class='comment'># -&gt; false</span></code></pre>
+<span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_queued?'>queued?</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_queued?'>queued?</span>                           <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>queued?=</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_queued?'>queued?</span>                           <span class='comment'># =&gt; false</span></code></pre>
 
-<p>Removing the presence of a method requires the execution the delete_field
-method as setting the property value to <code>nil</code> will not remove the method.</p>
+<p>Removing the presence of an attribute requires the execution of the
+delete_field method as setting the property value to <code>nil</code> will not remove
+the attribute.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_first_pet'>first_pet</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Rowdy</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_first_pet'>first_pet</span>  <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Rowdy</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_second_pet'>second_pet</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Rowdy</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
 <span class='id identifier rubyid_first_pet'>first_pet</span><span class='period'>.</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='kw'>nil</span>
-<span class='id identifier rubyid_second_pet'>second_pet</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Rowdy</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-
-<span class='id identifier rubyid_first_pet'>first_pet</span> <span class='op'>==</span> <span class='id identifier rubyid_second_pet'>second_pet</span>   <span class='comment'># -&gt; false
+<span class='id identifier rubyid_first_pet'>first_pet</span>                 <span class='comment'># =&gt; #&lt;OpenStruct name=&quot;Rowdy&quot;, owner=nil&gt;
+</span><span class='id identifier rubyid_first_pet'>first_pet</span> <span class='op'>==</span> <span class='id identifier rubyid_second_pet'>second_pet</span>   <span class='comment'># =&gt; false
 </span>
 <span class='id identifier rubyid_first_pet'>first_pet</span><span class='period'>.</span><span class='id identifier rubyid_delete_field'>delete_field</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_first_pet'>first_pet</span> <span class='op'>==</span> <span class='id identifier rubyid_second_pet'>second_pet</span>   <span class='comment'># -&gt; true</span></code></pre>
+<span class='id identifier rubyid_first_pet'>first_pet</span>                 <span class='comment'># =&gt; #&lt;OpenStruct name=&quot;Rowdy&quot;&gt;
+</span><span class='id identifier rubyid_first_pet'>first_pet</span> <span class='op'>==</span> <span class='id identifier rubyid_second_pet'>second_pet</span>   <span class='comment'># =&gt; true</span></code></pre>
 
-<h3 id="label-Implementation-3A">Implementation:</h3>
+<h3 id="label-Implementation">Implementation</h3>
 
 <p>An OpenStruct utilizes Ruby&#39;s method lookup structure to find and
 define the necessary methods for properties. This is accomplished through
-the method method_missing and define_method.</p>
+the methods method_missing and define_singleton_method.</p>
 
 <p>This should be a consideration if there is a concern about the performance
 of the objects that are created, as there is much more overhead in the
@@ -158,7 +160,7 @@ setting of these properties compared to using a Hash or a Struct.</p>
     <span id='InspectKey-constant' class='summary_signature nodoc'>InspectKey =</span>
     <span class='nodoc note title'>Internal use only</span>
     <br/>
-    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L275-L275'># File 'lib/ostruct.rb', line 275</a>    <pre class='code ruby'><span class='symbeg'>:</span><span class='id identifier rubyid___inspect_key__'>__inspect_key__</span></pre>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L305-L305'># File 'lib/ostruct.rb', line 305</a>    <pre class='code ruby'><span class='symbeg'>:</span><span class='id identifier rubyid___inspect_key__'>__inspect_key__</span></pre>
   </li>
 </ul>
 </div>
@@ -234,18 +236,18 @@ setting of these properties compared to using a Hash or a Struct.</p>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#[]-instance_method" title="#[] (instance method)">#<strong>[]</strong>(name)  </a>
+      <a href="#[]-instance_method" title="#[] (instance method)">#<strong>[]</strong>(name)  &#x21d2; Object </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Returns the value of a member.</p></div>
+      <div class='inline'><p>Returns the value of an attribute.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#[]=-instance_method" title="#[]= (instance method)">#<strong>[]=</strong>(name, value)  </a>
+      <a href="#[]=-instance_method" title="#[]= (instance method)">#<strong>[]=</strong>(name, obj)  &#x21d2; Object </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Sets the value of a member.</p></div>
+      <div class='inline'><p>Sets the value of an attribute.</p></div>
     </div>
   </li>
   <li>
@@ -253,25 +255,26 @@ setting of these properties compared to using a Hash or a Struct.</p>
       <a href="#delete_field-instance_method" title="#delete_field (instance method)">#<strong>delete_field</strong>(name)  </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Remove the named field from the object.</p></div>
+      <div class='inline'><p>Removes the named field from the object.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#dig-instance_method" title="#dig (instance method)">#<strong>dig</strong>(name, *names)  </a>
+      <a href="#dig-instance_method" title="#dig (instance method)">#<strong>dig</strong>(name, ...)  &#x21d2; Object </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Retrieves the value object corresponding to the each <code>name</code> objects
-repeatedly.</p></div>
+      <div class='inline'><p>Extracts the nested value specified by the sequence of <code>name</code> objects by
+calling <code>dig</code> at each step, returning <code>nil</code> if any intermediate
+step is <code>nil</code>.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#each_pair-instance_method" title="#each_pair (instance method)">#<strong>each_pair</strong>  </a>
+      <a href="#each_pair-instance_method" title="#each_pair (instance method)">#<strong>each_pair</strong> {|name, value| ... } &#x21d2; ostruct </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Yields all attributes (as a symbol) along with the corresponding values or
-returns an enumerator if not block is given.</p></div>
+      <div class='inline'><p>Yields all attributes (as symbols) along with the corresponding values or
+returns an enumerator if no block is given.</p></div>
     </div>
   </li>
   <li>
@@ -292,15 +295,7 @@ returns an enumerator if not block is given.</p></div>
       <a href="#hash-instance_method" title="#hash (instance method)">#<strong>hash</strong>  </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Compute a hash-code for this <code>OpenStruct</code>.</p></div>
-    </div>
-  </li>
-  <li>
-    <span class='summary_signature '>
-      <a href="#initialize_copy-instance_method" title="#initialize_copy (instance method)">#<strong>initialize_copy</strong>(orig)  </a>
-    </span>
-    <div class='summary_desc'>
-      <div class='inline'><p>Duplicate an <code>OpenStruct</code> object members.</p></div>
+      <div class='inline'><p>Computes a hash code for this <code>OpenStruct</code>.</p></div>
     </div>
   </li>
   <li>
@@ -330,16 +325,11 @@ returns an enumerator if not block is given.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#respond_to_missing%3F-instance_method" title="#respond_to_missing? (instance method)">#<strong>respond_to_missing?</strong>(mid, include_private = false)  &#x21d2; Boolean </a>
-    </span>
-  </li>
-  <li>
-    <span class='summary_signature '>
       <a href="#to_h-instance_method" title="#to_h (instance method)">#<strong>to_h</strong>  </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Converts the <code>OpenStruct</code> to a hash with keys representing each
-attribute (as symbols) and their corresponding values Example:</p></div>
+attribute (as symbols) and their corresponding values.</p></div>
     </div>
   </li>
   <li>
@@ -352,7 +342,22 @@ attribute (as symbols) and their corresponding values Example:</p></div>
   </li>
   <li>
     <span class='summary_signature nodoc'>
+      <a href="#initialize_copy-instance_method" title="#initialize_copy (instance method)">#<strong>initialize_copy</strong>(orig)  </a>
+    </span>
+    <span class='nodoc note title'>Internal use only</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Duplicates an <code>OpenStruct</code> object&#39;s Hash table.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature nodoc'>
       <a href="#method_missing-instance_method" title="#method_missing (instance method)">#<strong>method_missing</strong>(mid, *args)  </a>
+    </span>
+    <span class='nodoc note title'>Internal use only</span>
+  </li>
+  <li>
+    <span class='summary_signature nodoc'>
+      <a href="#respond_to_missing%3F-instance_method" title="#respond_to_missing? (instance method)">#<strong>respond_to_missing?</strong>(mid, include_private = false)  &#x21d2; Boolean </a>
     </span>
     <span class='nodoc note title'>Internal use only</span>
   </li>
@@ -407,32 +412,32 @@ modified before granting access to the internal Hash table to be modified.</p></
 <p>The optional <a href="#hash-instance_method" title="OpenStruct#hash (method)">#hash</a>, if given, will generate attributes and values (can be
 a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_hash'>hash</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>country</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Australia</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_population'>population</span> <span class='op'>=&gt;</span> <span class='int'>20_000_000</span> <span class='rbrace'>}</span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_hash'>hash</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>country</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Australia</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_capital'>capital</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Canberra</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
 <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
 
-<span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_data'>data</span>        <span class='comment'># -&gt; &lt;OpenStruct country=&quot;Australia&quot; population=20000000&gt;</span></code></pre>
+<span class='id identifier rubyid_data'>data</span>   <span class='comment'># =&gt; #&lt;OpenStruct country=&quot;Australia&quot;, capital=&quot;Canberra&quot;&gt;</span></code></pre>
 
   </div>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L92-L100'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L94-L102'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-92
-93
 94
 95
 96
 97
 98
 99
-100</pre>
+100
+101
+102</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 92</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 94</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
@@ -460,15 +465,11 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L197-L214'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L201-L218'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-197
-198
-199
-200
 201
 202
 203
@@ -482,9 +483,13 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
 211
 212
 213
-214</pre>
+214
+215
+216
+217
+218</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 197</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 201</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_mid'>mid</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -515,14 +520,14 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
   <h3 class='signature  first'>
     .<strong>allocate</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L75-L75'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L77-L77'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-75</pre>
+77</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 75</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 77</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='id identifier rubyid_allocate'>allocate</span> <span class='id identifier rubyid_new'>new</span>
@@ -546,14 +551,14 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L165-L165'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L169-L169'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-165</pre>
+169</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 165</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 169</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='id identifier rubyid_modifiable'>modifiable</span> <span class='id identifier rubyid_modifiable?'>modifiable?</span> <span class='comment'># :nodoc:</span>
@@ -570,14 +575,14 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L303-L303'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L333-L333'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-303</pre>
+333</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 303</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 333</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_table'>table</span> <span class='comment'># :nodoc:</span>
@@ -597,14 +602,14 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L305-L305'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L335-L335'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-305</pre>
+335</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 305</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 335</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='id identifier rubyid_table!'>table!</span> <span class='id identifier rubyid_table'>table</span>
@@ -625,19 +630,27 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
 <code>other</code> when <code>other</code> is an <code>OpenStruct</code> and the two objects&#39;
 Hash tables are equal.</p>
 
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_first_pet'>first_pet</span>  <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Rowdy</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_second_pet'>second_pet</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Rowdy</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_third_pet'>third_pet</span>  <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Rowdy</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_age'>age</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+
+<span class='id identifier rubyid_first_pet'>first_pet</span> <span class='op'>==</span> <span class='id identifier rubyid_second_pet'>second_pet</span>   <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_first_pet'>first_pet</span> <span class='op'>==</span> <span class='id identifier rubyid_third_pet'>third_pet</span>    <span class='comment'># =&gt; false</span></code></pre>
+
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L312-L315'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L350-L353'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-312
-313
-314
-315</pre>
+350
+351
+352
+353</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 312</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 350</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
@@ -651,28 +664,28 @@ Hash tables are equal.</p>
 
 <section class='method_details' id="[]-instance_method">
   <h3 class='signature '>
-    #<strong>[]</strong>(name)  
-  </h3>
+    #<strong>[]</strong>(name)  &#x21d2; <code>Object</code>   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Returns the value of a member.</p>
+<p>Returns the value of an attribute.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>age</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>70</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_person'>person</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_age'>age</span><span class='rbracket'>]</span> <span class='comment'># =&gt; 70, same as ostruct.age</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>age</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='int'>70</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_person'>person</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_age'>age</span><span class='rbracket'>]</span>   <span class='comment'># =&gt; 70, same as person.age</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L221-L223'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L230-L232'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-221
-222
-223</pre>
+230
+231
+232</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 221</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 230</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -685,29 +698,29 @@ Hash tables are equal.</p>
 
 <section class='method_details' id="[]=-instance_method">
   <h3 class='signature '>
-    #<strong>[]=</strong>(name, value)  
-  </h3>
+    #<strong>[]=</strong>(name, obj)  &#x21d2; <code>Object</code>   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Sets the value of a member.</p>
+<p>Sets the value of an attribute.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>age</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>70</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_person'>person</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_age'>age</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>42</span> <span class='comment'># =&gt; equivalent to ostruct.age = 42
-</span><span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_age'>age</span> <span class='comment'># =&gt; 42</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>age</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='int'>70</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_person'>person</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_age'>age</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>42</span>   <span class='comment'># equivalent to person.age = 42
+</span><span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_age'>age</span>          <span class='comment'># =&gt; 42</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L232-L234'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L245-L247'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-232
-233
-234</pre>
+245
+246
+247</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 232</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 245</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>[]=</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -725,34 +738,40 @@ Hash tables are equal.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Remove the named field from the object. Returns the value that the field
+<p>Removes the named field from the object. Returns the value that the field
 contained if it was defined.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&#39;</span></span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&quot;</span></span>
 
-<span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>age</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>70</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>John</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>age:</span> <span class='int'>70</span><span class='comma'>,</span> <span class='label'>pension:</span> <span class='int'>300</span><span class='rparen'>)</span>
 
-<span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_delete_field'>delete_field</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; &#39;John Smith&#39;</span></code></pre>
+<span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_delete_field'>delete_field</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>age</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'># =&gt; 70
+</span><span class='id identifier rubyid_person'>person</span>                       <span class='comment'># =&gt; #&lt;OpenStruct name=&quot;John&quot;, pension=300&gt;</span></code></pre>
+
+<p>Setting the value to <code>nil</code> will not remove the attribute:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_pension'>pension</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='id identifier rubyid_person'>person</span>                 <span class='comment'># =&gt; #&lt;OpenStruct name=&quot;John&quot;, pension=nil&gt;</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L264-L273'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L294-L303'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273</pre>
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 264</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 294</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_field'>delete_field</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -772,36 +791,43 @@ contained if it was defined.</p>
 
 <section class='method_details' id="dig-instance_method">
   <h3 class='signature '>
-    #<strong>dig</strong>(name, *names)  
-  </h3>
+    #<strong>dig</strong>(name, ...)  &#x21d2; <code>Object</code>   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Retrieves the value object corresponding to the each <code>name</code> objects
-repeatedly.</p>
+<p>Extracts the nested value specified by the sequence of <code>name</code> objects by
+calling <code>dig</code> at each step, returning <code>nil</code> if any intermediate
+step is <code>nil</code>.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_address'>address</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>city</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Anytown NC</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>zip</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>12345</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>address</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_address'>address</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>zip</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; 12345
-</span><span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_business_address'>business_address</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>zip</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; nil</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_address'>address</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>city</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Anytown NC</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>zip</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='int'>12345</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_person'>person</span>  <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>address</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_address'>address</span><span class='rparen'>)</span>
+
+<span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>zip</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>            <span class='comment'># =&gt; 12345
+</span><span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_business_address'>business_address</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>zip</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'># =&gt; nil
+</span>
+<span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_array'>array</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='int'>2</span><span class='comma'>,</span> <span class='int'>3</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+<span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_array'>array</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>   <span class='comment'># =&gt; 2
+</span><span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_array'>array</span><span class='comma'>,</span> <span class='int'>0</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>   <span class='comment'># TypeError: Integer does not have #dig method</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L245-L252'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L269-L276'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-245
-246
-247
-248
-249
-250
-251
-252</pre>
+269
+270
+271
+272
+273
+274
+275
+276</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 245</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 269</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_names'>names</span><span class='rparen'>)</span>
@@ -819,32 +845,37 @@ repeatedly.</p>
 
 <section class='method_details' id="each_pair-instance_method">
   <h3 class='signature '>
-    #<strong>each_pair</strong>  
+    <div class='inline-block'>
+      <span class='overload'>#<strong>each_pair</strong> {|name, value| ... } &#x21d2; <code>ostruct</code> </span>
+      <span class='overload'>#<strong>each_pair</strong>  &#x21d2; <code>Enumerator</code> </span>
+    </div>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Yields all attributes (as a symbol) along with the corresponding values or
-returns an enumerator if not block is given. Example:</p>
+<p>Yields all attributes (as symbols) along with the corresponding values or
+returns an enumerator if no block is given.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>country</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Australia</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_population'>population</span> <span class='op'>=&gt;</span> <span class='int'>20_000_000</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>  <span class='comment'># =&gt; [[:country, &quot;Australia&quot;], [:population, 20000000]]</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>country</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Australia</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_capital'>capital</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Canberra</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>   <span class='comment'># =&gt; [[:country, &quot;Australia&quot;], [:capital, &quot;Canberra&quot;]]</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L130-L134'>GitHub</a>&#8202;]</span>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L134-L138'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-130
-131
-132
-133
-134</pre>
+134
+135
+136
+137
+138</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 130</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 134</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each_pair'>each_pair</span>
@@ -872,17 +903,17 @@ Hash tables are eql?.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L322-L325'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L360-L363'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-322
-323
-324
-325</pre>
+360
+361
+362
+363</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 322</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 360</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
@@ -898,17 +929,17 @@ Hash tables are eql?.</p>
   <h3 class='signature '>
     #<strong>freeze</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L187-L190'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L191-L194'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-187
-188
-189
-190</pre>
+191
+192
+193
+194</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 187</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 191</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_freeze'>freeze</span>
@@ -927,21 +958,24 @@ Hash tables are eql?.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Compute a hash-code for this <code>OpenStruct</code>. Two hashes with the
-same content will have the same hash code (and will be eql?).</p>
+<p>Computes a hash code for this <code>OpenStruct</code>. Two OpenStruct
+objects with the same content will have the same hash code (and will
+compare using <a href="#eql%3F-instance_method" title="OpenStruct#eql? (method)">#eql?</a>).</p>
+
+<p>See also <code>Object#hash</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L330-L332'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L370-L372'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-330
-331
-332</pre>
+370
+371
+372</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 330</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 370</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hash'>hash</span>
@@ -953,31 +987,34 @@ same content will have the same hash code (and will be eql?).</p>
 </section>
 
 <section class='method_details' id="initialize_copy-instance_method">
-  <h3 class='signature '>
+  <h3 class='signature nodoc'>
     #<strong>initialize_copy</strong>(orig)  
   </h3>
+  <div class='note nodoc inline-block'>
+    <strong>This method is for internal use only.</strong>
+  </div><div></div>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Duplicate an <code>OpenStruct</code> object members.</p>
+<p>Duplicates an <code>OpenStruct</code> object&#39;s Hash table.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L103-L106'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L105-L108'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-103
-104
 105
-106</pre>
+106
+107
+108</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 103</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 105</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize_copy'>initialize_copy</span><span class='lparen'>(</span><span class='id identifier rubyid_orig'>orig</span><span class='rparen'>)</span>
-  <span class='kw'>super</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize_copy'>initialize_copy</span><span class='lparen'>(</span><span class='id identifier rubyid_orig'>orig</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
+</span>  <span class='kw'>super</span>
   <span class='ivar'>@table</span> <span class='op'>=</span> <span class='ivar'>@table</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
 <span class='kw'>end</span>
 </pre>
@@ -997,34 +1034,34 @@ same content will have the same hash code (and will be eql?).</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L280-L300'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L310-L330'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-280
-281
-282
-283
-284
-285
-286
-287
-288
-289
-290
-291
-292
-293
-294
-295
-296
-297
-298
-299
-300</pre>
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 280</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 310</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
@@ -1064,16 +1101,16 @@ same content will have the same hash code (and will be eql?).</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L139-L141'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L143-L145'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-139
-140
-141</pre>
+143
+144
+145</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 139</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 143</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_marshal_dump'>marshal_dump</span>
@@ -1095,16 +1132,16 @@ same content will have the same hash code (and will be eql?).</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L146-L148'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L150-L152'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-146
-147
-148</pre>
+150
+151
+152</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 146</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 150</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_marshal_load'>marshal_load</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
@@ -1133,21 +1170,21 @@ modified before granting access to the internal Hash table to be modified.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L154-L161'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L158-L165'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-154
-155
-156
-157
 158
 159
 160
-161</pre>
+161
+162
+163
+164
+165</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 154</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 158</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_modifiable?'>modifiable?</span> <span class='comment'># :nodoc:
@@ -1177,14 +1214,14 @@ modified before granting access to the internal Hash table to be modified.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L184-L184'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L188-L188'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-184</pre>
+188</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 184</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 188</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='id identifier rubyid_new_ostruct_member'>new_ostruct_member</span> <span class='id identifier rubyid_new_ostruct_member!'>new_ostruct_member!</span> <span class='comment'># :nodoc:</span>
@@ -1210,21 +1247,21 @@ both the getter method and the setter method.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L173-L180'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L177-L184'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-173
-174
-175
-176
 177
 178
 179
-180</pre>
+180
+181
+182
+183
+184</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 173</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 177</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new_ostruct_member!'>new_ostruct_member!</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -1241,9 +1278,12 @@ both the getter method and the setter method.</p>
 </section>
 
 <section class='method_details' id="respond_to_missing?-instance_method">
-  <h3 class='signature '>
+  <h3 class='signature nodoc'>
     #<strong>respond_to_missing?</strong>(mid, include_private = false)  &#x21d2; <code>Boolean</code> 
   </h3>
+  <div class='note nodoc inline-block'>
+    <strong>This method is for internal use only.</strong>
+  </div><div></div>
 <div class='docstring'>
   <div class='discussion'>
     
@@ -1251,21 +1291,21 @@ both the getter method and the setter method.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L192-L195'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L196-L199'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-192
-193
-194
-195</pre>
+196
+197
+198
+199</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 192</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 196</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_respond_to_missing?'>respond_to_missing?</span><span class='lparen'>(</span><span class='id identifier rubyid_mid'>mid</span><span class='comma'>,</span> <span class='id identifier rubyid_include_private'>include_private</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_mname'>mname</span> <span class='op'>=</span> <span class='id identifier rubyid_mid'>mid</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>=</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_respond_to_missing?'>respond_to_missing?</span><span class='lparen'>(</span><span class='id identifier rubyid_mid'>mid</span><span class='comma'>,</span> <span class='id identifier rubyid_include_private'>include_private</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
+</span>  <span class='id identifier rubyid_mname'>mname</span> <span class='op'>=</span> <span class='id identifier rubyid_mid'>mid</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>=</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
   <span class='ivar'>@table</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='id identifier rubyid_mname'>mname</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='kw'>super</span>
 <span class='kw'>end</span>
 </pre>
@@ -1281,24 +1321,24 @@ both the getter method and the setter method.</p>
   <div class='discussion'>
     
 <p>Converts the <code>OpenStruct</code> to a hash with keys representing each
-attribute (as symbols) and their corresponding values Example:</p>
+attribute (as symbols) and their corresponding values.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>country</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Australia</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_population'>population</span> <span class='op'>=&gt;</span> <span class='int'>20_000_000</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>   <span class='comment'># =&gt; {:country =&gt; &quot;Australia&quot;, :population =&gt; 20000000 }</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ostruct</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="OpenStruct.new (method)">new</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>country</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Australia</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_capital'>capital</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Canberra</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>   <span class='comment'># =&gt; {:country =&gt; &quot;Australia&quot;, :capital =&gt; &quot;Canberra&quot; }</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L117-L119'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L118-L120'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-117
 118
-119</pre>
+119
+120</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 117</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 118</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
@@ -1320,14 +1360,14 @@ attribute (as symbols) and their corresponding values Example:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L301-L301'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L331-L331'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-301</pre>
+331</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 301</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 331</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='symbeg'>:</span><span class='id identifier rubyid_inspect'>inspect</span>
