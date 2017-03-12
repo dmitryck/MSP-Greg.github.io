@@ -310,7 +310,7 @@ Methods on {Numeric} like `2.days` now use these predefined durations
 to avoid duplication of duration constants through the codebase and
 eliminate creation of intermediate durations.
 
-*Andrey Novikov, Andrew White*</code></pre>
+*Andrey Novikov*, *Andrew White*</code></pre>
 
 <ul>
 <li><p>Change return value of <a href="Rational.html#duplicable%3F-instance_method" title="Rational#duplicable? (method)">Rational#duplicable?</a>, <code>ComplexClass#duplicable?</code>
@@ -519,26 +519,26 @@ by Ruby&#39;s <code>Date.strptime</code>. Previously it raised
 
 <p><em>John Gesimondo</em></p></li>
 <li><p><code>travel/travel_to</code> travel time helpers, now raise on nested calls,
- as this can lead to confusing time stubbing.</p>
+as this can lead to confusing time stubbing.</p>
 
 <p>Instead of:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_travel_to'>travel_to</span> <span class='int'>2</span><span class='period'>.</span><span class='id identifier rubyid_days'>days</span><span class='period'>.</span><span class='id identifier rubyid_from_now'>from_now</span> <span class='kw'>do</span>
-   <span class='comment'># 2 days from today
-</span>   <span class='id identifier rubyid_travel_to'>travel_to</span> <span class='int'>3</span><span class='period'>.</span><span class='id identifier rubyid_days'>days</span><span class='period'>.</span><span class='id identifier rubyid_from_now'>from_now</span> <span class='kw'>do</span>
-     <span class='comment'># 5 days from today
-</span>   <span class='kw'>end</span>
- <span class='kw'>end</span></code></pre>
+  <span class='comment'># 2 days from today
+</span>  <span class='id identifier rubyid_travel_to'>travel_to</span> <span class='int'>3</span><span class='period'>.</span><span class='id identifier rubyid_days'>days</span><span class='period'>.</span><span class='id identifier rubyid_from_now'>from_now</span> <span class='kw'>do</span>
+    <span class='comment'># 5 days from today
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span></code></pre>
 
 <p>preferred way to achieve above is:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_travel'>travel</span> <span class='int'>2</span><span class='period'>.</span><span class='id identifier rubyid_days'>days</span> <span class='kw'>do</span>
-   <span class='comment'># 2 days from today
-</span> <span class='kw'>end</span>
+  <span class='comment'># 2 days from today
+</span><span class='kw'>end</span>
 
- <span class='id identifier rubyid_travel'>travel</span> <span class='int'>5</span><span class='period'>.</span><span class='id identifier rubyid_days'>days</span> <span class='kw'>do</span>
-   <span class='comment'># 5 days from today
-</span> <span class='kw'>end</span></code></pre>
+<span class='id identifier rubyid_travel'>travel</span> <span class='int'>5</span><span class='period'>.</span><span class='id identifier rubyid_days'>days</span> <span class='kw'>do</span>
+  <span class='comment'># 5 days from today
+</span><span class='kw'>end</span></code></pre>
 
 <p><em>Vipul A M</em></p></li>
 <li><p>Support parsing JSON time in ISO8601 local time strings in
