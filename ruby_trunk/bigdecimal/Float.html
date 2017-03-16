@@ -103,24 +103,10 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/bigdecimal/lib/bigdecimal/util.rb#L32'>ext/bigdecimal/lib/bigdecimal/util.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/bigdecimal/lib/bigdecimal/util.rb#L28'>ext/bigdecimal/lib/bigdecimal/util.rb</a>      </td>
     </tr>
   </tbody>
 </table>
-</div>
-<h2 id='h2_overview'>Overview</h2>
-<div id='overview_ds'>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>bigdecimal/util extends the native <code>Float</code> class to provide the
-<a href="#to_d-instance_method" title="Float#to_d (method)">#to_d</a> method.</p>
-
-<p>When you require &#39;bigdecimal/util&#39; in your application, this method
-will be available on <code>Float</code> objects.</p>
-
-  </div>
-</div>
 </div>        
 
 <h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
@@ -131,7 +117,7 @@ will be available on <code>Float</code> objects.</p>
       <a href="#to_d-instance_method" title="#to_d (instance method)">#<strong>to_d</strong>  &#x21d2; bigdecimal </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Convert <code>flt</code> to a <a href="BigDecimal.html" title="BigDecimal (class)">::BigDecimal</a> and return it.</p></div>
+      <div class='inline'><p>Returns the value of <code>float</code> as a <a href="BigDecimal.html" title="BigDecimal (class)">::BigDecimal</a>.</p></div>
     </div>
   </li>
 </ul>
@@ -139,30 +125,40 @@ will be available on <code>Float</code> objects.</p>
 <h2 class='y_details'>Instance Method Details</h2>
 <section class='method_details first' id="to_d-instance_method">
   <h3 class='signature  first'>
-    #<strong>to_d</strong>  &#x21d2; <code>bigdecimal</code>   </h3>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>to_d</strong>  &#x21d2; <code>bigdecimal</code> </span>
+      <span class='overload'>#<strong>to_d</strong>(precision)  &#x21d2; <code>bigdecimal</code> </span>
+    </div>
+  </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Convert <code>flt</code> to a <a href="BigDecimal.html" title="BigDecimal (class)">::BigDecimal</a> and return it.</p>
+<p>Returns the value of <code>float</code> as a <a href="BigDecimal.html" title="BigDecimal (class)">::BigDecimal</a>. The <code>precision</code> parameter
+is used to determine the number of significant digits for the result (the
+default is <code>Float::DIG</code>).</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bigdecimal</span><span class='tstring_end'>&#39;</span></span>
 <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bigdecimal/util</span><span class='tstring_end'>&#39;</span></span>
 
-<span class='float'>0.5</span><span class='period'>.</span><span class='id identifier rubyid_to_d'>to_d</span>
-<span class='comment'># =&gt; 0.5e0</span></code></pre>
+<span class='float'>0.5</span><span class='period'>.</span><span class='id identifier rubyid_to_d'>to_d</span>         <span class='comment'># =&gt; 0.5e0
+</span><span class='float'>1.234</span><span class='period'>.</span><span class='id identifier rubyid_to_d'>to_d</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span>    <span class='comment'># =&gt; 0.12e1</span></code></pre>
+
+<p>See also <a href="BigDecimal.html#new-class_method" title="BigDecimal.new (method)">BigDecimal.new</a>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/bigdecimal/lib/bigdecimal/util.rb#L44-L46'>GitHub</a>&#8202;]</span>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/ext/bigdecimal/lib/bigdecimal/util.rb#L45-L47'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-44
 45
-46</pre>
+46
+47</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'ext/bigdecimal/lib/bigdecimal/util.rb', line 44</span></pre>
+<pre><span class='info file'># File 'ext/bigdecimal/lib/bigdecimal/util.rb', line 45</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_d'>to_d</span><span class='lparen'>(</span><span class='id identifier rubyid_precision'>precision</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>

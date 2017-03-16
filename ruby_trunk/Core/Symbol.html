@@ -89,7 +89,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10195'>string.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/symbol.c#L805'>symbol.c</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10229'>string.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/symbol.c#L805'>symbol.c</a></span>
       </td>
     </tr>
   </tbody>
@@ -202,7 +202,7 @@ symbols.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#capitalize-instance_method" title="#capitalize (instance method)">#<strong>capitalize</strong>([options])  &#x21d2; Symbol </a>
+      <a href="#capitalize-instance_method" title="#capitalize (instance method)">#<strong>capitalize</strong>  &#x21d2; Symbol </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Same as <code>sym.to_s.capitalize.intern</code>.</p></div>
@@ -210,7 +210,7 @@ symbols.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#casecmp-instance_method" title="#casecmp (instance method)">#<strong>casecmp</strong>(other)  &#x21d2; 1, ... </a>
+      <a href="#casecmp-instance_method" title="#casecmp (instance method)">#<strong>casecmp</strong>(other_symbol)  &#x21d2; 1, ... </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Case-insensitive version of <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&lt;=&gt;</a>.</p></div>
@@ -218,16 +218,16 @@ symbols.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#casecmp%3F-instance_method" title="#casecmp? (instance method)">#<strong>casecmp?</strong>(other)  &#x21d2; true, ... </a>
+      <a href="#casecmp%3F-instance_method" title="#casecmp? (instance method)">#<strong>casecmp?</strong>(other_symbol)  &#x21d2; true, ... </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Returns true if sym and other are equal after Unicode case folding, false
-if they are not equal, and nil if other is not a symbol.</p></div>
+      <div class='inline'><p>Returns <code>true</code> if <code>sym</code> and <code>other_symbol</code> are equal after Unicode case
+folding, <code>false</code> if they are not equal.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#downcase-instance_method" title="#downcase (instance method)">#<strong>downcase</strong>([options])  &#x21d2; Symbol </a>
+      <a href="#downcase-instance_method" title="#downcase (instance method)">#<strong>downcase</strong>  &#x21d2; Symbol </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Same as <code>sym.to_s.downcase.intern</code>.</p></div>
@@ -326,7 +326,7 @@ if they are not equal, and nil if other is not a symbol.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#swapcase-instance_method" title="#swapcase (instance method)">#<strong>swapcase</strong>([options])  &#x21d2; Symbol </a>
+      <a href="#swapcase-instance_method" title="#swapcase (instance method)">#<strong>swapcase</strong>  &#x21d2; Symbol </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Same as <code>sym.to_s.swapcase.intern</code>.</p></div>
@@ -360,7 +360,7 @@ if they are not equal, and nil if other is not a symbol.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#upcase-instance_method" title="#upcase (instance method)">#<strong>upcase</strong>([options])  &#x21d2; Symbol </a>
+      <a href="#upcase-instance_method" title="#upcase (instance method)">#<strong>upcase</strong>  &#x21d2; Symbol </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Same as <code>sym.to_s.upcase.intern</code>.</p></div>
@@ -469,18 +469,18 @@ rb_sym_all_symbols(void)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9925-L9929'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9954-L9958'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9925
-9926
-9927
-9928
-9929</pre>
+9954
+9955
+9956
+9957
+9958</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9925</span></pre>
+<pre><span class='info file'># File 'string.c', line 9954</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -501,30 +501,30 @@ sym_empty(VALUE sym)
   <div class='discussion'>
     
 <p>Compares <code>symbol</code> with <code>other_symbol</code> after calling <a href="#to_s-instance_method" title="Symbol#to_s (method)">#to_s</a> on each of the
-symbols. Returns -1, 0, +1 or nil depending on whether <code>symbol</code> is less
+symbols. Returns -1, 0, +1, or <code>nil</code> depending on whether <code>symbol</code> is less
 than, equal to, or greater than <code>other_symbol</code>.</p>
 
-<pre class="code ruby"><code class="ruby">{nil} is returned if the two values are incomparable.</code></pre>
+<p><code>nil</code> is returned if the two values are incomparable.</p>
 
 <p>See <a href="String.html#<=>-instance_method" title="String#&lt;=&gt; (method)">String#&lt;=&gt;</a> for more information.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9803-L9810'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9809-L9816'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9803
-9804
-9805
-9806
-9807
-9808
 9809
-9810</pre>
+9810
+9811
+9812
+9813
+9814
+9815
+9816</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9803</span></pre>
+<pre><span class='info file'># File 'string.c', line 9809</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -544,14 +544,14 @@ sym_cmp(VALUE sym, VALUE other)
   <h3 class='signature '>
     #<strong>==</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10201-L10201'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10235-L10235'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-10201</pre>
+10235</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 10201</span></pre>
+<pre><span class='info file'># File 'string.c', line 10235</span></pre>
 <pre class='code cpp'>
 
 rb_define_method(rb_cSymbol, &quot;==&quot;, sym_equal, 1);
@@ -564,14 +564,14 @@ rb_define_method(rb_cSymbol, &quot;==&quot;, sym_equal, 1);
   <h3 class='signature '>
     #<strong>===</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10202-L10202'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10236-L10236'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-10202</pre>
+10236</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 10202</span></pre>
+<pre><span class='info file'># File 'string.c', line 10236</span></pre>
 <pre class='code cpp'>
 
 rb_define_method(rb_cSymbol, &quot;===&quot;, sym_equal, 1);
@@ -590,18 +590,18 @@ rb_define_method(rb_cSymbol, &quot;===&quot;, sym_equal, 1);
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9856-L9860'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9885-L9889'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9856
-9857
-9858
-9859
-9860</pre>
+9885
+9886
+9887
+9888
+9889</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9856</span></pre>
+<pre><span class='info file'># File 'string.c', line 9885</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -633,18 +633,18 @@ sym_match(VALUE sym, VALUE other)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9898-L9902'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9927-L9931'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9898
-9899
-9900
-9901
-9902</pre>
+9927
+9928
+9929
+9930
+9931</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9898</span></pre>
+<pre><span class='info file'># File 'string.c', line 9927</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -659,7 +659,11 @@ sym_aref(int argc, VALUE *argv, VALUE sym)
 
 <section class='method_details' id="capitalize-instance_method">
   <h3 class='signature '>
-    #<strong>capitalize</strong>([options])  &#x21d2; <code>Symbol</code>   </h3>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>capitalize</strong>  &#x21d2; <code>Symbol</code> </span>
+      <span class='overload'>#<strong>capitalize</strong>([options])  &#x21d2; <code>Symbol</code> </span>
+    </div>
+  </h3>
 <div class='docstring'>
   <div class='discussion'>
     
@@ -667,18 +671,20 @@ sym_aref(int argc, VALUE *argv, VALUE sym)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9964-L9968'>GitHub</a>&#8202;]</span>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9996-L10000'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9964
-9965
-9966
-9967
-9968</pre>
+9996
+9997
+9998
+9999
+10000</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9964</span></pre>
+<pre><span class='info file'># File 'string.c', line 9996</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -693,7 +699,7 @@ sym_capitalize(int argc, VALUE *argv, VALUE sym)
 
 <section class='method_details' id="casecmp-instance_method">
   <h3 class='signature '>
-    #<strong>casecmp</strong>(other)  &#x21d2; <code>1</code>, ...   </h3>
+    #<strong>casecmp</strong>(other_symbol)  &#x21d2; <code>1</code>, ...   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
@@ -701,23 +707,34 @@ sym_capitalize(int argc, VALUE *argv, VALUE sym)
 case-insensitivity only works on characters A-Z/a-z, not all of Unicode.
 This is different from <a href="#casecmp%3F-instance_method" title="Symbol#casecmp? (method)">#casecmp?</a>.</p>
 
+<pre class="code ruby"><code class="ruby"><span class='symbeg'>:</span><span class='id identifier rubyid_aBcDeF'>aBcDeF</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcde'>abcde</span><span class='rparen'>)</span>     <span class='comment'>#=&gt; 1
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_aBcDeF'>aBcDeF</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcdef'>abcdef</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; 0
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_aBcDeF'>aBcDeF</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcdefg'>abcdefg</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; -1
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcdef'>abcdef</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='const'>ABCDEF</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; 0</span></code></pre>
+
+<p><code>nil</code> is returned if the two symbols have incompatible encodings, or if
+<code>other_symbol</code> is not a symbol.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='symbeg'>:</span><span class='id identifier rubyid_foo'>foo</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; nil
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\u{e4 f6 fc}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_encode'>encode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ISO-8859-1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='symbeg'>:&quot;</span><span class='tstring_content'>\u{c4 d6 dc}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; nil</span></code></pre>
+
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9822-L9829'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9839-L9846'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9822
-9823
-9824
-9825
-9826
-9827
-9828
-9829</pre>
+9839
+9840
+9841
+9842
+9843
+9844
+9845
+9846</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9822</span></pre>
+<pre><span class='info file'># File 'string.c', line 9839</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -726,7 +743,7 @@ sym_casecmp(VALUE sym, VALUE other)
     if (!SYMBOL_P(other)) {
 	return Qnil;
     }
-    return rb_str_casecmp(rb_sym2str(sym), rb_sym2str(other));
+    return str_casecmp(rb_sym2str(sym), rb_sym2str(other));
 }
 </pre>
   </div>
@@ -735,30 +752,42 @@ sym_casecmp(VALUE sym, VALUE other)
 
 <section class='method_details' id="casecmp?-instance_method">
   <h3 class='signature '>
-    #<strong>casecmp?</strong>(other)  &#x21d2; <code>true</code>, ...   </h3>
+    #<strong>casecmp?</strong>(other_symbol)  &#x21d2; <code>true</code>, ...   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Returns true if sym and other are equal after Unicode case folding, false
-if they are not equal, and nil if other is not a symbol.</p>
+<p>Returns <code>true</code> if <code>sym</code> and <code>other_symbol</code> are equal after Unicode case
+folding, <code>false</code> if they are not equal.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='symbeg'>:</span><span class='id identifier rubyid_aBcDeF'>aBcDeF</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcde'>abcde</span><span class='rparen'>)</span>     <span class='comment'>#=&gt; false
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_aBcDeF'>aBcDeF</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcdef'>abcdef</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; true
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_aBcDeF'>aBcDeF</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcdefg'>abcdefg</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; false
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcdef'>abcdef</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='const'>ABCDEF</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; true
+</span><span class='symbeg'>:&quot;</span><span class='tstring_content'>\u{e4 f6 fc}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='symbeg'>:&quot;</span><span class='tstring_content'>\u{c4 d6 dc}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; true</span></code></pre>
+
+<p><code>nil</code> is returned if the two symbols have incompatible encodings, or if
+<code>other_symbol</code> is not a symbol.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='symbeg'>:</span><span class='id identifier rubyid_foo'>foo</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; nil
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\u{e4 f6 fc}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_encode'>encode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ISO-8859-1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='symbeg'>:&quot;</span><span class='tstring_content'>\u{c4 d6 dc}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; nil</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9840-L9847'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9869-L9876'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9840
-9841
-9842
-9843
-9844
-9845
-9846
-9847</pre>
+9869
+9870
+9871
+9872
+9873
+9874
+9875
+9876</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9840</span></pre>
+<pre><span class='info file'># File 'string.c', line 9869</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -767,7 +796,7 @@ sym_casecmp_p(VALUE sym, VALUE other)
     if (!SYMBOL_P(other)) {
 	return Qnil;
     }
-    return rb_str_casecmp_p(rb_sym2str(sym), rb_sym2str(other));
+    return str_casecmp_p(rb_sym2str(sym), rb_sym2str(other));
 }
 </pre>
   </div>
@@ -776,7 +805,11 @@ sym_casecmp_p(VALUE sym, VALUE other)
 
 <section class='method_details' id="downcase-instance_method">
   <h3 class='signature '>
-    #<strong>downcase</strong>([options])  &#x21d2; <code>Symbol</code>   </h3>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>downcase</strong>  &#x21d2; <code>Symbol</code> </span>
+      <span class='overload'>#<strong>downcase</strong>([options])  &#x21d2; <code>Symbol</code> </span>
+    </div>
+  </h3>
 <div class='docstring'>
   <div class='discussion'>
     
@@ -784,18 +817,20 @@ sym_casecmp_p(VALUE sym, VALUE other)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9951-L9955'>GitHub</a>&#8202;]</span>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9982-L9986'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9951
-9952
-9953
-9954
-9955</pre>
+9982
+9983
+9984
+9985
+9986</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9951</span></pre>
+<pre><span class='info file'># File 'string.c', line 9982</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -818,18 +853,18 @@ sym_downcase(int argc, VALUE *argv, VALUE sym)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9990-L9994'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10023-L10027'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9990
-9991
-9992
-9993
-9994</pre>
+10023
+10024
+10025
+10026
+10027</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9990</span></pre>
+<pre><span class='info file'># File 'string.c', line 10023</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -858,14 +893,14 @@ sym_encoding(VALUE sym)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10205-L10205'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10239-L10239'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-10205</pre>
+10239</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 10205</span></pre>
+<pre><span class='info file'># File 'string.c', line 10239</span></pre>
 <pre class='code cpp'>
 
 rb_define_method(rb_cSymbol, &quot;id2name&quot;, rb_sym_to_s, 0);
@@ -886,17 +921,11 @@ rb_define_method(rb_cSymbol, &quot;id2name&quot;, rb_sym_to_s, 0);
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9685-L9709'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9691-L9715'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9685
-9686
-9687
-9688
-9689
-9690
 9691
 9692
 9693
@@ -915,9 +944,15 @@ rb_define_method(rb_cSymbol, &quot;id2name&quot;, rb_sym_to_s, 0);
 9706
 9707
 9708
-9709</pre>
+9709
+9710
+9711
+9712
+9713
+9714
+9715</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9685</span></pre>
+<pre><span class='info file'># File 'string.c', line 9691</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -968,18 +1003,18 @@ sym_inspect(VALUE sym)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9741-L9745'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9747-L9751'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9741
-9742
-9743
-9744
-9745</pre>
+9747
+9748
+9749
+9750
+9751</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9741</span></pre>
+<pre><span class='info file'># File 'string.c', line 9747</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1009,18 +1044,18 @@ sym_to_sym(VALUE sym)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9912-L9916'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9941-L9945'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9912
-9913
-9914
-9915
-9916</pre>
+9941
+9942
+9943
+9944
+9945</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9912</span></pre>
+<pre><span class='info file'># File 'string.c', line 9941</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1043,18 +1078,18 @@ sym_length(VALUE sym)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9869-L9873'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9898-L9902'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9869
-9870
-9871
-9872
-9873</pre>
+9898
+9899
+9900
+9901
+9902</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9869</span></pre>
+<pre><span class='info file'># File 'string.c', line 9898</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1077,18 +1112,18 @@ sym_match_m(int argc, VALUE *argv, VALUE sym)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9882-L9886'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9911-L9915'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9882
-9883
-9884
-9885
-9886</pre>
+9911
+9912
+9913
+9914
+9915</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9882</span></pre>
+<pre><span class='info file'># File 'string.c', line 9911</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1112,18 +1147,18 @@ sym_match_m_p(int argc, VALUE *argv, VALUE sym)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9783-L9787'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9789-L9793'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9783
-9784
-9785
-9786
-9787</pre>
+9789
+9790
+9791
+9792
+9793</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9783</span></pre>
+<pre><span class='info file'># File 'string.c', line 9789</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1152,14 +1187,14 @@ sym_succ(VALUE sym)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10220-L10220'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10254-L10254'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-10220</pre>
+10254</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 10220</span></pre>
+<pre><span class='info file'># File 'string.c', line 10254</span></pre>
 <pre class='code cpp'>
 
 rb_define_method(rb_cSymbol, &quot;size&quot;, sym_length, 0);
@@ -1186,14 +1221,14 @@ rb_define_method(rb_cSymbol, &quot;size&quot;, sym_length, 0);
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10218-L10218'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10252-L10252'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-10218</pre>
+10252</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 10218</span></pre>
+<pre><span class='info file'># File 'string.c', line 10252</span></pre>
 <pre class='code cpp'>
 
 rb_define_method(rb_cSymbol, &quot;slice&quot;, sym_aref, -1);
@@ -1223,7 +1258,11 @@ rb_define_method(rb_cSymbol, &quot;slice&quot;, sym_aref, -1);
 
 <section class='method_details' id="swapcase-instance_method">
   <h3 class='signature '>
-    #<strong>swapcase</strong>([options])  &#x21d2; <code>Symbol</code>   </h3>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>swapcase</strong>  &#x21d2; <code>Symbol</code> </span>
+      <span class='overload'>#<strong>swapcase</strong>([options])  &#x21d2; <code>Symbol</code> </span>
+    </div>
+  </h3>
 <div class='docstring'>
   <div class='discussion'>
     
@@ -1231,18 +1270,20 @@ rb_define_method(rb_cSymbol, &quot;slice&quot;, sym_aref, -1);
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9977-L9981'>GitHub</a>&#8202;]</span>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10010-L10014'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9977
-9978
-9979
-9980
-9981</pre>
+10010
+10011
+10012
+10013
+10014</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9977</span></pre>
+<pre><span class='info file'># File 'string.c', line 10010</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1268,17 +1309,17 @@ sym_swapcase(int argc, VALUE *argv, VALUE sym)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9769-L9772'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9775-L9778'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9769
-9770
-9771
-9772</pre>
+9775
+9776
+9777
+9778</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9769</span></pre>
+<pre><span class='info file'># File 'string.c', line 9775</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1310,18 +1351,18 @@ rb_sym_to_proc(VALUE sym)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9724-L9728'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9730-L9734'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9724
-9725
-9726
-9727
-9728</pre>
+9730
+9731
+9732
+9733
+9734</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9724</span></pre>
+<pre><span class='info file'># File 'string.c', line 9730</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1350,14 +1391,14 @@ rb_sym_to_s(VALUE sym)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10207-L10207'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L10241-L10241'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-10207</pre>
+10241</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 10207</span></pre>
+<pre><span class='info file'># File 'string.c', line 10241</span></pre>
 <pre class='code cpp'>
 
 rb_define_method(rb_cSymbol, &quot;to_sym&quot;, sym_to_sym, 0);
@@ -1368,7 +1409,11 @@ rb_define_method(rb_cSymbol, &quot;to_sym&quot;, sym_to_sym, 0);
 
 <section class='method_details' id="upcase-instance_method">
   <h3 class='signature '>
-    #<strong>upcase</strong>([options])  &#x21d2; <code>Symbol</code>   </h3>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>upcase</strong>  &#x21d2; <code>Symbol</code> </span>
+      <span class='overload'>#<strong>upcase</strong>([options])  &#x21d2; <code>Symbol</code> </span>
+    </div>
+  </h3>
 <div class='docstring'>
   <div class='discussion'>
     
@@ -1376,18 +1421,20 @@ rb_define_method(rb_cSymbol, &quot;to_sym&quot;, sym_to_sym, 0);
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9938-L9942'>GitHub</a>&#8202;]</span>
+<div class='tags'>
+  
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/string.c#L9968-L9972'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-9938
-9939
-9940
-9941
-9942</pre>
+9968
+9969
+9970
+9971
+9972</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'string.c', line 9938</span></pre>
+<pre><span class='info file'># File 'string.c', line 9968</span></pre>
 <pre class='code cpp'>
 
 static VALUE

@@ -8,7 +8,7 @@ if ( /github\.io/i.test(location.hostname) ) {
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','t2GA');
 }
-
+/*
 if ('ontouchstart' in document.documentElement) {
   window.onerror = function (msg, url, lineNo, columnNo, error) {
       var string = msg.toLowerCase(),
@@ -26,6 +26,7 @@ if ('ontouchstart' in document.documentElement) {
       return false;
   };
 };
+*/
 
 /* This is an immediate function that wraps everything.  It initializes all of
  * the app constants and variables, and hooks window.onDOMContentLoaded to
@@ -458,14 +459,16 @@ function pane_LocSet(winTypeLast) {
  * @param id [String] id of the clicked button
  */
 function pane_MainClk(id) {
-  var oMe = id.startsWith('list') ? oList : oToc;
-  if ( id.endsWith('float') ) {
+  // IE11 var oMe = id.startsWith('list') ? oList : oToc;
+  var oMe = /^list/.test(id) ? oList : oToc;
+//  if ( id.endsWith('float') ) {
+  if ( /float$/.test(id) ) {
     oMe.d.docked = false;
     paneShow(oMe);
-  } else if ( id.endsWith('dock') ) {
+  } else if ( /dock$/.test(id) ) {
     oMe.d.docked = true;
     paneShow(oMe);
-  } else if ( id.endsWith('vis') ) {
+  } else if ( /vis$/.test(id) ) {
     if (oMe.d.vis) paneHide(oMe);
     else           paneShow(oMe);
   }
@@ -1171,7 +1174,7 @@ function listXhrCB(docFrag, title, url, status, ms, msRcv) {
 
   if (status !== 200 || !docFrag) {
     setWait();
-    alert('Bad return with status ' + status + " from location\n" + url);
+    alert('listXhrCB - bad return with status ' + status + " from location\n" + url);
     return;
   }
 
@@ -1189,9 +1192,9 @@ function listXhrCB(docFrag, title, url, status, ms, msRcv) {
   if (oListData[listCurPN] === undefined) {
     oListData[listCurPN] = {};
     ld = oListData[listCurPN];
-    ld.list = docFrag.getElementById('list_items').cloneNode(true);
+    ld.list = getDocFragId(docFrag, 'list_items').cloneNode(true);
     clean(ld.list);
-    if ( t = docFrag.getElementById('list_menu') )
+    if ( t = getDocFragId(docFrag, 'list_menu') )
       ld.menu = t.cloneNode(true);
     else
       ld.menu = _id('list_menu').cloneNode(true);
@@ -1221,10 +1224,10 @@ function listXhrCB(docFrag, title, url, status, ms, msRcv) {
   _id('list_search_text').value = ld.search;
   if (ld.search === '') {
     if (t = _id('list_search_items') ) oList.nav.removeChild(t);
-    _id('list_search_icon').classList.remove('s_clr');
+//    _id('list_search_icon').classList.remove('s_clr');
   } else {
     _id('list_search_icon').classList.add('s_clr');
-    newUL.style.display = 'none';
+//    newUL.style.display = 'none';
     len = 0;
   }
 
@@ -2626,7 +2629,7 @@ function xhrCBDoc(docFrag, title, url, status, ms, msRcv) {
 
   if (status !== 200 || docFrag === null) {
     setWait(-1);
-    alert('Bad return with status ' + status + " from location\n" + url);
+    alert('xhrCBDoc - bad return with status ' + status + " from location\n" + url);
     if (clickedBy === CB_LIST) {
       oList.clickedLI = oList.clickedLIOld;
       oList.clickedA = null;
@@ -2656,8 +2659,8 @@ function xhrCBDoc(docFrag, title, url, status, ms, msRcv) {
   }
 
   // get content and objectPath from docFrag, along with list url
-  if ( t = docFrag.getElementById('content') ) {
-    if (hash) newContentClicked = docFrag.getElementById(hash);
+  if ( t = getDocFragId(docFrag, 'content') ) {
+    if (hash) newContentClicked = getDocFragId(docFrag, hash);
     t1 = t.parentElement;
     newContent = t1.removeChild(t);
   };
@@ -2665,10 +2668,10 @@ function xhrCBDoc(docFrag, title, url, status, ms, msRcv) {
   // Can't load without both
   if (newContent === undefined || oldContent === undefined) return;
 
-  if ( t = docFrag.getElementById('y_header') ) {
-    if (t1 = docFrag.getElementById('y_menu') )
+  if ( t = getDocFragId(docFrag, 'y_header') ) {
+    if (t1 = getDocFragId(docFrag, 'y_menu') )
       newMenu = t.removeChild(t1);
-    if (t1 = docFrag.getElementById('list_href') )
+    if (t1 = getDocFragId(docFrag, 'list_href') )
       eAList  = t.removeChild(t1);
   };
 
@@ -2811,7 +2814,6 @@ function xhrOnError(url, func, xhr) {
  * @param pn   [Float] performance.now
  */
  function xhrReadyStateChange(url, func, xhr, pn) {
-//  console.log('readyState ' + xhr.readyState + '  status ' + xhr.status);
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
       var title,
@@ -2886,8 +2888,8 @@ function xhrSend(url, func) {
       tSt;
 
   aDOM.setAttribute('href', url);
-
-  if (aDOM.origin !== window.location.origin) {
+ 
+  if (aDOM.host !== window.location.host) {
     func(null, url);
     return;
   };
@@ -2945,7 +2947,8 @@ function clean(prnt) {
 function commonLoad() {
   var foundHRef;
   for (var i = 0, ss; ss = document.styleSheets[i]; i++) {
-    if ( ss.href.endsWith('y_style.css') ) {
+//    if ( ss.href.endsWith('y_style.css') ) {
+    if ( /y_style\.css$/.test(ss.href) ) {
       foundHRef = ss.href.replace(/css\/y_style.css$/, 'xhr/common.html');
       xhrSend(foundHRef, commonXhrCB);
       break;
@@ -2955,7 +2958,7 @@ function commonLoad() {
 
 function commonInsert(docFrag, elId) {
   var newPrnt = _id(elId),
-      oldPrnt = docFrag.getElementById(elId),
+      oldPrnt = docFrag.hasOwnProperty('getElementById') ? docFrag.getElementById(elId) : docFrag.querySelector("#" + elId),
       el;
   clean(oldPrnt);
   while (el = oldPrnt.firstElementChild) { newPrnt.appendChild(el); };
@@ -2966,7 +2969,7 @@ function commonXhrCB(docFrag, title, url, status, ms, msRcv) {
       el;
   if (status !== 200 || !docFrag) {
     setWait();
-    alert('Bad return with status ' + status + " from location\n" + url);
+    alert('commonXhrCB - bad return with status ' + status + " from location\n" + url);
     return;
   };
 
@@ -3013,6 +3016,24 @@ function encodeStr(str) {
   return str.replace(/[^ a-zA-Z0-9_.-]/g, encodeChar );
 }
 
+/* Escape string as valid regex
+ * @param str [String] unescaped string
+ * @return [String] escaped string
+ */
+function escapeRegEx(str) {
+  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
+
+/* IE fun...
+ *
+ */
+function getDocFragId(frag, id) {
+  if ( frag.hasOwnProperty('getElementById') )
+    return frag.getElementById(id);
+  else
+    return frag.querySelector('#' + id);
+};
+
 function tocSearchShowHide(content) {
   cls = content.className;
   if (cls === 'module' || cls === 'class' || cls === 'method') {
@@ -3056,9 +3077,12 @@ function encodeChar(c) {
  * @param {String] rule selectorText of rule
  */
 function getCSSRule(file, rule) {
-  var foundRule;
+  var foundRule,
+      re = new RegExp( escapeRegEx(file) );
   for (var i = 0, ss; ss = document.styleSheets[i]; i++) {
-    if ( ss.href.endsWith(file) ) {
+//    if ( ss.href.endsWith(file) ) {
+  
+    if ( re.test(ss.href) ) {
       cssRules = ss.cssRules;
       for (var j = 0, cssRule; cssRule = cssRules[j]; j++) {
         // style
