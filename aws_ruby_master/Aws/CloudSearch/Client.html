@@ -129,10 +129,9 @@
 <p>You can configure a default region in the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_REGION']</code></li>
+<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
 <li><code>Aws.config[:region]</code></li>
 </ul>
-
 
 <p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
 
@@ -141,12 +140,11 @@
 <p>Default credentials are loaded automatically from the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_ACCESS_KEY_ID']</code> and <code>ENV['AWS_SECRET_ACCESS_KEY']</code></li>
+<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
 <li><code>Aws.config[:credentials]</code></li>
 <li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
 <li>From an instance profile when running on EC2</li>
 </ul>
-
 
 <p>You can also construct a credentials object from one of the following
 classes:</p>
@@ -157,7 +155,6 @@ classes:</p>
 <li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
 <li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
 </ul>
-
 
 <p>Alternatively, you configure credentials with <code>:access_key_id</code> and
 <code>:secret_access_key</code>:</p>
@@ -389,7 +386,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#describe_service_access_policies-instance_method" title="#describe_service_access_policies (instance method)">#<strong>describe_service_access_policies</strong>(options = {})  &#x21d2; Types::DescribeServiceAccessPoliciesResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Gets information about the access policies that control access to the domain's document and search endpoints.</p></div>
+      <div class='inline'><p><p>Gets information about the access policies that control access to the domain&#39;s document and search endpoints.</p></div>
     </div>
   </li>
   <li>
@@ -413,10 +410,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#list_domain_names-instance_method" title="#list_domain_names (instance method)">#<strong>list_domain_names</strong>(options = {})  &#x21d2; Types::ListDomainNamesResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Lists all search domains owned by an account.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Lists all search domains owned by an account.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -440,7 +434,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#update_service_access_policies-instance_method" title="#update_service_access_policies (instance method)">#<strong>update_service_access_policies</strong>(options = {})  &#x21d2; Types::UpdateServiceAccessPoliciesResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Configures the access rules that control access to the domain's document and search endpoints.</p></div>
+      <div class='inline'><p><p>Configures the access rules that control access to the domain&#39;s document and search endpoints.</p></div>
     </div>
   </li>
   <li>
@@ -532,11 +526,10 @@ for credentials:</p>
 
 <ul>
 <li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
-<li>ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']</li>
+<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
 <li><code>HOME/.aws/credentials</code> shared credentials file</li>
 <li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
 </ul>
-
 </div>        </li>
         <li>
           <span class='name'>:endpoint</span>
@@ -612,7 +605,7 @@ will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Lo
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Used when loading credentials
 from the shared credentials file at HOME/.aws/credentials.  When not
-specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
 </div>        </li>
         <li>
           <span class='name'>:raise_response_errors</span>
@@ -625,7 +618,7 @@ specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title
           <span class='name'>:region</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
-the client endpoint.  Defaults to <code>ENV['AWS_REGION']</code>.
+the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
 Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
 </div>        </li>
         <li>
@@ -683,7 +676,7 @@ fake responses are generated and returned. You can specify
 the response data to return or errors to raise by calling
 <a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">Aws::ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
 
-<p><strong> Please note </strong> When response stubbing is enabled, no HTTP
+<p>** Please note ** When response stubbing is enabled, no HTTP
 requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
 </div>        </li>
         <li>
@@ -708,7 +701,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   <div class='discussion'>
     <p>Indexes the search suggestions. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters">Configuring Suggesters</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -730,7 +722,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -740,9 +731,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/BuildSuggestersResponse.html#field_names-instance_method" title="Aws::CloudSearch::Types::BuildSuggestersResponse#field_names (method)">#field_names</a> => Array&lt;String&gt;</li>
+<li><a href="Types/BuildSuggestersResponse.html#field_names-instance_method" title="Aws::CloudSearch::Types::BuildSuggestersResponse#field_names (method)">#field_names</a> =&gt; Array&lt;String&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -757,7 +747,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Creates a new search domain. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html" target="_blank">Creating a Search Domain</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -792,7 +781,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A name for the domain you are creating. Allowed characters are a-z (lower-case letters), 0-9, and hyphen (-). Domain names must start with a letter or number and be at least 3 and no more than 28 characters long.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -802,9 +790,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateDomainResponse.html#domain_status-instance_method" title="Aws::CloudSearch::Types::CreateDomainResponse#domain_status (method)">#domain_status</a> => <a href="Types/DomainStatus.html" title="Aws::CloudSearch::Types::DomainStatus (class)">Types::DomainStatus</a></li>
+<li><a href="Types/CreateDomainResponse.html#domain_status-instance_method" title="Aws::CloudSearch::Types::CreateDomainResponse#domain_status (method)">#domain_status</a> =&gt; <a href="Types/DomainStatus.html" title="Aws::CloudSearch::Types::DomainStatus (class)">Types::DomainStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -819,7 +806,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Configures an analysis scheme that can be applied to a <code>text</code> or <code>text-array</code> field to define language-specific text processing options. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -863,13 +849,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
         <li>
           <span class='name'>:analysis_scheme</span>
           <span class='type'>(<code>required</code>, <a href="Types/AnalysisScheme.html" title="Aws::CloudSearch::Types::AnalysisScheme (class)">Types::AnalysisScheme</a>)</span>
             &mdash; <div class='inline'><p>Configuration information for an analysis scheme. Each analysis scheme has a unique name and specifies the language of the text to be processed. The following options can be configured for an analysis scheme: <code>Synonyms</code>, <code>Stopwords</code>, <code>StemmingDictionary</code>, <code>JapaneseTokenizationDictionary</code> and <code>AlgorithmicStemming</code>.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -879,9 +863,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DefineAnalysisSchemeResponse.html#analysis_scheme-instance_method" title="Aws::CloudSearch::Types::DefineAnalysisSchemeResponse#analysis_scheme (method)">#analysis_scheme</a> => <a href="Types/AnalysisSchemeStatus.html" title="Aws::CloudSearch::Types::AnalysisSchemeStatus (class)">Types::AnalysisSchemeStatus</a></li>
+<li><a href="Types/DefineAnalysisSchemeResponse.html#analysis_scheme-instance_method" title="Aws::CloudSearch::Types::DefineAnalysisSchemeResponse#analysis_scheme (method)">#analysis_scheme</a> =&gt; <a href="Types/AnalysisSchemeStatus.html" title="Aws::CloudSearch::Types::AnalysisSchemeStatus (class)">Types::AnalysisSchemeStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -896,7 +879,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Configures an <code><a>Expression</a></code> for the search domain. Used to create new expressions and modify existing ones. If the expression exists, the new configuration replaces the old one. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -928,13 +910,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
         <li>
           <span class='name'>:expression</span>
           <span class='type'>(<code>required</code>, <a href="Types/Expression.html" title="Aws::CloudSearch::Types::Expression (class)">Types::Expression</a>)</span>
             &mdash; <div class='inline'><p>A named expression that can be evaluated at search time. Can be used to sort the search results, define other expressions, or return computed information in the search results. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -944,9 +924,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DefineExpressionResponse.html#expression-instance_method" title="Aws::CloudSearch::Types::DefineExpressionResponse#expression (method)">#expression</a> => <a href="Types/ExpressionStatus.html" title="Aws::CloudSearch::Types::ExpressionStatus (class)">Types::ExpressionStatus</a></li>
+<li><a href="Types/DefineExpressionResponse.html#expression-instance_method" title="Aws::CloudSearch::Types::DefineExpressionResponse#expression (method)">#expression</a> =&gt; <a href="Types/ExpressionStatus.html" title="Aws::CloudSearch::Types::ExpressionStatus (class)">Types::ExpressionStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -961,7 +940,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Configures an <code><a>IndexField</a></code> for the search domain. Used to create new fields and modify existing ones. You must specify the name of the domain you are configuring and an index field configuration. The index field configuration specifies a unique name, the index field type, and the options you want to configure for the field. The options you can specify depend on the <code><a>IndexFieldType</a></code>. If the field exists, the new configuration replaces the old one. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html" target="_blank">Configuring Index Fields</a> in the <i>Amazon CloudSearch Developer Guide</i>. </p>
-
 
   </div>
 </div>
@@ -1137,13 +1115,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
         <li>
           <span class='name'>:index_field</span>
           <span class='type'>(<code>required</code>, <a href="Types/IndexField.html" title="Aws::CloudSearch::Types::IndexField (class)">Types::IndexField</a>)</span>
             &mdash; <div class='inline'><p>The index field and field options you want to configure. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1153,9 +1129,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DefineIndexFieldResponse.html#index_field-instance_method" title="Aws::CloudSearch::Types::DefineIndexFieldResponse#index_field (method)">#index_field</a> => <a href="Types/IndexFieldStatus.html" title="Aws::CloudSearch::Types::IndexFieldStatus (class)">Types::IndexFieldStatus</a></li>
+<li><a href="Types/DefineIndexFieldResponse.html#index_field-instance_method" title="Aws::CloudSearch::Types::DefineIndexFieldResponse#index_field (method)">#index_field</a> =&gt; <a href="Types/IndexFieldStatus.html" title="Aws::CloudSearch::Types::IndexFieldStatus (class)">Types::IndexFieldStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1170,7 +1145,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Configures a suggester for a domain. A suggester enables you to display possible matches before users finish typing their queries. When you configure a suggester, you must specify the name of the text field you want to search for possible matches and a unique name for the suggester. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -1208,13 +1182,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
         <li>
           <span class='name'>:suggester</span>
           <span class='type'>(<code>required</code>, <a href="Types/Suggester.html" title="Aws::CloudSearch::Types::Suggester (class)">Types::Suggester</a>)</span>
             &mdash; <div class='inline'><p>Configuration information for a search suggester. Each suggester has a unique name and specifies the text field you want to use for suggestions. The following options can be configured for a suggester: <code>FuzzyMatching</code>, <code>SortExpression</code>. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1224,9 +1196,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DefineSuggesterResponse.html#suggester-instance_method" title="Aws::CloudSearch::Types::DefineSuggesterResponse#suggester (method)">#suggester</a> => <a href="Types/SuggesterStatus.html" title="Aws::CloudSearch::Types::SuggesterStatus (class)">Types::SuggesterStatus</a></li>
+<li><a href="Types/DefineSuggesterResponse.html#suggester-instance_method" title="Aws::CloudSearch::Types::DefineSuggesterResponse#suggester (method)">#suggester</a> =&gt; <a href="Types/SuggesterStatus.html" title="Aws::CloudSearch::Types::SuggesterStatus (class)">Types::SuggesterStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1241,7 +1212,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Deletes an analysis scheme. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the <i>Amazon CloudSearch Developer Guide</i>. </p>
-
 
   </div>
 </div>
@@ -1275,13 +1245,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
         <li>
           <span class='name'>:analysis_scheme_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the analysis scheme you want to delete.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1291,9 +1259,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DeleteAnalysisSchemeResponse.html#analysis_scheme-instance_method" title="Aws::CloudSearch::Types::DeleteAnalysisSchemeResponse#analysis_scheme (method)">#analysis_scheme</a> => <a href="Types/AnalysisSchemeStatus.html" title="Aws::CloudSearch::Types::AnalysisSchemeStatus (class)">Types::AnalysisSchemeStatus</a></li>
+<li><a href="Types/DeleteAnalysisSchemeResponse.html#analysis_scheme-instance_method" title="Aws::CloudSearch::Types::DeleteAnalysisSchemeResponse#analysis_scheme (method)">#analysis_scheme</a> =&gt; <a href="Types/AnalysisSchemeStatus.html" title="Aws::CloudSearch::Types::AnalysisSchemeStatus (class)">Types::AnalysisSchemeStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1308,7 +1275,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Permanently deletes a search domain and all of its data. Once a domain has been deleted, it cannot be recovered. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html" target="_blank">Deleting a Search Domain</a> in the <i>Amazon CloudSearch Developer Guide</i>. </p>
-
 
   </div>
 </div>
@@ -1343,7 +1309,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the domain you want to permanently delete.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1353,9 +1318,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DeleteDomainResponse.html#domain_status-instance_method" title="Aws::CloudSearch::Types::DeleteDomainResponse#domain_status (method)">#domain_status</a> => <a href="Types/DomainStatus.html" title="Aws::CloudSearch::Types::DomainStatus (class)">Types::DomainStatus</a></li>
+<li><a href="Types/DeleteDomainResponse.html#domain_status-instance_method" title="Aws::CloudSearch::Types::DeleteDomainResponse#domain_status (method)">#domain_status</a> =&gt; <a href="Types/DomainStatus.html" title="Aws::CloudSearch::Types::DomainStatus (class)">Types::DomainStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1370,7 +1334,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Removes an <code><a>Expression</a></code> from the search domain. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -1399,13 +1362,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
         <li>
           <span class='name'>:expression_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the <code><a>Expression</a></code> to delete.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1415,9 +1376,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DeleteExpressionResponse.html#expression-instance_method" title="Aws::CloudSearch::Types::DeleteExpressionResponse#expression (method)">#expression</a> => <a href="Types/ExpressionStatus.html" title="Aws::CloudSearch::Types::ExpressionStatus (class)">Types::ExpressionStatus</a></li>
+<li><a href="Types/DeleteExpressionResponse.html#expression-instance_method" title="Aws::CloudSearch::Types::DeleteExpressionResponse#expression (method)">#expression</a> =&gt; <a href="Types/ExpressionStatus.html" title="Aws::CloudSearch::Types::ExpressionStatus (class)">Types::ExpressionStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1432,7 +1392,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Removes an <code><a>IndexField</a></code> from the search domain. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html" target="_blank">Configuring Index Fields</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -1522,13 +1481,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
         <li>
           <span class='name'>:index_field_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the index field your want to remove from the domain's indexing options.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1538,9 +1495,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DeleteIndexFieldResponse.html#index_field-instance_method" title="Aws::CloudSearch::Types::DeleteIndexFieldResponse#index_field (method)">#index_field</a> => <a href="Types/IndexFieldStatus.html" title="Aws::CloudSearch::Types::IndexFieldStatus (class)">Types::IndexFieldStatus</a></li>
+<li><a href="Types/DeleteIndexFieldResponse.html#index_field-instance_method" title="Aws::CloudSearch::Types::DeleteIndexFieldResponse#index_field (method)">#index_field</a> =&gt; <a href="Types/IndexFieldStatus.html" title="Aws::CloudSearch::Types::IndexFieldStatus (class)">Types::IndexFieldStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1555,7 +1511,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Deletes a suggester. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -1586,13 +1541,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
         <li>
           <span class='name'>:suggester_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies the name of the suggester you want to delete.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1602,9 +1555,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DeleteSuggesterResponse.html#suggester-instance_method" title="Aws::CloudSearch::Types::DeleteSuggesterResponse#suggester (method)">#suggester</a> => <a href="Types/SuggesterStatus.html" title="Aws::CloudSearch::Types::SuggesterStatus (class)">Types::SuggesterStatus</a></li>
+<li><a href="Types/DeleteSuggesterResponse.html#suggester-instance_method" title="Aws::CloudSearch::Types::DeleteSuggesterResponse#suggester (method)">#suggester</a> =&gt; <a href="Types/SuggesterStatus.html" title="Aws::CloudSearch::Types::SuggesterStatus (class)">Types::SuggesterStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1619,7 +1571,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Gets the analysis schemes configured for a domain. An analysis scheme defines language-specific text processing options for a <code>text</code> field. Can be limited to specific analysis schemes by name. By default, shows all analysis schemes and includes any pending changes to the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -1655,19 +1606,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the domain you want to describe.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:analysis_scheme_names</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>The analysis schemes you want to describe.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:deployed</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1677,9 +1625,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeAnalysisSchemesResponse.html#analysis_schemes-instance_method" title="Aws::CloudSearch::Types::DescribeAnalysisSchemesResponse#analysis_schemes (method)">#analysis_schemes</a> => Array&lt;<a href="Types/AnalysisSchemeStatus.html" title="Aws::CloudSearch::Types::AnalysisSchemeStatus (class)">Types::AnalysisSchemeStatus</a>&gt;</li>
+<li><a href="Types/DescribeAnalysisSchemesResponse.html#analysis_schemes-instance_method" title="Aws::CloudSearch::Types::DescribeAnalysisSchemesResponse#analysis_schemes (method)">#analysis_schemes</a> =&gt; Array&lt;<a href="Types/AnalysisSchemeStatus.html" title="Aws::CloudSearch::Types::AnalysisSchemeStatus (class)">Types::AnalysisSchemeStatus</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1694,7 +1641,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Gets the availability options configured for a domain. By default, shows the configuration with any pending changes. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -1722,13 +1668,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the domain you want to describe.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:deployed</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1738,9 +1682,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeAvailabilityOptionsResponse.html#availability_options-instance_method" title="Aws::CloudSearch::Types::DescribeAvailabilityOptionsResponse#availability_options (method)">#availability_options</a> => <a href="Types/AvailabilityOptionsStatus.html" title="Aws::CloudSearch::Types::AvailabilityOptionsStatus (class)">Types::AvailabilityOptionsStatus</a></li>
+<li><a href="Types/DescribeAvailabilityOptionsResponse.html#availability_options-instance_method" title="Aws::CloudSearch::Types::DescribeAvailabilityOptionsResponse#availability_options (method)">#availability_options</a> =&gt; <a href="Types/AvailabilityOptionsStatus.html" title="Aws::CloudSearch::Types::AvailabilityOptionsStatus (class)">Types::AvailabilityOptionsStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1755,7 +1698,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Gets information about the search domains owned by this account. Can be limited to specific domains. Shows all domains by default. To get the number of searchable documents in a domain, use the console or submit a <code>matchall</code> request to your domain's search endpoint: <code>q=matchall&amp;amp;q.parser=structured&amp;amp;size=0</code>. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html" target="_blank">Getting Information about a Search Domain</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -1791,7 +1733,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_names</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>The names of the domains you want to include in the response.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1801,9 +1742,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeDomainsResponse.html#domain_status_list-instance_method" title="Aws::CloudSearch::Types::DescribeDomainsResponse#domain_status_list (method)">#domain_status_list</a> => Array&lt;<a href="Types/DomainStatus.html" title="Aws::CloudSearch::Types::DomainStatus (class)">Types::DomainStatus</a>&gt;</li>
+<li><a href="Types/DescribeDomainsResponse.html#domain_status_list-instance_method" title="Aws::CloudSearch::Types::DescribeDomainsResponse#domain_status_list (method)">#domain_status_list</a> =&gt; Array&lt;<a href="Types/DomainStatus.html" title="Aws::CloudSearch::Types::DomainStatus (class)">Types::DomainStatus</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1818,7 +1758,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Gets the expressions configured for the search domain. Can be limited to specific expressions by name. By default, shows all expressions and includes any pending changes to the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -1849,19 +1788,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the domain you want to describe.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:expression_names</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>Limits the <code><a>DescribeExpressions</a></code> response to the specified expressions. If not specified, all expressions are shown.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:deployed</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1871,9 +1807,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeExpressionsResponse.html#expressions-instance_method" title="Aws::CloudSearch::Types::DescribeExpressionsResponse#expressions (method)">#expressions</a> => Array&lt;<a href="Types/ExpressionStatus.html" title="Aws::CloudSearch::Types::ExpressionStatus (class)">Types::ExpressionStatus</a>&gt;</li>
+<li><a href="Types/DescribeExpressionsResponse.html#expressions-instance_method" title="Aws::CloudSearch::Types::DescribeExpressionsResponse#expressions (method)">#expressions</a> =&gt; Array&lt;<a href="Types/ExpressionStatus.html" title="Aws::CloudSearch::Types::ExpressionStatus (class)">Types::ExpressionStatus</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1888,7 +1823,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Gets information about the index fields configured for the search domain. Can be limited to specific fields by name. By default, shows all fields and includes any pending changes to the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html" target="_blank">Getting Domain Information</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -1980,19 +1914,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the domain you want to describe.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:field_names</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>A list of the index fields you want to describe. If not specified, information is returned for all configured index fields.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:deployed</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2002,9 +1933,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeIndexFieldsResponse.html#index_fields-instance_method" title="Aws::CloudSearch::Types::DescribeIndexFieldsResponse#index_fields (method)">#index_fields</a> => Array&lt;<a href="Types/IndexFieldStatus.html" title="Aws::CloudSearch::Types::IndexFieldStatus (class)">Types::IndexFieldStatus</a>&gt;</li>
+<li><a href="Types/DescribeIndexFieldsResponse.html#index_fields-instance_method" title="Aws::CloudSearch::Types::DescribeIndexFieldsResponse#index_fields (method)">#index_fields</a> =&gt; Array&lt;<a href="Types/IndexFieldStatus.html" title="Aws::CloudSearch::Types::IndexFieldStatus (class)">Types::IndexFieldStatus</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2019,7 +1949,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Gets the scaling parameters configured for a domain. A domain's scaling parameters specify the desired search instance type and replication count. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html" target="_blank">Configuring Scaling Options</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -2048,7 +1977,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2058,9 +1986,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeScalingParametersResponse.html#scaling_parameters-instance_method" title="Aws::CloudSearch::Types::DescribeScalingParametersResponse#scaling_parameters (method)">#scaling_parameters</a> => <a href="Types/ScalingParametersStatus.html" title="Aws::CloudSearch::Types::ScalingParametersStatus (class)">Types::ScalingParametersStatus</a></li>
+<li><a href="Types/DescribeScalingParametersResponse.html#scaling_parameters-instance_method" title="Aws::CloudSearch::Types::DescribeScalingParametersResponse#scaling_parameters (method)">#scaling_parameters</a> =&gt; <a href="Types/ScalingParametersStatus.html" title="Aws::CloudSearch::Types::ScalingParametersStatus (class)">Types::ScalingParametersStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2075,7 +2002,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Gets information about the access policies that control access to the domain's document and search endpoints. By default, shows the configuration with any pending changes. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">Configuring Access for a Search Domain</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -2103,13 +2029,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the domain you want to describe.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:deployed</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2119,9 +2043,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeServiceAccessPoliciesResponse.html#access_policies-instance_method" title="Aws::CloudSearch::Types::DescribeServiceAccessPoliciesResponse#access_policies (method)">#access_policies</a> => <a href="Types/AccessPoliciesStatus.html" title="Aws::CloudSearch::Types::AccessPoliciesStatus (class)">Types::AccessPoliciesStatus</a></li>
+<li><a href="Types/DescribeServiceAccessPoliciesResponse.html#access_policies-instance_method" title="Aws::CloudSearch::Types::DescribeServiceAccessPoliciesResponse#access_policies (method)">#access_policies</a> =&gt; <a href="Types/AccessPoliciesStatus.html" title="Aws::CloudSearch::Types::AccessPoliciesStatus (class)">Types::AccessPoliciesStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2136,7 +2059,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Gets the suggesters configured for a domain. A suggester enables you to display possible matches before users finish typing their queries. Can be limited to specific suggesters by name. By default, shows all suggesters and includes any pending changes to the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -2169,19 +2091,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the domain you want to describe.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:suggester_names</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>The suggesters you want to describe.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:deployed</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2191,9 +2110,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeSuggestersResponse.html#suggesters-instance_method" title="Aws::CloudSearch::Types::DescribeSuggestersResponse#suggesters (method)">#suggesters</a> => Array&lt;<a href="Types/SuggesterStatus.html" title="Aws::CloudSearch::Types::SuggesterStatus (class)">Types::SuggesterStatus</a>&gt;</li>
+<li><a href="Types/DescribeSuggestersResponse.html#suggesters-instance_method" title="Aws::CloudSearch::Types::DescribeSuggestersResponse#suggesters (method)">#suggesters</a> =&gt; Array&lt;<a href="Types/SuggesterStatus.html" title="Aws::CloudSearch::Types::SuggesterStatus (class)">Types::SuggesterStatus</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2208,7 +2126,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Tells the search domain to start indexing its documents using the latest indexing options. This operation must be invoked to activate options whose <a>OptionStatus</a> is <code>RequiresIndexDocuments</code>.</p>
-
 
   </div>
 </div>
@@ -2231,7 +2148,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2241,9 +2157,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/IndexDocumentsResponse.html#field_names-instance_method" title="Aws::CloudSearch::Types::IndexDocumentsResponse#field_names (method)">#field_names</a> => Array&lt;String&gt;</li>
+<li><a href="Types/IndexDocumentsResponse.html#field_names-instance_method" title="Aws::CloudSearch::Types::IndexDocumentsResponse#field_names (method)">#field_names</a> =&gt; Array&lt;String&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2258,7 +2173,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Lists all search domains owned by an account.</p>
-
 
   </div>
 </div>
@@ -2280,9 +2194,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListDomainNamesResponse.html#domain_names-instance_method" title="Aws::CloudSearch::Types::ListDomainNamesResponse#domain_names (method)">#domain_names</a> => Hash&lt;String,String&gt;</li>
+<li><a href="Types/ListDomainNamesResponse.html#domain_names-instance_method" title="Aws::CloudSearch::Types::ListDomainNamesResponse#domain_names (method)">#domain_names</a> =&gt; Hash&lt;String,String&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2297,7 +2210,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Configures the availability options for a domain. Enabling the Multi-AZ option expands an Amazon CloudSearch domain to an additional Availability Zone in the same Region to increase fault tolerance in the event of a service disruption. Changes to the Multi-AZ option can take about half an hour to become active. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
-
 
   </div>
 </div>
@@ -2325,13 +2237,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
         <li>
           <span class='name'>:multi_az</span>
           <span class='type'>(<code>required</code>, <code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>You expand an existing search domain to a second Availability Zone by setting the Multi-AZ option to true. Similarly, you can turn off the Multi-AZ option to downgrade the domain to a single Availability Zone by setting the Multi-AZ option to <code>false</code>. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2341,9 +2251,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateAvailabilityOptionsResponse.html#availability_options-instance_method" title="Aws::CloudSearch::Types::UpdateAvailabilityOptionsResponse#availability_options (method)">#availability_options</a> => <a href="Types/AvailabilityOptionsStatus.html" title="Aws::CloudSearch::Types::AvailabilityOptionsStatus (class)">Types::AvailabilityOptionsStatus</a></li>
+<li><a href="Types/UpdateAvailabilityOptionsResponse.html#availability_options-instance_method" title="Aws::CloudSearch::Types::UpdateAvailabilityOptionsResponse#availability_options (method)">#availability_options</a> =&gt; <a href="Types/AvailabilityOptionsStatus.html" title="Aws::CloudSearch::Types::AvailabilityOptionsStatus (class)">Types::AvailabilityOptionsStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2358,7 +2267,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Configures scaling parameters for a domain. A domain's scaling parameters specify the desired search instance type and replication count. Amazon CloudSearch will still automatically scale your domain based on the volume of data and traffic, but not below the desired instance type and replication count. If the Multi-AZ option is enabled, these values control the resources used per Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html" target="_blank">Configuring Scaling Options</a> in the <i>Amazon CloudSearch Developer Guide</i>. </p>
-
 
   </div>
 </div>
@@ -2392,13 +2300,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
         <li>
           <span class='name'>:scaling_parameters</span>
           <span class='type'>(<code>required</code>, <a href="Types/ScalingParameters.html" title="Aws::CloudSearch::Types::ScalingParameters (class)">Types::ScalingParameters</a>)</span>
             &mdash; <div class='inline'><p>The desired instance type and desired number of replicas of each index partition.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2408,9 +2314,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateScalingParametersResponse.html#scaling_parameters-instance_method" title="Aws::CloudSearch::Types::UpdateScalingParametersResponse#scaling_parameters (method)">#scaling_parameters</a> => <a href="Types/ScalingParametersStatus.html" title="Aws::CloudSearch::Types::ScalingParametersStatus (class)">Types::ScalingParametersStatus</a></li>
+<li><a href="Types/UpdateScalingParametersResponse.html#scaling_parameters-instance_method" title="Aws::CloudSearch::Types::UpdateScalingParametersResponse#scaling_parameters (method)">#scaling_parameters</a> =&gt; <a href="Types/ScalingParametersStatus.html" title="Aws::CloudSearch::Types::ScalingParametersStatus (class)">Types::ScalingParametersStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2425,7 +2330,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Configures the access rules that control access to the domain's document and search endpoints. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank"> Configuring Access for an Amazon CloudSearch Domain</a>.</p>
-
 
   </div>
 </div>
@@ -2453,13 +2357,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
-
 </div>        </li>
         <li>
           <span class='name'>:access_policies</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The access rules you want to configure. These rules replace any existing rules. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2469,9 +2371,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateServiceAccessPoliciesResponse.html#access_policies-instance_method" title="Aws::CloudSearch::Types::UpdateServiceAccessPoliciesResponse#access_policies (method)">#access_policies</a> => <a href="Types/AccessPoliciesStatus.html" title="Aws::CloudSearch::Types::AccessPoliciesStatus (class)">Types::AccessPoliciesStatus</a></li>
+<li><a href="Types/UpdateServiceAccessPoliciesResponse.html#access_policies-instance_method" title="Aws::CloudSearch::Types::UpdateServiceAccessPoliciesResponse#access_policies (method)">#access_policies</a> =&gt; <a href="Types/AccessPoliciesStatus.html" title="Aws::CloudSearch::Types::AccessPoliciesStatus (class)">Types::AccessPoliciesStatus</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2494,7 +2395,7 @@ state.</p>
 entering a terminal state, or until a maximum number of attempts
 are made.</p>
 
-<p>   # polls in a loop, sleeping between attempts
+<p># polls in a loop, sleeping between attempts
    client.waiter_until(waiter_name, params)</p>
 
 <h3>Configuration</h3>
@@ -2630,7 +2531,6 @@ waiters and the client method they call:</p>
 
 </tbody>
 </table>
-
 
   </div>
 </div>

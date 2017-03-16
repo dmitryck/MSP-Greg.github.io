@@ -114,10 +114,7 @@
 <div id='overview_ds'>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Event within a workflow execution. A history event can be one of these types:</p>
-
-
-<p> <ul> <li> <b>WorkflowExecutionStarted</b>: The workflow execution was started.</li> <li> <b>WorkflowExecutionCompleted</b>: The workflow execution was closed due to successful completion.</li> <li> <b>WorkflowExecutionFailed</b>: The workflow execution closed due to a failure.</li> <li> <b>WorkflowExecutionTimedOut</b>: The workflow execution was closed because a time out was exceeded.</li> <li> <b>WorkflowExecutionCanceled</b>: The workflow execution was successfully canceled and closed.</li> <li> <b>WorkflowExecutionTerminated</b>: The workflow execution was terminated.</li> <li> <b>WorkflowExecutionContinuedAsNew</b>: The workflow execution was closed and a new execution of the same type was created with the same workflowId.</li> <li> <b>WorkflowExecutionCancelRequested</b>: A request to cancel this workflow execution was made.</li> <li> <b>DecisionTaskScheduled</b>: A decision task was scheduled for the workflow execution.</li> <li> <b>DecisionTaskStarted</b>: The decision task was dispatched to a decider.</li> <li> <b>DecisionTaskCompleted</b>: The decider successfully completed a decision task by calling <a>RespondDecisionTaskCompleted</a>.</li> <li> <b>DecisionTaskTimedOut</b>: The decision task timed out.</li> <li> <b>ActivityTaskScheduled</b>: An activity task was scheduled for execution.</li> <li> <b>ScheduleActivityTaskFailed</b>: Failed to process ScheduleActivityTask decision. This happens when the decision is not configured properly, for example the activity type specified is not registered.</li> <li> <b>ActivityTaskStarted</b>: The scheduled activity task was dispatched to a worker.</li> <li> <b>ActivityTaskCompleted</b>: An activity worker successfully completed an activity task by calling <a>RespondActivityTaskCompleted</a>.</li> <li> <b>ActivityTaskFailed</b>: An activity worker failed an activity task by calling <a>RespondActivityTaskFailed</a>.</li> <li> <b>ActivityTaskTimedOut</b>: The activity task timed out.</li> <li> <b>ActivityTaskCanceled</b>: The activity task was successfully canceled.</li> <li> <b>ActivityTaskCancelRequested</b>: A <code>RequestCancelActivityTask</code> decision was received by the system.</li> <li> <b>RequestCancelActivityTaskFailed</b>: Failed to process RequestCancelActivityTask decision. This happens when the decision is not configured properly.</li> <li> <b>WorkflowExecutionSignaled</b>: An external signal was received for the workflow execution.</li> <li> <b>MarkerRecorded</b>: A marker was recorded in the workflow history as the result of a <code>RecordMarker</code> decision.</li> <li> <b>TimerStarted</b>: A timer was started for the workflow execution due to a <code>StartTimer</code> decision.</li> <li> <b>StartTimerFailed</b>: Failed to process StartTimer decision. This happens when the decision is not configured properly, for example a timer already exists with the specified timer ID.</li> <li> <b>TimerFired</b>: A timer, previously started for this workflow execution, fired.</li> <li> <b>TimerCanceled</b>: A timer, previously started for this workflow execution, was successfully canceled.</li> <li> <b>CancelTimerFailed</b>: Failed to process CancelTimer decision. This happens when the decision is not configured properly, for example no timer exists with the specified timer ID.</li> <li> <b>StartChildWorkflowExecutionInitiated</b>: A request was made to start a child workflow execution.</li> <li> <b>StartChildWorkflowExecutionFailed</b>: Failed to process StartChildWorkflowExecution decision. This happens when the decision is not configured properly, for example the workflow type specified is not registered.</li> <li> <b>ChildWorkflowExecutionStarted</b>: A child workflow execution was successfully started.</li> <li> <b>ChildWorkflowExecutionCompleted</b>: A child workflow execution, started by this workflow execution, completed successfully and was closed.</li> <li> <b>ChildWorkflowExecutionFailed</b>: A child workflow execution, started by this workflow execution, failed to complete successfully and was closed.</li> <li> <b>ChildWorkflowExecutionTimedOut</b>: A child workflow execution, started by this workflow execution, timed out and was closed.</li> <li> <b>ChildWorkflowExecutionCanceled</b>: A child workflow execution, started by this workflow execution, was canceled and closed.</li> <li> <b>ChildWorkflowExecutionTerminated</b>: A child workflow execution, started by this workflow execution, was terminated.</li> <li> <b>SignalExternalWorkflowExecutionInitiated</b>: A request to signal an external workflow was made.</li> <li> <b>ExternalWorkflowExecutionSignaled</b>: A signal, requested by this workflow execution, was successfully delivered to the target external workflow execution.</li> <li> <b>SignalExternalWorkflowExecutionFailed</b>: The request to signal an external workflow execution failed.</li> <li> <b>RequestCancelExternalWorkflowExecutionInitiated</b>: A request was made to request the cancellation of an external workflow execution.</li> <li> <b>ExternalWorkflowExecutionCancelRequested</b>: Request to cancel an external workflow execution was successfully delivered to the target execution.</li> <li> <b>RequestCancelExternalWorkflowExecutionFailed</b>: Request to cancel an external workflow execution failed.</li> <li> <b>LambdaFunctionScheduled</b>: An AWS Lambda function was scheduled for execution.</li> <li> <b>LambdaFunctionStarted</b>: The scheduled function was invoked in the AWS Lambda service.</li> <li> <b>LambdaFunctionCompleted</b>: The AWS Lambda function successfully completed.</li> <li> <b>LambdaFunctionFailed</b>: The AWS Lambda function execution failed.</li> <li> <b>LambdaFunctionTimedOut</b>: The AWS Lambda function execution timed out.</li> <li> <b>ScheduleLambdaFunctionFailed</b>: Failed to process ScheduleLambdaFunction decision. This happens when the workflow execution does not have the proper IAM role attached to invoke AWS Lambda functions.</li> <li> <b>StartLambdaFunctionFailed</b>: Failed to invoke the scheduled function in the AWS Lambda service. This happens when the AWS Lambda service is not available in the current region, or received too many requests.</li> </ul></p>
+    <p><p>Event within a workflow execution. A history event can be one of these types:</p> <ul> <li> <b>WorkflowExecutionStarted</b>: The workflow execution was started.</li> <li> <b>WorkflowExecutionCompleted</b>: The workflow execution was closed due to successful completion.</li> <li> <b>WorkflowExecutionFailed</b>: The workflow execution closed due to a failure.</li> <li> <b>WorkflowExecutionTimedOut</b>: The workflow execution was closed because a time out was exceeded.</li> <li> <b>WorkflowExecutionCanceled</b>: The workflow execution was successfully canceled and closed.</li> <li> <b>WorkflowExecutionTerminated</b>: The workflow execution was terminated.</li> <li> <b>WorkflowExecutionContinuedAsNew</b>: The workflow execution was closed and a new execution of the same type was created with the same workflowId.</li> <li> <b>WorkflowExecutionCancelRequested</b>: A request to cancel this workflow execution was made.</li> <li> <b>DecisionTaskScheduled</b>: A decision task was scheduled for the workflow execution.</li> <li> <b>DecisionTaskStarted</b>: The decision task was dispatched to a decider.</li> <li> <b>DecisionTaskCompleted</b>: The decider successfully completed a decision task by calling <a>RespondDecisionTaskCompleted</a>.</li> <li> <b>DecisionTaskTimedOut</b>: The decision task timed out.</li> <li> <b>ActivityTaskScheduled</b>: An activity task was scheduled for execution.</li> <li> <b>ScheduleActivityTaskFailed</b>: Failed to process ScheduleActivityTask decision. This happens when the decision is not configured properly, for example the activity type specified is not registered.</li> <li> <b>ActivityTaskStarted</b>: The scheduled activity task was dispatched to a worker.</li> <li> <b>ActivityTaskCompleted</b>: An activity worker successfully completed an activity task by calling <a>RespondActivityTaskCompleted</a>.</li> <li> <b>ActivityTaskFailed</b>: An activity worker failed an activity task by calling <a>RespondActivityTaskFailed</a>.</li> <li> <b>ActivityTaskTimedOut</b>: The activity task timed out.</li> <li> <b>ActivityTaskCanceled</b>: The activity task was successfully canceled.</li> <li> <b>ActivityTaskCancelRequested</b>: A <code>RequestCancelActivityTask</code> decision was received by the system.</li> <li> <b>RequestCancelActivityTaskFailed</b>: Failed to process RequestCancelActivityTask decision. This happens when the decision is not configured properly.</li> <li> <b>WorkflowExecutionSignaled</b>: An external signal was received for the workflow execution.</li> <li> <b>MarkerRecorded</b>: A marker was recorded in the workflow history as the result of a <code>RecordMarker</code> decision.</li> <li> <b>TimerStarted</b>: A timer was started for the workflow execution due to a <code>StartTimer</code> decision.</li> <li> <b>StartTimerFailed</b>: Failed to process StartTimer decision. This happens when the decision is not configured properly, for example a timer already exists with the specified timer ID.</li> <li> <b>TimerFired</b>: A timer, previously started for this workflow execution, fired.</li> <li> <b>TimerCanceled</b>: A timer, previously started for this workflow execution, was successfully canceled.</li> <li> <b>CancelTimerFailed</b>: Failed to process CancelTimer decision. This happens when the decision is not configured properly, for example no timer exists with the specified timer ID.</li> <li> <b>StartChildWorkflowExecutionInitiated</b>: A request was made to start a child workflow execution.</li> <li> <b>StartChildWorkflowExecutionFailed</b>: Failed to process StartChildWorkflowExecution decision. This happens when the decision is not configured properly, for example the workflow type specified is not registered.</li> <li> <b>ChildWorkflowExecutionStarted</b>: A child workflow execution was successfully started.</li> <li> <b>ChildWorkflowExecutionCompleted</b>: A child workflow execution, started by this workflow execution, completed successfully and was closed.</li> <li> <b>ChildWorkflowExecutionFailed</b>: A child workflow execution, started by this workflow execution, failed to complete successfully and was closed.</li> <li> <b>ChildWorkflowExecutionTimedOut</b>: A child workflow execution, started by this workflow execution, timed out and was closed.</li> <li> <b>ChildWorkflowExecutionCanceled</b>: A child workflow execution, started by this workflow execution, was canceled and closed.</li> <li> <b>ChildWorkflowExecutionTerminated</b>: A child workflow execution, started by this workflow execution, was terminated.</li> <li> <b>SignalExternalWorkflowExecutionInitiated</b>: A request to signal an external workflow was made.</li> <li> <b>ExternalWorkflowExecutionSignaled</b>: A signal, requested by this workflow execution, was successfully delivered to the target external workflow execution.</li> <li> <b>SignalExternalWorkflowExecutionFailed</b>: The request to signal an external workflow execution failed.</li> <li> <b>RequestCancelExternalWorkflowExecutionInitiated</b>: A request was made to request the cancellation of an external workflow execution.</li> <li> <b>ExternalWorkflowExecutionCancelRequested</b>: Request to cancel an external workflow execution was successfully delivered to the target execution.</li> <li> <b>RequestCancelExternalWorkflowExecutionFailed</b>: Request to cancel an external workflow execution failed.</li> <li> <b>LambdaFunctionScheduled</b>: An AWS Lambda function was scheduled for execution.</li> <li> <b>LambdaFunctionStarted</b>: The scheduled function was invoked in the AWS Lambda service.</li> <li> <b>LambdaFunctionCompleted</b>: The AWS Lambda function successfully completed.</li> <li> <b>LambdaFunctionFailed</b>: The AWS Lambda function execution failed.</li> <li> <b>LambdaFunctionTimedOut</b>: The AWS Lambda function execution timed out.</li> <li> <b>ScheduleLambdaFunctionFailed</b>: Failed to process ScheduleLambdaFunction decision. This happens when the workflow execution does not have the proper IAM role attached to invoke AWS Lambda functions.</li> <li> <b>StartLambdaFunctionFailed</b>: Failed to invoke the scheduled function in the AWS Lambda service. This happens when the AWS Lambda service is not available in the current region, or received too many requests.</li> </ul></p>
 
   </div>
 </div>
@@ -330,10 +327,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>The date and time when the event occurred.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>The date and time when the event occurred.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -342,10 +336,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>The type of the history event.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>The type of the history event.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -381,10 +372,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>Provides details for the <code>LambdaFunctionCompleted</code> event.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Provides details for the <code>LambdaFunctionCompleted</code> event.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -393,10 +381,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>Provides details for the <code>LambdaFunctionFailed</code> event.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Provides details for the <code>LambdaFunctionFailed</code> event.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -405,10 +390,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>Provides details for the <code>LambdaFunctionScheduled</code> event.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Provides details for the <code>LambdaFunctionScheduled</code> event.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -417,10 +399,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>Provides details for the <code>LambdaFunctionStarted</code> event.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Provides details for the <code>LambdaFunctionStarted</code> event.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -429,10 +408,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>Provides details for the <code>LambdaFunctionTimedOut</code> event.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Provides details for the <code>LambdaFunctionTimedOut</code> event.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -495,10 +471,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>Provides details for the <code>ScheduleLambdaFunctionFailed</code> event.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Provides details for the <code>ScheduleLambdaFunctionFailed</code> event.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -543,10 +516,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>Provides details for the <code>StartLambdaFunctionFailed</code> event.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Provides details for the <code>StartLambdaFunctionFailed</code> event.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -677,7 +647,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>ActivityTaskcancelRequested</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -692,7 +661,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>ActivityTaskCanceled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -709,7 +677,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>ActivityTaskCompleted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -724,7 +691,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>ActivityTaskFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -741,7 +707,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>ActivityTaskScheduled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -756,7 +721,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>ActivityTaskStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -773,7 +737,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>ActivityTaskTimedOut</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -788,7 +751,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>CancelTimerFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -805,7 +767,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>CancelWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -820,7 +781,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>ChildWorkflowExecutionCanceled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -837,7 +797,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>ChildWorkflowExecutionCompleted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -852,7 +811,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>ChildWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -869,7 +827,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>ChildWorkflowExecutionStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -884,7 +841,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>ChildWorkflowExecutionTerminated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -901,7 +857,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>ChildWorkflowExecutionTimedOut</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -916,7 +871,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>CompleteWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -933,7 +887,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>ContinueAsNewWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -948,7 +901,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>DecisionTaskCompleted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -965,7 +917,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>DecisionTaskScheduled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -980,7 +931,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>DecisionTaskStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -997,7 +947,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>DecisionTaskTimedOut</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1012,7 +961,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>The system generated ID of the event. This ID uniquely identifies the event with in the workflow execution history.</p>
-
 
   </div>
 </div>
@@ -1029,7 +977,6 @@
   <div class='discussion'>
     <p>The date and time when the event occurred.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1043,14 +990,7 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The type of the history event.</p>
-
-
-<p>Possible values:</p>
-
-
-<ul><li><tt>WorkflowExecutionStarted</tt></li><li><tt>WorkflowExecutionCancelRequested</tt></li><li><tt>WorkflowExecutionCompleted</tt></li><li><tt>CompleteWorkflowExecutionFailed</tt></li><li><tt>WorkflowExecutionFailed</tt></li><li><tt>FailWorkflowExecutionFailed</tt></li><li><tt>WorkflowExecutionTimedOut</tt></li><li><tt>WorkflowExecutionCanceled</tt></li><li><tt>CancelWorkflowExecutionFailed</tt></li><li><tt>WorkflowExecutionContinuedAsNew</tt></li><li><tt>ContinueAsNewWorkflowExecutionFailed</tt></li><li><tt>WorkflowExecutionTerminated</tt></li><li><tt>DecisionTaskScheduled</tt></li><li><tt>DecisionTaskStarted</tt></li><li><tt>DecisionTaskCompleted</tt></li><li><tt>DecisionTaskTimedOut</tt></li><li><tt>ActivityTaskScheduled</tt></li><li><tt>ScheduleActivityTaskFailed</tt></li><li><tt>ActivityTaskStarted</tt></li><li><tt>ActivityTaskCompleted</tt></li><li><tt>ActivityTaskFailed</tt></li><li><tt>ActivityTaskTimedOut</tt></li><li><tt>ActivityTaskCanceled</tt></li><li><tt>ActivityTaskCancelRequested</tt></li><li><tt>RequestCancelActivityTaskFailed</tt></li><li><tt>WorkflowExecutionSignaled</tt></li><li><tt>MarkerRecorded</tt></li><li><tt>RecordMarkerFailed</tt></li><li><tt>TimerStarted</tt></li><li><tt>StartTimerFailed</tt></li><li><tt>TimerFired</tt></li><li><tt>TimerCanceled</tt></li><li><tt>CancelTimerFailed</tt></li><li><tt>StartChildWorkflowExecutionInitiated</tt></li><li><tt>StartChildWorkflowExecutionFailed</tt></li><li><tt>ChildWorkflowExecutionStarted</tt></li><li><tt>ChildWorkflowExecutionCompleted</tt></li><li><tt>ChildWorkflowExecutionFailed</tt></li><li><tt>ChildWorkflowExecutionTimedOut</tt></li><li><tt>ChildWorkflowExecutionCanceled</tt></li><li><tt>ChildWorkflowExecutionTerminated</tt></li><li><tt>SignalExternalWorkflowExecutionInitiated</tt></li><li><tt>SignalExternalWorkflowExecutionFailed</tt></li><li><tt>ExternalWorkflowExecutionSignaled</tt></li><li><tt>RequestCancelExternalWorkflowExecutionInitiated</tt></li><li><tt>RequestCancelExternalWorkflowExecutionFailed</tt></li><li><tt>ExternalWorkflowExecutionCancelRequested</tt></li><li><tt>LambdaFunctionScheduled</tt></li><li><tt>LambdaFunctionStarted</tt></li><li><tt>LambdaFunctionCompleted</tt></li><li><tt>LambdaFunctionFailed</tt></li><li><tt>LambdaFunctionTimedOut</tt></li><li><tt>ScheduleLambdaFunctionFailed</tt></li><li><tt>StartLambdaFunctionFailed</tt></li></ul>
-
+    <p><p>The type of the history event.</p><p>Possible values:</p><ul><li><tt>WorkflowExecutionStarted</tt></li><li><tt>WorkflowExecutionCancelRequested</tt></li><li><tt>WorkflowExecutionCompleted</tt></li><li><tt>CompleteWorkflowExecutionFailed</tt></li><li><tt>WorkflowExecutionFailed</tt></li><li><tt>FailWorkflowExecutionFailed</tt></li><li><tt>WorkflowExecutionTimedOut</tt></li><li><tt>WorkflowExecutionCanceled</tt></li><li><tt>CancelWorkflowExecutionFailed</tt></li><li><tt>WorkflowExecutionContinuedAsNew</tt></li><li><tt>ContinueAsNewWorkflowExecutionFailed</tt></li><li><tt>WorkflowExecutionTerminated</tt></li><li><tt>DecisionTaskScheduled</tt></li><li><tt>DecisionTaskStarted</tt></li><li><tt>DecisionTaskCompleted</tt></li><li><tt>DecisionTaskTimedOut</tt></li><li><tt>ActivityTaskScheduled</tt></li><li><tt>ScheduleActivityTaskFailed</tt></li><li><tt>ActivityTaskStarted</tt></li><li><tt>ActivityTaskCompleted</tt></li><li><tt>ActivityTaskFailed</tt></li><li><tt>ActivityTaskTimedOut</tt></li><li><tt>ActivityTaskCanceled</tt></li><li><tt>ActivityTaskCancelRequested</tt></li><li><tt>RequestCancelActivityTaskFailed</tt></li><li><tt>WorkflowExecutionSignaled</tt></li><li><tt>MarkerRecorded</tt></li><li><tt>RecordMarkerFailed</tt></li><li><tt>TimerStarted</tt></li><li><tt>StartTimerFailed</tt></li><li><tt>TimerFired</tt></li><li><tt>TimerCanceled</tt></li><li><tt>CancelTimerFailed</tt></li><li><tt>StartChildWorkflowExecutionInitiated</tt></li><li><tt>StartChildWorkflowExecutionFailed</tt></li><li><tt>ChildWorkflowExecutionStarted</tt></li><li><tt>ChildWorkflowExecutionCompleted</tt></li><li><tt>ChildWorkflowExecutionFailed</tt></li><li><tt>ChildWorkflowExecutionTimedOut</tt></li><li><tt>ChildWorkflowExecutionCanceled</tt></li><li><tt>ChildWorkflowExecutionTerminated</tt></li><li><tt>SignalExternalWorkflowExecutionInitiated</tt></li><li><tt>SignalExternalWorkflowExecutionFailed</tt></li><li><tt>ExternalWorkflowExecutionSignaled</tt></li><li><tt>RequestCancelExternalWorkflowExecutionInitiated</tt></li><li><tt>RequestCancelExternalWorkflowExecutionFailed</tt></li><li><tt>ExternalWorkflowExecutionCancelRequested</tt></li><li><tt>LambdaFunctionScheduled</tt></li><li><tt>LambdaFunctionStarted</tt></li><li><tt>LambdaFunctionCompleted</tt></li><li><tt>LambdaFunctionFailed</tt></li><li><tt>LambdaFunctionTimedOut</tt></li><li><tt>ScheduleLambdaFunctionFailed</tt></li><li><tt>StartLambdaFunctionFailed</tt></li></ul></p>
 
   </div>
 </div>
@@ -1067,7 +1007,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>ExternalWorkflowExecutionCancelRequested</code> then this member is set and provides detailed information about the event. It is not set for other event types. </p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1082,7 +1021,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>ExternalWorkflowExecutionSignaled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -1099,7 +1037,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>FailWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1114,7 +1051,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>Provides details for the <code>LambdaFunctionCompleted</code> event.</p>
-
 
   </div>
 </div>
@@ -1131,7 +1067,6 @@
   <div class='discussion'>
     <p>Provides details for the <code>LambdaFunctionFailed</code> event.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1146,7 +1081,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>Provides details for the <code>LambdaFunctionScheduled</code> event.</p>
-
 
   </div>
 </div>
@@ -1163,7 +1097,6 @@
   <div class='discussion'>
     <p>Provides details for the <code>LambdaFunctionStarted</code> event.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1178,7 +1111,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>Provides details for the <code>LambdaFunctionTimedOut</code> event.</p>
-
 
   </div>
 </div>
@@ -1195,7 +1127,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>MarkerRecorded</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1210,7 +1141,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>DecisionTaskFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -1227,7 +1157,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>RequestCancelActivityTaskFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1242,7 +1171,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>RequestCancelExternalWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -1259,7 +1187,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>RequestCancelExternalWorkflowExecutionInitiated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1274,7 +1201,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>ScheduleActivityTaskFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -1291,7 +1217,6 @@
   <div class='discussion'>
     <p>Provides details for the <code>ScheduleLambdaFunctionFailed</code> event.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1306,7 +1231,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>SignalExternalWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -1323,7 +1247,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>SignalExternalWorkflowExecutionInitiated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1338,7 +1261,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>StartChildWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -1355,7 +1277,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>StartChildWorkflowExecutionInitiated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1370,7 +1291,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>Provides details for the <code>StartLambdaFunctionFailed</code> event.</p>
-
 
   </div>
 </div>
@@ -1387,7 +1307,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>StartTimerFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1402,7 +1321,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>TimerCanceled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -1419,7 +1337,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>TimerFired</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1434,7 +1351,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>TimerStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -1451,7 +1367,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>WorkflowExecutionCancelRequested</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1466,7 +1381,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>WorkflowExecutionCanceled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -1483,7 +1397,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>WorkflowExecutionCompleted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1498,7 +1411,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>WorkflowExecutionContinuedAsNew</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -1515,7 +1427,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>WorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1530,7 +1441,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>WorkflowExecutionSignaled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>
@@ -1547,7 +1457,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>WorkflowExecutionStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1563,7 +1472,6 @@
   <div class='discussion'>
     <p>If the event is of type <code>WorkflowExecutionTerminated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1578,7 +1486,6 @@
 <div class='docstring'>
   <div class='discussion'>
     <p>If the event is of type <code>WorkflowExecutionTimedOut</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
-
 
   </div>
 </div>

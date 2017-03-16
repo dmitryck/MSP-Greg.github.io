@@ -139,7 +139,7 @@ request is to expose these values in a consistent and usable way.</p>
 <h3>Expose Raw Exception Response Bodies</h3>
 
 <p>The SDK uses first the exception response <code>__type</code> field, then the <code>ErrorCode</code>
-field, to determine the exception's code. However, the related issue shows at
+field, to determine the exception&#39;s code. However, the related issue shows at
 least one case where the <code>ErrorCode</code> field would be the more descriptive error.
 We cannot change the exception classing behavior now, but exposing the raw
 exception response fields could improve the exception handling experience.</p>
@@ -193,7 +193,7 @@ existing client calls within the resource.</p>
 
 <h3>Add Interface to Create Custom Waiters</h3>
 
-<p>For cases where a particular waiter doesn't exist, this request would provide an
+<p>For cases where a particular waiter doesn&#39;t exist, this request would provide an
 interface with which someone could define a waiter in code, rather than having
 to alter the SDK source JSON files.</p>
 
@@ -207,15 +207,15 @@ transit, increasing the risk of signature errors despite a properly constructed
 request.</p>
 
 <p>This feature request is to allow users to manually whitelist a header to be
-signed. In essence, that user would be certifying "I know that this header will
-not be modified in transit or be otherwise changed, so sign it."</p>
+signed. In essence, that user would be certifying &quot;I know that this header will
+not be modified in transit or be otherwise changed, so sign it.&quot;</p>
 
 <p>See <a href="https://github.com/aws/aws-sdk-ruby/issues/1051">related GitHub issue #1051</a>.</p>
 
 <h3>Add Injectable Timestamp to Presigner</h3>
 
 <p>Since the signing logic uses <code>now</code> for the signing time, the
-<code>Aws::S3::Presigner</code> class will always generate unique URLs, though use cases
+<a href="Aws/S3/Presigner.html" title="Aws::S3::Presigner (class)">::Aws::S3::Presigner</a> class will always generate unique URLs, though use cases
 can exist for wanting consistency across generated URLs. The ask would be to add
 support for an injectable timestamp into signing via the presigner.</p>
 
@@ -232,7 +232,7 @@ could be useful if using actual AWS CLI output as stubbed output for Ruby tests.
 <h3>Add SDK Performance Metrics in Amazon CloudWatch</h3>
 
 <p>Similar to the
-<a href="https://java.awsblog.com/post/Tx3C0RV4NRRBKTG/Enabling-Metrics-with-the-AWS-SDK-for-Java">AWS SDK for Java's feature</a>.</p>
+<a href="https://java.awsblog.com/post/Tx3C0RV4NRRBKTG/Enabling-Metrics-with-the-AWS-SDK-for-Java">AWS SDK for Java&#39;s feature</a>.</p>
 
 <p>This would create a plugin that takes metrics about API call performance and
 possibly other SDK performance metrics, and would enable automatic uploads to
@@ -241,7 +241,7 @@ Amazon CloudWatch.</p>
 <h3>Add Pagination Support for Amazon CloudSearch Domain Client</h3>
 
 <p>The current spec for pagination is not able to support the response structure of
-the <code>Aws::CloudSearchDomain::Client#search</code> API, for example. The feature
+the <a href="Aws/CloudSearchDomain/Client.html#search-instance_method" title="Aws::CloudSearchDomain::Client#search (method)">Aws::CloudSearchDomain::Client#search</a> API, for example. The feature
 request is to either add a custom CloudSearch Domain pagination plugin, or to
 enhance pagination in general to support this type of response.</p>
 
@@ -250,9 +250,9 @@ enhance pagination in general to support this type of response.</p>
 <h3>Add Support for Copying Object Versions to Aws::S3::Resource</h3>
 
 <p>You can copy Amazon S3 object versions to a new Amazon S3 object using the
-<code>Aws::S3::Client#copy_from</code> operation. However, there isn't currently a way to
+<code>Aws::S3::Client#copy_from</code> operation. However, there isn&#39;t currently a way to
 do this in the resource interface. This is a feature request to add that support
-to the <code>Aws::S3::Resource</code> interface.</p>
+to the <a href="Aws/S3/Resource.html" title="Aws::S3::Resource (class)">::Aws::S3::Resource</a> interface.</p>
 
 <p>See <a href="https://github.com/aws/aws-sdk-ruby/issues/969">related GitHub issue #969</a>.</p>
 
@@ -295,7 +295,7 @@ to configure a proxy or to enable the default proxy from the constructor.</p>
 
 <p>The default credential provider chain will check for credentials from the EC2 instance metadata service once before giving up. This is intentional to prevent development environments from hanging for an extended period of time when not running on Amazon EC2.</p>
 
-<p>Defaulting to no retries is problematic for code running on Amazon EC2, especially in a situation where the code is executing early in the boot process and the credentials are not immediately available. This forces developers to create a custom <code>Aws::InstanceProfileCredentials</code> object to configure retires, complicating configuration for development environments.</p>
+<p>Defaulting to no retries is problematic for code running on Amazon EC2, especially in a situation where the code is executing early in the boot process and the credentials are not immediately available. This forces developers to create a custom <a href="Aws/InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a> object to configure retires, complicating configuration for development environments.</p>
 
 <p>Adding a retry limit for instance profile credentials might be a possible solution.</p>
 
@@ -303,13 +303,13 @@ to configure a proxy or to enable the default proxy from the constructor.</p>
 
 <h3>Progress callbacks for Amazon S3 Object uploads</h3>
 
-<p>To enable users to track file upload process, it would be helpful to support a progress callback for <code>Aws::S3::Object#upload_file</code>.</p>
+<p>To enable users to track file upload process, it would be helpful to support a progress callback for <a href="Aws/S3/Object.html#upload_file-instance_method" title="Aws::S3::Object#upload_file (method)">Aws::S3::Object#upload_file</a>.</p>
 
 <p>See <a href="https://github.com/aws/aws-sdk-ruby/issues/648#issuecomment-78246370">related GitHub issue #648</a>.</p>
 
 <h3>Aws::MachineLearning Booleans</h3>
 
-<p>The <code>#predict</code> operation of <code>Aws::MachineLearning::Client</code> accepts a map of string-to-strings. When a user wishes to provide a boolean value, the API expects the boolean to be "1" or "0". It would be helpful if a plugin were added that converted the boolean values of the record map from <code>true</code> and <code>false</code> to their expected string formats.</p>
+<p>The <code>#predict</code> operation of <a href="Aws/MachineLearning/Client.html" title="Aws::MachineLearning::Client (class)">::Aws::MachineLearning::Client</a> accepts a map of string-to-strings. When a user wishes to provide a boolean value, the API expects the boolean to be &quot;1&quot; or &quot;0&quot;. It would be helpful if a plugin were added that converted the boolean values of the record map from <code>true</code> and <code>false</code> to their expected string formats.</p>
 
 <p>See <a href="https://github.com/aws/aws-sdk-ruby/issues/878">related GitHub issue #878</a>.</p>
 

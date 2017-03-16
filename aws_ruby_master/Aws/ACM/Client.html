@@ -129,10 +129,9 @@
 <p>You can configure a default region in the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_REGION']</code></li>
+<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
 <li><code>Aws.config[:region]</code></li>
 </ul>
-
 
 <p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
 
@@ -141,12 +140,11 @@
 <p>Default credentials are loaded automatically from the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_ACCESS_KEY_ID']</code> and <code>ENV['AWS_SECRET_ACCESS_KEY']</code></li>
+<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
 <li><code>Aws.config[:credentials]</code></li>
 <li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
 <li>From an instance profile when running on EC2</li>
 </ul>
-
 
 <p>You can also construct a credentials object from one of the following
 classes:</p>
@@ -157,7 +155,6 @@ classes:</p>
 <li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
 <li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
 </ul>
-
 
 <p>Alternatively, you configure credentials with <code>:access_key_id</code> and
 <code>:secret_access_key</code>:</p>
@@ -269,10 +266,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#describe_certificate-instance_method" title="#describe_certificate (instance method)">#<strong>describe_certificate</strong>(options = {})  &#x21d2; Types::DescribeCertificateResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Returns detailed metadata about the specified ACM Certificate.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Returns detailed metadata about the specified ACM Certificate.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -288,10 +282,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#import_certificate-instance_method" title="#import_certificate (instance method)">#<strong>import_certificate</strong>(options = {})  &#x21d2; Types::ImportCertificateResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Imports an SSL/TLS certificate into AWS Certificate Manager (ACM) to use with <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html">ACM's integrated AWS services</a>.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Imports an SSL/TLS certificate into AWS Certificate Manager (ACM) to use with <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html">ACM&#39;s integrated AWS services</a>.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -423,11 +414,10 @@ for credentials:</p>
 
 <ul>
 <li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
-<li>ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']</li>
+<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
 <li><code>HOME/.aws/credentials</code> shared credentials file</li>
 <li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
 </ul>
-
 </div>        </li>
         <li>
           <span class='name'>:endpoint</span>
@@ -503,7 +493,7 @@ will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Lo
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Used when loading credentials
 from the shared credentials file at HOME/.aws/credentials.  When not
-specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
 </div>        </li>
         <li>
           <span class='name'>:raise_response_errors</span>
@@ -516,7 +506,7 @@ specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title
           <span class='name'>:region</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
-the client endpoint.  Defaults to <code>ENV['AWS_REGION']</code>.
+the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
 Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
 </div>        </li>
         <li>
@@ -588,7 +578,7 @@ fake responses are generated and returned. You can specify
 the response data to return or errors to raise by calling
 <a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
 
-<p><strong> Please note </strong> When response stubbing is enabled, no HTTP
+<p>** Please note ** When response stubbing is enabled, no HTTP
 requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
 </div>        </li>
         <li>
@@ -611,10 +601,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Adds one or more tags to an ACM Certificate. Tags are labels that you can use to identify and organize your AWS resources. Each tag consists of a <code>key</code> and an optional <code>value</code>. You specify the certificate on input by its Amazon Resource Name (ARN). You specify the tag by using a key-value pair.</p>
-
-
-<p> <p>You can apply a tag to just one certificate if you want to identify a specific characteristic of that certificate, or you can apply the same tag to multiple certificates if you want to filter for a common relationship among those certificates. Similarly, you can apply the same tag to multiple resources if you want to specify a relationship among those resources. For example, you can add the same tag to an ACM Certificate and an Elastic Load Balancing load balancer to indicate that they are both used by the same website. For more information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/tags.html">Tagging ACM Certificates</a>.</p> <p>To remove one or more tags, use the <a>RemoveTagsFromCertificate</a> action. To view all of the tags that have been applied to the certificate, use the <a>ListTagsForCertificate</a> action.</p></p>
+    <p>Adds one or more tags to an ACM Certificate. Tags are labels that you can use to identify and organize your AWS resources. Each tag consists of a <code>key</code> and an optional <code>value</code>. You specify the certificate on input by its Amazon Resource Name (ARN). You specify the tag by using a key-value pair.</p> <p>You can apply a tag to just one certificate if you want to identify a specific characteristic of that certificate, or you can apply the same tag to multiple certificates if you want to filter for a common relationship among those certificates. Similarly, you can apply the same tag to multiple resources if you want to specify a relationship among those resources. For example, you can add the same tag to an ACM Certificate and an Elastic Load Balancing load balancer to indicate that they are both used by the same website. For more information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/tags.html">Tagging ACM Certificates</a>.</p> <p>To remove one or more tags, use the <a>RemoveTagsFromCertificate</a> action. To view all of the tags that have been applied to the certificate, use the <a>ListTagsForCertificate</a> action.</p>
 
   </div>
 </div>
@@ -638,16 +625,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:certificate_arn</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of the form:</p>
-
-
-<p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p></p>
+            &mdash; <div class='inline'><p>String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 </div>        </li>
         <li>
           <span class='name'>:tags</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<a href="Types/Tag.html" title="Aws::ACM::Types::Tag (class)">Types::Tag</a>&gt;)</span>
             &mdash; <div class='inline'><p>The key-value pair that defines the tag. The tag value is optional.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -668,10 +651,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Deletes an ACM Certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list of ACM Certificates that can be displayed by calling the <a>ListCertificates</a> action or be retrieved by calling the <a>GetCertificate</a> action. The certificate will not be available for use by other AWS services.</p>
-
-
-<p> <note> <p>You cannot delete an ACM Certificate that is being used by another AWS service. To delete a certificate that is in use, the certificate association must first be removed.</p> </note></p>
+    <p><p>Deletes an ACM Certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list of ACM Certificates that can be displayed by calling the <a>ListCertificates</a> action or be retrieved by calling the <a>GetCertificate</a> action. The certificate will not be available for use by other AWS services.</p> <note> <p>You cannot delete an ACM Certificate that is being used by another AWS service. To delete a certificate that is in use, the certificate association must first be removed.</p> </note></p>
 
   </div>
 </div>
@@ -689,10 +669,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:certificate_arn</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>String that contains the ARN of the ACM Certificate to be deleted. This must be of the form:</p>
-
-
-<p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p></p>
+            &mdash; <div class='inline'><p>String that contains the ARN of the ACM Certificate to be deleted. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -714,7 +691,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Returns detailed metadata about the specified ACM Certificate.</p>
-
 
   </div>
 </div>
@@ -768,10 +744,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:certificate_arn</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>The Amazon Resource Name (ARN) of the ACM Certificate. The ARN must have the following form:</p>
-
-
-<p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p></p>
+            &mdash; <div class='inline'><p>The Amazon Resource Name (ARN) of the ACM Certificate. The ARN must have the following form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -781,9 +754,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeCertificateResponse.html#certificate-instance_method" title="Aws::ACM::Types::DescribeCertificateResponse#certificate (method)">#certificate</a> => <a href="Types/CertificateDetail.html" title="Aws::ACM::Types::CertificateDetail (class)">Types::CertificateDetail</a></li>
+<li><a href="Types/DescribeCertificateResponse.html#certificate-instance_method" title="Aws::ACM::Types::DescribeCertificateResponse#certificate (method)">#certificate</a> =&gt; <a href="Types/CertificateDetail.html" title="Aws::ACM::Types::CertificateDetail (class)">Types::CertificateDetail</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -797,10 +769,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves an ACM Certificate and certificate chain for the certificate specified by an ARN. The chain is an ordered list of certificates that contains the root certificate, intermediate certificates of subordinate CAs, and the ACM Certificate. The certificate and certificate chain are base64 encoded. If you want to decode the certificate chain to see the individual certificate fields, you can use OpenSSL.</p>
-
-
-<p> <note> <p>Currently, ACM Certificates can be used only with Elastic Load Balancing and Amazon CloudFront.</p> </note></p>
+    <p><p>Retrieves an ACM Certificate and certificate chain for the certificate specified by an ARN. The chain is an ordered list of certificates that contains the root certificate, intermediate certificates of subordinate CAs, and the ACM Certificate. The certificate and certificate chain are base64 encoded. If you want to decode the certificate chain to see the individual certificate fields, you can use OpenSSL.</p> <note> <p>Currently, ACM Certificates can be used only with Elastic Load Balancing and Amazon CloudFront.</p> </note></p>
 
   </div>
 </div>
@@ -822,10 +791,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:certificate_arn</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>String that contains a certificate ARN in the following format:</p>
-
-
-<p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p></p>
+            &mdash; <div class='inline'><p>String that contains a certificate ARN in the following format:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -835,10 +801,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetCertificateResponse.html#certificate-instance_method" title="Aws::ACM::Types::GetCertificateResponse#certificate (method)">#certificate</a> => String</li>
-<li><a href="Types/GetCertificateResponse.html#certificate_chain-instance_method" title="Aws::ACM::Types::GetCertificateResponse#certificate_chain (method)">#certificate_chain</a> => String</li>
+<li><a href="Types/GetCertificateResponse.html#certificate-instance_method" title="Aws::ACM::Types::GetCertificateResponse#certificate (method)">#certificate</a> =&gt; String</li>
+<li><a href="Types/GetCertificateResponse.html#certificate_chain-instance_method" title="Aws::ACM::Types::GetCertificateResponse#certificate_chain (method)">#certificate_chain</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -852,10 +817,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Imports an SSL/TLS certificate into AWS Certificate Manager (ACM) to use with <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html">ACM's integrated AWS services</a>.</p>
-
-
-<p> <note> <p>ACM does not provide <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for certificates that you import.</p> </note> <p>For more information about importing certificates into ACM, including the differences between certificates that you import and those that ACM provides, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html">Importing Certificates</a> in the <i>AWS Certificate Manager User Guide</i>.</p> <p>To import a certificate, you must provide the certificate and the matching private key. When the certificate is not self-signed, you must also provide a certificate chain. You can omit the certificate chain when importing a self-signed certificate.</p> <p>The certificate, private key, and certificate chain must be PEM-encoded. For more information about converting these items to PEM format, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html#import-certificate-troubleshooting">Importing Certificates Troubleshooting</a> in the <i>AWS Certificate Manager User Guide</i>.</p> <p>To import a new certificate, omit the <code>CertificateArn</code> field. Include this field only when you want to replace a previously imported certificate.</p> <p>This operation returns the <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of the imported certificate.</p></p>
+    <p>Imports an SSL/TLS certificate into AWS Certificate Manager (ACM) to use with <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html">ACM's integrated AWS services</a>.</p> <note> <p>ACM does not provide <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for certificates that you import.</p> </note> <p>For more information about importing certificates into ACM, including the differences between certificates that you import and those that ACM provides, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html">Importing Certificates</a> in the <i>AWS Certificate Manager User Guide</i>.</p> <p>To import a certificate, you must provide the certificate and the matching private key. When the certificate is not self-signed, you must also provide a certificate chain. You can omit the certificate chain when importing a self-signed certificate.</p> <p>The certificate, private key, and certificate chain must be PEM-encoded. For more information about converting these items to PEM format, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html#import-certificate-troubleshooting">Importing Certificates Troubleshooting</a> in the <i>AWS Certificate Manager User Guide</i>.</p> <p>To import a new certificate, omit the <code>CertificateArn</code> field. Include this field only when you want to replace a previously imported certificate.</p> <p>This operation returns the <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of the imported certificate.</p>
 
   </div>
 </div>
@@ -880,29 +842,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:certificate_arn</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an imported certificate to replace. To import a new certificate, omit this field.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:certificate</span>
           <span class='type'>(<code>required</code>, <code>IO</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>The certificate to import. It must meet the following requirements:</p>
-
-
-<p> <ul> <li> <p>Must be PEM-encoded.</p> </li> <li> <p>Must contain a 1024-bit or 2048-bit RSA public key.</p> </li> <li> <p>Must be valid at the time of import. You cannot import a certificate before its validity period begins (the certificate's <code>NotBefore</code> date) or after it expires (the certificate's <code>NotAfter</code> date).</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>The certificate to import. It must meet the following requirements:</p> <ul> <li> <p>Must be PEM-encoded.</p> </li> <li> <p>Must contain a 1024-bit or 2048-bit RSA public key.</p> </li> <li> <p>Must be valid at the time of import. You cannot import a certificate before its validity period begins (the certificate&#39;s <code>NotBefore</code> date) or after it expires (the certificate&#39;s <code>NotAfter</code> date).</p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:private_key</span>
           <span class='type'>(<code>required</code>, <code>IO</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>The private key that matches the public key in the certificate. It must meet the following requirements:</p>
-
-
-<p> <ul> <li> <p>Must be PEM-encoded.</p> </li> <li> <p>Must be unencrypted. You cannot import a private key that is protected by a password or passphrase.</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>The private key that matches the public key in the certificate. It must meet the following requirements:</p> <ul> <li> <p>Must be PEM-encoded.</p> </li> <li> <p>Must be unencrypted. You cannot import a private key that is protected by a password or passphrase.</p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:certificate_chain</span>
           <span class='type'>(<code>IO</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The certificate chain. It must be PEM-encoded.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -912,9 +866,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ImportCertificateResponse.html#certificate_arn-instance_method" title="Aws::ACM::Types::ImportCertificateResponse#certificate_arn (method)">#certificate_arn</a> => String</li>
+<li><a href="Types/ImportCertificateResponse.html#certificate_arn-instance_method" title="Aws::ACM::Types::ImportCertificateResponse#certificate_arn (method)">#certificate_arn</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -929,7 +882,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Retrieves a list of ACM Certificates and the domain name for each. You can optionally filter the list to return only the certificates that match the specified status.</p>
-
 
   </div>
 </div>
@@ -956,19 +908,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:certificate_statuses</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>The status or statuses on which to filter the list of ACM Certificates.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Use this parameter only when paginating results and only in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextToken</code> from the response you just received.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:max_items</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the <code>NextToken</code> element is sent in the response. Use this <code>NextToken</code> value in a subsequent request to retrieve additional items.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -978,10 +927,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListCertificatesResponse.html#next_token-instance_method" title="Aws::ACM::Types::ListCertificatesResponse#next_token (method)">#next_token</a> => String</li>
-<li><a href="Types/ListCertificatesResponse.html#certificate_summary_list-instance_method" title="Aws::ACM::Types::ListCertificatesResponse#certificate_summary_list (method)">#certificate_summary_list</a> => Array&lt;<a href="Types/CertificateSummary.html" title="Aws::ACM::Types::CertificateSummary (class)">Types::CertificateSummary</a>&gt;</li>
+<li><a href="Types/ListCertificatesResponse.html#next_token-instance_method" title="Aws::ACM::Types::ListCertificatesResponse#next_token (method)">#next_token</a> =&gt; String</li>
+<li><a href="Types/ListCertificatesResponse.html#certificate_summary_list-instance_method" title="Aws::ACM::Types::ListCertificatesResponse#certificate_summary_list (method)">#certificate_summary_list</a> =&gt; Array&lt;<a href="Types/CertificateSummary.html" title="Aws::ACM::Types::CertificateSummary (class)">Types::CertificateSummary</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -996,7 +944,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Lists the tags that have been applied to the ACM Certificate. Use the certificate's Amazon Resource Name (ARN) to specify the certificate. To add a tag to an ACM Certificate, use the <a>AddTagsToCertificate</a> action. To delete a tag, use the <a>RemoveTagsFromCertificate</a> action.</p>
-
 
   </div>
 </div>
@@ -1019,10 +966,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:certificate_arn</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>String that contains the ARN of the ACM Certificate for which you want to list the tags. This has the following form:</p>
-
-
-<p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p></p>
+            &mdash; <div class='inline'><p>String that contains the ARN of the ACM Certificate for which you want to list the tags. This has the following form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1032,9 +976,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListTagsForCertificateResponse.html#tags-instance_method" title="Aws::ACM::Types::ListTagsForCertificateResponse#tags (method)">#tags</a> => Array&lt;<a href="Types/Tag.html" title="Aws::ACM::Types::Tag (class)">Types::Tag</a>&gt;</li>
+<li><a href="Types/ListTagsForCertificateResponse.html#tags-instance_method" title="Aws::ACM::Types::ListTagsForCertificateResponse#tags (method)">#tags</a> =&gt; Array&lt;<a href="Types/Tag.html" title="Aws::ACM::Types::Tag (class)">Types::Tag</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1048,10 +991,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Remove one or more tags from an ACM Certificate. A tag consists of a key-value pair. If you do not specify the value portion of the tag when calling this function, the tag will be removed regardless of value. If you specify a value, the tag is removed only if it is associated with the specified value.</p>
-
-
-<p> <p>To add tags to a certificate, use the <a>AddTagsToCertificate</a> action. To view all of the tags that have been applied to a specific ACM Certificate, use the <a>ListTagsForCertificate</a> action.</p></p>
+    <p>Remove one or more tags from an ACM Certificate. A tag consists of a key-value pair. If you do not specify the value portion of the tag when calling this function, the tag will be removed regardless of value. If you specify a value, the tag is removed only if it is associated with the specified value.</p> <p>To add tags to a certificate, use the <a>AddTagsToCertificate</a> action. To view all of the tags that have been applied to a specific ACM Certificate, use the <a>ListTagsForCertificate</a> action.</p>
 
   </div>
 </div>
@@ -1075,16 +1015,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:certificate_arn</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form:</p>
-
-
-<p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p></p>
+            &mdash; <div class='inline'><p>String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 </div>        </li>
         <li>
           <span class='name'>:tags</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<a href="Types/Tag.html" title="Aws::ACM::Types::Tag (class)">Types::Tag</a>&gt;)</span>
             &mdash; <div class='inline'><p>The key-value pair that defines the tag to remove.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1106,7 +1042,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Requests an ACM Certificate for use with other AWS services. To request an ACM Certificate, you must specify the fully qualified domain name (FQDN) for your site. You can also specify additional FQDNs if users can reach your site by using other names. For each domain name you specify, email is sent to the domain owner to request approval to issue the certificate. After receiving approval from the domain owner, the ACM Certificate is issued. For more information, see the <a href="http://docs.aws.amazon.com/acm/latest/userguide/">AWS Certificate Manager User Guide</a>.</p>
-
 
   </div>
 </div>
@@ -1136,25 +1071,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:domain_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Fully qualified domain name (FQDN), such as www.example.com, of the site that you want to secure with an ACM Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:subject_alternative_names</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>Additional FQDNs to be included in the Subject Alternative Name extension of the ACM Certificate. For example, add the name www.example.net to a certificate for which the <code>DomainName</code> field is www.example.com if users can reach your site by using either name.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:idempotency_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Customer chosen string that can be used to distinguish between calls to <code>RequestCertificate</code>. Idempotency tokens time out after one hour. Therefore, if you call <code>RequestCertificate</code> multiple times with the same idempotency token within one hour, ACM recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, ACM recognizes that you are requesting multiple certificates.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:domain_validation_options</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/DomainValidationOption.html" title="Aws::ACM::Types::DomainValidationOption (class)">Types::DomainValidationOption</a>&gt;)</span>
             &mdash; <div class='inline'><p>The domain name that you want ACM to use to send you emails to validate your ownership of the domain.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1164,9 +1095,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/RequestCertificateResponse.html#certificate_arn-instance_method" title="Aws::ACM::Types::RequestCertificateResponse#certificate_arn (method)">#certificate_arn</a> => String</li>
+<li><a href="Types/RequestCertificateResponse.html#certificate_arn-instance_method" title="Aws::ACM::Types::RequestCertificateResponse#certificate_arn (method)">#certificate_arn</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1181,7 +1111,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Resends the email that requests domain ownership validation. The domain owner or an authorized representative must approve the ACM Certificate before it can be issued. The certificate can be approved by clicking a link in the mail to navigate to the Amazon certificate approval website and then clicking <b>I Approve</b>. However, the validation email can be blocked by spam filters. Therefore, if you do not receive the original mail, you can request that the mail be resent within 72 hours of requesting the ACM Certificate. If more than 72 hours have elapsed since your original request or since your last attempt to resend validation mail, you must request a new certificate.</p>
-
 
   </div>
 </div>
@@ -1201,24 +1130,17 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:certificate_arn</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>String that contains the ARN of the requested certificate. The certificate ARN is generated and returned by the <a>RequestCertificate</a> action as soon as the request is made. By default, using this parameter causes email to be sent to all top-level domains you specified in the certificate request.</p>
-
-
-<p> <p>The ARN must be of the form:</p> <p> <code>arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p></p>
+            &mdash; <div class='inline'><p>String that contains the ARN of the requested certificate. The certificate ARN is generated and returned by the <a>RequestCertificate</a> action as soon as the request is made. By default, using this parameter causes email to be sent to all top-level domains you specified in the certificate request.</p> <p>The ARN must be of the form:</p> <p> <code>arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p>
 </div>        </li>
         <li>
           <span class='name'>:domain</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The fully qualified domain name (FQDN) of the certificate that needs to be validated.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:validation_domain</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code> value. For example, if you requested a certificate for <code>site.subdomain.example.com</code> and specify a <b>ValidationDomain</b> of <code>subdomain.example.com</code>, ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:</p>
-
-
-<p> <ul> <li> <p><a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#x61;&#100;&#x6d;&#x69;&#x6e;&#x40;&#x73;&#117;&#98;&#100;&#x6f;&#109;&#97;&#105;&#110;&#46;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#101;&#46;&#99;&#x6f;&#x6d;">&#x61;&#x64;&#109;&#x69;&#x6e;&#x40;&#115;&#117;&#98;&#x64;&#x6f;&#x6d;&#97;&#x69;&#110;&#x2e;&#101;&#120;&#97;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#111;&#109;</a></p> </li> <li> <p><a href="&#x6d;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#97;&#x64;&#109;&#105;&#110;&#x69;&#115;&#116;&#x72;&#x61;&#x74;&#x6f;&#x72;&#x40;&#x73;&#x75;&#x62;&#x64;&#x6f;&#109;&#x61;&#105;&#x6e;&#x2e;&#x65;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;">&#97;&#x64;&#x6d;&#x69;&#110;&#x69;&#115;&#116;&#114;&#x61;&#x74;&#x6f;&#x72;&#x40;&#115;&#117;&#98;&#x64;&#111;&#x6d;&#x61;&#x69;&#x6e;&#46;&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;</a></p> </li> <li> <p><a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#104;&#x6f;&#115;&#x74;&#109;&#x61;&#x73;&#116;&#x65;&#x72;&#x40;&#x73;&#x75;&#x62;&#100;&#x6f;&#109;&#97;&#105;&#110;&#x2e;&#x65;&#120;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;">&#104;&#111;&#115;&#116;&#x6d;&#97;&#115;&#116;&#x65;&#x72;&#64;&#x73;&#x75;&#98;&#x64;&#x6f;&#x6d;&#97;&#105;&#110;&#x2e;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#99;&#111;&#x6d;</a></p> </li> <li> <p><a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#58;&#112;&#111;&#x73;&#x74;&#109;&#97;&#x73;&#116;&#x65;&#114;&#x40;&#115;&#x75;&#x62;&#100;&#111;&#109;&#x61;&#105;&#110;&#46;&#x65;&#x78;&#97;&#109;&#x70;&#x6c;&#101;&#46;&#99;&#x6f;&#109;">&#112;&#111;&#115;&#x74;&#x6d;&#x61;&#115;&#x74;&#101;&#114;&#x40;&#x73;&#x75;&#98;&#100;&#111;&#109;&#97;&#105;&#x6e;&#x2e;&#x65;&#x78;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#x63;&#x6f;&#x6d;</a></p> </li> <li> <p><a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x77;&#x65;&#x62;&#x6d;&#97;&#115;&#116;&#x65;&#x72;&#x40;&#115;&#x75;&#x62;&#x64;&#111;&#109;&#97;&#x69;&#110;&#x2e;&#x65;&#x78;&#97;&#x6d;&#112;&#108;&#x65;&#x2e;&#99;&#111;&#109;">&#x77;&#101;&#98;&#x6d;&#x61;&#x73;&#116;&#101;&#x72;&#64;&#x73;&#117;&#98;&#x64;&#111;&#x6d;&#x61;&#105;&#110;&#46;&#101;&#x78;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#111;&#109;</a></p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code> value. For example, if you requested a certificate for <code>site.subdomain.example.com</code> and specify a <b>ValidationDomain</b> of <code>subdomain.example.com</code>, ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:</p> <ul> <li> <p><a href="mailto:admin@subdomain.example.com">admin@subdomain.example.com</a></p> </li> <li> <p><a href="mailto:administrator@subdomain.example.com">administrator@subdomain.example.com</a></p> </li> <li> <p><a href="mailto:hostmaster@subdomain.example.com">hostmaster@subdomain.example.com</a></p> </li> <li> <p><a href="mailto:postmaster@subdomain.example.com">postmaster@subdomain.example.com</a></p> </li> <li> <p><a href="mailto:webmaster@subdomain.example.com">webmaster@subdomain.example.com</a></p> </li> </ul></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1248,7 +1170,7 @@ state.</p>
 entering a terminal state, or until a maximum number of attempts
 are made.</p>
 
-<p>   # polls in a loop, sleeping between attempts
+<p># polls in a loop, sleeping between attempts
    client.waiter_until(waiter_name, params)</p>
 
 <h3>Configuration</h3>
@@ -1384,7 +1306,6 @@ waiters and the client method they call:</p>
 
 </tbody>
 </table>
-
 
   </div>
 </div>

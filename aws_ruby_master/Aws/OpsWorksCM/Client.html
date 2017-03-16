@@ -129,10 +129,9 @@
 <p>You can configure a default region in the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_REGION']</code></li>
+<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
 <li><code>Aws.config[:region]</code></li>
 </ul>
-
 
 <p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
 
@@ -141,12 +140,11 @@
 <p>Default credentials are loaded automatically from the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_ACCESS_KEY_ID']</code> and <code>ENV['AWS_SECRET_ACCESS_KEY']</code></li>
+<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
 <li><code>Aws.config[:credentials]</code></li>
 <li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
 <li>From an instance profile when running on EC2</li>
 </ul>
-
 
 <p>You can also construct a credentials object from one of the following
 classes:</p>
@@ -157,7 +155,6 @@ classes:</p>
 <li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
 <li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
 </ul>
-
 
 <p>Alternatively, you configure credentials with <code>:access_key_id</code> and
 <code>:secret_access_key</code>:</p>
@@ -285,7 +282,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#delete_server-instance_method" title="#delete_server (instance method)">#<strong>delete_server</strong>(options = {})  &#x21d2; Struct </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p> Deletes the server and the underlying AWS CloudFormation stack (including the server's EC2 instance).</p></div>
+      <div class='inline'><p><p> Deletes the server and the underlying AWS CloudFormation stack (including the server&#39;s EC2 instance).</p></div>
     </div>
   </li>
   <li>
@@ -333,7 +330,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#disassociate_node-instance_method" title="#disassociate_node (instance method)">#<strong>disassociate_node</strong>(options = {})  &#x21d2; Types::DisassociateNodeResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p> Disassociates a node from a Chef server, and removes the node from the Chef server's managed nodes.</p></div>
+      <div class='inline'><p><p> Disassociates a node from a Chef server, and removes the node from the Chef server&#39;s managed nodes.</p></div>
     </div>
   </li>
   <li>
@@ -457,11 +454,10 @@ for credentials:</p>
 
 <ul>
 <li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
-<li>ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']</li>
+<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
 <li><code>HOME/.aws/credentials</code> shared credentials file</li>
 <li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
 </ul>
-
 </div>        </li>
         <li>
           <span class='name'>:endpoint</span>
@@ -537,7 +533,7 @@ will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Lo
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Used when loading credentials
 from the shared credentials file at HOME/.aws/credentials.  When not
-specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
 </div>        </li>
         <li>
           <span class='name'>:raise_response_errors</span>
@@ -550,7 +546,7 @@ specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title
           <span class='name'>:region</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
-the client endpoint.  Defaults to <code>ENV['AWS_REGION']</code>.
+the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
 Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
 </div>        </li>
         <li>
@@ -622,7 +618,7 @@ fake responses are generated and returned. You can specify
 the response data to return or errors to raise by calling
 <a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
 
-<p><strong> Please note </strong> When response stubbing is enabled, no HTTP
+<p>** Please note ** When response stubbing is enabled, no HTTP
 requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
 </div>        </li>
         <li>
@@ -645,10 +641,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Associates a new node with the Chef server. This command is an alternative to <code>knife bootstrap</code>. For more information about how to disassociate a node, see <a>DisassociateNode</a>.</p>
-
-
-<p> <p> A node can can only be associated with servers that are in a <code>HEALTHY</code> state. Otherwise, an <code>InvalidStateException</code> is thrown. A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. The AssociateNode API call can be integrated into Auto Scaling configurations, AWS Cloudformation templates, or the user data of a server's instance. </p> <p> Example: <code>aws opsworks-cm associate-node --server-name <i>MyServer</i> --node-name <i>MyManagedNode</i> --engine-attributes "Name=<i>MyOrganization</i>,Value=default" "Name=<i>Chef_node_public_key</i>,Value=<i>Public_key_contents</i>"</code> </p></p>
+    <p> Associates a new node with the Chef server. This command is an alternative to <code>knife bootstrap</code>. For more information about how to disassociate a node, see <a>DisassociateNode</a>.</p> <p> A node can can only be associated with servers that are in a <code>HEALTHY</code> state. Otherwise, an <code>InvalidStateException</code> is thrown. A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. The AssociateNode API call can be integrated into Auto Scaling configurations, AWS Cloudformation templates, or the user data of a server's instance. </p> <p> Example: <code>aws opsworks-cm associate-node --server-name <i>MyServer</i> --node-name <i>MyManagedNode</i> --engine-attributes "Name=<i>MyOrganization</i>,Value=default" "Name=<i>Chef_node_public_key</i>,Value=<i>Public_key_contents</i>"</code> </p>
 
   </div>
 </div>
@@ -677,21 +670,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:server_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the server with which to associate the node. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:node_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the Chef client node. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:engine_attributes</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<a href="Types/EngineAttribute.html" title="Aws::OpsWorksCM::Types::EngineAttribute (class)">Types::EngineAttribute</a>&gt;)</span>
-            &mdash; <div class='inline'><p>Engine attributes used for associating the node. </p>
-
-
-<p> <p class="title"> <b>Attributes accepted in a AssociateNode request:</b> </p> <ul> <li> <p> <code>CHEF_ORGANIZATION</code>: The Chef organization with which the node is associated. By default only one organization named <code>default</code> can exist. </p> </li> <li> <p> <code>CHEF_NODE_PUBLIC_KEY</code>: A PEM-formatted public key. This key is required for the <code>chef-client</code> agent to access the Chef API. </p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Engine attributes used for associating the node. </p> <p class="title"> <b>Attributes accepted in a AssociateNode request:</b> </p> <ul> <li> <p> <code>CHEF_ORGANIZATION</code>: The Chef organization with which the node is associated. By default only one organization named <code>default</code> can exist. </p> </li> <li> <p> <code>CHEF_NODE_PUBLIC_KEY</code>: A PEM-formatted public key. This key is required for the <code>chef-client</code> agent to access the Chef API. </p> </li> </ul></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -701,9 +689,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/AssociateNodeResponse.html#node_association_status_token-instance_method" title="Aws::OpsWorksCM::Types::AssociateNodeResponse#node_association_status_token (method)">#node_association_status_token</a> => String</li>
+<li><a href="Types/AssociateNodeResponse.html#node_association_status_token-instance_method" title="Aws::OpsWorksCM::Types::AssociateNodeResponse#node_association_status_token (method)">#node_association_status_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -717,10 +704,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Creates an application-level backup of a server. While the server is in the <code>BACKING_UP</code> state, the server cannot be changed, and no additional backup can be created. </p>
-
-
-<p> <p> Backups can be created for servers in <code>RUNNING</code>, <code>HEALTHY</code>, and <code>UNHEALTHY</code> states. By default, you can create a maximum of 50 manual backups. </p> <p> This operation is asynchronous. </p> <p> A <code>LimitExceededException</code> is thrown when the maximum number of manual backups is reached. An <code>InvalidStateException</code> is thrown when the server is not in any of the following states: RUNNING, HEALTHY, or UNHEALTHY. A <code>ResourceNotFoundException</code> is thrown when the server is not found. A <code>ValidationException</code> is thrown when parameters of the request are not valid. </p></p>
+    <p> Creates an application-level backup of a server. While the server is in the <code>BACKING_UP</code> state, the server cannot be changed, and no additional backup can be created. </p> <p> Backups can be created for servers in <code>RUNNING</code>, <code>HEALTHY</code>, and <code>UNHEALTHY</code> states. By default, you can create a maximum of 50 manual backups. </p> <p> This operation is asynchronous. </p> <p> A <code>LimitExceededException</code> is thrown when the maximum number of manual backups is reached. An <code>InvalidStateException</code> is thrown when the server is not in any of the following states: RUNNING, HEALTHY, or UNHEALTHY. A <code>ResourceNotFoundException</code> is thrown when the server is not found. A <code>ValidationException</code> is thrown when parameters of the request are not valid. </p>
 
   </div>
 </div>
@@ -768,13 +752,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:server_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the server that you want to back up. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:description</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p> A user-defined description of the backup. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -784,9 +766,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateBackupResponse.html#backup-instance_method" title="Aws::OpsWorksCM::Types::CreateBackupResponse#backup (method)">#backup</a> => <a href="Types/Backup.html" title="Aws::OpsWorksCM::Types::Backup (class)">Types::Backup</a></li>
+<li><a href="Types/CreateBackupResponse.html#backup-instance_method" title="Aws::OpsWorksCM::Types::CreateBackupResponse#backup (method)">#backup</a> =&gt; <a href="Types/Backup.html" title="Aws::OpsWorksCM::Types::Backup (class)">Types::Backup</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -800,10 +781,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Creates and immedately starts a new server. The server is ready to use when it is in the <code>HEALTHY</code> state. By default, you can create a maximum of 10 servers. </p>
-
-
-<p> <p> This operation is asynchronous. </p> <p> A <code>LimitExceededException</code> is thrown when you have created the maximum number of servers (10). A <code>ResourceAlreadyExistsException</code> is thrown when a server with the same name already exists in the account. A <code>ResourceNotFoundException</code> is thrown when you specify a backup ID that is not valid or is for a backup that does not exist. A <code>ValidationException</code> is thrown when parameters of the request are not valid. </p> <p> If you do not specify a security group by adding the <code>SecurityGroupIds</code> parameter, AWS OpsWorks creates a new security group. The default security group opens the Chef server to the world on TCP port 443. If a KeyName is present, AWS OpsWorks enables SSH access. SSH is also open to the world on TCP port 22. </p> <p>By default, the Chef Server is accessible from any IP address. We recommend that you update your security group rules to allow access from known IP addresses and address ranges only. To edit security group rules, open Security Groups in the navigation pane of the EC2 management console. </p></p>
+    <p> Creates and immedately starts a new server. The server is ready to use when it is in the <code>HEALTHY</code> state. By default, you can create a maximum of 10 servers. </p> <p> This operation is asynchronous. </p> <p> A <code>LimitExceededException</code> is thrown when you have created the maximum number of servers (10). A <code>ResourceAlreadyExistsException</code> is thrown when a server with the same name already exists in the account. A <code>ResourceNotFoundException</code> is thrown when you specify a backup ID that is not valid or is for a backup that does not exist. A <code>ValidationException</code> is thrown when parameters of the request are not valid. </p> <p> If you do not specify a security group by adding the <code>SecurityGroupIds</code> parameter, AWS OpsWorks creates a new security group. The default security group opens the Chef server to the world on TCP port 443. If a KeyName is present, AWS OpsWorks enables SSH access. SSH is also open to the world on TCP port 22. </p> <p>By default, the Chef Server is accessible from any IP address. We recommend that you update your security group rules to allow access from known IP addresses and address ranges only. To edit security group rules, open Security Groups in the navigation pane of the EC2 management console. </p>
 
   </div>
 </div>
@@ -872,113 +850,86 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:associate_public_ip_address</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p> Associate a public IP address with a server that you are launching. Valid values are <code>true</code> or <code>false</code>. The default value is <code>true</code>. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:disable_automated_backup</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p> Enable or disable scheduled backups. Valid values are <code>true</code> or <code>false</code>. The default value is <code>true</code>. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:engine</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p> The configuration management engine to use. Valid values include <code>Chef</code>. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:engine_model</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p> The engine model, or option. Valid values include <code>Single</code>. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:engine_version</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p> The major release version of the engine that you want to use. Values depend on the engine that you choose. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:engine_attributes</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/EngineAttribute.html" title="Aws::OpsWorksCM::Types::EngineAttribute (class)">Types::EngineAttribute</a>&gt;)</span>
-            &mdash; <div class='inline'><p>Optional engine attributes on a specified server. </p>
-
-
-<p> <p class="title"> <b>Attributes accepted in a createServer request:</b> </p> <ul> <li> <p> <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated and returned in the response. </p> </li> <li> <p> <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate GUI. The password length is a minimum of eight characters, and a maximum of 32. The password can contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower case letter, one upper case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated and returned in the response.</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Optional engine attributes on a specified server. </p> <p class="title"> <b>Attributes accepted in a createServer request:</b> </p> <ul> <li> <p> <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated and returned in the response. </p> </li> <li> <p> <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate GUI. The password length is a minimum of eight characters, and a maximum of 32. The password can contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower case letter, one upper case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated and returned in the response.</p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:backup_retention_count</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p> The number of automated backups that you want to keep. Whenever a new backup is created, AWS OpsWorks for Chef Automate deletes the oldest backups if this number is exceeded. The default value is <code>1</code>. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:server_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p> The name of the server. The server name must be unique within your AWS account, within each region. Server names must start with a letter; then letters, numbers, or hyphens (-) are allowed, up to a maximum of 40 characters. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:instance_profile_arn</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p> The ARN of the instance profile that your Amazon EC2 instances use. Although the AWS OpsWorks console typically creates the instance profile for you, if you are using API commands instead, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml. This template creates a CloudFormation stack that includes the instance profile you need. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:instance_type</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p> The Amazon EC2 instance type to use. Valid values must be specified in the following format: <code>^([cm][34]|t2).*</code> For example, <code>m4.large</code>. Valid values are <code>t2.medium</code>, <code>m4.large</code>, or <code>m4.2xlarge</code>. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:key_pair</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p> The Amazon EC2 key pair to set for the instance. This parameter is optional; if desired, you may specify this parameter to connect to your instances by using SSH. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:preferred_maintenance_window</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p> The start time for a one-hour period each week during which AWS OpsWorks for Chef Automate performs maintenance on the instance. Valid values must be specified in the following format: <code>DDD:HH:MM</code>. The specified time is in coordinated universal time (UTC). The default value is a random one-hour period on Tuesday, Wednesday, or Friday. See <code>TimeWindowDefinition</code> for more information. </p>
-
-
-<p> <p> <b>Example:</b> <code>Mon:08:00</code>, which represents a start time of every Monday at 08:00 UTC. (8:00 a.m.) </p></p>
+            &mdash; <div class='inline'><p> The start time for a one-hour period each week during which AWS OpsWorks for Chef Automate performs maintenance on the instance. Valid values must be specified in the following format: <code>DDD:HH:MM</code>. The specified time is in coordinated universal time (UTC). The default value is a random one-hour period on Tuesday, Wednesday, or Friday. See <code>TimeWindowDefinition</code> for more information. </p> <p> <b>Example:</b> <code>Mon:08:00</code>, which represents a start time of every Monday at 08:00 UTC. (8:00 a.m.) </p>
 </div>        </li>
         <li>
           <span class='name'>:preferred_backup_window</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p> The start time for a one-hour period during which AWS OpsWorks for Chef Automate backs up application-level data on your server if automated backups are enabled. Valid values must be specified in one of the following formats: </p>
-
-
-<p> <ul> <li> <p> <code>HH:MM</code> for daily backups</p> </li> <li> <p> <code>DDD:HH:MM</code> for weekly backups</p> </li> </ul> <p>The specified time is in coordinated universal time (UTC). The default value is a random, daily start time.</p> <p> <b>Example:</b> <code>08:00</code>, which represents a daily start time of 08:00 UTC.</p> <p> <b>Example:</b> <code>Mon:08:00</code>, which represents a start time of every Monday at 08:00 UTC. (8:00 a.m.)</p></p>
+            &mdash; <div class='inline'><p> The start time for a one-hour period during which AWS OpsWorks for Chef Automate backs up application-level data on your server if automated backups are enabled. Valid values must be specified in one of the following formats: </p> <ul> <li> <p> <code>HH:MM</code> for daily backups</p> </li> <li> <p> <code>DDD:HH:MM</code> for weekly backups</p> </li> </ul> <p>The specified time is in coordinated universal time (UTC). The default value is a random, daily start time.</p> <p> <b>Example:</b> <code>08:00</code>, which represents a daily start time of 08:00 UTC.</p> <p> <b>Example:</b> <code>Mon:08:00</code>, which represents a start time of every Monday at 08:00 UTC. (8:00 a.m.)</p>
 </div>        </li>
         <li>
           <span class='name'>:security_group_ids</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p> A list of security group IDs to attach to the Amazon EC2 instance. If you add this parameter, the specified security groups must be within the VPC that is specified by <code>SubnetIds</code>. </p>
-
-
-<p> <p> If you do not specify this parameter, AWS OpsWorks for Chef Automate creates one new security group that uses TCP ports 22 and 443, open to 0.0.0.0/0 (everyone). </p></p>
+            &mdash; <div class='inline'><p> A list of security group IDs to attach to the Amazon EC2 instance. If you add this parameter, the specified security groups must be within the VPC that is specified by <code>SubnetIds</code>. </p> <p> If you do not specify this parameter, AWS OpsWorks for Chef Automate creates one new security group that uses TCP ports 22 and 443, open to 0.0.0.0/0 (everyone). </p>
 </div>        </li>
         <li>
           <span class='name'>:service_role_arn</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p> The service role that the AWS OpsWorks for Chef Automate service backend uses to work with your account. Although the AWS OpsWorks management console typically creates the service role for you, if you are using the AWS CLI or API commands, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-stuff/latest/service-role-creation.yaml. This template creates a CloudFormation stack that includes the service role that you need. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:subnet_ids</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p> The IDs of subnets in which to launch the server EC2 instance. </p>
-
-
-<p> <p> Amazon EC2-Classic customers: This field is required. All servers must run within a VPC. The VPC must have "Auto Assign Public IP" enabled. </p> <p> EC2-VPC customers: This field is optional. If you do not specify subnet IDs, your EC2 instances are created in a default subnet that is selected by Amazon EC2. If you specify subnet IDs, the VPC must have "Auto Assign Public IP" enabled. </p> <p>For more information about supported Amazon EC2 platforms, see <a href="http://docs.aws.amazon.com/https:/docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.</p></p>
+            &mdash; <div class='inline'><p> The IDs of subnets in which to launch the server EC2 instance. </p> <p> Amazon EC2-Classic customers: This field is required. All servers must run within a VPC. The VPC must have "Auto Assign Public IP" enabled. </p> <p> EC2-VPC customers: This field is optional. If you do not specify subnet IDs, your EC2 instances are created in a default subnet that is selected by Amazon EC2. If you specify subnet IDs, the VPC must have "Auto Assign Public IP" enabled. </p> <p>For more information about supported Amazon EC2 platforms, see <a href="http://docs.aws.amazon.com/https:/docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.</p>
 </div>        </li>
         <li>
           <span class='name'>:backup_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p> If you specify this field, AWS OpsWorks for Chef Automate creates the server by using the backup represented by BackupId. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -988,9 +939,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateServerResponse.html#server-instance_method" title="Aws::OpsWorksCM::Types::CreateServerResponse#server (method)">#server</a> => <a href="Types/Server.html" title="Aws::OpsWorksCM::Types::Server (class)">Types::Server</a></li>
+<li><a href="Types/CreateServerResponse.html#server-instance_method" title="Aws::OpsWorksCM::Types::CreateServerResponse#server (method)">#server</a> =&gt; <a href="Types/Server.html" title="Aws::OpsWorksCM::Types::Server (class)">Types::Server</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1004,10 +954,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Deletes a backup. You can delete both manual and automated backups. This operation is asynchronous. </p>
-
-
-<p> <p> An <code>InvalidStateException</code> is thrown when a backup deletion is already in progress. A <code>ResourceNotFoundException</code> is thrown when the backup does not exist. A <code>ValidationException</code> is thrown when parameters of the request are not valid. </p></p>
+    <p> Deletes a backup. You can delete both manual and automated backups. This operation is asynchronous. </p> <p> An <code>InvalidStateException</code> is thrown when a backup deletion is already in progress. A <code>ResourceNotFoundException</code> is thrown when the backup does not exist. A <code>ValidationException</code> is thrown when parameters of the request are not valid. </p>
 
   </div>
 </div>
@@ -1026,7 +973,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:backup_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The ID of the backup to delete. Run the DescribeBackups command to get a list of backup IDs. Backup IDs are in the format <code>ServerName-yyyyMMddHHmmssSSS</code>. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1047,10 +993,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Deletes the server and the underlying AWS CloudFormation stack (including the server's EC2 instance). When you run this command, the server state is updated to <code>DELETING</code>. After the server is deleted, it is no longer returned by <code>DescribeServer</code> requests. If the AWS CloudFormation stack cannot be deleted, the server cannot be deleted. </p>
-
-
-<p> <p> This operation is asynchronous. </p> <p> An <code>InvalidStateException</code> is thrown when a server deletion is already in progress. A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p> <p> </p></p>
+    <p> Deletes the server and the underlying AWS CloudFormation stack (including the server's EC2 instance). When you run this command, the server state is updated to <code>DELETING</code>. After the server is deleted, it is no longer returned by <code>DescribeServer</code> requests. If the AWS CloudFormation stack cannot be deleted, the server cannot be deleted. </p> <p> This operation is asynchronous. </p> <p> An <code>InvalidStateException</code> is thrown when a server deletion is already in progress. A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p> <p> </p>
 
   </div>
 </div>
@@ -1069,7 +1012,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:server_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The ID of the server to delete.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1090,10 +1032,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Describes your account attributes, and creates requests to increase limits before they are reached or exceeded. </p>
-
-
-<p> <p> This operation is synchronous. </p></p>
+    <p> Describes your account attributes, and creates requests to increase limits before they are reached or exceeded. </p> <p> This operation is synchronous. </p>
 
   </div>
 </div>
@@ -1117,9 +1056,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeAccountAttributesResponse.html#attributes-instance_method" title="Aws::OpsWorksCM::Types::DescribeAccountAttributesResponse#attributes (method)">#attributes</a> => Array&lt;<a href="Types/AccountAttribute.html" title="Aws::OpsWorksCM::Types::AccountAttribute (class)">Types::AccountAttribute</a>&gt;</li>
+<li><a href="Types/DescribeAccountAttributesResponse.html#attributes-instance_method" title="Aws::OpsWorksCM::Types::DescribeAccountAttributesResponse#attributes (method)">#attributes</a> =&gt; Array&lt;<a href="Types/AccountAttribute.html" title="Aws::OpsWorksCM::Types::AccountAttribute (class)">Types::AccountAttribute</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1133,10 +1071,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Describes backups. The results are ordered by time, with newest backups first. If you do not specify a BackupId or ServerName, the command returns all backups. </p>
-
-
-<p> <p> This operation is synchronous. </p> <p> A <code>ResourceNotFoundException</code> is thrown when the backup does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p></p>
+    <p> Describes backups. The results are ordered by time, with newest backups first. If you do not specify a BackupId or ServerName, the command returns all backups. </p> <p> This operation is synchronous. </p> <p> A <code>ResourceNotFoundException</code> is thrown when the backup does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p>
 
   </div>
 </div>
@@ -1188,25 +1123,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:backup_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Describes a single backup. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:server_name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Returns backups for the server with the specified ServerName. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeBackups</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:max_results</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1216,10 +1147,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeBackupsResponse.html#backups-instance_method" title="Aws::OpsWorksCM::Types::DescribeBackupsResponse#backups (method)">#backups</a> => Array&lt;<a href="Types/Backup.html" title="Aws::OpsWorksCM::Types::Backup (class)">Types::Backup</a>&gt;</li>
-<li><a href="Types/DescribeBackupsResponse.html#next_token-instance_method" title="Aws::OpsWorksCM::Types::DescribeBackupsResponse#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeBackupsResponse.html#backups-instance_method" title="Aws::OpsWorksCM::Types::DescribeBackupsResponse#backups (method)">#backups</a> =&gt; Array&lt;<a href="Types/Backup.html" title="Aws::OpsWorksCM::Types::Backup (class)">Types::Backup</a>&gt;</li>
+<li><a href="Types/DescribeBackupsResponse.html#next_token-instance_method" title="Aws::OpsWorksCM::Types::DescribeBackupsResponse#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1233,10 +1163,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Describes events for a specified server. Results are ordered by time, with newest events first. </p>
-
-
-<p> <p> This operation is synchronous. </p> <p> A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p></p>
+    <p> Describes events for a specified server. Results are ordered by time, with newest events first. </p> <p> This operation is synchronous. </p> <p> A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p>
 
   </div>
 </div>
@@ -1265,19 +1192,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:server_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the server for which you want to view events.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeEvents</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:max_results</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1287,10 +1211,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeEventsResponse.html#server_events-instance_method" title="Aws::OpsWorksCM::Types::DescribeEventsResponse#server_events (method)">#server_events</a> => Array&lt;<a href="Types/ServerEvent.html" title="Aws::OpsWorksCM::Types::ServerEvent (class)">Types::ServerEvent</a>&gt;</li>
-<li><a href="Types/DescribeEventsResponse.html#next_token-instance_method" title="Aws::OpsWorksCM::Types::DescribeEventsResponse#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeEventsResponse.html#server_events-instance_method" title="Aws::OpsWorksCM::Types::DescribeEventsResponse#server_events (method)">#server_events</a> =&gt; Array&lt;<a href="Types/ServerEvent.html" title="Aws::OpsWorksCM::Types::ServerEvent (class)">Types::ServerEvent</a>&gt;</li>
+<li><a href="Types/DescribeEventsResponse.html#next_token-instance_method" title="Aws::OpsWorksCM::Types::DescribeEventsResponse#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1304,10 +1227,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Returns the current status of an existing association or disassociation request. </p>
-
-
-<p> <p> A <code>ResourceNotFoundException</code> is thrown when no recent association or disassociation request with the specified token is found, or when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p></p>
+    <p> Returns the current status of an existing association or disassociation request. </p> <p> A <code>ResourceNotFoundException</code> is thrown when no recent association or disassociation request with the specified token is found, or when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p>
 
   </div>
 </div>
@@ -1334,7 +1254,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:server_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the server from which to disassociate the node. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1344,9 +1263,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeNodeAssociationStatusResponse.html#node_association_status-instance_method" title="Aws::OpsWorksCM::Types::DescribeNodeAssociationStatusResponse#node_association_status (method)">#node_association_status</a> => String</li>
+<li><a href="Types/DescribeNodeAssociationStatusResponse.html#node_association_status-instance_method" title="Aws::OpsWorksCM::Types::DescribeNodeAssociationStatusResponse#node_association_status (method)">#node_association_status</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1360,10 +1278,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Lists all configuration management servers that are identified with your account. Only the stored results from Amazon DynamoDB are returned. AWS OpsWorks for Chef Automate does not query other services. </p>
-
-
-<p> <p> This operation is synchronous. </p> <p> A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p></p>
+    <p> Lists all configuration management servers that are identified with your account. Only the stored results from Amazon DynamoDB are returned. AWS OpsWorks for Chef Automate does not query other services. </p> <p> This operation is synchronous. </p> <p> A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p>
 
   </div>
 </div>
@@ -1415,19 +1330,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:server_name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Describes the server with the specified ServerName.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeServers</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:max_results</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1437,10 +1349,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeServersResponse.html#servers-instance_method" title="Aws::OpsWorksCM::Types::DescribeServersResponse#servers (method)">#servers</a> => Array&lt;<a href="Types/Server.html" title="Aws::OpsWorksCM::Types::Server (class)">Types::Server</a>&gt;</li>
-<li><a href="Types/DescribeServersResponse.html#next_token-instance_method" title="Aws::OpsWorksCM::Types::DescribeServersResponse#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeServersResponse.html#servers-instance_method" title="Aws::OpsWorksCM::Types::DescribeServersResponse#servers (method)">#servers</a> =&gt; Array&lt;<a href="Types/Server.html" title="Aws::OpsWorksCM::Types::Server (class)">Types::Server</a>&gt;</li>
+<li><a href="Types/DescribeServersResponse.html#next_token-instance_method" title="Aws::OpsWorksCM::Types::DescribeServersResponse#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1454,10 +1365,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Disassociates a node from a Chef server, and removes the node from the Chef server's managed nodes. After a node is disassociated, the node key pair is no longer valid for accessing the Chef API. For more information about how to associate a node, see <a>AssociateNode</a>. </p>
-
-
-<p> <p>A node can can only be disassociated from a server that is in a <code>HEALTHY</code> state. Otherwise, an <code>InvalidStateException</code> is thrown. A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p></p>
+    <p> Disassociates a node from a Chef server, and removes the node from the Chef server's managed nodes. After a node is disassociated, the node key pair is no longer valid for accessing the Chef API. For more information about how to associate a node, see <a>AssociateNode</a>. </p> <p>A node can can only be disassociated from a server that is in a <code>HEALTHY</code> state. Otherwise, an <code>InvalidStateException</code> is thrown. A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p>
 
   </div>
 </div>
@@ -1486,21 +1394,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:server_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the server from which to disassociate the node. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:node_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the Chef client node. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:engine_attributes</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/EngineAttribute.html" title="Aws::OpsWorksCM::Types::EngineAttribute (class)">Types::EngineAttribute</a>&gt;)</span>
-            &mdash; <div class='inline'><p>Engine attributes used for disassociating the node. </p>
-
-
-<p> <p class="title"> <b>Attributes accepted in a DisassociateNode request:</b> </p> <ul> <li> <p> <code>CHEF_ORGANIZATION</code>: The Chef organization with which the node was associated. By default only one organization named <code>default</code> can exist. </p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Engine attributes used for disassociating the node. </p> <p class="title"> <b>Attributes accepted in a DisassociateNode request:</b> </p> <ul> <li> <p> <code>CHEF_ORGANIZATION</code>: The Chef organization with which the node was associated. By default only one organization named <code>default</code> can exist. </p> </li> </ul></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1510,9 +1413,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DisassociateNodeResponse.html#node_association_status_token-instance_method" title="Aws::OpsWorksCM::Types::DisassociateNodeResponse#node_association_status_token (method)">#node_association_status_token</a> => String</li>
+<li><a href="Types/DisassociateNodeResponse.html#node_association_status_token-instance_method" title="Aws::OpsWorksCM::Types::DisassociateNodeResponse#node_association_status_token (method)">#node_association_status_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1526,10 +1428,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Restores a backup to a server that is in a <code>CONNECTION_LOST</code>, <code>HEALTHY</code>, <code>RUNNING</code>, <code>UNHEALTHY</code>, or <code>TERMINATED</code> state. When you run RestoreServer, the server's EC2 instance is deleted, and a new EC2 instance is configured. RestoreServer maintains the existing server endpoint, so configuration management of the server's client devices (nodes) should continue to work. </p>
-
-
-<p> <p> This operation is asynchronous. </p> <p> An <code>InvalidStateException</code> is thrown when the server is not in a valid state. A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p></p>
+    <p> Restores a backup to a server that is in a <code>CONNECTION_LOST</code>, <code>HEALTHY</code>, <code>RUNNING</code>, <code>UNHEALTHY</code>, or <code>TERMINATED</code> state. When you run RestoreServer, the server's EC2 instance is deleted, and a new EC2 instance is configured. RestoreServer maintains the existing server endpoint, so configuration management of the server's client devices (nodes) should continue to work. </p> <p> This operation is asynchronous. </p> <p> An <code>InvalidStateException</code> is thrown when the server is not in a valid state. A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p>
 
   </div>
 </div>
@@ -1551,25 +1450,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:backup_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p> The ID of the backup that you want to use to restore a server. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:server_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p> The name of the server that you want to restore. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:instance_type</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p> The type of the instance to create. Valid values must be specified in the following format: <code>^([cm][34]|t2).*</code> For example, <code>m4.large</code>. Valid values are <code>t2.medium</code>, <code>m4.large</code>, and <code>m4.2xlarge</code>. If you do not specify this parameter, RestoreServer uses the instance type from the specified backup. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:key_pair</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p> The name of the key pair to set on the new EC2 instance. This can be helpful if the administrator no longer has the SSH key. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1590,10 +1485,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Manually starts server maintenance. This command can be useful if an earlier maintenance attempt failed, and the underlying cause of maintenance failure has been resolved. The server is in an <code>UNDER_MAINTENANCE</code> state while maintenance is in progress. </p>
-
-
-<p> <p> Maintenance can only be started on servers in <code>HEALTHY</code> and <code>UNHEALTHY</code> states. Otherwise, an <code>InvalidStateException</code> is thrown. A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p></p>
+    <p> Manually starts server maintenance. This command can be useful if an earlier maintenance attempt failed, and the underlying cause of maintenance failure has been resolved. The server is in an <code>UNDER_MAINTENANCE</code> state while maintenance is in progress. </p> <p> Maintenance can only be started on servers in <code>HEALTHY</code> and <code>UNHEALTHY</code> states. Otherwise, an <code>InvalidStateException</code> is thrown. A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p>
 
   </div>
 </div>
@@ -1641,7 +1533,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:server_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the server on which to run maintenance. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1651,9 +1542,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/StartMaintenanceResponse.html#server-instance_method" title="Aws::OpsWorksCM::Types::StartMaintenanceResponse#server (method)">#server</a> => <a href="Types/Server.html" title="Aws::OpsWorksCM::Types::Server (class)">Types::Server</a></li>
+<li><a href="Types/StartMaintenanceResponse.html#server-instance_method" title="Aws::OpsWorksCM::Types::StartMaintenanceResponse#server (method)">#server</a> =&gt; <a href="Types/Server.html" title="Aws::OpsWorksCM::Types::Server (class)">Types::Server</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1667,10 +1557,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Updates settings for a server. </p>
-
-
-<p> <p> This operation is synchronous. </p></p>
+    <p> Updates settings for a server. </p> <p> This operation is synchronous. </p>
 
   </div>
 </div>
@@ -1722,35 +1609,26 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:disable_automated_backup</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Setting DisableAutomatedBackup to <code>true</code> disables automated or scheduled backups. Automated backups are enabled by default. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:backup_retention_count</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Sets the number of automated backups that you want to keep. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:server_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the server to update. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:preferred_maintenance_window</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p> <code>DDD:HH:MM</code> (weekly start time) or <code>HH:MM</code> (daily start time). </p>
-
-
-<p> <p> Time windows always use coordinated universal time (UTC). Valid strings for day of week (<code>DDD</code>) are: <code>Mon</code>, <code>Tue</code>, <code>Wed</code>, <code>Thr</code>, <code>Fri</code>, <code>Sat</code>, or <code>Sun</code>.</p></p>
+            &mdash; <div class='inline'><p> <code>DDD:HH:MM</code> (weekly start time) or <code>HH:MM</code> (daily start time). </p> <p> Time windows always use coordinated universal time (UTC). Valid strings for day of week (<code>DDD</code>) are: <code>Mon</code>, <code>Tue</code>, <code>Wed</code>, <code>Thr</code>, <code>Fri</code>, <code>Sat</code>, or <code>Sun</code>.</p>
 </div>        </li>
         <li>
           <span class='name'>:preferred_backup_window</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p> <code>DDD:HH:MM</code> (weekly start time) or <code>HH:MM</code> (daily start time). </p>
-
-
-<p> <p> Time windows always use coordinated universal time (UTC). Valid strings for day of week (<code>DDD</code>) are: <code>Mon</code>, <code>Tue</code>, <code>Wed</code>, <code>Thr</code>, <code>Fri</code>, <code>Sat</code>, or <code>Sun</code>.</p></p>
+            &mdash; <div class='inline'><p> <code>DDD:HH:MM</code> (weekly start time) or <code>HH:MM</code> (daily start time). </p> <p> Time windows always use coordinated universal time (UTC). Valid strings for day of week (<code>DDD</code>) are: <code>Mon</code>, <code>Tue</code>, <code>Wed</code>, <code>Thr</code>, <code>Fri</code>, <code>Sat</code>, or <code>Sun</code>.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1760,9 +1638,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateServerResponse.html#server-instance_method" title="Aws::OpsWorksCM::Types::UpdateServerResponse#server (method)">#server</a> => <a href="Types/Server.html" title="Aws::OpsWorksCM::Types::Server (class)">Types::Server</a></li>
+<li><a href="Types/UpdateServerResponse.html#server-instance_method" title="Aws::OpsWorksCM::Types::UpdateServerResponse#server (method)">#server</a> =&gt; <a href="Types/Server.html" title="Aws::OpsWorksCM::Types::Server (class)">Types::Server</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1776,10 +1653,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p> Updates engine-specific attributes on a specified server. The server enters the <code>MODIFYING</code> state when this operation is in progress. Only one update can occur at a time. You can use this command to reset the Chef server's private key (<code>CHEF_PIVOTAL_KEY</code>). </p>
-
-
-<p> <p> This operation is asynchronous. </p> <p> This operation can only be called for servers in <code>HEALTHY</code> or <code>UNHEALTHY</code> states. Otherwise, an <code>InvalidStateException</code> is raised. A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p></p>
+    <p> Updates engine-specific attributes on a specified server. The server enters the <code>MODIFYING</code> state when this operation is in progress. Only one update can occur at a time. You can use this command to reset the Chef server's private key (<code>CHEF_PIVOTAL_KEY</code>). </p> <p> This operation is asynchronous. </p> <p> This operation can only be called for servers in <code>HEALTHY</code> or <code>UNHEALTHY</code> states. Otherwise, an <code>InvalidStateException</code> is raised. A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid. </p>
 
   </div>
 </div>
@@ -1829,19 +1703,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:server_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the server to update. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:attribute_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the engine attribute to update. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:attribute_value</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The value to set for the attribute. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1851,9 +1722,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateServerEngineAttributesResponse.html#server-instance_method" title="Aws::OpsWorksCM::Types::UpdateServerEngineAttributesResponse#server (method)">#server</a> => <a href="Types/Server.html" title="Aws::OpsWorksCM::Types::Server (class)">Types::Server</a></li>
+<li><a href="Types/UpdateServerEngineAttributesResponse.html#server-instance_method" title="Aws::OpsWorksCM::Types::UpdateServerEngineAttributesResponse#server (method)">#server</a> =&gt; <a href="Types/Server.html" title="Aws::OpsWorksCM::Types::Server (class)">Types::Server</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1876,7 +1746,7 @@ state.</p>
 entering a terminal state, or until a maximum number of attempts
 are made.</p>
 
-<p>   # polls in a loop, sleeping between attempts
+<p># polls in a loop, sleeping between attempts
    client.waiter_until(waiter_name, params)</p>
 
 <h3>Configuration</h3>
@@ -2012,7 +1882,6 @@ waiters and the client method they call:</p>
 
 </tbody>
 </table>
-
 
   </div>
 </div>

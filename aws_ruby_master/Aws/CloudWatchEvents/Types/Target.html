@@ -123,16 +123,35 @@ vanilla Hash:</p>
 <pre class="code ruby"><code class="ruby"><span class='lbrace'>{</span>
   <span class='label'>id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TargetId</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
 </span>  <span class='label'>arn:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TargetArn</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
-</span>  <span class='label'>input:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TargetInput</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+</span>  <span class='label'>role_arn:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>RoleArn</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>input:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TargetInput</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
   <span class='label'>input_path:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TargetInputPath</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>input_transformer:</span> <span class='lbrace'>{</span>
+    <span class='label'>input_paths_map:</span> <span class='lbrace'>{</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>InputTransformerPathKey</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TargetInputPath</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>input_template:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TransformerInput</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>kinesis_parameters:</span> <span class='lbrace'>{</span>
+    <span class='label'>partition_key_path:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TargetPartitionKeyPath</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>run_command_parameters:</span> <span class='lbrace'>{</span>
+    <span class='label'>run_command_targets:</span> <span class='lbracket'>[</span> <span class='comment'># required
+</span>      <span class='lbrace'>{</span>
+        <span class='label'>key:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>RunCommandTargetKey</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>        <span class='label'>values:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>RunCommandTargetValue</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'># required
+</span>      <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>ecs_parameters:</span> <span class='lbrace'>{</span>
+    <span class='label'>task_definition_arn:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Arn</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>    <span class='label'>task_count:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
 <span class='rbrace'>}</span></code></pre>
 </div>
   </div>
 
-<p>Targets are the resources that can be invoked when a rule is triggered. For example, AWS Lambda functions, Amazon Kinesis streams, and built-in targets.</p>
-
-
-<p> <p><b>Input</b> and <b>InputPath</b> are mutually-exclusive and optional parameters of a target. When a rule is triggered due to a matched event, if for a target:</p> <ul> <li>Neither <b>Input</b> nor <b>InputPath</b> is specified, then the entire event is passed to the target in JSON form.</li> <li> <b>InputPath</b> is specified in the form of JSONPath (e.g. <b>$.detail</b>), then only the part of the event specified in the path is passed to the target (e.g. only the detail part of the event is passed). </li> <li> <b>Input</b> is specified in the form of a valid JSON, then the matched event is overridden with this constant.</li> </ul></p>
+<p>Targets are the resources to be invoked when a rule is triggered. Target types include EC2 instances, AWS Lambda functions, Amazon Kinesis streams, Amazon ECS tasks, AWS Step Functions state machines, Run Command, and built-in targets.</p>
 
   </div>
 </div>
@@ -149,10 +168,16 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>The Amazon Resource Name (ARN) associated of the target.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>The Amazon Resource Name (ARN) of the target.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#ecs_parameters-instance_method" title="#ecs_parameters (instance method)">#<strong>ecs_parameters</strong>  &#x21d2; Types::EcsParameters </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Contains the Amazon ECS task definition and task count to be used, if the event target is an Amazon ECS task.</p></div>
     </div>
   </li>
   <li>
@@ -161,10 +186,7 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>The unique target assignment ID.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>The ID of the target.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -185,6 +207,42 @@ vanilla Hash:</p>
       <div class='inline'><p><p>The value of the JSONPath that is used for extracting part of the matched event when passing it to the target.</p></div>
     </div>
   </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#input_transformer-instance_method" title="#input_transformer (instance method)">#<strong>input_transformer</strong>  &#x21d2; Types::InputTransformer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Settings to enable you to provide custom input to a target based on certain event data.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#kinesis_parameters-instance_method" title="#kinesis_parameters (instance method)">#<strong>kinesis_parameters</strong>  &#x21d2; Types::KinesisParameters </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The custom parameter you can use to control shard assignment, when the target is an Amazon Kinesis stream.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#role_arn-instance_method" title="#role_arn (instance method)">#<strong>role_arn</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#run_command_parameters-instance_method" title="#run_command_parameters (instance method)">#<strong>run_command_parameters</strong>  &#x21d2; Types::RunCommandParameters </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Parameters used when you are using the rule to invoke Amazon EC2 Run Command.</p>.</p></div>
+    </div>
+  </li>
 </ul>
 </div>
 <h2 class='y_details'>Instance Attribute Details</h2>
@@ -194,8 +252,22 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The Amazon Resource Name (ARN) associated of the target.</p>
+    <p>The Amazon Resource Name (ARN) of the target.</p>
 
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="ecs_parameters-instance_method">
+  <h3 class='signature rw'>
+    #<strong>ecs_parameters</strong>  &#x21d2; <a href="EcsParameters.html" title="Aws::CloudWatchEvents::Types::EcsParameters (class)">Types::EcsParameters</a>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Contains the Amazon ECS task definition and task count to be used, if the event target is an Amazon ECS task. For more information about Amazon ECS tasks, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Task Definitions </a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
 
   </div>
 </div>
@@ -210,8 +282,7 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The unique target assignment ID.</p>
-
+    <p>The ID of the target.</p>
 
   </div>
 </div>
@@ -226,8 +297,7 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Valid JSON text passed to the target. For more information about JSON text, see <a href="http://www.rfc-editor.org/rfc/rfc7159.txt">The JavaScript Object Notation (JSON) Data Interchange Format</a>.</p>
-
+    <p>Valid JSON text passed to the target. In this case, nothing from the event itself is passed to the target. For more information, see <a href="http://www.rfc-editor.org/rfc/rfc7159.txt">The JavaScript Object Notation (JSON) Data Interchange Format</a>.</p>
 
   </div>
 </div>
@@ -244,6 +314,65 @@ vanilla Hash:</p>
   <div class='discussion'>
     <p>The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. For more information about JSON paths, see <a href="http://goessner.net/articles/JsonPath/">JSONPath</a>.</p>
 
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="input_transformer-instance_method">
+  <h3 class='signature rw'>
+    #<strong>input_transformer</strong>  &#x21d2; <a href="InputTransformer.html" title="Aws::CloudWatchEvents::Types::InputTransformer (class)">Types::InputTransformer</a>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Settings to enable you to provide custom input to a target based on certain event data. You can extract one or more key-value pairs from the event and then use that data to send customized input to the target.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="kinesis_parameters-instance_method">
+  <h3 class='signature rw'>
+    #<strong>kinesis_parameters</strong>  &#x21d2; <a href="KinesisParameters.html" title="Aws::CloudWatchEvents::Types::KinesisParameters (class)">Types::KinesisParameters</a>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The custom parameter you can use to control shard assignment, when the target is an Amazon Kinesis stream. If you do not include this parameter, the default is to use the <code>eventId</code> as the partition key.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="role_arn-instance_method">
+  <h3 class='signature rw'>
+    #<strong>role_arn</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. If one rule triggers multiple targets, you can use a different IAM role for each target.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="run_command_parameters-instance_method">
+  <h3 class='signature rw'>
+    #<strong>run_command_parameters</strong>  &#x21d2; <a href="RunCommandParameters.html" title="Aws::CloudWatchEvents::Types::RunCommandParameters (class)">Types::RunCommandParameters</a>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Parameters used when you are using the rule to invoke Amazon EC2 Run Command.</p>
 
   </div>
 </div>

@@ -129,10 +129,9 @@
 <p>You can configure a default region in the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_REGION']</code></li>
+<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
 <li><code>Aws.config[:region]</code></li>
 </ul>
-
 
 <p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
 
@@ -141,12 +140,11 @@
 <p>Default credentials are loaded automatically from the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_ACCESS_KEY_ID']</code> and <code>ENV['AWS_SECRET_ACCESS_KEY']</code></li>
+<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
 <li><code>Aws.config[:credentials]</code></li>
 <li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
 <li>From an instance profile when running on EC2</li>
 </ul>
-
 
 <p>You can also construct a credentials object from one of the following
 classes:</p>
@@ -157,7 +155,6 @@ classes:</p>
 <li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
 <li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
 </ul>
-
 
 <p>Alternatively, you configure credentials with <code>:access_key_id</code> and
 <code>:secret_access_key</code>:</p>
@@ -365,10 +362,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#describe_ec2_instance_limits-instance_method" title="#describe_ec2_instance_limits (instance method)">#<strong>describe_ec2_instance_limits</strong>(options = {})  &#x21d2; Types::DescribeEC2InstanceLimitsOutput </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Retrieves the following information for the specified EC2 instance type:</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Retrieves the following information for the specified EC2 instance type:</p>.</p></div>
     </div>
   </li>
   <li>
@@ -392,7 +386,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#describe_fleet_events-instance_method" title="#describe_fleet_events (instance method)">#<strong>describe_fleet_events</strong>(options = {})  &#x21d2; Types::DescribeFleetEventsOutput </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Retrieves entries from the specified fleet's event log.</p></div>
+      <div class='inline'><p><p>Retrieves entries from the specified fleet&#39;s event log.</p></div>
     </div>
   </li>
   <li>
@@ -448,7 +442,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#describe_instances-instance_method" title="#describe_instances (instance method)">#<strong>describe_instances</strong>(options = {})  &#x21d2; Types::DescribeInstancesOutput </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Retrieves information about a fleet's instances, including instance IDs.</p></div>
+      <div class='inline'><p><p>Retrieves information about a fleet&#39;s instances, including instance IDs.</p></div>
     </div>
   </li>
   <li>
@@ -472,10 +466,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#describe_scaling_policies-instance_method" title="#describe_scaling_policies (instance method)">#<strong>describe_scaling_policies</strong>(options = {})  &#x21d2; Types::DescribeScalingPoliciesOutput </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Retrieves all scaling policies applied to a fleet.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Retrieves all scaling policies applied to a fleet.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -539,10 +530,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#resolve_alias-instance_method" title="#resolve_alias (instance method)">#<strong>resolve_alias</strong>(options = {})  &#x21d2; Types::ResolveAliasOutput </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Retrieves the fleet ID that a specified alias is currently pointing to.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Retrieves the fleet ID that a specified alias is currently pointing to.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -722,11 +710,10 @@ for credentials:</p>
 
 <ul>
 <li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
-<li>ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']</li>
+<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
 <li><code>HOME/.aws/credentials</code> shared credentials file</li>
 <li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
 </ul>
-
 </div>        </li>
         <li>
           <span class='name'>:endpoint</span>
@@ -802,7 +789,7 @@ will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Lo
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Used when loading credentials
 from the shared credentials file at HOME/.aws/credentials.  When not
-specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
 </div>        </li>
         <li>
           <span class='name'>:raise_response_errors</span>
@@ -815,7 +802,7 @@ specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title
           <span class='name'>:region</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
-the client endpoint.  Defaults to <code>ENV['AWS_REGION']</code>.
+the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
 Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
 </div>        </li>
         <li>
@@ -887,7 +874,7 @@ fake responses are generated and returned. You can specify
 the response data to return or errors to raise by calling
 <a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
 
-<p><strong> Please note </strong> When response stubbing is enabled, no HTTP
+<p>** Please note ** When response stubbing is enabled, no HTTP
 requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
 </div>        </li>
         <li>
@@ -910,10 +897,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Creates an alias and sets a target fleet. A fleet alias can be used in place of a fleet ID, such as when calling <code>CreateGameSession</code> from a game client or game service or adding destinations to a game session queue. By changing an alias's target fleet, you can switch your players to the new fleet without changing any other component. In production, this feature is particularly useful to redirect your player base seamlessly to the latest game server update. </p>
-
-
-<p> <p>Amazon GameLift supports two types of routing strategies for aliases: simple and terminal. Use a simple alias to point to an active fleet. Use a terminal alias to display a message to incoming traffic instead of routing players to an active fleet. This option is useful when a game server is no longer supported but you want to provide better messaging than a standard 404 error.</p> <p>To create a fleet alias, specify an alias name, routing strategy, and optional description. If successful, a new alias record is returned, including an alias ID, which you can reference when creating a game session. To reassign the alias to another fleet ID, call <a>UpdateAlias</a>.</p></p>
+    <p>Creates an alias and sets a target fleet. A fleet alias can be used in place of a fleet ID, such as when calling <code>CreateGameSession</code> from a game client or game service or adding destinations to a game session queue. By changing an alias's target fleet, you can switch your players to the new fleet without changing any other component. In production, this feature is particularly useful to redirect your player base seamlessly to the latest game server update. </p> <p>Amazon GameLift supports two types of routing strategies for aliases: simple and terminal. Use a simple alias to point to an active fleet. Use a terminal alias to display a message to incoming traffic instead of routing players to an active fleet. This option is useful when a game server is no longer supported but you want to provide better messaging than a standard 404 error.</p> <p>To create a fleet alias, specify an alias name, routing strategy, and optional description. If successful, a new alias record is returned, including an alias ID, which you can reference when creating a game session. To reassign the alias to another fleet ID, call <a>UpdateAlias</a>.</p>
 
   </div>
 </div>
@@ -949,19 +933,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:description</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Human-readable description of an alias.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:routing_strategy</span>
           <span class='type'>(<code>required</code>, <a href="Types/RoutingStrategy.html" title="Aws::GameLift::Types::RoutingStrategy (class)">Types::RoutingStrategy</a>)</span>
             &mdash; <div class='inline'><p>Object that specifies the fleet and routing type to use for the alias.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -971,9 +952,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateAliasOutput.html#alias-instance_method" title="Aws::GameLift::Types::CreateAliasOutput#alias (method)">#alias</a> => <a href="Types/Alias.html" title="Aws::GameLift::Types::Alias (class)">Types::Alias</a></li>
+<li><a href="Types/CreateAliasOutput.html#alias-instance_method" title="Aws::GameLift::Types::CreateAliasOutput#alias (method)">#alias</a> =&gt; <a href="Types/Alias.html" title="Aws::GameLift::Types::Alias (class)">Types::Alias</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -987,10 +967,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Creates a new Amazon GameLift build from a set of game server binary files stored in an Amazon Simple Storage Service (Amazon S3) location. When using this API call, you must create a <code>.zip</code> file containing all of the build files and store it in an Amazon S3 bucket under your AWS account. For help on packaging your build files and creating a build, see <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html">Uploading Your Game to Amazon GameLift</a>.</p>
-
-
-<p> <important> <p>Use this API action ONLY if you are storing your game build files in an Amazon S3 bucket in your AWS account. To create a build using files stored in a directory, use the CLI command <a href="http://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html"> <code>upload-build</code> </a>, which uploads the build files from a file location you specify and creates a build.</p> </important> <p>To create a new build using <code>CreateBuild</code>, identify the storage location and operating system of your game build. You also have the option of specifying a build name and version. If successful, this action creates a new build record with an unique build ID and in <code>INITIALIZED</code> status. Use the API call <a>DescribeBuild</a> to check the status of your build. A build must be in <code>READY</code> status before it can be used to create fleets to host your game.</p></p>
+    <p>Creates a new Amazon GameLift build from a set of game server binary files stored in an Amazon Simple Storage Service (Amazon S3) location. When using this API call, you must create a <code>.zip</code> file containing all of the build files and store it in an Amazon S3 bucket under your AWS account. For help on packaging your build files and creating a build, see <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html">Uploading Your Game to Amazon GameLift</a>.</p> <important> <p>Use this API action ONLY if you are storing your game build files in an Amazon S3 bucket in your AWS account. To create a build using files stored in a directory, use the CLI command <a href="http://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html"> <code>upload-build</code> </a>, which uploads the build files from a file location you specify and creates a build.</p> </important> <p>To create a new build using <code>CreateBuild</code>, identify the storage location and operating system of your game build. You also have the option of specifying a build name and version. If successful, this action creates a new build record with an unique build ID and in <code>INITIALIZED</code> status. Use the API call <a>DescribeBuild</a> to check the status of your build. A build must be in <code>READY</code> status before it can be used to create fleets to host your game.</p>
 
   </div>
 </div>
@@ -1031,25 +1008,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with a build. Build names do not need to be unique. You can use <a>UpdateBuild</a> to change this value later. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:version</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Version that is associated with this build. Version strings do not need to be unique. You can use <a>UpdateBuild</a> to change this value later. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:storage_location</span>
           <span class='type'>(<a href="Types/S3Location.html" title="Aws::GameLift::Types::S3Location (class)">Types::S3Location</a>)</span>
             &mdash; <div class='inline'><p>Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS account that you're using to manage Amazon GameLift. It also must in the same region that you want to create a new build in. Before calling <code>CreateBuild</code> with this location, you must allow Amazon GameLift to access your Amazon S3 bucket (see <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build">Create a Build with Files in Amazon S3</a>).</p>
-
 </div>        </li>
         <li>
           <span class='name'>:operating_system</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. If your game build contains multiple executables, they all must run on the same operating system.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1059,11 +1032,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateBuildOutput.html#build-instance_method" title="Aws::GameLift::Types::CreateBuildOutput#build (method)">#build</a> => <a href="Types/Build.html" title="Aws::GameLift::Types::Build (class)">Types::Build</a></li>
-<li><a href="Types/CreateBuildOutput.html#upload_credentials-instance_method" title="Aws::GameLift::Types::CreateBuildOutput#upload_credentials (method)">#upload_credentials</a> => <a href="Types/AwsCredentials.html" title="Aws::GameLift::Types::AwsCredentials (class)">Types::AwsCredentials</a></li>
-<li><a href="Types/CreateBuildOutput.html#storage_location-instance_method" title="Aws::GameLift::Types::CreateBuildOutput#storage_location (method)">#storage_location</a> => <a href="Types/S3Location.html" title="Aws::GameLift::Types::S3Location (class)">Types::S3Location</a></li>
+<li><a href="Types/CreateBuildOutput.html#build-instance_method" title="Aws::GameLift::Types::CreateBuildOutput#build (method)">#build</a> =&gt; <a href="Types/Build.html" title="Aws::GameLift::Types::Build (class)">Types::Build</a></li>
+<li><a href="Types/CreateBuildOutput.html#upload_credentials-instance_method" title="Aws::GameLift::Types::CreateBuildOutput#upload_credentials (method)">#upload_credentials</a> =&gt; <a href="Types/AwsCredentials.html" title="Aws::GameLift::Types::AwsCredentials (class)">Types::AwsCredentials</a></li>
+<li><a href="Types/CreateBuildOutput.html#storage_location-instance_method" title="Aws::GameLift::Types::CreateBuildOutput#storage_location (method)">#storage_location</a> =&gt; <a href="Types/S3Location.html" title="Aws::GameLift::Types::S3Location (class)">Types::S3Location</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1077,10 +1049,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Creates a new fleet to run your game servers. A fleet is a set of Amazon Elastic Compute Cloud (Amazon EC2) instances, each of which can run multiple server processes to host game sessions. You configure a fleet to create instances with certain hardware specifications (see <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for more information), and deploy a specified game build to each instance. A newly created fleet passes through several statuses; once it reaches the <code>ACTIVE</code> status, it can begin hosting game sessions.</p>
-
-
-<p> <p>To create a new fleet, provide a fleet name, an EC2 instance type, and a build ID of the game build to deploy. You can also configure the new fleet with the following settings: (1) a runtime configuration describing what server processes to run on each instance in the fleet (required to create fleet), (2) access permissions for inbound traffic, (3) fleet-wide game session protection, and (4) the location of default log files for Amazon GameLift to upload and store.</p> <p>If the CreateFleet call is successful, Amazon GameLift performs the following tasks:</p> <ul> <li> <p>Creates a fleet record and sets the status to <code>NEW</code> (followed by other statuses as the fleet is activated).</p> </li> <li> <p>Sets the fleet's capacity to 1 "desired", which causes Amazon GameLift to start one new EC2 instance.</p> </li> <li> <p>Starts launching server processes on the instance. If the fleet is configured to run multiple server processes per instance, Amazon GameLift staggers each launch by a few seconds.</p> </li> <li> <p>Begins writing events to the fleet event log, which can be accessed in the Amazon GameLift console.</p> </li> <li> <p>Sets the fleet's status to <code>ACTIVE</code> once one server process in the fleet is ready to host a game session.</p> </li> </ul> <p>After a fleet is created, use the following actions to change fleet properties and configuration:</p> <ul> <li> <p> <a>UpdateFleetAttributes</a> -- Update fleet metadata, including name and description.</p> </li> <li> <p> <a>UpdateFleetCapacity</a> -- Increase or decrease the number of instances you want the fleet to maintain.</p> </li> <li> <p> <a>UpdateFleetPortSettings</a> -- Change the IP address and port ranges that allow access to incoming traffic.</p> </li> <li> <p> <a>UpdateRuntimeConfiguration</a> -- Change how server processes are launched in the fleet, including launch path, launch parameters, and the number of concurrent processes.</p> </li> <li> <p> <a>PutScalingPolicy</a> -- Create or update rules that are used to set the fleet's capacity (autoscaling).</p> </li> </ul></p>
+    <p><p>Creates a new fleet to run your game servers. A fleet is a set of Amazon Elastic Compute Cloud (Amazon EC2) instances, each of which can run multiple server processes to host game sessions. You configure a fleet to create instances with certain hardware specifications (see <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for more information), and deploy a specified game build to each instance. A newly created fleet passes through several statuses; once it reaches the <code>ACTIVE</code> status, it can begin hosting game sessions.</p> <p>To create a new fleet, provide a fleet name, an EC2 instance type, and a build ID of the game build to deploy. You can also configure the new fleet with the following settings: (1) a runtime configuration describing what server processes to run on each instance in the fleet (required to create fleet), (2) access permissions for inbound traffic, (3) fleet-wide game session protection, and (4) the location of default log files for Amazon GameLift to upload and store.</p> <p>If the CreateFleet call is successful, Amazon GameLift performs the following tasks:</p> <ul> <li> <p>Creates a fleet record and sets the status to <code>NEW</code> (followed by other statuses as the fleet is activated).</p> </li> <li> <p>Sets the fleet&#39;s capacity to 1 &quot;desired&quot;, which causes Amazon GameLift to start one new EC2 instance.</p> </li> <li> <p>Starts launching server processes on the instance. If the fleet is configured to run multiple server processes per instance, Amazon GameLift staggers each launch by a few seconds.</p> </li> <li> <p>Begins writing events to the fleet event log, which can be accessed in the Amazon GameLift console.</p> </li> <li> <p>Sets the fleet&#39;s status to <code>ACTIVE</code> once one server process in the fleet is ready to host a game session.</p> </li> </ul> <p>After a fleet is created, use the following actions to change fleet properties and configuration:</p> <ul> <li> <p> <a>UpdateFleetAttributes</a> -- Update fleet metadata, including name and description.</p> </li> <li> <p> <a>UpdateFleetCapacity</a> -- Increase or decrease the number of instances you want the fleet to maintain.</p> </li> <li> <p> <a>UpdateFleetPortSettings</a> -- Change the IP address and port ranges that allow access to incoming traffic.</p> </li> <li> <p> <a>UpdateRuntimeConfiguration</a> -- Change how server processes are launched in the fleet, including launch path, launch parameters, and the number of concurrent processes.</p> </li> <li> <p> <a>PutScalingPolicy</a> -- Create or update rules that are used to set the fleet&#39;s capacity (autoscaling).</p> </li> </ul></p>
 
   </div>
 </div>
@@ -1145,69 +1114,56 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:description</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Human-readable description of a fleet.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:build_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a build to be deployed on the new fleet. The build must have been successfully uploaded to Amazon GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is created.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:server_launch_path</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>This parameter is no longer used. Instead, specify a server launch path using the <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters instead of a runtime configuration will continue to work.)</p>
-
 </div>        </li>
         <li>
           <span class='name'>:server_launch_parameters</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>This parameter is no longer used. Instead, specify server launch parameters in the <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters instead of a runtime configuration will continue to work.)</p>
-
 </div>        </li>
         <li>
           <span class='name'>:log_paths</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one or more directory paths in <code>logParameters</code>. See more information in the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process">Server API Reference</a>. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:ec2_instance_type</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:ec2_inbound_permissions</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/IpPermission.html" title="Aws::GameLift::Types::IpPermission (class)">Types::IpPermission</a>&gt;)</span>
             &mdash; <div class='inline'><p>Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. If no inbound permissions are set, including both IP address range and port range, the server processes in the fleet cannot accept connections. You can specify one or more sets of permissions for a fleet.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:new_game_session_protection_policy</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Game session protection policy to apply to all instances in this fleet. If this parameter is not set, instances in this fleet default to no protection. You can change a fleet's protection policy using UpdateFleetAttributes, but this change will only affect sessions created after the policy change. You can also set protection for individual instances using <a>UpdateGameSession</a>.</p>
-
-
-<p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Game session protection policy to apply to all instances in this fleet. If this parameter is not set, instances in this fleet default to no protection. You can change a fleet&#39;s protection policy using UpdateFleetAttributes, but this change will only affect sessions created after the policy change. You can also set protection for individual instances using <a>UpdateGameSession</a>.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:runtime_configuration</span>
           <span class='type'>(<a href="Types/RuntimeConfiguration.html" title="Aws::GameLift::Types::RuntimeConfiguration (class)">Types::RuntimeConfiguration</a>)</span>
             &mdash; <div class='inline'><p>Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include a runtime configuration with at least one server process configuration; otherwise the request will fail with an invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime configuration will continue to work.) </p>
-
 </div>        </li>
         <li>
           <span class='name'>:resource_creation_limit_policy</span>
           <span class='type'>(<a href="Types/ResourceCreationLimitPolicy.html" title="Aws::GameLift::Types::ResourceCreationLimitPolicy (class)">Types::ResourceCreationLimitPolicy</a>)</span>
             &mdash; <div class='inline'><p>Policy that limits the number of game sessions an individual player can create over a span of time for this fleet.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1217,9 +1173,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateFleetOutput.html#fleet_attributes-instance_method" title="Aws::GameLift::Types::CreateFleetOutput#fleet_attributes (method)">#fleet_attributes</a> => <a href="Types/FleetAttributes.html" title="Aws::GameLift::Types::FleetAttributes (class)">Types::FleetAttributes</a></li>
+<li><a href="Types/CreateFleetOutput.html#fleet_attributes-instance_method" title="Aws::GameLift::Types::CreateFleetOutput#fleet_attributes (method)">#fleet_attributes</a> =&gt; <a href="Types/FleetAttributes.html" title="Aws::GameLift::Types::FleetAttributes (class)">Types::FleetAttributes</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1233,10 +1188,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Creates a multiplayer game session for players. This action creates a game session record and assigns an available server process in the specified fleet to host the game session. A fleet must have an <code>ACTIVE</code> status before a game session can be created in it.</p>
-
-
-<p> <p>To create a game session, specify either fleet ID or alias ID, and indicate a maximum number of players to allow in the game session. You can also provide a name and game-specific properties for this game session. If successful, a <a>GameSession</a> object is returned containing session properties, including an IP address. By default, newly created game sessions allow new players to join. Use <a>UpdateGameSession</a> to change the game session's player session creation policy.</p> <p>When creating a game session on a fleet with a resource limit creation policy, the request should include a creator ID. If none is provided, Amazon GameLift does not evaluate the fleet's resource limit creation policy.</p></p>
+    <p>Creates a multiplayer game session for players. This action creates a game session record and assigns an available server process in the specified fleet to host the game session. A fleet must have an <code>ACTIVE</code> status before a game session can be created in it.</p> <p>To create a game session, specify either fleet ID or alias ID, and indicate a maximum number of players to allow in the game session. You can also provide a name and game-specific properties for this game session. If successful, a <a>GameSession</a> object is returned containing session properties, including an IP address. By default, newly created game sessions allow new players to join. Use <a>UpdateGameSession</a> to change the game session's player session creation policy.</p> <p>When creating a game session on a fleet with a resource limit creation policy, the request should include a creator ID. If none is provided, Amazon GameLift does not evaluate the fleet's resource limit creation policy.</p>
 
   </div>
 </div>
@@ -1283,43 +1235,36 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:alias_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for an alias associated with the fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:maximum_player_session_count</span>
           <span class='type'>(<code>required</code>, <code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of players that can be connected simultaneously to the game session.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:game_properties</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/GameProperty.html" title="Aws::GameLift::Types::GameProperty (class)">Types::GameProperty</a>&gt;)</span>
             &mdash; <div class='inline'><p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:creator_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>$player-id; or entity creating the game session. This ID is used to enforce a resource protection policy (if one exists) that limits the number of concurrent active game sessions one player can have.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:game_session_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Custom string to include in the game session ID, with a maximum length of 48 characters. A game session ID has the following format: "arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;game session ID&gt;". If provided, the custom string is used for the game session ID string. This value cannot be updated once a game session is created.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1329,9 +1274,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateGameSessionOutput.html#game_session-instance_method" title="Aws::GameLift::Types::CreateGameSessionOutput#game_session (method)">#game_session</a> => <a href="Types/GameSession.html" title="Aws::GameLift::Types::GameSession (class)">Types::GameSession</a></li>
+<li><a href="Types/CreateGameSessionOutput.html#game_session-instance_method" title="Aws::GameLift::Types::CreateGameSessionOutput#game_session (method)">#game_session</a> =&gt; <a href="Types/GameSession.html" title="Aws::GameLift::Types::GameSession (class)">Types::GameSession</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1345,10 +1289,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Establishes a new queue for processing requests for new game sessions. A queue identifies where new game sessions can be hosted--by specifying a list of fleet destinations--and how long a request can remain in the queue waiting to be placed before timing out. Requests for new game sessions are added to a queue by calling <a>StartGameSessionPlacement</a> and referencing the queue name.</p>
-
-
-<p> <p>When processing a request for a game session, Amazon GameLift tries each destination in order until it finds one with available resources to host the new game session. A queue's default order is determined by how destinations are listed. This default order can be overridden in a game session placement request.</p> <p>To create a new queue, provide a name, timeout value, and a list of destinations. If successful, a new queue object is returned.</p></p>
+    <p>Establishes a new queue for processing requests for new game sessions. A queue identifies where new game sessions can be hosted--by specifying a list of fleet destinations--and how long a request can remain in the queue waiting to be placed before timing out. Requests for new game sessions are added to a queue by calling <a>StartGameSessionPlacement</a> and referencing the queue name.</p> <p>When processing a request for a game session, Amazon GameLift tries each destination in order until it finds one with available resources to host the new game session. A queue's default order is determined by how destinations are listed. This default order can be overridden in a game session placement request.</p> <p>To create a new queue, provide a name, timeout value, and a list of destinations. If successful, a new queue object is returned.</p>
 
   </div>
 </div>
@@ -1379,19 +1320,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:timeout_in_seconds</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:destinations</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/GameSessionQueueDestination.html" title="Aws::GameLift::Types::GameSessionQueueDestination (class)">Types::GameSessionQueueDestination</a>&gt;)</span>
             &mdash; <div class='inline'><p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1401,9 +1339,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateGameSessionQueueOutput.html#game_session_queue-instance_method" title="Aws::GameLift::Types::CreateGameSessionQueueOutput#game_session_queue (method)">#game_session_queue</a> => <a href="Types/GameSessionQueue.html" title="Aws::GameLift::Types::GameSessionQueue (class)">Types::GameSessionQueue</a></li>
+<li><a href="Types/CreateGameSessionQueueOutput.html#game_session_queue-instance_method" title="Aws::GameLift::Types::CreateGameSessionQueueOutput#game_session_queue (method)">#game_session_queue</a> =&gt; <a href="Types/GameSessionQueue.html" title="Aws::GameLift::Types::GameSessionQueue (class)">Types::GameSessionQueue</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1417,10 +1354,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Adds a player to a game session and creates a player session record. Before a player can be added, a game session must have an <code>ACTIVE</code> status, have a creation policy of <code>ALLOW_ALL</code>, and have an open player slot. To add a group of players to a game session, use <a>CreatePlayerSessions</a>.</p>
-
-
-<p> <p>To create a player session, specify a game session ID, player ID, and optionally a string of player data. If successful, the player is added to the game session and a new <a>PlayerSession</a> object is returned. Player sessions cannot be updated. </p></p>
+    <p>Adds a player to a game session and creates a player session record. Before a player can be added, a game session must have an <code>ACTIVE</code> status, have a creation policy of <code>ALLOW_ALL</code>, and have an open player slot. To add a group of players to a game session, use <a>CreatePlayerSessions</a>.</p> <p>To create a player session, specify a game session ID, player ID, and optionally a string of player data. If successful, the player is added to the game session and a new <a>PlayerSession</a> object is returned. Player sessions cannot be updated. </p>
 
   </div>
 </div>
@@ -1453,19 +1387,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:game_session_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for the game session to add a player to.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:player_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a player. Player IDs are developer-defined.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:player_data</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1475,9 +1406,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreatePlayerSessionOutput.html#player_session-instance_method" title="Aws::GameLift::Types::CreatePlayerSessionOutput#player_session (method)">#player_session</a> => <a href="Types/PlayerSession.html" title="Aws::GameLift::Types::PlayerSession (class)">Types::PlayerSession</a></li>
+<li><a href="Types/CreatePlayerSessionOutput.html#player_session-instance_method" title="Aws::GameLift::Types::CreatePlayerSessionOutput#player_session (method)">#player_session</a> =&gt; <a href="Types/PlayerSession.html" title="Aws::GameLift::Types::PlayerSession (class)">Types::PlayerSession</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1491,10 +1421,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Adds a group of players to a game session. This action is useful with a team matching feature. Before players can be added, a game session must have an <code>ACTIVE</code> status, have a creation policy of <code>ALLOW_ALL</code>, and have an open player slot. To add a single player to a game session, use <a>CreatePlayerSession</a>.</p>
-
-
-<p> <p>To create player sessions, specify a game session ID, a list of player IDs, and optionally a set of player data strings. If successful, the players are added to the game session and a set of new <a>PlayerSession</a> objects is returned. Player sessions cannot be updated.</p></p>
+    <p>Adds a group of players to a game session. This action is useful with a team matching feature. Before players can be added, a game session must have an <code>ACTIVE</code> status, have a creation policy of <code>ALLOW_ALL</code>, and have an open player slot. To add a single player to a game session, use <a>CreatePlayerSession</a>.</p> <p>To create player sessions, specify a game session ID, a list of player IDs, and optionally a set of player data strings. If successful, the players are added to the game session and a set of new <a>PlayerSession</a> objects is returned. Player sessions cannot be updated.</p>
 
   </div>
 </div>
@@ -1530,19 +1457,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:game_session_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for the game session to add players to.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:player_ids</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>List of unique identifiers for the players to be added.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:player_data_map</span>
           <span class='type'>(<code>Hash</code>&lt;<code>String</code>,<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>Map of string pairs, each specifying a player ID and a set of developer-defined information related to the player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data strings for player IDs not included in the <code>PlayerIds</code> parameter are ignored. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1552,9 +1476,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreatePlayerSessionsOutput.html#player_sessions-instance_method" title="Aws::GameLift::Types::CreatePlayerSessionsOutput#player_sessions (method)">#player_sessions</a> => Array&lt;<a href="Types/PlayerSession.html" title="Aws::GameLift::Types::PlayerSession (class)">Types::PlayerSession</a>&gt;</li>
+<li><a href="Types/CreatePlayerSessionsOutput.html#player_sessions-instance_method" title="Aws::GameLift::Types::CreatePlayerSessionsOutput#player_sessions (method)">#player_sessions</a> =&gt; Array&lt;<a href="Types/PlayerSession.html" title="Aws::GameLift::Types::PlayerSession (class)">Types::PlayerSession</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1569,7 +1492,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Deletes a fleet alias. This action removes all record of the alias. Game clients attempting to access a server process using the deleted alias receive an error. To delete an alias, specify the alias ID to be deleted.</p>
-
 
   </div>
 </div>
@@ -1588,7 +1510,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:alias_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet alias. Specify the alias you want to delete.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1609,10 +1530,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Deletes a build. This action permanently deletes the build record and any uploaded build files.</p>
-
-
-<p> <p>To delete a build, specify its ID. Deleting a build does not affect the status of any active fleets using the build, but you can no longer create new fleets with the deleted build.</p></p>
+    <p>Deletes a build. This action permanently deletes the build record and any uploaded build files.</p> <p>To delete a build, specify its ID. Deleting a build does not affect the status of any active fleets using the build, but you can no longer create new fleets with the deleted build.</p>
 
   </div>
 </div>
@@ -1631,7 +1549,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:build_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a build to delete.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1652,10 +1569,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Deletes everything related to a fleet. Before deleting a fleet, you must set the fleet's desired capacity to zero. See <a>UpdateFleetCapacity</a>.</p>
-
-
-<p> <p>This action removes the fleet's resources and the fleet record. Once a fleet is deleted, you can no longer use that fleet.</p></p>
+    <p>Deletes everything related to a fleet. Before deleting a fleet, you must set the fleet's desired capacity to zero. See <a>UpdateFleetCapacity</a>.</p> <p>This action removes the fleet's resources and the fleet record. Once a fleet is deleted, you can no longer use that fleet.</p>
 
   </div>
 </div>
@@ -1674,7 +1588,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to be deleted.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1697,7 +1610,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   <div class='discussion'>
     <p>Deletes a game session queue. This action means that any <a>StartGameSessionPlacement</a> requests that reference this queue will fail. To delete a queue, specify the queue name.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1715,7 +1627,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1738,7 +1649,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   <div class='discussion'>
     <p>Deletes a fleet scaling policy. This action means that the policy is no longer in force and removes all record of it. To delete a scaling policy, specify both the scaling policy name and the fleet ID it is associated with.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1757,13 +1667,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to be deleted.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1784,10 +1692,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves properties for a fleet alias. This operation returns all alias metadata and settings. To get just the fleet ID an alias is currently pointing to, use <a>ResolveAlias</a>. </p>
-
-
-<p> <p>To get alias properties, specify the alias ID. If successful, an <a>Alias</a> object is returned.</p></p>
+    <p>Retrieves properties for a fleet alias. This operation returns all alias metadata and settings. To get just the fleet ID an alias is currently pointing to, use <a>ResolveAlias</a>. </p> <p>To get alias properties, specify the alias ID. If successful, an <a>Alias</a> object is returned.</p>
 
   </div>
 </div>
@@ -1817,7 +1722,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:alias_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet alias. Specify the alias you want to retrieve.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1827,9 +1731,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeAliasOutput.html#alias-instance_method" title="Aws::GameLift::Types::DescribeAliasOutput#alias (method)">#alias</a> => <a href="Types/Alias.html" title="Aws::GameLift::Types::Alias (class)">Types::Alias</a></li>
+<li><a href="Types/DescribeAliasOutput.html#alias-instance_method" title="Aws::GameLift::Types::DescribeAliasOutput#alias (method)">#alias</a> =&gt; <a href="Types/Alias.html" title="Aws::GameLift::Types::Alias (class)">Types::Alias</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1844,7 +1747,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Retrieves properties for a build. To get a build record, specify a build ID. If successful, an object containing the build properties is returned.</p>
-
 
   </div>
 </div>
@@ -1872,7 +1774,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:build_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a build to retrieve properties for.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1882,9 +1783,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeBuildOutput.html#build-instance_method" title="Aws::GameLift::Types::DescribeBuildOutput#build (method)">#build</a> => <a href="Types/Build.html" title="Aws::GameLift::Types::Build (class)">Types::Build</a></li>
+<li><a href="Types/DescribeBuildOutput.html#build-instance_method" title="Aws::GameLift::Types::DescribeBuildOutput#build (method)">#build</a> =&gt; <a href="Types/Build.html" title="Aws::GameLift::Types::Build (class)">Types::Build</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1898,10 +1798,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves the following information for the specified EC2 instance type:</p>
-
-
-<p> <ul> <li> <p>maximum number of instances allowed per AWS account (service limit)</p> </li> <li> <p>current usage level for the AWS account</p> </li> </ul> <p>Service limits vary depending on region. Available regions for Amazon GameLift can be found in the AWS Management Console for Amazon GameLift (see the drop-down list in the upper right corner).</p></p>
+    <p>Retrieves the following information for the specified EC2 instance type:</p> <ul> <li> <p>maximum number of instances allowed per AWS account (service limit)</p> </li> <li> <p>current usage level for the AWS account</p> </li> </ul> <p>Service limits vary depending on region. Available regions for Amazon GameLift can be found in the AWS Management Console for Amazon GameLift (see the drop-down list in the upper right corner).</p>
 
   </div>
 </div>
@@ -1926,7 +1823,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:ec2_instance_type</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions. Leave this parameter blank to retrieve limits for all types.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1936,9 +1832,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeEC2InstanceLimitsOutput.html#ec2_instance_limits-instance_method" title="Aws::GameLift::Types::DescribeEC2InstanceLimitsOutput#ec2_instance_limits (method)">#ec2_instance_limits</a> => Array&lt;<a href="Types/EC2InstanceLimit.html" title="Aws::GameLift::Types::EC2InstanceLimit (class)">Types::EC2InstanceLimit</a>&gt;</li>
+<li><a href="Types/DescribeEC2InstanceLimitsOutput.html#ec2_instance_limits-instance_method" title="Aws::GameLift::Types::DescribeEC2InstanceLimitsOutput#ec2_instance_limits (method)">#ec2_instance_limits</a> =&gt; Array&lt;<a href="Types/EC2InstanceLimit.html" title="Aws::GameLift::Types::EC2InstanceLimit (class)">Types::EC2InstanceLimit</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1952,10 +1847,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves fleet properties, including metadata, status, and configuration, for one or more fleets. You can request attributes for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>FleetAttributes</a> object is returned for each requested fleet ID. When specifying a list of fleet IDs, attribute objects are returned only for fleets that currently exist. </p>
-
-
-<p> <note> <p>Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed.</p> </note></p>
+    <p><p>Retrieves fleet properties, including metadata, status, and configuration, for one or more fleets. You can request attributes for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>FleetAttributes</a> object is returned for each requested fleet ID. When specifying a list of fleet IDs, attribute objects are returned only for fleets that currently exist. </p> <note> <p>Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed.</p> </note></p>
 
   </div>
 </div>
@@ -1996,19 +1888,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_ids</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet(s) to retrieve attributes for. To request attributes for all fleets, leave this parameter empty.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2018,10 +1907,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeFleetAttributesOutput.html#fleet_attributes-instance_method" title="Aws::GameLift::Types::DescribeFleetAttributesOutput#fleet_attributes (method)">#fleet_attributes</a> => Array&lt;<a href="Types/FleetAttributes.html" title="Aws::GameLift::Types::FleetAttributes (class)">Types::FleetAttributes</a>&gt;</li>
-<li><a href="Types/DescribeFleetAttributesOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeFleetAttributesOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeFleetAttributesOutput.html#fleet_attributes-instance_method" title="Aws::GameLift::Types::DescribeFleetAttributesOutput#fleet_attributes (method)">#fleet_attributes</a> =&gt; Array&lt;<a href="Types/FleetAttributes.html" title="Aws::GameLift::Types::FleetAttributes (class)">Types::FleetAttributes</a>&gt;</li>
+<li><a href="Types/DescribeFleetAttributesOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeFleetAttributesOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2035,10 +1923,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves the current status of fleet capacity for one or more fleets. This information includes the number of instances that have been requested for the fleet and the number currently active. You can request capacity for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>FleetCapacity</a> object is returned for each requested fleet ID. When specifying a list of fleet IDs, attribute objects are returned only for fleets that currently exist. </p>
-
-
-<p> <note> <p>Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed.</p> </note></p>
+    <p><p>Retrieves the current status of fleet capacity for one or more fleets. This information includes the number of instances that have been requested for the fleet and the number currently active. You can request capacity for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>FleetCapacity</a> object is returned for each requested fleet ID. When specifying a list of fleet IDs, attribute objects are returned only for fleets that currently exist. </p> <note> <p>Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed.</p> </note></p>
 
   </div>
 </div>
@@ -2072,19 +1957,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_ids</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all fleets, leave this parameter empty.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2094,10 +1976,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeFleetCapacityOutput.html#fleet_capacity-instance_method" title="Aws::GameLift::Types::DescribeFleetCapacityOutput#fleet_capacity (method)">#fleet_capacity</a> => Array&lt;<a href="Types/FleetCapacity.html" title="Aws::GameLift::Types::FleetCapacity (class)">Types::FleetCapacity</a>&gt;</li>
-<li><a href="Types/DescribeFleetCapacityOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeFleetCapacityOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeFleetCapacityOutput.html#fleet_capacity-instance_method" title="Aws::GameLift::Types::DescribeFleetCapacityOutput#fleet_capacity (method)">#fleet_capacity</a> =&gt; Array&lt;<a href="Types/FleetCapacity.html" title="Aws::GameLift::Types::FleetCapacity (class)">Types::FleetCapacity</a>&gt;</li>
+<li><a href="Types/DescribeFleetCapacityOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeFleetCapacityOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2112,7 +1993,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Retrieves entries from the specified fleet's event log. You can specify a time range to limit the result set. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a collection of event log entries matching the request are returned.</p>
-
 
   </div>
 </div>
@@ -2144,31 +2024,26 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to get event logs for.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:start_time</span>
           <span class='type'>(<code>Time</code>)</span>
             &mdash; <div class='inline'><p>Earliest date to retrieve event logs for. If no start time is specified, this call returns entries starting from when the fleet was created to the specified end time. Format is a number expressed in Unix time as milliseconds (ex: "1469498468.057").</p>
-
 </div>        </li>
         <li>
           <span class='name'>:end_time</span>
           <span class='type'>(<code>Time</code>)</span>
             &mdash; <div class='inline'><p>Most recent date to retrieve event logs for. If no end time is specified, this call returns entries from the specified start time up to the present. Format is a number expressed in Unix time as milliseconds (ex: "1469498468.057").</p>
-
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2178,10 +2053,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeFleetEventsOutput.html#events-instance_method" title="Aws::GameLift::Types::DescribeFleetEventsOutput#events (method)">#events</a> => Array&lt;<a href="Types/Event.html" title="Aws::GameLift::Types::Event (class)">Types::Event</a>&gt;</li>
-<li><a href="Types/DescribeFleetEventsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeFleetEventsOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeFleetEventsOutput.html#events-instance_method" title="Aws::GameLift::Types::DescribeFleetEventsOutput#events (method)">#events</a> =&gt; Array&lt;<a href="Types/Event.html" title="Aws::GameLift::Types::Event (class)">Types::Event</a>&gt;</li>
+<li><a href="Types/DescribeFleetEventsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeFleetEventsOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2196,7 +2070,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Retrieves the inbound connection permissions for a fleet. Connection permissions include a range of IP addresses and port settings that incoming traffic can use to access server processes in the fleet. To get a fleet's inbound connection permissions, specify a fleet ID. If successful, a collection of <a>IpPermission</a> objects is returned for the requested fleet ID. If the requested fleet has been deleted, the result set is empty.</p>
-
 
   </div>
 </div>
@@ -2222,7 +2095,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to retrieve port settings for.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2232,9 +2104,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeFleetPortSettingsOutput.html#inbound_permissions-instance_method" title="Aws::GameLift::Types::DescribeFleetPortSettingsOutput#inbound_permissions (method)">#inbound_permissions</a> => Array&lt;<a href="Types/IpPermission.html" title="Aws::GameLift::Types::IpPermission (class)">Types::IpPermission</a>&gt;</li>
+<li><a href="Types/DescribeFleetPortSettingsOutput.html#inbound_permissions-instance_method" title="Aws::GameLift::Types::DescribeFleetPortSettingsOutput#inbound_permissions (method)">#inbound_permissions</a> =&gt; Array&lt;<a href="Types/IpPermission.html" title="Aws::GameLift::Types::IpPermission (class)">Types::IpPermission</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2248,10 +2119,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves utilization statistics for one or more fleets. You can request utilization data for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>FleetUtilization</a> object is returned for each requested fleet ID. When specifying a list of fleet IDs, utilization objects are returned only for fleets that currently exist. </p>
-
-
-<p> <note> <p>Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed.</p> </note></p>
+    <p><p>Retrieves utilization statistics for one or more fleets. You can request utilization data for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>FleetUtilization</a> object is returned for each requested fleet ID. When specifying a list of fleet IDs, utilization objects are returned only for fleets that currently exist. </p> <note> <p>Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed.</p> </note></p>
 
   </div>
 </div>
@@ -2281,19 +2149,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_ids</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet(s) to retrieve utilization data for. To request utilization data for all fleets, leave this parameter empty.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2303,10 +2168,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeFleetUtilizationOutput.html#fleet_utilization-instance_method" title="Aws::GameLift::Types::DescribeFleetUtilizationOutput#fleet_utilization (method)">#fleet_utilization</a> => Array&lt;<a href="Types/FleetUtilization.html" title="Aws::GameLift::Types::FleetUtilization (class)">Types::FleetUtilization</a>&gt;</li>
-<li><a href="Types/DescribeFleetUtilizationOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeFleetUtilizationOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeFleetUtilizationOutput.html#fleet_utilization-instance_method" title="Aws::GameLift::Types::DescribeFleetUtilizationOutput#fleet_utilization (method)">#fleet_utilization</a> =&gt; Array&lt;<a href="Types/FleetUtilization.html" title="Aws::GameLift::Types::FleetUtilization (class)">Types::FleetUtilization</a>&gt;</li>
+<li><a href="Types/DescribeFleetUtilizationOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeFleetUtilizationOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2320,10 +2184,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves properties, including the protection policy in force, for one or more game sessions. This action can be used in several ways: (1) provide a <code>GameSessionId</code> to request details for a specific game session; (2) provide either a <code>FleetId</code> or an <code>AliasId</code> to request properties for all game sessions running on a fleet. </p>
-
-
-<p> <p>To get game session record(s), specify just one of the following: game session ID, fleet ID, or alias ID. You can filter this request by game session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>GameSessionDetail</a> object is returned for each session matching the request.</p></p>
+    <p>Retrieves properties, including the protection policy in force, for one or more game sessions. This action can be used in several ways: (1) provide a <code>GameSessionId</code> to request details for a specific game session; (2) provide either a <code>FleetId</code> or an <code>AliasId</code> to request properties for all game sessions running on a fleet. </p> <p>To get game session record(s), specify just one of the following: game session ID, fleet ID, or alias ID. You can filter this request by game session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>GameSessionDetail</a> object is returned for each session matching the request.</p>
 
   </div>
 </div>
@@ -2367,37 +2228,31 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to retrieve all game sessions active on the fleet.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:game_session_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for the game session to retrieve.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:alias_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for an alias associated with the fleet to retrieve all game sessions for.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:status_filter</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Game session status to filter results on. Possible game session statuses include ACTIVE, <code>TERMINATED</code>, <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory). </p>
-
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2407,10 +2262,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeGameSessionDetailsOutput.html#game_session_details-instance_method" title="Aws::GameLift::Types::DescribeGameSessionDetailsOutput#game_session_details (method)">#game_session_details</a> => Array&lt;<a href="Types/GameSessionDetail.html" title="Aws::GameLift::Types::GameSessionDetail (class)">Types::GameSessionDetail</a>&gt;</li>
-<li><a href="Types/DescribeGameSessionDetailsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeGameSessionDetailsOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeGameSessionDetailsOutput.html#game_session_details-instance_method" title="Aws::GameLift::Types::DescribeGameSessionDetailsOutput#game_session_details (method)">#game_session_details</a> =&gt; Array&lt;<a href="Types/GameSessionDetail.html" title="Aws::GameLift::Types::GameSessionDetail (class)">Types::GameSessionDetail</a>&gt;</li>
+<li><a href="Types/DescribeGameSessionDetailsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeGameSessionDetailsOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2425,7 +2279,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Retrieves properties and current status of a game session placement request. To get game session placement details, specify the placement ID. If successful, a <a>GameSessionPlacement</a> object is returned.</p>
-
 
   </div>
 </div>
@@ -2462,7 +2315,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:placement_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a game session placement to retrieve.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2472,9 +2324,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeGameSessionPlacementOutput.html#game_session_placement-instance_method" title="Aws::GameLift::Types::DescribeGameSessionPlacementOutput#game_session_placement (method)">#game_session_placement</a> => <a href="Types/GameSessionPlacement.html" title="Aws::GameLift::Types::GameSessionPlacement (class)">Types::GameSessionPlacement</a></li>
+<li><a href="Types/DescribeGameSessionPlacementOutput.html#game_session_placement-instance_method" title="Aws::GameLift::Types::DescribeGameSessionPlacementOutput#game_session_placement (method)">#game_session_placement</a> =&gt; <a href="Types/GameSessionPlacement.html" title="Aws::GameLift::Types::GameSessionPlacement (class)">Types::GameSessionPlacement</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2489,7 +2340,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Retrieves the properties for one or more game session queues. When requesting multiple queues, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>GameSessionQueue</a> object is returned for each requested queue. When specifying a list of queues, objects are returned only for queues that currently exist in the region.</p>
-
 
   </div>
 </div>
@@ -2518,19 +2368,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:names</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>List of queue names to retrieve information for. To request settings for all queues, leave this parameter empty.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2540,10 +2387,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeGameSessionQueuesOutput.html#game_session_queues-instance_method" title="Aws::GameLift::Types::DescribeGameSessionQueuesOutput#game_session_queues (method)">#game_session_queues</a> => Array&lt;<a href="Types/GameSessionQueue.html" title="Aws::GameLift::Types::GameSessionQueue (class)">Types::GameSessionQueue</a>&gt;</li>
-<li><a href="Types/DescribeGameSessionQueuesOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeGameSessionQueuesOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeGameSessionQueuesOutput.html#game_session_queues-instance_method" title="Aws::GameLift::Types::DescribeGameSessionQueuesOutput#game_session_queues (method)">#game_session_queues</a> =&gt; Array&lt;<a href="Types/GameSessionQueue.html" title="Aws::GameLift::Types::GameSessionQueue (class)">Types::GameSessionQueue</a>&gt;</li>
+<li><a href="Types/DescribeGameSessionQueuesOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeGameSessionQueuesOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2557,10 +2403,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves a set of one or more game sessions. Request a specific game session or request all game sessions on a fleet. Alternatively, use <a>SearchGameSessions</a> to request a set of active game sessions that are filtered by certain criteria. To retrieve protection policy settings for game sessions, use <a>DescribeGameSessionDetails</a>.</p>
-
-
-<p> <p>To get game sessions, specify one of the following: game session ID, fleet ID, or alias ID. You can filter this request by game session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>GameSession</a> object is returned for each game session matching the request.</p></p>
+    <p>Retrieves a set of one or more game sessions. Request a specific game session or request all game sessions on a fleet. Alternatively, use <a>SearchGameSessions</a> to request a set of active game sessions that are filtered by certain criteria. To retrieve protection policy settings for game sessions, use <a>DescribeGameSessionDetails</a>.</p> <p>To get game sessions, specify one of the following: game session ID, fleet ID, or alias ID. You can filter this request by game session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>GameSession</a> object is returned for each game session matching the request.</p>
 
   </div>
 </div>
@@ -2603,37 +2446,31 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to retrieve all game sessions for.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:game_session_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for the game session to retrieve.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:alias_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for an alias associated with the fleet to retrieve all game sessions for. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:status_filter</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Game session status to filter results on. Possible game session statuses include <code>ACTIVE</code>, <code>TERMINATED</code>, <code>ACTIVATING</code>, and <code>TERMINATING</code> (the last two are transitory). </p>
-
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2643,10 +2480,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeGameSessionsOutput.html#game_sessions-instance_method" title="Aws::GameLift::Types::DescribeGameSessionsOutput#game_sessions (method)">#game_sessions</a> => Array&lt;<a href="Types/GameSession.html" title="Aws::GameLift::Types::GameSession (class)">Types::GameSession</a>&gt;</li>
-<li><a href="Types/DescribeGameSessionsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeGameSessionsOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeGameSessionsOutput.html#game_sessions-instance_method" title="Aws::GameLift::Types::DescribeGameSessionsOutput#game_sessions (method)">#game_sessions</a> =&gt; Array&lt;<a href="Types/GameSession.html" title="Aws::GameLift::Types::GameSession (class)">Types::GameSession</a>&gt;</li>
+<li><a href="Types/DescribeGameSessionsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeGameSessionsOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2660,10 +2496,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves information about a fleet's instances, including instance IDs. Use this action to get details on all instances in the fleet or get details on one specific instance.</p>
-
-
-<p> <p>To get a specific instance, specify fleet ID and instance ID. To get all instances in a fleet, specify a fleet ID only. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, an <a>Instance</a> object is returned for each result.</p></p>
+    <p>Retrieves information about a fleet's instances, including instance IDs. Use this action to get details on all instances in the fleet or get details on one specific instance.</p> <p>To get a specific instance, specify fleet ID and instance ID. To get all instances in a fleet, specify a fleet ID only. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, an <a>Instance</a> object is returned for each result.</p>
 
   </div>
 </div>
@@ -2696,25 +2529,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to retrieve instance information for.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:instance_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in the fleet.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2724,10 +2553,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeInstancesOutput.html#instances-instance_method" title="Aws::GameLift::Types::DescribeInstancesOutput#instances (method)">#instances</a> => Array&lt;<a href="Types/Instance.html" title="Aws::GameLift::Types::Instance (class)">Types::Instance</a>&gt;</li>
-<li><a href="Types/DescribeInstancesOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeInstancesOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeInstancesOutput.html#instances-instance_method" title="Aws::GameLift::Types::DescribeInstancesOutput#instances (method)">#instances</a> =&gt; Array&lt;<a href="Types/Instance.html" title="Aws::GameLift::Types::Instance (class)">Types::Instance</a>&gt;</li>
+<li><a href="Types/DescribeInstancesOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeInstancesOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2741,10 +2569,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves properties for one or more player sessions. This action can be used in several ways: (1) provide a <code>PlayerSessionId</code> parameter to request properties for a specific player session; (2) provide a <code>GameSessionId</code> parameter to request properties for all player sessions in the specified game session; (3) provide a <code>PlayerId</code> parameter to request properties for all player sessions of a specified player. </p>
-
-
-<p> <p>To get game session record(s), specify only one of the following: a player session ID, a game session ID, or a player ID. You can filter this request by player session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>PlayerSession</a> object is returned for each session matching the request.</p></p>
+    <p>Retrieves properties for one or more player sessions. This action can be used in several ways: (1) provide a <code>PlayerSessionId</code> parameter to request properties for a specific player session; (2) provide a <code>GameSessionId</code> parameter to request properties for all player sessions in the specified game session; (3) provide a <code>PlayerId</code> parameter to request properties for all player sessions of a specified player. </p> <p>To get game session record(s), specify only one of the following: a player session ID, a game session ID, or a player ID. You can filter this request by player session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>PlayerSession</a> object is returned for each session matching the request.</p>
 
   </div>
 </div>
@@ -2782,39 +2607,31 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:game_session_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for the game session to retrieve player sessions for.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:player_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a player to retrieve player sessions for.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:player_session_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a player session to retrieve.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:player_session_status_filter</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Player session status to filter results on.</p>
-
-
-<p> <p>Possible player session statuses include the following:</p> <ul> <li> <p> <b>RESERVED</b> – The player session request has been received, but the player has not yet connected to the server process and/or been validated. </p> </li> <li> <p> <b>ACTIVE</b> – The player has been validated by the server process and is currently connected.</p> </li> <li> <p> <b>COMPLETED</b> – The player connection has been dropped.</p> </li> <li> <p> <b>TIMEDOUT</b> – A player session request was received, but the player did not connect and/or was not validated within the time-out limit (60 seconds).</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Player session status to filter results on.</p> <p>Possible player session statuses include the following:</p> <ul> <li> <p> <b>RESERVED</b> – The player session request has been received, but the player has not yet connected to the server process and/or been validated. </p> </li> <li> <p> <b>ACTIVE</b> – The player has been validated by the server process and is currently connected.</p> </li> <li> <p> <b>COMPLETED</b> – The player connection has been dropped.</p> </li> <li> <p> <b>TIMEDOUT</b> – A player session request was received, but the player did not connect and/or was not validated within the time-out limit (60 seconds).</p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. If a player session ID is specified, this parameter is ignored.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. If a player session ID is specified, this parameter is ignored.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2824,10 +2641,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribePlayerSessionsOutput.html#player_sessions-instance_method" title="Aws::GameLift::Types::DescribePlayerSessionsOutput#player_sessions (method)">#player_sessions</a> => Array&lt;<a href="Types/PlayerSession.html" title="Aws::GameLift::Types::PlayerSession (class)">Types::PlayerSession</a>&gt;</li>
-<li><a href="Types/DescribePlayerSessionsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribePlayerSessionsOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribePlayerSessionsOutput.html#player_sessions-instance_method" title="Aws::GameLift::Types::DescribePlayerSessionsOutput#player_sessions (method)">#player_sessions</a> =&gt; Array&lt;<a href="Types/PlayerSession.html" title="Aws::GameLift::Types::PlayerSession (class)">Types::PlayerSession</a>&gt;</li>
+<li><a href="Types/DescribePlayerSessionsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribePlayerSessionsOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2842,7 +2658,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Retrieves the current runtime configuration for the specified fleet. The runtime configuration tells Amazon GameLift how to launch server processes on instances in the fleet.</p>
-
 
   </div>
 </div>
@@ -2867,7 +2682,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to get the runtime configuration for.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2877,9 +2691,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeRuntimeConfigurationOutput.html#runtime_configuration-instance_method" title="Aws::GameLift::Types::DescribeRuntimeConfigurationOutput#runtime_configuration (method)">#runtime_configuration</a> => <a href="Types/RuntimeConfiguration.html" title="Aws::GameLift::Types::RuntimeConfiguration (class)">Types::RuntimeConfiguration</a></li>
+<li><a href="Types/DescribeRuntimeConfigurationOutput.html#runtime_configuration-instance_method" title="Aws::GameLift::Types::DescribeRuntimeConfigurationOutput#runtime_configuration (method)">#runtime_configuration</a> =&gt; <a href="Types/RuntimeConfiguration.html" title="Aws::GameLift::Types::RuntimeConfiguration (class)">Types::RuntimeConfiguration</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2893,10 +2706,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves all scaling policies applied to a fleet.</p>
-
-
-<p> <p>To get a fleet's scaling policies, specify the fleet ID. You can filter this request by policy status, such as to retrieve only active scaling policies. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, set of <a>ScalingPolicy</a> objects is returned for the fleet.</p></p>
+    <p>Retrieves all scaling policies applied to a fleet.</p> <p>To get a fleet's scaling policies, specify the fleet ID. You can filter this request by policy status, such as to retrieve only active scaling policies. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, set of <a>ScalingPolicy</a> objects is returned for the fleet.</p>
 
   </div>
 </div>
@@ -2931,27 +2741,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to retrieve scaling policies for.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:status_filter</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Scaling policy status to filter results on. A scaling policy is only in force when in an <code>ACTIVE</code> status.</p>
-
-
-<p> <ul> <li> <p> <b>ACTIVE</b> – The scaling policy is currently in force.</p> </li> <li> <p> <b>UPDATEREQUESTED</b> – A request to update the scaling policy has been received.</p> </li> <li> <p> <b>UPDATING</b> – A change is being made to the scaling policy.</p> </li> <li> <p> <b>DELETEREQUESTED</b> – A request to delete the scaling policy has been received.</p> </li> <li> <p> <b>DELETING</b> – The scaling policy is being deleted.</p> </li> <li> <p> <b>DELETED</b> – The scaling policy has been deleted.</p> </li> <li> <p> <b>ERROR</b> – An error occurred in creating the policy. It should be removed and recreated.</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Scaling policy status to filter results on. A scaling policy is only in force when in an <code>ACTIVE</code> status.</p> <ul> <li> <p> <b>ACTIVE</b> – The scaling policy is currently in force.</p> </li> <li> <p> <b>UPDATEREQUESTED</b> – A request to update the scaling policy has been received.</p> </li> <li> <p> <b>UPDATING</b> – A change is being made to the scaling policy.</p> </li> <li> <p> <b>DELETEREQUESTED</b> – A request to delete the scaling policy has been received.</p> </li> <li> <p> <b>DELETING</b> – The scaling policy is being deleted.</p> </li> <li> <p> <b>DELETED</b> – The scaling policy has been deleted.</p> </li> <li> <p> <b>ERROR</b> – An error occurred in creating the policy. It should be removed and recreated.</p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2961,10 +2765,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeScalingPoliciesOutput.html#scaling_policies-instance_method" title="Aws::GameLift::Types::DescribeScalingPoliciesOutput#scaling_policies (method)">#scaling_policies</a> => Array&lt;<a href="Types/ScalingPolicy.html" title="Aws::GameLift::Types::ScalingPolicy (class)">Types::ScalingPolicy</a>&gt;</li>
-<li><a href="Types/DescribeScalingPoliciesOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeScalingPoliciesOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeScalingPoliciesOutput.html#scaling_policies-instance_method" title="Aws::GameLift::Types::DescribeScalingPoliciesOutput#scaling_policies (method)">#scaling_policies</a> =&gt; Array&lt;<a href="Types/ScalingPolicy.html" title="Aws::GameLift::Types::ScalingPolicy (class)">Types::ScalingPolicy</a>&gt;</li>
+<li><a href="Types/DescribeScalingPoliciesOutput.html#next_token-instance_method" title="Aws::GameLift::Types::DescribeScalingPoliciesOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2978,10 +2781,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves the location of stored game session logs for a specified game session. When a game session is terminated, Amazon GameLift automatically stores the logs in Amazon S3. Use this URL to download the logs.</p>
-
-
-<p> <note> <p>See the <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift">AWS Service Limits</a> page for maximum log file sizes. Log files that exceed this limit are not saved.</p> </note></p>
+    <p><p>Retrieves the location of stored game session logs for a specified game session. When a game session is terminated, Amazon GameLift automatically stores the logs in Amazon S3. Use this URL to download the logs.</p> <note> <p>See the <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift">AWS Service Limits</a> page for maximum log file sizes. Log files that exceed this limit are not saved.</p> </note></p>
 
   </div>
 </div>
@@ -3003,7 +2803,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:game_session_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for the game session to get logs for.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3013,9 +2812,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetGameSessionLogUrlOutput.html#pre_signed_url-instance_method" title="Aws::GameLift::Types::GetGameSessionLogUrlOutput#pre_signed_url (method)">#pre_signed_url</a> => String</li>
+<li><a href="Types/GetGameSessionLogUrlOutput.html#pre_signed_url-instance_method" title="Aws::GameLift::Types::GetGameSessionLogUrlOutput#pre_signed_url (method)">#pre_signed_url</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3029,10 +2827,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Requests remote access to a fleet instance. Remote access is useful for debugging, gathering benchmarking data, or watching activity in real time. </p>
-
-
-<p> <p>Access requires credentials that match the operating system of the instance. For a Windows instance, Amazon GameLift returns a user name and password as strings for use with a Windows Remote Desktop client. For a Linux instance, Amazon GameLift returns a user name and RSA private key, also as strings, for use with an SSH client. The private key must be saved in the proper format to a <code>.pem</code> file before using. If you're making this request using the AWS CLI, saving the secret can be handled as part of the GetInstanceAccess request. (See the example later in this topic). For more information on remote access, see <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html">Remotely Accessing an Instance</a>.</p> <p>To request access to a specific instance, specify the IDs of the instance and the fleet it belongs to. If successful, an <a>InstanceAccess</a> object is returned containing the instance's IP address and a set of credentials.</p></p>
+    <p>Requests remote access to a fleet instance. Remote access is useful for debugging, gathering benchmarking data, or watching activity in real time. </p> <p>Access requires credentials that match the operating system of the instance. For a Windows instance, Amazon GameLift returns a user name and password as strings for use with a Windows Remote Desktop client. For a Linux instance, Amazon GameLift returns a user name and RSA private key, also as strings, for use with an SSH client. The private key must be saved in the proper format to a <code>.pem</code> file before using. If you're making this request using the AWS CLI, saving the secret can be handled as part of the GetInstanceAccess request. (See the example later in this topic). For more information on remote access, see <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html">Remotely Accessing an Instance</a>.</p> <p>To request access to a specific instance, specify the IDs of the instance and the fleet it belongs to. If successful, an <a>InstanceAccess</a> object is returned containing the instance's IP address and a set of credentials.</p>
 
   </div>
 </div>
@@ -3060,13 +2855,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet that contains the instance you want access to. The fleet can be in any of the following statuses: <code>ACTIVATING</code>, <code>ACTIVE</code>, or <code>ERROR</code>. Fleets with an <code>ERROR</code> status may be accessible for a short time before they are deleted.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:instance_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for an instance you want to get access to. You can access an instance in any status.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3076,9 +2869,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetInstanceAccessOutput.html#instance_access-instance_method" title="Aws::GameLift::Types::GetInstanceAccessOutput#instance_access (method)">#instance_access</a> => <a href="Types/InstanceAccess.html" title="Aws::GameLift::Types::InstanceAccess (class)">Types::InstanceAccess</a></li>
+<li><a href="Types/GetInstanceAccessOutput.html#instance_access-instance_method" title="Aws::GameLift::Types::GetInstanceAccessOutput#instance_access (method)">#instance_access</a> =&gt; <a href="Types/InstanceAccess.html" title="Aws::GameLift::Types::InstanceAccess (class)">Types::InstanceAccess</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3092,10 +2884,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves a collection of alias records for this AWS account. You can filter the result set by alias name and/or routing strategy type. Use the pagination parameters to retrieve results in sequential pages.</p>
-
-
-<p> <note> <p>Aliases are not listed in any particular order.</p> </note></p>
+    <p><p>Retrieves a collection of alias records for this AWS account. You can filter the result set by alias name and/or routing strategy type. Use the pagination parameters to retrieve results in sequential pages.</p> <note> <p>Aliases are not listed in any particular order.</p> </note></p>
 
   </div>
 </div>
@@ -3129,28 +2918,22 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:routing_strategy_type</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Type of routing to filter results on. Use this parameter to retrieve only aliases of a certain type. To retrieve all aliases, leave this parameter empty.</p>
-
-
-<p> <p>Possible routing types include the following:</p> <ul> <li> <p> <b>SIMPLE</b> – The alias resolves to one specific fleet. Use this type when routing to active fleets.</p> </li> <li> <p> <b>TERMINAL</b> – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the <a>RoutingStrategy</a> message embedded.</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Type of routing to filter results on. Use this parameter to retrieve only aliases of a certain type. To retrieve all aliases, leave this parameter empty.</p> <p>Possible routing types include the following:</p> <ul> <li> <p> <b>SIMPLE</b> – The alias resolves to one specific fleet. Use this type when routing to active fleets.</p> </li> <li> <p> <b>TERMINAL</b> – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the <a>RoutingStrategy</a> message embedded.</p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3160,10 +2943,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListAliasesOutput.html#aliases-instance_method" title="Aws::GameLift::Types::ListAliasesOutput#aliases (method)">#aliases</a> => Array&lt;<a href="Types/Alias.html" title="Aws::GameLift::Types::Alias (class)">Types::Alias</a>&gt;</li>
-<li><a href="Types/ListAliasesOutput.html#next_token-instance_method" title="Aws::GameLift::Types::ListAliasesOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/ListAliasesOutput.html#aliases-instance_method" title="Aws::GameLift::Types::ListAliasesOutput#aliases (method)">#aliases</a> =&gt; Array&lt;<a href="Types/Alias.html" title="Aws::GameLift::Types::Alias (class)">Types::Alias</a>&gt;</li>
+<li><a href="Types/ListAliasesOutput.html#next_token-instance_method" title="Aws::GameLift::Types::ListAliasesOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3177,10 +2959,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves build records for all builds associated with the AWS account in use. You can limit results to builds that are in a specific status by using the <code>Status</code> parameter. Use the pagination parameters to retrieve results in a set of sequential pages. </p>
-
-
-<p> <note> <p>Build records are not listed in any particular order.</p> </note></p>
+    <p><p>Retrieves build records for all builds associated with the AWS account in use. You can limit results to builds that are in a specific status by using the <code>Status</code> parameter. Use the pagination parameters to retrieve results in a set of sequential pages. </p> <note> <p>Build records are not listed in any particular order.</p> </note></p>
 
   </div>
 </div>
@@ -3211,22 +2990,17 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:status</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Build status to filter results by. To retrieve all builds, leave this parameter empty.</p>
-
-
-<p> <p>Possible build statuses include the following:</p> <ul> <li> <p> <b>INITIALIZED</b> – A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value. </p> </li> <li> <p> <b>READY</b> – The game build has been successfully uploaded. You can now create new fleets for this build.</p> </li> <li> <p> <b>FAILED</b> – The game build upload failed. You cannot create new fleets for this build. </p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Build status to filter results by. To retrieve all builds, leave this parameter empty.</p> <p>Possible build statuses include the following:</p> <ul> <li> <p> <b>INITIALIZED</b> – A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value. </p> </li> <li> <p> <b>READY</b> – The game build has been successfully uploaded. You can now create new fleets for this build.</p> </li> <li> <p> <b>FAILED</b> – The game build upload failed. You cannot create new fleets for this build. </p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3236,10 +3010,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListBuildsOutput.html#builds-instance_method" title="Aws::GameLift::Types::ListBuildsOutput#builds (method)">#builds</a> => Array&lt;<a href="Types/Build.html" title="Aws::GameLift::Types::Build (class)">Types::Build</a>&gt;</li>
-<li><a href="Types/ListBuildsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::ListBuildsOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/ListBuildsOutput.html#builds-instance_method" title="Aws::GameLift::Types::ListBuildsOutput#builds (method)">#builds</a> =&gt; Array&lt;<a href="Types/Build.html" title="Aws::GameLift::Types::Build (class)">Types::Build</a>&gt;</li>
+<li><a href="Types/ListBuildsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::ListBuildsOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3253,10 +3026,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves a collection of fleet records for this AWS account. You can filter the result set by build ID. Use the pagination parameters to retrieve results in sequential pages.</p>
-
-
-<p> <note> <p>Fleet records are not listed in any particular order.</p> </note></p>
+    <p><p>Retrieves a collection of fleet records for this AWS account. You can filter the result set by build ID. Use the pagination parameters to retrieve results in sequential pages.</p> <note> <p>Fleet records are not listed in any particular order.</p> </note></p>
 
   </div>
 </div>
@@ -3282,19 +3052,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:build_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified build. To retrieve all fleets, leave this parameter empty.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3304,10 +3071,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListFleetsOutput.html#fleet_ids-instance_method" title="Aws::GameLift::Types::ListFleetsOutput#fleet_ids (method)">#fleet_ids</a> => Array&lt;String&gt;</li>
-<li><a href="Types/ListFleetsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::ListFleetsOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/ListFleetsOutput.html#fleet_ids-instance_method" title="Aws::GameLift::Types::ListFleetsOutput#fleet_ids (method)">#fleet_ids</a> =&gt; Array&lt;String&gt;</li>
+<li><a href="Types/ListFleetsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::ListFleetsOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3321,10 +3087,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Creates or updates a scaling policy for a fleet. An active scaling policy prompts Amazon GameLift to track a certain metric for a fleet and automatically change the fleet's capacity in specific circumstances. Each scaling policy contains one rule statement. Fleets can have multiple scaling policies in force simultaneously.</p>
-
-
-<p> <p>A scaling policy rule statement has the following structure:</p> <p>If <code>[MetricName]</code> is <code>[ComparisonOperator]</code> <code>[Threshold]</code> for <code>[EvaluationPeriods]</code> minutes, then <code>[ScalingAdjustmentType]</code> to/by <code>[ScalingAdjustment]</code>.</p> <p>For example, this policy: "If the number of idle instances exceeds 20 for more than 15 minutes, then reduce the fleet capacity by 10 instances" could be implemented as the following rule statement:</p> <p>If [IdleInstances] is [GreaterThanOrEqualToThreshold] [20] for [15] minutes, then [ChangeInCapacity] by [-10].</p> <p>To create or update a scaling policy, specify a unique combination of name and fleet ID, and set the rule values. All parameters for this action are required. If successful, the policy name is returned. Scaling policies cannot be suspended or made inactive. To stop enforcing a scaling policy, call <a>DeleteScalingPolicy</a>.</p></p>
+    <p>Creates or updates a scaling policy for a fleet. An active scaling policy prompts Amazon GameLift to track a certain metric for a fleet and automatically change the fleet's capacity in specific circumstances. Each scaling policy contains one rule statement. Fleets can have multiple scaling policies in force simultaneously.</p> <p>A scaling policy rule statement has the following structure:</p> <p>If <code>[MetricName]</code> is <code>[ComparisonOperator]</code> <code>[Threshold]</code> for <code>[EvaluationPeriods]</code> minutes, then <code>[ScalingAdjustmentType]</code> to/by <code>[ScalingAdjustment]</code>.</p> <p>For example, this policy: "If the number of idle instances exceeds 20 for more than 15 minutes, then reduce the fleet capacity by 10 instances" could be implemented as the following rule statement:</p> <p>If [IdleInstances] is [GreaterThanOrEqualToThreshold] [20] for [15] minutes, then [ChangeInCapacity] by [-10].</p> <p>To create or update a scaling policy, specify a unique combination of name and fleet ID, and set the rule values. All parameters for this action are required. If successful, the policy name is returned. Scaling policies cannot be suspended or made inactive. To stop enforcing a scaling policy, call <a>DeleteScalingPolicy</a>.</p>
 
   </div>
 </div>
@@ -3353,53 +3116,41 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can have only one scaling policy with the same name.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to apply this policy to.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:scaling_adjustment</span>
           <span class='type'>(<code>required</code>, <code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Amount of adjustment to make, based on the scaling adjustment type.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:scaling_adjustment_type</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p>
-
-
-<p> <ul> <li> <p> <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.</p> </li> <li> <p> <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.</p> </li> <li> <p> <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the fleet down by 10%.</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Type of adjustment to make to a fleet&#39;s instance count (see <a>FleetCapacity</a>):</p> <ul> <li> <p> <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.</p> </li> <li> <p> <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.</p> </li> <li> <p> <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down; for example, a value of &quot;-10&quot; scales the fleet down by 10%.</p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:threshold</span>
           <span class='type'>(<code>required</code>, <code>Float</code>)</span>
             &mdash; <div class='inline'><p>Metric value used to trigger a scaling event.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:comparison_operator</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Comparison operator to use when measuring the metric against the threshold value.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:evaluation_periods</span>
           <span class='type'>(<code>required</code>, <code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:metric_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p>
-
-
-<p> <ul> <li> <p> <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status = <code>ACTIVATING</code>).</p> </li> <li> <p> <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>).</p> </li> <li> <p> <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status = <code>ACTIVE</code> or <code>RESERVED</code>). </p> </li> <li> <p> <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session's current player session count from its maximum player session count. This number includes game sessions that are not currently accepting players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</p> </li> <li> <p> <b>ActiveInstances</b> – number of instances currently running a game session.</p> </li> <li> <p> <b>IdleInstances</b> – number of instances not currently running a game session.</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p> <ul> <li> <p> <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status = <code>ACTIVATING</code>).</p> </li> <li> <p> <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>).</p> </li> <li> <p> <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status = <code>ACTIVE</code> or <code>RESERVED</code>). </p> </li> <li> <p> <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session&#39;s current player session count from its maximum player session count. This number includes game sessions that are not currently accepting players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</p> </li> <li> <p> <b>ActiveInstances</b> – number of instances currently running a game session.</p> </li> <li> <p> <b>IdleInstances</b> – number of instances not currently running a game session.</p> </li> </ul></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3409,9 +3160,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/PutScalingPolicyOutput.html#name-instance_method" title="Aws::GameLift::Types::PutScalingPolicyOutput#name (method)">#name</a> => String</li>
+<li><a href="Types/PutScalingPolicyOutput.html#name-instance_method" title="Aws::GameLift::Types::PutScalingPolicyOutput#name (method)">#name</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3426,7 +3176,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p> <i>This API call is not currently in use. </i> Retrieves a fresh set of upload credentials and the assigned Amazon S3 storage location for a specific build. Valid credentials are required to upload your game build files to Amazon S3.</p>
-
 
   </div>
 </div>
@@ -3453,7 +3202,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:build_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a build to get credentials for.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3463,10 +3211,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/RequestUploadCredentialsOutput.html#upload_credentials-instance_method" title="Aws::GameLift::Types::RequestUploadCredentialsOutput#upload_credentials (method)">#upload_credentials</a> => <a href="Types/AwsCredentials.html" title="Aws::GameLift::Types::AwsCredentials (class)">Types::AwsCredentials</a></li>
-<li><a href="Types/RequestUploadCredentialsOutput.html#storage_location-instance_method" title="Aws::GameLift::Types::RequestUploadCredentialsOutput#storage_location (method)">#storage_location</a> => <a href="Types/S3Location.html" title="Aws::GameLift::Types::S3Location (class)">Types::S3Location</a></li>
+<li><a href="Types/RequestUploadCredentialsOutput.html#upload_credentials-instance_method" title="Aws::GameLift::Types::RequestUploadCredentialsOutput#upload_credentials (method)">#upload_credentials</a> =&gt; <a href="Types/AwsCredentials.html" title="Aws::GameLift::Types::AwsCredentials (class)">Types::AwsCredentials</a></li>
+<li><a href="Types/RequestUploadCredentialsOutput.html#storage_location-instance_method" title="Aws::GameLift::Types::RequestUploadCredentialsOutput#storage_location (method)">#storage_location</a> =&gt; <a href="Types/S3Location.html" title="Aws::GameLift::Types::S3Location (class)">Types::S3Location</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3481,7 +3228,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Retrieves the fleet ID that a specified alias is currently pointing to.</p>
-
 
   </div>
 </div>
@@ -3503,7 +3249,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:alias_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for the alias you want to resolve.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3513,9 +3258,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ResolveAliasOutput.html#fleet_id-instance_method" title="Aws::GameLift::Types::ResolveAliasOutput#fleet_id (method)">#fleet_id</a> => String</li>
+<li><a href="Types/ResolveAliasOutput.html#fleet_id-instance_method" title="Aws::GameLift::Types::ResolveAliasOutput#fleet_id (method)">#fleet_id</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3529,10 +3273,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves a set of game sessions that match a set of search criteria and sorts them in a specified order. Currently a game session search is limited to a single fleet. Search results include only game sessions that are in <code>ACTIVE</code> status. If you need to retrieve game sessions with a status other than active, use <a>DescribeGameSessions</a>. If you need to retrieve the protection policy for each game session, use <a>DescribeGameSessionDetails</a>.</p>
-
-
-<p> <p>You can search or sort by the following game session attributes:</p> <ul> <li> <p> <b>gameSessionId</b> -- ID value assigned to a game session. This unique value is returned in a <a>GameSession</a> object when a new game session is created. </p> </li> <li> <p> <b>gameSessionName</b> -- Name assigned to a game session. This value is set when requesting a new game session with <a>CreateGameSession</a> or updating with <a>UpdateGameSession</a>. Game session names do not need to be unique to a game session.</p> </li> <li> <p> <b>creationTimeMillis</b> -- Value indicating when a game session was created. It is expressed in Unix time as milliseconds.</p> </li> <li> <p> <b>playerSessionCount</b> -- Number of players currently connected to a game session. This value changes rapidly as players join the session or drop out.</p> </li> <li> <p> <b>maximumSessions</b> -- Maximum number of player sessions allowed for a game session. This value is set when requesting a new game session with <a>CreateGameSession</a> or updating with <a>UpdateGameSession</a>.</p> </li> <li> <p> <b>hasAvailablePlayerSessions</b> -- Boolean value indicating whether or not a game session has reached its maximum number of players. When searching with this attribute, the search value must be <code>true</code> or <code>false</code>. It is highly recommended that all search requests include this filter attribute to optimize search performance and return only sessions that players can join. </p> </li> </ul> <p>To search or sort, specify either a fleet ID or an alias ID, and provide a search filter expression, a sort expression, or both. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a collection of <a>GameSession</a> objects matching the request is returned.</p> <note> <p>Returned values for <code>playerSessionCount</code> and <code>hasAvailablePlayerSessions</code> change quickly as players join sessions and others drop out. Results should be considered a snapshot in time. Be sure to refresh search results often, and handle sessions that fill up before a player can join. </p> </note></p>
+    <p><p>Retrieves a set of game sessions that match a set of search criteria and sorts them in a specified order. Currently a game session search is limited to a single fleet. Search results include only game sessions that are in <code>ACTIVE</code> status. If you need to retrieve game sessions with a status other than active, use <a>DescribeGameSessions</a>. If you need to retrieve the protection policy for each game session, use <a>DescribeGameSessionDetails</a>.</p> <p>You can search or sort by the following game session attributes:</p> <ul> <li> <p> <b>gameSessionId</b> -- ID value assigned to a game session. This unique value is returned in a <a>GameSession</a> object when a new game session is created. </p> </li> <li> <p> <b>gameSessionName</b> -- Name assigned to a game session. This value is set when requesting a new game session with <a>CreateGameSession</a> or updating with <a>UpdateGameSession</a>. Game session names do not need to be unique to a game session.</p> </li> <li> <p> <b>creationTimeMillis</b> -- Value indicating when a game session was created. It is expressed in Unix time as milliseconds.</p> </li> <li> <p> <b>playerSessionCount</b> -- Number of players currently connected to a game session. This value changes rapidly as players join the session or drop out.</p> </li> <li> <p> <b>maximumSessions</b> -- Maximum number of player sessions allowed for a game session. This value is set when requesting a new game session with <a>CreateGameSession</a> or updating with <a>UpdateGameSession</a>.</p> </li> <li> <p> <b>hasAvailablePlayerSessions</b> -- Boolean value indicating whether or not a game session has reached its maximum number of players. When searching with this attribute, the search value must be <code>true</code> or <code>false</code>. It is highly recommended that all search requests include this filter attribute to optimize search performance and return only sessions that players can join. </p> </li> </ul> <p>To search or sort, specify either a fleet ID or an alias ID, and provide a search filter expression, a sort expression, or both. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a collection of <a>GameSession</a> objects matching the request is returned.</p> <note> <p>Returned values for <code>playerSessionCount</code> and <code>hasAvailablePlayerSessions</code> change quickly as players join sessions and others drop out. Results should be considered a snapshot in time. Be sure to refresh search results often, and handle sessions that fill up before a player can join. </p> </note></p>
 
   </div>
 </div>
@@ -3575,41 +3316,31 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to search for active game sessions. Each request must reference either a fleet ID or alias ID, but not both.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:alias_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for an alias associated with the fleet to search for active game sessions. Each request must reference either a fleet ID or alias ID, but not both.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:filter_expression</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>String containing the search criteria for the session search. If no filter expression is included, the request returns results for all game sessions in the fleet that are in <code>ACTIVE</code> status.</p>
-
-
-<p> <p>A filter expression can contain one or multiple conditions. Each condition consists of the following:</p> <ul> <li> <p> <b>Operand</b> -- Name of a game session attribute. Valid values are <code>gameSessionName</code>, <code>gameSessionId</code>, <code>creationTimeMillis</code>, <code>playerSessionCount</code>, <code>maximumSessions</code>, <code>hasAvailablePlayerSessions</code>.</p> </li> <li> <p> <b>Comparator</b> -- Valid comparators are: <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>. </p> </li> <li> <p> <b>Value</b> -- Value to be searched for. Values can be numbers, boolean values (true/false) or strings. String values are case sensitive, enclosed in single quotes. Special characters must be escaped. Boolean and string values can only be used with the comparators <code>=</code> and <code>&lt;&gt;</code>. For example, the following filter expression searches on <code>gameSessionName</code>: "<code>FilterExpression": "gameSessionName = 'Matt\'s Awesome Game 1'"</code>. </p> </li> </ul> <p>To chain multiple conditions in a single expression, use the logical keywords <code>AND</code>, <code>OR</code>, and <code>NOT</code> and parentheses as needed. For example: <code>x AND y AND NOT z</code>, <code>NOT (x OR y)</code>.</p> <p>Session search evaluates conditions from left to right using the following precedence rules:</p> <ol> <li> <p> <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code> </p> </li> <li> <p>Parentheses</p> </li> <li> <p>NOT</p> </li> <li> <p>AND</p> </li> <li> <p>OR</p> </li> </ol> <p>For example, this filter expression retrieves game sessions hosting at least ten players that have an open player slot: <code>"maximumSessions&gt;=10 AND hasAvailablePlayerSessions=true"</code>. </p></p>
+            &mdash; <div class='inline'><p>String containing the search criteria for the session search. If no filter expression is included, the request returns results for all game sessions in the fleet that are in <code>ACTIVE</code> status.</p> <p>A filter expression can contain one or multiple conditions. Each condition consists of the following:</p> <ul> <li> <p> <b>Operand</b> -- Name of a game session attribute. Valid values are <code>gameSessionName</code>, <code>gameSessionId</code>, <code>creationTimeMillis</code>, <code>playerSessionCount</code>, <code>maximumSessions</code>, <code>hasAvailablePlayerSessions</code>.</p> </li> <li> <p> <b>Comparator</b> -- Valid comparators are: <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>. </p> </li> <li> <p> <b>Value</b> -- Value to be searched for. Values can be numbers, boolean values (true/false) or strings. String values are case sensitive, enclosed in single quotes. Special characters must be escaped. Boolean and string values can only be used with the comparators <code>=</code> and <code>&lt;&gt;</code>. For example, the following filter expression searches on <code>gameSessionName</code>: "<code>FilterExpression": "gameSessionName = 'Matt\\'s Awesome Game 1'"</code>. </p> </li> </ul> <p>To chain multiple conditions in a single expression, use the logical keywords <code>AND</code>, <code>OR</code>, and <code>NOT</code> and parentheses as needed. For example: <code>x AND y AND NOT z</code>, <code>NOT (x OR y)</code>.</p> <p>Session search evaluates conditions from left to right using the following precedence rules:</p> <ol> <li> <p> <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code> </p> </li> <li> <p>Parentheses</p> </li> <li> <p>NOT</p> </li> <li> <p>AND</p> </li> <li> <p>OR</p> </li> </ol> <p>For example, this filter expression retrieves game sessions hosting at least ten players that have an open player slot: <code>"maximumSessions&gt;=10 AND hasAvailablePlayerSessions=true"</code>. </p>
 </div>        </li>
         <li>
           <span class='name'>:sort_expression</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Instructions on how to sort the search results. If no sort expression is included, the request returns results in random order. A sort expression consists of the following elements:</p>
-
-
-<p> <ul> <li> <p> <b>Operand</b> -- Name of a game session attribute. Valid values are <code>gameSessionName</code>, <code>gameSessionId</code>, <code>creationTimeMillis</code>, <code>playerSessionCount</code>, <code>maximumSessions</code>, <code>hasAvailablePlayerSessions</code>.</p> </li> <li> <p> <b>Order</b> -- Valid sort orders are <code>ASC</code> (ascending) and <code>DESC</code> (descending).</p> </li> </ul> <p>For example, this sort expression returns the oldest active sessions first: <code>"SortExpression": "creationTimeMillis ASC"</code>. Results with a null value for the sort operand are returned at the end of the list.</p></p>
+            &mdash; <div class='inline'><p>Instructions on how to sort the search results. If no sort expression is included, the request returns results in random order. A sort expression consists of the following elements:</p> <ul> <li> <p> <b>Operand</b> -- Name of a game session attribute. Valid values are <code>gameSessionName</code>, <code>gameSessionId</code>, <code>creationTimeMillis</code>, <code>playerSessionCount</code>, <code>maximumSessions</code>, <code>hasAvailablePlayerSessions</code>.</p> </li> <li> <p> <b>Order</b> -- Valid sort orders are <code>ASC</code> (ascending) and <code>DESC</code> (descending).</p> </li> </ul> <p>For example, this sort expression returns the oldest active sessions first: <code>"SortExpression": "creationTimeMillis ASC"</code>. Results with a null value for the sort operand are returned at the end of the list.</p>
 </div>        </li>
         <li>
           <span class='name'>:limit</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. The maximum number of results returned is 20, even if this value is not set or is set higher than 20. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3619,10 +3350,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/SearchGameSessionsOutput.html#game_sessions-instance_method" title="Aws::GameLift::Types::SearchGameSessionsOutput#game_sessions (method)">#game_sessions</a> => Array&lt;<a href="Types/GameSession.html" title="Aws::GameLift::Types::GameSession (class)">Types::GameSession</a>&gt;</li>
-<li><a href="Types/SearchGameSessionsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::SearchGameSessionsOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/SearchGameSessionsOutput.html#game_sessions-instance_method" title="Aws::GameLift::Types::SearchGameSessionsOutput#game_sessions (method)">#game_sessions</a> =&gt; Array&lt;<a href="Types/GameSession.html" title="Aws::GameLift::Types::GameSession (class)">Types::GameSession</a>&gt;</li>
+<li><a href="Types/SearchGameSessionsOutput.html#next_token-instance_method" title="Aws::GameLift::Types::SearchGameSessionsOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3636,10 +3366,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Places a request for a new game session in a queue (see <a>CreateGameSessionQueue</a>). When processing a placement request, Amazon GameLift attempts to create a new game session on one of the fleets associated with the queue. If no resources are available, Amazon GameLift tries again with another and so on until resources are found or the placement request times out. A game session placement request can also request player sessions. When a new game session is successfully created, Amazon GameLift creates a player session for each player included in the request.</p>
-
-
-<p> <p>When placing a game session, by default Amazon GameLift tries each fleet in the order they are listed in the queue configuration. Ideally, a queue's destinations are listed in preference order. Alternatively, when requesting a game session with players, you can also provide latency data for each player in relevant regions. Latency data indicates the performance lag a player experiences when connected to a fleet in the region. Amazon GameLift uses latency data to reorder the list of destinations to place the game session in a region with minimal lag. If latency data is provided for multiple players, Amazon GameLift calculates each region's average lag for all players and reorders to get the best game play across all players. </p> <p>To place a new game session request, specify the queue name and a set of game session properties and settings. Also provide a unique ID (such as a UUID) for the placement. You'll use this ID to track the status of the placement request. Optionally, provide a set of IDs and player data for each player you want to join to the new game session. To optimize game play for the players, also provide latency data for all players. If successful, a new game session placement is created. To track the status of a placement request, call <a>DescribeGameSessionPlacement</a> and check the request's status. If the status is Fulfilled, a new game session has been created and a game session ARN and region are referenced. If the placement request times out, you have the option of resubmitting the request or retrying it with a different queue. </p></p>
+    <p>Places a request for a new game session in a queue (see <a>CreateGameSessionQueue</a>). When processing a placement request, Amazon GameLift attempts to create a new game session on one of the fleets associated with the queue. If no resources are available, Amazon GameLift tries again with another and so on until resources are found or the placement request times out. A game session placement request can also request player sessions. When a new game session is successfully created, Amazon GameLift creates a player session for each player included in the request.</p> <p>When placing a game session, by default Amazon GameLift tries each fleet in the order they are listed in the queue configuration. Ideally, a queue's destinations are listed in preference order. Alternatively, when requesting a game session with players, you can also provide latency data for each player in relevant regions. Latency data indicates the performance lag a player experiences when connected to a fleet in the region. Amazon GameLift uses latency data to reorder the list of destinations to place the game session in a region with minimal lag. If latency data is provided for multiple players, Amazon GameLift calculates each region's average lag for all players and reorders to get the best game play across all players. </p> <p>To place a new game session request, specify the queue name and a set of game session properties and settings. Also provide a unique ID (such as a UUID) for the placement. You'll use this ID to track the status of the placement request. Optionally, provide a set of IDs and player data for each player you want to join to the new game session. To optimize game play for the players, also provide latency data for all players. If successful, a new game session placement is created. To track the status of a placement request, call <a>DescribeGameSessionPlacement</a> and check the request's status. If the status is Fulfilled, a new game session has been created and a game session ARN and region are referenced. If the placement request times out, you have the option of resubmitting the request or retrying it with a different queue. </p>
 
   </div>
 </div>
@@ -3698,43 +3425,36 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:placement_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier to assign to the new game session placement. This value is developer-defined. The value must be unique across all regions and cannot be reused unless you are resubmitting a cancelled or timed-out placement request.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:game_session_queue_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Name of the queue to use to place the new game session.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:game_properties</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/GameProperty.html" title="Aws::GameLift::Types::GameProperty (class)">Types::GameProperty</a>&gt;)</span>
             &mdash; <div class='inline'><p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:maximum_player_session_count</span>
           <span class='type'>(<code>required</code>, <code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of players that can be connected simultaneously to the game session.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:game_session_name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:player_latencies</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/PlayerLatency.html" title="Aws::GameLift::Types::PlayerLatency (class)">Types::PlayerLatency</a>&gt;)</span>
             &mdash; <div class='inline'><p>Set of values, expressed in milliseconds, indicating the amount of latency that players experience when connected to AWS regions. This information is relevant when requesting player sessions. Latency information provided for player IDs not included in <i>DesiredPlayerSessions</i> are ignored.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:desired_player_sessions</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/DesiredPlayerSession.html" title="Aws::GameLift::Types::DesiredPlayerSession (class)">Types::DesiredPlayerSession</a>&gt;)</span>
             &mdash; <div class='inline'><p>Set of information on each player to create a player session for.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3744,9 +3464,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/StartGameSessionPlacementOutput.html#game_session_placement-instance_method" title="Aws::GameLift::Types::StartGameSessionPlacementOutput#game_session_placement (method)">#game_session_placement</a> => <a href="Types/GameSessionPlacement.html" title="Aws::GameLift::Types::GameSessionPlacement (class)">Types::GameSessionPlacement</a></li>
+<li><a href="Types/StartGameSessionPlacementOutput.html#game_session_placement-instance_method" title="Aws::GameLift::Types::StartGameSessionPlacementOutput#game_session_placement (method)">#game_session_placement</a> =&gt; <a href="Types/GameSessionPlacement.html" title="Aws::GameLift::Types::GameSessionPlacement (class)">Types::GameSessionPlacement</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3761,7 +3480,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Cancels a game session placement that is in Pending status. To stop a placement, provide the placement ID values. If successful, the placement is moved to Cancelled status.</p>
-
 
   </div>
 </div>
@@ -3798,7 +3516,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:placement_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a game session placement to cancel.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3808,9 +3525,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/StopGameSessionPlacementOutput.html#game_session_placement-instance_method" title="Aws::GameLift::Types::StopGameSessionPlacementOutput#game_session_placement (method)">#game_session_placement</a> => <a href="Types/GameSessionPlacement.html" title="Aws::GameLift::Types::GameSessionPlacement (class)">Types::GameSessionPlacement</a></li>
+<li><a href="Types/StopGameSessionPlacementOutput.html#game_session_placement-instance_method" title="Aws::GameLift::Types::StopGameSessionPlacementOutput#game_session_placement (method)">#game_session_placement</a> =&gt; <a href="Types/GameSessionPlacement.html" title="Aws::GameLift::Types::GameSessionPlacement (class)">Types::GameSessionPlacement</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3825,7 +3541,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Updates properties for a fleet alias. To update properties, specify the alias ID to be updated and provide the information to be changed. To reassign an alias to another fleet, provide an updated routing strategy. If successful, the updated alias record is returned.</p>
-
 
   </div>
 </div>
@@ -3862,25 +3577,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:alias_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet alias. Specify the alias you want to update.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:description</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Human-readable description of an alias.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:routing_strategy</span>
           <span class='type'>(<a href="Types/RoutingStrategy.html" title="Aws::GameLift::Types::RoutingStrategy (class)">Types::RoutingStrategy</a>)</span>
             &mdash; <div class='inline'><p>Object that specifies the fleet and routing type to use for the alias.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3890,9 +3601,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateAliasOutput.html#alias-instance_method" title="Aws::GameLift::Types::UpdateAliasOutput#alias (method)">#alias</a> => <a href="Types/Alias.html" title="Aws::GameLift::Types::Alias (class)">Types::Alias</a></li>
+<li><a href="Types/UpdateAliasOutput.html#alias-instance_method" title="Aws::GameLift::Types::UpdateAliasOutput#alias (method)">#alias</a> =&gt; <a href="Types/Alias.html" title="Aws::GameLift::Types::Alias (class)">Types::Alias</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3907,7 +3617,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Updates metadata in a build record, including the build name and version. To update the metadata, specify the build ID to update and provide the new values. If successful, a build object containing the updated metadata is returned.</p>
-
 
   </div>
 </div>
@@ -3937,19 +3646,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:build_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a build to update.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with a build. Build names do not need to be unique. </p>
-
 </div>        </li>
         <li>
           <span class='name'>:version</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Version that is associated with this build. Version strings do not need to be unique.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3959,9 +3665,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateBuildOutput.html#build-instance_method" title="Aws::GameLift::Types::UpdateBuildOutput#build (method)">#build</a> => <a href="Types/Build.html" title="Aws::GameLift::Types::Build (class)">Types::Build</a></li>
+<li><a href="Types/UpdateBuildOutput.html#build-instance_method" title="Aws::GameLift::Types::UpdateBuildOutput#build (method)">#build</a> =&gt; <a href="Types/Build.html" title="Aws::GameLift::Types::Build (class)">Types::Build</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3976,7 +3681,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Updates fleet properties, including name and description, for a fleet. To update metadata, specify the fleet ID and the property values you want to change. If successful, the fleet ID for the updated fleet is returned.</p>
-
 
   </div>
 </div>
@@ -4005,33 +3709,26 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to update attribute metadata for.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:description</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Human-readable description of a fleet.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:new_game_session_protection_policy</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Game session protection policy to apply to all new instances created in this fleet. Instances that already exist are not affected. You can set protection for individual instances using <a>UpdateGameSession</a>.</p>
-
-
-<p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Game session protection policy to apply to all new instances created in this fleet. Instances that already exist are not affected. You can set protection for individual instances using <a>UpdateGameSession</a>.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:resource_creation_limit_policy</span>
           <span class='type'>(<a href="Types/ResourceCreationLimitPolicy.html" title="Aws::GameLift::Types::ResourceCreationLimitPolicy (class)">Types::ResourceCreationLimitPolicy</a>)</span>
             &mdash; <div class='inline'><p>Policy that limits the number of game sessions an individual player can create over a span of time. </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4041,9 +3738,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateFleetAttributesOutput.html#fleet_id-instance_method" title="Aws::GameLift::Types::UpdateFleetAttributesOutput#fleet_id (method)">#fleet_id</a> => String</li>
+<li><a href="Types/UpdateFleetAttributesOutput.html#fleet_id-instance_method" title="Aws::GameLift::Types::UpdateFleetAttributesOutput#fleet_id (method)">#fleet_id</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4057,10 +3753,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Updates capacity settings for a fleet. Use this action to specify the number of EC2 instances (hosts) that you want this fleet to contain. Before calling this action, you may want to call <a>DescribeEC2InstanceLimits</a> to get the maximum capacity based on the fleet's EC2 instance type.</p>
-
-
-<p> <p>If you're using autoscaling (see <a>PutScalingPolicy</a>), you may want to specify a minimum and/or maximum capacity. If you don't provide these, autoscaling can set capacity anywhere between zero and the <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift">service limits</a>.</p> <p>To update fleet capacity, specify the fleet ID and the number of instances you want the fleet to host. If successful, Amazon GameLift starts or terminates instances so that the fleet's active instance count matches the desired instance count. You can view a fleet's current capacity information by calling <a>DescribeFleetCapacity</a>. If the desired instance count is higher than the instance type's limit, the "Limit Exceeded" exception occurs.</p></p>
+    <p>Updates capacity settings for a fleet. Use this action to specify the number of EC2 instances (hosts) that you want this fleet to contain. Before calling this action, you may want to call <a>DescribeEC2InstanceLimits</a> to get the maximum capacity based on the fleet's EC2 instance type.</p> <p>If you're using autoscaling (see <a>PutScalingPolicy</a>), you may want to specify a minimum and/or maximum capacity. If you don't provide these, autoscaling can set capacity anywhere between zero and the <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift">service limits</a>.</p> <p>To update fleet capacity, specify the fleet ID and the number of instances you want the fleet to host. If successful, Amazon GameLift starts or terminates instances so that the fleet's active instance count matches the desired instance count. You can view a fleet's current capacity information by calling <a>DescribeFleetCapacity</a>. If the desired instance count is higher than the instance type's limit, the "Limit Exceeded" exception occurs.</p>
 
   </div>
 </div>
@@ -4085,25 +3778,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to update capacity for.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:desired_instances</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Number of EC2 instances you want this fleet to host.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:min_size</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Minimum value allowed for the fleet's instance count. Default if not set is 0.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:max_size</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum value allowed for the fleet's instance count. Default if not set is 1.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4113,9 +3802,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateFleetCapacityOutput.html#fleet_id-instance_method" title="Aws::GameLift::Types::UpdateFleetCapacityOutput#fleet_id (method)">#fleet_id</a> => String</li>
+<li><a href="Types/UpdateFleetCapacityOutput.html#fleet_id-instance_method" title="Aws::GameLift::Types::UpdateFleetCapacityOutput#fleet_id (method)">#fleet_id</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4130,7 +3818,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Updates port settings for a fleet. To update settings, specify the fleet ID to be updated and list the permissions you want to update. List the permissions you want to add in <code>InboundPermissionAuthorizations</code>, and permissions you want to remove in <code>InboundPermissionRevocations</code>. Permissions to be removed must match existing fleet permissions. If successful, the fleet ID for the updated fleet is returned.</p>
-
 
   </div>
 </div>
@@ -4168,19 +3855,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to update port settings for.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:inbound_permission_authorizations</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/IpPermission.html" title="Aws::GameLift::Types::IpPermission (class)">Types::IpPermission</a>&gt;)</span>
             &mdash; <div class='inline'><p>Collection of port settings to be added to the fleet record.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:inbound_permission_revocations</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/IpPermission.html" title="Aws::GameLift::Types::IpPermission (class)">Types::IpPermission</a>&gt;)</span>
             &mdash; <div class='inline'><p>Collection of port settings to be removed from the fleet record.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4190,9 +3874,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateFleetPortSettingsOutput.html#fleet_id-instance_method" title="Aws::GameLift::Types::UpdateFleetPortSettingsOutput#fleet_id (method)">#fleet_id</a> => String</li>
+<li><a href="Types/UpdateFleetPortSettingsOutput.html#fleet_id-instance_method" title="Aws::GameLift::Types::UpdateFleetPortSettingsOutput#fleet_id (method)">#fleet_id</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4207,7 +3890,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Updates game session properties. This includes the session name, maximum player count, protection policy, which controls whether or not an active game session can be terminated during a scale-down event, and the player session creation policy, which controls whether or not new players can join the session. To update a game session, specify the game session ID and the values you want to change. If successful, an updated <a>GameSession</a> object is returned. </p>
-
 
   </div>
 </div>
@@ -4247,33 +3929,26 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:game_session_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for the game session to update.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:maximum_player_session_count</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum number of players that can be connected simultaneously to the game session.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:player_session_creation_policy</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Policy determining whether or not the game session accepts new players.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:protection_policy</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Game session protection policy to apply to this game session only.</p>
-
-
-<p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Game session protection policy to apply to this game session only.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4283,9 +3958,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateGameSessionOutput.html#game_session-instance_method" title="Aws::GameLift::Types::UpdateGameSessionOutput#game_session (method)">#game_session</a> => <a href="Types/GameSession.html" title="Aws::GameLift::Types::GameSession (class)">Types::GameSession</a></li>
+<li><a href="Types/UpdateGameSessionOutput.html#game_session-instance_method" title="Aws::GameLift::Types::UpdateGameSessionOutput#game_session (method)">#game_session</a> =&gt; <a href="Types/GameSession.html" title="Aws::GameLift::Types::GameSession (class)">Types::GameSession</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4300,7 +3974,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Updates settings for a game session queue, which determines how new game session requests in the queue are processed. To update settings, specify the queue name to be updated and provide the new settings. When updating destinations, provide a complete list of destinations.</p>
-
 
   </div>
 </div>
@@ -4331,19 +4004,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:timeout_in_seconds</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:destinations</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/GameSessionQueueDestination.html" title="Aws::GameLift::Types::GameSessionQueueDestination (class)">Types::GameSessionQueueDestination</a>&gt;)</span>
             &mdash; <div class='inline'><p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4353,9 +4023,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateGameSessionQueueOutput.html#game_session_queue-instance_method" title="Aws::GameLift::Types::UpdateGameSessionQueueOutput#game_session_queue (method)">#game_session_queue</a> => <a href="Types/GameSessionQueue.html" title="Aws::GameLift::Types::GameSessionQueue (class)">Types::GameSessionQueue</a></li>
+<li><a href="Types/UpdateGameSessionQueueOutput.html#game_session_queue-instance_method" title="Aws::GameLift::Types::UpdateGameSessionQueueOutput#game_session_queue (method)">#game_session_queue</a> =&gt; <a href="Types/GameSessionQueue.html" title="Aws::GameLift::Types::GameSessionQueue (class)">Types::GameSessionQueue</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4369,10 +4038,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Updates the current runtime configuration for the specified fleet, which tells Amazon GameLift how to launch server processes on instances in the fleet. You can update a fleet's runtime configuration at any time after the fleet is created; it does not need to be in an <code>ACTIVE</code> status.</p>
-
-
-<p> <p>To update runtime configuration, specify the fleet ID and provide a <code>RuntimeConfiguration</code> object with the updated collection of server process configurations.</p> <p>Each instance in a Amazon GameLift fleet checks regularly for an updated runtime configuration and changes how it launches server processes to comply with the latest version. Existing server processes are not affected by the update; they continue to run until they end, while Amazon GameLift simply adds new server processes to fit the current runtime configuration. As a result, the runtime configuration changes are applied gradually as existing processes shut down and new processes are launched in Amazon GameLift's normal process recycling activity.</p></p>
+    <p>Updates the current runtime configuration for the specified fleet, which tells Amazon GameLift how to launch server processes on instances in the fleet. You can update a fleet's runtime configuration at any time after the fleet is created; it does not need to be in an <code>ACTIVE</code> status.</p> <p>To update runtime configuration, specify the fleet ID and provide a <code>RuntimeConfiguration</code> object with the updated collection of server process configurations.</p> <p>Each instance in a Amazon GameLift fleet checks regularly for an updated runtime configuration and changes how it launches server processes to comply with the latest version. Existing server processes are not affected by the update; they continue to run until they end, while Amazon GameLift simply adds new server processes to fit the current runtime configuration. As a result, the runtime configuration changes are applied gradually as existing processes shut down and new processes are launched in Amazon GameLift's normal process recycling activity.</p>
 
   </div>
 </div>
@@ -4406,13 +4072,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:fleet_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Unique identifier for a fleet to update runtime configuration for.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:runtime_configuration</span>
           <span class='type'>(<code>required</code>, <a href="Types/RuntimeConfiguration.html" title="Aws::GameLift::Types::RuntimeConfiguration (class)">Types::RuntimeConfiguration</a>)</span>
             &mdash; <div class='inline'><p>Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4422,9 +4086,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateRuntimeConfigurationOutput.html#runtime_configuration-instance_method" title="Aws::GameLift::Types::UpdateRuntimeConfigurationOutput#runtime_configuration (method)">#runtime_configuration</a> => <a href="Types/RuntimeConfiguration.html" title="Aws::GameLift::Types::RuntimeConfiguration (class)">Types::RuntimeConfiguration</a></li>
+<li><a href="Types/UpdateRuntimeConfigurationOutput.html#runtime_configuration-instance_method" title="Aws::GameLift::Types::UpdateRuntimeConfigurationOutput#runtime_configuration (method)">#runtime_configuration</a> =&gt; <a href="Types/RuntimeConfiguration.html" title="Aws::GameLift::Types::RuntimeConfiguration (class)">Types::RuntimeConfiguration</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4447,7 +4110,7 @@ state.</p>
 entering a terminal state, or until a maximum number of attempts
 are made.</p>
 
-<p>   # polls in a loop, sleeping between attempts
+<p># polls in a loop, sleeping between attempts
    client.waiter_until(waiter_name, params)</p>
 
 <h3>Configuration</h3>
@@ -4583,7 +4246,6 @@ waiters and the client method they call:</p>
 
 </tbody>
 </table>
-
 
   </div>
 </div>

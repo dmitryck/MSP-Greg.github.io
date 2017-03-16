@@ -129,10 +129,9 @@
 <p>You can configure a default region in the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_REGION']</code></li>
+<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
 <li><code>Aws.config[:region]</code></li>
 </ul>
-
 
 <p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
 
@@ -141,12 +140,11 @@
 <p>Default credentials are loaded automatically from the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_ACCESS_KEY_ID']</code> and <code>ENV['AWS_SECRET_ACCESS_KEY']</code></li>
+<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
 <li><code>Aws.config[:credentials]</code></li>
 <li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
 <li>From an instance profile when running on EC2</li>
 </ul>
-
 
 <p>You can also construct a credentials object from one of the following
 classes:</p>
@@ -157,7 +155,6 @@ classes:</p>
 <li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
 <li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
 </ul>
-
 
 <p>Alternatively, you configure credentials with <code>:access_key_id</code> and
 <code>:secret_access_key</code>:</p>
@@ -293,10 +290,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#enable_alarm_actions-instance_method" title="#enable_alarm_actions (instance method)">#<strong>enable_alarm_actions</strong>(options = {})  &#x21d2; Struct </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Enables the actions for the specified alarms.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Enables the actions for the specified alarms.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -304,10 +298,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#get_metric_statistics-instance_method" title="#get_metric_statistics (instance method)">#<strong>get_metric_statistics</strong>(options = {})  &#x21d2; Types::GetMetricStatisticsOutput </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Gets statistics for the specified metric.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Gets statistics for the specified metric.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -431,11 +422,10 @@ for credentials:</p>
 
 <ul>
 <li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
-<li>ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']</li>
+<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
 <li><code>HOME/.aws/credentials</code> shared credentials file</li>
 <li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
 </ul>
-
 </div>        </li>
         <li>
           <span class='name'>:endpoint</span>
@@ -511,7 +501,7 @@ will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Lo
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Used when loading credentials
 from the shared credentials file at HOME/.aws/credentials.  When not
-specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
 </div>        </li>
         <li>
           <span class='name'>:raise_response_errors</span>
@@ -524,7 +514,7 @@ specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title
           <span class='name'>:region</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
-the client endpoint.  Defaults to <code>ENV['AWS_REGION']</code>.
+the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
 Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
 </div>        </li>
         <li>
@@ -582,7 +572,7 @@ fake responses are generated and returned. You can specify
 the response data to return or errors to raise by calling
 <a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">Aws::ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
 
-<p><strong> Please note </strong> When response stubbing is enabled, no HTTP
+<p>** Please note ** When response stubbing is enabled, no HTTP
 requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
 </div>        </li>
         <li>
@@ -607,7 +597,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   <div class='discussion'>
     <p>Deletes the specified alarms. In the event of an error, no alarms are deleted.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -625,7 +614,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:alarm_names</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>The alarms to be deleted.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -646,10 +634,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves the history for the specified alarm. You can filter the results by date range or item type. If an alarm name is not specified, the histories for all alarms are returned.</p>
-
-
-<p> <p>Note that Amazon CloudWatch retains the history of an alarm even if you delete the alarm.</p></p>
+    <p>Retrieves the history for the specified alarm. You can filter the results by date range or item type. If an alarm name is not specified, the histories for all alarms are returned.</p> <p>Note that Amazon CloudWatch retains the history of an alarm even if you delete the alarm.</p>
 
   </div>
 </div>
@@ -682,37 +667,31 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:alarm_name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the alarm.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:history_item_type</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The type of alarm histories to retrieve.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:start_date</span>
           <span class='type'>(<code>Time</code>)</span>
             &mdash; <div class='inline'><p>The starting date to retrieve alarm history.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:end_date</span>
           <span class='type'>(<code>Time</code>)</span>
             &mdash; <div class='inline'><p>The ending date to retrieve alarm history.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:max_records</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The maximum number of alarm history records to retrieve.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The token returned by a previous call to indicate that there is more data available.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -722,10 +701,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeAlarmHistoryOutput.html#alarm_history_items-instance_method" title="Aws::CloudWatch::Types::DescribeAlarmHistoryOutput#alarm_history_items (method)">#alarm_history_items</a> => Array&lt;<a href="Types/AlarmHistoryItem.html" title="Aws::CloudWatch::Types::AlarmHistoryItem (class)">Types::AlarmHistoryItem</a>&gt;</li>
-<li><a href="Types/DescribeAlarmHistoryOutput.html#next_token-instance_method" title="Aws::CloudWatch::Types::DescribeAlarmHistoryOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeAlarmHistoryOutput.html#alarm_history_items-instance_method" title="Aws::CloudWatch::Types::DescribeAlarmHistoryOutput#alarm_history_items (method)">#alarm_history_items</a> =&gt; Array&lt;<a href="Types/AlarmHistoryItem.html" title="Aws::CloudWatch::Types::AlarmHistoryItem (class)">Types::AlarmHistoryItem</a>&gt;</li>
+<li><a href="Types/DescribeAlarmHistoryOutput.html#next_token-instance_method" title="Aws::CloudWatch::Types::DescribeAlarmHistoryOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -740,7 +718,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Retrieves the specified alarms. If no alarms are specified, all alarms are returned. Alarms can be retrieved by using only a prefix for the alarm name, the alarm state, or a prefix for any action.</p>
-
 
   </div>
 </div>
@@ -795,37 +772,31 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:alarm_names</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>The names of the alarms.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:alarm_name_prefix</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The alarm name prefix. You cannot specify <code>AlarmNames</code> if this parameter is specified.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:state_value</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The state value to be used in matching alarms.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:action_prefix</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The action name prefix.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:max_records</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The maximum number of alarm descriptions to retrieve.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The token returned by a previous call to indicate that there is more data available.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -835,10 +806,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeAlarmsOutput.html#metric_alarms-instance_method" title="Aws::CloudWatch::Types::DescribeAlarmsOutput#metric_alarms (method)">#metric_alarms</a> => Array&lt;<a href="Types/MetricAlarm.html" title="Aws::CloudWatch::Types::MetricAlarm (class)">Types::MetricAlarm</a>&gt;</li>
-<li><a href="Types/DescribeAlarmsOutput.html#next_token-instance_method" title="Aws::CloudWatch::Types::DescribeAlarmsOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/DescribeAlarmsOutput.html#metric_alarms-instance_method" title="Aws::CloudWatch::Types::DescribeAlarmsOutput#metric_alarms (method)">#metric_alarms</a> =&gt; Array&lt;<a href="Types/MetricAlarm.html" title="Aws::CloudWatch::Types::MetricAlarm (class)">Types::MetricAlarm</a>&gt;</li>
+<li><a href="Types/DescribeAlarmsOutput.html#next_token-instance_method" title="Aws::CloudWatch::Types::DescribeAlarmsOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -853,7 +823,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Retrieves the alarms for the specified metric. Specify a statistic, period, or unit to filter the results.</p>
-
 
   </div>
 </div>
@@ -913,43 +882,36 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:metric_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the metric.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:namespace</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The namespace of the metric.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:statistic</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The statistic for the metric, other than percentiles. For percentile statistics, use <code>ExtendedStatistics</code>.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:extended_statistic</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The percentile statistic for the metric. Specify a value between p0.0 and p100.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:dimensions</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/Dimension.html" title="Aws::CloudWatch::Types::Dimension (class)">Types::Dimension</a>&gt;)</span>
             &mdash; <div class='inline'><p>The dimensions associated with the metric. If the metric has any associated dimensions, you must specify them in order for the call to succeed.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:period</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The period, in seconds, over which the statistic is applied.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:unit</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The unit for the metric.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -959,9 +921,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeAlarmsForMetricOutput.html#metric_alarms-instance_method" title="Aws::CloudWatch::Types::DescribeAlarmsForMetricOutput#metric_alarms (method)">#metric_alarms</a> => Array&lt;<a href="Types/MetricAlarm.html" title="Aws::CloudWatch::Types::MetricAlarm (class)">Types::MetricAlarm</a>&gt;</li>
+<li><a href="Types/DescribeAlarmsForMetricOutput.html#metric_alarms-instance_method" title="Aws::CloudWatch::Types::DescribeAlarmsForMetricOutput#metric_alarms (method)">#metric_alarms</a> =&gt; Array&lt;<a href="Types/MetricAlarm.html" title="Aws::CloudWatch::Types::MetricAlarm (class)">Types::MetricAlarm</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -976,7 +937,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm actions do not execute when the alarm state changes.</p>
-
 
   </div>
 </div>
@@ -995,7 +955,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:alarm_names</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>The names of the alarms.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1018,7 +977,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   <div class='discussion'>
     <p>Enables the actions for the specified alarms.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1036,7 +994,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:alarm_names</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>The names of the alarms.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1057,10 +1014,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Gets statistics for the specified metric.</p>
-
-
-<p> <p>Amazon CloudWatch retains metric data as follows:</p> <ul> <li> <p>Data points with a period of 60 seconds (1 minute) are available for 15 days</p> </li> <li> <p>Data points with a period of 300 seconds (5 minute) are available for 63 days</p> </li> <li> <p>Data points with a period of 3600 seconds (1 hour) are available for 455 days (15 months)</p> </li> </ul> <p>Note that CloudWatch started retaining 5-minute and 1-hour metric data as of 9 July 2016.</p> <p>The maximum number of data points returned from a single call is 1,440. If you request more than 1,440 data points, Amazon CloudWatch returns an error. To reduce the number of data points, you can narrow the specified time range and make multiple requests across adjacent time ranges, or you can increase the specified period. A period can be as short as one minute (60 seconds). Note that data points are not returned in chronological order.</p> <p>Amazon CloudWatch aggregates data points based on the length of the period that you specify. For example, if you request statistics with a one-hour period, Amazon CloudWatch aggregates all data points with time stamps that fall within each one-hour period. Therefore, the number of values aggregated by CloudWatch is larger than the number of data points returned.</p> <p>For a list of metrics and dimensions supported by AWS services, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html">Amazon CloudWatch Metrics and Dimensions Reference</a> in the <i>Amazon CloudWatch User Guide</i>.</p></p>
+    <p>Gets statistics for the specified metric.</p> <p>Amazon CloudWatch retains metric data as follows:</p> <ul> <li> <p>Data points with a period of 60 seconds (1 minute) are available for 15 days</p> </li> <li> <p>Data points with a period of 300 seconds (5 minute) are available for 63 days</p> </li> <li> <p>Data points with a period of 3600 seconds (1 hour) are available for 455 days (15 months)</p> </li> </ul> <p>Note that CloudWatch started retaining 5-minute and 1-hour metric data as of 9 July 2016.</p> <p>The maximum number of data points returned from a single call is 1,440. If you request more than 1,440 data points, Amazon CloudWatch returns an error. To reduce the number of data points, you can narrow the specified time range and make multiple requests across adjacent time ranges, or you can increase the specified period. A period can be as short as one minute (60 seconds). Note that data points are not returned in chronological order.</p> <p>Amazon CloudWatch aggregates data points based on the length of the period that you specify. For example, if you request statistics with a one-hour period, Amazon CloudWatch aggregates all data points with time stamps that fall within each one-hour period. Therefore, the number of values aggregated by CloudWatch is larger than the number of data points returned.</p> <p>For a list of metrics and dimensions supported by AWS services, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html">Amazon CloudWatch Metrics and Dimensions Reference</a> in the <i>Amazon CloudWatch User Guide</i>.</p>
 
   </div>
 </div>
@@ -1105,61 +1059,46 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:namespace</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The namespace of the metric, with or without spaces.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:metric_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the metric, with or without spaces.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:dimensions</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/Dimension.html" title="Aws::CloudWatch::Types::Dimension (class)">Types::Dimension</a>&gt;)</span>
             &mdash; <div class='inline'><p>The dimensions. CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve statistics using combinations of dimensions that were not specially published. You must specify the same dimensions that were used when the metrics were created. For an example, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations">Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:start_time</span>
           <span class='type'>(<code>required</code>, <code>Time</code>)</span>
-            &mdash; <div class='inline'><p>The time stamp that determines the first data point to return. Note that start times are evaluated relative to the time that CloudWatch receives the request.</p>
-
-
-<p> <p>The value specified is inclusive; results include data points with the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the specified time stamp as follows:</p> <ul> <li> <p>Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down to 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to 12:00:00.</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>The time stamp that determines the first data point to return. Note that start times are evaluated relative to the time that CloudWatch receives the request.</p> <p>The value specified is inclusive; results include data points with the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the specified time stamp as follows:</p> <ul> <li> <p>Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down to 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to 12:00:00.</p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:end_time</span>
           <span class='type'>(<code>required</code>, <code>Time</code>)</span>
-            &mdash; <div class='inline'><p>The time stamp that determines the last data point to return.</p>
-
-
-<p> <p>The value specified is exclusive; results will include data points up to the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).</p></p>
+            &mdash; <div class='inline'><p>The time stamp that determines the last data point to return.</p> <p>The value specified is exclusive; results will include data points up to the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).</p>
 </div>        </li>
         <li>
           <span class='name'>:period</span>
           <span class='type'>(<code>required</code>, <code>Integer</code>)</span>
-            &mdash; <div class='inline'><p>The granularity, in seconds, of the returned data points. A period can be as short as one minute (60 seconds) and must be a multiple of 60. The default value is 60.</p>
-
-
-<p> <p>If the <code>StartTime</code> parameter specifies a time stamp that is greater than 15 days ago, you must specify the period as follows or no data points in that time range is returned:</p> <ul> <li> <p>Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).</p> </li> <li> <p>Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>The granularity, in seconds, of the returned data points. A period can be as short as one minute (60 seconds) and must be a multiple of 60. The default value is 60.</p> <p>If the <code>StartTime</code> parameter specifies a time stamp that is greater than 15 days ago, you must specify the period as follows or no data points in that time range is returned:</p> <ul> <li> <p>Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).</p> </li> <li> <p>Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).</p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:statistics</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>The metric statistics, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:extended_statistics</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
             &mdash; <div class='inline'><p>The percentile statistics. Specify values between p0.0 and p100.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:unit</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units being returned. If the metric only ever reports one unit, specifying a unit has no effect.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1169,10 +1108,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetMetricStatisticsOutput.html#label-instance_method" title="Aws::CloudWatch::Types::GetMetricStatisticsOutput#label (method)">#label</a> => String</li>
-<li><a href="Types/GetMetricStatisticsOutput.html#datapoints-instance_method" title="Aws::CloudWatch::Types::GetMetricStatisticsOutput#datapoints (method)">#datapoints</a> => Array&lt;<a href="Types/Datapoint.html" title="Aws::CloudWatch::Types::Datapoint (class)">Types::Datapoint</a>&gt;</li>
+<li><a href="Types/GetMetricStatisticsOutput.html#label-instance_method" title="Aws::CloudWatch::Types::GetMetricStatisticsOutput#label (method)">#label</a> =&gt; String</li>
+<li><a href="Types/GetMetricStatisticsOutput.html#datapoints-instance_method" title="Aws::CloudWatch::Types::GetMetricStatisticsOutput#datapoints (method)">#datapoints</a> =&gt; Array&lt;<a href="Types/Datapoint.html" title="Aws::CloudWatch::Types::Datapoint (class)">Types::Datapoint</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1186,10 +1124,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>List the specified metrics. You can use the returned metrics with <a>GetMetricStatistics</a> to obtain statistical data.</p>
-
-
-<p> <p>Up to 500 results are returned for any one call. To retrieve additional results, use the returned token with subsequent calls.</p> <p>After you create a metric, allow up to fifteen minutes before the metric appears. Statistics about the metric, however, are available sooner using <a>GetMetricStatistics</a>.</p></p>
+    <p>List the specified metrics. You can use the returned metrics with <a>GetMetricStatistics</a> to obtain statistical data.</p> <p>Up to 500 results are returned for any one call. To retrieve additional results, use the returned token with subsequent calls.</p> <p>After you create a metric, allow up to fifteen minutes before the metric appears. Statistics about the metric, however, are available sooner using <a>GetMetricStatistics</a>.</p>
 
   </div>
 </div>
@@ -1225,25 +1160,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:namespace</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The namespace to filter against.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:metric_name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The name of the metric to filter against.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:dimensions</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/DimensionFilter.html" title="Aws::CloudWatch::Types::DimensionFilter (class)">Types::DimensionFilter</a>&gt;)</span>
             &mdash; <div class='inline'><p>The dimensions to filter against.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The token returned by a previous call to indicate that there is more data available.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1253,10 +1184,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListMetricsOutput.html#metrics-instance_method" title="Aws::CloudWatch::Types::ListMetricsOutput#metrics (method)">#metrics</a> => Array&lt;<a href="Types/Metric.html" title="Aws::CloudWatch::Types::Metric (class)">Types::Metric</a>&gt;</li>
-<li><a href="Types/ListMetricsOutput.html#next_token-instance_method" title="Aws::CloudWatch::Types::ListMetricsOutput#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/ListMetricsOutput.html#metrics-instance_method" title="Aws::CloudWatch::Types::ListMetricsOutput#metrics (method)">#metrics</a> =&gt; Array&lt;<a href="Types/Metric.html" title="Aws::CloudWatch::Types::Metric (class)">Types::Metric</a>&gt;</li>
+<li><a href="Types/ListMetricsOutput.html#next_token-instance_method" title="Aws::CloudWatch::Types::ListMetricsOutput#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1270,10 +1200,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Creates or updates an alarm and associates it with the specified metric. Optionally, this operation can associate one or more Amazon SNS resources with the alarm.</p>
-
-
-<p> <p>When this operation creates an alarm, the alarm state is immediately set to <code>INSUFFICIENT_DATA</code>. The alarm is evaluated and its state is set appropriately. Any actions associated with the state are then executed.</p> <p>When you update an existing alarm, its state is left unchanged, but the update completely overwrites the previous configuration of the alarm.</p> <p>If you are an AWS Identity and Access Management (IAM) user, you must have Amazon EC2 permissions for some operations:</p> <ul> <li> <p> <code>ec2:DescribeInstanceStatus</code> and <code>ec2:DescribeInstances</code> for all alarms on EC2 instance status metrics</p> </li> <li> <p> <code>ec2:StopInstances</code> for alarms with stop actions</p> </li> <li> <p> <code>ec2:TerminateInstances</code> for alarms with terminate actions</p> </li> <li> <p> <code>ec2:DescribeInstanceRecoveryAttribute</code> and <code>ec2:RecoverInstances</code> for alarms with recover actions</p> </li> </ul> <p>If you have read/write permissions for Amazon CloudWatch but not for Amazon EC2, you can still create an alarm, but the stop or terminate actions won't be performed. However, if you are later granted the required permissions, the alarm actions that you created earlier will be performed.</p> <p>If you are using an IAM role (for example, an Amazon EC2 instance profile), you cannot stop or terminate the instance using alarm actions. However, you can still see the alarm state and perform any other actions such as Amazon SNS notifications or Auto Scaling policies.</p> <p>If you are using temporary security credentials granted using the AWS Security Token Service (AWS STS), you cannot stop or terminate an Amazon EC2 instance using alarm actions.</p> <p>Note that you must create at least one stop, terminate, or reboot alarm using the Amazon EC2 or CloudWatch console to create the <b>EC2ActionsAccess</b> IAM role. After this IAM role is created, you can create stop, terminate, or reboot alarms using a command-line interface or an API.</p></p>
+    <p>Creates or updates an alarm and associates it with the specified metric. Optionally, this operation can associate one or more Amazon SNS resources with the alarm.</p> <p>When this operation creates an alarm, the alarm state is immediately set to <code>INSUFFICIENT_DATA</code>. The alarm is evaluated and its state is set appropriately. Any actions associated with the state are then executed.</p> <p>When you update an existing alarm, its state is left unchanged, but the update completely overwrites the previous configuration of the alarm.</p> <p>If you are an AWS Identity and Access Management (IAM) user, you must have Amazon EC2 permissions for some operations:</p> <ul> <li> <p> <code>ec2:DescribeInstanceStatus</code> and <code>ec2:DescribeInstances</code> for all alarms on EC2 instance status metrics</p> </li> <li> <p> <code>ec2:StopInstances</code> for alarms with stop actions</p> </li> <li> <p> <code>ec2:TerminateInstances</code> for alarms with terminate actions</p> </li> <li> <p> <code>ec2:DescribeInstanceRecoveryAttribute</code> and <code>ec2:RecoverInstances</code> for alarms with recover actions</p> </li> </ul> <p>If you have read/write permissions for Amazon CloudWatch but not for Amazon EC2, you can still create an alarm, but the stop or terminate actions won't be performed. However, if you are later granted the required permissions, the alarm actions that you created earlier will be performed.</p> <p>If you are using an IAM role (for example, an Amazon EC2 instance profile), you cannot stop or terminate the instance using alarm actions. However, you can still see the alarm state and perform any other actions such as Amazon SNS notifications or Auto Scaling policies.</p> <p>If you are using temporary security credentials granted using the AWS Security Token Service (AWS STS), you cannot stop or terminate an Amazon EC2 instance using alarm actions.</p> <p>Note that you must create at least one stop, terminate, or reboot alarm using the Amazon EC2 or CloudWatch console to create the <b>EC2ActionsAccess</b> IAM role. After this IAM role is created, you can create stop, terminate, or reboot alarms using a command-line interface or an API.</p>
 
   </div>
 </div>
@@ -1312,105 +1239,81 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:alarm_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name for the alarm. This name must be unique within the AWS account.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:alarm_description</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The description for the alarm.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:actions_enabled</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Indicates whether actions should be executed during any changes to the alarm state.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:ok_actions</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p>The actions to execute when this alarm transitions to an <code>OK</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p>
-
-
-<p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:<code>{&lt;i&gt;customer-account&lt;/i&gt;}</code>:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:<code>{&lt;i&gt;customer-account&lt;/i&gt;}</code>:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:<code>{&lt;i&gt;customer-account&lt;/i&gt;}</code>:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p></p>
+            &mdash; <div class='inline'><p>The actions to execute when this alarm transitions to an <code>OK</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:`<code><i>customer-account</i></code>`:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:`<code><i>customer-account</i></code>`:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:`<code><i>customer-account</i></code>`:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
 </div>        </li>
         <li>
           <span class='name'>:alarm_actions</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p>The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p>
-
-
-<p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:<code>{&lt;i&gt;customer-account&lt;/i&gt;}</code>:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:<code>{&lt;i&gt;customer-account&lt;/i&gt;}</code>:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:<code>{&lt;i&gt;customer-account&lt;/i&gt;}</code>:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p></p>
+            &mdash; <div class='inline'><p>The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:`<code><i>customer-account</i></code>`:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:`<code><i>customer-account</i></code>`:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:`<code><i>customer-account</i></code>`:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
 </div>        </li>
         <li>
           <span class='name'>:insufficient_data_actions</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p>The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p>
-
-
-<p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:<code>{&lt;i&gt;customer-account&lt;/i&gt;}</code>:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:<code>{&lt;i&gt;customer-account&lt;/i&gt;}</code>:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:<code>{&lt;i&gt;customer-account&lt;/i&gt;}</code>:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p></p>
+            &mdash; <div class='inline'><p>The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:`<code><i>customer-account</i></code>`:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:`<code><i>customer-account</i></code>`:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:`<code><i>customer-account</i></code>`:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
 </div>        </li>
         <li>
           <span class='name'>:metric_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name for the metric associated with the alarm.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:namespace</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The namespace for the metric associated with the alarm.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:statistic</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:extended_statistic</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:dimensions</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/Dimension.html" title="Aws::CloudWatch::Types::Dimension (class)">Types::Dimension</a>&gt;)</span>
             &mdash; <div class='inline'><p>The dimensions for the metric associated with the alarm.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:period</span>
           <span class='type'>(<code>required</code>, <code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The period, in seconds, over which the specified statistic is applied.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:unit</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>The unit of measure for the statistic. For example, the units for the Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the number of bytes that an instance receives on all network interfaces. You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately.</p>
-
-
-<p> <p>If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon CloudWatch alarm can get stuck in the <code>INSUFFICIENT DATA</code> state. </p></p>
+            &mdash; <div class='inline'><p>The unit of measure for the statistic. For example, the units for the Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the number of bytes that an instance receives on all network interfaces. You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately.</p> <p>If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon CloudWatch alarm can get stuck in the <code>INSUFFICIENT DATA</code> state. </p>
 </div>        </li>
         <li>
           <span class='name'>:evaluation_periods</span>
           <span class='type'>(<code>required</code>, <code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The number of periods over which data is compared to the specified threshold.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:threshold</span>
           <span class='type'>(<code>required</code>, <code>Float</code>)</span>
             &mdash; <div class='inline'><p>The value against which the specified statistic is compared.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:comparison_operator</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p> The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1431,10 +1334,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Publishes metric data points to Amazon CloudWatch. Amazon CloudWatch associates the data points with the specified metric. If the specified metric does not exist, Amazon CloudWatch creates the metric. When Amazon CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to <a>ListMetrics</a>.</p>
-
-
-<p> <p>Each <code>PutMetricData</code> request is limited to 8 KB in size for HTTP GET requests and is limited to 40 KB in size for HTTP POST requests.</p> <p>Although the <code>Value</code> parameter accepts numbers of type <code>Double</code>, Amazon CloudWatch rejects values that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g., NaN, +Infinity, -Infinity) are not supported.</p> <p>Data points with time stamps from 24 hours ago or longer can take at least 48 hours to become available for <a>GetMetricStatistics</a> from the time they are submitted.</p></p>
+    <p>Publishes metric data points to Amazon CloudWatch. Amazon CloudWatch associates the data points with the specified metric. If the specified metric does not exist, Amazon CloudWatch creates the metric. When Amazon CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to <a>ListMetrics</a>.</p> <p>Each <code>PutMetricData</code> request is limited to 8 KB in size for HTTP GET requests and is limited to 40 KB in size for HTTP POST requests.</p> <p>Although the <code>Value</code> parameter accepts numbers of type <code>Double</code>, Amazon CloudWatch rejects values that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g., NaN, +Infinity, -Infinity) are not supported.</p> <p>Data points with time stamps from 24 hours ago or longer can take at least 48 hours to become available for <a>GetMetricStatistics</a> from the time they are submitted.</p>
 
   </div>
 </div>
@@ -1472,16 +1372,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:namespace</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>The namespace for the metric data.</p>
-
-
-<p> <p>You cannot specify a namespace that begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by Amazon Web Services products.</p></p>
+            &mdash; <div class='inline'><p>The namespace for the metric data.</p> <p>You cannot specify a namespace that begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by Amazon Web Services products.</p>
 </div>        </li>
         <li>
           <span class='name'>:metric_data</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<a href="Types/MetricDatum.html" title="Aws::CloudWatch::Types::MetricDatum (class)">Types::MetricDatum</a>&gt;)</span>
             &mdash; <div class='inline'><p>The data for the metric.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1504,7 +1400,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   <div class='discussion'>
     <p>Temporarily sets the state of an alarm for testing purposes. When the updated state differs from the previous value, the action configured for the appropriate state is invoked. For example, if your alarm is configured to send an Amazon SNS message when an alarm is triggered, temporarily changing the alarm state to <code>ALARM</code> sends an Amazon SNS message. The alarm returns to its actual state (often within seconds). Because the alarm state change happens very quickly, it is typically only visible in the alarm's <b>History</b> tab in the Amazon CloudWatch console or through <a>DescribeAlarmHistory</a>.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1525,25 +1420,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:alarm_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The name for the alarm. This name must be unique within the AWS account. The maximum length is 255 characters.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:state_value</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The value of the state.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:state_reason</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The reason that this alarm is set to this specific state, in text format.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:state_reason_data</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The reason that this alarm is set to this specific state, in JSON format.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1573,7 +1464,7 @@ state.</p>
 entering a terminal state, or until a maximum number of attempts
 are made.</p>
 
-<p>   # polls in a loop, sleeping between attempts
+<p># polls in a loop, sleeping between attempts
    client.waiter_until(waiter_name, params)</p>
 
 <h3>Configuration</h3>
@@ -1709,7 +1600,6 @@ waiters and the client method they call:</p>
 <tr><td><tt>:alarm_exists</tt></td><td><a href="#describe_alarms-instance_method" title="Aws::CloudWatch::Client#describe_alarms (method)">#describe_alarms</a></td><td>5</td><td>40</td></tr>
 </tbody>
 </table>
-
 
   </div>
 </div>

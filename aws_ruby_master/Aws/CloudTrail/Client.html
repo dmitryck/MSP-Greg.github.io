@@ -129,10 +129,9 @@
 <p>You can configure a default region in the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_REGION']</code></li>
+<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
 <li><code>Aws.config[:region]</code></li>
 </ul>
-
 
 <p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
 
@@ -141,12 +140,11 @@
 <p>Default credentials are loaded automatically from the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_ACCESS_KEY_ID']</code> and <code>ENV['AWS_SECRET_ACCESS_KEY']</code></li>
+<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
 <li><code>Aws.config[:credentials]</code></li>
 <li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
 <li>From an instance profile when running on EC2</li>
 </ul>
-
 
 <p>You can also construct a credentials object from one of the following
 classes:</p>
@@ -157,7 +155,6 @@ classes:</p>
 <li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
 <li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
 </ul>
-
 
 <p>Alternatively, you configure credentials with <code>:access_key_id</code> and
 <code>:secret_access_key</code>:</p>
@@ -277,10 +274,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#describe_trails-instance_method" title="#describe_trails (instance method)">#<strong>describe_trails</strong>(options = {})  &#x21d2; Types::DescribeTrailsResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Retrieves settings for the trail associated with the current region for your account.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Retrieves settings for the trail associated with the current region for your account.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -312,10 +306,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#list_tags-instance_method" title="#list_tags (instance method)">#<strong>list_tags</strong>(options = {})  &#x21d2; Types::ListTagsResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Lists the tags for the trail in the current region.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Lists the tags for the trail in the current region.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -339,10 +330,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#remove_tags-instance_method" title="#remove_tags (instance method)">#<strong>remove_tags</strong>(options = {})  &#x21d2; Struct </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Removes the specified tags from a trail.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Removes the specified tags from a trail.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -458,11 +446,10 @@ for credentials:</p>
 
 <ul>
 <li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
-<li>ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']</li>
+<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
 <li><code>HOME/.aws/credentials</code> shared credentials file</li>
 <li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
 </ul>
-
 </div>        </li>
         <li>
           <span class='name'>:endpoint</span>
@@ -538,7 +525,7 @@ will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Lo
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Used when loading credentials
 from the shared credentials file at HOME/.aws/credentials.  When not
-specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
 </div>        </li>
         <li>
           <span class='name'>:raise_response_errors</span>
@@ -551,7 +538,7 @@ specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title
           <span class='name'>:region</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
-the client endpoint.  Defaults to <code>ENV['AWS_REGION']</code>.
+the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
 Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
 </div>        </li>
         <li>
@@ -623,7 +610,7 @@ fake responses are generated and returned. You can specify
 the response data to return or errors to raise by calling
 <a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">Aws::ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
 
-<p><strong> Please note </strong> When response stubbing is enabled, no HTTP
+<p>** Please note ** When response stubbing is enabled, no HTTP
 requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
 </div>        </li>
         <li>
@@ -648,7 +635,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   <div class='discussion'>
     <p>Adds one or more tags to a trail, up to a limit of 50. Tags must be unique per trail. Overwrites an existing tag's value when a new value is specified for an existing tag key. If you specify a key without a value, the tag will be created with the specified key and a value of null. You can tag a trail that applies to all regions only from the region in which the trail was created (that is, from its home region).</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -671,16 +657,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:resource_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Specifies the ARN of the trail to which one or more tags will be added. The format of a trail ARN is:</p>
-
-
-<p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p></p>
+            &mdash; <div class='inline'><p>Specifies the ARN of the trail to which one or more tags will be added. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
 </div>        </li>
         <li>
           <span class='name'>:tags_list</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/Tag.html" title="Aws::CloudTrail::Types::Tag (class)">Types::Tag</a>&gt;)</span>
             &mdash; <div class='inline'><p>Contains a list of CloudTrail tags, up to a limit of 50</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -702,7 +684,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket. A maximum of five trails can exist in a region, irrespective of the region in which they were created.</p>
-
 
   </div>
 </div>
@@ -743,68 +724,52 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Specifies the name of the trail. The name must meet the following requirements:</p>
-
-
-<p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (<em>), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-</em>namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Specifies the name of the trail. The name must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul></p>
 </div>        </li>
         <li>
           <span class='name'>:s3_bucket_name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies the name of the Amazon S3 bucket designated for publishing log files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:s3_key_prefix</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>. The maximum length is 200 characters.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:sns_topic_name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies the name of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:include_global_service_events</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:is_multi_region_trail</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Specifies whether the trail is created in the current region or in all regions. The default is false.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:enable_log_file_validation</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>Specifies whether log file integrity validation is enabled. The default is false.</p>
-
-
-<p> <note> <p>When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.</p> </note></p>
+            &mdash; <div class='inline'><p><p>Specifies whether log file integrity validation is enabled. The default is false.</p> <note> <p>When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.</p> </note></p>
 </div>        </li>
         <li>
           <span class='name'>:cloud_watch_logs_log_group_arn</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. Not required unless you specify CloudWatchLogsRoleArn.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:cloud_watch_logs_role_arn</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:kms_key_id</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.</p>
-
-
-<p> <p>Examples:</p> <ul> <li> <p>alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>12345678-1234-1234-1234-123456789012</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by &quot;alias/&quot;, a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.</p> <p>Examples:</p> <ul> <li> <p>alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>12345678-1234-1234-1234-123456789012</p> </li> </ul></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -814,20 +779,19 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateTrailResponse.html#name-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#name (method)">#name</a> => String</li>
-<li><a href="Types/CreateTrailResponse.html#s3_bucket_name-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#s3_bucket_name (method)">#s3_bucket_name</a> => String</li>
-<li><a href="Types/CreateTrailResponse.html#s3_key_prefix-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#s3_key_prefix (method)">#s3_key_prefix</a> => String</li>
-<li><a href="Types/CreateTrailResponse.html#sns_topic_name-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#sns_topic_name (method)">#sns_topic_name</a> => String</li>
-<li><a href="Types/CreateTrailResponse.html#sns_topic_arn-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#sns_topic_arn (method)">#sns_topic_arn</a> => String</li>
-<li><a href="Types/CreateTrailResponse.html#include_global_service_events-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#include_global_service_events (method)">#include_global_service_events</a> => Boolean</li>
-<li><a href="Types/CreateTrailResponse.html#is_multi_region_trail-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#is_multi_region_trail (method)">#is_multi_region_trail</a> => Boolean</li>
-<li><a href="Types/CreateTrailResponse.html#trail_arn-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#trail_arn (method)">#trail_arn</a> => String</li>
-<li><a href="Types/CreateTrailResponse.html#log_file_validation_enabled-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#log_file_validation_enabled (method)">#log_file_validation_enabled</a> => Boolean</li>
-<li><a href="Types/CreateTrailResponse.html#cloud_watch_logs_log_group_arn-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#cloud_watch_logs_log_group_arn (method)">#cloud_watch_logs_log_group_arn</a> => String</li>
-<li><a href="Types/CreateTrailResponse.html#cloud_watch_logs_role_arn-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#cloud_watch_logs_role_arn (method)">#cloud_watch_logs_role_arn</a> => String</li>
-<li><a href="Types/CreateTrailResponse.html#kms_key_id-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#kms_key_id (method)">#kms_key_id</a> => String</li>
+<li><a href="Types/CreateTrailResponse.html#name-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#name (method)">#name</a> =&gt; String</li>
+<li><a href="Types/CreateTrailResponse.html#s3_bucket_name-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#s3_bucket_name (method)">#s3_bucket_name</a> =&gt; String</li>
+<li><a href="Types/CreateTrailResponse.html#s3_key_prefix-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#s3_key_prefix (method)">#s3_key_prefix</a> =&gt; String</li>
+<li><a href="Types/CreateTrailResponse.html#sns_topic_name-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#sns_topic_name (method)">#sns_topic_name</a> =&gt; String</li>
+<li><a href="Types/CreateTrailResponse.html#sns_topic_arn-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#sns_topic_arn (method)">#sns_topic_arn</a> =&gt; String</li>
+<li><a href="Types/CreateTrailResponse.html#include_global_service_events-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#include_global_service_events (method)">#include_global_service_events</a> =&gt; Boolean</li>
+<li><a href="Types/CreateTrailResponse.html#is_multi_region_trail-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#is_multi_region_trail (method)">#is_multi_region_trail</a> =&gt; Boolean</li>
+<li><a href="Types/CreateTrailResponse.html#trail_arn-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#trail_arn (method)">#trail_arn</a> =&gt; String</li>
+<li><a href="Types/CreateTrailResponse.html#log_file_validation_enabled-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#log_file_validation_enabled (method)">#log_file_validation_enabled</a> =&gt; Boolean</li>
+<li><a href="Types/CreateTrailResponse.html#cloud_watch_logs_log_group_arn-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#cloud_watch_logs_log_group_arn (method)">#cloud_watch_logs_log_group_arn</a> =&gt; String</li>
+<li><a href="Types/CreateTrailResponse.html#cloud_watch_logs_role_arn-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#cloud_watch_logs_role_arn (method)">#cloud_watch_logs_role_arn</a> =&gt; String</li>
+<li><a href="Types/CreateTrailResponse.html#kms_key_id-instance_method" title="Aws::CloudTrail::Types::CreateTrailResponse#kms_key_id (method)">#kms_key_id</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -842,7 +806,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Deletes a trail. This operation must be called from the region in which the trail was created. <code>DeleteTrail</code> cannot be called on the shadow trails (replicated trails in other regions) of a trail that is enabled in all regions.</p>
-
 
   </div>
 </div>
@@ -861,7 +824,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies the name or the CloudTrail ARN of the trail to be deleted. The format of a trail ARN is: <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -883,7 +845,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Retrieves settings for the trail associated with the current region for your account.</p>
-
 
   </div>
 </div>
@@ -919,16 +880,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:trail_name_list</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p>Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is:</p>
-
-
-<p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p> <p>If an empty list is specified, information for the trail in the current region is returned.</p> <ul> <li> <p>If an empty list is specified and <code>IncludeShadowTrails</code> is false, then information for all trails in the current region is returned.</p> </li> <li> <p>If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.</p> </li> </ul> <note> <p>If one or more trail names are specified, information is returned only if the names match the names of trails belonging only to the current region. To return information about a trail in another region, you must specify its trail ARN.</p> </note></p>
+            &mdash; <div class='inline'><p><p>Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p> <p>If an empty list is specified, information for the trail in the current region is returned.</p> <ul> <li> <p>If an empty list is specified and <code>IncludeShadowTrails</code> is false, then information for all trails in the current region is returned.</p> </li> <li> <p>If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.</p> </li> </ul> <note> <p>If one or more trail names are specified, information is returned only if the names match the names of trails belonging only to the current region. To return information about a trail in another region, you must specify its trail ARN.</p> </note></p>
 </div>        </li>
         <li>
           <span class='name'>:include_shadow_trails</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region. The default is true.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -938,9 +895,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DescribeTrailsResponse.html#trail_list-instance_method" title="Aws::CloudTrail::Types::DescribeTrailsResponse#trail_list (method)">#trail_list</a> => Array&lt;<a href="Types/Trail.html" title="Aws::CloudTrail::Types::Trail (class)">Types::Trail</a>&gt;</li>
+<li><a href="Types/DescribeTrailsResponse.html#trail_list-instance_method" title="Aws::CloudTrail::Types::DescribeTrailsResponse#trail_list (method)">#trail_list</a> =&gt; Array&lt;<a href="Types/Trail.html" title="Aws::CloudTrail::Types::Trail (class)">Types::Trail</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -954,10 +910,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Describes the settings for the event selectors that you configured for your trail. The information returned for your event selectors includes the following:</p>
-
-
-<p> <ul> <li> <p>The S3 objects that you are logging for data events.</p> </li> <li> <p>If your event selector includes management events.</p> </li> <li> <p>If your event selector includes read-only events, write-only events, or all. </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html">Logging Data and Management Events for Trails </a> in the <i>AWS CloudTrail User Guide</i>.</p></p>
+    <p>Describes the settings for the event selectors that you configured for your trail. The information returned for your event selectors includes the following:</p> <ul> <li> <p>The S3 objects that you are logging for data events.</p> </li> <li> <p>If your event selector includes management events.</p> </li> <li> <p>If your event selector includes read-only events, write-only events, or all. </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html">Logging Data and Management Events for Trails </a> in the <i>AWS CloudTrail User Guide</i>.</p>
 
   </div>
 </div>
@@ -985,10 +938,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:trail_name</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p>
-
-
-<p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (<em>), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-</em>namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p></p>
+            &mdash; <div class='inline'><p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -998,10 +948,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetEventSelectorsResponse.html#trail_arn-instance_method" title="Aws::CloudTrail::Types::GetEventSelectorsResponse#trail_arn (method)">#trail_arn</a> => String</li>
-<li><a href="Types/GetEventSelectorsResponse.html#event_selectors-instance_method" title="Aws::CloudTrail::Types::GetEventSelectorsResponse#event_selectors (method)">#event_selectors</a> => Array&lt;<a href="Types/EventSelector.html" title="Aws::CloudTrail::Types::EventSelector (class)">Types::EventSelector</a>&gt;</li>
+<li><a href="Types/GetEventSelectorsResponse.html#trail_arn-instance_method" title="Aws::CloudTrail::Types::GetEventSelectorsResponse#trail_arn (method)">#trail_arn</a> =&gt; String</li>
+<li><a href="Types/GetEventSelectorsResponse.html#event_selectors-instance_method" title="Aws::CloudTrail::Types::GetEventSelectorsResponse#event_selectors (method)">#event_selectors</a> =&gt; Array&lt;<a href="Types/EventSelector.html" title="Aws::CloudTrail::Types::EventSelector (class)">Types::EventSelector</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1016,7 +965,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Returns a JSON-formatted list of information about the specified trail. Fields include information on delivery errors, Amazon SNS and Amazon S3 errors, and start and stop logging times for each trail. This operation returns trail status from a single region. To return trail status from all regions, you must call the operation on each region.</p>
-
 
   </div>
 </div>
@@ -1053,10 +1001,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Specifies the name or the CloudTrail ARN of the trail for which you are requesting status. To get the status of a shadow trail (a replication of the trail in another region), you must specify its ARN. The format of a trail ARN is:</p>
-
-
-<p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p></p>
+            &mdash; <div class='inline'><p>Specifies the name or the CloudTrail ARN of the trail for which you are requesting status. To get the status of a shadow trail (a replication of the trail in another region), you must specify its ARN. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1066,25 +1011,24 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetTrailStatusResponse.html#is_logging-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#is_logging (method)">#is_logging</a> => Boolean</li>
-<li><a href="Types/GetTrailStatusResponse.html#latest_delivery_error-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_delivery_error (method)">#latest_delivery_error</a> => String</li>
-<li><a href="Types/GetTrailStatusResponse.html#latest_notification_error-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_notification_error (method)">#latest_notification_error</a> => String</li>
-<li><a href="Types/GetTrailStatusResponse.html#latest_delivery_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_delivery_time (method)">#latest_delivery_time</a> => Time</li>
-<li><a href="Types/GetTrailStatusResponse.html#latest_notification_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_notification_time (method)">#latest_notification_time</a> => Time</li>
-<li><a href="Types/GetTrailStatusResponse.html#start_logging_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#start_logging_time (method)">#start_logging_time</a> => Time</li>
-<li><a href="Types/GetTrailStatusResponse.html#stop_logging_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#stop_logging_time (method)">#stop_logging_time</a> => Time</li>
-<li><a href="Types/GetTrailStatusResponse.html#latest_cloud_watch_logs_delivery_error-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_cloud_watch_logs_delivery_error (method)">#latest_cloud_watch_logs_delivery_error</a> => String</li>
-<li><a href="Types/GetTrailStatusResponse.html#latest_cloud_watch_logs_delivery_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_cloud_watch_logs_delivery_time (method)">#latest_cloud_watch_logs_delivery_time</a> => Time</li>
-<li><a href="Types/GetTrailStatusResponse.html#latest_digest_delivery_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_digest_delivery_time (method)">#latest_digest_delivery_time</a> => Time</li>
-<li><a href="Types/GetTrailStatusResponse.html#latest_digest_delivery_error-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_digest_delivery_error (method)">#latest_digest_delivery_error</a> => String</li>
-<li><a href="Types/GetTrailStatusResponse.html#latest_delivery_attempt_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_delivery_attempt_time (method)">#latest_delivery_attempt_time</a> => String</li>
-<li><a href="Types/GetTrailStatusResponse.html#latest_notification_attempt_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_notification_attempt_time (method)">#latest_notification_attempt_time</a> => String</li>
-<li><a href="Types/GetTrailStatusResponse.html#latest_notification_attempt_succeeded-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_notification_attempt_succeeded (method)">#latest_notification_attempt_succeeded</a> => String</li>
-<li><a href="Types/GetTrailStatusResponse.html#latest_delivery_attempt_succeeded-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_delivery_attempt_succeeded (method)">#latest_delivery_attempt_succeeded</a> => String</li>
-<li><a href="Types/GetTrailStatusResponse.html#time_logging_started-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#time_logging_started (method)">#time_logging_started</a> => String</li>
-<li><a href="Types/GetTrailStatusResponse.html#time_logging_stopped-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#time_logging_stopped (method)">#time_logging_stopped</a> => String</li>
+<li><a href="Types/GetTrailStatusResponse.html#is_logging-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#is_logging (method)">#is_logging</a> =&gt; Boolean</li>
+<li><a href="Types/GetTrailStatusResponse.html#latest_delivery_error-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_delivery_error (method)">#latest_delivery_error</a> =&gt; String</li>
+<li><a href="Types/GetTrailStatusResponse.html#latest_notification_error-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_notification_error (method)">#latest_notification_error</a> =&gt; String</li>
+<li><a href="Types/GetTrailStatusResponse.html#latest_delivery_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_delivery_time (method)">#latest_delivery_time</a> =&gt; Time</li>
+<li><a href="Types/GetTrailStatusResponse.html#latest_notification_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_notification_time (method)">#latest_notification_time</a> =&gt; Time</li>
+<li><a href="Types/GetTrailStatusResponse.html#start_logging_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#start_logging_time (method)">#start_logging_time</a> =&gt; Time</li>
+<li><a href="Types/GetTrailStatusResponse.html#stop_logging_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#stop_logging_time (method)">#stop_logging_time</a> =&gt; Time</li>
+<li><a href="Types/GetTrailStatusResponse.html#latest_cloud_watch_logs_delivery_error-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_cloud_watch_logs_delivery_error (method)">#latest_cloud_watch_logs_delivery_error</a> =&gt; String</li>
+<li><a href="Types/GetTrailStatusResponse.html#latest_cloud_watch_logs_delivery_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_cloud_watch_logs_delivery_time (method)">#latest_cloud_watch_logs_delivery_time</a> =&gt; Time</li>
+<li><a href="Types/GetTrailStatusResponse.html#latest_digest_delivery_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_digest_delivery_time (method)">#latest_digest_delivery_time</a> =&gt; Time</li>
+<li><a href="Types/GetTrailStatusResponse.html#latest_digest_delivery_error-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_digest_delivery_error (method)">#latest_digest_delivery_error</a> =&gt; String</li>
+<li><a href="Types/GetTrailStatusResponse.html#latest_delivery_attempt_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_delivery_attempt_time (method)">#latest_delivery_attempt_time</a> =&gt; String</li>
+<li><a href="Types/GetTrailStatusResponse.html#latest_notification_attempt_time-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_notification_attempt_time (method)">#latest_notification_attempt_time</a> =&gt; String</li>
+<li><a href="Types/GetTrailStatusResponse.html#latest_notification_attempt_succeeded-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_notification_attempt_succeeded (method)">#latest_notification_attempt_succeeded</a> =&gt; String</li>
+<li><a href="Types/GetTrailStatusResponse.html#latest_delivery_attempt_succeeded-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#latest_delivery_attempt_succeeded (method)">#latest_delivery_attempt_succeeded</a> =&gt; String</li>
+<li><a href="Types/GetTrailStatusResponse.html#time_logging_started-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#time_logging_started (method)">#time_logging_started</a> =&gt; String</li>
+<li><a href="Types/GetTrailStatusResponse.html#time_logging_stopped-instance_method" title="Aws::CloudTrail::Types::GetTrailStatusResponse#time_logging_stopped (method)">#time_logging_stopped</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1098,10 +1042,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns all public keys whose private keys were used to sign the digest files within the specified time range. The public key is needed to validate digest files that were signed with its corresponding private key.</p>
-
-
-<p> <note> <p>CloudTrail uses different private/public key pairs per region. Each digest file is signed with a private key unique to its region. Therefore, when you validate a digest file from a particular region, you must look in the same region for its corresponding public key.</p> </note></p>
+    <p><p>Returns all public keys whose private keys were used to sign the digest files within the specified time range. The public key is needed to validate digest files that were signed with its corresponding private key.</p> <note> <p>CloudTrail uses different private/public key pairs per region. Each digest file is signed with a private key unique to its region. Therefore, when you validate a digest file from a particular region, you must look in the same region for its corresponding public key.</p> </note></p>
 
   </div>
 </div>
@@ -1130,19 +1071,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:start_time</span>
           <span class='type'>(<code>Time</code>)</span>
             &mdash; <div class='inline'><p>Optionally specifies, in UTC, the start of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used, and the current public key is returned.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:end_time</span>
           <span class='type'>(<code>Time</code>)</span>
             &mdash; <div class='inline'><p>Optionally specifies, in UTC, the end of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Reserved for future use.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1152,10 +1090,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListPublicKeysResponse.html#public_key_list-instance_method" title="Aws::CloudTrail::Types::ListPublicKeysResponse#public_key_list (method)">#public_key_list</a> => Array&lt;<a href="Types/PublicKey.html" title="Aws::CloudTrail::Types::PublicKey (class)">Types::PublicKey</a>&gt;</li>
-<li><a href="Types/ListPublicKeysResponse.html#next_token-instance_method" title="Aws::CloudTrail::Types::ListPublicKeysResponse#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/ListPublicKeysResponse.html#public_key_list-instance_method" title="Aws::CloudTrail::Types::ListPublicKeysResponse#public_key_list (method)">#public_key_list</a> =&gt; Array&lt;<a href="Types/PublicKey.html" title="Aws::CloudTrail::Types::PublicKey (class)">Types::PublicKey</a>&gt;</li>
+<li><a href="Types/ListPublicKeysResponse.html#next_token-instance_method" title="Aws::CloudTrail::Types::ListPublicKeysResponse#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1170,7 +1107,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Lists the tags for the trail in the current region.</p>
-
 
   </div>
 </div>
@@ -1197,16 +1133,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:resource_id_list</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p>Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is:</p>
-
-
-<p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p></p>
+            &mdash; <div class='inline'><p>Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Reserved for future use.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1216,10 +1148,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListTagsResponse.html#resource_tag_list-instance_method" title="Aws::CloudTrail::Types::ListTagsResponse#resource_tag_list (method)">#resource_tag_list</a> => Array&lt;<a href="Types/ResourceTag.html" title="Aws::CloudTrail::Types::ResourceTag (class)">Types::ResourceTag</a>&gt;</li>
-<li><a href="Types/ListTagsResponse.html#next_token-instance_method" title="Aws::CloudTrail::Types::ListTagsResponse#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/ListTagsResponse.html#resource_tag_list-instance_method" title="Aws::CloudTrail::Types::ListTagsResponse#resource_tag_list (method)">#resource_tag_list</a> =&gt; Array&lt;<a href="Types/ResourceTag.html" title="Aws::CloudTrail::Types::ResourceTag (class)">Types::ResourceTag</a>&gt;</li>
+<li><a href="Types/ListTagsResponse.html#next_token-instance_method" title="Aws::CloudTrail::Types::ListTagsResponse#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1233,10 +1164,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Looks up API activity events captured by CloudTrail that create, update, or delete resources in your account. Events for a region can be looked up for the times in which you had CloudTrail turned on in that region during the last seven days. Lookup supports the following attributes:</p>
-
-
-<p> <ul> <li> <p>Event ID</p> </li> <li> <p>Event name</p> </li> <li> <p>Event source</p> </li> <li> <p>Resource name</p> </li> <li> <p>Resource type</p> </li> <li> <p>User name</p> </li> </ul> <p>All attributes are optional. The default number of results returned is 10, with a maximum of 50 possible. The response includes a token that you can use to get the next page of results.</p> <important> <p>The rate of lookup requests is limited to one per second per account. If this limit is exceeded, a throttling error occurs.</p> </important> <important> <p>Events that occurred during the selected time range will not be available for lookup if CloudTrail logging was not enabled when the events occurred.</p> </important></p>
+    <p><p>Looks up API activity events captured by CloudTrail that create, update, or delete resources in your account. Events for a region can be looked up for the times in which you had CloudTrail turned on in that region during the last seven days. Lookup supports the following attributes:</p> <ul> <li> <p>Event ID</p> </li> <li> <p>Event name</p> </li> <li> <p>Event source</p> </li> <li> <p>Resource name</p> </li> <li> <p>Resource type</p> </li> <li> <p>User name</p> </li> </ul> <p>All attributes are optional. The default number of results returned is 10, with a maximum of 50 possible. The response includes a token that you can use to get the next page of results.</p> <important> <p>The rate of lookup requests is limited to one per second per account. If this limit is exceeded, a throttling error occurs.</p> </important> <important> <p>Events that occurred during the selected time range will not be available for lookup if CloudTrail logging was not enabled when the events occurred.</p> </important></p>
 
   </div>
 </div>
@@ -1277,31 +1205,26 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
           <span class='name'>:lookup_attributes</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/LookupAttribute.html" title="Aws::CloudTrail::Types::LookupAttribute (class)">Types::LookupAttribute</a>&gt;)</span>
             &mdash; <div class='inline'><p>Contains a list of lookup attributes. Currently the list can contain only one item.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:start_time</span>
           <span class='type'>(<code>Time</code>)</span>
             &mdash; <div class='inline'><p>Specifies that only events that occur after or at the specified time are returned. If the specified start time is after the specified end time, an error is returned.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:end_time</span>
           <span class='type'>(<code>Time</code>)</span>
             &mdash; <div class='inline'><p>Specifies that only events that occur before or at the specified time are returned. If the specified end time is before the specified start time, an error is returned.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:max_results</span>
           <span class='type'>(<code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The number of events to return. Possible values are 1 through 50. The default is 10.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The token to use to get the next page of results after a previous API call. This token must be passed in with the same parameters that were specified in the the original call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1311,10 +1234,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/LookupEventsResponse.html#events-instance_method" title="Aws::CloudTrail::Types::LookupEventsResponse#events (method)">#events</a> => Array&lt;<a href="Types/Event.html" title="Aws::CloudTrail::Types::Event (class)">Types::Event</a>&gt;</li>
-<li><a href="Types/LookupEventsResponse.html#next_token-instance_method" title="Aws::CloudTrail::Types::LookupEventsResponse#next_token (method)">#next_token</a> => String</li>
+<li><a href="Types/LookupEventsResponse.html#events-instance_method" title="Aws::CloudTrail::Types::LookupEventsResponse#events (method)">#events</a> =&gt; Array&lt;<a href="Types/Event.html" title="Aws::CloudTrail::Types::Event (class)">Types::Event</a>&gt;</li>
+<li><a href="Types/LookupEventsResponse.html#next_token-instance_method" title="Aws::CloudTrail::Types::LookupEventsResponse#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1328,10 +1250,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Configures an event selector for your trail. Use event selectors to specify whether you want your trail to log management and/or data events. When an event occurs in your account, CloudTrail evaluates the event selectors in all trails. For each trail, if the event matches any event selector, the trail processes and logs the event. If the event doesn't match any event selector, the trail doesn't log the event. </p>
-
-
-<p> <p>Example</p> <ol> <li> <p>You create an event selector for a trail and specify that you want write-only events.</p> </li> <li> <p>The EC2 <code>GetConsoleOutput</code> and <code>RunInstances</code> API operations occur in your account.</p> </li> <li> <p>CloudTrail evaluates whether the events match your event selectors.</p> </li> <li> <p>The <code>RunInstances</code> is a write-only event and it matches your event selector. The trail logs the event.</p> </li> <li> <p>The <code>GetConsoleOutput</code> is a read-only event but it doesn't match your event selector. The trail doesn't log the event. </p> </li> </ol> <p>The <code>PutEventSelectors</code> operation must be called from the region in which the trail was created; otherwise, an <code>InvalidHomeRegionException</code> is thrown.</p> <p>You can configure up to five event selectors for each trail. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html">Logging Data and Management Events for Trails </a> in the <i>AWS CloudTrail User Guide</i>.</p></p>
+    <p>Configures an event selector for your trail. Use event selectors to specify whether you want your trail to log management and/or data events. When an event occurs in your account, CloudTrail evaluates the event selectors in all trails. For each trail, if the event matches any event selector, the trail processes and logs the event. If the event doesn't match any event selector, the trail doesn't log the event. </p> <p>Example</p> <ol> <li> <p>You create an event selector for a trail and specify that you want write-only events.</p> </li> <li> <p>The EC2 <code>GetConsoleOutput</code> and <code>RunInstances</code> API operations occur in your account.</p> </li> <li> <p>CloudTrail evaluates whether the events match your event selectors.</p> </li> <li> <p>The <code>RunInstances</code> is a write-only event and it matches your event selector. The trail logs the event.</p> </li> <li> <p>The <code>GetConsoleOutput</code> is a read-only event but it doesn't match your event selector. The trail doesn't log the event. </p> </li> </ol> <p>The <code>PutEventSelectors</code> operation must be called from the region in which the trail was created; otherwise, an <code>InvalidHomeRegionException</code> is thrown.</p> <p>You can configure up to five event selectors for each trail. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html">Logging Data and Management Events for Trails </a> in the <i>AWS CloudTrail User Guide</i>.</p>
 
   </div>
 </div>
@@ -1371,16 +1290,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:trail_name</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p>
-
-
-<p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (<em>), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-</em>namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p></p>
+            &mdash; <div class='inline'><p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
 </div>        </li>
         <li>
           <span class='name'>:event_selectors</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/EventSelector.html" title="Aws::CloudTrail::Types::EventSelector (class)">Types::EventSelector</a>&gt;)</span>
             &mdash; <div class='inline'><p>Specifies the settings for your event selectors. You can configure up to five event selectors for a trail.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1390,10 +1305,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/PutEventSelectorsResponse.html#trail_arn-instance_method" title="Aws::CloudTrail::Types::PutEventSelectorsResponse#trail_arn (method)">#trail_arn</a> => String</li>
-<li><a href="Types/PutEventSelectorsResponse.html#event_selectors-instance_method" title="Aws::CloudTrail::Types::PutEventSelectorsResponse#event_selectors (method)">#event_selectors</a> => Array&lt;<a href="Types/EventSelector.html" title="Aws::CloudTrail::Types::EventSelector (class)">Types::EventSelector</a>&gt;</li>
+<li><a href="Types/PutEventSelectorsResponse.html#trail_arn-instance_method" title="Aws::CloudTrail::Types::PutEventSelectorsResponse#trail_arn (method)">#trail_arn</a> =&gt; String</li>
+<li><a href="Types/PutEventSelectorsResponse.html#event_selectors-instance_method" title="Aws::CloudTrail::Types::PutEventSelectorsResponse#event_selectors (method)">#event_selectors</a> =&gt; Array&lt;<a href="Types/EventSelector.html" title="Aws::CloudTrail::Types::EventSelector (class)">Types::EventSelector</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1408,7 +1322,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Removes the specified tags from a trail.</p>
-
 
   </div>
 </div>
@@ -1432,16 +1345,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:resource_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Specifies the ARN of the trail from which tags should be removed. The format of a trail ARN is:</p>
-
-
-<p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p></p>
+            &mdash; <div class='inline'><p>Specifies the ARN of the trail from which tags should be removed. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
 </div>        </li>
         <li>
           <span class='name'>:tags_list</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/Tag.html" title="Aws::CloudTrail::Types::Tag (class)">Types::Tag</a>&gt;)</span>
             &mdash; <div class='inline'><p>Specifies a list of tags to be removed.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1464,7 +1373,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   <div class='discussion'>
     <p>Starts the recording of AWS API calls and log file delivery for a trail. For a trail that is enabled in all regions, this operation must be called from the region in which the trail was created. This operation cannot be called on the shadow trails (replicated trails in other regions) of a trail that is enabled in all regions.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1481,10 +1389,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Specifies the name or the CloudTrail ARN of the trail for which CloudTrail logs AWS API calls. The format of a trail ARN is:</p>
-
-
-<p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p></p>
+            &mdash; <div class='inline'><p>Specifies the name or the CloudTrail ARN of the trail for which CloudTrail logs AWS API calls. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1507,7 +1412,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   <div class='discussion'>
     <p>Suspends the recording of AWS API calls and log file delivery for the specified trail. Under most circumstances, there is no need to use this action. You can update a trail without stopping it first. This action is the only way to stop recording. For a trail enabled in all regions, this operation must be called from the region in which the trail was created, or an <code>InvalidHomeRegionException</code> will occur. This operation cannot be called on the shadow trails (replicated trails in other regions) of a trail enabled in all regions.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -1524,10 +1428,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will stop logging AWS API calls. The format of a trail ARN is:</p>
-
-
-<p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p></p>
+            &mdash; <div class='inline'><p>Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will stop logging AWS API calls. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1549,7 +1450,6 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <div class='docstring'>
   <div class='discussion'>
     <p>Updates the settings that specify delivery of log files. Changes to a trail do not require stopping the CloudTrail service. Use this action to designate an existing bucket for log delivery. If the existing bucket has previously been a target for CloudTrail log files, an IAM policy exists for the bucket. <code>UpdateTrail</code> must be called from the region in which the trail was created; otherwise, an <code>InvalidHomeRegionException</code> is thrown.</p>
-
 
   </div>
 </div>
@@ -1590,68 +1490,52 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:name</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Specifies the name of the trail or trail ARN. If <code>Name</code> is a trail name, the string must meet the following requirements:</p>
-
-
-<p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (<em>), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-</em>namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If <code>Name</code> is a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p></p>
+            &mdash; <div class='inline'><p>Specifies the name of the trail or trail ARN. If <code>Name</code> is a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If <code>Name</code> is a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
 </div>        </li>
         <li>
           <span class='name'>:s3_bucket_name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies the name of the Amazon S3 bucket designated for publishing log files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:s3_key_prefix</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>. The maximum length is 200 characters.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:sns_topic_name</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies the name of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:include_global_service_events</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:is_multi_region_trail</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Specifies whether the trail applies only to the current region or to all regions. The default is false. If the trail exists only in the current region and this value is set to true, shadow trails (replications of the trail) will be created in the other regions. If the trail exists in all regions and this value is set to false, the trail will remain in the region where it was created, and its shadow trails in other regions will be deleted.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:enable_log_file_validation</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>Specifies whether log file validation is enabled. The default is false.</p>
-
-
-<p> <note> <p>When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.</p> </note></p>
+            &mdash; <div class='inline'><p><p>Specifies whether log file validation is enabled. The default is false.</p> <note> <p>When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.</p> </note></p>
 </div>        </li>
         <li>
           <span class='name'>:cloud_watch_logs_log_group_arn</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. Not required unless you specify CloudWatchLogsRoleArn.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:cloud_watch_logs_role_arn</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
-
 </div>        </li>
         <li>
           <span class='name'>:kms_key_id</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.</p>
-
-
-<p> <p>Examples:</p> <ul> <li> <p>alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>12345678-1234-1234-1234-123456789012</p> </li> </ul></p>
+            &mdash; <div class='inline'><p><p>Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by &quot;alias/&quot;, a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.</p> <p>Examples:</p> <ul> <li> <p>alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>12345678-1234-1234-1234-123456789012</p> </li> </ul></p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1661,20 +1545,19 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UpdateTrailResponse.html#name-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#name (method)">#name</a> => String</li>
-<li><a href="Types/UpdateTrailResponse.html#s3_bucket_name-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#s3_bucket_name (method)">#s3_bucket_name</a> => String</li>
-<li><a href="Types/UpdateTrailResponse.html#s3_key_prefix-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#s3_key_prefix (method)">#s3_key_prefix</a> => String</li>
-<li><a href="Types/UpdateTrailResponse.html#sns_topic_name-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#sns_topic_name (method)">#sns_topic_name</a> => String</li>
-<li><a href="Types/UpdateTrailResponse.html#sns_topic_arn-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#sns_topic_arn (method)">#sns_topic_arn</a> => String</li>
-<li><a href="Types/UpdateTrailResponse.html#include_global_service_events-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#include_global_service_events (method)">#include_global_service_events</a> => Boolean</li>
-<li><a href="Types/UpdateTrailResponse.html#is_multi_region_trail-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#is_multi_region_trail (method)">#is_multi_region_trail</a> => Boolean</li>
-<li><a href="Types/UpdateTrailResponse.html#trail_arn-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#trail_arn (method)">#trail_arn</a> => String</li>
-<li><a href="Types/UpdateTrailResponse.html#log_file_validation_enabled-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#log_file_validation_enabled (method)">#log_file_validation_enabled</a> => Boolean</li>
-<li><a href="Types/UpdateTrailResponse.html#cloud_watch_logs_log_group_arn-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#cloud_watch_logs_log_group_arn (method)">#cloud_watch_logs_log_group_arn</a> => String</li>
-<li><a href="Types/UpdateTrailResponse.html#cloud_watch_logs_role_arn-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#cloud_watch_logs_role_arn (method)">#cloud_watch_logs_role_arn</a> => String</li>
-<li><a href="Types/UpdateTrailResponse.html#kms_key_id-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#kms_key_id (method)">#kms_key_id</a> => String</li>
+<li><a href="Types/UpdateTrailResponse.html#name-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#name (method)">#name</a> =&gt; String</li>
+<li><a href="Types/UpdateTrailResponse.html#s3_bucket_name-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#s3_bucket_name (method)">#s3_bucket_name</a> =&gt; String</li>
+<li><a href="Types/UpdateTrailResponse.html#s3_key_prefix-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#s3_key_prefix (method)">#s3_key_prefix</a> =&gt; String</li>
+<li><a href="Types/UpdateTrailResponse.html#sns_topic_name-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#sns_topic_name (method)">#sns_topic_name</a> =&gt; String</li>
+<li><a href="Types/UpdateTrailResponse.html#sns_topic_arn-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#sns_topic_arn (method)">#sns_topic_arn</a> =&gt; String</li>
+<li><a href="Types/UpdateTrailResponse.html#include_global_service_events-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#include_global_service_events (method)">#include_global_service_events</a> =&gt; Boolean</li>
+<li><a href="Types/UpdateTrailResponse.html#is_multi_region_trail-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#is_multi_region_trail (method)">#is_multi_region_trail</a> =&gt; Boolean</li>
+<li><a href="Types/UpdateTrailResponse.html#trail_arn-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#trail_arn (method)">#trail_arn</a> =&gt; String</li>
+<li><a href="Types/UpdateTrailResponse.html#log_file_validation_enabled-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#log_file_validation_enabled (method)">#log_file_validation_enabled</a> =&gt; Boolean</li>
+<li><a href="Types/UpdateTrailResponse.html#cloud_watch_logs_log_group_arn-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#cloud_watch_logs_log_group_arn (method)">#cloud_watch_logs_log_group_arn</a> =&gt; String</li>
+<li><a href="Types/UpdateTrailResponse.html#cloud_watch_logs_role_arn-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#cloud_watch_logs_role_arn (method)">#cloud_watch_logs_role_arn</a> =&gt; String</li>
+<li><a href="Types/UpdateTrailResponse.html#kms_key_id-instance_method" title="Aws::CloudTrail::Types::UpdateTrailResponse#kms_key_id (method)">#kms_key_id</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1697,7 +1580,7 @@ state.</p>
 entering a terminal state, or until a maximum number of attempts
 are made.</p>
 
-<p>   # polls in a loop, sleeping between attempts
+<p># polls in a loop, sleeping between attempts
    client.waiter_until(waiter_name, params)</p>
 
 <h3>Configuration</h3>
@@ -1833,7 +1716,6 @@ waiters and the client method they call:</p>
 
 </tbody>
 </table>
-
 
   </div>
 </div>

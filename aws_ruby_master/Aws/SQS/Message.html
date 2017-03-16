@@ -195,10 +195,7 @@
     </span>
     <span class='note title readonly'>readonly</span>
     <div class='summary_desc'>
-      <div class='inline'><p>The message's contents (not URL-encoded).</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>The message&#39;s contents (not URL-encoded).</p>.</p></div>
     </div>
   </li>
   <li>
@@ -207,10 +204,7 @@
     </span>
     <span class='note title readonly'>readonly</span>
     <div class='summary_desc'>
-      <div class='inline'><p>An MD5 digest of the non-URL-encoded message body string.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>An MD5 digest of the non-URL-encoded message body string.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -336,7 +330,6 @@
 <div class='docstring'>
   <div class='discussion'>
     
-
   </div>
 </div>
 <div class='tags'>
@@ -348,7 +341,6 @@
         <div class='docstring'>
   <div class='discussion'>
     
-
   </div>
 </div>
 <div class='tags'>
@@ -381,7 +373,6 @@ is used to construct a new <a href="Client.html" title="Aws::SQS::Client (class)
         <div class='docstring'>
   <div class='discussion'>
     
-
   </div>
 </div>
 <div class='tags'>
@@ -419,7 +410,6 @@ is used to construct a new <a href="Client.html" title="Aws::SQS::Client (class)
   <div class='discussion'>
     <p> <code>SenderId</code>, <code>SentTimestamp</code>, <code>ApproximateReceiveCount</code>, and/or <code>ApproximateFirstReceiveTimestamp</code>. <code>SentTimestamp</code> and <code>ApproximateFirstReceiveTimestamp</code> are each returned as an integer representing the <a href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in milliseconds.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -434,7 +424,6 @@ is used to construct a new <a href="Client.html" title="Aws::SQS::Client (class)
 <div class='docstring'>
   <div class='discussion'>
     <p>The message's contents (not URL-encoded).</p>
-
 
   </div>
 </div>
@@ -451,7 +440,6 @@ is used to construct a new <a href="Client.html" title="Aws::SQS::Client (class)
   <div class='discussion'>
     <p>An MD5 digest of the non-URL-encoded message body string.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -466,7 +454,6 @@ is used to construct a new <a href="Client.html" title="Aws::SQS::Client (class)
 <div class='docstring'>
   <div class='discussion'>
     <p>An MD5 digest of the non-URL-encoded message attribute string. You can use this attribute to verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the MD5 digest. For information on MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
-
 
   </div>
 </div>
@@ -483,7 +470,6 @@ is used to construct a new <a href="Client.html" title="Aws::SQS::Client (class)
   <div class='discussion'>
     <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation">Message Attribute Items and Validation</a> in the <i>Amazon SQS Developer Guide</i>.</p>
 
-
   </div>
 </div>
 <div class='tags'>
@@ -498,7 +484,6 @@ is used to construct a new <a href="Client.html" title="Aws::SQS::Client (class)
 <div class='docstring'>
   <div class='discussion'>
     <p>A unique identifier for the message. A <code>MessageId</code>is considered unique across all AWS accounts for an extended period of time.</p>
-
 
   </div>
 </div>
@@ -528,10 +513,7 @@ is used to construct a new <a href="Client.html" title="Aws::SQS::Client (class)
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Changes the visibility timeout of a specified message in a queue to a new value. The maximum allowed timeout value is 12 hours. Thus, you can't extend the timeout of a message in an existing queue to more than a total visibility timeout of 12 hours. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">Visibility Timeout</a> in the <i>Amazon SQS Developer Guide</i>.</p>
-
-
-<p> <p>For example, you have a message and with the default visibility timeout of 5 minutes. After 3 minutes, you call <code>ChangeMessageVisiblity</code> with a timeout of 10 minutes. At that time, the timeout for the message is extended by 10 minutes beyond the time of the <code>ChangeMessageVisibility</code> action. This results in a total visibility timeout of 13 minutes. You can continue to call the <code>ChangeMessageVisibility</code> to extend the visibility timeout to a maximum of 12 hours. If you try to extend the visibility timeout beyond 12 hours, your request is rejected.</p> <p>A message is considered to be <i>in flight</i> after it's received from a queue by a consumer, but not yet deleted from the queue.</p> <p>For standard queues, there can be a maximum of 120,000 inflight messages per queue. If you reach this limit, Amazon SQS returns the <code>OverLimit</code> error message. To avoid reaching the limit, you should delete messages from the queue after they're processed. You can also increase the number of queues you use to process your messages.</p> <p>For FIFO queues, there can be a maximum of 20,000 inflight messages per queue. If you reach this limit, Amazon SQS returns no error messages.</p> <important> <p>If you attempt to set the <code>VisibilityTimeout</code> to a value greater than the maximum time left, Amazon SQS returns an error. Amazon SQS doesn't automatically recalculate and increase the timeout to the maximum remaining time.</p> <p>Unlike with a queue, when you change the visibility timeout for a specific message the timeout value is applied immediately but isn't saved in memory for that message. If you don't delete a message after it is received, the visibility timeout for the message reverts to the original timeout value (not to the value you set using the <code>ChangeMessageVisibility</code> action) the next time the message is received.</p> </important></p>
+    <p><p>Changes the visibility timeout of a specified message in a queue to a new value. The maximum allowed timeout value is 12 hours. Thus, you can&#39;t extend the timeout of a message in an existing queue to more than a total visibility timeout of 12 hours. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">Visibility Timeout</a> in the <i>Amazon SQS Developer Guide</i>.</p> <p>For example, you have a message and with the default visibility timeout of 5 minutes. After 3 minutes, you call <code>ChangeMessageVisiblity</code> with a timeout of 10 minutes. At that time, the timeout for the message is extended by 10 minutes beyond the time of the <code>ChangeMessageVisibility</code> action. This results in a total visibility timeout of 13 minutes. You can continue to call the <code>ChangeMessageVisibility</code> to extend the visibility timeout to a maximum of 12 hours. If you try to extend the visibility timeout beyond 12 hours, your request is rejected.</p> <p>A message is considered to be <i>in flight</i> after it&#39;s received from a queue by a consumer, but not yet deleted from the queue.</p> <p>For standard queues, there can be a maximum of 120,000 inflight messages per queue. If you reach this limit, Amazon SQS returns the <code>OverLimit</code> error message. To avoid reaching the limit, you should delete messages from the queue after they&#39;re processed. You can also increase the number of queues you use to process your messages.</p> <p>For FIFO queues, there can be a maximum of 20,000 inflight messages per queue. If you reach this limit, Amazon SQS returns no error messages.</p> <important> <p>If you attempt to set the <code>VisibilityTimeout</code> to a value greater than the maximum time left, Amazon SQS returns an error. Amazon SQS doesn&#39;t automatically recalculate and increase the timeout to the maximum remaining time.</p> <p>Unlike with a queue, when you change the visibility timeout for a specific message the timeout value is applied immediately but isn&#39;t saved in memory for that message. If you don&#39;t delete a message after it is received, the visibility timeout for the message reverts to the original timeout value (not to the value you set using the <code>ChangeMessageVisibility</code> action) the next time the message is received.</p> </important></p>
 
   </div>
 </div>
@@ -550,7 +532,6 @@ is used to construct a new <a href="Client.html" title="Aws::SQS::Client (class)
           <span class='name'>:visibility_timeout</span>
           <span class='type'>(<code>required</code>, <code>Integer</code>)</span>
             &mdash; <div class='inline'><p>The new value for the message's visibility timeout (in seconds). Values values: <code>0</code> to <code>43200</code>. Maximum: 12 hours.</p>
-
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -575,10 +556,7 @@ is used to construct a new <a href="Client.html" title="Aws::SQS::Client (class)
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Deletes the specified message from the specified queue. You specify the message by using the message's <i>receipt handle</i> and not the <i>MessageId</i> you receive when you send the message. Even if the message is locked by another reader due to the visibility timeout setting, it is still deleted from the queue. If you leave a message in the queue for longer than the queue's configured retention period, Amazon SQS automatically deletes the message. </p>
-
-
-<p> <note> <p> The receipt handle is associated with a specific instance of receiving the message. If you receive a message more than once, the receipt handle you get each time you receive the message is different. If you don't provide the most recently received receipt handle for the message when you use the <code>DeleteMessage</code> action, the request succeeds, but the message might not be deleted.</p> <p>For standard queues, it is possible to receive a message even after you deleting it. This might happen on rare occasions if one of the servers storing a copy of the message is unavailable when you send the request to delete the message. The copy remains on the server and might be returned to you on a subsequent receive request. You should ensure that your application is idempotent, so that receiving a message more than once does not cause issues.</p> </note></p>
+    <p><p>Deletes the specified message from the specified queue. You specify the message by using the message&#39;s <i>receipt handle</i> and not the <i>MessageId</i> you receive when you send the message. Even if the message is locked by another reader due to the visibility timeout setting, it is still deleted from the queue. If you leave a message in the queue for longer than the queue&#39;s configured retention period, Amazon SQS automatically deletes the message. </p> <note> <p> The receipt handle is associated with a specific instance of receiving the message. If you receive a message more than once, the receipt handle you get each time you receive the message is different. If you don&#39;t provide the most recently received receipt handle for the message when you use the <code>DeleteMessage</code> action, the request succeeds, but the message might not be deleted.</p> <p>For standard queues, it is possible to receive a message even after you deleting it. This might happen on rare occasions if one of the servers storing a copy of the message is unavailable when you send the request to delete the message. The copy remains on the server and might be returned to you on a subsequent receive request. You should ensure that your application is idempotent, so that receiving a message more than once does not cause issues.</p> </note></p>
 
   </div>
 </div>
@@ -612,7 +590,6 @@ is used to construct a new <a href="Client.html" title="Aws::SQS::Client (class)
 <div class='docstring'>
   <div class='discussion'>
     
-
   </div>
 </div>
 <div class='tags'>

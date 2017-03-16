@@ -129,10 +129,9 @@
 <p>You can configure a default region in the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_REGION']</code></li>
+<li><code>ENV[&#39;AWS_REGION&#39;]</code></li>
 <li><code>Aws.config[:region]</code></li>
 </ul>
-
 
 <p><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Go here for a list of supported regions.</a></p>
 
@@ -141,12 +140,11 @@
 <p>Default credentials are loaded automatically from the following locations:</p>
 
 <ul>
-<li><code>ENV['AWS_ACCESS_KEY_ID']</code> and <code>ENV['AWS_SECRET_ACCESS_KEY']</code></li>
+<li><code>ENV[&#39;AWS_ACCESS_KEY_ID&#39;]</code> and <code>ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</code></li>
 <li><code>Aws.config[:credentials]</code></li>
 <li>The shared credentials ini file at <code>~/.aws/credentials</code> (<a href="http://blogs.aws.amazon.com/security/post/Tx3D6U6WSFGOK2H/A-New-and-Standardized-Way-to-Manage-Credentials-in-the-AWS-SDKs">more information</a>)</li>
 <li>From an instance profile when running on EC2</li>
 </ul>
-
 
 <p>You can also construct a credentials object from one of the following
 classes:</p>
@@ -157,7 +155,6 @@ classes:</p>
 <li><a href="../InstanceProfileCredentials.html" title="Aws::InstanceProfileCredentials (class)">::Aws::InstanceProfileCredentials</a></li>
 <li><a href="../AssumeRoleCredentials.html" title="Aws::AssumeRoleCredentials (class)">::Aws::AssumeRoleCredentials</a></li>
 </ul>
-
 
 <p>Alternatively, you configure credentials with <code>:access_key_id</code> and
 <code>:secret_access_key</code>:</p>
@@ -253,10 +250,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#abort_multipart_upload-instance_method" title="#abort_multipart_upload (instance method)">#<strong>abort_multipart_upload</strong>(options = {})  &#x21d2; Types::AbortMultipartUploadOutput </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Aborts a multipart upload.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Aborts a multipart upload.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -288,10 +282,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#create_multipart_upload-instance_method" title="#create_multipart_upload (instance method)">#<strong>create_multipart_upload</strong>(options = {})  &#x21d2; Types::CreateMultipartUploadOutput </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Initiates a multipart upload and returns an upload ID.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Initiates a multipart upload and returns an upload ID.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -835,10 +826,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#upload_part-instance_method" title="#upload_part (instance method)">#<strong>upload_part</strong>(options = {})  &#x21d2; Types::UploadPartOutput </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Uploads a part in a multipart upload.</p>
-
-
-<p>.</p></div>
+      <div class='inline'><p><p>Uploads a part in a multipart upload.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -948,11 +936,10 @@ for credentials:</p>
 
 <ul>
 <li><code>:access_key_id</code>, <code>:secret_access_key</code>, and <code>:session_token</code> options</li>
-<li>ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']</li>
+<li>ENV[&#39;AWS_ACCESS_KEY_ID&#39;], ENV[&#39;AWS_SECRET_ACCESS_KEY&#39;]</li>
 <li><code>HOME/.aws/credentials</code> shared credentials file</li>
 <li>EC2 instance profile credentials  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</li>
 </ul>
-
 </div>        </li>
         <li>
           <span class='name'>:endpoint</span>
@@ -1044,7 +1031,7 @@ will be disabled.  See <a href="../Plugins/Logging.html" title="Aws::Plugins::Lo
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>Used when loading credentials
 from the shared credentials file at HOME/.aws/credentials.  When not
-specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
+specified, &#39;default&#39; is used.  See <a href="../Plugins/RequestSigner.html" title="Aws::Plugins::RequestSigner (class)">::Aws::Plugins::RequestSigner</a> for more details.</p>
 </div>        </li>
         <li>
           <span class='name'>:raise_response_errors</span>
@@ -1057,7 +1044,7 @@ specified, 'default' is used.  See <a href="../Plugins/RequestSigner.html" title
           <span class='name'>:region</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>The AWS region to connect to.  The region is used to construct
-the client endpoint.  Defaults to <code>ENV['AWS_REGION']</code>.
+the client endpoint.  Defaults to <code>ENV[&#39;AWS_REGION&#39;]</code>.
 Also checks <code>AMAZON_REGION</code> and <code>AWS_DEFAULT_REGION</code>.  See <a href="../Plugins/RegionalEndpoint.html" title="Aws::Plugins::RegionalEndpoint (class)">::Aws::Plugins::RegionalEndpoint</a> for more details.</p>
 </div>        </li>
         <li>
@@ -1124,7 +1111,7 @@ fake responses are generated and returned. You can specify
 the response data to return or errors to raise by calling
 <a href="../ClientStubs.html#stub_responses-instance_method" title="Aws::ClientStubs#stub_responses (method)">ClientStubs#stub_responses</a>. See <a href="../ClientStubs.html" title="Aws::ClientStubs (module)">::Aws::ClientStubs</a> for more information.</p>
 
-<p><strong> Please note </strong> When response stubbing is enabled, no HTTP
+<p>** Please note ** When response stubbing is enabled, no HTTP
 requests are made, and retries are disabled.  See <a href="../Plugins/StubResponses.html" title="Aws::Plugins::StubResponses (class)">::Aws::Plugins::StubResponses</a> for more details.</p>
 </div>        </li>
         <li>
@@ -1164,11 +1151,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Aborts a multipart upload.</p>
-
-
-<p>To verify that all parts have been removed, so you don't get charged for the part storage, you should call the List Parts operation and ensure the parts list is empty.</p>
-
+    <p>Aborts a multipart upload.</p><p>To verify that all parts have been removed, so you don't get charged for the part storage, you should call the List Parts operation and ensure the parts list is empty.</p>
 
   </div>
 </div>
@@ -1210,7 +1193,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1220,9 +1203,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/AbortMultipartUploadOutput.html#request_charged-instance_method" title="Aws::S3::Types::AbortMultipartUploadOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/AbortMultipartUploadOutput.html#request_charged-instance_method" title="Aws::S3::Types::AbortMultipartUploadOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1298,7 +1280,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1308,17 +1290,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CompleteMultipartUploadOutput.html#location-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#location (method)">#location</a> => String</li>
-<li><a href="Types/CompleteMultipartUploadOutput.html#bucket-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#bucket (method)">#bucket</a> => String</li>
-<li><a href="Types/CompleteMultipartUploadOutput.html#key-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#key (method)">#key</a> => String</li>
-<li><a href="Types/CompleteMultipartUploadOutput.html#expiration-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#expiration (method)">#expiration</a> => String</li>
-<li><a href="Types/CompleteMultipartUploadOutput.html#etag-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#etag (method)">#etag</a> => String</li>
-<li><a href="Types/CompleteMultipartUploadOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#server_side_encryption (method)">#server_side_encryption</a> => String</li>
-<li><a href="Types/CompleteMultipartUploadOutput.html#version_id-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#version_id (method)">#version_id</a> => String</li>
-<li><a href="Types/CompleteMultipartUploadOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#ssekms_key_id (method)">#ssekms_key_id</a> => String</li>
-<li><a href="Types/CompleteMultipartUploadOutput.html#request_charged-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/CompleteMultipartUploadOutput.html#location-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#location (method)">#location</a> =&gt; String</li>
+<li><a href="Types/CompleteMultipartUploadOutput.html#bucket-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#bucket (method)">#bucket</a> =&gt; String</li>
+<li><a href="Types/CompleteMultipartUploadOutput.html#key-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#key (method)">#key</a> =&gt; String</li>
+<li><a href="Types/CompleteMultipartUploadOutput.html#expiration-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#expiration (method)">#expiration</a> =&gt; String</li>
+<li><a href="Types/CompleteMultipartUploadOutput.html#etag-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/CompleteMultipartUploadOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#server_side_encryption (method)">#server_side_encryption</a> =&gt; String</li>
+<li><a href="Types/CompleteMultipartUploadOutput.html#version_id-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#version_id (method)">#version_id</a> =&gt; String</li>
+<li><a href="Types/CompleteMultipartUploadOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#ssekms_key_id (method)">#ssekms_key_id</a> =&gt; String</li>
+<li><a href="Types/CompleteMultipartUploadOutput.html#request_charged-instance_method" title="Aws::S3::Types::CompleteMultipartUploadOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1451,7 +1432,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:copy_source_if_unmodified_since</span>
           <span class='type'>(<code>Time</code>)</span>
-            &mdash; <div class='inline'><p>Copies the object if it hasn't been modified since the specified time.</p>
+            &mdash; <div class='inline'><p>Copies the object if it hasn&#39;t been modified since the specified time.</p>
 </div>        </li>
         <li>
           <span class='name'>:expires</span>
@@ -1505,7 +1486,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:storage_class</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>The type of storage to use for the object. Defaults to 'STANDARD'.</p>
+            &mdash; <div class='inline'><p>The type of storage to use for the object. Defaults to &#39;STANDARD&#39;.</p>
 </div>        </li>
         <li>
           <span class='name'>:website_redirect_location</span>
@@ -1560,7 +1541,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1570,17 +1551,16 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CopyObjectOutput.html#copy_object_result-instance_method" title="Aws::S3::Types::CopyObjectOutput#copy_object_result (method)">#copy_object_result</a> => <a href="Types/CopyObjectResult.html" title="Aws::S3::Types::CopyObjectResult (class)">Types::CopyObjectResult</a></li>
-<li><a href="Types/CopyObjectOutput.html#expiration-instance_method" title="Aws::S3::Types::CopyObjectOutput#expiration (method)">#expiration</a> => String</li>
-<li><a href="Types/CopyObjectOutput.html#copy_source_version_id-instance_method" title="Aws::S3::Types::CopyObjectOutput#copy_source_version_id (method)">#copy_source_version_id</a> => String</li>
-<li><a href="Types/CopyObjectOutput.html#version_id-instance_method" title="Aws::S3::Types::CopyObjectOutput#version_id (method)">#version_id</a> => String</li>
-<li><a href="Types/CopyObjectOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::CopyObjectOutput#server_side_encryption (method)">#server_side_encryption</a> => String</li>
-<li><a href="Types/CopyObjectOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::CopyObjectOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> => String</li>
-<li><a href="Types/CopyObjectOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::CopyObjectOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> => String</li>
-<li><a href="Types/CopyObjectOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::CopyObjectOutput#ssekms_key_id (method)">#ssekms_key_id</a> => String</li>
-<li><a href="Types/CopyObjectOutput.html#request_charged-instance_method" title="Aws::S3::Types::CopyObjectOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/CopyObjectOutput.html#copy_object_result-instance_method" title="Aws::S3::Types::CopyObjectOutput#copy_object_result (method)">#copy_object_result</a> =&gt; <a href="Types/CopyObjectResult.html" title="Aws::S3::Types::CopyObjectResult (class)">Types::CopyObjectResult</a></li>
+<li><a href="Types/CopyObjectOutput.html#expiration-instance_method" title="Aws::S3::Types::CopyObjectOutput#expiration (method)">#expiration</a> =&gt; String</li>
+<li><a href="Types/CopyObjectOutput.html#copy_source_version_id-instance_method" title="Aws::S3::Types::CopyObjectOutput#copy_source_version_id (method)">#copy_source_version_id</a> =&gt; String</li>
+<li><a href="Types/CopyObjectOutput.html#version_id-instance_method" title="Aws::S3::Types::CopyObjectOutput#version_id (method)">#version_id</a> =&gt; String</li>
+<li><a href="Types/CopyObjectOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::CopyObjectOutput#server_side_encryption (method)">#server_side_encryption</a> =&gt; String</li>
+<li><a href="Types/CopyObjectOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::CopyObjectOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> =&gt; String</li>
+<li><a href="Types/CopyObjectOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::CopyObjectOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> =&gt; String</li>
+<li><a href="Types/CopyObjectOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::CopyObjectOutput#ssekms_key_id (method)">#ssekms_key_id</a> =&gt; String</li>
+<li><a href="Types/CopyObjectOutput.html#request_charged-instance_method" title="Aws::S3::Types::CopyObjectOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1667,9 +1647,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateBucketOutput.html#location-instance_method" title="Aws::S3::Types::CreateBucketOutput#location (method)">#location</a> => String</li>
+<li><a href="Types/CreateBucketOutput.html#location-instance_method" title="Aws::S3::Types::CreateBucketOutput#location (method)">#location</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1683,11 +1662,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Initiates a multipart upload and returns an upload ID.</p>
-
-
-<p><b>Note:</b> After you initiate multipart upload and upload one or more parts, you must either complete or abort multipart upload in order to stop getting charged for storage of the uploaded parts. Only after you either complete or abort multipart upload, Amazon S3 frees up the parts storage and stops charging you for the parts storage.</p>
-
+    <p>Initiates a multipart upload and returns an upload ID.</p><p><b>Note:</b> After you initiate multipart upload and upload one or more parts, you must either complete or abort multipart upload in order to stop getting charged for storage of the uploaded parts. Only after you either complete or abort multipart upload, Amazon S3 frees up the parts storage and stops charging you for the parts storage.</p>
 
   </div>
 </div>
@@ -1814,7 +1789,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:storage_class</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>The type of storage to use for the object. Defaults to 'STANDARD'.</p>
+            &mdash; <div class='inline'><p>The type of storage to use for the object. Defaults to &#39;STANDARD&#39;.</p>
 </div>        </li>
         <li>
           <span class='name'>:website_redirect_location</span>
@@ -1849,7 +1824,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1859,18 +1834,17 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/CreateMultipartUploadOutput.html#abort_date-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#abort_date (method)">#abort_date</a> => Time</li>
-<li><a href="Types/CreateMultipartUploadOutput.html#abort_rule_id-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#abort_rule_id (method)">#abort_rule_id</a> => String</li>
-<li><a href="Types/CreateMultipartUploadOutput.html#bucket-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#bucket (method)">#bucket</a> => String</li>
-<li><a href="Types/CreateMultipartUploadOutput.html#key-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#key (method)">#key</a> => String</li>
-<li><a href="Types/CreateMultipartUploadOutput.html#upload_id-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#upload_id (method)">#upload_id</a> => String</li>
-<li><a href="Types/CreateMultipartUploadOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#server_side_encryption (method)">#server_side_encryption</a> => String</li>
-<li><a href="Types/CreateMultipartUploadOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> => String</li>
-<li><a href="Types/CreateMultipartUploadOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> => String</li>
-<li><a href="Types/CreateMultipartUploadOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#ssekms_key_id (method)">#ssekms_key_id</a> => String</li>
-<li><a href="Types/CreateMultipartUploadOutput.html#request_charged-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/CreateMultipartUploadOutput.html#abort_date-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#abort_date (method)">#abort_date</a> =&gt; Time</li>
+<li><a href="Types/CreateMultipartUploadOutput.html#abort_rule_id-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#abort_rule_id (method)">#abort_rule_id</a> =&gt; String</li>
+<li><a href="Types/CreateMultipartUploadOutput.html#bucket-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#bucket (method)">#bucket</a> =&gt; String</li>
+<li><a href="Types/CreateMultipartUploadOutput.html#key-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#key (method)">#key</a> =&gt; String</li>
+<li><a href="Types/CreateMultipartUploadOutput.html#upload_id-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#upload_id (method)">#upload_id</a> =&gt; String</li>
+<li><a href="Types/CreateMultipartUploadOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#server_side_encryption (method)">#server_side_encryption</a> =&gt; String</li>
+<li><a href="Types/CreateMultipartUploadOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> =&gt; String</li>
+<li><a href="Types/CreateMultipartUploadOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> =&gt; String</li>
+<li><a href="Types/CreateMultipartUploadOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#ssekms_key_id (method)">#ssekms_key_id</a> =&gt; String</li>
+<li><a href="Types/CreateMultipartUploadOutput.html#request_charged-instance_method" title="Aws::S3::Types::CreateMultipartUploadOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -1952,7 +1926,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1996,7 +1970,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2047,7 +2021,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2091,7 +2065,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2142,7 +2116,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2186,7 +2160,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2230,7 +2204,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2274,7 +2248,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2318,7 +2292,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2339,7 +2313,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object. If there isn't a null version, Amazon S3 does not remove any objects.</p>
+    <p>Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object. If there isn&#39;t a null version, Amazon S3 does not remove any objects.</p>
 
   </div>
 </div>
@@ -2375,7 +2349,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:mfa</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.</p>
+            &mdash; <div class='inline'><p>The concatenation of the authentication device&#39;s serial number, a space, and the value that is displayed on your authentication device.</p>
 </div>        </li>
         <li>
           <span class='name'>:version_id</span>
@@ -2390,7 +2364,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2400,11 +2374,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DeleteObjectOutput.html#delete_marker-instance_method" title="Aws::S3::Types::DeleteObjectOutput#delete_marker (method)">#delete_marker</a> => Boolean</li>
-<li><a href="Types/DeleteObjectOutput.html#version_id-instance_method" title="Aws::S3::Types::DeleteObjectOutput#version_id (method)">#version_id</a> => String</li>
-<li><a href="Types/DeleteObjectOutput.html#request_charged-instance_method" title="Aws::S3::Types::DeleteObjectOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/DeleteObjectOutput.html#delete_marker-instance_method" title="Aws::S3::Types::DeleteObjectOutput#delete_marker (method)">#delete_marker</a> =&gt; Boolean</li>
+<li><a href="Types/DeleteObjectOutput.html#version_id-instance_method" title="Aws::S3::Types::DeleteObjectOutput#version_id (method)">#version_id</a> =&gt; String</li>
+<li><a href="Types/DeleteObjectOutput.html#request_charged-instance_method" title="Aws::S3::Types::DeleteObjectOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2455,7 +2428,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2465,9 +2438,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DeleteObjectTaggingOutput.html#version_id-instance_method" title="Aws::S3::Types::DeleteObjectTaggingOutput#version_id (method)">#version_id</a> => String</li>
+<li><a href="Types/DeleteObjectTaggingOutput.html#version_id-instance_method" title="Aws::S3::Types::DeleteObjectTaggingOutput#version_id (method)">#version_id</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2532,7 +2504,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:mfa</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.</p>
+            &mdash; <div class='inline'><p>The concatenation of the authentication device&#39;s serial number, a space, and the value that is displayed on your authentication device.</p>
 </div>        </li>
         <li>
           <span class='name'>:request_payer</span>
@@ -2542,7 +2514,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2552,11 +2524,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/DeleteObjectsOutput.html#deleted-instance_method" title="Aws::S3::Types::DeleteObjectsOutput#deleted (method)">#deleted</a> => Array&lt;<a href="Types/DeletedObject.html" title="Aws::S3::Types::DeletedObject (class)">Types::DeletedObject</a>&gt;</li>
-<li><a href="Types/DeleteObjectsOutput.html#request_charged-instance_method" title="Aws::S3::Types::DeleteObjectsOutput#request_charged (method)">#request_charged</a> => String</li>
-<li><a href="Types/DeleteObjectsOutput.html#errors-instance_method" title="Aws::S3::Types::DeleteObjectsOutput#errors (method)">#errors</a> => Array&lt;<a href="Types/Error.html" title="Aws::S3::Types::Error (class)">Types::Error</a>&gt;</li>
+<li><a href="Types/DeleteObjectsOutput.html#deleted-instance_method" title="Aws::S3::Types::DeleteObjectsOutput#deleted (method)">#deleted</a> =&gt; Array&lt;<a href="Types/DeletedObject.html" title="Aws::S3::Types::DeletedObject (class)">Types::DeletedObject</a>&gt;</li>
+<li><a href="Types/DeleteObjectsOutput.html#request_charged-instance_method" title="Aws::S3::Types::DeleteObjectsOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
+<li><a href="Types/DeleteObjectsOutput.html#errors-instance_method" title="Aws::S3::Types::DeleteObjectsOutput#errors (method)">#errors</a> =&gt; Array&lt;<a href="Types/Error.html" title="Aws::S3::Types::Error (class)">Types::Error</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2597,7 +2568,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2607,9 +2578,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketAccelerateConfigurationOutput.html#status-instance_method" title="Aws::S3::Types::GetBucketAccelerateConfigurationOutput#status (method)">#status</a> => String</li>
+<li><a href="Types/GetBucketAccelerateConfigurationOutput.html#status-instance_method" title="Aws::S3::Types::GetBucketAccelerateConfigurationOutput#status (method)">#status</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2657,7 +2627,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2667,10 +2637,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketAclOutput.html#owner-instance_method" title="Aws::S3::Types::GetBucketAclOutput#owner (method)">#owner</a> => <a href="Types/Owner.html" title="Aws::S3::Types::Owner (class)">Types::Owner</a></li>
-<li><a href="Types/GetBucketAclOutput.html#grants-instance_method" title="Aws::S3::Types::GetBucketAclOutput#grants (method)">#grants</a> => Array&lt;<a href="Types/Grant.html" title="Aws::S3::Types::Grant (class)">Types::Grant</a>&gt;</li>
+<li><a href="Types/GetBucketAclOutput.html#owner-instance_method" title="Aws::S3::Types::GetBucketAclOutput#owner (method)">#owner</a> =&gt; <a href="Types/Owner.html" title="Aws::S3::Types::Owner (class)">Types::Owner</a></li>
+<li><a href="Types/GetBucketAclOutput.html#grants-instance_method" title="Aws::S3::Types::GetBucketAclOutput#grants (method)">#grants</a> =&gt; Array&lt;<a href="Types/Grant.html" title="Aws::S3::Types::Grant (class)">Types::Grant</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2729,7 +2698,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2739,9 +2708,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketAnalyticsConfigurationOutput.html#analytics_configuration-instance_method" title="Aws::S3::Types::GetBucketAnalyticsConfigurationOutput#analytics_configuration (method)">#analytics_configuration</a> => <a href="Types/AnalyticsConfiguration.html" title="Aws::S3::Types::AnalyticsConfiguration (class)">Types::AnalyticsConfiguration</a></li>
+<li><a href="Types/GetBucketAnalyticsConfigurationOutput.html#analytics_configuration-instance_method" title="Aws::S3::Types::GetBucketAnalyticsConfigurationOutput#analytics_configuration (method)">#analytics_configuration</a> =&gt; <a href="Types/AnalyticsConfiguration.html" title="Aws::S3::Types::AnalyticsConfiguration (class)">Types::AnalyticsConfiguration</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2790,7 +2758,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2800,9 +2768,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketCorsOutput.html#cors_rules-instance_method" title="Aws::S3::Types::GetBucketCorsOutput#cors_rules (method)">#cors_rules</a> => Array&lt;<a href="Types/CORSRule.html" title="Aws::S3::Types::CORSRule (class)">Types::CORSRule</a>&gt;</li>
+<li><a href="Types/GetBucketCorsOutput.html#cors_rules-instance_method" title="Aws::S3::Types::GetBucketCorsOutput#cors_rules (method)">#cors_rules</a> =&gt; Array&lt;<a href="Types/CORSRule.html" title="Aws::S3::Types::CORSRule (class)">Types::CORSRule</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2859,7 +2826,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2869,9 +2836,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketInventoryConfigurationOutput.html#inventory_configuration-instance_method" title="Aws::S3::Types::GetBucketInventoryConfigurationOutput#inventory_configuration (method)">#inventory_configuration</a> => <a href="Types/InventoryConfiguration.html" title="Aws::S3::Types::InventoryConfiguration (class)">Types::InventoryConfiguration</a></li>
+<li><a href="Types/GetBucketInventoryConfigurationOutput.html#inventory_configuration-instance_method" title="Aws::S3::Types::GetBucketInventoryConfigurationOutput#inventory_configuration (method)">#inventory_configuration</a> =&gt; <a href="Types/InventoryConfiguration.html" title="Aws::S3::Types::InventoryConfiguration (class)">Types::InventoryConfiguration</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2924,7 +2890,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -2934,9 +2900,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketLifecycleOutput.html#rules-instance_method" title="Aws::S3::Types::GetBucketLifecycleOutput#rules (method)">#rules</a> => Array&lt;<a href="Types/Rule.html" title="Aws::S3::Types::Rule (class)">Types::Rule</a>&gt;</li>
+<li><a href="Types/GetBucketLifecycleOutput.html#rules-instance_method" title="Aws::S3::Types::GetBucketLifecycleOutput#rules (method)">#rules</a> =&gt; Array&lt;<a href="Types/Rule.html" title="Aws::S3::Types::Rule (class)">Types::Rule</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -2998,7 +2963,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3008,9 +2973,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketLifecycleConfigurationOutput.html#rules-instance_method" title="Aws::S3::Types::GetBucketLifecycleConfigurationOutput#rules (method)">#rules</a> => Array&lt;<a href="Types/LifecycleRule.html" title="Aws::S3::Types::LifecycleRule (class)">Types::LifecycleRule</a>&gt;</li>
+<li><a href="Types/GetBucketLifecycleConfigurationOutput.html#rules-instance_method" title="Aws::S3::Types::GetBucketLifecycleConfigurationOutput#rules (method)">#rules</a> =&gt; Array&lt;<a href="Types/LifecycleRule.html" title="Aws::S3::Types::LifecycleRule (class)">Types::LifecycleRule</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3050,7 +3014,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3060,9 +3024,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketLocationOutput.html#location_constraint-instance_method" title="Aws::S3::Types::GetBucketLocationOutput#location_constraint (method)">#location_constraint</a> => String</li>
+<li><a href="Types/GetBucketLocationOutput.html#location_constraint-instance_method" title="Aws::S3::Types::GetBucketLocationOutput#location_constraint (method)">#location_constraint</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3110,7 +3073,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3120,9 +3083,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketLoggingOutput.html#logging_enabled-instance_method" title="Aws::S3::Types::GetBucketLoggingOutput#logging_enabled (method)">#logging_enabled</a> => <a href="Types/LoggingEnabled.html" title="Aws::S3::Types::LoggingEnabled (class)">Types::LoggingEnabled</a></li>
+<li><a href="Types/GetBucketLoggingOutput.html#logging_enabled-instance_method" title="Aws::S3::Types::GetBucketLoggingOutput#logging_enabled (method)">#logging_enabled</a> =&gt; <a href="Types/LoggingEnabled.html" title="Aws::S3::Types::LoggingEnabled (class)">Types::LoggingEnabled</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3176,7 +3138,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3186,9 +3148,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketMetricsConfigurationOutput.html#metrics_configuration-instance_method" title="Aws::S3::Types::GetBucketMetricsConfigurationOutput#metrics_configuration (method)">#metrics_configuration</a> => <a href="Types/MetricsConfiguration.html" title="Aws::S3::Types::MetricsConfiguration (class)">Types::MetricsConfiguration</a></li>
+<li><a href="Types/GetBucketMetricsConfigurationOutput.html#metrics_configuration-instance_method" title="Aws::S3::Types::GetBucketMetricsConfigurationOutput#metrics_configuration (method)">#metrics_configuration</a> =&gt; <a href="Types/MetricsConfiguration.html" title="Aws::S3::Types::MetricsConfiguration (class)">Types::MetricsConfiguration</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3244,7 +3205,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3254,11 +3215,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/NotificationConfigurationDeprecated.html#topic_configuration-instance_method" title="Aws::S3::Types::NotificationConfigurationDeprecated#topic_configuration (method)">#topic_configuration</a> => <a href="Types/TopicConfigurationDeprecated.html" title="Aws::S3::Types::TopicConfigurationDeprecated (class)">Types::TopicConfigurationDeprecated</a></li>
-<li><a href="Types/NotificationConfigurationDeprecated.html#queue_configuration-instance_method" title="Aws::S3::Types::NotificationConfigurationDeprecated#queue_configuration (method)">#queue_configuration</a> => <a href="Types/QueueConfigurationDeprecated.html" title="Aws::S3::Types::QueueConfigurationDeprecated (class)">Types::QueueConfigurationDeprecated</a></li>
-<li><a href="Types/NotificationConfigurationDeprecated.html#cloud_function_configuration-instance_method" title="Aws::S3::Types::NotificationConfigurationDeprecated#cloud_function_configuration (method)">#cloud_function_configuration</a> => <a href="Types/CloudFunctionConfiguration.html" title="Aws::S3::Types::CloudFunctionConfiguration (class)">Types::CloudFunctionConfiguration</a></li>
+<li><a href="Types/NotificationConfigurationDeprecated.html#topic_configuration-instance_method" title="Aws::S3::Types::NotificationConfigurationDeprecated#topic_configuration (method)">#topic_configuration</a> =&gt; <a href="Types/TopicConfigurationDeprecated.html" title="Aws::S3::Types::TopicConfigurationDeprecated (class)">Types::TopicConfigurationDeprecated</a></li>
+<li><a href="Types/NotificationConfigurationDeprecated.html#queue_configuration-instance_method" title="Aws::S3::Types::NotificationConfigurationDeprecated#queue_configuration (method)">#queue_configuration</a> =&gt; <a href="Types/QueueConfigurationDeprecated.html" title="Aws::S3::Types::QueueConfigurationDeprecated (class)">Types::QueueConfigurationDeprecated</a></li>
+<li><a href="Types/NotificationConfigurationDeprecated.html#cloud_function_configuration-instance_method" title="Aws::S3::Types::NotificationConfigurationDeprecated#cloud_function_configuration (method)">#cloud_function_configuration</a> =&gt; <a href="Types/CloudFunctionConfiguration.html" title="Aws::S3::Types::CloudFunctionConfiguration (class)">Types::CloudFunctionConfiguration</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3322,7 +3282,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3332,11 +3292,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/NotificationConfiguration.html#topic_configurations-instance_method" title="Aws::S3::Types::NotificationConfiguration#topic_configurations (method)">#topic_configurations</a> => Array&lt;<a href="Types/TopicConfiguration.html" title="Aws::S3::Types::TopicConfiguration (class)">Types::TopicConfiguration</a>&gt;</li>
-<li><a href="Types/NotificationConfiguration.html#queue_configurations-instance_method" title="Aws::S3::Types::NotificationConfiguration#queue_configurations (method)">#queue_configurations</a> => Array&lt;<a href="Types/QueueConfiguration.html" title="Aws::S3::Types::QueueConfiguration (class)">Types::QueueConfiguration</a>&gt;</li>
-<li><a href="Types/NotificationConfiguration.html#lambda_function_configurations-instance_method" title="Aws::S3::Types::NotificationConfiguration#lambda_function_configurations (method)">#lambda_function_configurations</a> => Array&lt;<a href="Types/LambdaFunctionConfiguration.html" title="Aws::S3::Types::LambdaFunctionConfiguration (class)">Types::LambdaFunctionConfiguration</a>&gt;</li>
+<li><a href="Types/NotificationConfiguration.html#topic_configurations-instance_method" title="Aws::S3::Types::NotificationConfiguration#topic_configurations (method)">#topic_configurations</a> =&gt; Array&lt;<a href="Types/TopicConfiguration.html" title="Aws::S3::Types::TopicConfiguration (class)">Types::TopicConfiguration</a>&gt;</li>
+<li><a href="Types/NotificationConfiguration.html#queue_configurations-instance_method" title="Aws::S3::Types::NotificationConfiguration#queue_configurations (method)">#queue_configurations</a> =&gt; Array&lt;<a href="Types/QueueConfiguration.html" title="Aws::S3::Types::QueueConfiguration (class)">Types::QueueConfiguration</a>&gt;</li>
+<li><a href="Types/NotificationConfiguration.html#lambda_function_configurations-instance_method" title="Aws::S3::Types::NotificationConfiguration#lambda_function_configurations (method)">#lambda_function_configurations</a> =&gt; Array&lt;<a href="Types/LambdaFunctionConfiguration.html" title="Aws::S3::Types::LambdaFunctionConfiguration (class)">Types::LambdaFunctionConfiguration</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3376,7 +3335,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3386,9 +3345,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketPolicyOutput.html#policy-instance_method" title="Aws::S3::Types::GetBucketPolicyOutput#policy (method)">#policy</a> => String</li>
+<li><a href="Types/GetBucketPolicyOutput.html#policy-instance_method" title="Aws::S3::Types::GetBucketPolicyOutput#policy (method)">#policy</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3434,7 +3392,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3444,9 +3402,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketReplicationOutput.html#replication_configuration-instance_method" title="Aws::S3::Types::GetBucketReplicationOutput#replication_configuration (method)">#replication_configuration</a> => <a href="Types/ReplicationConfiguration.html" title="Aws::S3::Types::ReplicationConfiguration (class)">Types::ReplicationConfiguration</a></li>
+<li><a href="Types/GetBucketReplicationOutput.html#replication_configuration-instance_method" title="Aws::S3::Types::GetBucketReplicationOutput#replication_configuration (method)">#replication_configuration</a> =&gt; <a href="Types/ReplicationConfiguration.html" title="Aws::S3::Types::ReplicationConfiguration (class)">Types::ReplicationConfiguration</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3486,7 +3443,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3496,9 +3453,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketRequestPaymentOutput.html#payer-instance_method" title="Aws::S3::Types::GetBucketRequestPaymentOutput#payer (method)">#payer</a> => String</li>
+<li><a href="Types/GetBucketRequestPaymentOutput.html#payer-instance_method" title="Aws::S3::Types::GetBucketRequestPaymentOutput#payer (method)">#payer</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3540,7 +3496,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3550,9 +3506,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketTaggingOutput.html#tag_set-instance_method" title="Aws::S3::Types::GetBucketTaggingOutput#tag_set (method)">#tag_set</a> => Array&lt;<a href="Types/Tag.html" title="Aws::S3::Types::Tag (class)">Types::Tag</a>&gt;</li>
+<li><a href="Types/GetBucketTaggingOutput.html#tag_set-instance_method" title="Aws::S3::Types::GetBucketTaggingOutput#tag_set (method)">#tag_set</a> =&gt; Array&lt;<a href="Types/Tag.html" title="Aws::S3::Types::Tag (class)">Types::Tag</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3593,7 +3548,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3603,10 +3558,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketVersioningOutput.html#status-instance_method" title="Aws::S3::Types::GetBucketVersioningOutput#status (method)">#status</a> => String</li>
-<li><a href="Types/GetBucketVersioningOutput.html#mfa_delete-instance_method" title="Aws::S3::Types::GetBucketVersioningOutput#mfa_delete (method)">#mfa_delete</a> => String</li>
+<li><a href="Types/GetBucketVersioningOutput.html#status-instance_method" title="Aws::S3::Types::GetBucketVersioningOutput#status (method)">#status</a> =&gt; String</li>
+<li><a href="Types/GetBucketVersioningOutput.html#mfa_delete-instance_method" title="Aws::S3::Types::GetBucketVersioningOutput#mfa_delete (method)">#mfa_delete</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3657,7 +3611,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3667,12 +3621,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetBucketWebsiteOutput.html#redirect_all_requests_to-instance_method" title="Aws::S3::Types::GetBucketWebsiteOutput#redirect_all_requests_to (method)">#redirect_all_requests_to</a> => <a href="Types/RedirectAllRequestsTo.html" title="Aws::S3::Types::RedirectAllRequestsTo (class)">Types::RedirectAllRequestsTo</a></li>
-<li><a href="Types/GetBucketWebsiteOutput.html#index_document-instance_method" title="Aws::S3::Types::GetBucketWebsiteOutput#index_document (method)">#index_document</a> => <a href="Types/IndexDocument.html" title="Aws::S3::Types::IndexDocument (class)">Types::IndexDocument</a></li>
-<li><a href="Types/GetBucketWebsiteOutput.html#error_document-instance_method" title="Aws::S3::Types::GetBucketWebsiteOutput#error_document (method)">#error_document</a> => <a href="Types/ErrorDocument.html" title="Aws::S3::Types::ErrorDocument (class)">Types::ErrorDocument</a></li>
-<li><a href="Types/GetBucketWebsiteOutput.html#routing_rules-instance_method" title="Aws::S3::Types::GetBucketWebsiteOutput#routing_rules (method)">#routing_rules</a> => Array&lt;<a href="Types/RoutingRule.html" title="Aws::S3::Types::RoutingRule (class)">Types::RoutingRule</a>&gt;</li>
+<li><a href="Types/GetBucketWebsiteOutput.html#redirect_all_requests_to-instance_method" title="Aws::S3::Types::GetBucketWebsiteOutput#redirect_all_requests_to (method)">#redirect_all_requests_to</a> =&gt; <a href="Types/RedirectAllRequestsTo.html" title="Aws::S3::Types::RedirectAllRequestsTo (class)">Types::RedirectAllRequestsTo</a></li>
+<li><a href="Types/GetBucketWebsiteOutput.html#index_document-instance_method" title="Aws::S3::Types::GetBucketWebsiteOutput#index_document (method)">#index_document</a> =&gt; <a href="Types/IndexDocument.html" title="Aws::S3::Types::IndexDocument (class)">Types::IndexDocument</a></li>
+<li><a href="Types/GetBucketWebsiteOutput.html#error_document-instance_method" title="Aws::S3::Types::GetBucketWebsiteOutput#error_document (method)">#error_document</a> =&gt; <a href="Types/ErrorDocument.html" title="Aws::S3::Types::ErrorDocument (class)">Types::ErrorDocument</a></li>
+<li><a href="Types/GetBucketWebsiteOutput.html#routing_rules-instance_method" title="Aws::S3::Types::GetBucketWebsiteOutput#routing_rules (method)">#routing_rules</a> =&gt; Array&lt;<a href="Types/RoutingRule.html" title="Aws::S3::Types::RoutingRule (class)">Types::RoutingRule</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3816,7 +3769,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:range</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Downloads the specified range bytes of an object. For more information about the HTTP Range header, go to <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.">http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.</a></p>
+            &mdash; <div class='inline'><p>Downloads the specified range bytes of an object. For more information about the HTTP Range header, go to <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35">http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35</a>.</p>
 </div>        </li>
         <li>
           <span class='name'>:response_cache_control</span>
@@ -3876,12 +3829,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:part_number</span>
           <span class='type'>(<code>Integer</code>)</span>
-            &mdash; <div class='inline'><p>Part number of the object being read. This is a positive integer between 1 and 10,000. Effectively performs a 'ranged' GET request for the part specified. Useful for downloading just a part of an object.</p>
+            &mdash; <div class='inline'><p>Part number of the object being read. This is a positive integer between 1 and 10,000. Effectively performs a &#39;ranged&#39; GET request for the part specified. Useful for downloading just a part of an object.</p>
 </div>        </li>
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3891,37 +3844,36 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetObjectOutput.html#body-instance_method" title="Aws::S3::Types::GetObjectOutput#body (method)">#body</a> => IO</li>
-<li><a href="Types/GetObjectOutput.html#delete_marker-instance_method" title="Aws::S3::Types::GetObjectOutput#delete_marker (method)">#delete_marker</a> => Boolean</li>
-<li><a href="Types/GetObjectOutput.html#accept_ranges-instance_method" title="Aws::S3::Types::GetObjectOutput#accept_ranges (method)">#accept_ranges</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#expiration-instance_method" title="Aws::S3::Types::GetObjectOutput#expiration (method)">#expiration</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#restore-instance_method" title="Aws::S3::Types::GetObjectOutput#restore (method)">#restore</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#last_modified-instance_method" title="Aws::S3::Types::GetObjectOutput#last_modified (method)">#last_modified</a> => Time</li>
-<li><a href="Types/GetObjectOutput.html#content_length-instance_method" title="Aws::S3::Types::GetObjectOutput#content_length (method)">#content_length</a> => Integer</li>
-<li><a href="Types/GetObjectOutput.html#etag-instance_method" title="Aws::S3::Types::GetObjectOutput#etag (method)">#etag</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#missing_meta-instance_method" title="Aws::S3::Types::GetObjectOutput#missing_meta (method)">#missing_meta</a> => Integer</li>
-<li><a href="Types/GetObjectOutput.html#version_id-instance_method" title="Aws::S3::Types::GetObjectOutput#version_id (method)">#version_id</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#cache_control-instance_method" title="Aws::S3::Types::GetObjectOutput#cache_control (method)">#cache_control</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#content_disposition-instance_method" title="Aws::S3::Types::GetObjectOutput#content_disposition (method)">#content_disposition</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#content_encoding-instance_method" title="Aws::S3::Types::GetObjectOutput#content_encoding (method)">#content_encoding</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#content_language-instance_method" title="Aws::S3::Types::GetObjectOutput#content_language (method)">#content_language</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#content_range-instance_method" title="Aws::S3::Types::GetObjectOutput#content_range (method)">#content_range</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#content_type-instance_method" title="Aws::S3::Types::GetObjectOutput#content_type (method)">#content_type</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#expires-instance_method" title="Aws::S3::Types::GetObjectOutput#expires (method)">#expires</a> => Time</li>
-<li><a href="Types/GetObjectOutput.html#expires_string-instance_method" title="Aws::S3::Types::GetObjectOutput#expires_string (method)">#expires_string</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#website_redirect_location-instance_method" title="Aws::S3::Types::GetObjectOutput#website_redirect_location (method)">#website_redirect_location</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::GetObjectOutput#server_side_encryption (method)">#server_side_encryption</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#metadata-instance_method" title="Aws::S3::Types::GetObjectOutput#metadata (method)">#metadata</a> => Hash&lt;String,String&gt;</li>
-<li><a href="Types/GetObjectOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::GetObjectOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::GetObjectOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::GetObjectOutput#ssekms_key_id (method)">#ssekms_key_id</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#storage_class-instance_method" title="Aws::S3::Types::GetObjectOutput#storage_class (method)">#storage_class</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#request_charged-instance_method" title="Aws::S3::Types::GetObjectOutput#request_charged (method)">#request_charged</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#replication_status-instance_method" title="Aws::S3::Types::GetObjectOutput#replication_status (method)">#replication_status</a> => String</li>
-<li><a href="Types/GetObjectOutput.html#parts_count-instance_method" title="Aws::S3::Types::GetObjectOutput#parts_count (method)">#parts_count</a> => Integer</li>
-<li><a href="Types/GetObjectOutput.html#tag_count-instance_method" title="Aws::S3::Types::GetObjectOutput#tag_count (method)">#tag_count</a> => Integer</li>
+<li><a href="Types/GetObjectOutput.html#body-instance_method" title="Aws::S3::Types::GetObjectOutput#body (method)">#body</a> =&gt; IO</li>
+<li><a href="Types/GetObjectOutput.html#delete_marker-instance_method" title="Aws::S3::Types::GetObjectOutput#delete_marker (method)">#delete_marker</a> =&gt; Boolean</li>
+<li><a href="Types/GetObjectOutput.html#accept_ranges-instance_method" title="Aws::S3::Types::GetObjectOutput#accept_ranges (method)">#accept_ranges</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#expiration-instance_method" title="Aws::S3::Types::GetObjectOutput#expiration (method)">#expiration</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#restore-instance_method" title="Aws::S3::Types::GetObjectOutput#restore (method)">#restore</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#last_modified-instance_method" title="Aws::S3::Types::GetObjectOutput#last_modified (method)">#last_modified</a> =&gt; Time</li>
+<li><a href="Types/GetObjectOutput.html#content_length-instance_method" title="Aws::S3::Types::GetObjectOutput#content_length (method)">#content_length</a> =&gt; Integer</li>
+<li><a href="Types/GetObjectOutput.html#etag-instance_method" title="Aws::S3::Types::GetObjectOutput#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#missing_meta-instance_method" title="Aws::S3::Types::GetObjectOutput#missing_meta (method)">#missing_meta</a> =&gt; Integer</li>
+<li><a href="Types/GetObjectOutput.html#version_id-instance_method" title="Aws::S3::Types::GetObjectOutput#version_id (method)">#version_id</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#cache_control-instance_method" title="Aws::S3::Types::GetObjectOutput#cache_control (method)">#cache_control</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#content_disposition-instance_method" title="Aws::S3::Types::GetObjectOutput#content_disposition (method)">#content_disposition</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#content_encoding-instance_method" title="Aws::S3::Types::GetObjectOutput#content_encoding (method)">#content_encoding</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#content_language-instance_method" title="Aws::S3::Types::GetObjectOutput#content_language (method)">#content_language</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#content_range-instance_method" title="Aws::S3::Types::GetObjectOutput#content_range (method)">#content_range</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#content_type-instance_method" title="Aws::S3::Types::GetObjectOutput#content_type (method)">#content_type</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#expires-instance_method" title="Aws::S3::Types::GetObjectOutput#expires (method)">#expires</a> =&gt; Time</li>
+<li><a href="Types/GetObjectOutput.html#expires_string-instance_method" title="Aws::S3::Types::GetObjectOutput#expires_string (method)">#expires_string</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#website_redirect_location-instance_method" title="Aws::S3::Types::GetObjectOutput#website_redirect_location (method)">#website_redirect_location</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::GetObjectOutput#server_side_encryption (method)">#server_side_encryption</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#metadata-instance_method" title="Aws::S3::Types::GetObjectOutput#metadata (method)">#metadata</a> =&gt; Hash&lt;String,String&gt;</li>
+<li><a href="Types/GetObjectOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::GetObjectOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::GetObjectOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::GetObjectOutput#ssekms_key_id (method)">#ssekms_key_id</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#storage_class-instance_method" title="Aws::S3::Types::GetObjectOutput#storage_class (method)">#storage_class</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#request_charged-instance_method" title="Aws::S3::Types::GetObjectOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#replication_status-instance_method" title="Aws::S3::Types::GetObjectOutput#replication_status (method)">#replication_status</a> =&gt; String</li>
+<li><a href="Types/GetObjectOutput.html#parts_count-instance_method" title="Aws::S3::Types::GetObjectOutput#parts_count (method)">#parts_count</a> =&gt; Integer</li>
+<li><a href="Types/GetObjectOutput.html#tag_count-instance_method" title="Aws::S3::Types::GetObjectOutput#tag_count (method)">#tag_count</a> =&gt; Integer</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -3987,7 +3939,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -3997,11 +3949,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetObjectAclOutput.html#owner-instance_method" title="Aws::S3::Types::GetObjectAclOutput#owner (method)">#owner</a> => <a href="Types/Owner.html" title="Aws::S3::Types::Owner (class)">Types::Owner</a></li>
-<li><a href="Types/GetObjectAclOutput.html#grants-instance_method" title="Aws::S3::Types::GetObjectAclOutput#grants (method)">#grants</a> => Array&lt;<a href="Types/Grant.html" title="Aws::S3::Types::Grant (class)">Types::Grant</a>&gt;</li>
-<li><a href="Types/GetObjectAclOutput.html#request_charged-instance_method" title="Aws::S3::Types::GetObjectAclOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/GetObjectAclOutput.html#owner-instance_method" title="Aws::S3::Types::GetObjectAclOutput#owner (method)">#owner</a> =&gt; <a href="Types/Owner.html" title="Aws::S3::Types::Owner (class)">Types::Owner</a></li>
+<li><a href="Types/GetObjectAclOutput.html#grants-instance_method" title="Aws::S3::Types::GetObjectAclOutput#grants (method)">#grants</a> =&gt; Array&lt;<a href="Types/Grant.html" title="Aws::S3::Types::Grant (class)">Types::Grant</a>&gt;</li>
+<li><a href="Types/GetObjectAclOutput.html#request_charged-instance_method" title="Aws::S3::Types::GetObjectAclOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4054,7 +4005,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4064,10 +4015,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetObjectTaggingOutput.html#version_id-instance_method" title="Aws::S3::Types::GetObjectTaggingOutput#version_id (method)">#version_id</a> => String</li>
-<li><a href="Types/GetObjectTaggingOutput.html#tag_set-instance_method" title="Aws::S3::Types::GetObjectTaggingOutput#tag_set (method)">#tag_set</a> => Array&lt;<a href="Types/Tag.html" title="Aws::S3::Types::Tag (class)">Types::Tag</a>&gt;</li>
+<li><a href="Types/GetObjectTaggingOutput.html#version_id-instance_method" title="Aws::S3::Types::GetObjectTaggingOutput#version_id (method)">#version_id</a> =&gt; String</li>
+<li><a href="Types/GetObjectTaggingOutput.html#tag_set-instance_method" title="Aws::S3::Types::GetObjectTaggingOutput#tag_set (method)">#tag_set</a> =&gt; Array&lt;<a href="Types/Tag.html" title="Aws::S3::Types::Tag (class)">Types::Tag</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4125,7 +4075,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4135,10 +4085,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/GetObjectTorrentOutput.html#body-instance_method" title="Aws::S3::Types::GetObjectTorrentOutput#body (method)">#body</a> => IO</li>
-<li><a href="Types/GetObjectTorrentOutput.html#request_charged-instance_method" title="Aws::S3::Types::GetObjectTorrentOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/GetObjectTorrentOutput.html#body-instance_method" title="Aws::S3::Types::GetObjectTorrentOutput#body (method)">#body</a> =&gt; IO</li>
+<li><a href="Types/GetObjectTorrentOutput.html#request_charged-instance_method" title="Aws::S3::Types::GetObjectTorrentOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4175,7 +4124,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4196,7 +4145,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The HEAD operation retrieves metadata from an object without returning the object itself. This operation is useful if you're only interested in an object's metadata. To use HEAD, you must have READ access to the object.</p>
+    <p>The HEAD operation retrieves metadata from an object without returning the object itself. This operation is useful if you&#39;re only interested in an object&#39;s metadata. To use HEAD, you must have READ access to the object.</p>
 
   </div>
 </div>
@@ -4284,7 +4233,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:range</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>Downloads the specified range bytes of an object. For more information about the HTTP Range header, go to <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.">http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.</a></p>
+            &mdash; <div class='inline'><p>Downloads the specified range bytes of an object. For more information about the HTTP Range header, go to <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35">http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35</a>.</p>
 </div>        </li>
         <li>
           <span class='name'>:version_id</span>
@@ -4314,12 +4263,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:part_number</span>
           <span class='type'>(<code>Integer</code>)</span>
-            &mdash; <div class='inline'><p>Part number of the object being read. This is a positive integer between 1 and 10,000. Effectively performs a 'ranged' HEAD request for the part specified. Useful querying about the size of the part and the number of parts in this object.</p>
+            &mdash; <div class='inline'><p>Part number of the object being read. This is a positive integer between 1 and 10,000. Effectively performs a &#39;ranged&#39; HEAD request for the part specified. Useful querying about the size of the part and the number of parts in this object.</p>
 </div>        </li>
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4329,34 +4278,33 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/HeadObjectOutput.html#delete_marker-instance_method" title="Aws::S3::Types::HeadObjectOutput#delete_marker (method)">#delete_marker</a> => Boolean</li>
-<li><a href="Types/HeadObjectOutput.html#accept_ranges-instance_method" title="Aws::S3::Types::HeadObjectOutput#accept_ranges (method)">#accept_ranges</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#expiration-instance_method" title="Aws::S3::Types::HeadObjectOutput#expiration (method)">#expiration</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#restore-instance_method" title="Aws::S3::Types::HeadObjectOutput#restore (method)">#restore</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#last_modified-instance_method" title="Aws::S3::Types::HeadObjectOutput#last_modified (method)">#last_modified</a> => Time</li>
-<li><a href="Types/HeadObjectOutput.html#content_length-instance_method" title="Aws::S3::Types::HeadObjectOutput#content_length (method)">#content_length</a> => Integer</li>
-<li><a href="Types/HeadObjectOutput.html#etag-instance_method" title="Aws::S3::Types::HeadObjectOutput#etag (method)">#etag</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#missing_meta-instance_method" title="Aws::S3::Types::HeadObjectOutput#missing_meta (method)">#missing_meta</a> => Integer</li>
-<li><a href="Types/HeadObjectOutput.html#version_id-instance_method" title="Aws::S3::Types::HeadObjectOutput#version_id (method)">#version_id</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#cache_control-instance_method" title="Aws::S3::Types::HeadObjectOutput#cache_control (method)">#cache_control</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#content_disposition-instance_method" title="Aws::S3::Types::HeadObjectOutput#content_disposition (method)">#content_disposition</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#content_encoding-instance_method" title="Aws::S3::Types::HeadObjectOutput#content_encoding (method)">#content_encoding</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#content_language-instance_method" title="Aws::S3::Types::HeadObjectOutput#content_language (method)">#content_language</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#content_type-instance_method" title="Aws::S3::Types::HeadObjectOutput#content_type (method)">#content_type</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#expires-instance_method" title="Aws::S3::Types::HeadObjectOutput#expires (method)">#expires</a> => Time</li>
-<li><a href="Types/HeadObjectOutput.html#expires_string-instance_method" title="Aws::S3::Types::HeadObjectOutput#expires_string (method)">#expires_string</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#website_redirect_location-instance_method" title="Aws::S3::Types::HeadObjectOutput#website_redirect_location (method)">#website_redirect_location</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::HeadObjectOutput#server_side_encryption (method)">#server_side_encryption</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#metadata-instance_method" title="Aws::S3::Types::HeadObjectOutput#metadata (method)">#metadata</a> => Hash&lt;String,String&gt;</li>
-<li><a href="Types/HeadObjectOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::HeadObjectOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::HeadObjectOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::HeadObjectOutput#ssekms_key_id (method)">#ssekms_key_id</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#storage_class-instance_method" title="Aws::S3::Types::HeadObjectOutput#storage_class (method)">#storage_class</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#request_charged-instance_method" title="Aws::S3::Types::HeadObjectOutput#request_charged (method)">#request_charged</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#replication_status-instance_method" title="Aws::S3::Types::HeadObjectOutput#replication_status (method)">#replication_status</a> => String</li>
-<li><a href="Types/HeadObjectOutput.html#parts_count-instance_method" title="Aws::S3::Types::HeadObjectOutput#parts_count (method)">#parts_count</a> => Integer</li>
+<li><a href="Types/HeadObjectOutput.html#delete_marker-instance_method" title="Aws::S3::Types::HeadObjectOutput#delete_marker (method)">#delete_marker</a> =&gt; Boolean</li>
+<li><a href="Types/HeadObjectOutput.html#accept_ranges-instance_method" title="Aws::S3::Types::HeadObjectOutput#accept_ranges (method)">#accept_ranges</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#expiration-instance_method" title="Aws::S3::Types::HeadObjectOutput#expiration (method)">#expiration</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#restore-instance_method" title="Aws::S3::Types::HeadObjectOutput#restore (method)">#restore</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#last_modified-instance_method" title="Aws::S3::Types::HeadObjectOutput#last_modified (method)">#last_modified</a> =&gt; Time</li>
+<li><a href="Types/HeadObjectOutput.html#content_length-instance_method" title="Aws::S3::Types::HeadObjectOutput#content_length (method)">#content_length</a> =&gt; Integer</li>
+<li><a href="Types/HeadObjectOutput.html#etag-instance_method" title="Aws::S3::Types::HeadObjectOutput#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#missing_meta-instance_method" title="Aws::S3::Types::HeadObjectOutput#missing_meta (method)">#missing_meta</a> =&gt; Integer</li>
+<li><a href="Types/HeadObjectOutput.html#version_id-instance_method" title="Aws::S3::Types::HeadObjectOutput#version_id (method)">#version_id</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#cache_control-instance_method" title="Aws::S3::Types::HeadObjectOutput#cache_control (method)">#cache_control</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#content_disposition-instance_method" title="Aws::S3::Types::HeadObjectOutput#content_disposition (method)">#content_disposition</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#content_encoding-instance_method" title="Aws::S3::Types::HeadObjectOutput#content_encoding (method)">#content_encoding</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#content_language-instance_method" title="Aws::S3::Types::HeadObjectOutput#content_language (method)">#content_language</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#content_type-instance_method" title="Aws::S3::Types::HeadObjectOutput#content_type (method)">#content_type</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#expires-instance_method" title="Aws::S3::Types::HeadObjectOutput#expires (method)">#expires</a> =&gt; Time</li>
+<li><a href="Types/HeadObjectOutput.html#expires_string-instance_method" title="Aws::S3::Types::HeadObjectOutput#expires_string (method)">#expires_string</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#website_redirect_location-instance_method" title="Aws::S3::Types::HeadObjectOutput#website_redirect_location (method)">#website_redirect_location</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::HeadObjectOutput#server_side_encryption (method)">#server_side_encryption</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#metadata-instance_method" title="Aws::S3::Types::HeadObjectOutput#metadata (method)">#metadata</a> =&gt; Hash&lt;String,String&gt;</li>
+<li><a href="Types/HeadObjectOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::HeadObjectOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::HeadObjectOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::HeadObjectOutput#ssekms_key_id (method)">#ssekms_key_id</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#storage_class-instance_method" title="Aws::S3::Types::HeadObjectOutput#storage_class (method)">#storage_class</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#request_charged-instance_method" title="Aws::S3::Types::HeadObjectOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#replication_status-instance_method" title="Aws::S3::Types::HeadObjectOutput#replication_status (method)">#replication_status</a> =&gt; String</li>
+<li><a href="Types/HeadObjectOutput.html#parts_count-instance_method" title="Aws::S3::Types::HeadObjectOutput#parts_count (method)">#parts_count</a> =&gt; Integer</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4419,7 +4367,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4429,12 +4377,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListBucketAnalyticsConfigurationsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListBucketAnalyticsConfigurationsOutput#is_truncated (method)">#is_truncated</a> => Boolean</li>
-<li><a href="Types/ListBucketAnalyticsConfigurationsOutput.html#continuation_token-instance_method" title="Aws::S3::Types::ListBucketAnalyticsConfigurationsOutput#continuation_token (method)">#continuation_token</a> => String</li>
-<li><a href="Types/ListBucketAnalyticsConfigurationsOutput.html#next_continuation_token-instance_method" title="Aws::S3::Types::ListBucketAnalyticsConfigurationsOutput#next_continuation_token (method)">#next_continuation_token</a> => String</li>
-<li><a href="Types/ListBucketAnalyticsConfigurationsOutput.html#analytics_configuration_list-instance_method" title="Aws::S3::Types::ListBucketAnalyticsConfigurationsOutput#analytics_configuration_list (method)">#analytics_configuration_list</a> => Array&lt;<a href="Types/AnalyticsConfiguration.html" title="Aws::S3::Types::AnalyticsConfiguration (class)">Types::AnalyticsConfiguration</a>&gt;</li>
+<li><a href="Types/ListBucketAnalyticsConfigurationsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListBucketAnalyticsConfigurationsOutput#is_truncated (method)">#is_truncated</a> =&gt; Boolean</li>
+<li><a href="Types/ListBucketAnalyticsConfigurationsOutput.html#continuation_token-instance_method" title="Aws::S3::Types::ListBucketAnalyticsConfigurationsOutput#continuation_token (method)">#continuation_token</a> =&gt; String</li>
+<li><a href="Types/ListBucketAnalyticsConfigurationsOutput.html#next_continuation_token-instance_method" title="Aws::S3::Types::ListBucketAnalyticsConfigurationsOutput#next_continuation_token (method)">#next_continuation_token</a> =&gt; String</li>
+<li><a href="Types/ListBucketAnalyticsConfigurationsOutput.html#analytics_configuration_list-instance_method" title="Aws::S3::Types::ListBucketAnalyticsConfigurationsOutput#analytics_configuration_list (method)">#analytics_configuration_list</a> =&gt; Array&lt;<a href="Types/AnalyticsConfiguration.html" title="Aws::S3::Types::AnalyticsConfiguration (class)">Types::AnalyticsConfiguration</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4495,7 +4442,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4505,12 +4452,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListBucketInventoryConfigurationsOutput.html#continuation_token-instance_method" title="Aws::S3::Types::ListBucketInventoryConfigurationsOutput#continuation_token (method)">#continuation_token</a> => String</li>
-<li><a href="Types/ListBucketInventoryConfigurationsOutput.html#inventory_configuration_list-instance_method" title="Aws::S3::Types::ListBucketInventoryConfigurationsOutput#inventory_configuration_list (method)">#inventory_configuration_list</a> => Array&lt;<a href="Types/InventoryConfiguration.html" title="Aws::S3::Types::InventoryConfiguration (class)">Types::InventoryConfiguration</a>&gt;</li>
-<li><a href="Types/ListBucketInventoryConfigurationsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListBucketInventoryConfigurationsOutput#is_truncated (method)">#is_truncated</a> => Boolean</li>
-<li><a href="Types/ListBucketInventoryConfigurationsOutput.html#next_continuation_token-instance_method" title="Aws::S3::Types::ListBucketInventoryConfigurationsOutput#next_continuation_token (method)">#next_continuation_token</a> => String</li>
+<li><a href="Types/ListBucketInventoryConfigurationsOutput.html#continuation_token-instance_method" title="Aws::S3::Types::ListBucketInventoryConfigurationsOutput#continuation_token (method)">#continuation_token</a> =&gt; String</li>
+<li><a href="Types/ListBucketInventoryConfigurationsOutput.html#inventory_configuration_list-instance_method" title="Aws::S3::Types::ListBucketInventoryConfigurationsOutput#inventory_configuration_list (method)">#inventory_configuration_list</a> =&gt; Array&lt;<a href="Types/InventoryConfiguration.html" title="Aws::S3::Types::InventoryConfiguration (class)">Types::InventoryConfiguration</a>&gt;</li>
+<li><a href="Types/ListBucketInventoryConfigurationsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListBucketInventoryConfigurationsOutput#is_truncated (method)">#is_truncated</a> =&gt; Boolean</li>
+<li><a href="Types/ListBucketInventoryConfigurationsOutput.html#next_continuation_token-instance_method" title="Aws::S3::Types::ListBucketInventoryConfigurationsOutput#next_continuation_token (method)">#next_continuation_token</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4568,7 +4514,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4578,12 +4524,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListBucketMetricsConfigurationsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListBucketMetricsConfigurationsOutput#is_truncated (method)">#is_truncated</a> => Boolean</li>
-<li><a href="Types/ListBucketMetricsConfigurationsOutput.html#continuation_token-instance_method" title="Aws::S3::Types::ListBucketMetricsConfigurationsOutput#continuation_token (method)">#continuation_token</a> => String</li>
-<li><a href="Types/ListBucketMetricsConfigurationsOutput.html#next_continuation_token-instance_method" title="Aws::S3::Types::ListBucketMetricsConfigurationsOutput#next_continuation_token (method)">#next_continuation_token</a> => String</li>
-<li><a href="Types/ListBucketMetricsConfigurationsOutput.html#metrics_configuration_list-instance_method" title="Aws::S3::Types::ListBucketMetricsConfigurationsOutput#metrics_configuration_list (method)">#metrics_configuration_list</a> => Array&lt;<a href="Types/MetricsConfiguration.html" title="Aws::S3::Types::MetricsConfiguration (class)">Types::MetricsConfiguration</a>&gt;</li>
+<li><a href="Types/ListBucketMetricsConfigurationsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListBucketMetricsConfigurationsOutput#is_truncated (method)">#is_truncated</a> =&gt; Boolean</li>
+<li><a href="Types/ListBucketMetricsConfigurationsOutput.html#continuation_token-instance_method" title="Aws::S3::Types::ListBucketMetricsConfigurationsOutput#continuation_token (method)">#continuation_token</a> =&gt; String</li>
+<li><a href="Types/ListBucketMetricsConfigurationsOutput.html#next_continuation_token-instance_method" title="Aws::S3::Types::ListBucketMetricsConfigurationsOutput#next_continuation_token (method)">#next_continuation_token</a> =&gt; String</li>
+<li><a href="Types/ListBucketMetricsConfigurationsOutput.html#metrics_configuration_list-instance_method" title="Aws::S3::Types::ListBucketMetricsConfigurationsOutput#metrics_configuration_list (method)">#metrics_configuration_list</a> =&gt; Array&lt;<a href="Types/MetricsConfiguration.html" title="Aws::S3::Types::MetricsConfiguration (class)">Types::MetricsConfiguration</a>&gt;</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4622,10 +4567,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListBucketsOutput.html#buckets-instance_method" title="Aws::S3::Types::ListBucketsOutput#buckets (method)">#buckets</a> => Array&lt;<a href="Types/Bucket.html" title="Aws::S3::Types::Bucket (class)">Types::Bucket</a>&gt;</li>
-<li><a href="Types/ListBucketsOutput.html#owner-instance_method" title="Aws::S3::Types::ListBucketsOutput#owner (method)">#owner</a> => <a href="Types/Owner.html" title="Aws::S3::Types::Owner (class)">Types::Owner</a></li>
+<li><a href="Types/ListBucketsOutput.html#buckets-instance_method" title="Aws::S3::Types::ListBucketsOutput#buckets (method)">#buckets</a> =&gt; Array&lt;<a href="Types/Bucket.html" title="Aws::S3::Types::Bucket (class)">Types::Bucket</a>&gt;</li>
+<li><a href="Types/ListBucketsOutput.html#owner-instance_method" title="Aws::S3::Types::ListBucketsOutput#owner (method)">#owner</a> =&gt; <a href="Types/Owner.html" title="Aws::S3::Types::Owner (class)">Types::Owner</a></li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4721,7 +4665,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4731,20 +4675,19 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListMultipartUploadsOutput.html#bucket-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#bucket (method)">#bucket</a> => String</li>
-<li><a href="Types/ListMultipartUploadsOutput.html#key_marker-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#key_marker (method)">#key_marker</a> => String</li>
-<li><a href="Types/ListMultipartUploadsOutput.html#upload_id_marker-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#upload_id_marker (method)">#upload_id_marker</a> => String</li>
-<li><a href="Types/ListMultipartUploadsOutput.html#next_key_marker-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#next_key_marker (method)">#next_key_marker</a> => String</li>
-<li><a href="Types/ListMultipartUploadsOutput.html#prefix-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#prefix (method)">#prefix</a> => String</li>
-<li><a href="Types/ListMultipartUploadsOutput.html#delimiter-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#delimiter (method)">#delimiter</a> => String</li>
-<li><a href="Types/ListMultipartUploadsOutput.html#next_upload_id_marker-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#next_upload_id_marker (method)">#next_upload_id_marker</a> => String</li>
-<li><a href="Types/ListMultipartUploadsOutput.html#max_uploads-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#max_uploads (method)">#max_uploads</a> => Integer</li>
-<li><a href="Types/ListMultipartUploadsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#is_truncated (method)">#is_truncated</a> => Boolean</li>
-<li><a href="Types/ListMultipartUploadsOutput.html#uploads-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#uploads (method)">#uploads</a> => Array&lt;<a href="Types/MultipartUpload.html" title="Aws::S3::Types::MultipartUpload (class)">Types::MultipartUpload</a>&gt;</li>
-<li><a href="Types/ListMultipartUploadsOutput.html#common_prefixes-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#common_prefixes (method)">#common_prefixes</a> => Array&lt;<a href="Types/CommonPrefix.html" title="Aws::S3::Types::CommonPrefix (class)">Types::CommonPrefix</a>&gt;</li>
-<li><a href="Types/ListMultipartUploadsOutput.html#encoding_type-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#encoding_type (method)">#encoding_type</a> => String</li>
+<li><a href="Types/ListMultipartUploadsOutput.html#bucket-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#bucket (method)">#bucket</a> =&gt; String</li>
+<li><a href="Types/ListMultipartUploadsOutput.html#key_marker-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#key_marker (method)">#key_marker</a> =&gt; String</li>
+<li><a href="Types/ListMultipartUploadsOutput.html#upload_id_marker-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#upload_id_marker (method)">#upload_id_marker</a> =&gt; String</li>
+<li><a href="Types/ListMultipartUploadsOutput.html#next_key_marker-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#next_key_marker (method)">#next_key_marker</a> =&gt; String</li>
+<li><a href="Types/ListMultipartUploadsOutput.html#prefix-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#prefix (method)">#prefix</a> =&gt; String</li>
+<li><a href="Types/ListMultipartUploadsOutput.html#delimiter-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#delimiter (method)">#delimiter</a> =&gt; String</li>
+<li><a href="Types/ListMultipartUploadsOutput.html#next_upload_id_marker-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#next_upload_id_marker (method)">#next_upload_id_marker</a> =&gt; String</li>
+<li><a href="Types/ListMultipartUploadsOutput.html#max_uploads-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#max_uploads (method)">#max_uploads</a> =&gt; Integer</li>
+<li><a href="Types/ListMultipartUploadsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#is_truncated (method)">#is_truncated</a> =&gt; Boolean</li>
+<li><a href="Types/ListMultipartUploadsOutput.html#uploads-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#uploads (method)">#uploads</a> =&gt; Array&lt;<a href="Types/MultipartUpload.html" title="Aws::S3::Types::MultipartUpload (class)">Types::MultipartUpload</a>&gt;</li>
+<li><a href="Types/ListMultipartUploadsOutput.html#common_prefixes-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#common_prefixes (method)">#common_prefixes</a> =&gt; Array&lt;<a href="Types/CommonPrefix.html" title="Aws::S3::Types::CommonPrefix (class)">Types::CommonPrefix</a>&gt;</li>
+<li><a href="Types/ListMultipartUploadsOutput.html#encoding_type-instance_method" title="Aws::S3::Types::ListMultipartUploadsOutput#encoding_type (method)">#encoding_type</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4848,7 +4791,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4858,21 +4801,20 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListObjectVersionsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#is_truncated (method)">#is_truncated</a> => Boolean</li>
-<li><a href="Types/ListObjectVersionsOutput.html#key_marker-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#key_marker (method)">#key_marker</a> => String</li>
-<li><a href="Types/ListObjectVersionsOutput.html#version_id_marker-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#version_id_marker (method)">#version_id_marker</a> => String</li>
-<li><a href="Types/ListObjectVersionsOutput.html#next_key_marker-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#next_key_marker (method)">#next_key_marker</a> => String</li>
-<li><a href="Types/ListObjectVersionsOutput.html#next_version_id_marker-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#next_version_id_marker (method)">#next_version_id_marker</a> => String</li>
-<li><a href="Types/ListObjectVersionsOutput.html#versions-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#versions (method)">#versions</a> => Array&lt;<a href="Types/ObjectVersion.html" title="Aws::S3::Types::ObjectVersion (class)">Types::ObjectVersion</a>&gt;</li>
-<li><a href="Types/ListObjectVersionsOutput.html#delete_markers-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#delete_markers (method)">#delete_markers</a> => Array&lt;<a href="Types/DeleteMarkerEntry.html" title="Aws::S3::Types::DeleteMarkerEntry (class)">Types::DeleteMarkerEntry</a>&gt;</li>
-<li><a href="Types/ListObjectVersionsOutput.html#name-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#name (method)">#name</a> => String</li>
-<li><a href="Types/ListObjectVersionsOutput.html#prefix-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#prefix (method)">#prefix</a> => String</li>
-<li><a href="Types/ListObjectVersionsOutput.html#delimiter-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#delimiter (method)">#delimiter</a> => String</li>
-<li><a href="Types/ListObjectVersionsOutput.html#max_keys-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#max_keys (method)">#max_keys</a> => Integer</li>
-<li><a href="Types/ListObjectVersionsOutput.html#common_prefixes-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#common_prefixes (method)">#common_prefixes</a> => Array&lt;<a href="Types/CommonPrefix.html" title="Aws::S3::Types::CommonPrefix (class)">Types::CommonPrefix</a>&gt;</li>
-<li><a href="Types/ListObjectVersionsOutput.html#encoding_type-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#encoding_type (method)">#encoding_type</a> => String</li>
+<li><a href="Types/ListObjectVersionsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#is_truncated (method)">#is_truncated</a> =&gt; Boolean</li>
+<li><a href="Types/ListObjectVersionsOutput.html#key_marker-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#key_marker (method)">#key_marker</a> =&gt; String</li>
+<li><a href="Types/ListObjectVersionsOutput.html#version_id_marker-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#version_id_marker (method)">#version_id_marker</a> =&gt; String</li>
+<li><a href="Types/ListObjectVersionsOutput.html#next_key_marker-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#next_key_marker (method)">#next_key_marker</a> =&gt; String</li>
+<li><a href="Types/ListObjectVersionsOutput.html#next_version_id_marker-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#next_version_id_marker (method)">#next_version_id_marker</a> =&gt; String</li>
+<li><a href="Types/ListObjectVersionsOutput.html#versions-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#versions (method)">#versions</a> =&gt; Array&lt;<a href="Types/ObjectVersion.html" title="Aws::S3::Types::ObjectVersion (class)">Types::ObjectVersion</a>&gt;</li>
+<li><a href="Types/ListObjectVersionsOutput.html#delete_markers-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#delete_markers (method)">#delete_markers</a> =&gt; Array&lt;<a href="Types/DeleteMarkerEntry.html" title="Aws::S3::Types::DeleteMarkerEntry (class)">Types::DeleteMarkerEntry</a>&gt;</li>
+<li><a href="Types/ListObjectVersionsOutput.html#name-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#name (method)">#name</a> =&gt; String</li>
+<li><a href="Types/ListObjectVersionsOutput.html#prefix-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#prefix (method)">#prefix</a> =&gt; String</li>
+<li><a href="Types/ListObjectVersionsOutput.html#delimiter-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#delimiter (method)">#delimiter</a> =&gt; String</li>
+<li><a href="Types/ListObjectVersionsOutput.html#max_keys-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#max_keys (method)">#max_keys</a> =&gt; Integer</li>
+<li><a href="Types/ListObjectVersionsOutput.html#common_prefixes-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#common_prefixes (method)">#common_prefixes</a> =&gt; Array&lt;<a href="Types/CommonPrefix.html" title="Aws::S3::Types::CommonPrefix (class)">Types::CommonPrefix</a>&gt;</li>
+<li><a href="Types/ListObjectVersionsOutput.html#encoding_type-instance_method" title="Aws::S3::Types::ListObjectVersionsOutput#encoding_type (method)">#encoding_type</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -4965,7 +4907,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -4975,18 +4917,17 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListObjectsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListObjectsOutput#is_truncated (method)">#is_truncated</a> => Boolean</li>
-<li><a href="Types/ListObjectsOutput.html#marker-instance_method" title="Aws::S3::Types::ListObjectsOutput#marker (method)">#marker</a> => String</li>
-<li><a href="Types/ListObjectsOutput.html#next_marker-instance_method" title="Aws::S3::Types::ListObjectsOutput#next_marker (method)">#next_marker</a> => String</li>
-<li><a href="Types/ListObjectsOutput.html#contents-instance_method" title="Aws::S3::Types::ListObjectsOutput#contents (method)">#contents</a> => Array&lt;<a href="Types/Object.html" title="Aws::S3::Types::Object (class)">Types::Object</a>&gt;</li>
-<li><a href="Types/ListObjectsOutput.html#name-instance_method" title="Aws::S3::Types::ListObjectsOutput#name (method)">#name</a> => String</li>
-<li><a href="Types/ListObjectsOutput.html#prefix-instance_method" title="Aws::S3::Types::ListObjectsOutput#prefix (method)">#prefix</a> => String</li>
-<li><a href="Types/ListObjectsOutput.html#delimiter-instance_method" title="Aws::S3::Types::ListObjectsOutput#delimiter (method)">#delimiter</a> => String</li>
-<li><a href="Types/ListObjectsOutput.html#max_keys-instance_method" title="Aws::S3::Types::ListObjectsOutput#max_keys (method)">#max_keys</a> => Integer</li>
-<li><a href="Types/ListObjectsOutput.html#common_prefixes-instance_method" title="Aws::S3::Types::ListObjectsOutput#common_prefixes (method)">#common_prefixes</a> => Array&lt;<a href="Types/CommonPrefix.html" title="Aws::S3::Types::CommonPrefix (class)">Types::CommonPrefix</a>&gt;</li>
-<li><a href="Types/ListObjectsOutput.html#encoding_type-instance_method" title="Aws::S3::Types::ListObjectsOutput#encoding_type (method)">#encoding_type</a> => String</li>
+<li><a href="Types/ListObjectsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListObjectsOutput#is_truncated (method)">#is_truncated</a> =&gt; Boolean</li>
+<li><a href="Types/ListObjectsOutput.html#marker-instance_method" title="Aws::S3::Types::ListObjectsOutput#marker (method)">#marker</a> =&gt; String</li>
+<li><a href="Types/ListObjectsOutput.html#next_marker-instance_method" title="Aws::S3::Types::ListObjectsOutput#next_marker (method)">#next_marker</a> =&gt; String</li>
+<li><a href="Types/ListObjectsOutput.html#contents-instance_method" title="Aws::S3::Types::ListObjectsOutput#contents (method)">#contents</a> =&gt; Array&lt;<a href="Types/Object.html" title="Aws::S3::Types::Object (class)">Types::Object</a>&gt;</li>
+<li><a href="Types/ListObjectsOutput.html#name-instance_method" title="Aws::S3::Types::ListObjectsOutput#name (method)">#name</a> =&gt; String</li>
+<li><a href="Types/ListObjectsOutput.html#prefix-instance_method" title="Aws::S3::Types::ListObjectsOutput#prefix (method)">#prefix</a> =&gt; String</li>
+<li><a href="Types/ListObjectsOutput.html#delimiter-instance_method" title="Aws::S3::Types::ListObjectsOutput#delimiter (method)">#delimiter</a> =&gt; String</li>
+<li><a href="Types/ListObjectsOutput.html#max_keys-instance_method" title="Aws::S3::Types::ListObjectsOutput#max_keys (method)">#max_keys</a> =&gt; Integer</li>
+<li><a href="Types/ListObjectsOutput.html#common_prefixes-instance_method" title="Aws::S3::Types::ListObjectsOutput#common_prefixes (method)">#common_prefixes</a> =&gt; Array&lt;<a href="Types/CommonPrefix.html" title="Aws::S3::Types::CommonPrefix (class)">Types::CommonPrefix</a>&gt;</li>
+<li><a href="Types/ListObjectsOutput.html#encoding_type-instance_method" title="Aws::S3::Types::ListObjectsOutput#encoding_type (method)">#encoding_type</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -5094,7 +5035,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -5104,20 +5045,19 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListObjectsV2Output.html#is_truncated-instance_method" title="Aws::S3::Types::ListObjectsV2Output#is_truncated (method)">#is_truncated</a> => Boolean</li>
-<li><a href="Types/ListObjectsV2Output.html#contents-instance_method" title="Aws::S3::Types::ListObjectsV2Output#contents (method)">#contents</a> => Array&lt;<a href="Types/Object.html" title="Aws::S3::Types::Object (class)">Types::Object</a>&gt;</li>
-<li><a href="Types/ListObjectsV2Output.html#name-instance_method" title="Aws::S3::Types::ListObjectsV2Output#name (method)">#name</a> => String</li>
-<li><a href="Types/ListObjectsV2Output.html#prefix-instance_method" title="Aws::S3::Types::ListObjectsV2Output#prefix (method)">#prefix</a> => String</li>
-<li><a href="Types/ListObjectsV2Output.html#delimiter-instance_method" title="Aws::S3::Types::ListObjectsV2Output#delimiter (method)">#delimiter</a> => String</li>
-<li><a href="Types/ListObjectsV2Output.html#max_keys-instance_method" title="Aws::S3::Types::ListObjectsV2Output#max_keys (method)">#max_keys</a> => Integer</li>
-<li><a href="Types/ListObjectsV2Output.html#common_prefixes-instance_method" title="Aws::S3::Types::ListObjectsV2Output#common_prefixes (method)">#common_prefixes</a> => Array&lt;<a href="Types/CommonPrefix.html" title="Aws::S3::Types::CommonPrefix (class)">Types::CommonPrefix</a>&gt;</li>
-<li><a href="Types/ListObjectsV2Output.html#encoding_type-instance_method" title="Aws::S3::Types::ListObjectsV2Output#encoding_type (method)">#encoding_type</a> => String</li>
-<li><a href="Types/ListObjectsV2Output.html#key_count-instance_method" title="Aws::S3::Types::ListObjectsV2Output#key_count (method)">#key_count</a> => Integer</li>
-<li><a href="Types/ListObjectsV2Output.html#continuation_token-instance_method" title="Aws::S3::Types::ListObjectsV2Output#continuation_token (method)">#continuation_token</a> => String</li>
-<li><a href="Types/ListObjectsV2Output.html#next_continuation_token-instance_method" title="Aws::S3::Types::ListObjectsV2Output#next_continuation_token (method)">#next_continuation_token</a> => String</li>
-<li><a href="Types/ListObjectsV2Output.html#start_after-instance_method" title="Aws::S3::Types::ListObjectsV2Output#start_after (method)">#start_after</a> => String</li>
+<li><a href="Types/ListObjectsV2Output.html#is_truncated-instance_method" title="Aws::S3::Types::ListObjectsV2Output#is_truncated (method)">#is_truncated</a> =&gt; Boolean</li>
+<li><a href="Types/ListObjectsV2Output.html#contents-instance_method" title="Aws::S3::Types::ListObjectsV2Output#contents (method)">#contents</a> =&gt; Array&lt;<a href="Types/Object.html" title="Aws::S3::Types::Object (class)">Types::Object</a>&gt;</li>
+<li><a href="Types/ListObjectsV2Output.html#name-instance_method" title="Aws::S3::Types::ListObjectsV2Output#name (method)">#name</a> =&gt; String</li>
+<li><a href="Types/ListObjectsV2Output.html#prefix-instance_method" title="Aws::S3::Types::ListObjectsV2Output#prefix (method)">#prefix</a> =&gt; String</li>
+<li><a href="Types/ListObjectsV2Output.html#delimiter-instance_method" title="Aws::S3::Types::ListObjectsV2Output#delimiter (method)">#delimiter</a> =&gt; String</li>
+<li><a href="Types/ListObjectsV2Output.html#max_keys-instance_method" title="Aws::S3::Types::ListObjectsV2Output#max_keys (method)">#max_keys</a> =&gt; Integer</li>
+<li><a href="Types/ListObjectsV2Output.html#common_prefixes-instance_method" title="Aws::S3::Types::ListObjectsV2Output#common_prefixes (method)">#common_prefixes</a> =&gt; Array&lt;<a href="Types/CommonPrefix.html" title="Aws::S3::Types::CommonPrefix (class)">Types::CommonPrefix</a>&gt;</li>
+<li><a href="Types/ListObjectsV2Output.html#encoding_type-instance_method" title="Aws::S3::Types::ListObjectsV2Output#encoding_type (method)">#encoding_type</a> =&gt; String</li>
+<li><a href="Types/ListObjectsV2Output.html#key_count-instance_method" title="Aws::S3::Types::ListObjectsV2Output#key_count (method)">#key_count</a> =&gt; Integer</li>
+<li><a href="Types/ListObjectsV2Output.html#continuation_token-instance_method" title="Aws::S3::Types::ListObjectsV2Output#continuation_token (method)">#continuation_token</a> =&gt; String</li>
+<li><a href="Types/ListObjectsV2Output.html#next_continuation_token-instance_method" title="Aws::S3::Types::ListObjectsV2Output#next_continuation_token (method)">#next_continuation_token</a> =&gt; String</li>
+<li><a href="Types/ListObjectsV2Output.html#start_after-instance_method" title="Aws::S3::Types::ListObjectsV2Output#start_after (method)">#start_after</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -5205,7 +5145,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -5215,22 +5155,21 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/ListPartsOutput.html#abort_date-instance_method" title="Aws::S3::Types::ListPartsOutput#abort_date (method)">#abort_date</a> => Time</li>
-<li><a href="Types/ListPartsOutput.html#abort_rule_id-instance_method" title="Aws::S3::Types::ListPartsOutput#abort_rule_id (method)">#abort_rule_id</a> => String</li>
-<li><a href="Types/ListPartsOutput.html#bucket-instance_method" title="Aws::S3::Types::ListPartsOutput#bucket (method)">#bucket</a> => String</li>
-<li><a href="Types/ListPartsOutput.html#key-instance_method" title="Aws::S3::Types::ListPartsOutput#key (method)">#key</a> => String</li>
-<li><a href="Types/ListPartsOutput.html#upload_id-instance_method" title="Aws::S3::Types::ListPartsOutput#upload_id (method)">#upload_id</a> => String</li>
-<li><a href="Types/ListPartsOutput.html#part_number_marker-instance_method" title="Aws::S3::Types::ListPartsOutput#part_number_marker (method)">#part_number_marker</a> => Integer</li>
-<li><a href="Types/ListPartsOutput.html#next_part_number_marker-instance_method" title="Aws::S3::Types::ListPartsOutput#next_part_number_marker (method)">#next_part_number_marker</a> => Integer</li>
-<li><a href="Types/ListPartsOutput.html#max_parts-instance_method" title="Aws::S3::Types::ListPartsOutput#max_parts (method)">#max_parts</a> => Integer</li>
-<li><a href="Types/ListPartsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListPartsOutput#is_truncated (method)">#is_truncated</a> => Boolean</li>
-<li><a href="Types/ListPartsOutput.html#parts-instance_method" title="Aws::S3::Types::ListPartsOutput#parts (method)">#parts</a> => Array&lt;<a href="Types/Part.html" title="Aws::S3::Types::Part (class)">Types::Part</a>&gt;</li>
-<li><a href="Types/ListPartsOutput.html#initiator-instance_method" title="Aws::S3::Types::ListPartsOutput#initiator (method)">#initiator</a> => <a href="Types/Initiator.html" title="Aws::S3::Types::Initiator (class)">Types::Initiator</a></li>
-<li><a href="Types/ListPartsOutput.html#owner-instance_method" title="Aws::S3::Types::ListPartsOutput#owner (method)">#owner</a> => <a href="Types/Owner.html" title="Aws::S3::Types::Owner (class)">Types::Owner</a></li>
-<li><a href="Types/ListPartsOutput.html#storage_class-instance_method" title="Aws::S3::Types::ListPartsOutput#storage_class (method)">#storage_class</a> => String</li>
-<li><a href="Types/ListPartsOutput.html#request_charged-instance_method" title="Aws::S3::Types::ListPartsOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/ListPartsOutput.html#abort_date-instance_method" title="Aws::S3::Types::ListPartsOutput#abort_date (method)">#abort_date</a> =&gt; Time</li>
+<li><a href="Types/ListPartsOutput.html#abort_rule_id-instance_method" title="Aws::S3::Types::ListPartsOutput#abort_rule_id (method)">#abort_rule_id</a> =&gt; String</li>
+<li><a href="Types/ListPartsOutput.html#bucket-instance_method" title="Aws::S3::Types::ListPartsOutput#bucket (method)">#bucket</a> =&gt; String</li>
+<li><a href="Types/ListPartsOutput.html#key-instance_method" title="Aws::S3::Types::ListPartsOutput#key (method)">#key</a> =&gt; String</li>
+<li><a href="Types/ListPartsOutput.html#upload_id-instance_method" title="Aws::S3::Types::ListPartsOutput#upload_id (method)">#upload_id</a> =&gt; String</li>
+<li><a href="Types/ListPartsOutput.html#part_number_marker-instance_method" title="Aws::S3::Types::ListPartsOutput#part_number_marker (method)">#part_number_marker</a> =&gt; Integer</li>
+<li><a href="Types/ListPartsOutput.html#next_part_number_marker-instance_method" title="Aws::S3::Types::ListPartsOutput#next_part_number_marker (method)">#next_part_number_marker</a> =&gt; Integer</li>
+<li><a href="Types/ListPartsOutput.html#max_parts-instance_method" title="Aws::S3::Types::ListPartsOutput#max_parts (method)">#max_parts</a> =&gt; Integer</li>
+<li><a href="Types/ListPartsOutput.html#is_truncated-instance_method" title="Aws::S3::Types::ListPartsOutput#is_truncated (method)">#is_truncated</a> =&gt; Boolean</li>
+<li><a href="Types/ListPartsOutput.html#parts-instance_method" title="Aws::S3::Types::ListPartsOutput#parts (method)">#parts</a> =&gt; Array&lt;<a href="Types/Part.html" title="Aws::S3::Types::Part (class)">Types::Part</a>&gt;</li>
+<li><a href="Types/ListPartsOutput.html#initiator-instance_method" title="Aws::S3::Types::ListPartsOutput#initiator (method)">#initiator</a> =&gt; <a href="Types/Initiator.html" title="Aws::S3::Types::Initiator (class)">Types::Initiator</a></li>
+<li><a href="Types/ListPartsOutput.html#owner-instance_method" title="Aws::S3::Types::ListPartsOutput#owner (method)">#owner</a> =&gt; <a href="Types/Owner.html" title="Aws::S3::Types::Owner (class)">Types::Owner</a></li>
+<li><a href="Types/ListPartsOutput.html#storage_class-instance_method" title="Aws::S3::Types::ListPartsOutput#storage_class (method)">#storage_class</a> =&gt; String</li>
+<li><a href="Types/ListPartsOutput.html#request_charged-instance_method" title="Aws::S3::Types::ListPartsOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -5276,7 +5215,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -5383,7 +5322,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -5471,7 +5410,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -5535,7 +5474,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -5611,7 +5550,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -5693,7 +5632,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -5790,7 +5729,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -5861,7 +5800,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -5936,7 +5875,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -6010,7 +5949,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -6112,7 +6051,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -6167,7 +6106,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -6235,7 +6174,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -6291,7 +6230,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -6352,7 +6291,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -6406,7 +6345,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:mfa</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.</p>
+            &mdash; <div class='inline'><p>The concatenation of the authentication device&#39;s serial number, a space, and the value that is displayed on your authentication device.</p>
 </div>        </li>
         <li>
           <span class='name'>:versioning_configuration</span>
@@ -6415,7 +6354,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -6495,7 +6434,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -6668,7 +6607,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:storage_class</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>The type of storage to use for the object. Defaults to 'STANDARD'.</p>
+            &mdash; <div class='inline'><p>The type of storage to use for the object. Defaults to &#39;STANDARD&#39;.</p>
 </div>        </li>
         <li>
           <span class='name'>:website_redirect_location</span>
@@ -6708,7 +6647,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -6718,16 +6657,15 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/PutObjectOutput.html#expiration-instance_method" title="Aws::S3::Types::PutObjectOutput#expiration (method)">#expiration</a> => String</li>
-<li><a href="Types/PutObjectOutput.html#etag-instance_method" title="Aws::S3::Types::PutObjectOutput#etag (method)">#etag</a> => String</li>
-<li><a href="Types/PutObjectOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::PutObjectOutput#server_side_encryption (method)">#server_side_encryption</a> => String</li>
-<li><a href="Types/PutObjectOutput.html#version_id-instance_method" title="Aws::S3::Types::PutObjectOutput#version_id (method)">#version_id</a> => String</li>
-<li><a href="Types/PutObjectOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::PutObjectOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> => String</li>
-<li><a href="Types/PutObjectOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::PutObjectOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> => String</li>
-<li><a href="Types/PutObjectOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::PutObjectOutput#ssekms_key_id (method)">#ssekms_key_id</a> => String</li>
-<li><a href="Types/PutObjectOutput.html#request_charged-instance_method" title="Aws::S3::Types::PutObjectOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/PutObjectOutput.html#expiration-instance_method" title="Aws::S3::Types::PutObjectOutput#expiration (method)">#expiration</a> =&gt; String</li>
+<li><a href="Types/PutObjectOutput.html#etag-instance_method" title="Aws::S3::Types::PutObjectOutput#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/PutObjectOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::PutObjectOutput#server_side_encryption (method)">#server_side_encryption</a> =&gt; String</li>
+<li><a href="Types/PutObjectOutput.html#version_id-instance_method" title="Aws::S3::Types::PutObjectOutput#version_id (method)">#version_id</a> =&gt; String</li>
+<li><a href="Types/PutObjectOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::PutObjectOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> =&gt; String</li>
+<li><a href="Types/PutObjectOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::PutObjectOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> =&gt; String</li>
+<li><a href="Types/PutObjectOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::PutObjectOutput#ssekms_key_id (method)">#ssekms_key_id</a> =&gt; String</li>
+<li><a href="Types/PutObjectOutput.html#request_charged-instance_method" title="Aws::S3::Types::PutObjectOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -6847,7 +6785,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -6857,9 +6795,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/PutObjectAclOutput.html#request_charged-instance_method" title="Aws::S3::Types::PutObjectAclOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/PutObjectAclOutput.html#request_charged-instance_method" title="Aws::S3::Types::PutObjectAclOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -6926,7 +6863,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -6936,9 +6873,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/PutObjectTaggingOutput.html#version_id-instance_method" title="Aws::S3::Types::PutObjectTaggingOutput#version_id (method)">#version_id</a> => String</li>
+<li><a href="Types/PutObjectTaggingOutput.html#version_id-instance_method" title="Aws::S3::Types::PutObjectTaggingOutput#version_id (method)">#version_id</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -7004,7 +6940,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -7014,9 +6950,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/RestoreObjectOutput.html#request_charged-instance_method" title="Aws::S3::Types::RestoreObjectOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/RestoreObjectOutput.html#request_charged-instance_method" title="Aws::S3::Types::RestoreObjectOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -7030,11 +6965,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Uploads a part in a multipart upload.</p>
-
-
-<p><b>Note:</b> After you initiate multipart upload and upload one or more parts, you must either complete or abort multipart upload in order to stop getting charged for storage of the uploaded parts. Only after you either complete or abort multipart upload, Amazon S3 frees up the parts storage and stops charging you for the parts storage.</p>
-
+    <p>Uploads a part in a multipart upload.</p><p><b>Note:</b> After you initiate multipart upload and upload one or more parts, you must either complete or abort multipart upload in order to stop getting charged for storage of the uploaded parts. Only after you either complete or abort multipart upload, Amazon S3 frees up the parts storage and stops charging you for the parts storage.</p>
 
   </div>
 </div>
@@ -7126,7 +7057,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -7136,14 +7067,13 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UploadPartOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::UploadPartOutput#server_side_encryption (method)">#server_side_encryption</a> => String</li>
-<li><a href="Types/UploadPartOutput.html#etag-instance_method" title="Aws::S3::Types::UploadPartOutput#etag (method)">#etag</a> => String</li>
-<li><a href="Types/UploadPartOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::UploadPartOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> => String</li>
-<li><a href="Types/UploadPartOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::UploadPartOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> => String</li>
-<li><a href="Types/UploadPartOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::UploadPartOutput#ssekms_key_id (method)">#ssekms_key_id</a> => String</li>
-<li><a href="Types/UploadPartOutput.html#request_charged-instance_method" title="Aws::S3::Types::UploadPartOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/UploadPartOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::UploadPartOutput#server_side_encryption (method)">#server_side_encryption</a> =&gt; String</li>
+<li><a href="Types/UploadPartOutput.html#etag-instance_method" title="Aws::S3::Types::UploadPartOutput#etag (method)">#etag</a> =&gt; String</li>
+<li><a href="Types/UploadPartOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::UploadPartOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> =&gt; String</li>
+<li><a href="Types/UploadPartOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::UploadPartOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> =&gt; String</li>
+<li><a href="Types/UploadPartOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::UploadPartOutput#ssekms_key_id (method)">#ssekms_key_id</a> =&gt; String</li>
+<li><a href="Types/UploadPartOutput.html#request_charged-instance_method" title="Aws::S3::Types::UploadPartOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -7226,7 +7156,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:copy_source_if_unmodified_since</span>
           <span class='type'>(<code>Time</code>)</span>
-            &mdash; <div class='inline'><p>Copies the object if it hasn't been modified since the specified time.</p>
+            &mdash; <div class='inline'><p>Copies the object if it hasn&#39;t been modified since the specified time.</p>
 </div>        </li>
         <li>
           <span class='name'>:copy_source_range</span>
@@ -7285,7 +7215,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:use_accelerate_endpoint</span>
           <span class='type'>(<code>Boolean</code>)</span>
-            &mdash; <div class='inline'><p>When <tt>true</tt>, the "<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>" endpoint will be used.</p>
+            &mdash; <div class='inline'><p>When <tt>true</tt>, the &quot;<a href="https://BUCKETNAME.s3-accelerate.amazonaws.com">https://BUCKETNAME.s3-accelerate.amazonaws.com</a>&quot; endpoint will be used.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -7295,15 +7225,14 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 &mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
 
 <ul>
-<li><a href="Types/UploadPartCopyOutput.html#copy_source_version_id-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#copy_source_version_id (method)">#copy_source_version_id</a> => String</li>
-<li><a href="Types/UploadPartCopyOutput.html#copy_part_result-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#copy_part_result (method)">#copy_part_result</a> => <a href="Types/CopyPartResult.html" title="Aws::S3::Types::CopyPartResult (class)">Types::CopyPartResult</a></li>
-<li><a href="Types/UploadPartCopyOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#server_side_encryption (method)">#server_side_encryption</a> => String</li>
-<li><a href="Types/UploadPartCopyOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> => String</li>
-<li><a href="Types/UploadPartCopyOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> => String</li>
-<li><a href="Types/UploadPartCopyOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#ssekms_key_id (method)">#ssekms_key_id</a> => String</li>
-<li><a href="Types/UploadPartCopyOutput.html#request_charged-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#request_charged (method)">#request_charged</a> => String</li>
+<li><a href="Types/UploadPartCopyOutput.html#copy_source_version_id-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#copy_source_version_id (method)">#copy_source_version_id</a> =&gt; String</li>
+<li><a href="Types/UploadPartCopyOutput.html#copy_part_result-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#copy_part_result (method)">#copy_part_result</a> =&gt; <a href="Types/CopyPartResult.html" title="Aws::S3::Types::CopyPartResult (class)">Types::CopyPartResult</a></li>
+<li><a href="Types/UploadPartCopyOutput.html#server_side_encryption-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#server_side_encryption (method)">#server_side_encryption</a> =&gt; String</li>
+<li><a href="Types/UploadPartCopyOutput.html#sse_customer_algorithm-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#sse_customer_algorithm (method)">#sse_customer_algorithm</a> =&gt; String</li>
+<li><a href="Types/UploadPartCopyOutput.html#sse_customer_key_md5-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#sse_customer_key_md5 (method)">#sse_customer_key_md5</a> =&gt; String</li>
+<li><a href="Types/UploadPartCopyOutput.html#ssekms_key_id-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#ssekms_key_id (method)">#ssekms_key_id</a> =&gt; String</li>
+<li><a href="Types/UploadPartCopyOutput.html#request_charged-instance_method" title="Aws::S3::Types::UploadPartCopyOutput#request_charged (method)">#request_charged</a> =&gt; String</li>
 </ul>
-
 </div>
   </li>
 </ul>
@@ -7326,7 +7255,7 @@ state.</p>
 entering a terminal state, or until a maximum number of attempts
 are made.</p>
 
-<p>   # polls in a loop, sleeping between attempts
+<p># polls in a loop, sleeping between attempts
    client.waiter_until(waiter_name, params)</p>
 
 <h3>Configuration</h3>
@@ -7462,7 +7391,6 @@ waiters and the client method they call:</p>
 <tr><td><tt>:bucket_exists</tt></td><td><a href="#head_bucket-instance_method" title="Aws::S3::Client#head_bucket (method)">#head_bucket</a></td><td>5</td><td>20</td></tr><tr><td><tt>:bucket_not_exists</tt></td><td><a href="#head_bucket-instance_method" title="Aws::S3::Client#head_bucket (method)">#head_bucket</a></td><td>5</td><td>20</td></tr><tr><td><tt>:object_exists</tt></td><td><a href="#head_object-instance_method" title="Aws::S3::Client#head_object (method)">#head_object</a></td><td>5</td><td>20</td></tr><tr><td><tt>:object_not_exists</tt></td><td><a href="#head_object-instance_method" title="Aws::S3::Client#head_object (method)">#head_object</a></td><td>5</td><td>20</td></tr>
 </tbody>
 </table>
-
 
   </div>
 </div>
