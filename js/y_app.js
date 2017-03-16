@@ -8,6 +8,7 @@ if ( /github\.io/i.test(location.hostname) ) {
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','t2GA');
 }
+
 /*
 if ('ontouchstart' in document.documentElement) {
   window.onerror = function (msg, url, lineNo, columnNo, error) {
@@ -131,11 +132,12 @@ var aDOMCur = document.createElement('a'),  // current window.location
 /*#### App State */
 var isHttp = /^http(s)?:/.test(window.location.protocol),
     isFirstLoad = true,
+    isGetElByIdInDocFrag = ('getElementById' in document.createDocumentFragment()),
     isServer = false,
     isTouch = ('ontouchstart' in document.documentElement),
     isVHBad = false,        // iOS Safari 100vh != innerHeight
-    isWinHistory = ( window.hasOwnProperty('history') &&
-                     window.history.pushState instanceof Function),
+    isWinHistory = ('history' in window) && ('pushState' in window.history) &&
+      (window.history.pushState instanceof Function),
     isWinKPTimeOut = false,  // used to debounce long key presses
     isZoomed = false;        // Touch devices will zoom via FontSize
 
@@ -529,7 +531,7 @@ function paneClk(e) {
   if (tgt.tagName === 'NAV' && tgt.classList.contains('y_nav')) return;
 
   eLI = getPrntByIO(tgt, HTMLLIElement);
-  
+
   if (dbgListCalls) console.log("paneClk eLI\n" + eLI);
 
   // clicked button of an open/close node, or an exception 'group' node
@@ -685,8 +687,8 @@ function paneScrollTo(me, eA) {
 
   if (dbgListCalls)
     console.log( "paneScrollTo " + (me === oList ? "LIST" : "TOC") );
-  
-      
+
+
   if (eA) {
     if (eLI = getPrntByIO(eA, HTMLLIElement) ) {
       if (eLI !== me.clickedLI && (me.clickedLI instanceof HTMLLIElement) )
@@ -794,9 +796,9 @@ function list_Load(eA, force) {
   // return if base paths match
   if ( !force && listPath === eA.pathname.replace(/[^\/]+$/, '') ) return;
 
-  if (dbgListCalls) console.log("list_Load\nlistCurPN\n" + listCurPN + 
+  if (dbgListCalls) console.log("list_Load\nlistCurPN\n" + listCurPN +
     "\neA.pathname\n" + eA.pathname);
-  
+
   // save previous list state
   if (listCurPN) {
     if (oList.clickedLI) oList.clickedLI.classList.remove(CN_CLICKED);
@@ -849,7 +851,7 @@ function list_ShowClicked(aDOM) {
     else
       console.log("list_ShowClicked\n" + pathName);
   };
-  
+
   if (clickedBy === CB_LIST) {
     if (oList.clickedLIOld) {
       oList.clickedLIOld.classList.remove(CN_CLICKED);
@@ -883,9 +885,9 @@ function list_ShowClicked(aDOM) {
       eA = paneUL.querySelector(qs);
     };
   };
-  
+
   if (dbgListCalls) console.log("list_ShowClicked Found\n" + eA);
-  
+
   if (eA) paneScrollTo(oList, eA);
   else {
     if (oList.clickedLI) {
@@ -956,7 +958,7 @@ function listEvenOdd(items) {
      lenVis = 0;
 
   if (dbgListCalls) console.log("listEvenOdd\n" + listCurPN);
-  
+
   if (items === undefined) items = oList.items;
 
   // array liVis passed by ref, loaded with visible items
@@ -1052,7 +1054,7 @@ function listLoadDone() {
       t;
 
   if (dbgListCalls) console.log("listLoadDone");
-      
+
   oList.items = _id('list_items');
   oList.itemsSearch = 0;
 
@@ -1065,9 +1067,9 @@ function listLoadDone() {
     isFirstLoad = false;
   } else if (oList.d.vis) list_ShowClicked(aDOMNext);
 
-  if (dbgListCalls) console.log("listLoadDone\nlistCurPN\n" + listCurPN + 
+  if (dbgListCalls) console.log("listLoadDone\nlistCurPN\n" + listCurPN +
     "\noListData[listCurPN].scrollTop\n" + oListData[listCurPN].scrollTop);
-  
+
   if (listCurPN && oListData[listCurPN].scrollTop > 0) {
     if (!oList.clickedA || (oList.clickedA.href !== aDOMCur.href) )
       oList.nav.scrollTop = oListData[listCurPN].scrollTop;
@@ -1810,7 +1812,7 @@ function toc_Generate(content, isCode) {
       if (cls !== '' && cls !== undefined) a.className = cls;
       a.setAttribute('href','#' + itemHref);
 
-      if ( el.classList.contains('inherited') && title.endsWith('ed') && / - /.test(title) ) {
+      if ( el.classList.contains('inherited') && /ed$/.test(title) && / - /.test(title) ) {
         tmp = document.createTextNode(/^\S+/.exec(title) + ' - ');
         a.appendChild(tmp);
         tmp = document.createElement("I");
@@ -2551,7 +2553,7 @@ function gotoHash() {
 
   if (el.tagName === 'SECTION' && el.firstElementChild.tagName === 'H3')
     el = el.firstElementChild;
-  if ( hash.endsWith('-constant') && (t = _id('t2_cnst')) ) {
+  if ( /-constant$/.test(hash) && (t = _id('t2_cnst')) ) {
     if (t.classList.contains('h') ) t.classList.remove('h');
   }
 
@@ -2684,16 +2686,23 @@ function xhrCBDoc(docFrag, title, url, status, ms, msRcv) {
       loadMenu = true;
     };
   };
-
+  
   // Update history
   if (aDOMNext.href !== aDOMCur.href) {
     t = aDOMNext.pathname + (hash ? "#" + hash : '');
-    if (isWinHistory && (clickedBy !== CB_POP_STATE) )
-      window.history.pushState({name: title, url: t}, title, t);
+    if (isWinHistory && (clickedBy !== CB_POP_STATE) ) {
+      window.history.pushState({name: title, url: t}, title, url);
+    };
     aDOMCur.href = aDOMNext.href;
   };
 
-  if (eAList) oList.load(eAList, false);
+//console.log("eAList\n" + eAList.getAttribute('href') + "\nurl\n" + aDOMNext.href.replace(/[^\/]+$/, ''));
+//console.log(aDOMNext.href.replace(/[^\/]+$/, '') + eAList.getAttribute('href'));
+
+  if (eAList) {
+    eAList.href = aDOMNext.href.replace(/[^\/]+$/, '') + eAList.getAttribute('href');
+    oList.load(eAList, false);
+  }
 
   if (dbgDoc) dbgDocInfo(newContent);
 
@@ -2771,7 +2780,7 @@ function xhrCBDoc(docFrag, title, url, status, ms, msRcv) {
 
   if (eContentClicked) {
     // open constants section if closed
-    if ( hash.endsWith('-constant') && (t = _id('t2_cnst')) ) {
+    if ( /-constant$/.test(hash) && (t = _id('t2_cnst')) ) {
       if (t.classList.contains('h') ) t.classList.remove('h');
     }
     if (clickedTop) {
@@ -2888,7 +2897,7 @@ function xhrSend(url, func) {
       tSt;
 
   aDOM.setAttribute('href', url);
- 
+
   if (aDOM.host !== window.location.host) {
     func(null, url);
     return;
@@ -3028,10 +3037,11 @@ function escapeRegEx(str) {
  *
  */
 function getDocFragId(frag, id) {
-  if ( frag.hasOwnProperty('getElementById') )
+  if (isGetElByIdInDocFrag)
     return frag.getElementById(id);
   else
-    return frag.querySelector('#' + id);
+    var escId = id.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|\=]/g, "\\$&")
+    return frag.querySelector('#' + escId);
 };
 
 function tocSearchShowHide(content) {
@@ -3081,7 +3091,7 @@ function getCSSRule(file, rule) {
       re = new RegExp( escapeRegEx(file) );
   for (var i = 0, ss; ss = document.styleSheets[i]; i++) {
 //    if ( ss.href.endsWith(file) ) {
-  
+
     if ( re.test(ss.href) ) {
       cssRules = ss.cssRules;
       for (var j = 0, cssRule; cssRule = cssRules[j]; j++) {
