@@ -150,7 +150,7 @@ a bunch of records just to grab the attributes you want.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#sum-instance_method" title="#sum (instance method)">#<strong>sum</strong>(column_name = nil, &amp;block)  </a>
+      <a href="#sum-instance_method" title="#sum (instance method)">#<strong>sum</strong>(column_name = nil)  </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Calculates the sum of values on a given column.</p></div>
@@ -235,22 +235,22 @@ usable column name:</p></div>
   <h3 class='signature priv first'>
     #<strong>aggregate_column</strong>(column_name)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L211-L219'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L208-L216'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+208
+209
+210
 211
 212
 213
 214
 215
-216
-217
-218
-219</pre>
+216</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 211</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 208</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_aggregate_column'>aggregate_column</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
@@ -281,16 +281,16 @@ there&#39;s no row. See <a href="#calculate-instance_method" title="ActiveRecord
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L51-L53'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L48-L50'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-51
-52
-53</pre>
+48
+49
+50</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 51</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 48</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_average'>average</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
@@ -305,11 +305,14 @@ there&#39;s no row. See <a href="#calculate-instance_method" title="ActiveRecord
   <h3 class='signature priv'>
     #<strong>build_count_subquery</strong>(relation, column_name, distinct)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L366-L377'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L363-L374'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+363
+364
+365
 366
 367
 368
@@ -318,12 +321,9 @@ there&#39;s no row. See <a href="#calculate-instance_method" title="ActiveRecord
 371
 372
 373
-374
-375
-376
-377</pre>
+374</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 366</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 363</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_build_count_subquery'>build_count_subquery</span><span class='lparen'>(</span><span class='id identifier rubyid_relation'>relation</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_distinct'>distinct</span><span class='rparen'>)</span>
@@ -387,23 +387,23 @@ It takes either a column name, or the name of a belongs_to association.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L114-L123'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L111-L120'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+111
+112
+113
 114
 115
 116
 117
 118
 119
-120
-121
-122
-123</pre>
+120</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 114</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 111</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_calculate'>calculate</span><span class='lparen'>(</span><span class='id identifier rubyid_operation'>operation</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
@@ -438,11 +438,14 @@ usable column name:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L329-L341'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L326-L338'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+326
+327
+328
 329
 330
 331
@@ -452,12 +455,9 @@ usable column name:</p>
 335
 336
 337
-338
-339
-340
-341</pre>
+338</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 329</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 326</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_column_alias_for'>column_alias_for</span><span class='lparen'>(</span><span class='id identifier rubyid_keys'>keys</span><span class='rparen'>)</span>
@@ -527,7 +527,7 @@ invalid cases, an error from the database is thrown.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L39-L45'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L39-L42'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -535,20 +535,14 @@ invalid cases, an error from the database is thrown.</p>
 39
 40
 41
-42
-43
-44
-45</pre>
+42</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 39</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_count'>count</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='id identifier rubyid_to_a'>to_a</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='op'>*</span><span class='id identifier rubyid_block_args'>block_args</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_block_args'>block_args</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_calculate'>calculate</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_count'>count</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='kw'>return</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='id identifier rubyid_calculate'>calculate</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_count'>count</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -562,11 +556,14 @@ invalid cases, an error from the database is thrown.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L258-L320'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L255-L317'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+255
+256
+257
 258
 259
 260
@@ -626,12 +623,9 @@ invalid cases, an error from the database is thrown.</p>
 314
 315
 316
-317
-318
-319
-320</pre>
+317</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 258</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 255</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute_grouped_calculation'>execute_grouped_calculation</span><span class='lparen'>(</span><span class='id identifier rubyid_operation'>operation</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_distinct'>distinct</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -709,11 +703,14 @@ invalid cases, an error from the database is thrown.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L225-L256'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L222-L253'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+222
+223
+224
 225
 226
 227
@@ -742,12 +739,9 @@ invalid cases, an error from the database is thrown.</p>
 250
 251
 252
-253
-254
-255
-256</pre>
+253</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 225</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 222</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute_simple_calculation'>execute_simple_calculation</span><span class='lparen'>(</span><span class='id identifier rubyid_operation'>operation</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_distinct'>distinct</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -798,16 +792,16 @@ invalid cases, an error from the database is thrown.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L187-L189'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L184-L186'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-187
-188
-189</pre>
+184
+185
+186</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 187</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 184</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_include?'>has_include?</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
@@ -832,16 +826,16 @@ invalid cases, an error from the database is thrown.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L181-L183'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L178-L180'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-181
-182
-183</pre>
+178
+179
+180</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 181</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 178</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ids'>ids</span>
@@ -867,16 +861,16 @@ the same data type of the column, or <code>nil</code> if there&#39;s no row. See
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L69-L71'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L66-L68'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-69
-70
-71</pre>
+66
+67
+68</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 69</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 66</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_maximum'>maximum</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
@@ -902,16 +896,16 @@ the same data type of the column, or <code>nil</code> if there&#39;s no row. See
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L60-L62'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L57-L59'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-60
-61
-62</pre>
+57
+58
+59</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 60</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 57</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_minimum'>minimum</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
@@ -926,16 +920,16 @@ the same data type of the column, or <code>nil</code> if there&#39;s no row. See
   <h3 class='signature priv'>
     #<strong>operation_over_aggregate_column</strong>(column, operation, distinct)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L221-L223'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L218-L220'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-221
-222
-223</pre>
+218
+219
+220</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 221</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 218</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_operation_over_aggregate_column'>operation_over_aggregate_column</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='comma'>,</span> <span class='id identifier rubyid_operation'>operation</span><span class='comma'>,</span> <span class='id identifier rubyid_distinct'>distinct</span><span class='rparen'>)</span>
@@ -950,11 +944,14 @@ the same data type of the column, or <code>nil</code> if there&#39;s no row. See
   <h3 class='signature priv'>
     #<strong>perform_calculation</strong>(operation, column_name)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L191-L209'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L188-L206'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+188
+189
+190
 191
 192
 193
@@ -970,12 +967,9 @@ the same data type of the column, or <code>nil</code> if there&#39;s no row. See
 203
 204
 205
-206
-207
-208
-209</pre>
+206</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 191</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 188</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_perform_calculation'>perform_calculation</span><span class='lparen'>(</span><span class='id identifier rubyid_operation'>operation</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
@@ -1046,11 +1040,14 @@ returns <a href="../String.html" title="String (class)">::String</a> values by d
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L160-L175'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L157-L172'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+157
+158
+159
 160
 161
 162
@@ -1063,12 +1060,9 @@ returns <a href="../String.html" title="String (class)">::String</a> values by d
 169
 170
 171
-172
-173
-174
-175</pre>
+172</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 160</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 157</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pluck'>pluck</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_column_names'>column_names</span><span class='rparen'>)</span>
@@ -1096,21 +1090,21 @@ returns <a href="../String.html" title="String (class)">::String</a> values by d
   <h3 class='signature priv'>
     #<strong>select_for_count</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L357-L364'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L354-L361'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+354
+355
+356
 357
 358
 359
 360
-361
-362
-363
-364</pre>
+361</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 357</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 354</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_select_for_count'>select_for_count</span>
@@ -1128,7 +1122,7 @@ returns <a href="../String.html" title="String (class)">::String</a> values by d
 
 <section class='method_details' id="sum-instance_method">
   <h3 class='signature '>
-    #<strong>sum</strong>(column_name = nil, &amp;block)  
+    #<strong>sum</strong>(column_name = nil)  
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -1141,21 +1135,21 @@ the same data type of the column, <code>0</code> if there&#39;s no row. See
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L78-L81'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L75-L78'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-78
-79
-80
-81</pre>
+75
+76
+77
+78</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 78</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 75</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_sum'>sum</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_sum'>sum</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
   <span class='id identifier rubyid_calculate'>calculate</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_sum'>sum</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
@@ -1167,21 +1161,21 @@ the same data type of the column, <code>0</code> if there&#39;s no row. See
   <h3 class='signature priv'>
     #<strong>type_cast_calculated_value</strong>(value, type, operation = nil)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L348-L355'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L345-L352'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+345
+346
+347
 348
 349
 350
 351
-352
-353
-354
-355</pre>
+352</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 348</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 345</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type_cast_calculated_value'>type_cast_calculated_value</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_operation'>operation</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -1201,17 +1195,17 @@ the same data type of the column, <code>0</code> if there&#39;s no row. See
   <h3 class='signature priv'>
     #<strong>type_for</strong>(field, &amp;block)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L343-L346'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/calculations.rb#L340-L343'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-343
-344
-345
-346</pre>
+340
+341
+342
+343</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 343</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/calculations.rb', line 340</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type_for'>type_for</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>

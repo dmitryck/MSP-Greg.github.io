@@ -108,11 +108,12 @@
 <p>Handles implicit rendering for a controller action that does not explicitly
 respond with <code>render</code>, <code>respond_to</code>, <code>redirect</code>, or <code>head</code>.</p>
 
-<p>For API controllers, the implicit response is always 204 No Content.</p>
+<p>For API controllers, the implicit response is always <code>204 No
+Content</code>.</p>
 
 <p>For all other controllers, we use these heuristics to decide whether to
 render a template, raise an error for a missing template, or respond with
-204 No Content:</p>
+<code>204 No Content</code>:</p>
 
 <p>First, if we DO find a template, it&#39;s rendered. Template lookup
 accounts for the action name, locales, format, variant, template handlers,
@@ -129,7 +130,8 @@ you reasonably expect to have rendered a template, then we raise
 <code>ActionView::UnknownFormat</code> with an explanation.</p>
 
 <p>Finally, if we DON&#39;T find a template AND the request isn&#39;t a
-browser page load, then we implicitly respond with 204 No Content.</p>
+browser page load, then we implicitly respond with <code>204 No
+Content</code>.</p>
 
   </div>
 </div>

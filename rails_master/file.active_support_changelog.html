@@ -64,10 +64,25 @@
   </header>
 <div id='content' class='file'>
 <ul>
+<li><p>Remove implicit coercion deprecation of durations</p>
+
+<p>In #28204 we deprecated implicit conversion of durations to a numeric which
+represented the number of seconds in the duration because of unwanted side
+effects with calculations on durations and dates. This unfortunately had
+the side effect of forcing a explicit cast when configuring third-party
+libraries like expiration in Redis, e.g:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_redis'>redis</span><span class='period'>.</span><span class='id identifier rubyid_expire'>expire</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>foo</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>5</span><span class='period'>.</span><span class='id identifier rubyid_minutes'>minutes</span><span class='rparen'>)</span></code></pre>
+
+<p>To work around this we&#39;ve removed the deprecation and added a private class
+that wraps the numeric and can perform calculation involving durations and
+ensure that they remain a duration irrespective of the order of operations.</p>
+
+<p><em>Andrew White</em></p></li>
 <li><p>Update <code>titleize</code> regex to allow apostrophes</p>
 
 <p>In 4b685aa the regex in <code>titleize</code> was updated to not match apostrophes to
-better reflect the nature of the transformation. Unfortunately this had the
+better reflect the nature of the transformation. Unfortunately, this had the
 side effect of breaking capitalization on the first word of a sub-string, e.g:</p>
 
 <pre class="code ruby"><code class="ruby">&gt;&gt; &quot;This was &#39;fake news&#39;&quot;.titleize
@@ -86,14 +101,14 @@ character on the other side of the apostrophe.</p>
 <p><em>Andrew White</em></p></li>
 <li><p>Add <a href="Time.html#rfc3339-class_method" title="Time.rfc3339 (method)">Time.rfc3339</a> parsing method</p>
 
-<p>The <code>Time.xmlschema</code> and consequently its alias <code>iso8601</code> accepts timestamps
+<p><code>Time.xmlschema</code> and consequently its alias <code>iso8601</code> accepts timestamps
 without a offset in contravention of the RFC 3339 standard. This method
 enforces that constraint and raises an <code>ArgumentError</code> if it doesn&#39;t.</p>
 
 <p><em>Andrew White</em></p></li>
 <li><p>Add <a href="ActiveSupport/TimeZone.html#rfc3339-instance_method" title="ActiveSupport::TimeZone#rfc3339 (method)">ActiveSupport::TimeZone#rfc3339</a> parsing method</p>
 
-<p>Previously there was no way to get a RFC 3339 timestamp into a specific
+<p>Previously, there was no way to get a RFC 3339 timestamp into a specific
 timezone without either using <code>parse</code> or chaining methods. The new method
 allows parsing directly into the timezone, e.g:</p>
 
@@ -102,7 +117,7 @@ allows parsing directly into the timezone, e.g:</p>
 &gt;&gt; Time.zone.rfc3339(&quot;1999-12-31T14:00:00Z&quot;)
 #=&gt; Fri, 31 Dec 1999 14:00:00 HST -10:00</code></pre>
 
-<p>This new method has stricter semantics than the current <code>parse</code> method
+<p>This new method has stricter semantics than the current <code>parse</code> method,
 and will raise an <code>ArgumentError</code> instead of returning nil, e.g:</p>
 
 <pre class="code ruby"><code class="ruby">&gt;&gt; Time.zone = &quot;Hawaii&quot;
@@ -125,7 +140,7 @@ ArgumentError: invalid date</code></pre>
 <p><em>Andrew White</em></p></li>
 <li><p>Add <a href="ActiveSupport/TimeZone.html#iso8601-instance_method" title="ActiveSupport::TimeZone#iso8601 (method)">ActiveSupport::TimeZone#iso8601</a> parsing method</p>
 
-<p>Previously there was no way to get a ISO 8601 timestamp into a specific
+<p>Previously, there was no way to get a ISO 8601 timestamp into a specific
 timezone without either using <code>parse</code> or chaining methods. The new method
 allows parsing directly into the timezone, e.g:</p>
 
@@ -134,7 +149,7 @@ allows parsing directly into the timezone, e.g:</p>
 &gt;&gt; Time.zone.iso8601(&quot;1999-12-31T14:00:00Z&quot;)
 #=&gt; Fri, 31 Dec 1999 14:00:00 HST -10:00</code></pre>
 
-<p>If the timestamp is a ISO 8601 date (YYYY-MM-DD) then the time is set
+<p>If the timestamp is a ISO 8601 date (YYYY-MM-DD), then the time is set
 to midnight, e.g:</p>
 
 <pre class="code ruby"><code class="ruby">&gt;&gt; Time.zone = &quot;Hawaii&quot;
@@ -142,7 +157,7 @@ to midnight, e.g:</p>
 &gt;&gt; Time.zone.iso8601(&quot;1999-12-31&quot;)
 #=&gt; Fri, 31 Dec 1999 00:00:00 HST -10:00</code></pre>
 
-<p>This new method has stricter semantics than the current <code>parse</code> method
+<p>This new method has stricter semantics than the current <code>parse</code> method,
 and will raise an <code>ArgumentError</code> instead of returning nil, e.g:</p>
 
 <pre class="code ruby"><code class="ruby">&gt;&gt; Time.zone = &quot;Hawaii&quot;
@@ -233,7 +248,9 @@ methods to match the equivalent <code>Time#end_of</code> methods, e.g:</p>
 <li><p>Soft-deprecated the top-level <a href="#HashWithIndifferentAccess-constant" title="HashWithIndifferentAccess (constant)">HashWithIndifferentAccess</a> constant.
 <a href="ActiveSupport/HashWithIndifferentAccess.html" title="ActiveSupport::HashWithIndifferentAccess (class)">::ActiveSupport::HashWithIndifferentAccess</a> should be used instead.</p>
 
-<p><em>Robin Dupret</em> (#28157)</p></li>
+<p>Fixes #28157.</p>
+
+<p><em>Robin Dupret</em></p></li>
 <li><p>In Core Extensions, make <code>MarshalWithAutoloading#load</code> pass through the second, optional
 argument for <code>Marshal#load( source [, proc] )</code>. This way we don&#39;t have to do
 <code>Marshal.method(:load).super_method.call(source, proc)</code> just to be able to pass a proc.</p>
@@ -247,6 +264,12 @@ argument for <code>Marshal#load( source [, proc] )</code>. This way we don&#39;t
 <h2>Rails 5.1.0.beta1 (February 23, 2017)</h2>
 
 <ul>
+<li><p>Fixed bug in <code>DateAndTime::Compatibility#to_time</code> that caused it to
+raise <code>RuntimeError: can&#39;t modify frozen Time</code> when called on any frozen <a href="Time.html" title="Time (class)">Time</a>.
+Properly pass through the frozen <a href="Time.html" title="Time (class)">Time</a> or <a href="ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a> object
+when calling <code>#to_time</code>.</p>
+
+<p><em>Kevin McPhillips</em> &amp; <em>Andrew White</em></p></li>
 <li><p>Cache <a href="ActiveSupport/TimeWithZone.html#to_datetime-instance_method" title="ActiveSupport::TimeWithZone#to_datetime (method)">ActiveSupport::TimeWithZone#to_datetime</a> before freezing.</p>
 
 <p><em>Adam Rice</em></p></li>

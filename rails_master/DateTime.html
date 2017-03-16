@@ -70,6 +70,16 @@
     <tr><td id='t2_relations' colspan='2'>Relationships & Source Files</td></tr>
   </thead>
   <tbody>
+    <tr><td class='box_h' colspan='2'>Super Chains via Extension / Inclusion / Inheritance</td></tr>
+    <tr>
+      <td colspan='2'>
+        <div class='box_2'>Instance Chain:</div>
+        <div class='box_22'>
+          self,
+          <a href="DateAndTime/Compatibility.html" title="DateAndTime::Compatibility (module)">::DateAndTime::Compatibility</a>
+        </div>
+      </td>
+    </tr>
     <tr>
       <td id='t2_inherits' class='box_2'>Inherits:</td>
       <td class='box_rel'>
@@ -162,6 +172,17 @@ offset is zero.</p></div>
     </div>
   </li>
 </ul>
+
+<h3 class='inherited'><a href="DateAndTime/Compatibility.html" title="DateAndTime::Compatibility (module)">::DateAndTime::Compatibility</a> - Included</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ro' href="DateAndTime/Compatibility.html#preserve_timezone-instance_method" title="DateAndTime::Compatibility#preserve_timezone (method)">#preserve_timezone</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
 </div>
         
 
@@ -539,6 +560,17 @@ microseconds, since the Unix epoch.</p></div>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Alias for <a href="#to_formatted_s-instance_method" title="DateTime#to_formatted_s (method)">#to_formatted_s</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#to_time-instance_method" title="#to_time (instance method)">#<strong>to_time</strong>  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Either return an instance of `Time` with the same UTC offset as <code>self</code> or
+an instance of `Time` representing the same time in the the local system
+timezone depending on the setting of on the setting of
+<a href="ActiveSupport.html#to_time_preserves_timezone-class_method" title="ActiveSupport.to_time_preserves_timezone (method)">ActiveSupport.to_time_preserves_timezone</a>.</p></div>
     </div>
   </li>
   <li>
@@ -2380,6 +2412,40 @@ argument as the value.</p>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to_formatted_s'>to_formatted_s</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="to_time-instance_method">
+  <h3 class='signature '>
+    #<strong>to_time</strong>  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Either return an instance of `Time` with the same UTC offset as <code>self</code> or
+an instance of `Time` representing the same time in the the local system
+timezone depending on the setting of on the setting of
+<a href="ActiveSupport.html#to_time_preserves_timezone-class_method" title="ActiveSupport.to_time_preserves_timezone (method)">ActiveSupport.to_time_preserves_timezone</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/date_time/compatibility.rb#L12-L14'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+12
+13
+14</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activesupport/lib/active_support/core_ext/date_time/compatibility.rb', line 12</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_time'>to_time</span>
+  <span class='id identifier rubyid_preserve_timezone'>preserve_timezone</span> <span class='op'>?</span> <span class='id identifier rubyid_getlocal'>getlocal</span><span class='lparen'>(</span><span class='id identifier rubyid_utc_offset'>utc_offset</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_getlocal'>getlocal</span>
+<span class='kw'>end</span>
 </pre>
   </div>
 </div>

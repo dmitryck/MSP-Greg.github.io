@@ -1094,12 +1094,12 @@ Origin header.</p>
     
 <p>Returns true or false if a request is verified. Checks:</p>
 <ul><li>
-<p>Is it a GET or HEAD request?  Gets should be safe and idempotent</p>
+<p>Is it a GET or HEAD request? GETs should be safe and idempotent</p>
 </li><li>
 <p>Does the form_authenticity_token match the given token value from the
 params?</p>
 </li><li>
-<p>Does the X-CSRF-Token header match the form_authenticity_token</p>
+<p>Does the X-CSRF-Token header match the form_authenticity_token?</p>
 </li></ul>
 
   </div>
@@ -1463,7 +1463,7 @@ request. The masking is used to mitigate SSL attacks like BREACH.</p>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unmask_token'>unmask_token</span><span class='lparen'>(</span><span class='id identifier rubyid_masked_token'>masked_token</span><span class='rparen'>)</span> <span class='comment'># :doc:
 </span>  <span class='comment'># Split the token into the one-time pad and the encrypted
-</span>  <span class='comment'># value and decrypt it
+</span>  <span class='comment'># value and decrypt it.
 </span>  <span class='id identifier rubyid_one_time_pad'>one_time_pad</span> <span class='op'>=</span> <span class='id identifier rubyid_masked_token'>masked_token</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>...</span><span class='const'><a href="#AUTHENTICITY_TOKEN_LENGTH-constant" title="ActionController::RequestForgeryProtection::AUTHENTICITY_TOKEN_LENGTH (constant)">AUTHENTICITY_TOKEN_LENGTH</a></span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_encrypted_csrf_token'>encrypted_csrf_token</span> <span class='op'>=</span> <span class='id identifier rubyid_masked_token'>masked_token</span><span class='lbracket'>[</span><span class='const'><a href="#AUTHENTICITY_TOKEN_LENGTH-constant" title="ActionController::RequestForgeryProtection::AUTHENTICITY_TOKEN_LENGTH (constant)">AUTHENTICITY_TOKEN_LENGTH</a></span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_xor_byte_strings'>xor_byte_strings</span><span class='lparen'>(</span><span class='id identifier rubyid_one_time_pad'>one_time_pad</span><span class='comma'>,</span> <span class='id identifier rubyid_encrypted_csrf_token'>encrypted_csrf_token</span><span class='rparen'>)</span>
@@ -1544,7 +1544,7 @@ token. Essentially the inverse of <a href="#masked_authenticity_token-instance_m
   <span class='kw'>if</span> <span class='id identifier rubyid_masked_token'>masked_token</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='const'><a href="#AUTHENTICITY_TOKEN_LENGTH-constant" title="ActionController::RequestForgeryProtection::AUTHENTICITY_TOKEN_LENGTH (constant)">AUTHENTICITY_TOKEN_LENGTH</a></span>
     <span class='comment'># This is actually an unmasked token. This is expected if
 </span>    <span class='comment'># you have just upgraded to masked tokens, but should stop
-</span>    <span class='comment'># happening shortly after installing this gem
+</span>    <span class='comment'># happening shortly after installing this gem.
 </span>    <span class='id identifier rubyid_compare_with_real_token'>compare_with_real_token</span> <span class='id identifier rubyid_masked_token'>masked_token</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span>
 
   <span class='kw'>elsif</span> <span class='id identifier rubyid_masked_token'>masked_token</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='const'><a href="#AUTHENTICITY_TOKEN_LENGTH-constant" title="ActionController::RequestForgeryProtection::AUTHENTICITY_TOKEN_LENGTH (constant)">AUTHENTICITY_TOKEN_LENGTH</a></span> <span class='op'>*</span> <span class='int'>2</span>
@@ -1553,7 +1553,7 @@ token. Essentially the inverse of <a href="#masked_authenticity_token-instance_m
     <span class='id identifier rubyid_compare_with_real_token'>compare_with_real_token</span><span class='lparen'>(</span><span class='id identifier rubyid_csrf_token'>csrf_token</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span> <span class='op'>||</span>
       <span class='id identifier rubyid_valid_per_form_csrf_token?'>valid_per_form_csrf_token?</span><span class='lparen'>(</span><span class='id identifier rubyid_csrf_token'>csrf_token</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='kw'>false</span> <span class='comment'># Token is malformed
+    <span class='kw'>false</span> <span class='comment'># Token is malformed.
 </span>  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>

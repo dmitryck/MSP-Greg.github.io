@@ -1525,7 +1525,7 @@ if you want to access routes for other engines.</p>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/routing/route_set.rb#L843-L878'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/routing/route_set.rb#L843-L877'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1564,8 +1564,7 @@ if you want to access routes for other engines.</p>
 874
 875
 876
-877
-878</pre>
+877</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 843</span></pre>
 <pre class='code ruby'>
@@ -1590,8 +1589,7 @@ if you want to access routes for other engines.</p>
         <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><a href="../../URI.html" title="URI (module)">URI</a></span><span class='period'>.</span><span class='id identifier rubyid_parser'><a href="../../URI.html#parser-class_method" title="URI.parser (method)">parser</a></span><span class='period'>.</span><span class='id identifier rubyid_unescape'>unescape</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
-    <span class='id identifier rubyid_old_params'>old_params</span> <span class='op'>=</span> <span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_path_parameters'>path_parameters</span>
-    <span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_path_parameters'>path_parameters</span> <span class='op'>=</span> <span class='id identifier rubyid_old_params'>old_params</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span> <span class='id identifier rubyid_params'>params</span>
+    <span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_path_parameters'>path_parameters</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span>
     <span class='id identifier rubyid_app'>app</span> <span class='op'>=</span> <span class='id identifier rubyid_route'>route</span><span class='period'>.</span><span class='id identifier rubyid_app'>app</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_app'>app</span><span class='period'>.</span><span class='id identifier rubyid_matches?'>matches?</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_app'>app</span><span class='period'>.</span><span class='id identifier rubyid_dispatcher?'>dispatcher?</span>
       <span class='kw'>begin</span>

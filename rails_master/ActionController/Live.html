@@ -278,10 +278,10 @@ shouldn&#39;t be a problem (don&#39;t share state across threads, etc).</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Spawn a new thread to serve up the controller in.  This is to get around
-the fact that <a href="../Rack.html" title="Rack (module)">::Rack</a> isn&#39;t based around IOs and we need to use a thread
-to stream data from the response bodies.  Nobody should call this method
-except in <a href="../Rails.html" title="Rails (module)">::Rails</a> internals. Seriously!</p>
+<p>Spawn a new thread to serve up the controller in. This is to get around the
+fact that <a href="../Rack.html" title="Rack (module)">::Rack</a> isn&#39;t based around IOs and we need to use a thread to
+stream data from the response bodies. Nobody should call this method except
+in <a href="../Rails.html" title="Rails (module)">::Rails</a> internals. Seriously!</p>
 
 <p>See additional method definition at file
 actionpack/lib/action_controller/test_case.rb line 21.</p>
@@ -379,8 +379,8 @@ actionpack/lib/action_controller/test_case.rb line 21.</p>
 
   <span class='id identifier rubyid_error'>error</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='comment'># This processes the action in a child thread. It lets us return the
-</span>  <span class='comment'># response code and headers back up the rack stack, and still process
-</span>  <span class='comment'># the body in parallel with sending data to the client
+</span>  <span class='comment'># response code and headers back up the Rack stack, and still process
+</span>  <span class='comment'># the body in parallel with sending data to the client.
 </span>  <span class='id identifier rubyid_new_controller_thread'>new_controller_thread</span> <span class='lbrace'>{</span>
     <span class='const'><a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../ActiveSupport/Dependencies.html" title="ActiveSupport::Dependencies (module)">Dependencies</a></span><span class='period'>.</span><span class='id identifier rubyid_interlock'><a href="../ActiveSupport/Dependencies.html#interlock-class_method" title="ActiveSupport::Dependencies.interlock (method)">interlock</a></span><span class='period'>.</span><span class='id identifier rubyid_running'>running</span> <span class='kw'>do</span>
       <span class='id identifier rubyid_t2'>t2</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span>

@@ -75,7 +75,10 @@
     <tr><td colspan='2'>
       <div class='box_1'>Included In:</div>
       <div class='box_11'>
-        <a href="../ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a>
+        <a class='nodoc' href="../ActiveRecord/Type/Time/Value.html" title="ActiveRecord::Type::Time::Value (class)">::ActiveRecord::Type::Time::Value</a>,
+          <a href="../ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a>,
+          <a href="../DateTime.html" title="DateTime (class)">::DateTime</a>,
+          <a href="../Time.html" title="Time (class)">::Time</a>
       </div>
     </td></tr>
     <tr class='single'>
@@ -96,7 +99,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>If true, <a href="#to_time-instance_method" title="DateAndTime::Compatibility#to_time (method)">#to_time</a> preserves the timezone offset of receiver.</p></div>
+      <div class='inline'><p>If true, <code>to_time</code> preserves the timezone offset of receiver.</p></div>
     </div>
   </li>
 </ul>
@@ -114,18 +117,6 @@
   </li>
 </ul>
 </div>
-        
-
-<h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
-<div class='div_sum'>
-<ul class='summary full'>
-  <li>
-    <span class='summary_signature '>
-      <a href="#to_time-instance_method" title="#to_time (instance method)">#<strong>to_time</strong>  </a>
-    </span>
-  </li>
-</ul>
-</div>
 <h2 class='y_details'>Class Attribute Details</h2>
 <section class='method_details first' id="preserve_timezone-class_method">
   <h3 class='signature rw first'>
@@ -135,9 +126,9 @@
 <div class='docstring'>
   <div class='discussion'>
     
-<p>If true, <a href="#to_time-instance_method" title="DateAndTime::Compatibility#to_time (method)">#to_time</a> preserves the timezone offset of receiver.</p>
+<p>If true, <code>to_time</code> preserves the timezone offset of receiver.</p>
 
-<p>NOTE: With Ruby 2.4+ the default for <a href="#to_time-instance_method" title="DateAndTime::Compatibility#to_time (method)">#to_time</a> changed from converting to
+<p>NOTE: With Ruby 2.4+ the default for <code>to_time</code> changed from converting to
 the local system time, to preserving the offset of the receiver. For
 backwards compatibility we&#39;re overriding this behavior, but new apps
 will have an initializer that sets this to true, because the new behavior
@@ -177,39 +168,6 @@ is preferred.</p>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_mattr_accessor'>mattr_accessor</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_preserve_timezone'>preserve_timezone</span><span class='comma'>,</span> <span class='label'>instance_writer:</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='kw'>false</span> <span class='rbrace'>}</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<h2 class='y_details'>Instance Method Details</h2>
-<section class='method_details first' id="to_time-instance_method">
-  <h3 class='signature  first'>
-    #<strong>to_time</strong>  
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/date_and_time/compatibility.rb#L14-L20'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-14
-15
-16
-17
-18
-19
-20</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/core_ext/date_and_time/compatibility.rb', line 14</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_to_time'>to_time</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_preserve_timezone'>preserve_timezone</span>
-    <span class='ivar'>@_to_time_with_instance_offset</span> <span class='op'>||=</span> <span class='id identifier rubyid_getlocal'>getlocal</span><span class='lparen'>(</span><span class='id identifier rubyid_utc_offset'>utc_offset</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='ivar'>@_to_time_with_system_offset</span> <span class='op'>||=</span> <span class='id identifier rubyid_getlocal'>getlocal</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
 </pre>
   </div>
 </div>

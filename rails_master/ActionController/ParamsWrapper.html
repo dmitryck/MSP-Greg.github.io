@@ -476,8 +476,8 @@ will then fallback to use <code>user</code> as the key.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Performs parameters wrapping upon the request. Will be called automatically
-by the metal call stack.</p>
+<p>Performs parameters wrapping upon the request. Called automatically by the
+metal call stack.</p>
 
   </div>
 </div>
@@ -521,11 +521,11 @@ by the metal call stack.</p>
     <span class='id identifier rubyid_wrapped_keys'>wrapped_keys</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_request_parameters'>request_parameters</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
     <span class='id identifier rubyid_wrapped_filtered_hash'>wrapped_filtered_hash</span> <span class='op'>=</span> <span class='id identifier rubyid__wrap_parameters'>_wrap_parameters</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_filtered_parameters'>filtered_parameters</span><span class='period'>.</span><span class='id identifier rubyid_slice'>slice</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_wrapped_keys'>wrapped_keys</span><span class='rparen'>)</span>
 
-    <span class='comment'># This will make the wrapped hash accessible from controller and view
+    <span class='comment'># This will make the wrapped hash accessible from controller and view.
 </span>    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_parameters'>parameters</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span> <span class='id identifier rubyid_wrapped_hash'>wrapped_hash</span>
     <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_request_parameters'>request_parameters</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span> <span class='id identifier rubyid_wrapped_hash'>wrapped_hash</span>
 
-    <span class='comment'># This will display the wrapped hash in the log file
+    <span class='comment'># This will display the wrapped hash in the log file.
 </span>    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_filtered_parameters'>filtered_parameters</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span> <span class='id identifier rubyid_wrapped_filtered_hash'>wrapped_filtered_hash</span>
   <span class='kw'>end</span>
   <span class='kw'>super</span>

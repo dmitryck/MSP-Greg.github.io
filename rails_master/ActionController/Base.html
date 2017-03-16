@@ -200,7 +200,7 @@ a public method on the controller, which will automatically be made
 accessible to the web-server through Rails Routes.</p>
 
 <p>By default, only the ApplicationController in a Rails application inherits
-from <code>Base</code>. All other controllers in turn inherit from
+from <code>Base</code>. All other controllers inherit from
 ApplicationController. This gives you one class to configure things such as
 request forgery protection and filtering of sensitive request parameters.</p>
 
@@ -226,8 +226,8 @@ PostsController would render the template
 
 <p>Unlike index, the create action will not render a template. After
 performing its main purpose (creating a new post), it initiates a redirect
-instead. This redirect works by returning an external "302 Moved" HTTP
-response that takes the user to the index action.</p>
+instead. This redirect works by returning an external <code>302
+Moved</code> HTTP response that takes the user to the index action.</p>
 
 <p>These two methods represent the two basic action archetypes used in Action
 Controllers: Get-and-show and do-and-redirect. Most actions are variations
@@ -264,7 +264,7 @@ specifying keys using brackets, such as:</p>
 <pre class="code ruby"><code class="ruby">&lt;input type=&quot;text&quot; name=&quot;post[name]&quot; value=&quot;david&quot;&gt;
 &lt;input type=&quot;text&quot; name=&quot;post[address]&quot; value=&quot;hyacintvej&quot;&gt;</code></pre>
 
-<p>A request stemming from a form holding these inputs will include <code>{
+<p>A request coming from a form holding these inputs will include <code>{
 &quot;post&quot; =&gt; { &quot;name&quot; =&gt; &quot;david&quot;,
 &quot;address&quot; =&gt; &quot;hyacintvej&quot; } }</code>. If the address
 input had been named <code>post[address][street]</code>, the <code>params</code> would
@@ -288,7 +288,7 @@ accesses a hash:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_person'>person</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_authenticate'>authenticate</span><span class='lparen'>(</span><span class='id identifier rubyid_user_name'>user_name</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span></code></pre>
 
-<p>And retrieved again through the same hash:</p>
+<p>You can retrieve it again through the same hash:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>Hello</span> <span class='comment'>#{session[:person]}</span></code></pre>
 
@@ -622,7 +622,7 @@ process action.</p></div></td>
     <tr class='i_ds'>
       <td><a class='i_m ' href="ForceSSL/ClassMethods.html#force_ssl-instance_method" title="ActionController::ForceSSL::ClassMethods#force_ssl (method)">force_ssl</a></td>
       <td><div class='inline'><p>Force the request to this particular controller or specified actions to be
-under HTTPS protocol.</p></div></td>
+through the HTTPS protocol.</p></div></td>
     </tr>
   </tbody>
 </table></div>
@@ -1886,7 +1886,7 @@ value as the <code>response_body</code>.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Rendering.html#render_to_string-instance_method" title="ActionController::Rendering#render_to_string (method)">#render_to_string</a></td>
-      <td><div class='inline'><p>Overwrite render_to_string because body can now be set to a rack body.</p></div></td>
+      <td><div class='inline'><p>Overwrite render_to_string because body can now be set to a <a href="../Rack.html" title="Rack (module)">::Rack</a> body.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m priv' href="Rendering.html#_normalize_args-instance_method" title="ActionController::Rendering#_normalize_args (method)">#_normalize_args</a></td>

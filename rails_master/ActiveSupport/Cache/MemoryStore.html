@@ -137,7 +137,7 @@ the maximum size by removing the least recently used entries.</p>
   <li>
     <span id='PER_ENTRY_OVERHEAD-constant' class='summary_signature'>PER_ENTRY_OVERHEAD =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L109-L109'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 109</a>    <pre class='code ruby'><span class='int'>240</span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L111-L111'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 111</a>    <pre class='code ruby'><span class='int'>240</span></pre>
   </li>
 </ul>
 </div>
@@ -229,6 +229,9 @@ have expired.</p></div>
     <span class='summary_signature '>
       <a href="#clear-instance_method" title="#clear (instance method)">#<strong>clear</strong>(options = nil)  </a>
     </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Delete all data stored in a given cache store.</p></div>
+    </div>
   </li>
   <li>
     <span class='summary_signature '>
@@ -242,6 +245,9 @@ have expired.</p></div>
     <span class='summary_signature '>
       <a href="#delete_matched-instance_method" title="#delete_matched (instance method)">#<strong>delete_matched</strong>(matcher, options = nil)  </a>
     </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Deletes cache entries if the cache key matches a given pattern.</p></div>
+    </div>
   </li>
   <li>
     <span class='summary_signature '>
@@ -483,16 +489,16 @@ keys.</p></div></td>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L72-L74'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L73-L75'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-72
 73
-74</pre>
+74
+75</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 72</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 73</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pruning?'>pruning?</span>
@@ -508,16 +514,16 @@ keys.</p></div></td>
   <h3 class='signature priv first'>
     #<strong>cached_size</strong>(key, entry)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L111-L113'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L113-L115'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-111
-112
-113</pre>
+113
+114
+115</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 111</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 113</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cached_size'>cached_size</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_entry'>entry</span><span class='rparen'>)</span>
@@ -540,12 +546,11 @@ have expired.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L40-L49'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L41-L50'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-40
 41
 42
 43
@@ -554,9 +559,10 @@ have expired.</p>
 46
 47
 48
-49</pre>
+49
+50</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 40</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 41</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cleanup'>cleanup</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -578,20 +584,27 @@ have expired.</p>
   <h3 class='signature '>
     #<strong>clear</strong>(options = nil)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L31-L37'>GitHub</a>&#8202;]</span>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Delete all data stored in a given cache store.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L32-L38'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-31
 32
 33
 34
 35
 36
-37</pre>
+37
+38</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 31</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 32</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear'>clear</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -617,16 +630,16 @@ have expired.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L82-L84'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L83-L85'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-82
 83
-84</pre>
+84
+85</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 82</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 83</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -641,21 +654,21 @@ have expired.</p>
   <h3 class='signature priv'>
     #<strong>delete_entry</strong>(key, options)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L144-L151'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L146-L153'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-144
-145
 146
 147
 148
 149
 150
-151</pre>
+151
+152
+153</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 144</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 146</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_entry'>delete_entry</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -675,13 +688,18 @@ have expired.</p>
   <h3 class='signature '>
     #<strong>delete_matched</strong>(matcher, options = nil)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L86-L95'>GitHub</a>&#8202;]</span>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Deletes cache entries if the cache key matches a given pattern.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L88-L97'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-86
-87
 88
 89
 90
@@ -689,9 +707,11 @@ have expired.</p>
 92
 93
 94
-95</pre>
+95
+96
+97</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 86</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 88</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_matched'>delete_matched</span><span class='lparen'>(</span><span class='id identifier rubyid_matcher'>matcher</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -720,16 +740,16 @@ have expired.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L77-L79'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L78-L80'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-77
 78
-79</pre>
+79
+80</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 77</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 78</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -747,16 +767,16 @@ have expired.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L97-L99'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L99-L101'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-97
-98
-99</pre>
+99
+100
+101</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 97</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 99</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span> <span class='comment'># :nodoc:
@@ -771,13 +791,11 @@ have expired.</p>
   <h3 class='signature priv'>
     #<strong>modify_value</strong>(name, amount, options)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L153-L162'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L155-L164'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-153
-154
 155
 156
 157
@@ -785,9 +803,11 @@ have expired.</p>
 159
 160
 161
-162</pre>
+162
+163
+164</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 153</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 155</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_modify_value'>modify_value</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -817,12 +837,11 @@ removing the least recently accessed entries.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L53-L69'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L54-L70'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-53
 54
 55
 56
@@ -838,9 +857,10 @@ removing the least recently accessed entries.</p>
 66
 67
 68
-69</pre>
+69
+70</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 53</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 54</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_prune'>prune</span><span class='lparen'>(</span><span class='id identifier rubyid_target_size'>target_size</span><span class='comma'>,</span> <span class='id identifier rubyid_max_time'>max_time</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -869,13 +889,11 @@ removing the least recently accessed entries.</p>
   <h3 class='signature priv'>
     #<strong>read_entry</strong>(key, options)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L115-L125'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L117-L127'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-115
-116
 117
 118
 119
@@ -884,9 +902,11 @@ removing the least recently accessed entries.</p>
 122
 123
 124
-125</pre>
+125
+126
+127</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 115</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 117</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_entry'>read_entry</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -920,16 +940,16 @@ underlying cache implementation is not thread safe.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L103-L105'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L105-L107'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-103
-104
-105</pre>
+105
+106
+107</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 103</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 105</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_synchronize'>synchronize</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -944,13 +964,11 @@ underlying cache implementation is not thread safe.</p>
   <h3 class='signature priv'>
     #<strong>write_entry</strong>(key, entry, options)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L127-L142'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache/memory_store.rb#L129-L144'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-127
-128
 129
 130
 131
@@ -964,9 +982,11 @@ underlying cache implementation is not thread safe.</p>
 139
 140
 141
-142</pre>
+142
+143
+144</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 127</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/memory_store.rb', line 129</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_entry'>write_entry</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_entry'>entry</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>

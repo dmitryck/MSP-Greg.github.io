@@ -241,6 +241,12 @@ cipher, this is 256 bits. If you are using a user-entered secret, you can
 generate a suitable key by using <a href="KeyGenerator.html" title="ActiveSupport::KeyGenerator (class)">KeyGenerator</a> or a similar
 key derivation function.</p>
 
+<p>First additional parameter is used as the signature key for
+<a href="MessageVerifier.html" title="ActiveSupport::MessageVerifier (class)">MessageVerifier</a>. This allows you to specify keys to encrypt and sign
+data.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'>MessageEncryptor</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>secret</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>signature_secret</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></code></pre>
+
 <p>Options:</p>
 <ul><li>
 <p><code>:cipher</code>     - Cipher to use. Can be any cipher returned by
@@ -258,23 +264,23 @@ key derivation function.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L59-L68'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L64-L73'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-59
-60
-61
-62
-63
 64
 65
 66
 67
-68</pre>
+68
+69
+70
+71
+72
+73</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 59</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 64</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_secret'>secret</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_signature_key_or_options'>signature_key_or_options</span><span class='rparen'>)</span>
@@ -305,16 +311,16 @@ key of desired size</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L83-L85'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L88-L90'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-83
-84
-85</pre>
+88
+89
+90</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 83</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 88</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key_len'>key_len</span><span class='lparen'>(</span><span class='id identifier rubyid_cipher'>cipher</span> <span class='op'>=</span> <span class='const'><a href="#DEFAULT_CIPHER-constant" title="ActiveSupport::MessageEncryptor::DEFAULT_CIPHER (constant)">DEFAULT_CIPHER</a></span><span class='rparen'>)</span>
@@ -330,16 +336,16 @@ key of desired size</p>
   <h3 class='signature ro priv first'>
     #<strong>aead_mode?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>, <span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L139-L141'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L144-L146'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-139
-140
-141</pre>
+144
+145
+146</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 139</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 144</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_aead_mode?'>aead_mode?</span>
@@ -355,16 +361,11 @@ key of desired size</p>
   <h3 class='signature priv first'>
     #<strong>_decrypt</strong>(encrypted_message)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L106-L129'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L111-L134'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-106
-107
-108
-109
-110
 111
 112
 113
@@ -383,9 +384,14 @@ key of desired size</p>
 126
 127
 128
-129</pre>
+129
+130
+131
+132
+133
+134</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 106</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 111</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__decrypt'>_decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_encrypted_message'>encrypted_message</span><span class='rparen'>)</span>
@@ -421,16 +427,11 @@ key of desired size</p>
   <h3 class='signature priv'>
     #<strong>_encrypt</strong>(value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L89-L104'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L94-L109'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-89
-90
-91
-92
-93
 94
 95
 96
@@ -441,9 +442,14 @@ key of desired size</p>
 101
 102
 103
-104</pre>
+104
+105
+106
+107
+108
+109</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 89</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 94</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__encrypt'>_encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -480,16 +486,16 @@ href="http://www.limited-entropy.com/padding-oracle-attacks">www.limited-entropy
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L78-L80'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L83-L85'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-78
-79
-80</pre>
+83
+84
+85</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 78</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 83</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_decrypt_and_verify'>decrypt_and_verify</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -513,16 +519,16 @@ href="http://www.limited-entropy.com/padding-oracle-attacks">www.limited-entropy
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L72-L74'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L77-L79'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-72
-73
-74</pre>
+77
+78
+79</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 72</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 77</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encrypt_and_sign'>encrypt_and_sign</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -537,16 +543,16 @@ href="http://www.limited-entropy.com/padding-oracle-attacks">www.limited-entropy
   <h3 class='signature priv'>
     #<strong>new_cipher</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L131-L133'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L136-L138'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-131
-132
-133</pre>
+136
+137
+138</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 131</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 136</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new_cipher'>new_cipher</span>
@@ -561,20 +567,20 @@ href="http://www.limited-entropy.com/padding-oracle-attacks">www.limited-entropy
   <h3 class='signature priv'>
     #<strong>resolve_verifier</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L143-L149'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L148-L154'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-143
-144
-145
-146
-147
 148
-149</pre>
+149
+150
+151
+152
+153
+154</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 143</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 148</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_resolve_verifier'>resolve_verifier</span>
@@ -593,16 +599,16 @@ href="http://www.limited-entropy.com/padding-oracle-attacks">www.limited-entropy
   <h3 class='signature priv'>
     #<strong>verifier</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L135-L137'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_encryptor.rb#L140-L142'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-135
-136
-137</pre>
+140
+141
+142</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 135</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/message_encryptor.rb', line 140</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_verifier'>verifier</span>

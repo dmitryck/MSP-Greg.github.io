@@ -93,7 +93,7 @@
 requirement of being in controller actions.</p>
 
 <p>You get a concrete renderer class by invoking
-<code>ActionController::Base#renderer</code>. For example,</p>
+<code>ActionController::Base#renderer</code>. For example:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>ApplicationController</span><span class='period'>.</span><span class='id identifier rubyid_renderer'>renderer</span></code></pre>
 
@@ -106,7 +106,7 @@ requirement of being in controller actions.</p>
 <pre class="code ruby"><code class="ruby"><span class='const'>ApplicationController</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span> <span class='label'>template:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span></code></pre>
 
 <p><a href="#render-instance_method" title="ActionController::Renderer#render (method)">#render</a> allows you to use the same options that you can use when
-rendering in a controller. For example,</p>
+rendering in a controller. For example:</p>
 
 <pre class="code ruby"><code class="ruby">FooController.render :action, locals: { ... }, assigns: { ... }</code></pre>
 
@@ -554,7 +554,7 @@ merged with the default <a href="../Rack.html" title="Rack (module)">::Rack</a> 
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_with_defaults'>with_defaults</span><span class='lparen'>(</span><span class='id identifier rubyid_defaults'>defaults</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_controller'>controller</span><span class='comma'>,</span> <span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_defaults'>defaults</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_defaults'>defaults</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_controller'>controller</span><span class='comma'>,</span> <span class='ivar'>@env</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_defaults'>defaults</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_defaults'>defaults</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>

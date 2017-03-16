@@ -126,8 +126,8 @@
       <a href="#register-class_method" title=".register (class method)">.<strong>register</strong>(type_name, klass = nil, **options, &amp;block)  </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Add a new type to the registry, allowing it to be referenced as a symbol by
-<a href="../ActiveRecord/Attributes/ClassMethods.html#attribute-instance_method" title="ActiveRecord::Attributes::ClassMethods#attribute (method)">ActiveRecord::Attributes::ClassMethods#attribute</a>.</p></div>
+      <div class='inline'><p>Add a new type to the registry, allowing it to be get through
+<code>ActiveModel::Type#lookup</code></p></div>
     </div>
   </li>
   <li>
@@ -135,19 +135,6 @@
       <a href="#lookup-class_method" title=".lookup (class method)">.<strong>lookup</strong>(*args, **kwargs)  </a>
     </span>
     <span class='nodoc note title'>Internal use only</span>
-  </li>
-</ul>
-</div>
-        
-
-<h2 class='h2_sum' id='instance_Attribute_summary'>Instance Attribute Summary</h2>
-<div class='div_sum'>
-<ul class='summary full'>
-  <li>
-    <span class='summary_signature ro'>
-      <a href="#add_modifier-instance_method" title="#add_modifier (instance method)">#<strong>add_modifier</strong>  </a>
-    </span>
-    <span class='note title readonly'>readonly</span>
   </li>
 </ul>
 </div>
@@ -183,16 +170,16 @@
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/type.rb#L38-L40'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/type.rb#L30-L32'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-38
-39
-40</pre>
+30
+31
+32</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/type.rb', line 38</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/type.rb', line 30</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lookup'>lookup</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -210,53 +197,26 @@
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Add a new type to the registry, allowing it to be referenced as a symbol by
-<a href="../ActiveRecord/Attributes/ClassMethods.html#attribute-instance_method" title="ActiveRecord::Attributes::ClassMethods#attribute (method)">ActiveRecord::Attributes::ClassMethods#attribute</a>.  If your type is only
-meant to be used with a specific database adapter, you can do so by passing
-<tt>adapter: :postgresql</tt>. If your type has the same name as a native type for
-the current adapter, an exception will be raised unless you specify an
-<code>:override</code> option. <tt>override: true</tt> will cause your type to be
-used instead of the native type. <tt>override: false</tt> will cause the native
-type to be used over yours if one exists.</p>
+<p>Add a new type to the registry, allowing it to be get through
+<code>ActiveModel::Type#lookup</code></p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/type.rb#L34-L36'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/type.rb#L26-L28'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-34
-35
-36</pre>
+26
+27
+28</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/type.rb', line 34</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/type.rb', line 26</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_type_name'>type_name</span><span class='comma'>,</span> <span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_registry'>registry</span><span class='period'>.</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_type_name'>type_name</span><span class='comma'>,</span> <span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<h2 class='y_details'>Instance Attribute Details</h2>
-<section class='method_details first' id="add_modifier-instance_method">
-  <h3 class='signature ro first'>
-    #<strong>add_modifier</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/type.rb#L24-L24'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-24</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/type.rb', line 24</span></pre>
-<pre class='code ruby'>
-
-<span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_add_modifier'>add_modifier</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_registry'>registry</span>
 </pre>
   </div>
 </div>

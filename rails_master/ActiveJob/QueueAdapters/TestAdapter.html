@@ -369,7 +369,7 @@ so you can check them.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_adapters/test_adapter.rb#L26-L29'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_adapters/test_adapter.rb#L26-L31'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -377,13 +377,17 @@ so you can check them.</p>
 26
 27
 28
-29</pre>
+29
+30
+31</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'activejob/lib/active_job/queue_adapters/test_adapter.rb', line 26</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_enqueue'>enqueue</span><span class='lparen'>(</span><span class='id identifier rubyid_job'>job</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
-</span>  <span class='id identifier rubyid_job_data'>job_data</span> <span class='op'>=</span> <span class='id identifier rubyid_job_to_hash'>job_to_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_job'>job</span><span class='rparen'>)</span>
+</span>  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_filtered?'>filtered?</span><span class='lparen'>(</span><span class='id identifier rubyid_job'>job</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_job_data'>job_data</span> <span class='op'>=</span> <span class='id identifier rubyid_job_to_hash'>job_to_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_job'>job</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_or_perform'>enqueue_or_perform</span><span class='lparen'>(</span><span class='id identifier rubyid_perform_enqueued_jobs'>perform_enqueued_jobs</span><span class='comma'>,</span> <span class='id identifier rubyid_job'>job</span><span class='comma'>,</span> <span class='id identifier rubyid_job_data'>job_data</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
@@ -398,21 +402,25 @@ so you can check them.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_adapters/test_adapter.rb#L31-L34'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_adapters/test_adapter.rb#L33-L38'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-31
-32
 33
-34</pre>
+34
+35
+36
+37
+38</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activejob/lib/active_job/queue_adapters/test_adapter.rb', line 31</span></pre>
+<pre><span class='info file'># File 'activejob/lib/active_job/queue_adapters/test_adapter.rb', line 33</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_enqueue_at'>enqueue_at</span><span class='lparen'>(</span><span class='id identifier rubyid_job'>job</span><span class='comma'>,</span> <span class='id identifier rubyid_timestamp'>timestamp</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
-</span>  <span class='id identifier rubyid_job_data'>job_data</span> <span class='op'>=</span> <span class='id identifier rubyid_job_to_hash'>job_to_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_job'>job</span><span class='comma'>,</span> <span class='label'>at:</span> <span class='id identifier rubyid_timestamp'>timestamp</span><span class='rparen'>)</span>
+</span>  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_filtered?'>filtered?</span><span class='lparen'>(</span><span class='id identifier rubyid_job'>job</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_job_data'>job_data</span> <span class='op'>=</span> <span class='id identifier rubyid_job_to_hash'>job_to_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_job'>job</span><span class='comma'>,</span> <span class='label'>at:</span> <span class='id identifier rubyid_timestamp'>timestamp</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_enqueue_or_perform'>enqueue_or_perform</span><span class='lparen'>(</span><span class='id identifier rubyid_perform_enqueued_at_jobs'>perform_enqueued_at_jobs</span><span class='comma'>,</span> <span class='id identifier rubyid_job'>job</span><span class='comma'>,</span> <span class='id identifier rubyid_job_data'>job_data</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
@@ -424,29 +432,29 @@ so you can check them.</p>
   <h3 class='signature priv'>
     #<strong>enqueue_or_perform</strong>(perform, job, job_data)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_adapters/test_adapter.rb#L42-L49'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_adapters/test_adapter.rb#L45-L52'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-42
-43
-44
 45
 46
 47
 48
-49</pre>
+49
+50
+51
+52</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activejob/lib/active_job/queue_adapters/test_adapter.rb', line 42</span></pre>
+<pre><span class='info file'># File 'activejob/lib/active_job/queue_adapters/test_adapter.rb', line 45</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_enqueue_or_perform'>enqueue_or_perform</span><span class='lparen'>(</span><span class='id identifier rubyid_perform'>perform</span><span class='comma'>,</span> <span class='id identifier rubyid_job'>job</span><span class='comma'>,</span> <span class='id identifier rubyid_job_data'>job_data</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_perform'>perform</span> <span class='op'>||</span> <span class='id identifier rubyid_filtered?'>filtered?</span><span class='lparen'>(</span><span class='id identifier rubyid_job'>job</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_enqueued_jobs'>enqueued_jobs</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_job_data'>job_data</span>
-  <span class='kw'>else</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_perform'>perform</span>
     <span class='id identifier rubyid_performed_jobs'>performed_jobs</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_job_data'>job_data</span>
     <span class='const'><a href="../Base.html" title="ActiveJob::Base (class)">Base</a></span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span> <span class='id identifier rubyid_job'>job</span><span class='period'>.</span><span class='id identifier rubyid_serialize'>serialize</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_enqueued_jobs'>enqueued_jobs</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_job_data'>job_data</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
@@ -465,16 +473,16 @@ so you can check them.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_adapters/test_adapter.rb#L51-L53'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_adapters/test_adapter.rb#L54-L56'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-51
-52
-53</pre>
+54
+55
+56</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activejob/lib/active_job/queue_adapters/test_adapter.rb', line 51</span></pre>
+<pre><span class='info file'># File 'activejob/lib/active_job/queue_adapters/test_adapter.rb', line 54</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_filtered?'>filtered?</span><span class='lparen'>(</span><span class='id identifier rubyid_job'>job</span><span class='rparen'>)</span>
@@ -489,16 +497,16 @@ so you can check them.</p>
   <h3 class='signature priv'>
     #<strong>job_to_hash</strong>(job, extras = {})   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_adapters/test_adapter.rb#L38-L40'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activejob/lib/active_job/queue_adapters/test_adapter.rb#L41-L43'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-38
-39
-40</pre>
+41
+42
+43</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activejob/lib/active_job/queue_adapters/test_adapter.rb', line 38</span></pre>
+<pre><span class='info file'># File 'activejob/lib/active_job/queue_adapters/test_adapter.rb', line 41</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_job_to_hash'>job_to_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_job'>job</span><span class='comma'>,</span> <span class='id identifier rubyid_extras'>extras</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>

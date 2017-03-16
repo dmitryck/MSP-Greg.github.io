@@ -1230,10 +1230,6 @@ raising a <code>PG::Error</code> exception otherwise.</p></div></td>
       <td><div class='inline'><p>Returns the current schema name.</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m ' href="PostgreSQL/SchemaStatements.html#data_sources-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#data_sources (method)">#data_sources</a></td>
-      <td><div class='inline'><p>:nodoc.</p></div></td>
-    </tr>
-    <tr class='i_ds'>
       <td><a class='i_m ' href="PostgreSQL/SchemaStatements.html#drop_schema-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#drop_schema (method)">#drop_schema</a></td>
       <td><div class='inline'><p>Drops the schema for the given schema name.</p></div></td>
     </tr>
@@ -1274,18 +1270,9 @@ raising a <code>PG::Error</code> exception otherwise.</p></div></td>
     <tr>
       <td colspan='2'>
         <a class='i_m ' href="PostgreSQL/SchemaStatements.html#serial_sequence-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#serial_sequence (method)">#serial_sequence</a>,
-      </td>
-    </tr>
-    <tr class='i_ds'>
-      <td><a class='i_m ' href="PostgreSQL/SchemaStatements.html#table_exists%3F-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#table_exists? (method)">#table_exists?</a></td>
-      <td><div class='inline'><p>Returns true if table exists.</p></div></td>
-    </tr>
-    <tr class='i_ds'>
-      <td><a class='i_m ' href="PostgreSQL/SchemaStatements.html#tables-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#tables (method)">#tables</a></td>
-      <td><div class='inline'><p>Returns the list of all tables in the schema search path.</p></div></td>
-    </tr>
-    <tr>
-      <td colspan='2'>
+        <a class='i_m priv' href="PostgreSQL/SchemaStatements.html#data_source_sql-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#data_source_sql (method)">#data_source_sql</a>,
+        <a class='i_m priv' href="PostgreSQL/SchemaStatements.html#extract_schema_qualified_name-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#extract_schema_qualified_name (method)">#extract_schema_qualified_name</a>,
+        <a class='i_m priv' href="PostgreSQL/SchemaStatements.html#quoted_scope-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#quoted_scope (method)">#quoted_scope</a>,
         <a class='i_m nodoc' href="PostgreSQL/SchemaStatements.html#add_column-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#add_column (method)">#add_column</a>,
         <a class='i_m nodoc' href="PostgreSQL/SchemaStatements.html#add_index-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#add_index (method)">#add_index</a>,
         <a class='i_m nodoc' href="PostgreSQL/SchemaStatements.html#change_column-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#change_column (method)">#change_column</a>,
@@ -1313,11 +1300,6 @@ raising a <code>PG::Error</code> exception otherwise.</p></div></td>
       <td><div class='inline'><p><a href="PostgreSQL.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL (module)">PostgreSQL</a> requires the ORDER BY
 columns in the select list for distinct queries, and requires that the
 ORDER BY include the distinct column.</p></div></td>
-    </tr>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m nodoc' href="PostgreSQL/SchemaStatements.html#data_source_exists%3F-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#data_source_exists? (method)">#data_source_exists?</a>,
-      </td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m nodoc' href="PostgreSQL/SchemaStatements.html#default_sequence_name-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#default_sequence_name (method)">#default_sequence_name</a></td>
@@ -1381,12 +1363,6 @@ using the provided <code>options</code>.</p></div></td>
     <tr class='i_ds'>
       <td><a class='i_m nodoc' href="PostgreSQL/SchemaStatements.html#type_to_sql-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#type_to_sql (method)">#type_to_sql</a></td>
       <td><div class='inline'><p>Maps logical <a href="../../Rails.html" title="Rails (module)">::Rails</a> types to PostgreSQL-specific data types.</p></div></td>
-    </tr>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m nodoc' href="PostgreSQL/SchemaStatements.html#view_exists%3F-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#view_exists? (method)">#view_exists?</a>,
-        <a class='i_m nodoc' href="PostgreSQL/SchemaStatements.html#views-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements#views (method)">#views</a>
-      </td>
     </tr>
   </tbody>
 </table></div>
@@ -2175,12 +2151,14 @@ supporting index lengths.</p></div></td>
         <a class='i_m priv' href="SchemaStatements.html#column_options_keys-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#column_options_keys (method)">#column_options_keys</a>,
         <a class='i_m priv' href="SchemaStatements.html#create_alter_table-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#create_alter_table (method)">#create_alter_table</a>,
         <a class='i_m priv' href="SchemaStatements.html#create_table_definition-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#create_table_definition (method)">#create_table_definition</a>,
+        <a class='i_m priv' href="SchemaStatements.html#data_source_sql-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#data_source_sql (method)">#data_source_sql</a>,
         <a class='i_m priv' href="SchemaStatements.html#extract_new_default_value-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#extract_new_default_value (method)">#extract_new_default_value</a>,
         <a class='i_m priv' href="SchemaStatements.html#foreign_key_name-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#foreign_key_name (method)">#foreign_key_name</a>,
         <a class='i_m priv' href="SchemaStatements.html#index_column_names-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#index_column_names (method)">#index_column_names</a>,
         <a class='i_m priv' href="SchemaStatements.html#index_name_for_remove-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#index_name_for_remove (method)">#index_name_for_remove</a>,
         <a class='i_m priv' href="SchemaStatements.html#index_name_options-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#index_name_options (method)">#index_name_options</a>,
         <a class='i_m priv' href="SchemaStatements.html#quoted_columns_for_index-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#quoted_columns_for_index (method)">#quoted_columns_for_index</a>,
+        <a class='i_m priv' href="SchemaStatements.html#quoted_scope-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#quoted_scope (method)">#quoted_scope</a>,
         <a class='i_m priv' href="SchemaStatements.html#rename_column_indexes-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#rename_column_indexes (method)">#rename_column_indexes</a>,
         <a class='i_m priv' href="SchemaStatements.html#rename_table_indexes-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#rename_table_indexes (method)">#rename_table_indexes</a>,
         <a class='i_m priv' href="SchemaStatements.html#validate_index_length!-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#validate_index_length! (method)">#validate_index_length!</a>,

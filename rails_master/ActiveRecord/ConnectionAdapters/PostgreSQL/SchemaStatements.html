@@ -184,14 +184,6 @@
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#data_sources-instance_method" title="#data_sources (instance method)">#<strong>data_sources</strong>  </a>
-    </span>
-    <div class='summary_desc'>
-      <div class='inline'><p>:nodoc.</p></div>
-    </div>
-  </li>
-  <li>
-    <span class='summary_signature '>
       <a href="#drop_schema-instance_method" title="#drop_schema (instance method)">#<strong>drop_schema</strong>(schema_name, options = {})  </a>
     </span>
     <div class='summary_desc'>
@@ -270,20 +262,22 @@
     </span>
   </li>
   <li>
-    <span class='summary_signature '>
-      <a href="#table_exists%3F-instance_method" title="#table_exists? (instance method)">#<strong>table_exists?</strong>(name)  &#x21d2; Boolean </a>
+    <span class='summary_signature priv'>
+      <a href="#data_source_sql-instance_method" title="#data_source_sql (instance method)">#<strong>data_source_sql</strong>(name = nil, type: nil)  </a>
     </span>
-    <div class='summary_desc'>
-      <div class='inline'><p>Returns true if table exists.</p></div>
-    </div>
+    <span class='note title private'>private</span>
   </li>
   <li>
-    <span class='summary_signature '>
-      <a href="#tables-instance_method" title="#tables (instance method)">#<strong>tables</strong>  </a>
+    <span class='summary_signature priv'>
+      <a href="#extract_schema_qualified_name-instance_method" title="#extract_schema_qualified_name (instance method)">#<strong>extract_schema_qualified_name</strong>(string)  </a>
     </span>
-    <div class='summary_desc'>
-      <div class='inline'><p>Returns the list of all tables in the schema search path.</p></div>
-    </div>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
+    <span class='summary_signature priv'>
+      <a href="#quoted_scope-instance_method" title="#quoted_scope (instance method)">#<strong>quoted_scope</strong>(name = nil, type: nil)  </a>
+    </span>
+    <span class='note title private'>private</span>
   </li>
   <li>
     <span class='summary_signature nodoc'>
@@ -346,12 +340,6 @@
 columns in the select list for distinct queries, and requires that the
 ORDER BY include the distinct column.</p></div>
     </div>
-  </li>
-  <li>
-    <span class='summary_signature nodoc'>
-      <a href="#data_source_exists%3F-instance_method" title="#data_source_exists? (instance method)">#<strong>data_source_exists?</strong>(name)  &#x21d2; Boolean </a>
-    </span>
-    <span class='nodoc note title'>Internal use only</span>
   </li>
   <li>
     <span class='summary_signature nodoc'>
@@ -475,18 +463,6 @@ using the provided <code>options</code>.</p></div>
       <div class='inline'><p>Maps logical <a href="../../../Rails.html" title="Rails (module)">::Rails</a> types to PostgreSQL-specific data types.</p></div>
     </div>
   </li>
-  <li>
-    <span class='summary_signature nodoc'>
-      <a href="#view_exists%3F-instance_method" title="#view_exists? (instance method)">#<strong>view_exists?</strong>(view_name)  &#x21d2; Boolean </a>
-    </span>
-    <span class='nodoc note title'>Internal use only</span>
-  </li>
-  <li>
-    <span class='summary_signature nodoc'>
-      <a href="#views-instance_method" title="#views (instance method)">#<strong>views</strong>  </a>
-    </span>
-    <span class='nodoc note title'>Internal use only</span>
-  </li>
 </ul>
 </div>
 <h2 class='y_details'>Instance Attribute Details</h2>
@@ -501,16 +477,16 @@ using the provided <code>options</code>.</p></div>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L319-L321'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L251-L253'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-319
-320
-321</pre>
+251
+252
+253</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 319</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 251</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_client_min_messages'>client_min_messages</span>
@@ -532,16 +508,16 @@ using the provided <code>options</code>.</p></div>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L324-L326'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L256-L258'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-324
-325
-326</pre>
+256
+257
+258</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 324</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 256</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_client_min_messages='>client_min_messages=</span><span class='lparen'>(</span><span class='id identifier rubyid_level'>level</span><span class='rparen'>)</span>
@@ -563,16 +539,16 @@ using the provided <code>options</code>.</p></div>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L314-L316'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L246-L248'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-314
-315
-316</pre>
+246
+247
+248</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 314</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 246</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_schema_search_path'>schema_search_path</span>
@@ -599,19 +575,19 @@ href="http://www.postgresql.org/docs/current/static/ddl-schemas.html">www.postgr
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L306-L311'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L238-L243'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-306
-307
-308
-309
-310
-311</pre>
+238
+239
+240
+241
+242
+243</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 306</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 238</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_schema_search_path='>schema_search_path=</span><span class='lparen'>(</span><span class='id identifier rubyid_schema_csv'>schema_csv</span><span class='rparen'>)</span>
@@ -633,18 +609,18 @@ href="http://www.postgresql.org/docs/current/static/ddl-schemas.html">www.postgr
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L469-L473'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L399-L403'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-469
-470
-471
-472
-473</pre>
+399
+400
+401
+402
+403</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 469</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 399</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_column'>add_column</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -664,19 +640,19 @@ href="http://www.postgresql.org/docs/current/static/ddl-schemas.html">www.postgr
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L542-L547'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L472-L477'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-542
-543
-544
-545
-546
-547</pre>
+472
+473
+474
+475
+476
+477</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 542</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 472</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_index'>add_index</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -697,34 +673,34 @@ href="http://www.postgresql.org/docs/current/static/ddl-schemas.html">www.postgr
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L475-L495'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L405-L425'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-475
-476
-477
-478
-479
-480
-481
-482
-483
-484
-485
-486
-487
-488
-489
-490
-491
-492
-493
-494
-495</pre>
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 475</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 405</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_change_column'>change_column</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -767,17 +743,17 @@ href="http://www.postgresql.org/docs/current/static/ddl-schemas.html">www.postgr
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L524-L527'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L454-L457'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-524
-525
-526
-527</pre>
+454
+455
+456
+457</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 524</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 454</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_change_column_comment'>change_column_comment</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_comment'>comment</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -803,28 +779,28 @@ href="http://www.postgresql.org/docs/current/static/ddl-schemas.html">www.postgr
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L498-L512'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L428-L442'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-498
-499
-500
-501
-502
-503
-504
-505
-506
-507
-508
-509
-510
-511
-512</pre>
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 498</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 428</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_change_column_default'>change_column_default</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_default_or_changes'>default_or_changes</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -854,21 +830,21 @@ href="http://www.postgresql.org/docs/current/static/ddl-schemas.html">www.postgr
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L514-L521'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L444-L451'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-514
-515
-516
-517
-518
-519
-520
-521</pre>
+444
+445
+446
+447
+448
+449
+450
+451</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 514</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 444</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_change_column_null'>change_column_null</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_null'>null</span><span class='comma'>,</span> <span class='id identifier rubyid_default'>default</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -898,17 +874,17 @@ href="http://www.postgresql.org/docs/current/static/ddl-schemas.html">www.postgr
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L530-L533'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L460-L463'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-530
-531
-532
-533</pre>
+460
+461
+462
+463</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 530</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 460</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_change_table_comment'>change_table_comment</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_comment'>comment</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -931,16 +907,16 @@ href="http://www.postgresql.org/docs/current/static/ddl-schemas.html">www.postgr
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L271-L273'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L203-L205'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-271
-272
-273</pre>
+203
+204
+205</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 271</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 203</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_collation'>collation</span>
@@ -967,24 +943,24 @@ ORDER BY include the distinct column.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L653-L663'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L584-L594'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-653
-654
-655
-656
-657
-658
-659
-660
-661
-662
-663</pre>
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 653</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 584</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_columns_for_distinct'>columns_for_distinct</span><span class='lparen'>(</span><span class='id identifier rubyid_columns'>columns</span><span class='comma'>,</span> <span class='id identifier rubyid_orders'>orders</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -1103,16 +1079,16 @@ Options include <code>:owner</code>, <code>:template</code>,
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L292-L294'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L224-L226'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-292
-293
-294</pre>
+224
+225
+226</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 292</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 224</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_schema'>create_schema</span><span class='lparen'>(</span><span class='id identifier rubyid_schema_name'>schema_name</span><span class='rparen'>)</span>
@@ -1134,16 +1110,16 @@ Options include <code>:owner</code>, <code>:template</code>,
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L276-L278'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L208-L210'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-276
-277
-278</pre>
+208
+209
+210</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 276</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 208</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ctype'>ctype</span>
@@ -1165,20 +1141,20 @@ Options include <code>:owner</code>, <code>:template</code>,
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L256-L258'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L188-L190'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-256
-257
-258</pre>
+188
+189
+190</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 256</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 188</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_current_database'>current_database</span>
-  <span class='id identifier rubyid_select_value'>select_value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>select current_database()</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_select_value'>select_value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT current_database()</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1196,16 +1172,16 @@ Options include <code>:owner</code>, <code>:template</code>,
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L261-L263'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L193-L195'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-261
-262
-263</pre>
+193
+194
+195</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 261</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 193</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_current_schema'>current_schema</span>
@@ -1216,98 +1192,39 @@ Options include <code>:owner</code>, <code>:template</code>,
 </div>
 </section>
 
-<section class='method_details' id="data_source_exists?-instance_method">
-  <h3 class='signature nodoc'>
-    #<strong>data_source_exists?</strong>(name)  &#x21d2; <code>Boolean</code> 
+<section class='method_details' id="data_source_sql-instance_method">
+  <h3 class='signature priv'>
+    #<strong>data_source_sql</strong>(name = nil, type: nil)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <div class='note nodoc inline-block'>
-    <strong>This method is for internal use only.</strong>
-  </div><div></div>
-<div class='docstring'>
-  <div class='discussion'>
-    
-  </div>
-</div>
-<div class='tags'>
-  
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L97-L109'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L609-L618'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109</pre>
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 97</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 609</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_data_source_exists?'>data_source_exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
-</span>  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='const'><a href="Utils.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils (module)">Utils</a></span><span class='period'>.</span><span class='id identifier rubyid_extract_schema_qualified_name'><a href="Utils.html#extract_schema_qualified_name-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils#extract_schema_qualified_name (method)">extract_schema_qualified_name</a></span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span>
-
-  <span class='id identifier rubyid_select_values'>select_values</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-SQL</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
-<span class='tstring_content'>    SELECT c.relname
-    FROM pg_class c
-    LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
-    WHERE c.relkind IN (&#39;r&#39;,&#39;v&#39;,&#39;m&#39;) -- (r)elation/table, (v)iew, (m)aterialized view
-    AND c.relname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>
-    AND n.nspname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span> <span class='op'>?</span> <span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ANY (current_schemas(false))</span><span class='tstring_end'>&quot;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
-</span><span class='heredoc_end'>  SQL
-</span><span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="data_sources-instance_method">
-  <h3 class='signature '>
-    #<strong>data_sources</strong>  
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>:nodoc</p>
-
-  </div>
-</div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L62-L70'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-62
-63
-64
-65
-66
-67
-68
-69
-70</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 62</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_data_sources'>data_sources</span> <span class='comment'># :nodoc
-</span>  <span class='id identifier rubyid_select_values'>select_values</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-SQL</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-<span class='tstring_content'>    SELECT c.relname
-    FROM pg_class c
-    LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
-    WHERE c.relkind IN (&#39;r&#39;,&#39;v&#39;,&#39;m&#39;) -- (r)elation/table, (v)iew, (m)aterialized view
-    AND n.nspname = ANY (current_schemas(false))
-</span><span class='heredoc_end'>  SQL
-</span><span class='kw'>end</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_data_source_sql'>data_source_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='id identifier rubyid_quoted_scope'>quoted_scope</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;r&#39;,&#39;v&#39;,&#39;m&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='comment'># (r)elation/table, (v)iew, (m)aterialized view
+</span>
+  <span class='id identifier rubyid_sql'>sql</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT c.relname FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_sql'>sql</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> WHERE n.nspname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_schema'>schema</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_sql'>sql</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> AND c.relname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_sql'>sql</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> AND c.relkind IN (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_sql'>sql</span>
+<span class='kw'>end</span>
 </pre>
   </div>
 </div>
@@ -1328,20 +1245,20 @@ specified key.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L329-L335'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L261-L267'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-329
-330
-331
-332
-333
-334
-335</pre>
+261
+262
+263
+264
+265
+266
+267</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 329</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 261</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_default_sequence_name'>default_sequence_name</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_pk'>pk</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -1405,16 +1322,16 @@ specified key.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L297-L299'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L229-L231'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-297
-298
-299</pre>
+229
+230
+231</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 297</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 229</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_drop_schema'>drop_schema</span><span class='lparen'>(</span><span class='id identifier rubyid_schema_name'>schema_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1432,16 +1349,16 @@ specified key.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L125-L127'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L57-L59'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-125
-126
-127</pre>
+57
+58
+59</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 125</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 57</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_drop_table'>drop_table</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -1463,16 +1380,16 @@ specified key.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L266-L268'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L198-L200'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-266
-267
-268</pre>
+198
+199
+200</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 266</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 198</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encoding'>encoding</span>
@@ -1490,20 +1407,20 @@ specified key.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L610-L616'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L541-L547'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-610
-611
-612
-613
-614
-615
-616</pre>
+541
+542
+543
+544
+545
+546
+547</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 610</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 541</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_extract_foreign_key_action'>extract_foreign_key_action</span><span class='lparen'>(</span><span class='id identifier rubyid_specifier'>specifier</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -1518,28 +1435,54 @@ specified key.</p>
 </div>
 </section>
 
-<section class='method_details' id="fetch_type_metadata-instance_method">
-  <h3 class='signature '>
-    #<strong>fetch_type_metadata</strong>(column_name, sql_type, oid, fmod)  
+<section class='method_details' id="extract_schema_qualified_name-instance_method">
+  <h3 class='signature priv'>
+    #<strong>extract_schema_qualified_name</strong>(string)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L665-L675'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L636-L639'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-665
-666
-667
-668
-669
-670
-671
-672
-673
-674
-675</pre>
+636
+637
+638
+639</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 665</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 636</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_schema_qualified_name'>extract_schema_qualified_name</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='const'><a href="Utils.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils (module)">Utils</a></span><span class='period'>.</span><span class='id identifier rubyid_extract_schema_qualified_name'><a href="Utils.html#extract_schema_qualified_name-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils#extract_schema_qualified_name (method)">extract_schema_qualified_name</a></span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+  <span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rbracket'>]</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="fetch_type_metadata-instance_method">
+  <h3 class='signature '>
+    #<strong>fetch_type_metadata</strong>(column_name, sql_type, oid, fmod)  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L596-L606'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 596</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_fetch_type_metadata'>fetch_type_metadata</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_sql_type'>sql_type</span><span class='comma'>,</span> <span class='id identifier rubyid_oid'>oid</span><span class='comma'>,</span> <span class='id identifier rubyid_fmod'>fmod</span><span class='rparen'>)</span>
@@ -1562,44 +1505,46 @@ specified key.</p>
   <h3 class='signature '>
     #<strong>foreign_keys</strong>(table_name)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L581-L608'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L511-L539'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-581
-582
-583
-584
-585
-586
-587
-588
-589
-590
-591
-592
-593
-594
-595
-596
-597
-598
-599
-600
-601
-602
-603
-604
-605
-606
-607
-608</pre>
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 581</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 511</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_foreign_keys'>foreign_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='id identifier rubyid_quoted_scope'>quoted_scope</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_fk_info'>fk_info</span> <span class='op'>=</span> <span class='id identifier rubyid_select_all'>select_all</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-SQL</span><span class='period'>.</span><span class='id identifier rubyid_strip_heredoc'>strip_heredoc</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='tstring_content'>    SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
     FROM pg_constraint c
@@ -1609,8 +1554,8 @@ specified key.</p>
     JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
     JOIN pg_namespace t3 ON c.connamespace = t3.oid
     WHERE c.contype = &#39;f&#39;
-      AND t1.relname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>
-      AND t3.nspname = ANY (current_schemas(false))
+      AND t1.relname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      AND t3.nspname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_schema'>schema</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
     ORDER BY c.conname
 </span><span class='heredoc_end'>  SQL
 </span>
@@ -1645,34 +1590,34 @@ specified key.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L135-L155'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L67-L87'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155</pre>
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 135</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 67</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index_name_exists?'>index_name_exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_index_name'>index_name</span><span class='comma'>,</span> <span class='id identifier rubyid_default'>default</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -1681,8 +1626,8 @@ specified key.</p>
 <span class='tstring_content'>      Passing default to #index_name_exists? is deprecated without replacement.
 </span><span class='heredoc_end'>    MSG
 </span>  <span class='kw'>end</span>
-  <span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='const'><a href="Utils.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils (module)">Utils</a></span><span class='period'>.</span><span class='id identifier rubyid_extract_schema_qualified_name'><a href="Utils.html#extract_schema_qualified_name-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils#extract_schema_qualified_name (method)">extract_schema_qualified_name</a></span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='const'><a href="Utils.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils (module)">Utils</a></span><span class='period'>.</span><span class='id identifier rubyid_extract_schema_qualified_name'><a href="Utils.html#extract_schema_qualified_name-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils#extract_schema_qualified_name (method)">extract_schema_qualified_name</a></span><span class='lparen'>(</span><span class='id identifier rubyid_index_name'>index_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='id identifier rubyid_quoted_scope'>quoted_scope</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='id identifier rubyid_quoted_scope'>quoted_scope</span><span class='lparen'>(</span><span class='id identifier rubyid_index_name'>index_name</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_select_value'>select_value</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-SQL</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>&gt;</span> <span class='int'>0</span>
 <span class='tstring_content'>    SELECT COUNT(*)
@@ -1691,9 +1636,9 @@ specified key.</p>
     INNER JOIN pg_class i ON d.indexrelid = i.oid
     LEFT JOIN pg_namespace n ON n.oid = i.relnamespace
     WHERE i.relkind = &#39;i&#39;
-      AND i.relname = &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;
-      AND t.relname = &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;
-      AND n.nspname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ANY (current_schemas(false))</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      AND i.relname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      AND t.relname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_table'>table</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      AND n.nspname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_schema'>schema</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
 </span><span class='heredoc_end'>  SQL
 </span><span class='kw'>end</span>
 </pre>
@@ -1715,69 +1660,69 @@ specified key.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L158-L213'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L90-L145'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213</pre>
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 158</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 90</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_indexes'>indexes</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -1787,7 +1732,7 @@ specified key.</p>
 </span><span class='heredoc_end'>    MSG
 </span>  <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='const'><a href="Utils.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils (module)">Utils</a></span><span class='period'>.</span><span class='id identifier rubyid_extract_schema_qualified_name'><a href="Utils.html#extract_schema_qualified_name-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils#extract_schema_qualified_name (method)">extract_schema_qualified_name</a></span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='id identifier rubyid_quoted_scope'>quoted_scope</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_query'>query</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-SQL</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='tstring_content'>    SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid,
@@ -1801,8 +1746,8 @@ specified key.</p>
     LEFT JOIN pg_namespace n ON n.oid = i.relnamespace
     WHERE i.relkind = &#39;i&#39;
       AND d.indisprimary = &#39;f&#39;
-      AND t.relname = &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;
-      AND n.nspname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ANY (current_schemas(false))</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      AND t.relname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      AND n.nspname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_schema'>schema</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
     ORDER BY i.relname
 </span><span class='heredoc_end'>  SQL
 </span>
@@ -1852,31 +1797,31 @@ specified key.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L215-L232'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L147-L164'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229
-230
-231
-232</pre>
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 215</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 147</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new_column_from_field'>new_column_from_field</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span> <span class='comment'># :nondoc:
@@ -1916,65 +1861,65 @@ specified key.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L379-L430'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L311-L362'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-379
-380
-381
-382
-383
-384
-385
-386
-387
-388
-389
-390
-391
-392
-393
-394
-395
-396
-397
-398
-399
-400
-401
-402
-403
-404
-405
-406
-407
-408
-409
-410
-411
-412
-413
-414
-415
-416
-417
-418
-419
-420
-421
-422
-423
-424
-425
-426
-427
-428
-429
-430</pre>
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 379</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 311</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pk_and_sequence_for'>pk_and_sequence_for</span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -2041,45 +1986,89 @@ specified key.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L432-L446'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L364-L376'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-432
-433
-434
-435
-436
-437
-438
-439
-440
-441
-442
-443
-444
-445
-446</pre>
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 432</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 364</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_primary_keys'>primary_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
-</span>  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='const'><a href="Utils.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils (module)">Utils</a></span><span class='period'>.</span><span class='id identifier rubyid_extract_schema_qualified_name'><a href="Utils.html#extract_schema_qualified_name-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils#extract_schema_qualified_name (method)">extract_schema_qualified_name</a></span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+</span>  <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='id identifier rubyid_quoted_scope'>quoted_scope</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_select_values'>select_values</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-SQL</span><span class='period'>.</span><span class='id identifier rubyid_strip_heredoc'>strip_heredoc</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='tstring_content'>    SELECT column_name
       FROM information_schema.key_column_usage kcu
       JOIN information_schema.table_constraints tc
-        ON kcu.table_name = tc.table_name
-       AND kcu.table_schema = tc.table_schema
-       AND kcu.constraint_name = tc.constraint_name
+     USING (table_schema, table_name, constraint_name)
      WHERE constraint_type = &#39;PRIMARY KEY&#39;
-       AND kcu.table_name = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>
-       AND kcu.table_schema = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span> <span class='op'>?</span> <span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ANY (current_schemas(false))</span><span class='tstring_end'>&quot;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+       AND kcu.table_name = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+       AND kcu.table_schema = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_schema'>schema</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
      ORDER BY kcu.ordinal_position
 </span><span class='heredoc_end'>  SQL
 </span><span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="quoted_scope-instance_method">
+  <h3 class='signature priv'>
+    #<strong>quoted_scope</strong>(name = nil, type: nil)   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L620-L634'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 620</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_quoted_scope'>quoted_scope</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_schema'>schema</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_schema_qualified_name'>extract_schema_qualified_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> \
+    <span class='kw'>case</span> <span class='id identifier rubyid_type'>type</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BASE TABLE</span><span class='tstring_end'>&quot;</span></span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;r&#39;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VIEW</span><span class='tstring_end'>&quot;</span></span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;v&#39;,&#39;m&#39;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_schema'>schema</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_schema'>schema</span> <span class='op'>?</span> <span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_schema'>schema</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ANY (current_schemas(false))</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span> <span class='kw'>if</span> <span class='id identifier rubyid_type'>type</span>
+  <span class='id identifier rubyid_scope'>scope</span>
+<span class='kw'>end</span>
 </pre>
   </div>
 </div>
@@ -2129,36 +2118,36 @@ using the provided <code>options</code>.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L549-L571'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L479-L501'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-549
-550
-551
-552
-553
-554
-555
-556
-557
-558
-559
-560
-561
-562
-563
-564
-565
-566
-567
-568
-569
-570
-571</pre>
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 549</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 479</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove_index'>remove_index</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -2203,18 +2192,18 @@ using the provided <code>options</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L536-L540'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L466-L470'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-536
-537
-538
-539
-540</pre>
+466
+467
+468
+469
+470</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 536</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 466</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rename_column'>rename_column</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_new_column_name'>new_column_name</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -2239,18 +2228,18 @@ greater than allowed limit.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L575-L579'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L505-L509'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-575
-576
-577
-578
-579</pre>
+505
+506
+507
+508
+509</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 575</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 505</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rename_index'>rename_index</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_old_name'>old_name</span><span class='comma'>,</span> <span class='id identifier rubyid_new_name'>new_name</span><span class='rparen'>)</span>
@@ -2279,27 +2268,27 @@ sequence name exists and matches the Active Record default.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L454-L467'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L384-L397'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-454
-455
-456
-457
-458
-459
-460
-461
-462
-463
-464
-465
-466
-467</pre>
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 454</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 384</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rename_table'>rename_table</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_new_name'>new_name</span><span class='rparen'>)</span>
@@ -2335,33 +2324,33 @@ sequence name exists and matches the Active Record default.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L357-L376'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L289-L308'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-357
-358
-359
-360
-361
-362
-363
-364
-365
-366
-367
-368
-369
-370
-371
-372
-373
-374
-375
-376</pre>
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 357</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 289</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_pk_sequence!'>reset_pk_sequence!</span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='comma'>,</span> <span class='id identifier rubyid_pk'>pk</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_sequence'>sequence</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -2402,20 +2391,20 @@ sequence name exists and matches the Active Record default.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L130-L132'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L62-L64'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-130
-131
-132</pre>
+62
+63
+64</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 130</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 62</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_schema_exists?'>schema_exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_select_value'>select_value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT COUNT(*) FROM pg_namespace WHERE nspname = &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_select_value'>select_value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT COUNT(*) FROM pg_namespace WHERE nspname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>&gt;</span> <span class='int'>0</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -2433,22 +2422,22 @@ sequence name exists and matches the Active Record default.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L281-L289'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L213-L221'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-281
-282
-283
-284
-285
-286
-287
-288
-289</pre>
+213
+214
+215
+216
+217
+218
+219
+220
+221</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 281</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 213</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_schema_names'>schema_names</span>
@@ -2469,16 +2458,16 @@ sequence name exists and matches the Active Record default.</p>
   <h3 class='signature '>
     #<strong>serial_sequence</strong>(table, column)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L337-L339'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L269-L271'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-337
-338
-339</pre>
+269
+270
+271</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 337</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 269</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_serial_sequence'>serial_sequence</span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='comma'>,</span> <span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
@@ -2503,26 +2492,26 @@ sequence name exists and matches the Active Record default.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L342-L354'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L274-L286'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-342
-343
-344
-345
-346
-347
-348
-349
-350
-351
-352
-353
-354</pre>
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 342</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 274</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_pk_sequence!'>set_pk_sequence!</span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -2557,92 +2546,41 @@ sequence name exists and matches the Active Record default.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L241-L253'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L173-L185'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-241
-242
-243
-244
-245
-246
-247
-248
-249
-250
-251
-252
-253</pre>
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 241</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 173</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_table_comment'>table_comment</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
-</span>  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='const'><a href="Utils.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils (module)">Utils</a></span><span class='period'>.</span><span class='id identifier rubyid_extract_schema_qualified_name'><a href="Utils.html#extract_schema_qualified_name-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils#extract_schema_qualified_name (method)">extract_schema_qualified_name</a></span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span>
+</span>  <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='id identifier rubyid_quoted_scope'>quoted_scope</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BASE TABLE</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_select_value'>select_value</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-SQL</span><span class='period'>.</span><span class='id identifier rubyid_strip_heredoc'>strip_heredoc</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='tstring_content'>      SELECT pg_catalog.obj_description(c.oid, &#39;pg_class&#39;)
       FROM pg_catalog.pg_class c
         LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
-      WHERE c.relname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>
-        AND c.relkind IN (&#39;r&#39;) -- (r)elation/table
-        AND n.nspname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span> <span class='op'>?</span> <span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ANY (current_schemas(false))</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      WHERE c.relname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+        AND c.relkind IN (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>)
+        AND n.nspname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_schema'>schema</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
 </span><span class='heredoc_end'>    SQL
 </span>  <span class='kw'>end</span>
 <span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="table_exists?-instance_method">
-  <h3 class='signature '>
-    #<strong>table_exists?</strong>(name)  &#x21d2; <code>Boolean</code> 
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>Returns true if table exists. If the schema is not specified as part of
-<code>name</code> then it will only find tables within the current schema search path
-(regardless of permissions to access tables in other schemas)</p>
-
-  </div>
-</div>
-<div class='tags'>
-  
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L85-L95'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 85</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_table_exists?'>table_exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='const'><a href="Utils.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils (module)">Utils</a></span><span class='period'>.</span><span class='id identifier rubyid_extract_schema_qualified_name'><a href="Utils.html#extract_schema_qualified_name-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils#extract_schema_qualified_name (method)">extract_schema_qualified_name</a></span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span>
-
-  <span class='id identifier rubyid_select_values'>select_values</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-SQL</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
-<span class='tstring_content'>    SELECT tablename
-    FROM pg_tables
-    WHERE tablename = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>
-    AND schemaname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span> <span class='op'>?</span> <span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ANY (current_schemas(false))</span><span class='tstring_end'>&quot;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
-</span><span class='heredoc_end'>  SQL
-</span><span class='kw'>end</span>
 </pre>
   </div>
 </div>
@@ -2655,55 +2593,24 @@ sequence name exists and matches the Active Record default.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L234-L238'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L166-L170'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-234
-235
-236
-237
-238</pre>
+166
+167
+168
+169
+170</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 234</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 166</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_table_options'>table_options</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
 </span>  <span class='kw'>if</span> <span class='id identifier rubyid_comment'>comment</span> <span class='op'>=</span> <span class='id identifier rubyid_table_comment'>table_comment</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
     <span class='lbrace'>{</span> <span class='label'>comment:</span> <span class='id identifier rubyid_comment'>comment</span> <span class='rbrace'>}</span>
   <span class='kw'>end</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="tables-instance_method">
-  <h3 class='signature '>
-    #<strong>tables</strong>  
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>Returns the list of all tables in the schema search path.</p>
-
-  </div>
-</div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L58-L60'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-58
-59
-60</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 58</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_tables'>tables</span>
-  <span class='id identifier rubyid_select_values'>select_values</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT tablename FROM pg_tables WHERE schemaname = ANY(current_schemas(false))</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -2724,44 +2631,44 @@ sequence name exists and matches the Active Record default.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L619-L649'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L550-L580'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-619
-620
-621
-622
-623
-624
-625
-626
-627
-628
-629
-630
-631
-632
-633
-634
-635
-636
-637
-638
-639
-640
-641
-642
-643
-644
-645
-646
-647
-648
-649</pre>
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 619</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 550</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type_to_sql'>type_to_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='label'>limit:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>scale:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>array:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -2795,99 +2702,6 @@ sequence name exists and matches the Active Record default.</p>
   <span class='id identifier rubyid_sql'>sql</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[]</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_array'>array</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>!=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_primary_key'>primary_key</span>
   <span class='id identifier rubyid_sql'>sql</span>
 <span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="view_exists?-instance_method">
-  <h3 class='signature nodoc'>
-    #<strong>view_exists?</strong>(view_name)  &#x21d2; <code>Boolean</code> 
-  </h3>
-  <div class='note nodoc inline-block'>
-    <strong>This method is for internal use only.</strong>
-  </div><div></div>
-<div class='docstring'>
-  <div class='discussion'>
-    
-  </div>
-</div>
-<div class='tags'>
-  
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L111-L123'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 111</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_view_exists?'>view_exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_view_name'>view_name</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
-</span>  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='const'><a href="Utils.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils (module)">Utils</a></span><span class='period'>.</span><span class='id identifier rubyid_extract_schema_qualified_name'><a href="Utils.html#extract_schema_qualified_name-instance_method" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Utils#extract_schema_qualified_name (method)">extract_schema_qualified_name</a></span><span class='lparen'>(</span><span class='id identifier rubyid_view_name'>view_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span>
-
-  <span class='id identifier rubyid_select_values'>select_values</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-SQL</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
-<span class='tstring_content'>    SELECT c.relname
-    FROM pg_class c
-    LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
-    WHERE c.relkind IN (&#39;v&#39;,&#39;m&#39;) -- (v)iew, (m)aterialized view
-    AND c.relname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>
-    AND n.nspname = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span> <span class='op'>?</span> <span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_schema'>schema</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ANY (current_schemas(false))</span><span class='tstring_end'>&quot;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
-</span><span class='heredoc_end'>  SQL
-</span><span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="views-instance_method">
-  <h3 class='signature nodoc'>
-    #<strong>views</strong>  
-  </h3>
-  <div class='note nodoc inline-block'>
-    <strong>This method is for internal use only.</strong>
-  </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb#L72-L80'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-72
-73
-74
-75
-76
-77
-78
-79
-80</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/schema_statements.rb', line 72</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_views'>views</span> <span class='comment'># :nodoc:
-</span>  <span class='id identifier rubyid_select_values'>select_values</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-SQL</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-<span class='tstring_content'>    SELECT c.relname
-    FROM pg_class c
-    LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
-    WHERE c.relkind IN (&#39;v&#39;,&#39;m&#39;) -- (v)iew, (m)aterialized view
-    AND n.nspname = ANY (current_schemas(false))
-</span><span class='heredoc_end'>  SQL
-</span><span class='kw'>end</span>
 </pre>
   </div>
 </div>

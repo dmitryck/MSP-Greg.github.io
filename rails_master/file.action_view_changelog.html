@@ -66,8 +66,10 @@
 <ul>
 <li><p>Remove the option <code>encode_special_chars</code> misnomer from <code>strip_tags</code></p>
 
-<p>As of rails-html-sanitizer v1.0.3 sanitizer will ignore the
-<code>encode_special_chars</code> option. Fixes #28060.</p>
+<p>As of rails-html-sanitizer v1.0.3, the sanitizer will ignore the
+<code>encode_special_chars</code> option.</p>
+
+<p>Fixes #28060.</p>
 
 <p><em>Andrew Hood</em></p></li>
 </ul>
@@ -152,6 +154,21 @@ will still be available in <code>local_assigns</code>.</p>
 </code></pre>
 
 <p><em>Peter Schilling</em>, <em>Matthew Draper</em></p></li>
+<li><p>Add <code>:skip_pipeline</code> option to several asset tag helpers</p>
+
+<p><code>javascript_include_tag</code>, <code>stylesheet_link_tag</code>, <code>favicon_link_tag</code>,
+<code>image_tag</code> and <code>audio_tag</code> now accept a <code>:skip_pipeline</code> option which can
+be set to true to bypass the asset pipeline and serve the assets from the
+public folder.</p>
+
+<p><em>Richard Schneeman</em></p></li>
+<li><p>Add <code>:poster_skip_pipeline</code> option to the <code>video_tag</code> helper</p>
+
+<p><code>video_tag</code> now accepts a <code>:poster_skip_pipeline</code> option which can be used
+in combination with the <code>:poster</code> option to bypass the asset pipeline and
+serve the poster image for the video from the public folder.</p>
+
+<p><em>Richard Schneeman</em></p></li>
 <li><p>Show cache hits and misses when rendering partials.</p>
 
 <p>Partials using the <code>cache</code> helper will show whether a render hit or missed
