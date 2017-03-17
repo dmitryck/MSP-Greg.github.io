@@ -64,6 +64,12 @@
   </header>
 <div id='content' class='file'>
 <ul>
+<li><p>Fixed bug in <code>DateAndTime::Compatibility#to_time</code> that caused it to
+raise <code>RuntimeError: can&#39;t modify frozen Time</code> when called on any frozen <a href="Time.html" title="Time (class)">Time</a>.
+Properly pass through the frozen <a href="Time.html" title="Time (class)">Time</a> or <a href="ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a> object
+when calling <code>#to_time</code>.</p>
+
+<p><em>Kevin McPhillips</em> &amp; <em>Andrew White</em></p></li>
 <li><p>Fix inconsistent results when parsing large durations and constructing durations from code</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/Duration.html" title="ActiveSupport::Duration (class)">Duration</a></span><span class='period'>.</span><span class='id identifier rubyid_parse'><a href="ActiveSupport/Duration.html#parse-class_method" title="ActiveSupport::Duration.parse (method)">parse</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>P3Y</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>3</span><span class='period'>.</span><span class='id identifier rubyid_years'>years</span> <span class='comment'># It should be true</span></code></pre>
