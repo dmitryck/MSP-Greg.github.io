@@ -153,6 +153,12 @@
 <div>
 <ul class='summary full'>
   <li>
+    <span class='summary_signature priv'>
+      <a href="#delete_first-instance_method" title="#delete_first (instance method)">#<strong>delete_first</strong>(array, item)  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
     <span class='summary_signature ro'>
       <a href="#destination-instance_method" title="#destination (instance method)">#<strong>destination</strong>  &#x21d2; String </a>
     </span>
@@ -449,8 +455,34 @@
 </section>
 
 <h2 class='y_details'>Instance Method Details</h2>
-<section class='method_details first' id="down-instance_method">
-  <h3 class='signature  first'>
+<section class='method_details first' id="delete_first-instance_method">
+  <h3 class='signature priv first'>
+    #<strong>delete_first</strong>(array, item)   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/rubygems/resolver/molinillo/lib/molinillo/dependency_graph/add_edge_no_circular.rb#L59-L62'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+59
+60
+61
+62</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'lib/rubygems/resolver/molinillo/lib/molinillo/dependency_graph/add_edge_no_circular.rb', line 59</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_first'>delete_first</span><span class='lparen'>(</span><span class='id identifier rubyid_array'>array</span><span class='comma'>,</span> <span class='id identifier rubyid_item'>item</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='id identifier rubyid_array'>array</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='id identifier rubyid_item'>item</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_array'>array</span><span class='period'>.</span><span class='id identifier rubyid_delete_at'>delete_at</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="down-instance_method">
+  <h3 class='signature '>
     #<strong>down</strong>(graph)  &#x21d2; <code>Void</code> 
   </h3>
 <div class='docstring'>
@@ -488,8 +520,8 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_down'>down</span><span class='lparen'>(</span><span class='id identifier rubyid_graph'>graph</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_edge'>edge</span> <span class='op'>=</span> <span class='id identifier rubyid_make_edge'>make_edge</span><span class='lparen'>(</span><span class='id identifier rubyid_graph'>graph</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_origin'>origin</span><span class='period'>.</span><span class='id identifier rubyid_outgoing_edges'>outgoing_edges</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_destination'>destination</span><span class='period'>.</span><span class='id identifier rubyid_incoming_edges'>incoming_edges</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_delete_first'>delete_first</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_origin'>origin</span><span class='period'>.</span><span class='id identifier rubyid_outgoing_edges'>outgoing_edges</span><span class='comma'>,</span> <span class='id identifier rubyid_edge'>edge</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_delete_first'>delete_first</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_destination'>destination</span><span class='period'>.</span><span class='id identifier rubyid_incoming_edges'>incoming_edges</span><span class='comma'>,</span> <span class='id identifier rubyid_edge'>edge</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>

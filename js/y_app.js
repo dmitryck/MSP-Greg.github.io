@@ -2686,7 +2686,7 @@ function xhrCBDoc(docFrag, title, url, status, ms, msRcv) {
       loadMenu = true;
     };
   };
-  
+
   // Update history
   if (aDOMNext.href !== aDOMCur.href) {
     t = aDOMNext.pathname + (hash ? "#" + hash : '');
@@ -2967,7 +2967,7 @@ function commonLoad() {
 
 function commonInsert(docFrag, elId) {
   var newPrnt = _id(elId),
-      oldPrnt = docFrag.hasOwnProperty('getElementById') ? docFrag.getElementById(elId) : docFrag.querySelector("#" + elId),
+      oldPrnt = isGetElByIdInDocFrag ? docFrag.getElementById(elId) : docFrag.querySelector("#" + elId),
       el;
   clean(oldPrnt);
   while (el = oldPrnt.firstElementChild) { newPrnt.appendChild(el); };
@@ -4009,9 +4009,9 @@ function hookEvents() {
 /* Read options */
 function readOptions() {
   if (_t2Info !== undefined) {
-    if (_t2Info.hasOwnProperty('NSEP'))
+    if ('NSEP' in _t2Info)
       t2Opts.NSEP = _t2Info.NSEP.trim();
-    if (_t2Info.hasOwnProperty('customHeaderId'))
+    if ('customHeaderId' in _t2Info)
       t2Opts.customHeaderId =  _t2Info.customHeaderId.trim();
   }
 }
