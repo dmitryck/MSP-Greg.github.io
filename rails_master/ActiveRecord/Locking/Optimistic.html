@@ -99,7 +99,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L52'>activerecord/lib/active_record/locking/optimistic.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L50'>activerecord/lib/active_record/locking/optimistic.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -163,9 +163,6 @@ attribute:</p>
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Person</span> <span class='op'>&lt;</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Base.html" title="ActiveRecord::Base (class)">Base</a></span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_locking_column'>locking_column</span> <span class='op'>=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_lock_person'>lock_person</span>
 <span class='kw'>end</span></code></pre>
-
-<p>Please note that the optimistic locking will be ignored if you update the
-locking column&#39;s value.</p>
 
   </div>
 </div>
@@ -240,17 +237,17 @@ locking column&#39;s value.</p>
 <h2 class='y_details'>DSL Calls</h2>
 <section class='method_details first' id="included-dslcall">
 <h3 class='signature'><strong>included</strong></h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L55-L58'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L53-L56'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+53
+54
 55
-56
-57
-58</pre>
+56</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 55</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 53</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_included'>included</span> <span class='kw'>do</span>
@@ -270,16 +267,16 @@ locking column&#39;s value.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L60-L62'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L58-L60'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-60
-61
-62</pre>
+58
+59
+60</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 60</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 58</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_locking_enabled?'>locking_enabled?</span> <span class='comment'>#:nodoc:
@@ -295,21 +292,21 @@ locking column&#39;s value.</p>
   <h3 class='signature priv first'>
     #<strong>_create_record</strong>(attribute_names = self.attribute_names)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L72-L79'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L70-L77'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+70
+71
 72
 73
 74
 75
 76
-77
-78
-79</pre>
+77</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 72</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 70</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__create_record'>_create_record</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute_names'>attribute_names</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_attribute_names'>attribute_names</span><span class='comma'>,</span> <span class='op'>*</span><span class='rparen'>)</span>
@@ -329,11 +326,13 @@ locking column&#39;s value.</p>
   <h3 class='signature priv'>
     #<strong>_update_record</strong>(attribute_names = self.attribute_names)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L81-L118'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L79-L114'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+79
+80
 81
 82
 83
@@ -367,24 +366,18 @@ locking column&#39;s value.</p>
 111
 112
 113
-114
-115
-116
-117
-118</pre>
+114</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 81</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 79</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__update_record'>_update_record</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute_names'>attribute_names</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_attribute_names'>attribute_names</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>super</span> <span class='kw'>unless</span> <span class='id identifier rubyid_locking_enabled?'>locking_enabled?</span>
-
-  <span class='id identifier rubyid_lock_col'>lock_col</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_locking_column'>locking_column</span>
-
-  <span class='kw'>return</span> <span class='kw'>super</span> <span class='kw'>if</span> <span class='id identifier rubyid_attribute_names'>attribute_names</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_lock_col'>lock_col</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='int'>0</span> <span class='kw'>if</span> <span class='id identifier rubyid_attribute_names'>attribute_names</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
 
   <span class='kw'>begin</span>
+    <span class='id identifier rubyid_lock_col'>lock_col</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_locking_column'>locking_column</span>
+
     <span class='id identifier rubyid_previous_lock_value'>previous_lock_value</span> <span class='op'>=</span> <span class='id identifier rubyid_read_attribute_before_type_cast'>read_attribute_before_type_cast</span><span class='lparen'>(</span><span class='id identifier rubyid_lock_col'>lock_col</span><span class='rparen'>)</span>
 
     <span class='id identifier rubyid_increment_lock'>increment_lock</span>
@@ -423,22 +416,22 @@ locking column&#39;s value.</p>
   <h3 class='signature priv'>
     #<strong>destroy_row</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L120-L128'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L116-L124'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+116
+117
+118
+119
 120
 121
 122
 123
-124
-125
-126
-127
-128</pre>
+124</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 120</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 116</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy_row'>destroy_row</span>
@@ -459,18 +452,18 @@ locking column&#39;s value.</p>
   <h3 class='signature priv'>
     #<strong>increment_lock</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L66-L70'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L64-L68'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+64
+65
 66
 67
-68
-69
-70</pre>
+68</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 66</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 64</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_increment_lock'>increment_lock</span>
@@ -487,23 +480,23 @@ locking column&#39;s value.</p>
   <h3 class='signature priv'>
     #<strong>relation_for_destroy</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L130-L139'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/locking/optimistic.rb#L126-L135'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+126
+127
+128
+129
 130
 131
 132
 133
 134
-135
-136
-137
-138
-139</pre>
+135</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 130</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/locking/optimistic.rb', line 126</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_relation_for_destroy'>relation_for_destroy</span>

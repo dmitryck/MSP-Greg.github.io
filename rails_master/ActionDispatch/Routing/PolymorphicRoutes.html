@@ -163,7 +163,7 @@ of prefixed helpers are available as a shorthand to <code>action:
 
 <p>Example usage:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_edit_polymorphic_path'>edit_polymorphic_path</span><span class='lparen'>(</span><span class='ivar'>@post</span><span class='rparen'>)</span>              <span class='comment'># =&gt; &quot;/posts/1/edit&quot;
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_edit_polymorphic_path'>edit_polymorphic_path</span><span class='lparen'>(</span><span class='ivar'>@post</span><span class='rparen'>)</span>           <span class='comment'># =&gt; &quot;/posts/1/edit&quot;
 </span><span class='id identifier rubyid_polymorphic_path'>polymorphic_path</span><span class='lparen'>(</span><span class='ivar'>@post</span><span class='comma'>,</span> <span class='label'>format:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_pdf'>pdf</span><span class='rparen'>)</span>  <span class='comment'># =&gt; &quot;/posts/1.pdf&quot;</span></code></pre>
 
 <h3 id="label-Usage+with+mounted+engines">Usage with mounted engines</h3>
@@ -302,7 +302,7 @@ the resulting URL string.</p></div>
   <span class='kw'>end</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_mapping'>mapping</span> <span class='op'>=</span> <span class='id identifier rubyid_polymorphic_mapping'>polymorphic_mapping</span><span class='lparen'>(</span><span class='id identifier rubyid_record_or_hash_or_array'>record_or_hash_or_array</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='id identifier rubyid_mapping'>mapping</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_record_or_hash_or_array'>record_or_hash_or_array</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>only_path:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_mapping'>mapping</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_record_or_hash_or_array'>record_or_hash_or_array</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_opts'>opts</span>   <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
@@ -437,7 +437,7 @@ given below:</p>
   <span class='kw'>end</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_mapping'>mapping</span> <span class='op'>=</span> <span class='id identifier rubyid_polymorphic_mapping'>polymorphic_mapping</span><span class='lparen'>(</span><span class='id identifier rubyid_record_or_hash_or_array'>record_or_hash_or_array</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='id identifier rubyid_mapping'>mapping</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_record_or_hash_or_array'>record_or_hash_or_array</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_mapping'>mapping</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_record_or_hash_or_array'>record_or_hash_or_array</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_opts'>opts</span>   <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>

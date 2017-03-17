@@ -83,7 +83,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L3'>activerecord/lib/active_record/tasks/postgresql_database_tasks.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L5'>activerecord/lib/active_record/tasks/postgresql_database_tasks.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -94,12 +94,17 @@
   <li>
     <span id='DEFAULT_ENCODING-constant' class='summary_signature nodoc'>DEFAULT_ENCODING =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L4-L4'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 4</a>    <pre class='code ruby'><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CHARSET</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>utf8</span><span class='tstring_end'>&quot;</span></span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L6-L6'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 6</a>    <pre class='code ruby'><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CHARSET</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>utf8</span><span class='tstring_end'>&quot;</span></span></pre>
   </li>
   <li>
     <span id='ON_ERROR_STOP_1-constant' class='summary_signature nodoc'>ON_ERROR_STOP_1 =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L5-L5'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 5</a>    <pre class='code ruby'><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ON_ERROR_STOP=1</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L7-L7'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 7</a>    <pre class='code ruby'><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ON_ERROR_STOP=1</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre>
+  </li>
+  <li>
+    <span id='SQL_COMMENT_BEGIN-constant' class='summary_signature nodoc'>SQL_COMMENT_BEGIN =</span>
+    <br/>
+    <a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L8-L8'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 8</a>    <pre class='code ruby'><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>--</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre>
   </li>
 </ul>
 </div>
@@ -200,6 +205,12 @@
   </li>
   <li>
     <span class='summary_signature priv nodoc'>
+      <a href="#remove_sql_header_comments-instance_method" title="#remove_sql_header_comments (instance method)">#<strong>remove_sql_header_comments</strong>(filename)  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
+    <span class='summary_signature priv nodoc'>
       <a href="#run_cmd-instance_method" title="#run_cmd (instance method)">#<strong>run_cmd</strong>(cmd, args, action)  </a>
     </span>
     <span class='note title private'>private</span>
@@ -231,16 +242,16 @@
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L10-L12'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L13-L15'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-10
-11
-12</pre>
+13
+14
+15</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 10</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 13</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='rparen'>)</span>
@@ -256,15 +267,15 @@
   <h3 class='signature ro  nodoc first'>
     #<strong>connection</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L7-L8'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L10-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-7
-8</pre>
+10
+11</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 7</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 10</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_establish_connection'>establish_connection</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_clear_active_connections!'>clear_active_connections!</span><span class='comma'>,</span>
@@ -278,15 +289,15 @@
   <h3 class='signature ro  nodoc'>
     #<strong>establish_connection</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L7-L8'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L10-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-7
-8</pre>
+10
+11</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 7</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 10</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_establish_connection'>establish_connection</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_clear_active_connections!'>clear_active_connections!</span><span class='comma'>,</span>
@@ -301,16 +312,16 @@
   <h3 class='signature nodoc first'>
     #<strong>charset</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L32-L34'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L35-L37'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-32
-33
-34</pre>
+35
+36
+37</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 32</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 35</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_charset'>charset</span>
@@ -325,15 +336,15 @@
   <h3 class='signature nodoc'>
     #<strong>clear_active_connections!</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L7-L8'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L10-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-7
-8</pre>
+10
+11</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 7</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 10</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_establish_connection'>establish_connection</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_clear_active_connections!'>clear_active_connections!</span><span class='comma'>,</span>
@@ -347,16 +358,16 @@
   <h3 class='signature nodoc'>
     #<strong>collation</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L36-L38'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L39-L41'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-36
-37
-38</pre>
+39
+40
+41</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 36</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 39</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_collation'>collation</span>
@@ -371,16 +382,16 @@
   <h3 class='signature priv  nodoc'>
     #<strong>configuration</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L81-L83'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L85-L87'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-81
-82
-83</pre>
+85
+86
+87</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 81</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 85</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_configuration'>configuration</span>
@@ -395,14 +406,11 @@
   <h3 class='signature nodoc'>
     #<strong>create</strong>(master_established = false)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L14-L25'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L17-L28'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-14
-15
-16
 17
 18
 19
@@ -411,9 +419,12 @@
 22
 23
 24
-25</pre>
+25
+26
+27
+28</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 14</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 17</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_master_established'>master_established</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
@@ -437,17 +448,17 @@
   <h3 class='signature nodoc'>
     #<strong>drop</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L27-L30'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L30-L33'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-27
-28
-29
-30</pre>
+30
+31
+32
+33</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 27</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 30</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_drop'>drop</span>
@@ -463,16 +474,16 @@
   <h3 class='signature priv  nodoc'>
     #<strong>encoding</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L85-L87'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L89-L91'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-85
-86
-87</pre>
+89
+90
+91</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 85</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 89</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encoding'>encoding</span>
@@ -487,19 +498,19 @@
   <h3 class='signature priv  nodoc'>
     #<strong>establish_master_connection</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L89-L94'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L93-L98'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-89
-90
-91
-92
 93
-94</pre>
+94
+95
+96
+97
+98</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 89</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 93</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_establish_master_connection'>establish_master_connection</span>
@@ -517,18 +528,18 @@
   <h3 class='signature nodoc'>
     #<strong>purge</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L40-L44'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L43-L47'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-40
-41
-42
 43
-44</pre>
+44
+45
+46
+47</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 40</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 43</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_purge'>purge</span>
@@ -541,20 +552,68 @@
 </div>
 </section>
 
-<section class='method_details' id="run_cmd-instance_method">
+<section class='method_details' id="remove_sql_header_comments-instance_method">
   <h3 class='signature priv  nodoc'>
-    #<strong>run_cmd</strong>(cmd, args, action)   <span class="extras">(<span class='priv'>private</span>)</span>
+    #<strong>remove_sql_header_comments</strong>(filename)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L103-L105'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L118-L132'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-103
-104
-105</pre>
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 103</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 118</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_sql_header_comments'>remove_sql_header_comments</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_removing_comments'>removing_comments</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_tempfile'>tempfile</span> <span class='op'>=</span> <span class='const'>Tempfile</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>uncommented_structure.sql</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>begin</span>
+    <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_foreach'>foreach</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span>
+      <span class='kw'>unless</span> <span class='id identifier rubyid_removing_comments'>removing_comments</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='const'><a href="#SQL_COMMENT_BEGIN-constant" title="ActiveRecord::Tasks::PostgreSQLDatabaseTasks::SQL_COMMENT_BEGIN (constant)">SQL_COMMENT_BEGIN</a></span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_tempfile'>tempfile</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_line'>line</span>
+        <span class='id identifier rubyid_removing_comments'>removing_comments</span> <span class='op'>=</span> <span class='kw'>false</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>ensure</span>
+    <span class='id identifier rubyid_tempfile'>tempfile</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+  <span class='kw'>end</span>
+  <span class='const'>FileUtils</span><span class='period'>.</span><span class='id identifier rubyid_mv'>mv</span><span class='lparen'>(</span><span class='id identifier rubyid_tempfile'>tempfile</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="run_cmd-instance_method">
+  <h3 class='signature priv  nodoc'>
+    #<strong>run_cmd</strong>(cmd, args, action)   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L107-L109'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+107
+108
+109</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 107</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run_cmd'>run_cmd</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='id identifier rubyid_action'>action</span><span class='rparen'>)</span>
@@ -569,19 +628,19 @@
   <h3 class='signature priv  nodoc'>
     #<strong>run_cmd_error</strong>(cmd, args, action)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L107-L112'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L111-L116'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-107
-108
-109
-110
 111
-112</pre>
+112
+113
+114
+115
+116</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 107</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 111</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run_cmd_error'>run_cmd_error</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='id identifier rubyid_action'>action</span><span class='rparen'>)</span>
@@ -599,19 +658,19 @@
   <h3 class='signature priv  nodoc'>
     #<strong>set_psql_env</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L96-L101'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L100-L105'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-96
-97
-98
-99
 100
-101</pre>
+101
+102
+103
+104
+105</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 96</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 100</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_psql_env'>set_psql_env</span>
@@ -629,14 +688,11 @@
   <h3 class='signature nodoc'>
     #<strong>structure_dump</strong>(filename, extra_flags)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L46-L69'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L49-L73'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-46
-47
-48
 49
 50
 51
@@ -657,9 +713,13 @@
 66
 67
 68
-69</pre>
+69
+70
+71
+72
+73</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 46</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 49</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_structure_dump'>structure_dump</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_extra_flags'>extra_flags</span><span class='rparen'>)</span>
@@ -684,6 +744,7 @@
   <span class='kw'>end</span>
   <span class='id identifier rubyid_args'>args</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>database</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_run_cmd'>run_cmd</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pg_dump</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dumping</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_remove_sql_header_comments'>remove_sql_header_comments</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
   <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span> <span class='id identifier rubyid_f'>f</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SET search_path TO </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_schema_search_path'>schema_search_path</span><span class='embexpr_end'>}</span><span class='tstring_content'>;\n\n</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
 <span class='kw'>end</span>
 </pre>
@@ -695,20 +756,20 @@
   <h3 class='signature nodoc'>
     #<strong>structure_load</strong>(filename, extra_flags)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L71-L77'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/tasks/postgresql_database_tasks.rb#L75-L81'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-71
-72
-73
-74
 75
 76
-77</pre>
+77
+78
+79
+80
+81</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 71</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/postgresql_database_tasks.rb', line 75</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_structure_load'>structure_load</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_extra_flags'>extra_flags</span><span class='rparen'>)</span>
