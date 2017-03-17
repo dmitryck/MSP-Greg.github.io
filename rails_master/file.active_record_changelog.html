@@ -64,6 +64,19 @@
   </header>
 <div id='content' class='file'>
 <ul>
+<li><p>Add <code>:default</code> option to <code>belongs_to</code>.</p>
+
+<p>Use it to specify that an association should be initialized with a particular
+record before validation. For example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Before
+</span><span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_account'>account</span>
+<span class='id identifier rubyid_before_validation'>before_validation</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_account'>account</span> <span class='op'>||=</span> <span class='const'>Current</span><span class='period'>.</span><span class='id identifier rubyid_account'>account</span> <span class='rbrace'>}</span>
+
+<span class='comment'># After
+</span><span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='const'>Current</span><span class='period'>.</span><span class='id identifier rubyid_account'>account</span> <span class='rbrace'>}</span></code></pre>
+
+<p><em>George Claghorn</em></p></li>
 <li><p>Deprecate <code>Migrator.schema_migrations_table_name</code>.</p>
 
 <p><em>Ryuta Kamizono</em></p></li>

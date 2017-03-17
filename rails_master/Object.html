@@ -1016,19 +1016,30 @@ own.</p>
 
 <p>Hence the inherited default for `if` key is ignored.</p>
 
+<p>NOTE: You cannot call class methods implicitly inside of with_options. You
+can access these methods using the class name instead:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Phone</span> <span class='op'>&lt;</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Base.html" title="ActiveRecord::Base (class)">Base</a></span>
+  <span class='id identifier rubyid_enum'>enum</span> <span class='label'>phone_number_type:</span> <span class='lbracket'>[</span><span class='label'>home:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>office:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>mobile:</span> <span class='int'>2</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_with_options'>with_options</span> <span class='label'>presence:</span> <span class='kw'>true</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_validates'>validates</span> <span class='symbeg'>:</span><span class='id identifier rubyid_phone_number_type'>phone_number_type</span><span class='comma'>,</span> <span class='label'>inclusion:</span> <span class='lbrace'>{</span> <span class='label'>in:</span> <span class='const'>Phone</span><span class='period'>.</span><span class='id identifier rubyid_phone_number_types'>phone_number_types</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></code></pre>
+
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/object/with_options.rb#L65-L68'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/object/with_options.rb#L76-L79'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-65
-66
-67
-68</pre>
+76
+77
+78
+79</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/core_ext/object/with_options.rb', line 65</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/core_ext/object/with_options.rb', line 76</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_with_options'>with_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>

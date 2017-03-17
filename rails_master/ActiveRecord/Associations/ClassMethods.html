@@ -1275,6 +1275,10 @@ use <code>:inverse_of</code> to avoid an extra query during validation.
 NOTE: <code>required</code> is set to <code>true</code> by default and is deprecated. If you
 don&#39;t want to have association presence validated, use <code>optional:
 true</code>.</p>
+</dd><dt>:default
+<dd>
+<p>Provide a callable (i.e. proc or lambda) to specify that the association
+should be initialized with a particular record before validation.</p>
 </dd></dl>
 
 <p>Option examples:</p>
@@ -1289,21 +1293,22 @@ true</code>.</p>
 <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_post'>post</span><span class='comma'>,</span> <span class='label'>counter_cache:</span> <span class='kw'>true</span>
 <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_comment'>comment</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='kw'>true</span>
 <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_company'>company</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_employees_last_updated_at'>employees_last_updated_at</span>
-<span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='label'>optional:</span> <span class='kw'>true</span></code></pre>
+<span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='label'>optional:</span> <span class='kw'>true</span>
+<span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_company'>company</span><span class='period'>.</span><span class='id identifier rubyid_account'>account</span> <span class='rbrace'>}</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/associations.rb#L1663-L1666'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/associations.rb#L1667-L1670'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1663
-1664
-1665
-1666</pre>
+1667
+1668
+1669
+1670</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/associations.rb', line 1663</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/associations.rb', line 1667</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_belongs_to'>belongs_to</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1544,15 +1549,11 @@ new records.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/associations.rb#L1825-L1861'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/associations.rb#L1829-L1865'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1825
-1826
-1827
-1828
 1829
 1830
 1831
@@ -1585,9 +1586,13 @@ new records.</p>
 1858
 1859
 1860
-1861</pre>
+1861
+1862
+1863
+1864
+1865</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/associations.rb', line 1825</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/associations.rb', line 1829</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_and_belongs_to_many'>has_and_belongs_to_many</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_extension'>extension</span><span class='rparen'>)</span>
