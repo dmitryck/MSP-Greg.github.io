@@ -568,14 +568,18 @@ function paneClk(e) {
     this.clickedLI = eLI;
     this.clickedA = eA;
     clickedBy = ( isList ? CB_LIST : CB_TOC );
-
+    
     if (eA.hash !== '') {
       if (eA.pathname !== window.location.pathname)
         gotoDoc(eA.pathname + '#' + decodeURIComponent(eA.hash.replace(/%-/, '%25-')).slice(1));
       else {
         gotoDoc( decodeURIComponent( eA.hash.replace(/%-/, '%25-') ) );
       }
-    } else if ( !/\/#$/.test(eA.href) ) gotoDoc(eA.href);
+    } else if ( !/\/#$/.test(eA.href) ) {
+      t = eA.getAttribute('href');
+      if ( /^\//.test(t) ) gotoDoc(t);
+      else                 gotoDoc("/" + t);
+    }
     cancel = true;
   };
   if (cancel) {
@@ -2807,7 +2811,7 @@ function xhrOnError(url, func, xhr) {
   xhr.onreadystatechange = null;
   xhr.onerror = null;
   setWait(-1);
-  func(null, null, url, status);
+  func(null, null, url, status, 0, 0);
   return false;
 }
 
@@ -2822,8 +2826,8 @@ function xhrOnError(url, func, xhr) {
  * @param xhr  [XMLHttpRequest]
  * @param pn   [Float] performance.now
  */
- function xhrReadyStateChange(url, func, xhr, pn) {
-  if (xhr.readyState === 4) {
+function xhrReadyStateChange(url, func, xhr, pn) {
+ if (xhr.readyState === 4) {
     if (xhr.status === 200) {
       var title,
           docFrag = document.createDocumentFragment(),
@@ -2894,11 +2898,12 @@ function xhrOnError(url, func, xhr) {
 function xhrSend(url, func) {
   var aDOM = document.createElement('a'),
       xhr = new XMLHttpRequest(),
-      tSt;
+      tSt,
+      reFullHost = /^[^:]+:\/\/[^\/]+/;
 
   aDOM.setAttribute('href', url);
 
-  if (aDOM.host !== window.location.host) {
+  if (reFullHost.exec(aDOM.href)[0] !== reFullHost.exec(location.href)[0]) {
     func(null, url);
     return;
   };
@@ -2956,7 +2961,6 @@ function clean(prnt) {
 function commonLoad() {
   var foundHRef;
   for (var i = 0, ss; ss = document.styleSheets[i]; i++) {
-//    if ( ss.href.endsWith('y_style.css') ) {
     if ( /y_style\.css$/.test(ss.href) ) {
       foundHRef = ss.href.replace(/css\/y_style.css$/, 'xhr/common.html');
       xhrSend(foundHRef, commonXhrCB);
@@ -2978,7 +2982,6 @@ function commonXhrCB(docFrag, title, url, status, ms, msRcv) {
       el;
   if (status !== 200 || !docFrag) {
     setWait();
-    alert('commonXhrCB - bad return with status ' + status + " from location\n" + url);
     return;
   };
 
@@ -3040,7 +3043,7 @@ function getDocFragId(frag, id) {
   if (isGetElByIdInDocFrag)
     return frag.getElementById(id);
   else
-    var escId = id.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|\=]/g, "\\$&")
+    var escId = id.replace(/[\`\-\[\]\/\{\}\(\)\*\+\?\!\.\\\^\$\|\=]/g, "\\$&")
     return frag.querySelector('#' + escId);
 };
 

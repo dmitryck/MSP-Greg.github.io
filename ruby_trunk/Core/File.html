@@ -116,7 +116,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/file.c#L5948'>file.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/dir.c#L2567'>dir.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/io.c#L6476'>io.c</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/file.c#L5948'>file.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/dir.c#L2566'>dir.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/io.c#L6480'>io.c</a></span>
       </td>
     </tr>
   </tbody>
@@ -1116,7 +1116,7 @@ read and a write stream, such as a pipe).</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="IO.html#each-instance_method" title="IO#each (method)">#each</a></td>
-      <td><div class='inline'><p>ios.each_line(sep=$/) {|line| block }    -&gt; ios.</p></div></td>
+      <td><div class='inline'><p>ios.each_line(sep=$/)     {|line| block } -&gt; ios.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="IO.html#each_byte-instance_method" title="IO#each_byte (method)">#each_byte</a></td>
@@ -1606,15 +1606,11 @@ open(2) and chmod(2) man pages for details.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/io.c#L7773-L7790'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/io.c#L7777-L7794'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-7773
-7774
-7775
-7776
 7777
 7778
 7779
@@ -1628,9 +1624,13 @@ open(2) and chmod(2) man pages for details.</p>
 7787
 7788
 7789
-7790</pre>
+7790
+7791
+7792
+7793
+7794</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'io.c', line 7773</span></pre>
+<pre><span class='info file'># File 'io.c', line 7777</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -2785,11 +2785,12 @@ and flags are used by <a href="Dir.html#glob-class_method" title="Dir.glob (meth
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/dir.c#L2567-L2600'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/dir.c#L2566-L2599'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+2566
 2567
 2568
 2569
@@ -2822,10 +2823,9 @@ and flags are used by <a href="Dir.html#glob-class_method" title="Dir.glob (meth
 2596
 2597
 2598
-2599
-2600</pre>
+2599</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'dir.c', line 2567</span></pre>
+<pre><span class='info file'># File 'dir.c', line 2566</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -2883,14 +2883,14 @@ file_s_fnmatch(int argc, VALUE *argv, VALUE obj)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/dir.c#L2778-L2778'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/dir.c#L2777-L2777'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-2778</pre>
+2777</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'dir.c', line 2778</span></pre>
+<pre><span class='info file'># File 'dir.c', line 2777</span></pre>
 <pre class='code cpp'>
 
 rb_define_singleton_method(rb_cFile,&quot;fnmatch?&quot;, file_s_fnmatch, -1);
@@ -3494,24 +3494,24 @@ the block terminates.  The value of the block will be returned from
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/io.c#L6476-L6486'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/io.c#L6480-L6490'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-6476
-6477
-6478
-6479
 6480
 6481
 6482
 6483
 6484
 6485
-6486</pre>
+6486
+6487
+6488
+6489
+6490</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'io.c', line 6476</span></pre>
+<pre><span class='info file'># File 'io.c', line 6480</span></pre>
 <pre class='code cpp'>
 
 static VALUE
