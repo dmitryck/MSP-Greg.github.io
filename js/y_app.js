@@ -839,7 +839,7 @@ function list_Load(eA, force) {
  */
 function list_ShowClicked(aDOM) {
   // aDOM hash is NOT encoded
-  var pathName = aDOM.pathname,
+  var pathName = /^\//.test(aDOM.pathname) ? aDOM.pathname : '/' + aDOM.pathname,
       pathFull = pathName,
       eLI = oList.clickedLI,
       hrefA,
