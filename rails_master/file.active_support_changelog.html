@@ -64,6 +64,12 @@
   </header>
 <div id='content' class='file'>
 <ul>
+<li><p>Fixed bug in <code>DateAndTime::Compatibility#to_time</code> that caused it to
+raise <code>RuntimeError: can&#39;t modify frozen Time</code> when called on any frozen <a href="Time.html" title="Time (class)">Time</a>.
+Properly pass through the frozen <a href="Time.html" title="Time (class)">Time</a> or <a href="ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a> object
+when calling <code>#to_time</code>.</p>
+
+<p><em>Kevin McPhillips</em> &amp; <em>Andrew White</em></p></li>
 <li><p>Remove implicit coercion deprecation of durations</p>
 
 <p>In #28204 we deprecated implicit conversion of durations to a numeric which
@@ -264,12 +270,6 @@ argument for <code>Marshal#load( source [, proc] )</code>. This way we don&#39;t
 <h2>Rails 5.1.0.beta1 (February 23, 2017)</h2>
 
 <ul>
-<li><p>Fixed bug in <code>DateAndTime::Compatibility#to_time</code> that caused it to
-raise <code>RuntimeError: can&#39;t modify frozen Time</code> when called on any frozen <a href="Time.html" title="Time (class)">Time</a>.
-Properly pass through the frozen <a href="Time.html" title="Time (class)">Time</a> or <a href="ActiveSupport/TimeWithZone.html" title="ActiveSupport::TimeWithZone (class)">::ActiveSupport::TimeWithZone</a> object
-when calling <code>#to_time</code>.</p>
-
-<p><em>Kevin McPhillips</em> &amp; <em>Andrew White</em></p></li>
 <li><p>Cache <a href="ActiveSupport/TimeWithZone.html#to_datetime-instance_method" title="ActiveSupport::TimeWithZone#to_datetime (method)">ActiveSupport::TimeWithZone#to_datetime</a> before freezing.</p>
 
 <p><em>Adam Rice</em></p></li>

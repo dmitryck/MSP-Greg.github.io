@@ -98,51 +98,61 @@ repository on GitHub.</p>
 <p><a href="https://github.com/rails/rails/pull/26836">Pull Request</a></p>
 
 <p>Rails 5.1 will allow managing JavaScript dependencies
-from NPM via Yarn.This will make it easy to use libraries like React, VueJS
+from NPM via Yarn. This will make it easy to use libraries like React, VueJS
 or any other library from NPM world. The Yarn support is integrated with
 the asset pipeline so that all dependencies will work seamlessly with the
 Rails 5.1 app.</p>
 
 <h3>Optional Webpack support</h3>
 
-<p>Rails apps can use Webpack easily now using the <a href="https://github.com/rails/webpacker">Webpacker</a>
-gem. New Rails 5.1 app can be generated using <code>--webpack</code> switch to enable Webpack integration.</p>
+<p><a href="https://github.com/rails/rails/pull/27288">Pull Request</a></p>
+
+<p>Rails apps can integrate with <a href="https://webpack.js.org/">Webpack</a>, a JavaScript
+asset bundler, more easily using the new <a href="https://github.com/rails/webpacker">Webpacker</a>
+gem. Use the <code>--webpack</code> flag when generating new applications to enable Webpack
+integration.</p>
 
 <p>This is fully compatible with the asset pipeline, which you can continue to use for
-images, fonts, sounds, whatever. You can even have some JavaScript on the asset pipeline
-and some done via Webpack. It’s all managed via Yarn that’s on by default.</p>
+images, fonts, sounds, and other assets. You can even have some JavaScript code
+managed by the asset pipeline, and other code processed via Webpack. All of this is managed
+by Yarn, which is enabled by default.</p>
 
 <h3>jQuery no longer a default dependency</h3>
 
-<p>jQuery was required by default in earlier versions of Rails to provide features like
-<code>data-remote</code>, <code>data-confirm</code> and other parts of Rails UJS. It is no longer required,
-as the <code>rails-ujs</code> is now written using plain vanilla JavaScript.</p>
+<p><a href="https://github.com/rails/rails/pull/27113">Pull Request</a></p>
 
-<p>You can still use jQuery if needed, but it is no longer required by default.</p>
+<p>jQuery was required by default in earlier versions of Rails to provide features
+like <code>data-remote</code>, <code>data-confirm</code> and other parts of Rails&#39; Unobtrusive JavaScript
+offerings. It is no longer required, as the UJS has been rewritten to use plain,
+vanilla JavaScript. This code now ships inside of Action View as
+<code>rails-ujs</code>.</p>
+
+<p>You can still use the jQuery version if needed, but it is no longer required by default.</p>
 
 <h3>System tests</h3>
 
 <p><a href="https://github.com/rails/rails/pull/26703">Pull Request</a></p>
 
-<p>Rails 5.1 has support for writing Capybara tests baked in in the form of
-System tests. Now you don&#39;t have to worry about configuring Capybara and
+<p>Rails 5.1 has baked-in support for writing Capybara tests, in the form of
+System tests. You need no longer worry about configuring Capybara and
 database cleaning strategies for such tests. Rails 5.1 provides a wrapper
-for running such tests in chrome with additional features such as failure
+for running tests in Chrome with additional features such as failure
 screenshots.</p>
 
 <h3>Encrypted secrets</h3>
 
 <p><a href="https://github.com/rails/rails/pull/28038">Pull Request</a></p>
 
-<p>Rails will now allow management of application secrets in a secure way
-built on top of <a href="https://github.com/ahoward/sekrets">sekrets</a> gem.</p>
+<p>Rails will now allow management of application secrets in a secure way,
+building on top of the <a href="https://github.com/ahoward/sekrets">sekrets</a> gem.</p>
 
-<p>Run <code>bin/rails secrets:setup</code> to setup a new encrypted secrets file. It will
-generate a master key which needs to be stored outside of the repository and it will
-allow checking in the actual secrets in the revision control.</p>
+<p>Run <code>bin/rails secrets:setup</code> to setup a new encrypted secrets file. This will
+also generate a master key, which must be stored outside of the repository. The
+secrets themselves can then be safely checked into the revision control system,
+in an encrypted form.</p>
 
-<p>The secrets will be decrypted in production either using <code>RAILS_MASTER_KEY</code> from
-the ENV or injected key file.</p>
+<p>Secrets will be decrypted in production, using a key stored either in the
+<code>RAILS_MASTER_KEY</code> environment variable, or in a key file.</p>
 
 <h3>Parameterized mailers</h3>
 
@@ -174,7 +184,7 @@ to share instance variables, headers and other common setup.</p>
 
 <p><a href="https://github.com/rails/rails/pull/23138">Pull Request</a></p>
 
-<p>Rails 5.1 has added two new methods - <code>resolve</code> and <code>direct</code> to the routing
+<p>Rails 5.1 has added two new methods, <code>resolve</code> and <code>direct</code>, to the routing
 DSL.</p>
 
 <p>The <code>resolve</code> method allows customizing polymorphic mapping of models.</p>
@@ -188,7 +198,7 @@ DSL.</p>
 &lt;% end %&gt;
 </code></pre>
 
-<p>This will generate the singular URL <code>/basket</code> instead of usual <code>/baskets/:id</code>.</p>
+<p>This will generate the singular URL <code>/basket</code> instead of the usual <code>/baskets/:id</code>.</p>
 
 <p>The <code>direct</code> method allows creation of custom URL helpers.</p>
 
@@ -198,8 +208,8 @@ DSL.</p>
 #=&gt; &quot;http://www.rubyonrails.org&quot;</code></pre>
 
 <p>The return value of the block must be a valid argument for the <code>url_for</code>
-method. So you can pass a valid string URL, or a hash, or an array, or an
-Active Model instance or an Active Model class.</p>
+method. So, you can pass a valid string URL, Hash, Array, an
+Active Model instance, or an Active Model class.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_direct'>direct</span> <span class='symbeg'>:</span><span class='id identifier rubyid_commentable'>commentable</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_model'>model</span><span class='op'>|</span>
   <span class='lbracket'>[</span> <span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='label'>anchor:</span> <span class='id identifier rubyid_model'>model</span><span class='period'>.</span><span class='id identifier rubyid_dom_id'>dom_id</span> <span class='rbracket'>]</span>
@@ -213,10 +223,10 @@ Active Model instance or an Active Model class.</p>
 
 <p><a href="https://github.com/rails/rails/pull/26976">Pull Request</a></p>
 
-<p>Before Rails 5.1, there were two interfaces for handling HTML forms,
+<p>Before Rails 5.1, there were two interfaces for handling HTML forms:
 <code>form_for</code> for model instances and <code>form_tag</code> for custom URLs.</p>
 
-<p>Rails 5.1 combines both of these interfaces with <code>form_with</code> and
+<p>Rails 5.1 combines both of these interfaces with <code>form_with</code>, and
 can generate form tags based on URLs, scopes or models.</p>
 
 <pre class="code erb"><code class="erb"># Using just a URL:
