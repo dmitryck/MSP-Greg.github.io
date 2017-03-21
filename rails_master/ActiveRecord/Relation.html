@@ -337,7 +337,6 @@
   <tbody>
     <tr>
       <td colspan='2'>
-        <a class='i_m ro nodoc' href="Delegation.html#collect-instance_method" title="ActiveRecord::Delegation#collect (method)">#collect</a>,
         <a class='i_m ro nodoc' href="Delegation.html#columns_hash-instance_method" title="ActiveRecord::Delegation#columns_hash (method)">#columns_hash</a>,
         <a class='i_m ro nodoc' href="Delegation.html#compact-instance_method" title="ActiveRecord::Delegation#compact (method)">#compact</a>,
         <a class='i_m ro nodoc' href="Delegation.html#connection-instance_method" title="ActiveRecord::Delegation#connection (method)">#connection</a>,
@@ -348,7 +347,6 @@
         <a class='i_m ro nodoc' href="Delegation.html#index-instance_method" title="ActiveRecord::Delegation#index (method)">#index</a>,
         <a class='i_m ro nodoc' href="Delegation.html#join-instance_method" title="ActiveRecord::Delegation#join (method)">#join</a>,
         <a class='i_m ro nodoc' href="Delegation.html#length-instance_method" title="ActiveRecord::Delegation#length (method)">#length</a>,
-        <a class='i_m ro nodoc' href="Delegation.html#map-instance_method" title="ActiveRecord::Delegation#map (method)">#map</a>,
         <a class='i_m ro nodoc' href="Delegation.html#primary_key-instance_method" title="ActiveRecord::Delegation#primary_key (method)">#primary_key</a>,
         <a class='i_m ro nodoc' href="Delegation.html#quoted_primary_key-instance_method" title="ActiveRecord::Delegation#quoted_primary_key (method)">#quoted_primary_key</a>,
         <a class='i_m ro nodoc' href="Delegation.html#quoted_table_name-instance_method" title="ActiveRecord::Delegation#quoted_table_name (method)">#quoted_table_name</a>,
@@ -356,7 +354,8 @@
         <a class='i_m ro nodoc' href="Delegation.html#sample-instance_method" title="ActiveRecord::Delegation#sample (method)">#sample</a>,
         <a class='i_m ro nodoc' href="Delegation.html#shuffle-instance_method" title="ActiveRecord::Delegation#shuffle (method)">#shuffle</a>,
         <a class='i_m ro nodoc' href="Delegation.html#split-instance_method" title="ActiveRecord::Delegation#split (method)">#split</a>,
-        <a class='i_m ro nodoc' href="Delegation.html#table_name-instance_method" title="ActiveRecord::Delegation#table_name (method)">#table_name</a>
+        <a class='i_m ro nodoc' href="Delegation.html#table_name-instance_method" title="ActiveRecord::Delegation#table_name (method)">#table_name</a>,
+        <a class='i_m ro nodoc' href="Delegation.html#uniq-instance_method" title="ActiveRecord::Delegation#uniq (method)">#uniq</a>
       </td>
     </tr>
   </tbody>
@@ -1227,9 +1226,7 @@ array.</p></div></td>
         <a class='i_m nodoc' href="Delegation.html#%2B-instance_method" title="ActiveRecord::Delegation#+ (method)">#+</a>,
         <a class='i_m nodoc' href="Delegation.html#--instance_method" title="ActiveRecord::Delegation#- (method)">#-</a>,
         <a class='i_m nodoc' href="Delegation.html#[]-instance_method" title="ActiveRecord::Delegation#[] (method)">#[]</a>,
-        <a class='i_m nodoc' href="Delegation.html#all%3F-instance_method" title="ActiveRecord::Delegation#all? (method)">#all?</a>,
         <a class='i_m nodoc' href="Delegation.html#as_json-instance_method" title="ActiveRecord::Delegation#as_json (method)">#as_json</a>,
-        <a class='i_m nodoc' href="Delegation.html#include%3F-instance_method" title="ActiveRecord::Delegation#include? (method)">#include?</a>,
         <a class='i_m nodoc' href="Delegation.html#respond_to_missing%3F-instance_method" title="ActiveRecord::Delegation#respond_to_missing? (method)">#respond_to_missing?</a>,
         <a class='i_m nodoc' href="Delegation.html#to_ary-instance_method" title="ActiveRecord::Delegation#to_ary (method)">#to_ary</a>,
         <a class='i_m nodoc' href="Delegation.html#to_formatted_s-instance_method" title="ActiveRecord::Delegation#to_formatted_s (method)">#to_formatted_s</a>,
@@ -2191,7 +2188,7 @@ ActiveRecordError:</p>
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_all'>delete_all</span>
   <span class='id identifier rubyid_invalid_methods'>invalid_methods</span> <span class='op'>=</span> <span class='const'><a href="#INVALID_METHODS_FOR_DELETE_ALL-constant" title="ActiveRecord::Relation::INVALID_METHODS_FOR_DELETE_ALL (constant)">INVALID_METHODS_FOR_DELETE_ALL</a></span><span class='period'>.</span><span class='id identifier rubyid_select'><a href="QueryMethods.html#select-instance_method" title="ActiveRecord::QueryMethods#select (method)">select</a></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_method'>method</span><span class='op'>|</span>
     <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_get_value'>get_value</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span>
-    <span class='const'><a href="#SINGLE_VALUE_METHODS-constant" title="ActiveRecord::Relation::SINGLE_VALUE_METHODS (constant)">SINGLE_VALUE_METHODS</a></span><span class='period'>.</span><span class='id identifier rubyid_include?'><a href="Delegation.html#include%3F-instance_method" title="ActiveRecord::Delegation#include? (method)">include?</a></span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>:</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
+    <span class='const'><a href="#SINGLE_VALUE_METHODS-constant" title="ActiveRecord::Relation::SINGLE_VALUE_METHODS (constant)">SINGLE_VALUE_METHODS</a></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>:</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
   <span class='kw'>end</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_invalid_methods'>invalid_methods</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'><a href="ActiveRecordError.html" title="ActiveRecord::ActiveRecordError (class)">ActiveRecordError</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>delete_all doesn&#39;t support </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_invalid_methods'>invalid_methods</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>

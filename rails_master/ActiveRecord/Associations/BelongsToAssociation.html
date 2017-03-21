@@ -232,7 +232,7 @@ reader.</p></div></td>
   </li>
   <li>
     <span class='summary_signature nodoc'>
-      <a href="#default-instance_method" title="#default (instance method)">#<strong>default</strong>(record)  </a>
+      <a href="#default-instance_method" title="#default (instance method)">#<strong>default</strong>(&amp;block)  </a>
     </span>
   </li>
   <li>
@@ -578,7 +578,7 @@ the last find_target, the target is stale.</p></div></td>
 
 <section class='method_details' id="default-instance_method">
   <h3 class='signature nodoc'>
-    #<strong>default</strong>(record)  
+    #<strong>default</strong>(&amp;block)  
   </h3>
   <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/associations/belongs_to_association.rb#L24-L26'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
@@ -592,8 +592,8 @@ the last find_target, the target is stale.</p></div></td>
 <pre><span class='info file'># File 'activerecord/lib/active_record/associations/belongs_to_association.rb', line 24</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_default'>default</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_writer'>writer</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_reader'>reader</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_default'>default</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_writer'>writer</span><span class='lparen'>(</span><span class='id identifier rubyid_instance_exec'>instance_exec</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_reader'>reader</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
 <span class='kw'>end</span>
 </pre>
   </div>
