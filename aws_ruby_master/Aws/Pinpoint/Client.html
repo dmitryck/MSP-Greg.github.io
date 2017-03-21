@@ -287,6 +287,14 @@ configuring credentials statically and never commit them to source control.</p>
   </li>
   <li>
     <span class='summary_signature '>
+      <a href="#delete_event_stream-instance_method" title="#delete_event_stream (instance method)">#<strong>delete_event_stream</strong>(options = {})  &#x21d2; Types::DeleteEventStreamResponse </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Deletes the event stream for an app.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
       <a href="#delete_gcm_channel-instance_method" title="#delete_gcm_channel (instance method)">#<strong>delete_gcm_channel</strong>(options = {})  &#x21d2; Types::DeleteGcmChannelResponse </a>
     </span>
     <div class='summary_desc'>
@@ -338,7 +346,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#get_campaign_version-instance_method" title="#get_campaign_version (instance method)">#<strong>get_campaign_version</strong>(options = {})  &#x21d2; Types::GetCampaignVersionResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Returns information about your campaign versions.</p></div>
+      <div class='inline'><p>Returns information about a specific version of a campaign.</p></div>
     </div>
   </li>
   <li>
@@ -363,6 +371,14 @@ configuring credentials statically and never commit them to source control.</p>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Returns information about an endpoint.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#get_event_stream-instance_method" title="#get_event_stream (instance method)">#<strong>get_event_stream</strong>(options = {})  &#x21d2; Types::GetEventStreamResponse </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Returns the event stream for an app.</p></div>
     </div>
   </li>
   <li>
@@ -431,6 +447,14 @@ configuring credentials statically and never commit them to source control.</p>
   </li>
   <li>
     <span class='summary_signature '>
+      <a href="#put_event_stream-instance_method" title="#put_event_stream (instance method)">#<strong>put_event_stream</strong>(options = {})  &#x21d2; Types::PutEventStreamResponse </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Use to create or update the event stream for an app.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
       <a href="#update_apns_channel-instance_method" title="#update_apns_channel (instance method)">#<strong>update_apns_channel</strong>(options = {})  &#x21d2; Types::UpdateApnsChannelResponse </a>
     </span>
     <div class='summary_desc'>
@@ -466,7 +490,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#update_endpoints_batch-instance_method" title="#update_endpoints_batch (instance method)">#<strong>update_endpoints_batch</strong>(options = {})  &#x21d2; Types::UpdateEndpointsBatchResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Use to update your endpoints.</p></div>
+      <div class='inline'><p>Use to update a batch of endpoints.</p></div>
     </div>
   </li>
   <li>
@@ -975,7 +999,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:write_campaign_request</span>
           <span class='type'>(<code>required</code>, <a href="Types/WriteCampaignRequest.html" title="Aws::Pinpoint::Types::WriteCampaignRequest (class)">Types::WriteCampaignRequest</a>)</span>
-        </li>
+            &mdash; <div class='inline'><p>Used to create a campaign.</p>
+</div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
 <ul class='return'>
@@ -1131,6 +1156,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </span>          <span class='label'>values:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
         <span class='rbrace'>}</span><span class='comma'>,</span>
       <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='label'>user_attributes:</span> <span class='lbrace'>{</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span>
+          <span class='label'>attribute_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INCLUSIVE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts INCLUSIVE, EXCLUSIVE
+</span>          <span class='label'>values:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+        <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='rbrace'>}</span><span class='comma'>,</span>
     <span class='rbrace'>}</span><span class='comma'>,</span>
     <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
   <span class='rbrace'>}</span><span class='comma'>,</span>
@@ -1163,6 +1194,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_dimension_type'>dimension_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span> <span class='comment'>#=&gt; Hash
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_attribute_type'>attribute_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_external_id'>external_id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_format'>format</span> <span class='comment'>#=&gt; String, one of &quot;CSV&quot;, &quot;JSON&quot;
@@ -1183,7 +1218,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:write_segment_request</span>
           <span class='type'>(<code>required</code>, <a href="Types/WriteSegmentRequest.html" title="Aws::Pinpoint::Types::WriteSegmentRequest (class)">Types::WriteSegmentRequest</a>)</span>
-        </li>
+            &mdash; <div class='inline'><p>Segment definition.</p>
+</div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
 <ul class='return'>
@@ -1393,6 +1429,57 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </div>
 </section>
 
+<section class='method_details' id="delete_event_stream-instance_method">
+  <h3 class='signature '>
+    #<strong>delete_event_stream</strong>(options = {})  &#x21d2; <a href="Types/DeleteEventStreamResponse.html" title="Aws::Pinpoint::Types::DeleteEventStreamResponse (class)">Types::DeleteEventStreamResponse</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Deletes the event stream for an app.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_delete_event_stream'>delete_event_stream</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>application_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_application_id'>application_id</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_destination_stream_arn'>destination_stream_arn</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_external_id'>external_id</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_last_modified_date'>last_modified_date</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_last_updated_by'>last_updated_by</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_role_arn'>role_arn</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:application_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Application Id.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/DeleteEventStreamResponse.html" title="Aws::Pinpoint::Types::DeleteEventStreamResponse (class)">Types::DeleteEventStreamResponse</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/DeleteEventStreamResponse.html#event_stream-instance_method" title="Aws::Pinpoint::Types::DeleteEventStreamResponse#event_stream (method)">#event_stream</a> =&gt; <a href="Types/EventStream.html" title="Aws::Pinpoint::Types::EventStream (class)">Types::EventStream</a></li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
 <section class='method_details' id="delete_gcm_channel-instance_method">
   <h3 class='signature '>
     #<strong>delete_gcm_channel</strong>(options = {})  &#x21d2; <a href="Types/DeleteGcmChannelResponse.html" title="Aws::Pinpoint::Types::DeleteGcmChannelResponse (class)">Types::DeleteGcmChannelResponse</a> 
@@ -1493,6 +1580,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_dimension_type'>dimension_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span> <span class='comment'>#=&gt; Hash
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_attribute_type'>attribute_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_external_id'>external_id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_format'>format</span> <span class='comment'>#=&gt; String, one of &quot;CSV&quot;, &quot;JSON&quot;
@@ -1806,6 +1897,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_activities_response'>activities_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_activities_response'>activities_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_state'>state</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_activities_response'>activities_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_successful_endpoint_count'>successful_endpoint_count</span> <span class='comment'>#=&gt; Integer
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_activities_response'>activities_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_timezones_completed_count'>timezones_completed_count</span> <span class='comment'>#=&gt; Integer
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_activities_response'>activities_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_timezones_total_count'>timezones_total_count</span> <span class='comment'>#=&gt; Integer
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_activities_response'>activities_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_total_endpoint_count'>total_endpoint_count</span> <span class='comment'>#=&gt; Integer
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_activities_response'>activities_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_treatment_id'>treatment_id</span> <span class='comment'>#=&gt; String</span></code></pre>
   </div>
@@ -1850,7 +1943,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Returns information about your campaign versions.</p>
+    <p>Returns information about a specific version of a campaign.</p>
 
   </div>
 </div>
@@ -2338,11 +2431,11 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_endpoint_response'>endpoint_response</span><span class='period'>.</span><span class='id identifier rubyid_metrics'>metrics</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='comment'>#=&gt; Float
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_endpoint_response'>endpoint_response</span><span class='period'>.</span><span class='id identifier rubyid_opt_out'>opt_out</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_endpoint_response'>endpoint_response</span><span class='period'>.</span><span class='id identifier rubyid_request_id'>request_id</span> <span class='comment'>#=&gt; String
-</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_endpoint_response'>endpoint_response</span><span class='period'>.</span><span class='id identifier rubyid_shard_id'>shard_id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_endpoint_response'>endpoint_response</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span> <span class='comment'>#=&gt; Hash
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_endpoint_response'>endpoint_response</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='comment'>#=&gt; Array
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_endpoint_response'>endpoint_response</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
-</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_endpoint_response'>endpoint_response</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='comment'>#=&gt; String</span></code></pre>
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_endpoint_response'>endpoint_response</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_endpoint_response'>endpoint_response</span><span class='period'>.</span><span class='id identifier rubyid_shard_id'>shard_id</span> <span class='comment'>#=&gt; String</span></code></pre>
   </div>
     <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
     <ul class='option'>
@@ -2363,6 +2456,57 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 
 <ul>
 <li><a href="Types/GetEndpointResponse.html#endpoint_response-instance_method" title="Aws::Pinpoint::Types::GetEndpointResponse#endpoint_response (method)">#endpoint_response</a> =&gt; <a href="Types/EndpointResponse.html" title="Aws::Pinpoint::Types::EndpointResponse (class)">Types::EndpointResponse</a></li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="get_event_stream-instance_method">
+  <h3 class='signature '>
+    #<strong>get_event_stream</strong>(options = {})  &#x21d2; <a href="Types/GetEventStreamResponse.html" title="Aws::Pinpoint::Types::GetEventStreamResponse (class)">Types::GetEventStreamResponse</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Returns the event stream for an app.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_get_event_stream'>get_event_stream</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>application_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_application_id'>application_id</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_destination_stream_arn'>destination_stream_arn</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_external_id'>external_id</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_last_modified_date'>last_modified_date</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_last_updated_by'>last_updated_by</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_role_arn'>role_arn</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:application_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Application Id.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/GetEventStreamResponse.html" title="Aws::Pinpoint::Types::GetEventStreamResponse (class)">Types::GetEventStreamResponse</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/GetEventStreamResponse.html#event_stream-instance_method" title="Aws::Pinpoint::Types::GetEventStreamResponse#event_stream (method)">#event_stream</a> =&gt; <a href="Types/EventStream.html" title="Aws::Pinpoint::Types::EventStream (class)">Types::EventStream</a></li>
 </ul>
 </div>
   </li>
@@ -2618,6 +2762,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_dimension_type'>dimension_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span> <span class='comment'>#=&gt; Hash
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_attribute_type'>attribute_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_external_id'>external_id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_format'>format</span> <span class='comment'>#=&gt; String, one of &quot;CSV&quot;, &quot;JSON&quot;
@@ -2786,6 +2934,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_dimension_type'>dimension_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span> <span class='comment'>#=&gt; Hash
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_attribute_type'>attribute_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_external_id'>external_id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_format'>format</span> <span class='comment'>#=&gt; String, one of &quot;CSV&quot;, &quot;JSON&quot;
@@ -2878,6 +3030,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_dimension_type'>dimension_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span> <span class='comment'>#=&gt; Hash
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_attribute_type'>attribute_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_external_id'>external_id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_format'>format</span> <span class='comment'>#=&gt; String, one of &quot;CSV&quot;, &quot;JSON&quot;
@@ -2974,6 +3130,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_dimension_type'>dimension_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span> <span class='comment'>#=&gt; Hash
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_attribute_type'>attribute_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_external_id'>external_id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segments_response'>segments_response</span><span class='period'>.</span><span class='id identifier rubyid_item'>item</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_format'>format</span> <span class='comment'>#=&gt; String, one of &quot;CSV&quot;, &quot;JSON&quot;
@@ -3009,6 +3169,67 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 
 <ul>
 <li><a href="Types/GetSegmentsResponse.html#segments_response-instance_method" title="Aws::Pinpoint::Types::GetSegmentsResponse#segments_response (method)">#segments_response</a> =&gt; <a href="Types/SegmentsResponse.html" title="Aws::Pinpoint::Types::SegmentsResponse (class)">Types::SegmentsResponse</a></li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="put_event_stream-instance_method">
+  <h3 class='signature '>
+    #<strong>put_event_stream</strong>(options = {})  &#x21d2; <a href="Types/PutEventStreamResponse.html" title="Aws::Pinpoint::Types::PutEventStreamResponse (class)">Types::PutEventStreamResponse</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Use to create or update the event stream for an app.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_put_event_stream'>put_event_stream</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>application_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>write_event_stream:</span> <span class='lbrace'>{</span> <span class='comment'># required
+</span>    <span class='label'>destination_stream_arn:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>external_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>role_arn:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_application_id'>application_id</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_destination_stream_arn'>destination_stream_arn</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_external_id'>external_id</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_last_modified_date'>last_modified_date</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_last_updated_by'>last_updated_by</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_event_stream'>event_stream</span><span class='period'>.</span><span class='id identifier rubyid_role_arn'>role_arn</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:application_id</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
+            &mdash; <div class='inline'><p>Application Id.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:write_event_stream</span>
+          <span class='type'>(<code>required</code>, <a href="Types/WriteEventStream.html" title="Aws::Pinpoint::Types::WriteEventStream (class)">Types::WriteEventStream</a>)</span>
+            &mdash; <div class='inline'><p>Request to save an EventStream.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/PutEventStreamResponse.html" title="Aws::Pinpoint::Types::PutEventStreamResponse (class)">Types::PutEventStreamResponse</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/PutEventStreamResponse.html#event_stream-instance_method" title="Aws::Pinpoint::Types::PutEventStreamResponse#event_stream (method)">#event_stream</a> =&gt; <a href="Types/EventStream.html" title="Aws::Pinpoint::Types::EventStream (class)">Types::EventStream</a></li>
 </ul>
 </div>
   </li>
@@ -3055,7 +3276,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:apns_channel_request</span>
           <span class='type'>(<code>required</code>, <a href="Types/APNSChannelRequest.html" title="Aws::Pinpoint::Types::APNSChannelRequest (class)">Types::APNSChannelRequest</a>)</span>
-        </li>
+            &mdash; <div class='inline'><p>Apple Push Notification Service channel definition.</p>
+</div>        </li>
         <li>
           <span class='name'>:application_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
@@ -3123,7 +3345,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:write_application_settings_request</span>
           <span class='type'>(<code>required</code>, <a href="Types/WriteApplicationSettingsRequest.html" title="Aws::Pinpoint::Types::WriteApplicationSettingsRequest (class)">Types::WriteApplicationSettingsRequest</a>)</span>
-        </li>
+            &mdash; <div class='inline'><p>Creating application setting request</p>
+</div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
 <ul class='return'>
@@ -3380,7 +3603,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:write_campaign_request</span>
           <span class='type'>(<code>required</code>, <a href="Types/WriteCampaignRequest.html" title="Aws::Pinpoint::Types::WriteCampaignRequest (class)">Types::WriteCampaignRequest</a>)</span>
-        </li>
+            &mdash; <div class='inline'><p>Used to create a campaign.</p>
+</div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
 <ul class='return'>
@@ -3473,7 +3697,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:endpoint_request</span>
           <span class='type'>(<code>required</code>, <a href="Types/EndpointRequest.html" title="Aws::Pinpoint::Types::EndpointRequest (class)">Types::EndpointRequest</a>)</span>
-        </li>
+            &mdash; <div class='inline'><p>Endpoint update request</p>
+</div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
 <ul class='return'>
@@ -3497,7 +3722,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Use to update your endpoints.</p>
+    <p>Use to update a batch of endpoints.</p>
 
   </div>
 </div>
@@ -3566,7 +3791,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:endpoint_batch_request</span>
           <span class='type'>(<code>required</code>, <a href="Types/EndpointBatchRequest.html" title="Aws::Pinpoint::Types::EndpointBatchRequest (class)">Types::EndpointBatchRequest</a>)</span>
-        </li>
+            &mdash; <div class='inline'><p>Endpoint batch update request.</p>
+</div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
 <ul class='return'>
@@ -3626,7 +3852,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:gcm_channel_request</span>
           <span class='type'>(<code>required</code>, <a href="Types/GCMChannelRequest.html" title="Aws::Pinpoint::Types::GCMChannelRequest (class)">Types::GCMChannelRequest</a>)</span>
-        </li>
+            &mdash; <div class='inline'><p>Google Cloud Messaging credentials</p>
+</div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
 <ul class='return'>
@@ -3704,6 +3931,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </span>          <span class='label'>values:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
         <span class='rbrace'>}</span><span class='comma'>,</span>
       <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='label'>user_attributes:</span> <span class='lbrace'>{</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span>
+          <span class='label'>attribute_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INCLUSIVE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts INCLUSIVE, EXCLUSIVE
+</span>          <span class='label'>values:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+        <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='rbrace'>}</span><span class='comma'>,</span>
     <span class='rbrace'>}</span><span class='comma'>,</span>
     <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
   <span class='rbrace'>}</span><span class='comma'>,</span>
@@ -3736,6 +3969,10 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_dimension_type'>dimension_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span> <span class='comment'>#=&gt; Hash
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_attribute_type'>attribute_type</span> <span class='comment'>#=&gt; String, one of &quot;INCLUSIVE&quot;, &quot;EXCLUSIVE&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_dimensions'>dimensions</span><span class='period'>.</span><span class='id identifier rubyid_user_attributes'>user_attributes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>__string</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_external_id'>external_id</span> <span class='comment'>#=&gt; String
 </span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_segment_response'>segment_response</span><span class='period'>.</span><span class='id identifier rubyid_import_definition'>import_definition</span><span class='period'>.</span><span class='id identifier rubyid_format'>format</span> <span class='comment'>#=&gt; String, one of &quot;CSV&quot;, &quot;JSON&quot;
@@ -3760,7 +3997,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:write_segment_request</span>
           <span class='type'>(<code>required</code>, <a href="Types/WriteSegmentRequest.html" title="Aws::Pinpoint::Types::WriteSegmentRequest (class)">Types::WriteSegmentRequest</a>)</span>
-        </li>
+            &mdash; <div class='inline'><p>Segment definition.</p>
+</div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
 <ul class='return'>
