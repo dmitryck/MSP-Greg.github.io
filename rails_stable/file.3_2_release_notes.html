@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: 3.2 Release Notes &mdash; Rails-5-0-stable</title>
+<title>File: 3.2 Release Notes &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: 3.2 Release Notes&nbsp;&#x25B2;</a></span>
             </div>
@@ -474,14 +474,14 @@ end</code></pre></li>
 <span class='comment'># Logs &quot;[BCX] [Jason] Stuff&quot;</span></code></pre></li>
 <li><p>The <code>beginning_of_week</code> method in <a href="Date.html" title="Date (class)">Date</a>, <a href="Time.html" title="Time (class)">Time</a> and <a href="DateTime.html" title="DateTime (class)">DateTime</a> accepts an optional argument representing the day in which the week is assumed to start.</p></li>
 <li><p><a href="ActiveSupport/Notifications.html#subscribed-class_method" title="ActiveSupport::Notifications.subscribed (method)">ActiveSupport::Notifications.subscribed</a> provides subscriptions to events while a block runs.</p></li>
-<li><p>Defined new methods <a href="Module.html#qualified_const_defined%3F-instance_method" title="Module#qualified_const_defined? (method)">Module#qualified_const_defined?</a>, <a href="Module.html#qualified_const_get-instance_method" title="Module#qualified_const_get (method)">Module#qualified_const_get</a> and <a href="Module.html#qualified_const_set-instance_method" title="Module#qualified_const_set (method)">Module#qualified_const_set</a> that are analogous to the corresponding methods in the standard API, but accept qualified constant names.</p></li>
+<li><p>Defined new methods <code>Module#qualified_const_defined?</code>, <code>Module#qualified_const_get</code> and <code>Module#qualified_const_set</code> that are analogous to the corresponding methods in the standard API, but accept qualified constant names.</p></li>
 <li><p>Added <code>#deconstantize</code> which complements <code>#demodulize</code> in inflections. This removes the rightmost segment in a qualified constant name.</p></li>
 <li><p>Added <code>safe_constantize</code> that constantizes a string but returns <code>nil</code> instead of raising an exception if the constant (or part of it) does not exist.</p></li>
 <li><p><a href="ActiveSupport/OrderedHash.html" title="ActiveSupport::OrderedHash (class)">::ActiveSupport::OrderedHash</a> is now marked as extractable when using <a href="Array.html#extract_options!-instance_method" title="Array#extract_options! (method)">Array#extract_options!</a>.</p></li>
 <li><p>Added <a href="Array.html#prepend-instance_method" title="Array#prepend (method)">Array#prepend</a> as an alias for <code>Array#unshift</code> and <a href="Array.html#append-instance_method" title="Array#append (method)">Array#append</a> as an alias for <code>Array#<<</code>.</p></li>
 <li><p>The definition of a blank string for Ruby 1.9 has been extended to Unicode whitespace. Also, in Ruby 1.8 the ideographic space U`3000 is considered to be whitespace.</p></li>
 <li><p>The inflector understands acronyms.</p></li>
-<li><p>Added <a href="Time.html#all_day-instance_method" title="Time#all_day (method)">Time#all_day</a>, <code>Time#all_week</code>, <code>Time#all_quarter</code> and <code>Time#all_year</code> as a way of generating ranges.</p>
+<li><p>Added <code>Time#all_day</code>, <code>Time#all_week</code>, <code>Time#all_quarter</code> and <code>Time#all_year</code> as a way of generating ranges.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>Event</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_created_at'>created_at</span> <span class='op'>=&gt;</span> <span class='const'><a href="Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_all_week'>all_week</span><span class='rparen'>)</span>
 <span class='const'>Event</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_created_at'>created_at</span> <span class='op'>=&gt;</span> <span class='const'><a href="Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_all_day'>all_day</span><span class='rparen'>)</span></code></pre></li>

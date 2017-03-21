@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: AbstractController::Rendering &mdash; Rails-5-0-stable</title>
+<title>Module: AbstractController::Rendering &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_R'>Index (R)</a> &raquo; 
         <a href="../AbstractController.html" title="AbstractController (module)">AbstractController</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Rendering&nbsp;&#x25B2;</a></span>
@@ -103,7 +103,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/rendering.rb#L17'>actionpack/lib/abstract_controller/rendering.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L15'>actionpack/lib/abstract_controller/rendering.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -114,7 +114,7 @@
   <li>
     <span id='DEFAULT_PROTECTED_INSTANCE_VARIABLES-constant' class='summary_signature'>DEFAULT_PROTECTED_INSTANCE_VARIABLES =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/rendering.rb#L62-L64'># File 'actionpack/lib/abstract_controller/rendering.rb', line 62</a>    <pre class='code ruby'><span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='qsymbols'><span class='qsymbols_beg'>%i(
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L60-L62'># File 'actionpack/lib/abstract_controller/rendering.rb', line 60</a>    <pre class='code ruby'><span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='qsymbols'><span class='qsymbols_beg'>%i(
 </span><span class='tstring_content'>  @_action_name</span><span class='words_sep'> </span><span class='tstring_content'>@_response_body</span><span class='words_sep'> </span><span class='tstring_content'>@_formats</span><span class='words_sep'> </span><span class='tstring_content'>@_prefixes</span><span class='words_sep'>
 </span><span class='tstring_end'>)</span></span></pre>
   </li>
@@ -266,6 +266,11 @@
   </li>
   <li>
     <span class='summary_signature '>
+      <a href="#_process_variant-instance_method" title="#_process_variant (instance method)">#<strong>_process_variant</strong>(options)  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature '>
       <a href="#render-instance_method" title="#render (instance method)">#<strong>render</strong>(*args, &amp;block)  </a>
     </span>
     <div class='summary_desc'>
@@ -313,7 +318,14 @@ the result in <code>self.response_body</code>.</p></div>
     <tr>
       <td colspan='2'>
         <a class='i_m ' href="../ActionView/ViewPaths.html#any_templates%3F-instance_method" title="ActionView::ViewPaths#any_templates? (method)">#any_templates?</a>,
-        <a class='i_m ' href="../ActionView/ViewPaths.html#append_view_path-instance_method" title="ActionView::ViewPaths#append_view_path (method)">#append_view_path</a>,
+      </td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActionView/ViewPaths.html#append_view_path-instance_method" title="ActionView::ViewPaths#append_view_path (method)">#append_view_path</a></td>
+      <td><div class='inline'><p>Append a path to the list of view paths for the current <code>LookupContext</code>.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
         <a class='i_m ' href="../ActionView/ViewPaths.html#details_for_lookup-instance_method" title="ActionView::ViewPaths#details_for_lookup (method)">#details_for_lookup</a>,
       </td>
     </tr>
@@ -322,9 +334,12 @@ the result in <code>self.response_body</code>.</p></div>
       <td><div class='inline'><p><code>LookupContext</code> is the object responsible for holding all information
 required for looking up templates, i.e. view paths and details.</p></div></td>
     </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActionView/ViewPaths.html#prepend_view_path-instance_method" title="ActionView::ViewPaths#prepend_view_path (method)">#prepend_view_path</a></td>
+      <td><div class='inline'><p>Prepend a path to the list of view paths for the current <code>LookupContext</code>.</p></div></td>
+    </tr>
     <tr>
       <td colspan='2'>
-        <a class='i_m ' href="../ActionView/ViewPaths.html#prepend_view_path-instance_method" title="ActionView::ViewPaths#prepend_view_path (method)">#prepend_view_path</a>,
         <a class='i_m ' href="../ActionView/ViewPaths.html#template_exists%3F-instance_method" title="ActionView::ViewPaths#template_exists? (method)">#template_exists?</a>
       </td>
     </tr>
@@ -336,7 +351,7 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
   <h3 class='signature rw first'>
     .<strong>_view_paths</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/view_paths.rb#L6-L6'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/view_paths.rb#L6-L6'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -356,7 +371,7 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
   <h3 class='signature rw'>
     .<strong>_view_paths?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/view_paths.rb#L6-L6'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/view_paths.rb#L6-L6'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -377,7 +392,7 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
   <h3 class='signature rw first'>
     #<strong>_view_paths</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/view_paths.rb#L6-L6'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/view_paths.rb#L6-L6'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -397,7 +412,7 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
   <h3 class='signature rw'>
     #<strong>_view_paths?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/view_paths.rb#L6-L6'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/view_paths.rb#L6-L6'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -428,11 +443,13 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/rendering.rb#L83-L95'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L81-L93'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+81
+82
 83
 84
 85
@@ -443,14 +460,12 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
 90
 91
 92
-93
-94
-95</pre>
+93</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 83</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 81</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid__normalize_args'>_normalize_args</span><span class='lparen'>(</span><span class='id identifier rubyid_action'>action</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid__normalize_args'>_normalize_args</span><span class='lparen'>(</span><span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_permitted?'>permitted?</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_permitted?'>permitted?</span>
       <span class='id identifier rubyid_action'>action</span>
@@ -479,16 +494,16 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/rendering.rb#L99-L101'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L97-L99'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-99
-100
-101</pre>
+97
+98
+99</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 99</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 97</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__normalize_options'>_normalize_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -510,30 +525,24 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/rendering.rb#L122-L130'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L123-L128'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-122
 123
 124
 125
 126
 127
-128
-129
-130</pre>
+128</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 122</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 123</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__normalize_render'>_normalize_render</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid__normalize_args'>_normalize_args</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='comment'>#TODO: remove defined? when we restore AP &lt;=&gt; AV dependency
-</span>  <span class='kw'>if</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_variant'>variant</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span>
-    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_variant'>variant</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_variant'>variant</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid__process_variant'>_process_variant</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='id identifier rubyid__normalize_options'>_normalize_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span>
 <span class='kw'>end</span>
@@ -553,15 +562,15 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/rendering.rb#L111-L112'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L109-L110'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-111
-112</pre>
+109
+110</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 111</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 109</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__process_format'>_process_format</span><span class='lparen'>(</span><span class='id identifier rubyid_format'>format</span><span class='rparen'>)</span>
@@ -582,20 +591,42 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/rendering.rb#L105-L107'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L103-L105'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-105
-106
-107</pre>
+103
+104
+105</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 105</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 103</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__process_options'>_process_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="_process_variant-instance_method">
+  <h3 class='signature '>
+    #<strong>_process_variant</strong>(options)  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L112-L113'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+112
+113</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 112</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid__process_variant'>_process_variant</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -614,11 +645,13 @@ the result in <code>self.response_body</code>. :api: public</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/rendering.rb#L24-L33'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L22-L31'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+22
+23
 24
 25
 26
@@ -626,11 +659,9 @@ the result in <code>self.response_body</code>. :api: public</p>
 28
 29
 30
-31
-32
-33</pre>
+31</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 24</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 22</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -659,15 +690,15 @@ the result in <code>self.response_body</code>. :api: public</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/rendering.rb#L53-L54'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L51-L52'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-53
-54</pre>
+51
+52</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 53</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 51</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render_to_body'>render_to_body</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -696,17 +727,17 @@ string. :api: plugin</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/rendering.rb#L46-L49'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L44-L47'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+44
+45
 46
-47
-48
-49</pre>
+47</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 46</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 44</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render_to_string'>render_to_string</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -729,16 +760,16 @@ string. :api: plugin</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/rendering.rb#L58-L60'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L56-L58'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-58
-59
-60</pre>
+56
+57
+58</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 58</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 56</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rendered_format'>rendered_format</span>
@@ -761,22 +792,22 @@ configuration per controller. :api: public</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/rendering.rb#L69-L77'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/rendering.rb#L67-L75'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+67
+68
 69
 70
 71
 72
 73
 74
-75
-76
-77</pre>
+75</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 69</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/rendering.rb', line 67</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_view_assigns'>view_assigns</span>

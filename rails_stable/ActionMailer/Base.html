@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActionMailer::Base &mdash; Rails-5-0-stable</title>
+<title>Class: ActionMailer::Base &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_B'>Index (B)</a> &raquo; 
         <a href="../ActionMailer.html" title="ActionMailer (module)">ActionMailer</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Base&nbsp;&#x25B2;</a></span>
@@ -92,6 +92,7 @@
           <a href="../ActiveSupport/Callbacks/ClassMethods.html" title="ActiveSupport::Callbacks::ClassMethods (module)">::ActiveSupport::Callbacks::ClassMethods</a>,
           <a href="../AbstractController/Helpers/ClassMethods.html" title="AbstractController::Helpers::ClassMethods (module)">::AbstractController::Helpers::ClassMethods</a>,
           <a href="../ActionView/ViewPaths/ClassMethods.html" title="ActionView::ViewPaths::ClassMethods (module)">::ActionView::ViewPaths::ClassMethods</a>,
+          <a href="Parameterized/ClassMethods.html" title="ActionMailer::Parameterized::ClassMethods (module)">Parameterized::ClassMethods</a>,
           <a href="../ActiveSupport/Rescuable/ClassMethods.html" title="ActiveSupport::Rescuable::ClassMethods (module)">::ActiveSupport::Rescuable::ClassMethods</a>,
           <a href="DeliveryMethods/ClassMethods.html" title="ActionMailer::DeliveryMethods::ClassMethods (module)">DeliveryMethods::ClassMethods</a>,
           <a href="../AbstractController/Base.html" title="AbstractController::Base (class)">::AbstractController::Base</a>,
@@ -117,6 +118,7 @@
           <a href="../ActiveSupport/Benchmarkable.html" title="ActiveSupport::Benchmarkable (module)">::ActiveSupport::Benchmarkable</a>,
           <a href="../AbstractController/Rendering.html" title="AbstractController::Rendering (module)">::AbstractController::Rendering</a>,
           <a href="../ActionView/ViewPaths.html" title="ActionView::ViewPaths (module)">::ActionView::ViewPaths</a>,
+          <a href="Parameterized.html" title="ActionMailer::Parameterized (module)">Parameterized</a>,
           <a href="Rescuable.html" title="ActionMailer::Rescuable (module)">Rescuable</a>,
           <a href="../ActiveSupport/Rescuable.html" title="ActiveSupport::Rescuable (module)">::ActiveSupport::Rescuable</a>,
           <a href="DeliveryMethods.html" title="ActionMailer::DeliveryMethods (module)">DeliveryMethods</a>,
@@ -138,7 +140,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L421'>actionmailer/lib/action_mailer/base.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L435'>actionmailer/lib/action_mailer/base.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -291,6 +293,9 @@ by setting the <code>:host</code> option as a configuration option in
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_action_mailer'>action_mailer</span><span class='period'>.</span><span class='id identifier rubyid_default_url_options'>default_url_options</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>host:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span></code></pre>
 
+<p>You can also define a <code>default_url_options</code> method on individual mailers to
+override these default settings per-mailer.</p>
+
 <p>By default when <code>config.force_ssl</code> is true, URLs generated for
 hosts will use the HTTPS protocol.</p>
 
@@ -381,6 +386,19 @@ empty view for it, or add an empty body parameter like this:</p>
   <span class='kw'>end</span>
 <span class='kw'>end</span></code></pre>
 
+<p>You can also send attachments with html template, in this case you need to
+add body, attachments, and custom content type like this:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>NotifierMailer</span> <span class='op'>&lt;</span> <span class='const'>ApplicationMailer</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_welcome'>welcome</span><span class='lparen'>(</span><span class='id identifier rubyid_recipient'>recipient</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_attachments'>attachments</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>free_book.pdf</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><a href="../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/file.pdf</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_mail'>mail</span><span class='lparen'>(</span><span class='label'>to:</span> <span class='id identifier rubyid_recipient'>recipient</span><span class='comma'>,</span>
+         <span class='label'>subject:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>New account information</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+         <span class='label'>content_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>text/html</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+         <span class='label'>body:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;html&gt;&lt;body&gt;Hello there&lt;/body&gt;&lt;/html&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></code></pre>
+
 <h3 id="label-Inline+Attachments">Inline Attachments</h3>
 
 <p>You can also specify that a file should be displayed inline with other
@@ -459,23 +477,22 @@ string, or pass it in as an underscored symbol, so the following will work:</p>
           <span class='label'>content_description:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>This is a description</span><span class='tstring_end'>&#39;</span></span>
 <span class='kw'>end</span></code></pre>
 
-<p>Finally, Action Mailer also supports passing <code>Proc</code> objects into the
-default hash, so you can define methods that evaluate as the message is
-being generated:</p>
+<p>Finally, Action Mailer also supports passing <code>Proc</code> and <code>Lambda</code> objects
+into the default hash, so you can define methods that evaluate as the
+message is being generated:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>NotifierMailer</span> <span class='op'>&lt;</span> <span class='const'>ApplicationMailer</span>
-  <span class='id identifier rubyid_default'>default</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>X-Special-Header</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_my_method'>my_method</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_default'>default</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>X-Special-Header</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_my_method'>my_method</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='ivar'>@inviter</span><span class='period'>.</span><span class='id identifier rubyid_email_address'>email_address</span> <span class='rbrace'>}</span>
 
   <span class='id identifier rubyid_private'>private</span>
-
     <span class='kw'>def</span> <span class='id identifier rubyid_my_method'>my_method</span>
       <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>some complex call</span><span class='tstring_end'>&#39;</span></span>
     <span class='kw'>end</span>
 <span class='kw'>end</span></code></pre>
 
-<p>Note that the proc is evaluated right at the start of the mail message
-generation, so if you set something in the default hash using a proc, and
-then set the same thing inside of your mailer method, it will get
+<p>Note that the proc/lambda is evaluated right at the start of the mail
+message generation, so if you set something in the default hash using a
+proc, and then set the same thing inside of your mailer method, it will get
 overwritten by the mailer method.</p>
 
 <p>It is also possible to set these default options that will be used in all
@@ -499,7 +516,6 @@ mailer class:</p>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_private'>private</span>
-
     <span class='kw'>def</span> <span class='id identifier rubyid_add_inline_attachment!'>add_inline_attachment!</span>
       <span class='id identifier rubyid_attachments'>attachments</span><span class='period'>.</span><span class='id identifier rubyid_inline'>inline</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>footer.jpg</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><a href="../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/path/to/filename.jpg</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
@@ -599,10 +615,11 @@ SMTP server and starts to use it. Defaults to <code>true</code>.</p>
 <p><code>:openssl_verify_mode</code> - When using TLS, you can set how OpenSSL
 checks the certificate. This is really useful if you need to validate a
 self-signed and/or a wildcard certificate. You can use the name of an
-OpenSSL verify constant (<code>&#39;none&#39;</code>,
-<code>&#39;peer&#39;</code>, <code>&#39;client_once&#39;</code>,
-<code>&#39;fail_if_no_peer_cert&#39;</code>) or directly the constant
-(<code>OpenSSL::SSL::VERIFY_NONE</code>, <code>OpenSSL::SSL::VERIFY_PEER</code>, …).</p>
+OpenSSL verify constant (<code>&#39;none&#39;</code> or
+<code>&#39;peer&#39;</code>) or directly the constant
+(<code>OpenSSL::SSL::VERIFY_NONE</code> or <code>OpenSSL::SSL::VERIFY_PEER</code>).
+<code>:ssl/:tls</code> Enables the SMTP connection to use SMTP/TLS (SMTPS:
+SMTP over direct TLS connection)</p>
 </li></ul>
 </li><li>
 <p><code>sendmail_settings</code> - Allows you to override options for the
@@ -642,7 +659,7 @@ Mailer with <code>delivery_method :test</code>. Most useful for unit and
 functional testing.</p>
 </li><li>
 <p><a href="#deliver_later_queue_name-class_method" title="ActionMailer::Base.deliver_later_queue_name (method)">.deliver_later_queue_name</a> - The name of the queue used with
-<code>deliver_later</code>.</p>
+<code>deliver_later</code>. Defaults to <code>mailers</code>.</p>
 </li></ul>
 
   </div>
@@ -654,7 +671,7 @@ functional testing.</p>
   <li>
     <span id='PROTECTED_IVARS-constant' class='summary_signature'>PROTECTED_IVARS =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L439-L439'># File 'actionmailer/lib/action_mailer/base.rb', line 439</a>    <pre class='code ruby'><span class='const'><a href="../AbstractController.html" title="AbstractController (module)">AbstractController</a></span><span class='op'>::</span><span class='const'><a href="../AbstractController/Rendering.html" title="AbstractController::Rendering (module)">Rendering</a></span><span class='op'>::</span><span class='const'><a href="../AbstractController/Rendering.html#DEFAULT_PROTECTED_INSTANCE_VARIABLES-constant" title="AbstractController::Rendering::DEFAULT_PROTECTED_INSTANCE_VARIABLES (constant)">DEFAULT_PROTECTED_INSTANCE_VARIABLES</a></span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='ivar'>@_action_has_layout</span><span class='rbracket'>]</span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L454-L454'># File 'actionmailer/lib/action_mailer/base.rb', line 454</a>    <pre class='code ruby'><span class='const'><a href="../AbstractController.html" title="AbstractController (module)">AbstractController</a></span><span class='op'>::</span><span class='const'><a href="../AbstractController/Rendering.html" title="AbstractController::Rendering (module)">Rendering</a></span><span class='op'>::</span><span class='const'><a href="../AbstractController/Rendering.html#DEFAULT_PROTECTED_INSTANCE_VARIABLES-constant" title="AbstractController::Rendering::DEFAULT_PROTECTED_INSTANCE_VARIABLES (constant)">DEFAULT_PROTECTED_INSTANCE_VARIABLES</a></span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='ivar'>@_action_has_layout</span><span class='rbracket'>]</span></pre>
   </li>
 </ul>
   <h3 class='inherited'><a href="../AbstractController/Rendering.html" title="AbstractController::Rendering (module)">::AbstractController::Rendering</a> - Included</h3>
@@ -757,6 +774,18 @@ functional testing.</p>
   <li>
     <span class='summary_signature rw'>
       <a href="#raise_delivery_errors-instance_method" title="#raise_delivery_errors (instance method)">#<strong>raise_delivery_errors</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+</ul>
+</div>
+
+<h2 class='h2_sum'><a href="Parameterized.html" title="ActionMailer::Parameterized (module)">Parameterized</a> - Attributes &amp; Methods</h2>
+<div>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#params-instance_method" title="#params (instance method)">#<strong>params</strong>  </a>
     </span>
     <span class='note title rw'>rw</span>
   </li>
@@ -933,6 +962,18 @@ functional testing.</p>
   </li>
   <li>
     <span class='summary_signature rw'>
+      <a href="#enable_fragment_cache_logging-class_method" title=".enable_fragment_cache_logging (class method)">.<strong>enable_fragment_cache_logging</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#enable_fragment_cache_logging-instance_method" title="#enable_fragment_cache_logging (instance method)">#<strong>enable_fragment_cache_logging</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
       <a href="#perform_caching-class_method" title=".perform_caching (class method)">.<strong>perform_caching</strong>  </a>
     </span>
     <span class='note title rw'>rw</span>
@@ -1029,19 +1070,7 @@ functional testing.</p>
   </li>
   <li>
     <span class='summary_signature rw'>
-      <a href="#_layout-instance_method" title="#_layout (instance method)">#<strong>_layout</strong>  </a>
-    </span>
-    <span class='note title rw'>rw</span>
-  </li>
-  <li>
-    <span class='summary_signature rw'>
       <a href="#_layout%3F-class_method" title="._layout? (class method)">.<strong>_layout?</strong>  &#x21d2; Boolean </a>
-    </span>
-    <span class='note title rw'>rw</span>
-  </li>
-  <li>
-    <span class='summary_signature rw'>
-      <a href="#_layout%3F-instance_method" title="#_layout? (instance method)">#<strong>_layout?</strong>  &#x21d2; Boolean </a>
     </span>
     <span class='note title rw'>rw</span>
   </li>
@@ -1053,19 +1082,7 @@ functional testing.</p>
   </li>
   <li>
     <span class='summary_signature rw'>
-      <a href="#_layout_conditions-instance_method" title="#_layout_conditions (instance method)">#<strong>_layout_conditions</strong>  </a>
-    </span>
-    <span class='note title rw'>rw</span>
-  </li>
-  <li>
-    <span class='summary_signature rw'>
       <a href="#_layout_conditions%3F-class_method" title="._layout_conditions? (class method)">.<strong>_layout_conditions?</strong>  &#x21d2; Boolean </a>
-    </span>
-    <span class='note title rw'>rw</span>
-  </li>
-  <li>
-    <span class='summary_signature rw'>
-      <a href="#_layout_conditions%3F-instance_method" title="#_layout_conditions? (instance method)">#<strong>_layout_conditions?</strong>  &#x21d2; Boolean </a>
     </span>
     <span class='note title rw'>rw</span>
   </li>
@@ -1095,7 +1112,7 @@ functional testing.</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p>Returns the name of current mailer.</p></div>
+      <div class='inline'><p>Returns the name of the current mailer.</p></div>
     </div>
   </li>
   <li>
@@ -1117,11 +1134,11 @@ functional testing.</p>
     </div>
   </li>
   <li>
-    <span class='summary_signature ro prot'>
+    <span class='summary_signature ro priv'>
       <a href="#supports_path%3F-class_method" title=".supports_path? (class method)">.<strong>supports_path?</strong>  &#x21d2; Boolean </a>
     </span>
     <span class='note title readonly'>readonly</span>
-    <span class='note title protected'>protected</span>
+    <span class='note title private'>private</span>
     <div class='summary_desc'>
       <div class='inline'><p>Emails do not support relative path links.</p></div>
     </div>
@@ -1348,10 +1365,6 @@ into the <code>:if</code> and <code>:unless</code> options of
       <td><div class='inline'><p>Prepend a callback before actions.</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m ' href="../AbstractController/Callbacks/ClassMethods.html#skip_action_callback-instance_method" title="AbstractController::Callbacks::ClassMethods#skip_action_callback (method)">skip_action_callback</a></td>
-      <td><div class='inline'><p>Skip before, after, and around action callbacks matching any of the names.</p></div></td>
-    </tr>
-    <tr class='i_ds'>
       <td><a class='i_m ' href="../AbstractController/Callbacks/ClassMethods.html#skip_after_action-instance_method" title="AbstractController::Callbacks::ClassMethods#skip_after_action (method)">skip_after_action</a></td>
       <td><div class='inline'><p>Skip a callback after actions.</p></div></td>
     </tr>
@@ -1362,11 +1375,6 @@ into the <code>:if</code> and <code>:unless</code> options of
     <tr class='i_ds'>
       <td><a class='i_m ' href="../AbstractController/Callbacks/ClassMethods.html#skip_before_action-instance_method" title="AbstractController::Callbacks::ClassMethods#skip_before_action (method)">skip_before_action</a></td>
       <td><div class='inline'><p>Skip a callback before actions.</p></div></td>
-    </tr>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m ' href="../AbstractController/Callbacks/ClassMethods.html#skip_filter-instance_method" title="AbstractController::Callbacks::ClassMethods#skip_filter (method)">skip_filter</a>
-      </td>
     </tr>
   </tbody>
 </table></div>
@@ -1432,6 +1440,17 @@ with the following behavior:</p></div></td>
     <tr class='i_ds'>
       <td><a class='i_m ' href="../ActionView/ViewPaths/ClassMethods.html#prepend_view_path-instance_method" title="ActionView::ViewPaths::ClassMethods#prepend_view_path (method)">prepend_view_path</a></td>
       <td><div class='inline'><p>Prepend a path to the list of view paths for this controller.</p></div></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 class='inherited'><a href="Parameterized/ClassMethods.html" title="ActionMailer::Parameterized::ClassMethods (module)">Parameterized::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Parameterized/ClassMethods.html#with-instance_method" title="ActionMailer::Parameterized::ClassMethods#with (method)">with</a></td>
+      <td><div class='inline'><p>Provide the parameters to the mailer in order to use them in the instance
+methods and callbacks.</p></div></td>
     </tr>
   </tbody>
 </table></div>
@@ -1605,12 +1624,13 @@ Controller.</p></div></td>
   </tbody>
 </table></div>
 
-<h3 class='inherited'><a href="../ActiveSupport/Callbacks.html" title="ActiveSupport::Callbacks (module)">::ActiveSupport::Callbacks</a> - Included</h3>
+<h3 class='inherited'><a href="../AbstractController/Callbacks.html" title="AbstractController::Callbacks (module)">::AbstractController::Callbacks</a> - Included</h3>
 <div class='inherited'><table class='inherited'>
   <tbody>
     <tr>
       <td colspan='2'>
-        <a class='i_m ro' href="../ActiveSupport/Callbacks.html#halt_and_display_warning_on_return_false-instance_method" title="ActiveSupport::Callbacks#halt_and_display_warning_on_return_false (method)">#halt_and_display_warning_on_return_false</a>
+        <a class='i_m ro' href="../AbstractController/Callbacks.html#__callbacks-instance_method" title="AbstractController::Callbacks#__callbacks (method)">#__callbacks</a>,
+        <a class='i_m ro' href="../AbstractController/Callbacks.html#__callbacks%3F-instance_method" title="AbstractController::Callbacks#__callbacks? (method)">#__callbacks?</a>
       </td>
     </tr>
   </tbody>
@@ -1709,20 +1729,20 @@ object which will add them to itself.</p></div>
     </div>
   </li>
   <li>
-    <span class='summary_signature prot'>
+    <span class='summary_signature priv'>
       <a href="#default_i18n_subject-instance_method" title="#default_i18n_subject (instance method)">#<strong>default_i18n_subject</strong>(interpolations = {})  </a>
     </span>
-    <span class='note title protected'>protected</span>
+    <span class='note title private'>private</span>
     <div class='summary_desc'>
       <div class='inline'><p>Translates the <code>subject</code> using <a href="../Rails.html" title="Rails (module)">::Rails</a> I18n class under
 <code>[mailer_scope, action_name]</code> scope.</p></div>
     </div>
   </li>
   <li>
-    <span class='summary_signature prot'>
+    <span class='summary_signature priv'>
       <a href="#set_content_type-instance_method" title="#set_content_type (instance method)">#<strong>set_content_type</strong>(m, user_content_type, class_default)  </a>
     </span>
-    <span class='note title protected'>protected</span>
+    <span class='note title private'>private</span>
     <div class='summary_desc'>
       <div class='inline'><p>Used by <a href="#mail-instance_method" title="ActionMailer::Base#mail (method)">#mail</a> to set the content type of the message.</p></div>
     </div>
@@ -1758,7 +1778,7 @@ object which will add them to itself.</p></div>
       </td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m prot' href="../AbstractController/Caching.html#cache-instance_method" title="AbstractController::Caching#cache (method)">#cache</a></td>
+      <td><a class='i_m priv' href="../AbstractController/Caching.html#cache-instance_method" title="AbstractController::Caching#cache (method)">#cache</a></td>
       <td><div class='inline'><p>Convenience accessor.</p></div></td>
     </tr>
   </tbody>
@@ -1874,6 +1894,11 @@ records the result to the log.</p></div></td>
       <td><a class='i_m ' href="../AbstractController/Rendering.html#_process_options-instance_method" title="AbstractController::Rendering#_process_options (method)">#_process_options</a></td>
       <td><div class='inline'><p>Process extra options.</p></div></td>
     </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="../AbstractController/Rendering.html#_process_variant-instance_method" title="AbstractController::Rendering#_process_variant (method)">#_process_variant</a>,
+      </td>
+    </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="../AbstractController/Rendering.html#render-instance_method" title="AbstractController::Rendering#render (method)">#render</a></td>
       <td><div class='inline'><p>Normalizes arguments, options and then delegates render_to_body and sticks
@@ -1904,7 +1929,14 @@ the result in <code>self.response_body</code>.</p></div></td>
     <tr>
       <td colspan='2'>
         <a class='i_m ' href="../ActionView/ViewPaths.html#any_templates%3F-instance_method" title="ActionView::ViewPaths#any_templates? (method)">#any_templates?</a>,
-        <a class='i_m ' href="../ActionView/ViewPaths.html#append_view_path-instance_method" title="ActionView::ViewPaths#append_view_path (method)">#append_view_path</a>,
+      </td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActionView/ViewPaths.html#append_view_path-instance_method" title="ActionView::ViewPaths#append_view_path (method)">#append_view_path</a></td>
+      <td><div class='inline'><p>Append a path to the list of view paths for the current <code>LookupContext</code>.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
         <a class='i_m ' href="../ActionView/ViewPaths.html#details_for_lookup-instance_method" title="ActionView::ViewPaths#details_for_lookup (method)">#details_for_lookup</a>,
       </td>
     </tr>
@@ -1913,9 +1945,12 @@ the result in <code>self.response_body</code>.</p></div></td>
       <td><div class='inline'><p><code>LookupContext</code> is the object responsible for holding all information
 required for looking up templates, i.e. view paths and details.</p></div></td>
     </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActionView/ViewPaths.html#prepend_view_path-instance_method" title="ActionView::ViewPaths#prepend_view_path (method)">#prepend_view_path</a></td>
+      <td><div class='inline'><p>Prepend a path to the list of view paths for the current <code>LookupContext</code>.</p></div></td>
+    </tr>
     <tr>
       <td colspan='2'>
-        <a class='i_m ' href="../ActionView/ViewPaths.html#prepend_view_path-instance_method" title="ActionView::ViewPaths#prepend_view_path (method)">#prepend_view_path</a>,
         <a class='i_m ' href="../ActionView/ViewPaths.html#template_exists%3F-instance_method" title="ActionView::ViewPaths#template_exists? (method)">#template_exists?</a>
       </td>
     </tr>
@@ -1984,18 +2019,18 @@ method, for instance).</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L582-L586'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L595-L599'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-582
-583
-584
-585
-586</pre>
+595
+596
+597
+598
+599</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 582</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 595</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
@@ -2013,7 +2048,7 @@ method, for instance).</p>
   <h3 class='signature rw first'>
     .<strong>_helper_methods</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/helpers.rb#L11-L11'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/helpers.rb#L11-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2033,7 +2068,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>_helper_methods?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/helpers.rb#L11-L11'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/helpers.rb#L11-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2053,7 +2088,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>_helpers</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/helpers.rb#L8-L8'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/helpers.rb#L8-L8'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2073,7 +2108,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>_helpers?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/helpers.rb#L8-L8'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/helpers.rb#L8-L8'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2093,7 +2128,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>_layout</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L207-L207'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/layouts.rb#L207-L207'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2103,7 +2138,7 @@ method, for instance).</p>
 <pre><span class='info file'># File 'actionview/lib/action_view/layouts.rb', line 207</span></pre>
 <pre class='code ruby'>
 
-<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_instance_accessor'>instance_accessor</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
 </pre>
   </div>
 </div>
@@ -2113,7 +2148,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>_layout?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L207-L207'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/layouts.rb#L207-L207'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2123,7 +2158,7 @@ method, for instance).</p>
 <pre><span class='info file'># File 'actionview/lib/action_view/layouts.rb', line 207</span></pre>
 <pre class='code ruby'>
 
-<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_instance_accessor'>instance_accessor</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
 </pre>
   </div>
 </div>
@@ -2133,7 +2168,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>_layout_conditions</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L207-L207'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/layouts.rb#L207-L207'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2143,7 +2178,7 @@ method, for instance).</p>
 <pre><span class='info file'># File 'actionview/lib/action_view/layouts.rb', line 207</span></pre>
 <pre class='code ruby'>
 
-<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_instance_accessor'>instance_accessor</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
 </pre>
   </div>
 </div>
@@ -2153,7 +2188,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>_layout_conditions?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L207-L207'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/layouts.rb#L207-L207'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2163,7 +2198,7 @@ method, for instance).</p>
 <pre><span class='info file'># File 'actionview/lib/action_view/layouts.rb', line 207</span></pre>
 <pre class='code ruby'>
 
-<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_instance_accessor'>instance_accessor</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
 </pre>
   </div>
 </div>
@@ -2173,14 +2208,14 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>_view_cache_dependencies</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/caching.rb#L37-L37'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/caching.rb#L40-L40'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-37</pre>
+40</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/caching.rb', line 37</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/caching.rb', line 40</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__view_cache_dependencies'>_view_cache_dependencies</span>
@@ -2193,14 +2228,14 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>_view_cache_dependencies?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/caching.rb#L37-L37'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/caching.rb#L40-L40'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-37</pre>
+40</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/caching.rb', line 37</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/caching.rb', line 40</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__view_cache_dependencies'>_view_cache_dependencies</span>
@@ -2213,7 +2248,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>asset_host</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2235,7 +2270,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>assets_dir</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2264,14 +2299,14 @@ method, for instance).</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L497-L497'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L512-L512'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-497</pre>
+512</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 497</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 512</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='symbeg'>:</span><span class='id identifier rubyid_controller_path'>controller_path</span> <span class='symbeg'>:</span><span class='id identifier rubyid_mailer_name'>mailer_name</span>
@@ -2284,7 +2319,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>default_asset_host_protocol</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2306,14 +2341,14 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>default_params</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L447-L447'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L462-L462'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-447</pre>
+462</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 447</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 462</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_default_params'>default_params</span>
@@ -2326,14 +2361,14 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>default_params?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L447-L447'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L462-L462'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-447</pre>
+462</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 447</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 462</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_default_params'>default_params</span>
@@ -2346,7 +2381,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>default_static_extension</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/caching.rb#L31-L31'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/caching.rb#L31-L31'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2367,7 +2402,7 @@ method, for instance).</p>
     .<strong>deliver_later_queue_name</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
     <span class='aliases'>Also known as: <span class='names'>#deliver_later_queue_name</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L19-L19'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L19-L19'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2387,7 +2422,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>delivery_method</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2407,7 +2442,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>delivery_method?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2427,7 +2462,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>delivery_methods</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2447,7 +2482,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>delivery_methods?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2463,11 +2498,31 @@ method, for instance).</p>
 </div>
 </section>
 
+<section class='method_details' id="enable_fragment_cache_logging-class_method">
+  <h3 class='signature rw'>
+    .<strong>enable_fragment_cache_logging</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/caching.rb#L37-L37'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+37</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/caching.rb', line 37</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_config_accessor'>config_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_fragment_cache_logging'>enable_fragment_cache_logging</span>
+</pre>
+  </div>
+</div>
+</section>
+
 <section class='method_details' id="javascripts_dir-class_method">
   <h3 class='signature rw'>
     .<strong>javascripts_dir</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2489,7 +2544,7 @@ method, for instance).</p>
   <h3 class='signature rw'>
     .<strong>logger</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/logger.rb#L8-L8'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/logger.rb#L8-L8'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2513,22 +2568,22 @@ method, for instance).</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Returns the name of current mailer. This method is also being used as a
+<p>Returns the name of the current mailer. This method is also being used as a
 path for a view lookup. If this is an anonymous mailer, this method will
 return <code>anonymous</code> instead.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L492-L494'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L507-L509'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-492
-493
-494</pre>
+507
+508
+509</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 492</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 507</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mailer_name'>mailer_name</span>
@@ -2550,14 +2605,14 @@ return <code>anonymous</code> instead.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L496-L496'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L511-L511'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-496</pre>
+511</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 496</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 511</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_writer'>attr_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_mailer_name'>mailer_name</span>
@@ -2570,7 +2625,7 @@ return <code>anonymous</code> instead.</p>
   <h3 class='signature rw'>
     .<strong>perform_caching</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/caching.rb#L34-L34'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/caching.rb#L34-L34'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2591,7 +2646,7 @@ return <code>anonymous</code> instead.</p>
     .<strong>perform_deliveries</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
     <span class='aliases'>Also known as: <span class='names'>#perform_deliveries</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L16-L16'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L16-L16'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2612,7 +2667,7 @@ return <code>anonymous</code> instead.</p>
     .<strong>preview_interceptors</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
     <span class='aliases'>Also known as: <span class='names'>#preview_interceptors</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/preview.rb#L23-L23'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/preview.rb#L23-L23'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2642,7 +2697,7 @@ return <code>anonymous</code> instead.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/preview.rb#L12-L12'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/preview.rb#L12-L12'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2670,7 +2725,7 @@ return <code>anonymous</code> instead.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L13-L13'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L13-L13'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2690,7 +2745,7 @@ return <code>anonymous</code> instead.</p>
   <h3 class='signature rw'>
     .<strong>relative_url_root</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2724,7 +2779,7 @@ return <code>anonymous</code> instead.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/preview.rb#L20-L20'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/preview.rb#L20-L20'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2744,7 +2799,7 @@ return <code>anonymous</code> instead.</p>
   <h3 class='signature rw'>
     .<strong>stylesheets_dir</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2763,8 +2818,8 @@ return <code>anonymous</code> instead.</p>
 </section>
 
 <section class='method_details' id="supports_path?-class_method">
-  <h3 class='signature ro prot'>
-    .<strong>supports_path?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>, <span class='prot'>protected</span>)</span>
+  <h3 class='signature ro priv'>
+    .<strong>supports_path?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>, <span class='priv'>private</span>)</span>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -2775,20 +2830,20 @@ return <code>anonymous</code> instead.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L872-L874'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L886-L888'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-872
-873
-874</pre>
+886
+887
+888</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 872</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 886</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_supports_path?'>supports_path?</span>
-  <span class='kw'>false</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_supports_path?'>supports_path?</span> <span class='comment'># :doc:
+</span>  <span class='kw'>false</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -2812,17 +2867,17 @@ return <code>anonymous</code> instead.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L504-L507'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L519-L522'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-504
-505
-506
-507</pre>
+519
+520
+521
+522</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 504</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 519</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_default'>default</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -2845,14 +2900,14 @@ return <code>anonymous</code> instead.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L511-L511'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L526-L526'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-511</pre>
+526</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 511</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 526</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='symbeg'>:</span><span class='id identifier rubyid_default_options='>default_options=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_default'>default</span>
@@ -2884,20 +2939,20 @@ string as a parameter:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L526-L532'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L541-L547'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-526
-527
-528
-529
-530
-531
-532</pre>
+541
+542
+543
+544
+545
+546
+547</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 526</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 541</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_receive'>receive</span><span class='lparen'>(</span><span class='id identifier rubyid_raw_mail'>raw_mail</span><span class='rparen'>)</span>
@@ -2925,16 +2980,16 @@ symbol is passed in it will be camelized and constantized.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L476-L478'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L491-L493'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-476
-477
-478</pre>
+491
+492
+493</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 476</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 491</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_interceptor'>register_interceptor</span><span class='lparen'>(</span><span class='id identifier rubyid_interceptor'>interceptor</span><span class='rparen'>)</span>
@@ -2956,16 +3011,16 @@ symbol is passed in it will be camelized and constantized.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L462-L464'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L477-L479'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-462
-463
-464</pre>
+477
+478
+479</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 462</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 477</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_interceptors'>register_interceptors</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_interceptors'>interceptors</span><span class='rparen'>)</span>
@@ -2989,16 +3044,16 @@ symbol is passed in it will be camelized and constantized.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L469-L471'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L484-L486'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-469
-470
-471</pre>
+484
+485
+486</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 469</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 484</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_observer'>register_observer</span><span class='lparen'>(</span><span class='id identifier rubyid_observer'>observer</span><span class='rparen'>)</span>
@@ -3021,16 +3076,16 @@ delivered.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L457-L459'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L472-L474'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-457
-458
-459</pre>
+472
+473
+474</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 457</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 472</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_observers'>register_observers</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_observers'>observers</span><span class='rparen'>)</span>
@@ -3046,7 +3101,7 @@ delivered.</p>
   <h3 class='signature rw first'>
     #<strong>_helper_methods</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/helpers.rb#L11-L11'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/helpers.rb#L11-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3066,7 +3121,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>_helper_methods?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/helpers.rb#L11-L11'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/helpers.rb#L11-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3086,7 +3141,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>_helpers</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/helpers.rb#L8-L8'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/helpers.rb#L8-L8'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3106,7 +3161,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>_helpers?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/helpers.rb#L8-L8'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/helpers.rb#L8-L8'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3122,98 +3177,18 @@ delivered.</p>
 </div>
 </section>
 
-<section class='method_details' id="_layout-instance_method">
-  <h3 class='signature rw'>
-    #<strong>_layout</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L207-L207'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-207</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/layouts.rb', line 207</span></pre>
-<pre class='code ruby'>
-
-<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_instance_accessor'>instance_accessor</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="_layout?-instance_method">
-  <h3 class='signature rw'>
-    #<strong>_layout?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L207-L207'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-207</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/layouts.rb', line 207</span></pre>
-<pre class='code ruby'>
-
-<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_instance_accessor'>instance_accessor</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="_layout_conditions-instance_method">
-  <h3 class='signature rw'>
-    #<strong>_layout_conditions</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L207-L207'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-207</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/layouts.rb', line 207</span></pre>
-<pre class='code ruby'>
-
-<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_instance_accessor'>instance_accessor</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="_layout_conditions?-instance_method">
-  <h3 class='signature rw'>
-    #<strong>_layout_conditions?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L207-L207'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-207</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/layouts.rb', line 207</span></pre>
-<pre class='code ruby'>
-
-<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_instance_accessor'>instance_accessor</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
-</pre>
-  </div>
-</div>
-</section>
-
 <section class='method_details' id="_view_cache_dependencies-instance_method">
   <h3 class='signature rw'>
     #<strong>_view_cache_dependencies</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/caching.rb#L37-L37'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/caching.rb#L40-L40'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-37</pre>
+40</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/caching.rb', line 37</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/caching.rb', line 40</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__view_cache_dependencies'>_view_cache_dependencies</span>
@@ -3226,14 +3201,14 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>_view_cache_dependencies?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/caching.rb#L37-L37'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/caching.rb#L40-L40'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-37</pre>
+40</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/abstract_controller/caching.rb', line 37</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/caching.rb', line 40</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__view_cache_dependencies'>_view_cache_dependencies</span>
@@ -3246,7 +3221,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>asset_host</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3268,7 +3243,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>assets_dir</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3290,7 +3265,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>default_asset_host_protocol</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3312,14 +3287,14 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>default_params</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L447-L447'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L462-L462'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-447</pre>
+462</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 447</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 462</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_default_params'>default_params</span>
@@ -3332,14 +3307,14 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>default_params?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L447-L447'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L462-L462'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-447</pre>
+462</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 447</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 462</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_default_params'>default_params</span>
@@ -3352,7 +3327,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>default_static_extension</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/caching.rb#L31-L31'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/caching.rb#L31-L31'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3372,7 +3347,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>deliver_later_queue_name</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L19-L19'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L19-L19'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3392,7 +3367,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>delivery_method</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3412,7 +3387,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>delivery_method?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3432,7 +3407,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>delivery_methods</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3452,7 +3427,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>delivery_methods?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L10-L10'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3468,11 +3443,31 @@ delivered.</p>
 </div>
 </section>
 
+<section class='method_details' id="enable_fragment_cache_logging-instance_method">
+  <h3 class='signature rw'>
+    #<strong>enable_fragment_cache_logging</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/caching.rb#L37-L37'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+37</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/abstract_controller/caching.rb', line 37</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_config_accessor'>config_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_fragment_cache_logging'>enable_fragment_cache_logging</span>
+</pre>
+  </div>
+</div>
+</section>
+
 <section class='method_details' id="javascripts_dir-instance_method">
   <h3 class='signature rw'>
     #<strong>javascripts_dir</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3494,7 +3489,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>logger</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/logger.rb#L8-L8'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/logger.rb#L8-L8'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3514,17 +3509,37 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>message</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L576-L576'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L589-L589'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-576</pre>
+589</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 576</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 589</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_internal'>attr_internal</span> <span class='symbeg'>:</span><span class='id identifier rubyid_message'>message</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="params-instance_method">
+  <h3 class='signature rw'>
+    #<strong>params</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/parameterized.rb#L89-L89'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+89</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/parameterized.rb', line 89</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_params'>params</span>
 </pre>
   </div>
 </div>
@@ -3534,7 +3549,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>perform_caching</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/caching.rb#L34-L34'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/caching.rb#L34-L34'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3554,7 +3569,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>perform_deliveries</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L16-L16'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L16-L16'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3574,7 +3589,7 @@ delivered.</p>
   <h3 class='signature ro'>
     #<strong>preview_interceptors</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/preview.rb#L23-L23'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/preview.rb#L23-L23'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3594,7 +3609,7 @@ delivered.</p>
   <h3 class='signature ro'>
     #<strong>preview_path</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/preview.rb#L12-L12'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/preview.rb#L12-L12'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3614,7 +3629,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>raise_delivery_errors</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L13-L13'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/delivery_methods.rb#L13-L13'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3634,7 +3649,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>relative_url_root</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3656,7 +3671,7 @@ delivered.</p>
   <h3 class='signature ro'>
     #<strong>show_previews</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/preview.rb#L20-L20'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/preview.rb#L20-L20'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3676,7 +3691,7 @@ delivered.</p>
   <h3 class='signature rw'>
     #<strong>stylesheets_dir</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/abstract_controller/asset_paths.rb#L6-L7'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -3736,20 +3751,20 @@ how to decode the data:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L690-L696'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L704-L710'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-690
-691
-692
-693
-694
-695
-696</pre>
+704
+705
+706
+707
+708
+709
+710</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 690</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 704</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_attachments'>attachments</span>
@@ -3765,8 +3780,8 @@ how to decode the data:</p>
 </section>
 
 <section class='method_details' id="default_i18n_subject-instance_method">
-  <h3 class='signature prot'>
-    #<strong>default_i18n_subject</strong>(interpolations = {})   <span class="extras">(<span class='prot'>protected</span>)</span>
+  <h3 class='signature priv'>
+    #<strong>default_i18n_subject</strong>(interpolations = {})   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -3779,21 +3794,21 @@ interpolations, you can pass them through the <code>interpolations</code> parame
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L866-L869'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L880-L883'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-866
-867
-868
-869</pre>
+880
+881
+882
+883</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 866</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 880</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_default_i18n_subject'>default_i18n_subject</span><span class='lparen'>(</span><span class='id identifier rubyid_interpolations'>interpolations</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_mailer_scope'>mailer_scope</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_mailer_name'>mailer_name</span><span class='period'>.</span><span class='id identifier rubyid_tr'>tr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_default_i18n_subject'>default_i18n_subject</span><span class='lparen'>(</span><span class='id identifier rubyid_interpolations'>interpolations</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'># :doc:
+</span>  <span class='id identifier rubyid_mailer_scope'>mailer_scope</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_mailer_name'>mailer_name</span><span class='period'>.</span><span class='id identifier rubyid_tr'>tr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='const'><a href="../I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_subject'>subject</span><span class='comma'>,</span> <span class='id identifier rubyid_interpolations'>interpolations</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>scope:</span> <span class='lbracket'>[</span><span class='id identifier rubyid_mailer_scope'>mailer_scope</span><span class='comma'>,</span> <span class='id identifier rubyid_action_name'>action_name</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='id identifier rubyid_action_name'>action_name</span><span class='period'>.</span><span class='id identifier rubyid_humanize'>humanize</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
@@ -3855,20 +3870,20 @@ the same header.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L652-L658'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L666-L672'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-652
-653
-654
-655
-656
-657
-658</pre>
+666
+667
+668
+669
+670
+671
+672</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 652</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 666</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_headers'>headers</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -3993,25 +4008,11 @@ name "another".</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L799-L831'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L813-L845'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-799
-800
-801
-802
-803
-804
-805
-806
-807
-808
-809
-810
-811
-812
 813
 814
 815
@@ -4030,9 +4031,23 @@ name "another".</p>
 828
 829
 830
-831</pre>
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 799</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 813</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mail'>mail</span><span class='lparen'>(</span><span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -4084,16 +4099,16 @@ name "another".</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L614-L616'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L628-L630'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-614
-615
-616</pre>
+628
+629
+630</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 614</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 628</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mailer_name'>mailer_name</span>
@@ -4105,8 +4120,8 @@ name "another".</p>
 </section>
 
 <section class='method_details' id="set_content_type-instance_method">
-  <h3 class='signature prot'>
-    #<strong>set_content_type</strong>(m, user_content_type, class_default)   <span class="extras">(<span class='prot'>protected</span>)</span>
+  <h3 class='signature priv'>
+    #<strong>set_content_type</strong>(m, user_content_type, class_default)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -4123,34 +4138,34 @@ used.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/base.rb#L844-L860'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/base.rb#L858-L874'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-844
-845
-846
-847
-848
-849
-850
-851
-852
-853
-854
-855
-856
-857
 858
 859
-860</pre>
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 844</span></pre>
+<pre><span class='info file'># File 'actionmailer/lib/action_mailer/base.rb', line 858</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_set_content_type'>set_content_type</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='comma'>,</span> <span class='id identifier rubyid_user_content_type'>user_content_type</span><span class='comma'>,</span> <span class='id identifier rubyid_class_default'>class_default</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_content_type_parameters'>content_type_parameters</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_set_content_type'>set_content_type</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='comma'>,</span> <span class='id identifier rubyid_user_content_type'>user_content_type</span><span class='comma'>,</span> <span class='id identifier rubyid_class_default'>class_default</span><span class='rparen'>)</span> <span class='comment'># :doc:
+</span>  <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_content_type_parameters'>content_type_parameters</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='kw'>case</span>
   <span class='kw'>when</span> <span class='id identifier rubyid_user_content_type'>user_content_type</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span>
     <span class='id identifier rubyid_user_content_type'>user_content_type</span>

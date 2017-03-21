@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Associations::ClassMethods &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Associations::ClassMethods &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a class='nodoc' href="../Associations.html" title="ActiveRecord::Associations (module)">Associations</a> &raquo; 
@@ -74,7 +74,7 @@
   <tbody>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/associations.rb#L1158'>activerecord/lib/active_record/associations.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/associations.rb#L1183'>activerecord/lib/active_record/associations.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -122,11 +122,14 @@ Project#categories.destroy(category1)</code></p>
 
 <h4 id="label-A+word+of+warning">A word of warning</h4>
 
-<p>Don&#39;t create associations that have the same name as instance methods
-of <a href="../Base.html" title="ActiveRecord::Base (class)">::ActiveRecord::Base</a>. Since the association adds a method with that name
-to its model, it will override the inherited method and break things. For
-instance, <code>attributes</code> and <code>connection</code> would be bad choices for
-association names.</p>
+<p>Don&#39;t create associations that have the same name as <a
+href="rdoc-ref:ActiveRecord::Core">instance methods</a> of
+<a href="../Base.html" title="ActiveRecord::Base (class)">::ActiveRecord::Base</a>. Since the association adds a method with that name to
+its model, using an association with the same name as one provided by
+<a href="../Base.html" title="ActiveRecord::Base (class)">::ActiveRecord::Base</a> will override the method inherited through
+<a href="../Base.html" title="ActiveRecord::Base (class)">::ActiveRecord::Base</a> and will break things. For instance, <code>attributes</code> and
+<code>connection</code> would be bad choices for association names, because those
+names already exist in the list of <a href="../Base.html" title="ActiveRecord::Base (class)">::ActiveRecord::Base</a> instance methods.</p>
 
 <h3 id="label-Auto-generated+methods">Auto-generated methods</h3>
 
@@ -176,24 +179,22 @@ others.reset                      |   X   |    X     |    X</code></pre>
 <h4 id="label-Overriding+generated+methods">Overriding generated methods</h4>
 
 <p><a href="Association.html" title="ActiveRecord::Associations::Association (class)">Association</a> methods are generated in a module
-that is included into the model class, which allows you to easily override
-with your own methods and call the original generated method with <code>super</code>.
-For example:</p>
+included into the model class, making overrides easy. The original
+generated method can thus be called with <code>super</code>:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Car</span> <span class='op'>&lt;</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Base.html" title="ActiveRecord::Base (class)">Base</a></span>
   <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_owner'>owner</span>
   <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_old_owner'>old_owner</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_owner='>owner=</span><span class='lparen'>(</span><span class='id identifier rubyid_new_owner'>new_owner</span><span class='rparen'>)</span>
     <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_old_owner'>old_owner</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_owner'>owner</span>
     <span class='kw'>super</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></code></pre>
 
-<p>If your model class is <code>Project</code>, the module is named
-<code>Project::GeneratedAssociationMethods</code>. The <code>GeneratedAssociationMethods</code>
-module is included in the model class immediately after the (anonymous)
-generated attributes methods module, meaning an association will override
-the methods for an attribute with the same name.</p>
+<p>The association methods module is included immediately after the generated
+attributes methods module, meaning an association will override the methods
+for an attribute with the same name.</p>
 
 <h3 id="label-Cardinality+and+associations">Cardinality and associations</h3>
 
@@ -708,9 +709,10 @@ queries. Let&#39;s first just optimize it for retrieving the author:</p>
 <pre class="code ruby"><code class="ruby">Post.includes(:author).each do |post|</code></pre>
 
 <p>This references the name of the <a href="#belongs_to-instance_method" title="ActiveRecord::Associations::ClassMethods#belongs_to (method)">#belongs_to</a> association that also used
-the <code>:author</code> symbol. After loading the posts, find will collect
-the <code>author_id</code> from each one and load all the referenced authors with one
-query. Doing so will cut down the number of queries from 201 to 102.</p>
+the <code>:author</code> symbol. After loading the posts, <code>find</code> will
+collect the <code>author_id</code> from each one and load all of the referenced
+authors with one query. Doing so will cut down the number of queries from
+201 to 102.</p>
 
 <p>We can improve upon the situation further by referencing both associations
 in the finder with:</p>
@@ -740,8 +742,8 @@ above.</p>
 
 <p>Since only one table is loaded at a time, conditions or orders cannot
 reference tables other than the main one. If this is the case, Active
-Record falls back to the previously used LEFT OUTER JOIN based strategy.
-For example:</p>
+Record falls back to the previously used <code>LEFT OUTER JOIN</code> based
+strategy. For example:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>Post</span><span class='period'>.</span><span class='id identifier rubyid_includes'>includes</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_author'>author</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_comments'>comments</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>comments.approved = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rbracket'>]</span><span class='rparen'>)</span></code></pre>
 
@@ -749,7 +751,7 @@ For example:</p>
 <code>LEFT OUTER JOIN comments ON comments.post_id = posts.id</code> and
 <code>LEFT OUTER JOIN authors ON authors.id = posts.author_id</code>. Note
 that using conditions like this can have unintended consequences. In the
-above example posts with no approved comments are not returned at all,
+above example, posts with no approved comments are not returned at all
 because the conditions apply to the SQL statement as a whole and not just
 to the association.</p>
 
@@ -757,13 +759,13 @@ to the association.</p>
 example <code>order: &quot;author.name DESC&quot;</code> will work but
 <code>order: &quot;name DESC&quot;</code> will not.</p>
 
-<p>If you want to load all posts (including posts with no approved comments)
-then write your own LEFT OUTER JOIN query using ON</p>
+<p>If you want to load all posts (including posts with no approved comments),
+then write your own <code>LEFT OUTER JOIN</code> query using <code>ON</code>:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>Post</span><span class='period'>.</span><span class='id identifier rubyid_joins'>joins</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>LEFT OUTER JOIN comments ON comments.post_id = posts.id AND comments.approved = &#39;1&#39;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
 
-<p>In this case it is usually more natural to include an association which has
-conditions defined on it:</p>
+<p>In this case, it is usually more natural to include an association which
+has conditions defined on it:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Post</span> <span class='op'>&lt;</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Base.html" title="ActiveRecord::Base (class)">Base</a></span>
   <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbeg'>:</span><span class='id identifier rubyid_approved_comments'>approved_comments</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>approved:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>class_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Comment</span><span class='tstring_end'>&#39;</span></span>
@@ -794,8 +796,8 @@ option, it will be ignored, returning all the associated objects:</p>
 <pre class="code ruby"><code class="ruby"><span class='const'>Address</span><span class='period'>.</span><span class='id identifier rubyid_includes'>includes</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_addressable'>addressable</span><span class='rparen'>)</span></code></pre>
 
 <p>This will execute one query to load the addresses and load the addressables
-with one query per addressable type. For example if all the addressables
-are either of class Person or Company then a total of 3 queries will be
+with one query per addressable type. For example, if all the addressables
+are either of class Person or Company, then a total of 3 queries will be
 executed. The list of addressable types to load is determined on the back
 of the addresses loaded. This is not supported if Active Record has to
 fallback to the previous implementation of eager loading and will raise
@@ -891,7 +893,7 @@ done by specifying the complete class name.</p>
 
 <h3 id="label-Bi-directional+associations">Bi-directional associations</h3>
 
-<p>When you specify an association there is usually an association on the
+<p>When you specify an association, there is usually an association on the
 associated model that specifies the same relationship in reverse. For
 example, with the following models:</p>
 
@@ -909,7 +911,7 @@ example, with the following models:</p>
 <span class='kw'>end</span></code></pre>
 
 <p>The <code>traps</code> association on <code>Dungeon</code> and the <code>dungeon</code> association on
-<code>Trap</code> are the inverse of each other and the inverse of the <code>dungeon</code>
+<code>Trap</code> are the inverse of each other, and the inverse of the <code>dungeon</code>
 association on <code>EvilWizard</code> is the <code>evil_wizard</code> association on <code>Dungeon</code>
 (and vice-versa). By default, Active Record can guess the inverse of the
 association based on the name of the class. The result is the following:</p>
@@ -942,7 +944,7 @@ of the class. The result would be the same if we added
 </li><li>
 <p>does not work with <code>:polymorphic</code> associations.</p>
 </li><li>
-<p>for <a href="#belongs_to-instance_method" title="ActiveRecord::Associations::ClassMethods#belongs_to (method)">#belongs_to</a> associations <a href="#has_many-instance_method" title="ActiveRecord::Associations::ClassMethods#has_many (method)">#has_many</a> inverse associations are
+<p>inverse associations for <a href="#belongs_to-instance_method" title="ActiveRecord::Associations::ClassMethods#belongs_to (method)">#belongs_to</a> associations <a href="#has_many-instance_method" title="ActiveRecord::Associations::ClassMethods#has_many (method)">#has_many</a> are
 ignored.</p>
 </li></ul>
 
@@ -953,7 +955,7 @@ ignored.</p>
 
 <h4 id="label-Dependent+associations">Dependent associations</h4>
 
-<p><a href="#has_many-instance_method" title="ActiveRecord::Associations::ClassMethods#has_many (method)">#has_many</a>, <a href="#has_one-instance_method" title="ActiveRecord::Associations::ClassMethods#has_one (method)">#has_one</a> and <a href="#belongs_to-instance_method" title="ActiveRecord::Associations::ClassMethods#belongs_to (method)">#belongs_to</a> associations support the
+<p><a href="#has_many-instance_method" title="ActiveRecord::Associations::ClassMethods#has_many (method)">#has_many</a>, <a href="#has_one-instance_method" title="ActiveRecord::Associations::ClassMethods#has_one (method)">#has_one</a>, and <a href="#belongs_to-instance_method" title="ActiveRecord::Associations::ClassMethods#belongs_to (method)">#belongs_to</a> associations support the
 <code>:dependent</code> option. This allows you to specify that associated
 records should be deleted when the owner is deleted.</p>
 
@@ -1062,7 +1064,7 @@ makes cases more complex than the simple and guessable ones possible.</p>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#has_and_belongs_to_many-instance_method" title="#has_and_belongs_to_many (instance method)">#<strong>has_and_belongs_to_many</strong>(name, scope = nil, options = {}, &amp;extension)  </a>
+      <a href="#has_and_belongs_to_many-instance_method" title="#has_and_belongs_to_many (instance method)">#<strong>has_and_belongs_to_many</strong>(name, scope = nil, **options, &amp;extension)  </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Specifies a many-to-many relationship with another class.</p></div>
@@ -1264,6 +1266,10 @@ use <code>:inverse_of</code> to avoid an extra query during validation.
 NOTE: <code>required</code> is set to <code>true</code> by default and is deprecated. If you
 don&#39;t want to have association presence validated, use <code>optional:
 true</code>.</p>
+</dd><dt>:default
+<dd>
+<p>Provide a callable (i.e. proc or lambda) to specify that the association
+should be initialized with a particular record before validation.</p>
 </dd></dl>
 
 <p>Option examples:</p>
@@ -1278,21 +1284,22 @@ true</code>.</p>
 <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_post'>post</span><span class='comma'>,</span> <span class='label'>counter_cache:</span> <span class='kw'>true</span>
 <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_comment'>comment</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='kw'>true</span>
 <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_company'>company</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_employees_last_updated_at'>employees_last_updated_at</span>
-<span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='label'>optional:</span> <span class='kw'>true</span></code></pre>
+<span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='label'>optional:</span> <span class='kw'>true</span>
+<span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_company'>company</span><span class='period'>.</span><span class='id identifier rubyid_account'>account</span> <span class='rbrace'>}</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/associations.rb#L1632-L1635'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/associations.rb#L1667-L1670'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1632
-1633
-1634
-1635</pre>
+1667
+1668
+1669
+1670</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/associations.rb', line 1632</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/associations.rb', line 1667</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_belongs_to'>belongs_to</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1306,7 +1313,7 @@ true</code>.</p>
 
 <section class='method_details' id="has_and_belongs_to_many-instance_method">
   <h3 class='signature '>
-    #<strong>has_and_belongs_to_many</strong>(name, scope = nil, options = {}, &amp;extension)  
+    #<strong>has_and_belongs_to_many</strong>(name, scope = nil, **options, &amp;extension)  
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -1533,68 +1540,58 @@ new records.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/associations.rb#L1794-L1835'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/associations.rb#L1829-L1865'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1794
-1795
-1796
-1797
-1798
-1799
-1800
-1801
-1802
-1803
-1804
-1805
-1806
-1807
-1808
-1809
-1810
-1811
-1812
-1813
-1814
-1815
-1816
-1817
-1818
-1819
-1820
-1821
-1822
-1823
-1824
-1825
-1826
-1827
-1828
 1829
 1830
 1831
 1832
 1833
 1834
-1835</pre>
+1835
+1836
+1837
+1838
+1839
+1840
+1841
+1842
+1843
+1844
+1845
+1846
+1847
+1848
+1849
+1850
+1851
+1852
+1853
+1854
+1855
+1856
+1857
+1858
+1859
+1860
+1861
+1862
+1863
+1864
+1865</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/associations.rb', line 1794</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/associations.rb', line 1829</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_has_and_belongs_to_many'>has_and_belongs_to_many</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_extension'>extension</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="../../Hash.html" title="Hash (class)">Hash</a></span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_scope'>scope</span>
-    <span class='id identifier rubyid_scope'>scope</span>   <span class='op'>=</span> <span class='kw'>nil</span>
-  <span class='kw'>end</span>
-
+<span class='kw'>def</span> <span class='id identifier rubyid_has_and_belongs_to_many'>has_and_belongs_to_many</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_extension'>extension</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_habtm_reflection'>habtm_reflection</span> <span class='op'>=</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Reflection.html" title="ActiveRecord::Reflection (module)">Reflection</a></span><span class='op'>::</span><span class='const'><a href="../Reflection/HasAndBelongsToManyReflection.html" title="ActiveRecord::Reflection::HasAndBelongsToManyReflection (class)">HasAndBelongsToManyReflection</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../Reflection/HasAndBelongsToManyReflection.html#new-class_method" title="ActiveRecord::Reflection::HasAndBelongsToManyReflection.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_builder'>builder</span> <span class='op'>=</span> <span class='const'><a href="Builder.html" title="ActiveRecord::Associations::Builder (module)">Builder</a></span><span class='op'>::</span><span class='const'><a href="Builder/HasAndBelongsToMany.html" title="ActiveRecord::Associations::Builder::HasAndBelongsToMany (class)">HasAndBelongsToMany</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Builder/HasAndBelongsToMany.html#new-class_method" title="ActiveRecord::Associations::Builder::HasAndBelongsToMany.new (method)">new</a></span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span>
 
-  <span class='id identifier rubyid_join_model'>join_model</span> <span class='op'>=</span> <span class='id identifier rubyid_builder'>builder</span><span class='period'>.</span><span class='id identifier rubyid_through_model'>through_model</span>
+  <span class='id identifier rubyid_join_model'>join_model</span> <span class='op'>=</span> <span class='const'><a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../../ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='period'>.</span><span class='id identifier rubyid_silence'><a href="../../ActiveSupport/Deprecation/Reporting.html#silence-instance_method" title="ActiveSupport::Deprecation::Reporting#silence (method)">silence</a></span> <span class='lbrace'>{</span> <span class='id identifier rubyid_builder'>builder</span><span class='period'>.</span><span class='id identifier rubyid_through_model'>through_model</span> <span class='rbrace'>}</span>
 
   <span class='id identifier rubyid_const_set'>const_set</span> <span class='id identifier rubyid_join_model'>join_model</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_join_model'>join_model</span>
   <span class='id identifier rubyid_private_constant'>private_constant</span> <span class='id identifier rubyid_join_model'>join_model</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
@@ -1607,11 +1604,11 @@ new records.</p>
 
   <span class='id identifier rubyid_include'>include</span> <span class='const'><a href="../../Module.html" title="Module (class)">Module</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span>
     <span class='id identifier rubyid_class_eval'>class_eval</span> <span class='heredoc_beg'>&lt;&lt;-RUBY</span><span class='comma'>,</span> <span class='kw'>__FILE__</span><span class='comma'>,</span> <span class='kw'>__LINE__</span> <span class='op'>+</span> <span class='int'>1</span>
-<span class='tstring_content'>    def destroy_associations
-      association(:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_middle_reflection'>middle_reflection</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>).delete_all(:delete_all)
-      association(:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>).reset
-      super
-    end
+<span class='tstring_content'>      def destroy_associations
+        association(:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_middle_reflection'>middle_reflection</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>).delete_all(:delete_all)
+        association(:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>).reset
+        super
+      end
 </span><span class='heredoc_end'>    RUBY
 </span>  <span class='rbrace'>}</span>
 
@@ -1623,8 +1620,8 @@ new records.</p>
     <span class='id identifier rubyid_hm_options'>hm_options</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span> <span class='id identifier rubyid_k'>k</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_has_many'>has_many</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span><span class='comma'>,</span> <span class='id identifier rubyid_hm_options'>hm_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_extension'>extension</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__reflections'>_reflections</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_parent_reflection'>parent_reflection</span> <span class='op'>=</span> <span class='id identifier rubyid_habtm_reflection'>habtm_reflection</span>
+  <span class='const'><a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../../ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='period'>.</span><span class='id identifier rubyid_silence'><a href="../../ActiveSupport/Deprecation/Reporting.html#silence-instance_method" title="ActiveSupport::Deprecation::Reporting#silence (method)">silence</a></span> <span class='lbrace'>{</span> <span class='id identifier rubyid_has_many'>has_many</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span><span class='comma'>,</span> <span class='id identifier rubyid_hm_options'>hm_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_extension'>extension</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid__reflections'>_reflections</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_parent_reflection'>parent_reflection</span> <span class='op'>=</span> <span class='id identifier rubyid_habtm_reflection'>habtm_reflection</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1854,6 +1851,13 @@ if there are any associated objects.</p>
 <p>If using with the <code>:through</code> option, the association on the join
 model must be a #belongs_to, and the records which get deleted are the join
 records, rather than the associated records.</p>
+
+<p>If using <code>dependent: :destroy</code> on a scoped association, only the
+scoped objects are destroyed. For example, if a Post model defines
+<code>has_many :comments, -&gt; { where published: true }, dependent:
+:destroy</code> and <code>destroy</code> is called on a post, only published comments
+are destroyed. This means that any unpublished comments in the database
+would still contain a foreign key pointing to the now deleted post.</p>
 </dd><dt>:counter_cache
 <dd>
 <p>This option can be used to configure a custom named
@@ -1941,17 +1945,17 @@ especially when they should be shared between multiple association objects.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/associations.rb#L1364-L1367'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/associations.rb#L1395-L1398'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1364
-1365
-1366
-1367</pre>
+1395
+1396
+1397
+1398</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/associations.rb', line 1364</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/associations.rb', line 1395</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_many'>has_many</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_extension'>extension</span><span class='rparen'>)</span>
@@ -2158,17 +2162,17 @@ use <code>:inverse_of</code> to avoid an extra query during validation.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/associations.rb#L1495-L1498'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/associations.rb#L1526-L1529'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1495
-1496
-1497
-1498</pre>
+1526
+1527
+1528
+1529</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/associations.rb', line 1495</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/associations.rb', line 1526</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_one'>has_one</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>

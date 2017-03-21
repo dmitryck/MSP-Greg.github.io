@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveRecord::ConnectionAdapters::AbstractAdapter::BindCollector &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveRecord::ConnectionAdapters::AbstractAdapter::BindCollector &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../../index.html'>Home</a> &raquo; 
-        <a href='../../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../../_index.html#alpha_B'>Index (B)</a> &raquo; 
         <a href="../../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
@@ -105,7 +105,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L131'>activerecord/lib/active_record/connection_adapters/abstract_adapter.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L132'>activerecord/lib/active_record/connection_adapters/abstract_adapter.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -126,21 +126,21 @@
   <h3 class='signature  first'>
     #<strong>compile</strong>(bvs, conn)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L132-L135'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L133-L136'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-132
 133
 134
-135</pre>
+135
+136</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_adapter.rb', line 132</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_adapter.rb', line 133</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_compile'>compile</span><span class='lparen'>(</span><span class='id identifier rubyid_bvs'>bvs</span><span class='comma'>,</span> <span class='id identifier rubyid_conn'>conn</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_casted_binds'>casted_binds</span> <span class='op'>=</span> <span class='id identifier rubyid_conn'>conn</span><span class='period'>.</span><span class='id identifier rubyid_prepare_binds_for_database'>prepare_binds_for_database</span><span class='lparen'>(</span><span class='id identifier rubyid_bvs'>bvs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_casted_binds'>casted_binds</span> <span class='op'>=</span> <span class='id identifier rubyid_bvs'>bvs</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbeg'>:</span><span class='id identifier rubyid_value_for_database'>value_for_database</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_casted_binds'>casted_binds</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span> <span class='id identifier rubyid_conn'>conn</span><span class='period'>.</span><span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>

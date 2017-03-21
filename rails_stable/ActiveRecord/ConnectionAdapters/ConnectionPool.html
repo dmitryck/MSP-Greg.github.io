@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveRecord::ConnectionAdapters::ConnectionPool &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveRecord::ConnectionAdapters::ConnectionPool &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
@@ -98,7 +98,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L82'>activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L82'>activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -162,8 +162,8 @@ before giving up and raising a timeout error (default 5 seconds).</p>
 which attempts to find and recover connections from dead threads, which can
 occur if a programmer forgets to close a connection at the end of a thread
 or a thread dies unexpectedly. Regardless of this setting, the Reaper will
-be invoked before every blocking wait. (Default nil, which means don&#39;t
-schedule the Reaper).</p>
+be invoked before every blocking wait. (Default <code>nil</code>, which
+means don&#39;t schedule the Reaper).</p>
 </li></ul>
 
   </div>
@@ -213,7 +213,8 @@ schedule the Reaper).</p>
     </span>
     <span class='note title readonly'>readonly</span>
     <div class='summary_desc'>
-      <div class='inline'><p>Is there an open connection that is being used for the current thread?</p></div>
+      <div class='inline'><p>Returns true if there is an open connection being used for the current
+thread.</p></div>
     </div>
   </li>
   <li>
@@ -248,6 +249,12 @@ schedule the Reaper).</p>
       <a href="#spec-instance_method" title="#spec (instance method)">#<strong>spec</strong>  </a>
     </span>
     <span class='note title readonly'>readonly</span>
+  </li>
+  <li>
+    <span class='summary_signature wo'>
+      <a href="#lock_thread=-instance_method" title="#lock_thread= (instance method)">#<strong>lock_thread=</strong>(lock_thread)  </a>
+    </span>
+    <span class='note title writeonly'>writeonly</span>
   </li>
 </ul>
 </div>
@@ -343,6 +350,14 @@ require reloading.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
+      <a href="#stat-instance_method" title="#stat (instance method)">#<strong>stat</strong>  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Return connection pool&#39;s usage statistic Example:</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
       <a href="#with_connection-instance_method" title="#with_connection (instance method)">#<strong>with_connection</strong>  </a>
     </span>
     <div class='summary_desc'>
@@ -387,7 +402,7 @@ username, password, etc), as well as the maximum size for this
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L321-L356'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L321-L358'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -427,7 +442,9 @@ username, password, etc), as well as the maximum size for this
 353
 354
 355
-356</pre>
+356
+357
+358</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 321</span></pre>
 <pre class='code ruby'>
@@ -444,17 +461,17 @@ username, password, etc), as well as the maximum size for this
   <span class='comment'># default max pool size to 5
 </span>  <span class='ivar'>@size</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_pool'>pool</span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_pool'>pool</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='int'>5</span>
 
-  <span class='comment'># The cache of threads mapped to reserved connections, the sole purpose
-</span>  <span class='comment'># of the cache is to speed-up connection method, it is not the authoritative
-</span>  <span class='comment'># registry of which thread owns which connection, that is tracked by
-</span>  <span class='comment'># connection.owner attr on each connection instance.
+  <span class='comment'># This variable tracks the cache of threads mapped to reserved connections, with the
+</span>  <span class='comment'># sole purpose of speeding up the connection method. It is not the authoritative
+</span>  <span class='comment'># registry of which thread owns which connection. Connection ownership is tracked by
+</span>  <span class='comment'># the connection.owner attr on each connection instance.
 </span>  <span class='comment'># The invariant works like this: if there is mapping of &lt;tt&gt;thread =&gt; conn&lt;/tt&gt;,
-</span>  <span class='comment'># then that thread does indeed own that conn, however an absence of a such
-</span>  <span class='comment'># mapping does not mean that the thread doesn&#39;t own the said connection, in
+</span>  <span class='comment'># then that thread does indeed own that conn. However, an absence of a such
+</span>  <span class='comment'># mapping does not mean that the thread doesn&#39;t own the said connection. In
 </span>  <span class='comment'># that case conn.owner attr should be consulted.
 </span>  <span class='comment'># Access and modification of @thread_cached_conns does not require
 </span>  <span class='comment'># synchronization.
-</span>  <span class='ivar'>@thread_cached_conns</span> <span class='op'>=</span> <span class='const'>Concurrent</span><span class='op'>::</span><span class='const'>Map</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_initial_capacity'>initial_capacity</span> <span class='op'>=&gt;</span> <span class='ivar'>@size</span><span class='rparen'>)</span>
+</span>  <span class='ivar'>@thread_cached_conns</span> <span class='op'>=</span> <span class='const'>Concurrent</span><span class='op'>::</span><span class='const'>Map</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>initial_capacity:</span> <span class='ivar'>@size</span><span class='rparen'>)</span>
 
   <span class='ivar'>@connections</span>         <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   <span class='ivar'>@automatic_reconnect</span> <span class='op'>=</span> <span class='kw'>true</span>
@@ -467,6 +484,8 @@ username, password, etc), as well as the maximum size for this
   <span class='ivar'>@threads_blocking_new_connections</span> <span class='op'>=</span> <span class='int'>0</span>
 
   <span class='ivar'>@available</span> <span class='op'>=</span> <span class='const'><a href="ConnectionPool/ConnectionLeasingQueue.html" title="ActiveRecord::ConnectionAdapters::ConnectionPool::ConnectionLeasingQueue (class)">ConnectionLeasingQueue</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ConnectionPool/Queue.html#new-class_method" title="ActiveRecord::ConnectionAdapters::ConnectionPool::Queue.new (method)">new</a></span> <span class='kw'>self</span>
+
+  <span class='ivar'>@lock_thread</span> <span class='op'>=</span> <span class='kw'>false</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -481,26 +500,27 @@ username, password, etc), as well as the maximum size for this
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Is there an open connection that is being used for the current thread?</p>
+<p>Returns true if there is an open connection being used for the current
+thread.</p>
 
 <p>This method only works for connections that have been obtained through
-<a href="#connection-instance_method" title="ActiveRecord::ConnectionAdapters::ConnectionPool#connection (method)">#connection</a> or <a href="#with_connection-instance_method" title="ActiveRecord::ConnectionAdapters::ConnectionPool#with_connection (method)">#with_connection</a> methods, connections obtained through
+<a href="#connection-instance_method" title="ActiveRecord::ConnectionAdapters::ConnectionPool#connection (method)">#connection</a> or <a href="#with_connection-instance_method" title="ActiveRecord::ConnectionAdapters::ConnectionPool#with_connection (method)">#with_connection</a> methods. Connections obtained through
 <a href="#checkout-instance_method" title="ActiveRecord::ConnectionAdapters::ConnectionPool#checkout (method)">#checkout</a> will not be detected by <code>#active_connection?</code></p>
 
   </div>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L372-L374'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L382-L384'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-372
-373
-374</pre>
+382
+383
+384</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 372</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 382</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_active_connection?'>active_connection?</span>
@@ -515,7 +535,7 @@ username, password, etc), as well as the maximum size for this
   <h3 class='signature rw'>
     #<strong>automatic_reconnect</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L312-L312'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L312-L312'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -535,7 +555,7 @@ username, password, etc), as well as the maximum size for this
   <h3 class='signature rw'>
     #<strong>checkout_timeout</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L312-L312'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L312-L312'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -564,16 +584,16 @@ username, password, etc), as well as the maximum size for this
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L404-L406'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L414-L416'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-404
-405
-406</pre>
+414
+415
+416</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 404</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 414</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connected?'>connected?</span>
@@ -588,7 +608,7 @@ username, password, etc), as well as the maximum size for this
   <h3 class='signature ro'>
     #<strong>connections</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L313-L313'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L313-L313'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -604,11 +624,43 @@ username, password, etc), as well as the maximum size for this
 </div>
 </section>
 
+<section class='method_details' id="lock_thread=-instance_method">
+  <h3 class='signature wo'>
+    #<strong>lock_thread=</strong>(lock_thread)   <span class="extras">(<span class='writeonly'>writeonly</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L360-L366'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+360
+361
+362
+363
+364
+365
+366</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 360</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_lock_thread='>lock_thread=</span><span class='lparen'>(</span><span class='id identifier rubyid_lock_thread'>lock_thread</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_lock_thread'>lock_thread</span>
+    <span class='ivar'>@lock_thread</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@lock_thread</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
 <section class='method_details' id="reaper-instance_method">
   <h3 class='signature ro'>
     #<strong>reaper</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L313-L313'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L313-L313'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -628,7 +680,7 @@ username, password, etc), as well as the maximum size for this
   <h3 class='signature rw'>
     #<strong>schema_cache</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L312-L312'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L312-L312'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -648,7 +700,7 @@ username, password, etc), as well as the maximum size for this
   <h3 class='signature ro'>
     #<strong>size</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L313-L313'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L313-L313'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -668,7 +720,7 @@ username, password, etc), as well as the maximum size for this
   <h3 class='signature ro'>
     #<strong>spec</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L313-L313'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L313-L313'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -700,24 +752,24 @@ which was obtained by earlier by calling <a href="#checkout-instance_method" tit
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L498-L508'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L508-L518'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-498
-499
-500
-501
-502
-503
-504
-505
-506
-507
-508</pre>
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 498</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 508</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_checkin'>checkin</span><span class='lparen'>(</span><span class='id identifier rubyid_conn'>conn</span><span class='rparen'>)</span>
@@ -764,16 +816,16 @@ the pool.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L489-L491'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L499-L501'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-489
-490
-491</pre>
+499
+500
+501</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 489</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 499</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_checkout'>checkout</span><span class='lparen'>(</span><span class='id identifier rubyid_checkout_timeout'>checkout_timeout</span> <span class='op'>=</span> <span class='ivar'>@checkout_timeout</span><span class='rparen'>)</span>
@@ -803,28 +855,28 @@ is <code>spec.config[:checkout_timeout] * 2</code> seconds).</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L447-L461'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L457-L471'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-447
-448
-449
-450
-451
-452
-453
-454
-455
-456
 457
 458
 459
 460
-461</pre>
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 447</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 457</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear_reloadable_connections'>clear_reloadable_connections</span><span class='lparen'>(</span><span class='id identifier rubyid_raise_on_acquisition_timeout'>raise_on_acquisition_timeout</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
@@ -857,24 +909,24 @@ is <code>spec.config[:checkout_timeout] * 2</code> seconds).</p>
 <p>Clears the cache which maps classes and re-connects connections that
 require reloading.</p>
 
-<p>The pool first tries to gain ownership of all connections, if unable to do
+<p>The pool first tries to gain ownership of all connections. If unable to do
 so within a timeout interval (default duration is
-<code>spec.config[:checkout_timeout] * 2</code> seconds), the pool
+<code>spec.config[:checkout_timeout] * 2</code> seconds), then the pool
 forcefully clears the cache and reloads connections without any regard for
 other connection owning threads.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L471-L473'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L481-L483'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-471
-472
-473</pre>
+481
+482
+483</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 471</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 481</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear_reloadable_connections!'>clear_reloadable_connections!</span>
@@ -900,20 +952,20 @@ a cache keyed by a thread.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L363-L365'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L373-L375'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-363
-364
-365</pre>
+373
+374
+375</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 363</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 373</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connection'>connection</span>
-  <span class='ivar'>@thread_cached_conns</span><span class='lbracket'>[</span><span class='id identifier rubyid_connection_cache_key'>connection_cache_key</span><span class='lparen'>(</span><span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='id identifier rubyid_checkout'>checkout</span>
+  <span class='ivar'>@thread_cached_conns</span><span class='lbracket'>[</span><span class='id identifier rubyid_connection_cache_key'>connection_cache_key</span><span class='lparen'>(</span><span class='ivar'>@lock_thread</span> <span class='op'>||</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='id identifier rubyid_checkout'>checkout</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -938,28 +990,28 @@ is <code>spec.config[:checkout_timeout] * 2</code> seconds).</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L414-L428'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L424-L438'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-414
-415
-416
-417
-418
-419
-420
-421
-422
-423
 424
 425
 426
 427
-428</pre>
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 414</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 424</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disconnect'>disconnect</span><span class='lparen'>(</span><span class='id identifier rubyid_raise_on_acquisition_timeout'>raise_on_acquisition_timeout</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
@@ -991,24 +1043,24 @@ is <code>spec.config[:checkout_timeout] * 2</code> seconds).</p>
     
 <p>Disconnects all connections in the pool, and clears the pool.</p>
 
-<p>The pool first tries to gain ownership of all connections, if unable to do
+<p>The pool first tries to gain ownership of all connections. If unable to do
 so within a timeout interval (default duration is
-<code>spec.config[:checkout_timeout] * 2</code> seconds), the pool is
+<code>spec.config[:checkout_timeout] * 2</code> seconds), then the pool is
 forcefully disconnected without any regard for other connection owning
 threads.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L436-L438'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L446-L448'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-436
-437
-438</pre>
+446
+447
+448</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 436</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 446</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disconnect!'>disconnect!</span>
@@ -1032,21 +1084,11 @@ thread dies unexpectedly.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L544-L561'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L554-L571'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-544
-545
-546
-547
-548
-549
-550
-551
-552
-553
 554
 555
 556
@@ -1054,9 +1096,19 @@ thread dies unexpectedly.</p>
 558
 559
 560
-561</pre>
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 544</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 554</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reap'>reap</span>
@@ -1099,18 +1151,18 @@ returns the connection to the pool.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L383-L387'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L393-L397'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-383
-384
-385
-386
-387</pre>
+393
+394
+395
+396
+397</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 383</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 393</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_release_connection'>release_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_owner_thread'>owner_thread</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span><span class='rparen'>)</span>
@@ -1135,21 +1187,11 @@ open and active but will no longer be managed by this pool.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L512-L539'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L522-L549'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-512
-513
-514
-515
-516
-517
-518
-519
-520
-521
 522
 523
 524
@@ -1167,9 +1209,19 @@ open and active but will no longer be managed by this pool.</p>
 536
 537
 538
-539</pre>
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 512</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 522</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove'>remove</span><span class='lparen'>(</span><span class='id identifier rubyid_conn'>conn</span><span class='rparen'>)</span>
@@ -1182,23 +1234,76 @@ open and active but will no longer be managed by this pool.</p>
     <span class='ivar'>@available</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='id identifier rubyid_conn'>conn</span>
 
     <span class='comment'># @available.any_waiting? =&gt; true means that prior to removing this
-</span>    <span class='comment'># conn, the pool was at its max size (@connections.size == @size)
-</span>    <span class='comment'># this would mean that any threads stuck waiting in the queue wouldn&#39;t
+</span>    <span class='comment'># conn, the pool was at its max size (@connections.size == @size).
+</span>    <span class='comment'># This would mean that any threads stuck waiting in the queue wouldn&#39;t
 </span>    <span class='comment'># know they could checkout_new_connection, so let&#39;s do it for them.
 </span>    <span class='comment'># Because condition-wait loop is encapsulated in the Queue class
 </span>    <span class='comment'># (that in turn is oblivious to ConnectionPool implementation), threads
-</span>    <span class='comment'># that are &quot;stuck&quot; there are helpless, they have no way of creating
+</span>    <span class='comment'># that are &quot;stuck&quot; there are helpless. They have no way of creating
 </span>    <span class='comment'># new connections and are completely reliant on us feeding available
 </span>    <span class='comment'># connections into the Queue.
 </span>    <span class='id identifier rubyid_needs_new_connection'>needs_new_connection</span> <span class='op'>=</span> <span class='ivar'>@available</span><span class='period'>.</span><span class='id identifier rubyid_any_waiting?'>any_waiting?</span>
   <span class='kw'>end</span>
 
   <span class='comment'># This is intentionally done outside of the synchronized section as we
-</span>  <span class='comment'># would like not to hold the main mutex while checking out new connections,
-</span>  <span class='comment'># thus there is some chance that needs_new_connection information is now
+</span>  <span class='comment'># would like not to hold the main mutex while checking out new connections.
+</span>  <span class='comment'># Thus there is some chance that needs_new_connection information is now
 </span>  <span class='comment'># stale, we can live with that (bulk_make_new_connections will make
 </span>  <span class='comment'># sure not to exceed the pool&#39;s @size limit).
 </span>  <span class='id identifier rubyid_bulk_make_new_connections'>bulk_make_new_connections</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_needs_new_connection'>needs_new_connection</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="stat-instance_method">
+  <h3 class='signature '>
+    #<strong>stat</strong>  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Return connection pool&#39;s usage statistic Example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Base.html" title="ActiveRecord::Base (class)">Base</a></span><span class='period'>.</span><span class='id identifier rubyid_connection_pool'><a href="../ConnectionHandling.html#connection_pool-instance_method" title="ActiveRecord::ConnectionHandling#connection_pool (method)">connection_pool</a></span><span class='period'>.</span><span class='id identifier rubyid_stat'>stat</span> <span class='comment'># =&gt; { size: 15, connections: 1, busy: 1, dead: 0, idle: 0, waiting: 0, checkout_timeout: 5 }</span></code></pre>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L581-L593'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 581</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stat'>stat</span>
+  <span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>size:</span> <span class='id identifier rubyid_size'>size</span><span class='comma'>,</span>
+      <span class='label'>connections:</span> <span class='ivar'>@connections</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='comma'>,</span>
+      <span class='label'>busy:</span> <span class='ivar'>@connections</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_in_use?'>in_use?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_owner'>owner</span><span class='period'>.</span><span class='id identifier rubyid_alive?'>alive?</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='label'>dead:</span> <span class='ivar'>@connections</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_in_use?'>in_use?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_owner'>owner</span><span class='period'>.</span><span class='id identifier rubyid_alive?'>alive?</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='label'>idle:</span> <span class='ivar'>@connections</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='op'>!</span><span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_in_use?'>in_use?</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='label'>waiting:</span> <span class='id identifier rubyid_num_waiting_in_queue'>num_waiting_in_queue</span><span class='comma'>,</span>
+      <span class='label'>checkout_timeout:</span> <span class='id identifier rubyid_checkout_timeout'>checkout_timeout</span>
+    <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1219,22 +1324,22 @@ when finished.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L393-L401'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L403-L411'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-393
-394
-395
-396
-397
-398
-399
-400
-401</pre>
+403
+404
+405
+406
+407
+408
+409
+410
+411</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 393</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 403</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_with_connection'>with_connection</span>

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Routing &mdash; Rails-5-0-stable</title>
+<title>File: Routing &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Routing&nbsp;&#x25B2;</a></span>
             </div>
@@ -74,16 +74,16 @@
 <ul>
 <li>How to interpret the code in <code>config/routes.rb</code>.</li>
 <li>How to construct your own routes, using either the preferred resourceful style or the <code>match</code> method.</li>
-<li>What parameters to expect an action to receive.</li>
+<li>How to declare route parameters, which are passed onto controller actions.</li>
 <li>How to automatically create paths and URLs using route helpers.</li>
-<li>Advanced techniques such as constraints and Rack endpoints.</li>
+<li>Advanced techniques such as creating constraints and mounting Rack endpoints.</li>
 </ul>
 
 <hr>
 
 <h2>The Purpose of the Rails Router</h2>
 
-<p>The Rails router recognizes URLs and dispatches them to a controller&#39;s action. It can also generate paths and URLs, avoiding the need to hardcode strings in your views.</p>
+<p>The Rails router recognizes URLs and dispatches them to a controller&#39;s action, or to a Rack application. It can also generate paths and URLs, avoiding the need to hardcode strings in your views.</p>
 
 <h3>Connecting URLs to Code</h3>
 
@@ -827,23 +827,19 @@ route, eliminating the block:</p>
 
 <h3>Bound Parameters</h3>
 
-<p>When you set up a regular route, you supply a series of symbols that Rails maps to parts of an incoming HTTP request. Two of these symbols are special: <code>:controller</code> maps to the name of a controller in your application, and <code>:action</code> maps to the name of an action within that controller. For example, consider this route:</p>
+<p>When you set up a regular route, you supply a series of symbols that Rails maps to parts of an incoming HTTP request. For example, consider this route:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>:controller(/:action(/:id))</span><span class='tstring_end'>&#39;</span></span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>photos(/:id)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_display'>display</span></code></pre>
 
-<p>If an incoming request of <code>/photos/show/1</code> is processed by this route (because it hasn&#39;t matched any previous route in the file), then the result will be to invoke the <code>show</code> action of the <code>PhotosController</code>, and to make the final parameter <code>&quot;1&quot;</code> available as <code>params[:id]</code>. This route will also route the incoming request of <code>/photos</code> to <code>PhotosController#index</code>, since <code>:action</code> and <code>:id</code> are optional parameters, denoted by parentheses.</p>
+<p>If an incoming request of <code>/photos/1</code> is processed by this route (because it hasn&#39;t matched any previous route in the file), then the result will be to invoke the <code>display</code> action of the <code>PhotosController</code>, and to make the final parameter <code>&quot;1&quot;</code> available as <code>params[:id]</code>. This route will also route the incoming request of <code>/photos</code> to <code>PhotosController#display</code>, since <code>:id</code> is an optional parameter, denoted by parentheses.</p>
 
 <h3>Dynamic Segments</h3>
 
-<p>You can set up as many dynamic segments within a regular route as you like. Anything other than <code>:controller</code> or <code>:action</code> will be available to the action as part of <code>params</code>. If you set up this route:</p>
+<p>You can set up as many dynamic segments within a regular route as you like. Any segment will be available to the action as part of <code>params</code>. If you set up this route:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>:controller/:action/:id/:user_id</span><span class='tstring_end'>&#39;</span></span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>photos/:id/:user_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>photos#show</span><span class='tstring_end'>&#39;</span></span></code></pre>
 
-<p>An incoming path of <code>/photos/show/1/2</code> will be dispatched to the <code>show</code> action of the <code>PhotosController</code>. <code>params[:id]</code> will be <code>&quot;1&quot;</code>, and <code>params[:user_id]</code> will be <code>&quot;2&quot;</code>.</p>
-
-<p>NOTE: You can&#39;t use <code>:namespace</code> or <code>:module</code> with a <code>:controller</code> path segment. If you need to do this then use a constraint on :controller that matches the namespace you require. e.g:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>:controller(/:action(/:id))</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>controller:</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>admin\/[^\/]+</span><span class='regexp_end'>/</span></span></code></pre>
+<p>An incoming path of <code>/photos/1/2</code> will be dispatched to the <code>show</code> action of the <code>PhotosController</code>. <code>params[:id]</code> will be <code>&quot;1&quot;</code>, and <code>params[:user_id]</code> will be <code>&quot;2&quot;</code>.</p>
 
 <p>TIP: By default, dynamic segments don&#39;t accept dots - this is because the dot is used as a separator for formatted routes. If you need to use a dot within a dynamic segment, add a constraint that overrides this – for example, <code>id: /[^\/]+/</code> allows anything except a slash.</p>
 
@@ -851,31 +847,31 @@ route, eliminating the block:</p>
 
 <p>You can specify static segments when creating a route by not prepending a colon to a fragment:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>:controller/:action/:id/with_user/:user_id</span><span class='tstring_end'>&#39;</span></span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>photos/:id/with_user/:user_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>photos#show</span><span class='tstring_end'>&#39;</span></span></code></pre>
 
-<p>This route would respond to paths such as <code>/photos/show/1/with_user/2</code>. In this case, <code>params</code> would be <code>{ controller: &#39;photos&#39;, action: &#39;show&#39;, id: &#39;1&#39;, user_id: &#39;2&#39; }</code>.</p>
+<p>This route would respond to paths such as <code>/photos/1/with_user/2</code>. In this case, <code>params</code> would be <code>{ controller: &#39;photos&#39;, action: &#39;show&#39;, id: &#39;1&#39;, user_id: &#39;2&#39; }</code>.</p>
 
 <h3>The Query String</h3>
 
 <p>The <code>params</code> will also include any parameters from the query string. For example, with this route:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>:controller/:action/:id</span><span class='tstring_end'>&#39;</span></span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>photos/:id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>photos#show</span><span class='tstring_end'>&#39;</span></span></code></pre>
 
-<p>An incoming path of <code>/photos/show/1?user_id=2</code> will be dispatched to the <code>show</code> action of the <code>Photos</code> controller. <code>params</code> will be <code>{ controller: &#39;photos&#39;, action: &#39;show&#39;, id: &#39;1&#39;, user_id: &#39;2&#39; }</code>.</p>
+<p>An incoming path of <code>/photos/1?user_id=2</code> will be dispatched to the <code>show</code> action of the <code>Photos</code> controller. <code>params</code> will be <code>{ controller: &#39;photos&#39;, action: &#39;show&#39;, id: &#39;1&#39;, user_id: &#39;2&#39; }</code>.</p>
 
 <h3>Defining Defaults</h3>
 
-<p>You do not need to explicitly use the <code>:controller</code> and <code>:action</code> symbols within a route. You can supply them as defaults:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>photos/:id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>photos#show</span><span class='tstring_end'>&#39;</span></span></code></pre>
-
-<p>With this route, Rails will match an incoming path of <code>/photos/12</code> to the <code>show</code> action of <code>PhotosController</code>.</p>
-
-<p>You can also define other defaults in a route by supplying a hash for the <code>:defaults</code> option. This even applies to parameters that you do not specify as dynamic segments. For example:</p>
+<p>You can define defaults in a route by supplying a hash for the <code>:defaults</code> option. This even applies to parameters that you do not specify as dynamic segments. For example:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>photos/:id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>photos#show</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>defaults:</span> <span class='lbrace'>{</span> <span class='label'>format:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>jpg</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span></code></pre>
 
 <p>Rails would match <code>photos/12</code> to the <code>show</code> action of <code>PhotosController</code>, and set <code>params[:format]</code> to <code>&quot;jpg&quot;</code>.</p>
+
+<p>You can also use <code>defaults</code> in a block format to define the defaults for multiple items:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_defaults'>defaults</span> <span class='label'>format:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_json'>json</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_resources'>resources</span> <span class='symbeg'>:</span><span class='id identifier rubyid_photos'>photos</span>
+<span class='kw'>end</span></code></pre>
 
 <p>NOTE: You cannot override defaults via query parameters - this is for security reasons. The only defaults that can be overridden are dynamic segments via substitution in the URL path.</p>
 

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveRecord::ConnectionAdapters::Table &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveRecord::ConnectionAdapters::Table &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_T'>Index (T)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
@@ -77,7 +77,7 @@
       <td colspan='2'>
         <div class='box_2'>Subclasses:</div>
         <div class='box_22'>
-          <a href="MySQL/Table.html" title="ActiveRecord::ConnectionAdapters::MySQL::Table (class)">MySQL::Table</a>, <a href="PostgreSQL/Table.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Table (class)">PostgreSQL::Table</a>
+          <a href="MySQL/Table.html" title="ActiveRecord::ConnectionAdapters::MySQL::Table (class)">MySQL::Table</a>, <a href="PostgreSQL/Table.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::Table (class)">PostgreSQL::Table</a>, <a href="SQLite3/Table.html" title="ActiveRecord::ConnectionAdapters::SQLite3::Table (class)">SQLite3::Table</a>
         </div>
       </td>
     </tr>
@@ -99,7 +99,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L456'>activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L453'>activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -181,7 +181,7 @@
 <ul class='summary full'>
   <li>
     <span class='summary_signature '>
-      <a href="#belongs_to-instance_method" title="#belongs_to (instance method)">#<strong>belongs_to</strong>(*args)  </a>
+      <a href="#belongs_to-instance_method" title="#belongs_to (instance method)">#<strong>belongs_to</strong>(*args, **options)  </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Alias for <a href="#references-instance_method" title="ActiveRecord::ConnectionAdapters::Table#references (method)">#references</a>.</p></div>
@@ -237,7 +237,7 @@
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#references-instance_method" title="#references (instance method)">#<strong>references</strong>(*args)  </a>
+      <a href="#references-instance_method" title="#references (instance method)">#<strong>references</strong>(*args, **options)  </a>
       (also: #belongs_to)
     </span>
     <div class='summary_desc'>
@@ -254,7 +254,7 @@
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#remove_belongs_to-instance_method" title="#remove_belongs_to (instance method)">#<strong>remove_belongs_to</strong>(*args)  </a>
+      <a href="#remove_belongs_to-instance_method" title="#remove_belongs_to (instance method)">#<strong>remove_belongs_to</strong>(*args, **options)  </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Alias for <a href="#remove_references-instance_method" title="ActiveRecord::ConnectionAdapters::Table#remove_references (method)">#remove_references</a>.</p></div>
@@ -270,7 +270,7 @@
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#remove_references-instance_method" title="#remove_references (instance method)">#<strong>remove_references</strong>(*args)  </a>
+      <a href="#remove_references-instance_method" title="#remove_references (instance method)">#<strong>remove_references</strong>(*args, **options)  </a>
       (also: #remove_belongs_to)
     </span>
     <div class='summary_desc'>
@@ -340,17 +340,17 @@ table.</p></div>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L461-L464'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L458-L461'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-461
-462
-463
-464</pre>
+458
+459
+460
+461</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 461</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 458</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_base'>base</span><span class='rparen'>)</span>
@@ -367,14 +367,14 @@ table.</p></div>
   <h3 class='signature ro first'>
     #<strong>name</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L459-L459'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L456-L456'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-459</pre>
+456</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 459</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 456</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span>
@@ -386,7 +386,7 @@ table.</p></div>
 <h2 class='y_details'>Instance Method Details</h2>
 <section class='method_details first' id="belongs_to-instance_method">
   <h3 class='signature  first'>
-    #<strong>belongs_to</strong>(*args)  
+    #<strong>belongs_to</strong>(*args, **options)  
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -395,14 +395,14 @@ table.</p></div>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L597-L597'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L593-L593'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-597</pre>
+593</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 597</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 593</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='symbeg'>:</span><span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_references'>references</span>
@@ -427,16 +427,16 @@ table.</p></div>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L531-L533'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L528-L530'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-531
-532
-533</pre>
+528
+529
+530</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 531</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 528</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_change'>change</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -464,16 +464,16 @@ table.</p></div>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L542-L544'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L539-L541'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-542
-543
-544</pre>
+539
+540
+541</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 542</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 539</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_change_default'>change_default</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_default_or_changes'>default_or_changes</span><span class='rparen'>)</span>
@@ -499,16 +499,16 @@ table.</p></div>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L471-L473'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L468-L470'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-471
-472
-473</pre>
+468
+469
+470</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 471</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 468</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_column'>column</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -528,7 +528,7 @@ table.</p></div>
     
 <p>Checks to see if a column exists.</p>
 
-<p>t.string(:name) unless t.column_exists?(:name, :string)</p>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_column_exists?'>column_exists?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span></code></pre>
 
 <p>See <a href="SchemaStatements.html#column_exists%3F-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#column_exists? (method)">connection.column_exists?</a></p>
 
@@ -536,16 +536,16 @@ table.</p></div>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L480-L482'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L477-L479'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-480
-481
-482</pre>
+477
+478
+479</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 480</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 477</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_column_exists?'>column_exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -575,16 +575,16 @@ options you can use.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L492-L494'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L489-L491'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-492
-493
-494</pre>
+489
+490
+491</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 492</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 489</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -604,11 +604,9 @@ options you can use.</p>
     
 <p>Checks to see if an index exists.</p>
 
-<p>unless t.index_exists?(:branch_id)</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_branch_id'>branch_id</span><span class='rparen'>)</span></code></pre>
-
-<p>end</p>
+<pre class="code ruby"><code class="ruby"><span class='kw'>unless</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_index_exists?'>index_exists?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_branch_id'>branch_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_branch_id'>branch_id</span><span class='rparen'>)</span>
+<span class='kw'>end</span></code></pre>
 
 <p>See <a href="SchemaStatements.html#index_exists%3F-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#index_exists? (method)">connection.index_exists?</a></p>
 
@@ -616,16 +614,16 @@ options you can use.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L503-L505'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L500-L502'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-503
-504
-505</pre>
+500
+501
+502</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 503</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 500</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index_exists?'>index_exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -638,7 +636,7 @@ options you can use.</p>
 
 <section class='method_details' id="references-instance_method">
   <h3 class='signature '>
-    #<strong>references</strong>(*args)  
+    #<strong>references</strong>(*args, **options)  
     <span class='aliases'>Also known as: <span class='names'>#belongs_to</span></span>
   </h3>
 <div class='docstring'>
@@ -654,23 +652,21 @@ of the options you can use.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L591-L596'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L588-L592'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+588
+589
+590
 591
-592
-593
-594
-595
-596</pre>
+592</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 591</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 588</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_references'>references</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_references'>references</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ref_name'>ref_name</span><span class='op'>|</span>
     <span class='ivar'>@base</span><span class='period'>.</span><span class='id identifier rubyid_add_reference'>add_reference</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_ref_name'>ref_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -696,16 +692,16 @@ of the options you can use.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L552-L554'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L549-L551'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-552
-553
-554</pre>
+549
+550
+551</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 552</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 549</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove'>remove</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_column_names'>column_names</span><span class='rparen'>)</span>
@@ -718,7 +714,7 @@ of the options you can use.</p>
 
 <section class='method_details' id="remove_belongs_to-instance_method">
   <h3 class='signature '>
-    #<strong>remove_belongs_to</strong>(*args)  
+    #<strong>remove_belongs_to</strong>(*args, **options)  
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -727,14 +723,14 @@ of the options you can use.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L611-L611'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L606-L606'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-611</pre>
+606</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 611</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 606</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='symbeg'>:</span><span class='id identifier rubyid_remove_belongs_to'>remove_belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_remove_references'>remove_references</span>
@@ -760,16 +756,16 @@ of the options you can use.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L563-L565'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L560-L562'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-563
-564
-565</pre>
+560
+561
+562</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 563</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 560</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove_index'>remove_index</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -782,7 +778,7 @@ of the options you can use.</p>
 
 <section class='method_details' id="remove_references-instance_method">
   <h3 class='signature '>
-    #<strong>remove_references</strong>(*args)  
+    #<strong>remove_references</strong>(*args, **options)  
     <span class='aliases'>Also known as: <span class='names'>#remove_belongs_to</span></span>
   </h3>
 <div class='docstring'>
@@ -797,23 +793,21 @@ of the options you can use.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L605-L610'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L601-L605'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-605
-606
-607
-608
-609
-610</pre>
+601
+602
+603
+604
+605</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 605</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 601</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_remove_references'>remove_references</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_references'>remove_references</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ref_name'>ref_name</span><span class='op'>|</span>
     <span class='ivar'>@base</span><span class='period'>.</span><span class='id identifier rubyid_remove_reference'>remove_reference</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_ref_name'>ref_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -839,16 +833,16 @@ table.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L572-L574'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L569-L571'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-572
-573
-574</pre>
+569
+570
+571</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 572</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 569</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove_timestamps'>remove_timestamps</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -874,16 +868,16 @@ table.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L581-L583'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L578-L580'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-581
-582
-583</pre>
+578
+579
+580</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 581</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 578</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rename'>rename</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_new_column_name'>new_column_name</span><span class='rparen'>)</span>
@@ -909,16 +903,16 @@ table.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L512-L514'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L509-L511'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-512
-513
-514</pre>
+509
+510
+511</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 512</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 509</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rename_index'>rename_index</span><span class='lparen'>(</span><span class='id identifier rubyid_index_name'>index_name</span><span class='comma'>,</span> <span class='id identifier rubyid_new_index_name'>new_index_name</span><span class='rparen'>)</span>
@@ -944,16 +938,16 @@ table.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L521-L523'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L518-L520'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-521
-522
-523</pre>
+518
+519
+520</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 521</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb', line 518</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_timestamps'>timestamps</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>

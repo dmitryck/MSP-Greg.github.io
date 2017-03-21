@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Action Cable Readme &mdash; Rails-5-0-stable</title>
+<title>File: Action Cable Readme &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Action Cable Readme&nbsp;&#x25B2;</a></span>
             </div>
@@ -115,7 +115,7 @@ if all is well. Here&#39;s the simplest example starting with the server-side co
       <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_current_user'>current_user</span> <span class='op'>=</span> <span class='id identifier rubyid_find_verified_user'>find_verified_user</span>
     <span class='kw'>end</span>
 
-    <span class='id identifier rubyid_protected'>protected</span>
+    <span class='id identifier rubyid_private'>private</span>
       <span class='kw'>def</span> <span class='id identifier rubyid_find_verified_user'>find_verified_user</span>
         <span class='kw'>if</span> <span class='id identifier rubyid_current_user'>current_user</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='id identifier rubyid_cookies'>cookies</span><span class='period'>.</span><span class='id identifier rubyid_signed'>signed</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
           <span class='id identifier rubyid_current_user'>current_user</span>
@@ -147,11 +147,16 @@ shared logic between your channels.</p>
 
 <p>The client-side needs to setup a consumer instance of this connection. That&#39;s done like so:</p>
 
-<pre class="code coffeescript"><code class="coffeescript"># app/assets/javascripts/cable.coffee
-#= require action_cable
+<pre class="code js"><code class="js">// app/assets/javascripts/cable.js
+//= require action_cable
+//= require_self
+//= require_tree ./channels
 
-@App = {}
-App.cable = ActionCable.createConsumer(&quot;ws://cable.example.com&quot;)
+(function() {
+  this.App || (this.App = {});
+
+  App.cable = ActionCable.createConsumer(&quot;ws://cable.example.com&quot;);
+}).call(this);
 </code></pre>
 
 <p>The <code>ws://cable.example.com</code> address must point to your Action Cable server(s), and it
@@ -219,7 +224,7 @@ App.cable.subscriptions.create &quot;AppearanceChannel&quot;,
   buttonSelector = &quot;[data-behavior~=appear_away]&quot;
 
   install: -&gt;
-    $(document).on &quot;page:change.appearance&quot;, =&gt;
+    $(document).on &quot;turbolinks:load.appearance&quot;, =&gt;
       @appear()
 
     $(document).on &quot;click.appearance&quot;, buttonSelector, =&gt;
@@ -333,7 +338,7 @@ App.chatChannel.send({ sent_by: &quot;Paul&quot;, body: &quot;This is a cool cha
 
 <h3>More complete examples</h3>
 
-<p>See the <a href="http://github.com/rails/actioncable-examples">rails/actioncable-examples</a> repository for a full example of how to setup Action Cable in a Rails app, and how to add channels.</p>
+<p>See the <a href="https://github.com/rails/actioncable-examples">rails/actioncable-examples</a> repository for a full example of how to setup Action Cable in a Rails app, and how to add channels.</p>
 
 <h2>Configuration</h2>
 
@@ -409,10 +414,10 @@ domain in production.</p>
 
 <h3>Other Configurations</h3>
 
-<p>The other common option to configure is the log tags applied to the per-connection logger. Here&#39;s close to what we&#39;re using in Basecamp:</p>
+<p>The other common option to configure is the log tags applied to the per-connection logger. Here&#39;s an example that uses the user account id if available, else &quot;no-account&quot; while tagging:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='const'><a href="Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_application'><a href="Rails.html#application-class_method" title="Rails.application (method)">application</a></span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_action_cable'>action_cable</span><span class='period'>.</span><span class='id identifier rubyid_log_tags'>log_tags</span> <span class='op'>=</span> <span class='lbracket'>[</span>
-  <span class='comment'>#=&gt; request { request.env[&#39;bc.account_id&#39;] || &quot;no-account&quot; },
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_action_cable'>action_cable</span><span class='period'>.</span><span class='id identifier rubyid_log_tags'>log_tags</span> <span class='op'>=</span> <span class='lbracket'>[</span>
+  <span class='comment'>#=&gt; request { request.env[&#39;user_account_id&#39;] || &quot;no-account&quot; },
 </span>  <span class='symbeg'>:</span><span class='id identifier rubyid_action_cable'>action_cable</span><span class='comma'>,</span>
   <span class='comment'>#=&gt; request { request.uuid }
 </span><span class='rbracket'>]</span></code></pre>
@@ -436,8 +441,9 @@ application. The recommended basic setup is as follows:</p>
 
 <p>Then you start the server using a binstub in bin/cable ala:</p>
 
-<pre class="code ruby"><code class="ruby">#!/bin/bash
-bundle exec puma -p 28080 cable/config.ru</code></pre>
+<pre class="code sh"><code class="sh">#!/bin/bash
+bundle exec puma -p 28080 cable/config.ru
+</code></pre>
 
 <p>The above will start a cable server on port 28080.</p>
 
@@ -454,7 +460,7 @@ bundle exec puma -p 28080 cable/config.ru</code></pre>
 
 <h3>Notes</h3>
 
-<p>Beware that currently the cable server will <em>not</em> auto-reload any changes in the framework. As we&#39;ve discussed, long-running cable connections mean long-running objects. We don&#39;t yet have a way of reloading the classes of those objects in a safe manner. So when you change your channels, or the model your channels use, you must restart the cable server.</p>
+<p>Beware that currently, the cable server will <em>not</em> auto-reload any changes in the framework. As we&#39;ve discussed, long-running cable connections mean long-running objects. We don&#39;t yet have a way of reloading the classes of those objects in a safe manner. So when you change your channels, or the model your channels use, you must restart the cable server.</p>
 
 <p>We&#39;ll get all this abstracted properly when the framework is integrated into Rails.</p>
 

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Generators &mdash; Rails-5-0-stable</title>
+<title>File: Generators &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Generators&nbsp;&#x25B2;</a></span>
             </div>
@@ -248,7 +248,13 @@ generators/initializer_generator.rb
 
 <p>Looking at this output, it&#39;s easy to understand how generators work in Rails 3.0 and above. The scaffold generator doesn&#39;t actually generate anything, it just invokes others to do the work. This allows us to add/replace/remove any of those invocations. For instance, the scaffold generator invokes the scaffold_controller generator, which invokes erb, test_unit and helper generators. Since each generator has a single responsibility, they are easy to reuse, avoiding code duplication.</p>
 
-<p>Our first customization on the workflow will be to stop generating stylesheet, JavaScript and test fixture files for scaffolds. We can achieve that by changing our configuration to the following:</p>
+<p>If we want to avoid generating the default <code>app/assets/stylesheets/scaffolds.scss</code> file when scaffolding a new resource we can disable <code>scaffold_stylesheet</code>:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_generators'>generators</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
+    <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_scaffold_stylesheet'>scaffold_stylesheet</span> <span class='kw'>false</span>
+  <span class='kw'>end</span></code></pre>
+
+<p>The next customization on the workflow will be to stop generating stylesheet, JavaScript and test fixture files for scaffolds altogether. We can achieve that by changing our configuration to the following:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_generators'>generators</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
   <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_orm'>orm</span>             <span class='symbeg'>:</span><span class='id identifier rubyid_active_record'>active_record</span>
@@ -458,6 +464,21 @@ escaped so that the generated output is valid ERB code.</p>
 </code></pre>
 
 <p>Whilst the final section of this guide doesn&#39;t cover how to generate the most awesome template known to man, it will take you through the methods available at your disposal so that you can develop it yourself. These same methods are also available for generators.</p>
+
+<h2>Adding Command Line Arguments</h2>
+
+<p>Rails generators can be easily modified to accept custom command line arguments. This functionality comes from <a href="http://www.rubydoc.info/github/erikhuda/thor/master/Thor/Base/ClassMethods#class_option-instance_method">Thor</a>:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_class_option'>class_option</span> <span class='symbeg'>:</span><span class='id identifier rubyid_scope'>scope</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>read_products</span><span class='tstring_end'>&#39;</span></span></code></pre>
+
+<p>Now our generator can be invoked as follows:</p>
+
+<pre class="code bash"><code class="bash">rails generate initializer --scope write_products
+</code></pre>
+
+<p>The command line arguments are accessed through the <code>options</code> method inside the generator class. e.g:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='ivar'>@scope</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>scope</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span></code></pre>
 
 <h2>Generator methods</h2>
 

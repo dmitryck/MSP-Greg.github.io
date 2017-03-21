@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::LegacyYamlAdapter &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::LegacyYamlAdapter &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_L'>Index (L)</a> &raquo; 
         <a href="../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>LegacyYamlAdapter&nbsp;&#x25B2;</a></span>
@@ -80,7 +80,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/legacy_yaml_adapter.rb#L2'>activerecord/lib/active_record/legacy_yaml_adapter.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/legacy_yaml_adapter.rb#L2'>activerecord/lib/active_record/legacy_yaml_adapter.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -101,7 +101,7 @@
   <h3 class='signature  first'>
     .<strong>convert</strong>(klass, coder)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/legacy_yaml_adapter.rb#L3-L15'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/legacy_yaml_adapter.rb#L3-L15'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -127,7 +127,7 @@
   <span class='kw'>return</span> <span class='id identifier rubyid_coder'>coder</span> <span class='kw'>unless</span> <span class='id identifier rubyid_coder'>coder</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Psych</span><span class='op'>::</span><span class='const'>Coder</span><span class='rparen'>)</span>
 
   <span class='kw'>case</span> <span class='id identifier rubyid_coder'>coder</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>active_record_yaml_version</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-  <span class='kw'>when</span> <span class='int'>1</span> <span class='kw'>then</span> <span class='id identifier rubyid_coder'>coder</span>
+  <span class='kw'>when</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>2</span> <span class='kw'>then</span> <span class='id identifier rubyid_coder'>coder</span>
   <span class='kw'>else</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_coder'>coder</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>attributes</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="AttributeSet.html" title="ActiveRecord::AttributeSet (class)">AttributeSet</a></span><span class='rparen'>)</span>
       <span class='const'><a href="LegacyYamlAdapter/Rails420.html" title="ActiveRecord::LegacyYamlAdapter::Rails420 (module)">Rails420</a></span><span class='period'>.</span><span class='id identifier rubyid_convert'><a href="LegacyYamlAdapter/Rails420.html#convert-class_method" title="ActiveRecord::LegacyYamlAdapter::Rails420.convert (method)">convert</a></span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_coder'>coder</span><span class='rparen'>)</span>

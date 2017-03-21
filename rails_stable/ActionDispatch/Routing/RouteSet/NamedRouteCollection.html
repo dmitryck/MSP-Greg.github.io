@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActionDispatch::Routing::RouteSet::NamedRouteCollection &mdash; Rails-5-0-stable</title>
+<title>Class: ActionDispatch::Routing::RouteSet::NamedRouteCollection &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../../index.html'>Home</a> &raquo; 
-        <a href='../../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../../_index.html#alpha_N'>Index (N)</a> &raquo; 
         <a href="../../../ActionDispatch.html" title="ActionDispatch (module)">ActionDispatch</a> &raquo; 
         <a href="../../Routing.html" title="ActionDispatch::Routing (module)">Routing</a> &raquo; 
@@ -97,7 +97,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L68'>actionpack/lib/action_dispatch/routing/route_set.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L67'>actionpack/lib/action_dispatch/routing/route_set.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -180,6 +180,11 @@ named routes.</p>
     <span class='summary_signature '>
       <a href="#add-instance_method" title="#add (instance method)">#<strong>add</strong>(name, route)  </a>
       (also: #[]=)
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#add_url_helper-instance_method" title="#add_url_helper (instance method)">#<strong>add_url_helper</strong>(name, defaults, &amp;block)  </a>
     </span>
   </li>
   <li>
@@ -273,11 +278,12 @@ named routes.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L73-L79'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L72-L79'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+72
 73
 74
 75
@@ -286,13 +292,14 @@ named routes.</p>
 78
 79</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 73</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 72</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
-  <span class='ivar'>@routes</span>  <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='ivar'>@routes</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='ivar'>@path_helpers</span> <span class='op'>=</span> <span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='ivar'>@url_helpers</span> <span class='op'>=</span> <span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='ivar'>@custom_helpers</span> <span class='op'>=</span> <span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='ivar'>@url_helpers_module</span>  <span class='op'>=</span> <span class='const'><a href="../../../Module.html" title="Module (class)">Module</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='ivar'>@path_helpers_module</span> <span class='op'>=</span> <span class='const'><a href="../../../Module.html" title="Module (class)">Module</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 <span class='kw'>end</span>
@@ -306,14 +313,14 @@ named routes.</p>
   <h3 class='signature ro first'>
     #<strong>path_helpers_module</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L70-L70'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L69-L69'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-70</pre>
+69</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 70</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 69</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_routes'>routes</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_url_helpers_module'>url_helpers_module</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_path_helpers_module'>path_helpers_module</span>
@@ -326,14 +333,14 @@ named routes.</p>
   <h3 class='signature ro'>
     #<strong>url_helpers_module</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L70-L70'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L69-L69'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-70</pre>
+69</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 70</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 69</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_routes'>routes</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_url_helpers_module'>url_helpers_module</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_path_helpers_module'>path_helpers_module</span>
@@ -354,14 +361,14 @@ named routes.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L131-L131'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L145-L145'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-131</pre>
+145</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 131</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 145</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='op'>[]</span>    <span class='id identifier rubyid_get'>get</span>
@@ -381,14 +388,14 @@ named routes.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L130-L130'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L144-L144'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-130</pre>
+144</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 130</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 144</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='op'>[]=</span>   <span class='id identifier rubyid_add'>add</span>
@@ -402,29 +409,29 @@ named routes.</p>
     #<strong>add</strong>(name, route)  
     <span class='aliases'>Also known as: <span class='names'>#[]=</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L104-L119'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L118-L133'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
 118
-119</pre>
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 104</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 118</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_route'>route</span><span class='rparen'>)</span>
@@ -448,6 +455,56 @@ named routes.</p>
 </div>
 </section>
 
+<section class='method_details' id="add_url_helper-instance_method">
+  <h3 class='signature '>
+    #<strong>add_url_helper</strong>(name, defaults, &amp;block)  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L161-L176'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 161</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_url_helper'>add_url_helper</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_defaults'>defaults</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@custom_helpers</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='id identifier rubyid_helper'>helper</span> <span class='op'>=</span> <span class='const'><a href="CustomUrlHelper.html" title="ActionDispatch::Routing::RouteSet::CustomUrlHelper (class)">CustomUrlHelper</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="CustomUrlHelper.html#new-class_method" title="ActionDispatch::Routing::RouteSet::CustomUrlHelper.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_defaults'>defaults</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@path_helpers_module</span><span class='period'>.</span><span class='id identifier rubyid_module_eval'>module_eval</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='symbeg'>:&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>_path</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span>
+      <span class='id identifier rubyid_helper'>helper</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@url_helpers_module</span><span class='period'>.</span><span class='id identifier rubyid_module_eval'>module_eval</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='symbeg'>:&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>_url</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span>
+      <span class='id identifier rubyid_helper'>helper</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
 <section class='method_details' id="clear-instance_method">
   <h3 class='signature '>
     #<strong>clear</strong>  
@@ -459,14 +516,14 @@ named routes.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L132-L132'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L146-L146'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-132</pre>
+146</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 132</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 146</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='id identifier rubyid_clear'>clear</span> <span class='id identifier rubyid_clear!'>clear!</span>
@@ -480,7 +537,7 @@ named routes.</p>
     #<strong>clear!</strong>  
     <span class='aliases'>Also known as: <span class='names'>#clear</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L90-L102'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L90-L116'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -497,23 +554,51 @@ named routes.</p>
 99
 100
 101
-102</pre>
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 90</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear!'>clear!</span>
   <span class='ivar'>@path_helpers</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_helper'>helper</span><span class='op'>|</span>
-    <span class='ivar'>@path_helpers_module</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbeg'>:</span><span class='id identifier rubyid_undef_method'>undef_method</span><span class='comma'>,</span> <span class='id identifier rubyid_helper'>helper</span>
+    <span class='ivar'>@path_helpers_module</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbeg'>:</span><span class='id identifier rubyid_remove_method'>remove_method</span><span class='comma'>,</span> <span class='id identifier rubyid_helper'>helper</span>
   <span class='kw'>end</span>
 
   <span class='ivar'>@url_helpers</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_helper'>helper</span><span class='op'>|</span>
-    <span class='ivar'>@url_helpers_module</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span>  <span class='symbeg'>:</span><span class='id identifier rubyid_undef_method'>undef_method</span><span class='comma'>,</span> <span class='id identifier rubyid_helper'>helper</span>
+    <span class='ivar'>@url_helpers_module</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span>  <span class='symbeg'>:</span><span class='id identifier rubyid_remove_method'>remove_method</span><span class='comma'>,</span> <span class='id identifier rubyid_helper'>helper</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@custom_helpers</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_helper'>helper</span><span class='op'>|</span>
+    <span class='id identifier rubyid_path_name'>path_name</span> <span class='op'>=</span> <span class='symbeg'>:&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_helper'>helper</span><span class='embexpr_end'>}</span><span class='tstring_content'>_path</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_url_name'>url_name</span> <span class='op'>=</span> <span class='symbeg'>:&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_helper'>helper</span><span class='embexpr_end'>}</span><span class='tstring_content'>_url</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='kw'>if</span> <span class='ivar'>@path_helpers_module</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='id identifier rubyid_path_name'>path_name</span><span class='rparen'>)</span>
+      <span class='ivar'>@path_helpers_module</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbeg'>:</span><span class='id identifier rubyid_remove_method'>remove_method</span><span class='comma'>,</span> <span class='id identifier rubyid_path_name'>path_name</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='ivar'>@url_helpers_module</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='id identifier rubyid_url_name'>url_name</span><span class='rparen'>)</span>
+      <span class='ivar'>@url_helpers_module</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbeg'>:</span><span class='id identifier rubyid_remove_method'>remove_method</span><span class='comma'>,</span> <span class='id identifier rubyid_url_name'>url_name</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 
   <span class='ivar'>@routes</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
   <span class='ivar'>@path_helpers</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
   <span class='ivar'>@url_helpers</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+  <span class='ivar'>@custom_helpers</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -524,17 +609,17 @@ named routes.</p>
   <h3 class='signature '>
     #<strong>each</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L134-L137'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L148-L151'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-134
-135
-136
-137</pre>
+148
+149
+150
+151</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 134</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 148</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
@@ -551,16 +636,16 @@ named routes.</p>
     #<strong>get</strong>(name)  
     <span class='aliases'>Also known as: <span class='names'>#[]</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L121-L123'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L135-L137'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-121
-122
-123</pre>
+135
+136
+137</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 121</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 135</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -575,7 +660,7 @@ named routes.</p>
   <h3 class='signature '>
     #<strong>helper_names</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L86-L88'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L86-L88'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -606,17 +691,17 @@ named routes.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L125-L128'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L139-L142'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-125
-126
-127
-128</pre>
+139
+140
+141
+142</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 125</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 139</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -632,16 +717,16 @@ named routes.</p>
   <h3 class='signature '>
     #<strong>length</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L143-L145'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L157-L159'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-143
-144
-145</pre>
+157
+158
+159</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 143</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 157</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_length'>length</span>
@@ -656,16 +741,16 @@ named routes.</p>
   <h3 class='signature '>
     #<strong>names</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L139-L141'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L153-L155'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-139
-140
-141</pre>
+153
+154
+155</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 139</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/route_set.rb', line 153</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_names'>names</span>
@@ -687,7 +772,7 @@ named routes.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L81-L84'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/route_set.rb#L81-L84'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 

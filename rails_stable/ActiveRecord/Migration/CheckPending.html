@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveRecord::Migration::CheckPending &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveRecord::Migration::CheckPending &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../Migration.html" title="ActiveRecord::Migration (class)">Migration</a> &raquo; 
@@ -80,7 +80,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/migration.rb#L539'>activerecord/lib/active_record/migration.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/migration.rb#L544'>activerecord/lib/active_record/migration.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -134,17 +134,17 @@ set to :page_load</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/migration.rb#L540-L543'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/migration.rb#L545-L548'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-540
-541
-542
-543</pre>
+545
+546
+547
+548</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/migration.rb', line 540</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/migration.rb', line 545</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_app'>app</span><span class='rparen'>)</span>
@@ -161,32 +161,28 @@ set to :page_load</p>
   <h3 class='signature  first'>
     #<strong>call</strong>(env)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/migration.rb#L545-L554'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/migration.rb#L550-L557'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-545
-546
-547
-548
-549
 550
 551
 552
 553
-554</pre>
+554
+555
+556
+557</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/migration.rb', line 545</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/migration.rb', line 550</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_supports_migrations?'>supports_migrations?</span>
-    <span class='id identifier rubyid_mtime'>mtime</span> <span class='op'>=</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Migrator.html" title="ActiveRecord::Migrator (class)">Migrator</a></span><span class='period'>.</span><span class='id identifier rubyid_last_migration'><a href="../Migrator.html#last_migration-class_method" title="ActiveRecord::Migrator.last_migration (method)">last_migration</a></span><span class='period'>.</span><span class='id identifier rubyid_mtime'>mtime</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
-    <span class='kw'>if</span> <span class='ivar'>@last_check</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_mtime'>mtime</span>
-      <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Migration.html" title="ActiveRecord::Migration (class)">Migration</a></span><span class='period'>.</span><span class='id identifier rubyid_check_pending!'><a href="../Migration.html#check_pending!-class_method" title="ActiveRecord::Migration.check_pending! (method)">check_pending!</a></span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
-      <span class='ivar'>@last_check</span> <span class='op'>=</span> <span class='id identifier rubyid_mtime'>mtime</span>
-    <span class='kw'>end</span>
+  <span class='id identifier rubyid_mtime'>mtime</span> <span class='op'>=</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Migrator.html" title="ActiveRecord::Migrator (class)">Migrator</a></span><span class='period'>.</span><span class='id identifier rubyid_last_migration'><a href="../Migrator.html#last_migration-class_method" title="ActiveRecord::Migrator.last_migration (method)">last_migration</a></span><span class='period'>.</span><span class='id identifier rubyid_mtime'>mtime</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='kw'>if</span> <span class='ivar'>@last_check</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_mtime'>mtime</span>
+    <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Migration.html" title="ActiveRecord::Migration (class)">Migration</a></span><span class='period'>.</span><span class='id identifier rubyid_check_pending!'><a href="../Migration.html#check_pending!-class_method" title="ActiveRecord::Migration.check_pending! (method)">check_pending!</a></span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
+    <span class='ivar'>@last_check</span> <span class='op'>=</span> <span class='id identifier rubyid_mtime'>mtime</span>
   <span class='kw'>end</span>
   <span class='ivar'>@app</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
 <span class='kw'>end</span>

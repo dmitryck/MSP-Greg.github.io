@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Scoping::Default::ClassMethods &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Scoping::Default::ClassMethods &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../../index.html'>Home</a> &raquo; 
-        <a href='../../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../../Scoping.html" title="ActiveRecord::Scoping (module)">Scoping</a> &raquo; 
@@ -82,7 +82,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/scoping/default.rb#L15'>activerecord/lib/active_record/scoping/default.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/scoping/default.rb#L15'>activerecord/lib/active_record/scoping/default.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -100,10 +100,10 @@
     </div>
   </li>
   <li>
-    <span class='summary_signature prot'>
+    <span class='summary_signature priv'>
       <a href="#default_scope-instance_method" title="#default_scope (instance method)">#<strong>default_scope</strong>(scope = nil)  </a>
     </span>
-    <span class='note title protected'>protected</span>
+    <span class='note title private'>private</span>
     <div class='summary_desc'>
       <div class='inline'><p>Use this macro in your model to set a default scope for all operations on
 the model.</p></div>
@@ -113,8 +113,8 @@ the model.</p></div>
 </div>
 <h2 class='y_details'>Instance Method Details</h2>
 <section class='method_details first' id="default_scope-instance_method">
-  <h3 class='signature prot first'>
-    #<strong>default_scope</strong>(scope = nil)   <span class="extras">(<span class='prot'>protected</span>)</span>
+  <h3 class='signature priv first'>
+    #<strong>default_scope</strong>(scope = nil)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -163,7 +163,7 @@ alternatively define it as a class method:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/scoping/default.rb#L90-L102'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/scoping/default.rb#L90-L102'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -185,8 +185,8 @@ alternatively define it as a class method:</p>
 <pre><span class='info file'># File 'activerecord/lib/active_record/scoping/default.rb', line 90</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_default_scope'>default_scope</span><span class='lparen'>(</span><span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_default_scope'>default_scope</span><span class='lparen'>(</span><span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='comment'># :doc:
+</span>  <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="../../Relation.html" title="ActiveRecord::Relation (class)">Relation</a></span><span class='rparen'>)</span> <span class='op'>||</span> <span class='op'>!</span><span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_call'>call</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span>
@@ -231,7 +231,7 @@ the previously set scopes.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/scoping/default.rb#L34-L36'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/scoping/default.rb#L34-L36'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 

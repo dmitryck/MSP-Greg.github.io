@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActionView::Helpers::AssetTagHelper &mdash; Rails-5-0-stable</title>
+<title>Module: ActionView::Helpers::AssetTagHelper &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_A'>Index (A)</a> &raquo; 
         <a href="../../ActionView.html" title="ActionView (module)">ActionView</a> &raquo; 
         <a class='nodoc' href="../Helpers.html" title="ActionView::Helpers (module)">Helpers</a> &raquo; 
@@ -107,7 +107,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L17'>actionview/lib/action_view/helpers/asset_tag_helper.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L17'>actionview/lib/action_view/helpers/asset_tag_helper.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -185,7 +185,7 @@ RSS or Atom feed.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#favicon_link_tag-instance_method" title="#favicon_link_tag (instance method)">#<strong>favicon_link_tag</strong>(source = &#39;favicon.ico&#39;, options = {})  </a>
+      <a href="#favicon_link_tag-instance_method" title="#favicon_link_tag (instance method)">#<strong>favicon_link_tag</strong>(source = &quot;favicon.ico&quot;, options = {})  </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Returns a link tag for a favicon managed by the asset pipeline.</p></div>
@@ -251,8 +251,7 @@ entities.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="TagHelper.html#tag-instance_method" title="ActionView::Helpers::TagHelper#tag (method)">#tag</a></td>
-      <td><div class='inline'><p>Returns an empty HTML tag of type <code>name</code> which by default is XHTML
-compliant.</p></div></td>
+      <td><div class='inline'><p>Returns an HTML tag.</p></div></td>
     </tr>
   </tbody>
 </table></div>
@@ -307,7 +306,7 @@ back to the layout.</p></div></td>
   <tbody>
     <tr class='i_ds'>
       <td><a class='i_m ' href="AssetUrlHelper.html#asset_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#asset_path (method)">#asset_path</a></td>
-      <td><div class='inline'><p>Computes the path to asset in public directory.</p></div></td>
+      <td><div class='inline'><p>This is the entry point for all assets.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="AssetUrlHelper.html#asset_url-instance_method" title="ActionView::Helpers::AssetUrlHelper#asset_url (method)">#asset_url</a></td>
@@ -388,6 +387,10 @@ directory.</p></div></td>
       <td><div class='inline'><p>Alias for <a href="AssetUrlHelper.html#video_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#video_path (method)">AssetUrlHelper#video_path</a>.</p></div></td>
     </tr>
     <tr class='i_ds'>
+      <td><a class='i_m ' href="AssetUrlHelper.html#public_compute_asset_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#public_compute_asset_path (method)">#public_compute_asset_path</a></td>
+      <td><div class='inline'><p>Alias for <a href="AssetUrlHelper.html#compute_asset_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#compute_asset_path (method)">AssetUrlHelper#compute_asset_path</a>.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
       <td><a class='i_m ' href="AssetUrlHelper.html#stylesheet_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#stylesheet_path (method)">#stylesheet_path</a></td>
       <td><div class='inline'><p>Computes the path to a stylesheet asset in the public stylesheets
 directory.</p></div></td>
@@ -458,20 +461,20 @@ or file that exists in your public audios directory.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L302-L304'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L327-L329'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-302
-303
-304</pre>
+327
+328
+329</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 302</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 327</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_audio_tag'>audio_tag</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_sources'>sources</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_multiple_sources_tag'>multiple_sources_tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>audio</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_sources'>sources</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_multiple_sources_tag_builder'>multiple_sources_tag_builder</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>audio</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_sources'>sources</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -518,26 +521,26 @@ RSS or Atom feed. The <code>type</code> can either be <code>:rss</code> (default
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L131-L143'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L149-L161'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143</pre>
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 131</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 149</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auto_discovery_link_tag'>auto_discovery_link_tag</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_rss'>rss</span><span class='comma'>,</span> <span class='id identifier rubyid_url_options'>url_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_tag_options'>tag_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -550,7 +553,7 @@ RSS or Atom feed. The <code>type</code> can either be <code>:rss</code> (default
     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rel</span><span class='tstring_end'>&quot;</span></span>   <span class='op'>=&gt;</span> <span class='id identifier rubyid_tag_options'>tag_options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_rel'>rel</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>alternate</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>type</span><span class='tstring_end'>&quot;</span></span>  <span class='op'>=&gt;</span> <span class='id identifier rubyid_tag_options'>tag_options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><a href="../Template.html" title="ActionView::Template (class)">Template</a></span><span class='op'>::</span><span class='const'><a href="../Template/Types.html" title="ActionView::Template::Types (class)">Types</a></span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>title</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_tag_options'>tag_options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_title'>title</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span><span class='comma'>,</span>
-    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>href</span><span class='tstring_end'>&quot;</span></span>  <span class='op'>=&gt;</span> <span class='id identifier rubyid_url_options'>url_options</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="../../Hash.html" title="Hash (class)">Hash</a></span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_url_for'>url_for</span><span class='lparen'>(</span><span class='id identifier rubyid_url_options'>url_options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_only_path'>only_path</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_url_options'>url_options</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>href</span><span class='tstring_end'>&quot;</span></span>  <span class='op'>=&gt;</span> <span class='id identifier rubyid_url_options'>url_options</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="../../Hash.html" title="Hash (class)">Hash</a></span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_url_for'>url_for</span><span class='lparen'>(</span><span class='id identifier rubyid_url_options'>url_options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>only_path:</span> <span class='kw'>false</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_url_options'>url_options</span>
   <span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
@@ -560,7 +563,7 @@ RSS or Atom feed. The <code>type</code> can either be <code>:rss</code> (default
 
 <section class='method_details' id="favicon_link_tag-instance_method">
   <h3 class='signature '>
-    #<strong>favicon_link_tag</strong>(source = &#39;favicon.ico&#39;, options = {})  
+    #<strong>favicon_link_tag</strong>(source = &quot;favicon.ico&quot;, options = {})  
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -595,27 +598,27 @@ following call would generate such a tag:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L172-L178'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L190-L196'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-172
-173
-174
-175
-176
-177
-178</pre>
+190
+191
+192
+193
+194
+195
+196</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 172</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 190</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_favicon_link_tag'>favicon_link_tag</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>favicon.ico</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_tag'>tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>link</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span>
-    <span class='symbeg'>:</span><span class='id identifier rubyid_rel'>rel</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>shortcut icon</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-    <span class='symbeg'>:</span><span class='id identifier rubyid_type'>type</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>image/x-icon</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-    <span class='symbeg'>:</span><span class='id identifier rubyid_href'>href</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_path_to_image'>path_to_image</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_favicon_link_tag'>favicon_link_tag</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>favicon.ico</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_tag'>tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>link</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span>
+    <span class='label'>rel:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>shortcut icon</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>image/x-icon</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>href:</span> <span class='id identifier rubyid_path_to_image'>path_to_image</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='label'>skip_pipeline:</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_skip_pipeline'>skip_pipeline</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_symbolize_keys'>symbolize_keys</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
@@ -649,20 +652,20 @@ space-separated, titleized string.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L241-L243'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L259-L261'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-241
-242
-243</pre>
+259
+260
+261</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 241</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 259</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_image_alt'>image_alt</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='rparen'>)</span>
-  <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.*</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>-[[:xdigit:]]{32,64}\z</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tr'>tr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-_</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span>
+  <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.*</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>-[[:xdigit:]]{32,64}\z</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tr'>tr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-_</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -712,36 +715,36 @@ correct format.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L210-L222'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L228-L240'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-210
-211
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222</pre>
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 210</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 228</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_image_tag'>image_tag</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_image_tag'>image_tag</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_symbolize_keys'>symbolize_keys</span>
   <span class='id identifier rubyid_check_for_image_tag_errors'>check_for_image_tag_errors</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_src'>src</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_src'>src</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_path_to_image'>path_to_image</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_src'>src</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_src'>src</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_path_to_image'>path_to_image</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='label'>skip_pipeline:</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_skip_pipeline'>skip_pipeline</span><span class='rparen'>)</span><span class='rparen'>)</span>
 
-  <span class='kw'>unless</span> <span class='id identifier rubyid_src'>src</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^(?:cid|data):</span><span class='regexp_end'>/</span></span> <span class='op'>||</span> <span class='id identifier rubyid_src'>src</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_alt'>alt</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_alt'>alt</span><span class='rparen'>)</span><span class='lbrace'>{</span> <span class='id identifier rubyid_image_alt'>image_alt</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_src'>src</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cid:</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_src'>src</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>data:</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_src'>src</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_alt'>alt</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_alt'>alt</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_image_alt'>image_alt</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_width'>width</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_height'>height</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_dimensions'>extract_dimensions</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_size'>size</span><span class='rbracket'>]</span>
@@ -777,18 +780,42 @@ the last argument.</p>
 as source, and include other JavaScript or CoffeeScript files inside the
 manifest.</p>
 
+<h4 id="label-Options">Options</h4>
+
+<p>When the last parameter is a hash you can add HTML attributes using that
+parameter. The following options are supported:</p>
+<ul><li>
+<p><code>:extname</code>  - Append an extension to the generated url unless
+the extension already exists. This only applies for relative urls.</p>
+</li><li>
+<p><code>:protocol</code>  - Sets the protocol of the generated url, this
+option only applies when a relative url and <code>host</code> options are
+provided.</p>
+</li><li>
+<p><code>:host</code>  - When a relative url is provided the host is added to
+the that path.</p>
+</li><li>
+<p><code>:skip_pipeline</code>  - This option is used to bypass the asset
+pipeline when it is set to true.</p>
+</li></ul>
+
+<h4 id="label-Examples">Examples</h4>
+
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_javascript_include_tag'>javascript_include_tag</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>xmlhr</span><span class='tstring_end'>&quot;</span></span>
-<span class='comment'># =&gt; &lt;script src=&quot;/assets/xmlhr.js?1284139606&quot;&gt;&lt;/script&gt;
+<span class='comment'># =&gt; &lt;script src=&quot;/assets/xmlhr.debug-1284139606.js&quot;&gt;&lt;/script&gt;
+</span>
+<span class='id identifier rubyid_javascript_include_tag'>javascript_include_tag</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>xmlhr</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>host:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>localhost</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>protocol:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>https</span><span class='tstring_end'>&quot;</span></span>
+<span class='comment'># =&gt; &lt;script src=&quot;https://localhost/assets/xmlhr.debug-1284139606.js&quot;&gt;&lt;/script&gt;
 </span>
 <span class='id identifier rubyid_javascript_include_tag'>javascript_include_tag</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>template.jst</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>extname:</span> <span class='kw'>false</span>
-<span class='comment'># =&gt; &lt;script src=&quot;/assets/template.jst?1284139606&quot;&gt;&lt;/script&gt;
+<span class='comment'># =&gt; &lt;script src=&quot;/assets/template.debug-1284139606.jst&quot;&gt;&lt;/script&gt;
 </span>
 <span class='id identifier rubyid_javascript_include_tag'>javascript_include_tag</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>xmlhr.js</span><span class='tstring_end'>&quot;</span></span>
-<span class='comment'># =&gt; &lt;script src=&quot;/assets/xmlhr.js?1284139606&quot;&gt;&lt;/script&gt;
+<span class='comment'># =&gt; &lt;script src=&quot;/assets/xmlhr.debug-1284139606.js&quot;&gt;&lt;/script&gt;
 </span>
 <span class='id identifier rubyid_javascript_include_tag'>javascript_include_tag</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>common.javascript</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/elsewhere/cools</span><span class='tstring_end'>&quot;</span></span>
-<span class='comment'># =&gt; &lt;script src=&quot;/assets/common.javascript?1284139606&quot;&gt;&lt;/script&gt;
-</span><span class='comment'>#    &lt;script src=&quot;/elsewhere/cools.js?1423139606&quot;&gt;&lt;/script&gt;
+<span class='comment'># =&gt; &lt;script src=&quot;/assets/common.javascript.debug-1284139606.js&quot;&gt;&lt;/script&gt;
+</span><span class='comment'>#    &lt;script src=&quot;/elsewhere/cools.debug-1284139606.js&quot;&gt;&lt;/script&gt;
 </span>
 <span class='id identifier rubyid_javascript_include_tag'>javascript_include_tag</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://www.example.com/xmlhr</span><span class='tstring_end'>&quot;</span></span>
 <span class='comment'># =&gt; &lt;script src=&quot;http://www.example.com/xmlhr&quot;&gt;&lt;/script&gt;
@@ -798,28 +825,28 @@ manifest.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L56-L65'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L75-L84'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65</pre>
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 56</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 75</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_javascript_include_tag'>javascript_include_tag</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_sources'>sources</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_sources'>sources</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span><span class='period'>.</span><span class='id identifier rubyid_stringify_keys'>stringify_keys</span>
-  <span class='id identifier rubyid_path_options'>path_options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_extract!'>extract!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>protocol</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>extname</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>host</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_symbolize_keys'>symbolize_keys</span>
+  <span class='id identifier rubyid_path_options'>path_options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_extract!'>extract!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>protocol</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>extname</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>host</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>skip_pipeline</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_symbolize_keys'>symbolize_keys</span>
   <span class='id identifier rubyid_sources'>sources</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_source'>source</span><span class='op'>|</span>
     <span class='id identifier rubyid_tag_options'>tag_options</span> <span class='op'>=</span> <span class='lbrace'>{</span>
       <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>src</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_path_to_javascript'>path_to_javascript</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_path_options'>path_options</span><span class='rparen'>)</span>
@@ -867,32 +894,30 @@ for the stylesheet(s) to apply to all media types.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L92-L104'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L111-L122'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104</pre>
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 92</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 111</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stylesheet_link_tag'>stylesheet_link_tag</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_sources'>sources</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_sources'>sources</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span><span class='period'>.</span><span class='id identifier rubyid_stringify_keys'>stringify_keys</span>
-  <span class='id identifier rubyid_path_options'>path_options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_extract!'>extract!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>protocol</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>host</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_symbolize_keys'>symbolize_keys</span>
-
+  <span class='id identifier rubyid_path_options'>path_options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_extract!'>extract!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>protocol</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>host</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>skip_pipeline</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_symbolize_keys'>symbolize_keys</span>
   <span class='id identifier rubyid_sources'>sources</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_source'>source</span><span class='op'>|</span>
     <span class='id identifier rubyid_tag_options'>tag_options</span> <span class='op'>=</span> <span class='lbrace'>{</span>
       <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rel</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>stylesheet</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
@@ -932,6 +957,10 @@ the video loads. The path is calculated like the <code>src</code> of
 “30x45” becomes width=“30” and height=“45”, and “50” becomes width=“50” and
 height=“50”. <code>:size</code> will be ignored if the value is not in the
 correct format.</p>
+</li><li>
+<p><code>:poster_skip_pipeline</code> will bypass the asset pipeline when
+using the <code>:poster</code> option instead using an asset in the public
+folder.</p>
 </li></ul>
 
 <h4 id="label-Examples">Examples</h4>
@@ -940,10 +969,12 @@ correct format.</p>
 <span class='comment'># =&gt; &lt;video src=&quot;/videos/trailer&quot;&gt;&lt;/video&gt;
 </span><span class='id identifier rubyid_video_tag'>video_tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>trailer.ogg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &lt;video src=&quot;/videos/trailer.ogg&quot;&gt;&lt;/video&gt;
-</span><span class='id identifier rubyid_video_tag'>video_tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>trailer.ogg</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>controls:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>autobuffer:</span> <span class='kw'>true</span><span class='rparen'>)</span>
-<span class='comment'># =&gt; &lt;video autobuffer=&quot;autobuffer&quot; controls=&quot;controls&quot; src=&quot;/videos/trailer.ogg&quot; &gt;&lt;/video&gt;
+</span><span class='id identifier rubyid_video_tag'>video_tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>trailer.ogg</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>controls:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>preload:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>none</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &lt;video preload=&quot;none&quot; controls=&quot;controls&quot; src=&quot;/videos/trailer.ogg&quot; &gt;&lt;/video&gt;
 </span><span class='id identifier rubyid_video_tag'>video_tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>trailer.m4v</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>size:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>16x10</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>poster:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>screenshot.png</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &lt;video src=&quot;/videos/trailer.m4v&quot; width=&quot;16&quot; height=&quot;10&quot; poster=&quot;/assets/screenshot.png&quot;&gt;&lt;/video&gt;
+</span><span class='id identifier rubyid_video_tag'>video_tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>trailer.m4v</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>size:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>16x10</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>poster:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>screenshot.png</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>poster_skip_pipeline:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &lt;video src=&quot;/videos/trailer.m4v&quot; width=&quot;16&quot; height=&quot;10&quot; poster=&quot;screenshot.png&quot;&gt;&lt;/video&gt;
 </span><span class='id identifier rubyid_video_tag'>video_tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/trailers/hd.avi</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>size:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>16x16</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &lt;video src=&quot;/trailers/hd.avi&quot; width=&quot;16&quot; height=&quot;16&quot;&gt;&lt;/video&gt;
 </span><span class='id identifier rubyid_video_tag'>video_tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/trailers/hd.avi</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>size:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>16</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -959,25 +990,31 @@ correct format.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L283-L288'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_tag_helper.rb#L305-L313'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-283
-284
-285
-286
-287
-288</pre>
+305
+306
+307
+308
+309
+310
+311
+312
+313</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 283</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_tag_helper.rb', line 305</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_video_tag'>video_tag</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_sources'>sources</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_multiple_sources_tag'>multiple_sources_tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>video</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_sources'>sources</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_options'>options</span><span class='op'>|</span>
-    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_poster'>poster</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_path_to_image'>path_to_image</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_poster'>poster</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_poster'>poster</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_width'>width</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_height'>height</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_dimensions'>extract_dimensions</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_size'>size</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_sources'>sources</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span><span class='period'>.</span><span class='id identifier rubyid_symbolize_keys'>symbolize_keys</span>
+  <span class='id identifier rubyid_public_poster_folder'>public_poster_folder</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_poster_skip_pipeline'>poster_skip_pipeline</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_sources'>sources</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='id identifier rubyid_multiple_sources_tag_builder'>multiple_sources_tag_builder</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>video</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_sources'>sources</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_tag_options'>tag_options</span><span class='op'>|</span>
+    <span class='id identifier rubyid_tag_options'>tag_options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_poster'>poster</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_path_to_image'>path_to_image</span><span class='lparen'>(</span><span class='id identifier rubyid_tag_options'>tag_options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_poster'>poster</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>skip_pipeline:</span> <span class='id identifier rubyid_public_poster_folder'>public_poster_folder</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_tag_options'>tag_options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_poster'>poster</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_tag_options'>tag_options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_width'>width</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_tag_options'>tag_options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_height'>height</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_dimensions'>extract_dimensions</span><span class='lparen'>(</span><span class='id identifier rubyid_tag_options'>tag_options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_tag_options'>tag_options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_size'>size</span><span class='rbracket'>]</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>

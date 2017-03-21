@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: API App &mdash; Rails-5-0-stable</title>
+<title>File: API App &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: API App&nbsp;&#x25B2;</a></span>
             </div>
@@ -269,6 +269,7 @@ to configure the format used in responses when errors occur in development mode.
 <li><a href="ActionDispatch/RemoteIp.html" title="ActionDispatch::RemoteIp (class)">::ActionDispatch::RemoteIp</a></li>
 <li><a href="ActionDispatch/Reloader.html" title="ActionDispatch::Reloader (class)">::ActionDispatch::Reloader</a></li>
 <li><a href="ActionDispatch/Callbacks.html" title="ActionDispatch::Callbacks (class)">::ActionDispatch::Callbacks</a></li>
+<li><a href="ActiveRecord/Migration/CheckPending.html" title="ActiveRecord::Migration::CheckPending (class)">::ActiveRecord::Migration::CheckPending</a></li>
 <li><code>Rack::Head</code></li>
 <li><code>Rack::ConditionalGet</code></li>
 <li><code>Rack::ETag</code></li>
@@ -342,7 +343,7 @@ environment&#39;s configuration file.</p>
 front-ends in <a href="http://rubydoc.info/github/rack/rack/master/Rack/Sendfile">the Rack::Sendfile
 documentation</a>.</p>
 
-<p>Here are some values for popular servers, once they are configured, to support
+<p>Here are some values for this header for some popular servers, once these servers are configured to support
 accelerated file sending:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='comment'># Apache and lighttpd
@@ -388,7 +389,7 @@ API application, especially if one of your API clients is the browser:</p>
 <li><code>Rack::MethodOverride</code></li>
 <li><a href="ActionDispatch/Cookies.html" title="ActionDispatch::Cookies (class)">::ActionDispatch::Cookies</a></li>
 <li><a href="ActionDispatch/Flash.html" title="ActionDispatch::Flash (class)">::ActionDispatch::Flash</a></li>
-<li>For sessions management
+<li>For session management
 
 <ul>
 <li><a href="ActionDispatch/Session/CacheStore.html" title="ActionDispatch::Session::CacheStore (class)">::ActionDispatch::Session::CacheStore</a></li>
@@ -422,10 +423,8 @@ controller modules by default:</p>
 <li><a href="AbstractController/Rendering.html" title="AbstractController::Rendering (module)">::AbstractController::Rendering</a> and <a href="ActionController/ApiRendering.html" title="ActionController::ApiRendering (module)">::ActionController::ApiRendering</a>: Basic support for rendering.</li>
 <li><a href="ActionController/Renderers/All.html" title="ActionController::Renderers::All (module)">::ActionController::Renderers::All</a>: Support for <code>render :json</code> and friends.</li>
 <li><a href="ActionController/ConditionalGet.html" title="ActionController::ConditionalGet (module)">::ActionController::ConditionalGet</a>: Support for <code>stale?</code>.</li>
-<li><a href="ActionController/BasicImplicitRender.html" title="ActionController::BasicImplicitRender (module)">::ActionController::BasicImplicitRender</a>: Makes sure to return an empty response
-if there&#39;s not an explicit one.</li>
-<li><a href="ActionController/StrongParameters.html" title="ActionController::StrongParameters (module)">::ActionController::StrongParameters</a>: Support for parameters white-listing in
-combination with Active Model mass assignment.</li>
+<li><a href="ActionController/BasicImplicitRender.html" title="ActionController::BasicImplicitRender (module)">::ActionController::BasicImplicitRender</a>: Makes sure to return an empty response, if there isn&#39;t an explicit one.</li>
+<li><a href="ActionController/StrongParameters.html" title="ActionController::StrongParameters (module)">::ActionController::StrongParameters</a>: Support for parameters white-listing in combination with Active Model mass assignment.</li>
 <li><a href="ActionController/ForceSSL.html" title="ActionController::ForceSSL (module)">::ActionController::ForceSSL</a>: Support for <code>force_ssl</code>.</li>
 <li><a href="ActionController/DataStreaming.html" title="ActionController::DataStreaming (module)">::ActionController::DataStreaming</a>: Support for <code>send_file</code> and <code>send_data</code>.</li>
 <li><a href="AbstractController/Callbacks.html" title="AbstractController::Callbacks (module)">::AbstractController::Callbacks</a>: Support for <code>before_action</code> and
@@ -435,8 +434,8 @@ similar helpers.</li>
 hooks defined by Action Controller (see <a href="active_support_instrumentation.html#action-controller">the instrumentation
 guide</a> for
 more information regarding this).</li>
-<li><a href="ActionController/ParamsWrapper.html" title="ActionController::ParamsWrapper (module)">::ActionController::ParamsWrapper</a>: Wraps the parameters hash into a nested hash
-so you don&#39;t have to specify root elements sending POST requests for instance.</li>
+<li><a href="ActionController/ParamsWrapper.html" title="ActionController::ParamsWrapper (module)">::ActionController::ParamsWrapper</a>: Wraps the parameters hash into a nested hash, 
+so that you don&#39;t have to specify root elements sending POST requests for instance.</li>
 </ul>
 
 <p>Other plugins may add additional modules. You can get a list of all modules
@@ -444,6 +443,13 @@ included into <a href="ActionController/API.html" title="ActionController::API (
 
 <pre class="code bash"><code class="bash">$ bin/rails c
 &gt;&gt; ActionController::API.ancestors - ActionController::Metal.ancestors
+=&gt; [ActionController::API, 
+    ActiveRecord::Railties::ControllerRuntime, 
+    ActionDispatch::Routing::RouteSet::MountedHelpers, 
+    ActionController::ParamsWrapper, 
+    ... , 
+    AbstractController::Rendering, 
+    ActionView::ViewPaths]
 </code></pre>
 
 <h3>Adding Other Modules</h3>

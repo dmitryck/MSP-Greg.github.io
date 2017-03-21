@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveModel::Name &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveModel::Name &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_N'>Index (N)</a> &raquo; 
         <a href="../ActiveModel.html" title="ActiveModel (module)">ActiveModel</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Name&nbsp;&#x25B2;</a></span>
@@ -89,7 +89,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L7'>activemodel/lib/active_model/naming.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L6'>activemodel/lib/active_model/naming.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -295,11 +295,12 @@ respectively.</p>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L147-L165'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L146-L164'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+146
 147
 148
 149
@@ -317,10 +318,9 @@ respectively.</p>
 161
 162
 163
-164
-165</pre>
+164</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 147</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 146</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_namespace'>namespace</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -328,7 +328,7 @@ respectively.</p>
 
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Class name cannot be blank. You need to supply a name argument when anonymous class given</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
 
-  <span class='ivar'>@unnamespaced</span> <span class='op'>=</span> <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_namespace'>namespace</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>::</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_namespace'>namespace</span>
+  <span class='ivar'>@unnamespaced</span> <span class='op'>=</span> <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_namespace'>namespace</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>::</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_namespace'>namespace</span>
   <span class='ivar'>@klass</span>        <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span>
   <span class='ivar'>@singular</span>     <span class='op'>=</span> <span class='id identifier rubyid__singularize'>_singularize</span><span class='lparen'>(</span><span class='ivar'>@name</span><span class='rparen'>)</span>
   <span class='ivar'>@plural</span>       <span class='op'>=</span> <span class='const'><a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../ActiveSupport/Inflector.html" title="ActiveSupport::Inflector (module)">Inflector</a></span><span class='period'>.</span><span class='id identifier rubyid_pluralize'><a href="../ActiveSupport/Inflector.html#pluralize-instance_method" title="ActiveSupport::Inflector#pluralize (method)">pluralize</a></span><span class='lparen'>(</span><span class='ivar'>@singular</span><span class='rparen'>)</span>
@@ -359,14 +359,14 @@ respectively.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L14-L14'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L13-L13'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-14</pre>
+13</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 14</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 13</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_cache_key'>cache_key</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_collection'>collection</span>
@@ -380,16 +380,16 @@ respectively.</p>
     #<strong>collection</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
     <span class='aliases'>Also known as: <span class='names'>#cache_key</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L10-L12'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L9-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+9
 10
-11
-12</pre>
+11</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 10</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 9</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_singular'>singular</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_plural'>plural</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span>
@@ -404,16 +404,16 @@ respectively.</p>
   <h3 class='signature ro'>
     #<strong>element</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L10-L12'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L9-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+9
 10
-11
-12</pre>
+11</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 10</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 9</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_singular'>singular</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_plural'>plural</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span>
@@ -428,16 +428,16 @@ respectively.</p>
   <h3 class='signature ro'>
     #<strong>i18n_key</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L10-L12'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L9-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+9
 10
-11
-12</pre>
+11</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 10</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 9</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_singular'>singular</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_plural'>plural</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span>
@@ -452,16 +452,16 @@ respectively.</p>
   <h3 class='signature ro'>
     #<strong>name</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L10-L12'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L9-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+9
 10
-11
-12</pre>
+11</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 10</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 9</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_singular'>singular</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_plural'>plural</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span>
@@ -476,16 +476,16 @@ respectively.</p>
   <h3 class='signature ro'>
     #<strong>param_key</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L10-L12'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L9-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+9
 10
-11
-12</pre>
+11</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 10</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 9</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_singular'>singular</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_plural'>plural</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span>
@@ -500,16 +500,16 @@ respectively.</p>
   <h3 class='signature ro'>
     #<strong>plural</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L10-L12'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L9-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+9
 10
-11
-12</pre>
+11</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 10</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 9</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_singular'>singular</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_plural'>plural</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span>
@@ -524,16 +524,16 @@ respectively.</p>
   <h3 class='signature ro'>
     #<strong>route_key</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L10-L12'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L9-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+9
 10
-11
-12</pre>
+11</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 10</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 9</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_singular'>singular</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_plural'>plural</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span>
@@ -548,16 +548,16 @@ respectively.</p>
   <h3 class='signature ro'>
     #<strong>singular</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L10-L12'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L9-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+9
 10
-11
-12</pre>
+11</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 10</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 9</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_singular'>singular</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_plural'>plural</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span>
@@ -572,16 +572,16 @@ respectively.</p>
   <h3 class='signature ro'>
     #<strong>singular_route_key</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L10-L12'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L9-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+9
 10
-11
-12</pre>
+11</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 10</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 9</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_singular'>singular</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_plural'>plural</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_collection'>collection</span><span class='comma'>,</span>
@@ -611,14 +611,14 @@ Returns <code>true</code> if there is no match, otherwise <code>false</code>.</p
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L81-L81'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L80-L80'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-81</pre>
+80</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 81</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 80</span></pre>
 <pre class='code ruby'>
 
 rdoc_method :method: !~
@@ -645,15 +645,15 @@ rdoc_method :method: !~
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L133-L134'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L132-L133'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-133
-134</pre>
+132
+133</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 133</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 132</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='op'>==</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>===</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>&lt;=&gt;</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>=~</span><span class='comma'>,</span> <span class='symbeg'>:&quot;</span><span class='tstring_content'>!~</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_eql?'>eql?</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
@@ -681,15 +681,15 @@ equal, otherwise <code>false</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L133-L134'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L132-L133'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-133
-134</pre>
+132
+133</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 133</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 132</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='op'>==</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>===</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>&lt;=&gt;</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>=~</span><span class='comma'>,</span> <span class='symbeg'>:&quot;</span><span class='tstring_content'>!~</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_eql?'>eql?</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
@@ -716,15 +716,15 @@ equal, otherwise <code>false</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L133-L134'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L132-L133'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-133
-134</pre>
+132
+133</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 133</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 132</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='op'>==</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>===</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>&lt;=&gt;</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>=~</span><span class='comma'>,</span> <span class='symbeg'>:&quot;</span><span class='tstring_content'>!~</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_eql?'>eql?</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
@@ -752,15 +752,15 @@ Returns the position where the match starts or <code>nil</code> if there is no m
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L133-L134'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L132-L133'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-133
-134</pre>
+132
+133</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 133</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 132</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='op'>==</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>===</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>&lt;=&gt;</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>=~</span><span class='comma'>,</span> <span class='symbeg'>:&quot;</span><span class='tstring_content'>!~</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_eql?'>eql?</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
@@ -774,15 +774,15 @@ Returns the position where the match starts or <code>nil</code> if there is no m
   <h3 class='signature '>
     #<strong>as_json</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L133-L134'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L132-L133'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-133
-134</pre>
+132
+133</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 133</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 132</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='op'>==</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>===</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>&lt;=&gt;</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>=~</span><span class='comma'>,</span> <span class='symbeg'>:&quot;</span><span class='tstring_content'>!~</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_eql?'>eql?</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
@@ -812,15 +812,15 @@ have the same length and content, otherwise <code>false</code>.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L133-L134'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L132-L133'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-133
-134</pre>
+132
+133</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 133</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 132</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='op'>==</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>===</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>&lt;=&gt;</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>=~</span><span class='comma'>,</span> <span class='symbeg'>:&quot;</span><span class='tstring_content'>!~</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_eql?'>eql?</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
@@ -850,11 +850,12 @@ default, it will underscore then humanize the class name.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L177-L190'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L176-L189'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+176
 177
 178
 179
@@ -867,13 +868,12 @@ default, it will underscore then humanize the class name.</p>
 186
 187
 188
-189
-190</pre>
+189</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 177</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 176</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_human'>human</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_human'>human</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='ivar'>@human</span> <span class='kw'>unless</span> <span class='ivar'>@klass</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_lookup_ancestors'>lookup_ancestors</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
                        <span class='ivar'>@klass</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_i18n_scope'>i18n_scope</span><span class='rparen'>)</span>
 
@@ -908,15 +908,15 @@ default, it will underscore then humanize the class name.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L133-L134'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L132-L133'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-133
-134</pre>
+132
+133</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 133</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 132</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='op'>==</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>===</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>&lt;=&gt;</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>=~</span><span class='comma'>,</span> <span class='symbeg'>:&quot;</span><span class='tstring_content'>!~</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_eql?'>eql?</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
@@ -936,15 +936,15 @@ default, it will underscore then humanize the class name.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/naming.rb#L133-L134'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/naming.rb#L132-L133'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-133
-134</pre>
+132
+133</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 133</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/naming.rb', line 132</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='op'>==</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>===</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>&lt;=&gt;</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='op'>=~</span><span class='comma'>,</span> <span class='symbeg'>:&quot;</span><span class='tstring_content'>!~</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_eql?'>eql?</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>

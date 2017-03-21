@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Tasks::DatabaseTasks &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Tasks::DatabaseTasks &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_D'>Index (D)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../Tasks.html" title="ActiveRecord::Tasks (module)">Tasks</a> &raquo; 
@@ -74,7 +74,7 @@
   <tbody>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L37'>activerecord/lib/active_record/tasks/database_tasks.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L35'>activerecord/lib/active_record/tasks/database_tasks.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -133,7 +133,33 @@ such:</p>
   <li>
     <span id='LOCAL_HOSTS-constant' class='summary_signature'>LOCAL_HOSTS =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L43-L43'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 43</a>    <pre class='code ruby'><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>localhost</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L51-L51'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 51</a>    <pre class='code ruby'><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>localhost</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span></pre>
+  </li>
+</ul>
+</div>
+        
+
+<h2 class='h2_sum' id='class_Attribute_summary'>Class Attribute Summary</h2>
+<div class='div_sum'>
+<ul class='summary full'>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#structure_dump_flags-class_method" title=".structure_dump_flags (class method)">.<strong>structure_dump_flags</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Extra flags passed to database CLI tool (mysqldump/pg_dump) when calling
+db:structure:dump.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#structure_load_flags-class_method" title=".structure_load_flags (class method)">.<strong>structure_load_flags</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Extra flags passed to database CLI tool when calling db:structure:load.</p></div>
+    </div>
   </li>
 </ul>
 </div>
@@ -301,12 +327,15 @@ such:</p>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#load_schema_current-instance_method" title="#load_schema_current (instance method)">#<strong>load_schema_current</strong>(format = ActiveRecord::Base.schema_format, file = nil, environment = env)  </a>
+      <a href="#dump_schema_cache-instance_method" title="#dump_schema_cache (instance method)">#<strong>dump_schema_cache</strong>(conn, filename)  </a>
     </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Dumps the schema cache in YAML format for the connection into the file.</p></div>
+    </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#load_schema_for-instance_method" title="#load_schema_for (instance method)">#<strong>load_schema_for</strong>(*args)  </a>
+      <a href="#load_schema_current-instance_method" title="#load_schema_current (instance method)">#<strong>load_schema_current</strong>(format = ActiveRecord::Base.schema_format, file = nil, environment = env)  </a>
     </span>
   </li>
   <li>
@@ -356,30 +385,86 @@ such:</p>
   </li>
 </ul>
 </div>
+<h2 class='y_details'>Class Attribute Details</h2>
+<section class='method_details first' id="structure_dump_flags-class_method">
+  <h3 class='signature rw first'>
+    .<strong>structure_dump_flags</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Extra flags passed to database CLI tool (mysqldump/pg_dump) when calling
+db:structure:dump</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L39-L39'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+39</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 39</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_mattr_accessor'>mattr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_structure_dump_flags'>structure_dump_flags</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="structure_load_flags-class_method">
+  <h3 class='signature rw'>
+    .<strong>structure_load_flags</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Extra flags passed to database CLI tool when calling db:structure:load</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L44-L44'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+44</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 44</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_mattr_accessor'>mattr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_structure_load_flags'>structure_load_flags</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
+</pre>
+  </div>
+</div>
+</section>
+
 <h2 class='y_details'>Instance Attribute Details</h2>
 <section class='method_details first' id="current_config-instance_method">
   <h3 class='signature rw first'>
     #<strong>current_config</strong>(options = {})   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L98-L105'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L106-L113'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-98
-99
-100
-101
-102
-103
-104
-105</pre>
+106
+107
+108
+109
+110
+111
+112
+113</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 98</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 106</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_current_config'>current_config</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_reverse_merge!'>reverse_merge!</span> <span class='symbeg'>:</span><span class='id identifier rubyid_env'>env</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_env'>env</span>
+  <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_reverse_merge!'>reverse_merge!</span> <span class='label'>env:</span> <span class='id identifier rubyid_env'>env</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_config'>config</span><span class='rparen'>)</span>
     <span class='ivar'>@current_config</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_config'>config</span><span class='rbracket'>]</span>
   <span class='kw'>else</span>
@@ -395,14 +480,14 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>current_config=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L40-L40'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L48-L48'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-40</pre>
+48</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 40</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 48</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_writer'>attr_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_current_config'>current_config</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_db_dir'>db_dir</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_migrations_paths'>migrations_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_fixtures_path'>fixtures_path</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_seed_loader'>seed_loader</span>
@@ -415,14 +500,14 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>database_configuration</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L41-L41'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L49-L49'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-41</pre>
+49</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 41</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 49</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_database_configuration'>database_configuration</span>
@@ -435,16 +520,16 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>db_dir</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L70-L72'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L78-L80'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-70
-71
-72</pre>
+78
+79
+80</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 70</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 78</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_db_dir'>db_dir</span>
@@ -459,14 +544,14 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>db_dir=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L40-L40'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L48-L48'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-40</pre>
+48</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 40</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 48</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_writer'>attr_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_current_config'>current_config</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_db_dir'>db_dir</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_migrations_paths'>migrations_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_fixtures_path'>fixtures_path</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_seed_loader'>seed_loader</span>
@@ -479,16 +564,16 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>env</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L90-L92'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L98-L100'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-90
-91
-92</pre>
+98
+99
+100</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 90</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 98</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_env'>env</span>
@@ -503,14 +588,14 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>env=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L40-L40'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L48-L48'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-40</pre>
+48</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 40</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 48</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_writer'>attr_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_current_config'>current_config</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_db_dir'>db_dir</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_migrations_paths'>migrations_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_fixtures_path'>fixtures_path</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_seed_loader'>seed_loader</span>
@@ -523,28 +608,28 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>fixtures_path</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L78-L84'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L86-L92'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-78
-79
-80
-81
-82
-83
-84</pre>
+86
+87
+88
+89
+90
+91
+92</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 78</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 86</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_fixtures_path'>fixtures_path</span>
-  <span class='ivar'>@fixtures_path</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>FIXTURES_PATH</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-                       <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='comma'>,</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>FIXTURES_PATH</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
-                     <span class='kw'>else</span>
-                       <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>test</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fixtures</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-                     <span class='kw'>end</span>
+  <span class='ivar'>@fixtures_path</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FIXTURES_PATH</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+    <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='comma'>,</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FIXTURES_PATH</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fixtures</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -555,14 +640,14 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>fixtures_path=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L40-L40'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L48-L48'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-40</pre>
+48</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 40</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 48</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_writer'>attr_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_current_config'>current_config</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_db_dir'>db_dir</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_migrations_paths'>migrations_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_fixtures_path'>fixtures_path</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_seed_loader'>seed_loader</span>
@@ -575,20 +660,20 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>migrations_paths</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L74-L76'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L82-L84'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-74
-75
-76</pre>
+82
+83
+84</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 74</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 82</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_migrations_paths'>migrations_paths</span>
-  <span class='ivar'>@migrations_paths</span> <span class='op'>||=</span> <span class='const'><a href="../../Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_application'><a href="../../Rails.html#application-class_method" title="Rails.application (method)">application</a></span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>db/migrate</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>
+  <span class='ivar'>@migrations_paths</span> <span class='op'>||=</span> <span class='const'><a href="../../Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_application'><a href="../../Rails.html#application-class_method" title="Rails.application (method)">application</a></span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>db/migrate</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -599,14 +684,14 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>migrations_paths=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L40-L40'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L48-L48'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-40</pre>
+48</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 40</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 48</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_writer'>attr_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_current_config'>current_config</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_db_dir'>db_dir</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_migrations_paths'>migrations_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_fixtures_path'>fixtures_path</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_seed_loader'>seed_loader</span>
@@ -619,16 +704,16 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>root</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L86-L88'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L94-L96'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-86
-87
-88</pre>
+94
+95
+96</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 86</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 94</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span>
@@ -643,14 +728,14 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>root=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L40-L40'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L48-L48'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-40</pre>
+48</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 40</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 48</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_writer'>attr_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_current_config'>current_config</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_db_dir'>db_dir</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_migrations_paths'>migrations_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_fixtures_path'>fixtures_path</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_seed_loader'>seed_loader</span>
@@ -663,16 +748,16 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>seed_loader</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L94-L96'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L102-L104'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-94
-95
-96</pre>
+102
+103
+104</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 94</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 102</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_seed_loader'>seed_loader</span>
@@ -687,14 +772,14 @@ such:</p>
   <h3 class='signature rw'>
     #<strong>seed_loader=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L40-L40'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L48-L48'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-40</pre>
+48</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 40</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 48</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_writer'>attr_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_current_config'>current_config</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_db_dir'>db_dir</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_migrations_paths'>migrations_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_fixtures_path'>fixtures_path</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_seed_loader'>seed_loader</span>
@@ -708,22 +793,22 @@ such:</p>
   <h3 class='signature  first'>
     #<strong>charset</strong>(*arguments)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L173-L176'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L181-L184'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-173
-174
-175
-176</pre>
+181
+182
+183
+184</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 173</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 181</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_charset'>charset</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configuration'>configuration</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_charset'>charset</span>
+  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_charset'>charset</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -734,16 +819,16 @@ such:</p>
   <h3 class='signature '>
     #<strong>charset_current</strong>(environment = env)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L169-L171'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L177-L179'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-169
-170
-171</pre>
+177
+178
+179</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 169</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 177</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_charset_current'>charset_current</span><span class='lparen'>(</span><span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
@@ -758,32 +843,32 @@ such:</p>
   <h3 class='signature '>
     #<strong>check_protected_environments!</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L45-L59'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L53-L67'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-45
-46
-47
-48
-49
-50
-51
-52
 53
 54
 55
 56
 57
 58
-59</pre>
+59
+60
+61
+62
+63
+64
+65
+66
+67</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 45</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 53</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_protected_environments!'>check_protected_environments!</span>
-  <span class='kw'>unless</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DISABLE_DATABASE_ENVIRONMENT_CHECK</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='kw'>unless</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DISABLE_DATABASE_ENVIRONMENT_CHECK</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_current'>current</span> <span class='op'>=</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Migrator.html" title="ActiveRecord::Migrator (class)">Migrator</a></span><span class='period'>.</span><span class='id identifier rubyid_current_environment'>current_environment</span>
     <span class='id identifier rubyid_stored'>stored</span>  <span class='op'>=</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Migrator.html" title="ActiveRecord::Migrator (class)">Migrator</a></span><span class='period'>.</span><span class='id identifier rubyid_last_stored_environment'>last_stored_environment</span>
 
@@ -806,7 +891,7 @@ such:</p>
   <h3 class='signature '>
     #<strong>check_schema_file</strong>(filename)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L258-L264'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L258-L264'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -838,22 +923,22 @@ such:</p>
   <h3 class='signature '>
     #<strong>collation</strong>(*arguments)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L182-L185'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L190-L193'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-182
-183
-184
-185</pre>
+190
+191
+192
+193</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 182</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 190</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_collation'>collation</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configuration'>configuration</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_collation'>collation</span>
+  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_collation'>collation</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -864,16 +949,16 @@ such:</p>
   <h3 class='signature '>
     #<strong>collation_current</strong>(environment = env)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L178-L180'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L186-L188'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-178
-179
-180</pre>
+186
+187
+188</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 178</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 186</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_collation_current'>collation_current</span><span class='lparen'>(</span><span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
@@ -888,29 +973,29 @@ such:</p>
   <h3 class='signature '>
     #<strong>create</strong>(*arguments)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L107-L117'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L115-L125'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-107
-108
-109
-110
-111
-112
-113
-114
 115
 116
-117</pre>
+117
+118
+119
+120
+121
+122
+123
+124
+125</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 107</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 115</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configuration'>configuration</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span>
+  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span>
   <span class='gvar'>$stdout</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Created database &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>database</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>rescue</span> <span class='const'><a href="DatabaseAlreadyExists.html" title="ActiveRecord::Tasks::DatabaseAlreadyExists (class)">DatabaseAlreadyExists</a></span>
   <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Database &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>database</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39; already exists</span><span class='tstring_end'>&quot;</span></span>
@@ -928,27 +1013,27 @@ such:</p>
   <h3 class='signature '>
     #<strong>create_all</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L119-L125'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L127-L133'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-119
-120
-121
-122
-123
-124
-125</pre>
+127
+128
+129
+130
+131
+132
+133</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 119</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 127</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_all'>create_all</span>
   <span class='id identifier rubyid_old_pool'>old_pool</span> <span class='op'>=</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Base.html" title="ActiveRecord::Base (class)">Base</a></span><span class='period'>.</span><span class='id identifier rubyid_connection_handler'><a href="../Base.html#connection_handler-class_method" title="ActiveRecord::Base.connection_handler (method)">connection_handler</a></span><span class='period'>.</span><span class='id identifier rubyid_retrieve_connection_pool'>retrieve_connection_pool</span><span class='lparen'>(</span><span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Base.html" title="ActiveRecord::Base (class)">Base</a></span><span class='period'>.</span><span class='id identifier rubyid_connection_specification_name'><a href="../ConnectionHandling.html#connection_specification_name-instance_method" title="ActiveRecord::ConnectionHandling#connection_specification_name (method)">connection_specification_name</a></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_each_local_configuration'>each_local_configuration</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_configuration'>configuration</span><span class='op'>|</span> <span class='id identifier rubyid_create'>create</span> <span class='id identifier rubyid_configuration'>configuration</span> <span class='rbrace'>}</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_old_pool'>old_pool</span>
-    <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Base.html" title="ActiveRecord::Base (class)">Base</a></span><span class='period'>.</span><span class='id identifier rubyid_connection_handler'><a href="../Base.html#connection_handler-class_method" title="ActiveRecord::Base.connection_handler (method)">connection_handler</a></span><span class='period'>.</span><span class='id identifier rubyid_establish_connection'>establish_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_old_pool'>old_pool</span><span class='period'>.</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
+    <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Base.html" title="ActiveRecord::Base (class)">Base</a></span><span class='period'>.</span><span class='id identifier rubyid_connection_handler'><a href="../Base.html#connection_handler-class_method" title="ActiveRecord::Base.connection_handler (method)">connection_handler</a></span><span class='period'>.</span><span class='id identifier rubyid_establish_connection'>establish_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_old_pool'>old_pool</span><span class='period'>.</span><span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_to_hash'>to_hash</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
@@ -960,19 +1045,19 @@ such:</p>
   <h3 class='signature '>
     #<strong>create_current</strong>(environment = env)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L127-L132'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L135-L140'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-127
-128
-129
-130
-131
-132</pre>
+135
+136
+137
+138
+139
+140</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 127</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 135</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_current'>create_current</span><span class='lparen'>(</span><span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
@@ -990,29 +1075,29 @@ such:</p>
   <h3 class='signature '>
     #<strong>drop</strong>(*arguments)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L134-L144'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L142-L152'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-134
-135
-136
-137
-138
-139
-140
-141
 142
 143
-144</pre>
+144
+145
+146
+147
+148
+149
+150
+151
+152</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 134</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 142</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_drop'>drop</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configuration'>configuration</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_drop'>drop</span>
+  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_drop'>drop</span>
   <span class='gvar'>$stdout</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Dropped database &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>database</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>rescue</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../NoDatabaseError.html" title="ActiveRecord::NoDatabaseError (class)">NoDatabaseError</a></span>
   <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Database &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>database</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39; does not exist</span><span class='tstring_end'>&quot;</span></span>
@@ -1030,16 +1115,16 @@ such:</p>
   <h3 class='signature '>
     #<strong>drop_all</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L146-L148'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L154-L156'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-146
-147
-148</pre>
+154
+155
+156</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 146</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 154</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_drop_all'>drop_all</span>
@@ -1054,18 +1139,18 @@ such:</p>
   <h3 class='signature '>
     #<strong>drop_current</strong>(environment = env)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L150-L154'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L158-L162'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-150
-151
-152
-153
-154</pre>
+158
+159
+160
+161
+162</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 150</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 158</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_drop_current'>drop_current</span><span class='lparen'>(</span><span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
@@ -1078,11 +1163,50 @@ such:</p>
 </div>
 </section>
 
+<section class='method_details' id="dump_schema_cache-instance_method">
+  <h3 class='signature '>
+    #<strong>dump_schema_cache</strong>(conn, filename)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Dumps the schema cache in YAML format for the connection into the file</p>
+
+<h4 id="label-Examples-3A">Examples:</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Tasks.html" title="ActiveRecord::Tasks (module)">Tasks</a></span><span class='op'>::</span><span class='const'>DatabaseTasks</span><span class='period'>.</span><span class='id identifier rubyid_dump_schema_cache'>dump_schema_cache</span><span class='lparen'>(</span><span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Base.html" title="ActiveRecord::Base (class)">Base</a></span><span class='period'>.</span><span class='id identifier rubyid_connection'><a href="../ConnectionHandling.html#connection-instance_method" title="ActiveRecord::ConnectionHandling#connection (method)">connection</a></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tmp/schema_dump.yaml</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L280-L284'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+280
+281
+282
+283
+284</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 280</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dump_schema_cache'>dump_schema_cache</span><span class='lparen'>(</span><span class='id identifier rubyid_conn'>conn</span><span class='comma'>,</span> <span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_conn'>conn</span><span class='period'>.</span><span class='id identifier rubyid_schema_cache'>schema_cache</span><span class='period'>.</span><span class='id identifier rubyid_clear!'>clear!</span>
+  <span class='id identifier rubyid_conn'>conn</span><span class='period'>.</span><span class='id identifier rubyid_data_sources'>data_sources</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_table'>table</span><span class='op'>|</span> <span class='id identifier rubyid_conn'>conn</span><span class='period'>.</span><span class='id identifier rubyid_schema_cache'>schema_cache</span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>wb</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span> <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_conn'>conn</span><span class='period'>.</span><span class='id identifier rubyid_schema_cache'>schema_cache</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
 <section class='method_details' id="load_schema_current-instance_method">
   <h3 class='signature '>
     #<strong>load_schema_current</strong>(format = ActiveRecord::Base.schema_format, file = nil, environment = env)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L251-L256'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L251-L256'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1108,43 +1232,11 @@ such:</p>
 </div>
 </section>
 
-<section class='method_details' id="load_schema_for-instance_method">
-  <h3 class='signature '>
-    #<strong>load_schema_for</strong>(*args)  
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L234-L240'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-234
-235
-236
-237
-238
-239
-240</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 234</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_load_schema_for'>load_schema_for</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='const'><a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../../ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='period'>.</span><span class='id identifier rubyid_warn'><a href="../../ActiveSupport/Deprecation/Reporting.html#warn-instance_method" title="ActiveSupport::Deprecation::Reporting#warn (method)">warn</a></span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-MSG</span><span class='period'>.</span><span class='id identifier rubyid_squish'>squish</span><span class='rparen'>)</span>
-<span class='tstring_content'>    This method was renamed to `#load_schema` and will be removed in the future.
-    Use `#load_schema` instead.
-</span><span class='heredoc_end'>  MSG
-</span>  <span class='id identifier rubyid_load_schema'>load_schema</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
 <section class='method_details' id="load_seed-instance_method">
   <h3 class='signature '>
     #<strong>load_seed</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L266-L274'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L266-L274'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1166,8 +1258,8 @@ such:</p>
   <span class='kw'>if</span> <span class='id identifier rubyid_seed_loader'>seed_loader</span>
     <span class='id identifier rubyid_seed_loader'>seed_loader</span><span class='period'>.</span><span class='id identifier rubyid_load_seed'>load_seed</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You tried to load seed data, but no seed loader is specified. Please specify seed </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
-          <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>loader with ActiveRecord::Tasks::DatabaseTasks.seed_loader = your_seed_loader\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You tried to load seed data, but no seed loader is specified. Please specify seed </span><span class='tstring_end'>&quot;</span></span> \
+          <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>loader with ActiveRecord::Tasks::DatabaseTasks.seed_loader = your_seed_loader\n</span><span class='tstring_end'>&quot;</span></span> \
           <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Seed loader should respond to load_seed method</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
@@ -1180,31 +1272,31 @@ such:</p>
   <h3 class='signature '>
     #<strong>migrate</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L156-L167'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L164-L175'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-156
-157
-158
-159
-160
-161
-162
-163
 164
 165
 166
-167</pre>
+167
+168
+169
+170
+171
+172
+173
+174
+175</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 156</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 164</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_migrate'>migrate</span>
   <span class='id identifier rubyid_verbose'>verbose</span> <span class='op'>=</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VERBOSE</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>?</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VERBOSE</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>true</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='kw'>true</span>
   <span class='id identifier rubyid_version'>version</span> <span class='op'>=</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VERSION</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>?</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VERSION</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>:</span> <span class='kw'>nil</span>
-  <span class='id identifier rubyid_scope'>scope</span>   <span class='op'>=</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SCOPE</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_scope'>scope</span>   <span class='op'>=</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCOPE</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_verbose_was'>verbose_was</span><span class='comma'>,</span> <span class='const'><a href="../Migration.html" title="ActiveRecord::Migration (class)">Migration</a></span><span class='period'>.</span><span class='id identifier rubyid_verbose'><a href="../Migration.html#verbose-class_method" title="ActiveRecord::Migration.verbose (method)">verbose</a></span> <span class='op'>=</span> <span class='const'><a href="../Migration.html" title="ActiveRecord::Migration (class)">Migration</a></span><span class='period'>.</span><span class='id identifier rubyid_verbose'><a href="../Migration.html#verbose-class_method" title="ActiveRecord::Migration.verbose (method)">verbose</a></span><span class='comma'>,</span> <span class='id identifier rubyid_verbose'>verbose</span>
   <span class='const'><a href="../Migrator.html" title="ActiveRecord::Migrator (class)">Migrator</a></span><span class='period'>.</span><span class='id identifier rubyid_migrate'><a href="../Migrator.html#migrate-class_method" title="ActiveRecord::Migrator.migrate (method)">migrate</a></span><span class='lparen'>(</span><span class='id identifier rubyid_migrations_paths'>migrations_paths</span><span class='comma'>,</span> <span class='id identifier rubyid_version'>version</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_migration'>migration</span><span class='op'>|</span>
     <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>||</span> <span class='id identifier rubyid_scope'>scope</span> <span class='op'>==</span> <span class='id identifier rubyid_migration'>migration</span><span class='period'>.</span><span class='id identifier rubyid_scope'>scope</span>
@@ -1222,20 +1314,20 @@ such:</p>
   <h3 class='signature '>
     #<strong>purge</strong>(configuration)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L187-L189'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L195-L197'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-187
-188
-189</pre>
+195
+196
+197</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 187</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 195</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_purge'>purge</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_purge'>purge</span>
+  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_purge'>purge</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1246,18 +1338,18 @@ such:</p>
   <h3 class='signature '>
     #<strong>purge_all</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L191-L195'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L199-L203'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-191
-192
-193
-194
-195</pre>
+199
+200
+201
+202
+203</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 191</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 199</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_purge_all'>purge_all</span>
@@ -1274,19 +1366,19 @@ such:</p>
   <h3 class='signature '>
     #<strong>purge_current</strong>(environment = env)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L197-L202'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L205-L210'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-197
-198
-199
-200
-201
-202</pre>
+205
+206
+207
+208
+209
+210</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 197</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 205</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_purge_current'>purge_current</span><span class='lparen'>(</span><span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
@@ -1304,17 +1396,17 @@ such:</p>
   <h3 class='signature '>
     #<strong>register_task</strong>(pattern, task)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L61-L64'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L69-L72'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-61
-62
-63
-64</pre>
+69
+70
+71
+72</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 61</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 69</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_task'>register_task</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='comma'>,</span> <span class='id identifier rubyid_task'>task</span><span class='rparen'>)</span>
@@ -1330,7 +1422,7 @@ such:</p>
   <h3 class='signature '>
     #<strong>schema_file</strong>(format = ActiveRecord::Base.schema_format)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L242-L249'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L242-L249'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1364,24 +1456,24 @@ such:</p>
   <h3 class='signature '>
     #<strong>structure_dump</strong>(*arguments)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L204-L208'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L212-L216'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-204
-205
-206
-207
-208</pre>
+212
+213
+214
+215
+216</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 204</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 212</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_structure_dump'>structure_dump</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configuration'>configuration</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
   <span class='id identifier rubyid_filename'>filename</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_delete_at'>delete_at</span> <span class='int'>1</span>
-  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_structure_dump'>structure_dump</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_structure_dump'>structure_dump</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_structure_dump_flags'>structure_dump_flags</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1392,24 +1484,24 @@ such:</p>
   <h3 class='signature '>
     #<strong>structure_load</strong>(*arguments)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L210-L214'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/tasks/database_tasks.rb#L218-L222'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-210
-211
-212
-213
-214</pre>
+218
+219
+220
+221
+222</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 210</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/tasks/database_tasks.rb', line 218</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_structure_load'>structure_load</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_configuration'>configuration</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
   <span class='id identifier rubyid_filename'>filename</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_delete_at'>delete_at</span> <span class='int'>1</span>
-  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_structure_load'>structure_load</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_class_for_adapter'>class_for_adapter</span><span class='lparen'>(</span><span class='id identifier rubyid_configuration'>configuration</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>adapter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_structure_load'>structure_load</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_structure_load_flags'>structure_load_flags</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>

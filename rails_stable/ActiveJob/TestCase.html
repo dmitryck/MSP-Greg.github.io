@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveJob::TestCase &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveJob::TestCase &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_T'>Index (T)</a> &raquo; 
         <a href="../ActiveJob.html" title="ActiveJob (module)">ActiveJob</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>TestCase&nbsp;&#x25B2;</a></span>
@@ -77,6 +77,7 @@
         <div class='box_2'>Class Chain:</div>
         <div class='box_22'>
           self,
+          <a href="TestHelper/TestQueueAdapter/ClassMethods.html" title="ActiveJob::TestHelper::TestQueueAdapter::ClassMethods (module)">TestHelper::TestQueueAdapter::ClassMethods</a>,
           <a href="../ActiveSupport/TestCase.html" title="ActiveSupport::TestCase (class)">::ActiveSupport::TestCase</a>,
           <a href="../ActiveRecord/TestFixtures/ClassMethods.html" title="ActiveRecord::TestFixtures::ClassMethods (module)">::ActiveRecord::TestFixtures::ClassMethods</a>,
           <a href="../ActiveSupport/DescendantsTracker.html" title="ActiveSupport::DescendantsTracker (module)">::ActiveSupport::DescendantsTracker</a>,
@@ -93,6 +94,7 @@
         <div class='box_22'>
           self,
           <a href="TestHelper.html" title="ActiveJob::TestHelper (module)">TestHelper</a>,
+          <a href="TestHelper/TestQueueAdapter.html" title="ActiveJob::TestHelper::TestQueueAdapter (module)">TestHelper::TestQueueAdapter</a>,
           <a href="../ActiveSupport/TestCase.html" title="ActiveSupport::TestCase (class)">::ActiveSupport::TestCase</a>,
           <a href="../ActiveRecord/TestFixtures.html" title="ActiveRecord::TestFixtures (module)">::ActiveRecord::TestFixtures</a>,
           <a href="../ActiveSupport/Testing/FileFixtures.html" title="ActiveSupport::Testing::FileFixtures (module)">::ActiveSupport::Testing::FileFixtures</a>,
@@ -118,7 +120,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activejob/lib/active_job/test_case.rb#L4'>activejob/lib/active_job/test_case.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activejob/lib/active_job/test_case.rb#L4'>activejob/lib/active_job/test_case.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -169,8 +171,6 @@
       <td colspan='2'>
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#use_instantiated_fixtures-class_method" title="ActiveSupport::TestCase.use_instantiated_fixtures (method)">.use_instantiated_fixtures</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#use_instantiated_fixtures%3F-class_method" title="ActiveSupport::TestCase.use_instantiated_fixtures? (method)">.use_instantiated_fixtures?</a>,
-        <a class='i_m rw' href="../ActiveSupport/TestCase.html#use_transactional_fixtures-class_method" title="ActiveSupport::TestCase.use_transactional_fixtures (method)">.use_transactional_fixtures</a>,
-        <a class='i_m rw' href="../ActiveSupport/TestCase.html#use_transactional_fixtures%3F-class_method" title="ActiveSupport::TestCase.use_transactional_fixtures? (method)">.use_transactional_fixtures?</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#use_transactional_tests-class_method" title="ActiveSupport::TestCase.use_transactional_tests (method)">.use_transactional_tests</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#use_transactional_tests%3F-class_method" title="ActiveSupport::TestCase.use_transactional_tests? (method)">.use_transactional_tests?</a>
       </td>
@@ -181,6 +181,19 @@
 
 <h2 class='h2_sum' id='class_Method_summary'>Class Method Summary</h2>
 <div class='div_sum'>
+
+<h3 class='inherited'><a href="TestHelper/TestQueueAdapter/ClassMethods.html" title="ActiveJob::TestHelper::TestQueueAdapter::ClassMethods (module)">TestHelper::TestQueueAdapter::ClassMethods</a> - Extended</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m ' href="TestHelper/TestQueueAdapter/ClassMethods.html#disable_test_adapter-instance_method" title="ActiveJob::TestHelper::TestQueueAdapter::ClassMethods#disable_test_adapter (method)">disable_test_adapter</a>,
+        <a class='i_m ' href="TestHelper/TestQueueAdapter/ClassMethods.html#enable_test_adapter-instance_method" title="ActiveJob::TestHelper::TestQueueAdapter::ClassMethods#enable_test_adapter (method)">enable_test_adapter</a>,
+        <a class='i_m ' href="TestHelper/TestQueueAdapter/ClassMethods.html#queue_adapter-instance_method" title="ActiveJob::TestHelper::TestQueueAdapter::ClassMethods#queue_adapter (method)">queue_adapter</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
 
 <h3 class='inherited'><a href="../ActiveRecord/TestFixtures/ClassMethods.html" title="ActiveRecord::TestFixtures::ClassMethods (module)">::ActiveRecord::TestFixtures::ClassMethods</a> - Extended</h3>
 <div class='inherited'><table class='inherited'>
@@ -289,20 +302,18 @@ from the fixture name.</p></div></td>
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#config%3F-instance_method" title="ActiveSupport::TestCase#config? (method)">#config?</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#fixture_class_names-instance_method" title="ActiveSupport::TestCase#fixture_class_names (method)">#fixture_class_names</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#fixture_class_names%3F-instance_method" title="ActiveSupport::TestCase#fixture_class_names? (method)">#fixture_class_names?</a>,
-        <a class='i_m rw' href="../ActiveSupport/TestCase.html#fixture_path-instance_method" title="ActiveSupport::TestCase#fixture_path (method)">#fixture_path</a>,
-        <a class='i_m rw' href="../ActiveSupport/TestCase.html#fixture_path%3F-instance_method" title="ActiveSupport::TestCase#fixture_path? (method)">#fixture_path?</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#fixture_table_names-instance_method" title="ActiveSupport::TestCase#fixture_table_names (method)">#fixture_table_names</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#fixture_table_names%3F-instance_method" title="ActiveSupport::TestCase#fixture_table_names? (method)">#fixture_table_names?</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#pre_loaded_fixtures-instance_method" title="ActiveSupport::TestCase#pre_loaded_fixtures (method)">#pre_loaded_fixtures</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#pre_loaded_fixtures%3F-instance_method" title="ActiveSupport::TestCase#pre_loaded_fixtures? (method)">#pre_loaded_fixtures?</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#use_instantiated_fixtures-instance_method" title="ActiveSupport::TestCase#use_instantiated_fixtures (method)">#use_instantiated_fixtures</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#use_instantiated_fixtures%3F-instance_method" title="ActiveSupport::TestCase#use_instantiated_fixtures? (method)">#use_instantiated_fixtures?</a>,
-        <a class='i_m rw' href="../ActiveSupport/TestCase.html#use_transactional_fixtures-instance_method" title="ActiveSupport::TestCase#use_transactional_fixtures (method)">#use_transactional_fixtures</a>,
-        <a class='i_m rw' href="../ActiveSupport/TestCase.html#use_transactional_fixtures%3F-instance_method" title="ActiveSupport::TestCase#use_transactional_fixtures? (method)">#use_transactional_fixtures?</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#use_transactional_tests-instance_method" title="ActiveSupport::TestCase#use_transactional_tests (method)">#use_transactional_tests</a>,
         <a class='i_m rw' href="../ActiveSupport/TestCase.html#use_transactional_tests%3F-instance_method" title="ActiveSupport::TestCase#use_transactional_tests? (method)">#use_transactional_tests?</a>,
         <a class='i_m ro' href="../ActiveSupport/TestCase.html#file_fixture_path-instance_method" title="ActiveSupport::TestCase#file_fixture_path (method)">#file_fixture_path</a>,
-        <a class='i_m ro' href="../ActiveSupport/TestCase.html#file_fixture_path%3F-instance_method" title="ActiveSupport::TestCase#file_fixture_path? (method)">#file_fixture_path?</a>
+        <a class='i_m ro' href="../ActiveSupport/TestCase.html#file_fixture_path%3F-instance_method" title="ActiveSupport::TestCase#file_fixture_path? (method)">#file_fixture_path?</a>,
+        <a class='i_m ro' href="../ActiveSupport/TestCase.html#fixture_path-instance_method" title="ActiveSupport::TestCase#fixture_path (method)">#fixture_path</a>,
+        <a class='i_m ro' href="../ActiveSupport/TestCase.html#fixture_path%3F-instance_method" title="ActiveSupport::TestCase#fixture_path? (method)">#fixture_path?</a>
       </td>
     </tr>
   </tbody>
@@ -314,17 +325,6 @@ from the fixture name.</p></div></td>
     <tr>
       <td colspan='2'>
         <a class='i_m ro' href="../ActiveRecord/TestFixtures.html#run_in_transaction%3F-instance_method" title="ActiveRecord::TestFixtures#run_in_transaction? (method)">#run_in_transaction?</a>
-      </td>
-    </tr>
-  </tbody>
-</table></div>
-
-<h3 class='inherited'><a href="../ActiveSupport/Callbacks.html" title="ActiveSupport::Callbacks (module)">::ActiveSupport::Callbacks</a> - Included</h3>
-<div class='inherited'><table class='inherited'>
-  <tbody>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m ro' href="../ActiveSupport/Callbacks.html#halt_and_display_warning_on_return_false-instance_method" title="ActiveSupport::Callbacks#halt_and_display_warning_on_return_false (method)">#halt_and_display_warning_on_return_false</a>
       </td>
     </tr>
   </tbody>
@@ -399,10 +399,6 @@ arguments.</p></div></td>
       </td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m ' href="../ActiveSupport/TestCase.html#assert_nothing_raised-instance_method" title="ActiveSupport::TestCase#assert_nothing_raised (method)">#assert_nothing_raised</a></td>
-      <td><div class='inline'><p>Assertion that the block should not raise an exception.</p></div></td>
-    </tr>
-    <tr class='i_ds'>
       <td><a class='i_m ' href="../ActiveSupport/TestCase.html#assert_raise-instance_method" title="ActiveSupport::TestCase#assert_raise (method)">#assert_raise</a></td>
       <td><div class='inline'><p>test/unit backwards compatibility methods.</p></div></td>
     </tr>
@@ -432,7 +428,7 @@ arguments.</p></div></td>
   <tbody>
     <tr class='i_ds'>
       <td><a class='i_m ' href="../ActiveSupport/Testing/FileFixtures.html#file_fixture-instance_method" title="ActiveSupport::Testing::FileFixtures#file_fixture (method)">#file_fixture</a></td>
-      <td><div class='inline'><p>Returns a <code>Pathname</code> to the fixture file named <code>fixture_name</code>.</p></div></td>
+      <td><div class='inline'><p>Returns a <a href="../Pathname.html" title="Pathname (class)">::Pathname</a> to the fixture file named <code>fixture_name</code>.</p></div></td>
     </tr>
   </tbody>
 </table></div>
@@ -463,9 +459,19 @@ this method.</p></div></td>
 <div class='inherited'><table class='inherited'>
   <tbody>
     <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActiveSupport/Testing/Assertions.html#assert_changes-instance_method" title="ActiveSupport::Testing::Assertions#assert_changes (method)">#assert_changes</a></td>
+      <td><div class='inline'><p>Assertion that the result of evaluating an expression is changed before and
+after invoking the passed in block.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
       <td><a class='i_m ' href="../ActiveSupport/Testing/Assertions.html#assert_difference-instance_method" title="ActiveSupport::Testing::Assertions#assert_difference (method)">#assert_difference</a></td>
       <td><div class='inline'><p>Test numeric difference between the return value of an expression as a
 result of what is evaluated in the yielded block.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActiveSupport/Testing/Assertions.html#assert_no_changes-instance_method" title="ActiveSupport::Testing::Assertions#assert_no_changes (method)">#assert_no_changes</a></td>
+      <td><div class='inline'><p>Assertion that the result of evaluating an expression is changed before and
+after invoking the passed in block.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="../ActiveSupport/Testing/Assertions.html#assert_no_difference-instance_method" title="ActiveSupport::Testing::Assertions#assert_no_difference (method)">#assert_no_difference</a></td>
@@ -475,6 +481,10 @@ changed before and after invoking the passed in block.</p></div></td>
     <tr class='i_ds'>
       <td><a class='i_m ' href="../ActiveSupport/Testing/Assertions.html#assert_not-instance_method" title="ActiveSupport::Testing::Assertions#assert_not (method)">#assert_not</a></td>
       <td><div class='inline'><p>Asserts that an expression is not truthy.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="../ActiveSupport/Testing/Assertions.html#assert_nothing_raised-instance_method" title="ActiveSupport::Testing::Assertions#assert_nothing_raised (method)">#assert_nothing_raised</a></td>
+      <td><div class='inline'><p>Assertion that the block should not raise an exception.</p></div></td>
     </tr>
   </tbody>
 </table></div>

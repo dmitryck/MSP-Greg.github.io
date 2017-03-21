@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActionView::Layouts &mdash; Rails-5-0-stable</title>
+<title>Module: ActionView::Layouts &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_L'>Index (L)</a> &raquo; 
         <a href="../ActionView.html" title="ActionView (module)">ActionView</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Layouts&nbsp;&#x25B2;</a></span>
@@ -110,7 +110,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L201'>actionview/lib/action_view/layouts.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/layouts.rb#L201'>actionview/lib/action_view/layouts.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -219,27 +219,27 @@ class TillController &lt; BankController
 
 <p>In these examples, we have three implicit lookup scenarios:</p>
 <ul><li>
-<p>The BankController uses the "bank" layout.</p>
+<p>The <code>BankController</code> uses the "bank" layout.</p>
 </li><li>
-<p>The ExchangeController uses the "exchange" layout.</p>
+<p>The <code>ExchangeController</code> uses the "exchange" layout.</p>
 </li><li>
-<p>The CurrencyController inherits the layout from BankController.</p>
+<p>The <code>CurrencyController</code> inherits the layout from BankController.</p>
 </li></ul>
 
 <p>However, when a layout is explicitly set, the explicitly set layout wins:</p>
 <ul><li>
-<p>The InformationController uses the "information" layout, explicitly set.</p>
+<p>The <code>InformationController</code> uses the "information" layout, explicitly set.</p>
 </li><li>
-<p>The TellerController also uses the "information" layout, because the parent
-explicitly set it.</p>
+<p>The <code>TellerController</code> also uses the "information" layout, because the
+parent explicitly set it.</p>
 </li><li>
-<p>The EmployeeController uses the "employee" layout, because it set the
-layout to nil, resetting the parent configuration.</p>
+<p>The <code>EmployeeController</code> uses the "employee" layout, because it set the
+layout to <code>nil</code>, resetting the parent configuration.</p>
 </li><li>
-<p>The VaultController chooses a layout dynamically by calling the
+<p>The <code>VaultController</code> chooses a layout dynamically by calling the
 <code>access_level_layout</code> method.</p>
 </li><li>
-<p>The TillController does not use a layout at all.</p>
+<p>The <code>TillController</code> does not use a layout at all.</p>
 </li></ul>
 
 <h3 id="label-Types+of+layouts">Types of layouts</h3>
@@ -295,8 +295,8 @@ folder. But you can point <code>layouts</code> folder direct also. <code>layout
 &quot;layouts/demo&quot;</code> is the same as <code>layout
 &quot;demo&quot;</code>.</p>
 
-<p>Setting the layout to nil forces it to be looked up in the filesystem and
-fallbacks to the parent behavior if none exists. Setting it to nil is
+<p>Setting the layout to <code>nil</code> forces it to be looked up in the filesystem and
+fallbacks to the parent behavior if none exists. Setting it to <code>nil</code> is
 useful to re-enable template lookup overriding a previous configuration set
 in the parent:</p>
 
@@ -502,7 +502,14 @@ render the help action with the "help" layout instead.</p>
     <tr>
       <td colspan='2'>
         <a class='i_m ' href="ViewPaths.html#any_templates%3F-instance_method" title="ActionView::ViewPaths#any_templates? (method)">#any_templates?</a>,
-        <a class='i_m ' href="ViewPaths.html#append_view_path-instance_method" title="ActionView::ViewPaths#append_view_path (method)">#append_view_path</a>,
+      </td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="ViewPaths.html#append_view_path-instance_method" title="ActionView::ViewPaths#append_view_path (method)">#append_view_path</a></td>
+      <td><div class='inline'><p>Append a path to the list of view paths for the current <a href="LookupContext.html" title="ActionView::LookupContext (class)">LookupContext</a>.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
         <a class='i_m ' href="ViewPaths.html#details_for_lookup-instance_method" title="ActionView::ViewPaths#details_for_lookup (method)">#details_for_lookup</a>,
       </td>
     </tr>
@@ -511,9 +518,12 @@ render the help action with the "help" layout instead.</p>
       <td><div class='inline'><p><a href="LookupContext.html" title="ActionView::LookupContext (class)">LookupContext</a> is the object responsible for holding all information
 required for looking up templates, i.e. view paths and details.</p></div></td>
     </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="ViewPaths.html#prepend_view_path-instance_method" title="ActionView::ViewPaths#prepend_view_path (method)">#prepend_view_path</a></td>
+      <td><div class='inline'><p>Prepend a path to the list of view paths for the current <a href="LookupContext.html" title="ActionView::LookupContext (class)">LookupContext</a>.</p></div></td>
+    </tr>
     <tr>
       <td colspan='2'>
-        <a class='i_m ' href="ViewPaths.html#prepend_view_path-instance_method" title="ActionView::ViewPaths#prepend_view_path (method)">#prepend_view_path</a>,
         <a class='i_m ' href="ViewPaths.html#template_exists%3F-instance_method" title="ActionView::ViewPaths#template_exists? (method)">#template_exists?</a>
       </td>
     </tr>
@@ -523,7 +533,7 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
 <h2 class='y_details'>DSL Calls</h2>
 <section class='method_details first' id="included-dslcall">
 <h3 class='signature'><strong>included</strong></h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L206-L211'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/layouts.rb#L206-L211'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -539,7 +549,7 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_included'>included</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_instance_accessor'>instance_accessor</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout'>_layout</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span><span class='comma'>,</span> <span class='label'>instance_accessor:</span> <span class='kw'>false</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__layout'>_layout</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__layout_conditions'>_layout_conditions</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid__write_layout_method'>_write_layout_method</span>
@@ -554,7 +564,7 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
   <h3 class='signature ro first'>
     #<strong>_layout_conditions</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L213-L213'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/layouts.rb#L213-L213'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -574,14 +584,14 @@ required for looking up templates, i.e. view paths and details.</p></div></td>
   <h3 class='signature rw'>
     #<strong>action_has_layout=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L351-L351'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/layouts.rb#L355-L355'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-351</pre>
+355</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/layouts.rb', line 351</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/layouts.rb', line 355</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_internal_writer'>attr_internal_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_action_has_layout'>action_has_layout</span>
@@ -607,16 +617,16 @@ attribute to false before rendering.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/layouts.rb#L364-L366'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/layouts.rb#L368-L370'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-364
-365
-366</pre>
+368
+369
+370</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/layouts.rb', line 364</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/layouts.rb', line 368</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_action_has_layout?'>action_has_layout?</span>

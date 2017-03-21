@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveSupport::LogSubscriber::TestHelper::MockLogger &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveSupport::LogSubscriber::TestHelper::MockLogger &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../../index.html'>Home</a> &raquo; 
-        <a href='../../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../../_index.html#alpha_M'>Index (M)</a> &raquo; 
         <a href="../../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a> &raquo; 
         <a href="../../LogSubscriber.html" title="ActiveSupport::LogSubscriber (class)">LogSubscriber</a> &raquo; 
@@ -91,7 +91,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L52'>activesupport/lib/active_support/log_subscriber/test_helper.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L52'>activesupport/lib/active_support/log_subscriber/test_helper.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -162,7 +162,7 @@
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L58-L62'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L58-L62'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -179,7 +179,7 @@
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_level'>level</span> <span class='op'>=</span> <span class='const'>DEBUG</span><span class='rparen'>)</span>
   <span class='ivar'>@flush_count</span> <span class='op'>=</span> <span class='int'>0</span>
   <span class='ivar'>@level</span> <span class='op'>=</span> <span class='id identifier rubyid_level'>level</span>
-  <span class='ivar'>@logged</span> <span class='op'>=</span> <span class='const'><a href="../../../Hash.html" title="Hash (class)">Hash</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+  <span class='ivar'>@logged</span> <span class='op'>=</span> <span class='const'><a href="../../../Hash.html" title="Hash (class)">Hash</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span> <span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -194,7 +194,7 @@
   <h3 class='signature  first'>
     #<strong>method_missing</strong>(level, message = nil)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L64-L70'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L64-L70'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -211,11 +211,11 @@
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_level'>level</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-     <span class='ivar'>@logged</span><span class='lbracket'>[</span><span class='id identifier rubyid_level'>level</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='kw'>yield</span>
-   <span class='kw'>else</span>
-     <span class='ivar'>@logged</span><span class='lbracket'>[</span><span class='id identifier rubyid_level'>level</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_message'>message</span>
-   <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@logged</span><span class='lbracket'>[</span><span class='id identifier rubyid_level'>level</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='kw'>yield</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@logged</span><span class='lbracket'>[</span><span class='id identifier rubyid_level'>level</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -227,7 +227,7 @@
   <h3 class='signature ro first'>
     #<strong>flush_count</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L55-L55'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L55-L55'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -247,7 +247,7 @@
   <h3 class='signature rw'>
     #<strong>level</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L56-L56'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L56-L56'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -268,7 +268,7 @@
   <h3 class='signature  first'>
     #<strong>flush</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L76-L78'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L76-L78'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -292,7 +292,7 @@
   <h3 class='signature '>
     #<strong>logged</strong>(level)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L72-L74'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/log_subscriber/test_helper.rb#L72-L74'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 

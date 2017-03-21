@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveSupport::KeyGenerator &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveSupport::KeyGenerator &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_K'>Index (K)</a> &raquo; 
         <a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>KeyGenerator&nbsp;&#x25B2;</a></span>
@@ -79,7 +79,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/key_generator.rb#L9'>activesupport/lib/active_support/key_generator.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/key_generator.rb#L9'>activesupport/lib/active_support/key_generator.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -138,7 +138,7 @@ contexts.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/key_generator.rb#L10-L15'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/key_generator.rb#L10-L15'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -178,7 +178,7 @@ be compatible with the default settings of
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/key_generator.rb#L20-L22'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/key_generator.rb#L20-L22'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -190,7 +190,7 @@ be compatible with the default settings of
 <pre><span class='info file'># File 'activesupport/lib/active_support/key_generator.rb', line 20</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_generate_key'>generate_key</span><span class='lparen'>(</span><span class='id identifier rubyid_salt'>salt</span><span class='comma'>,</span> <span class='id identifier rubyid_key_size'>key_size</span><span class='op'>=</span><span class='int'>64</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_generate_key'>generate_key</span><span class='lparen'>(</span><span class='id identifier rubyid_salt'>salt</span><span class='comma'>,</span> <span class='id identifier rubyid_key_size'>key_size</span> <span class='op'>=</span> <span class='int'>64</span><span class='rparen'>)</span>
   <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>PKCS5</span><span class='period'>.</span><span class='id identifier rubyid_pbkdf2_hmac_sha1'>pbkdf2_hmac_sha1</span><span class='lparen'>(</span><span class='ivar'>@secret</span><span class='comma'>,</span> <span class='id identifier rubyid_salt'>salt</span><span class='comma'>,</span> <span class='ivar'>@iterations</span><span class='comma'>,</span> <span class='id identifier rubyid_key_size'>key_size</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>

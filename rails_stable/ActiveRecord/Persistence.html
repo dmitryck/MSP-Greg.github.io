@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Persistence &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Persistence &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_P'>Index (P)</a> &raquo; 
         <a href="../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Persistence&nbsp;&#x25B2;</a></span>
@@ -96,7 +96,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L3'>activerecord/lib/active_record/persistence.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L3'>activerecord/lib/active_record/persistence.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -187,7 +187,7 @@ value.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#decrement!-instance_method" title="#decrement! (instance method)">#<strong>decrement!</strong>(attribute, by = 1)  </a>
+      <a href="#decrement!-instance_method" title="#decrement! (instance method)">#<strong>decrement!</strong>(attribute, by = 1, touch: nil)  </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Wrapper around <a href="#decrement-instance_method" title="ActiveRecord::Persistence#decrement (method)">#decrement</a> that writes the update to the database.</p></div>
@@ -231,7 +231,7 @@ that no changes should be made (since they can&#39;t be persisted).</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#increment!-instance_method" title="#increment! (instance method)">#<strong>increment!</strong>(attribute, by = 1)  </a>
+      <a href="#increment!-instance_method" title="#increment! (instance method)">#<strong>increment!</strong>(attribute, by = 1, touch: nil)  </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Wrapper around <a href="#increment-instance_method" title="ActiveRecord::Persistence#increment (method)">#increment</a> that writes the update to the database.</p></div>
@@ -364,7 +364,7 @@ statement and sets them in the receiver:</p></div>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L91-L94'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L91-L94'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -401,7 +401,7 @@ false.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L85-L88'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L85-L88'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -437,7 +437,7 @@ it was not destroyed, otherwise returns false.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L98-L101'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L98-L101'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -482,23 +482,23 @@ you want to change the sti column as well, use <a href="#becomes!-instance_metho
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L212-L221'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L218-L227'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-212
-213
-214
-215
-216
-217
 218
 219
 220
-221</pre>
+221
+222
+223
+224
+225
+226
+227</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 212</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 218</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_becomes'>becomes</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='rparen'>)</span>
@@ -532,22 +532,22 @@ objects share the same set of attributes.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L229-L237'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L235-L243'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-229
-230
-231
-232
-233
-234
 235
 236
-237</pre>
+237
+238
+239
+240
+241
+242
+243</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 229</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 235</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_becomes!'>becomes!</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='rparen'>)</span>
@@ -578,16 +578,16 @@ attributes. Returns <code>self</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L348-L350'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L360-L362'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-348
-349
-350</pre>
+360
+361
+362</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 348</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 360</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_by'>by</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
@@ -600,7 +600,7 @@ attributes. Returns <code>self</code>.</p>
 
 <section class='method_details' id="decrement!-instance_method">
   <h3 class='signature '>
-    #<strong>decrement!</strong>(attribute, by = 1)  
+    #<strong>decrement!</strong>(attribute, by = 1, touch: nil)  
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -608,24 +608,25 @@ attributes. Returns <code>self</code>.</p>
 <p>Wrapper around <a href="#decrement-instance_method" title="ActiveRecord::Persistence#decrement (method)">#decrement</a> that writes the update to the database. Only
 <code>attribute</code> is updated; the record itself is not saved. This means that any
 other modified attributes will still be dirty. <a href="Validations.html" title="ActiveRecord::Validations (module)">Validations</a>
-and callbacks are skipped. Returns <code>self</code>.</p>
+and callbacks are skipped. Supports the `touch` option from
+<code>update_counters</code>, see that for more. Returns <code>self</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L356-L358'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L370-L372'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-356
-357
-358</pre>
+370
+371
+372</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 356</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 370</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_decrement!'>decrement!</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_by'>by</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_increment!'>increment!</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='op'>-</span><span class='id identifier rubyid_by'>by</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_decrement!'>decrement!</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_by'>by</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_increment!'>increment!</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='op'>-</span><span class='id identifier rubyid_by'>by</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='id identifier rubyid_touch'>touch</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -653,18 +654,18 @@ or any <code>:dependent</code> association options, use <a href="#destroy-instan
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L167-L171'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L169-L173'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-167
-168
 169
 170
-171</pre>
+171
+172
+173</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 167</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 169</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span>
@@ -694,36 +695,36 @@ further details.</p>
 
   </div>
 </div>
-<div class='tags'>
-  <p class='tag_title'>Raises:</p>
-<ul class='raise'>
-  <li>
-    <span class='type'>(<a href="ReadOnlyRecord.html" title="ActiveRecord::ReadOnlyRecord (class)">ReadOnlyRecord</a>)</span>
-  </li>
-</ul>
-
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L180-L187'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L182-L193'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-180
-181
 182
 183
 184
 185
 186
-187</pre>
+187
+188
+189
+190
+191
+192
+193</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 180</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 182</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><a href="ReadOnlyRecord.html" title="ActiveRecord::ReadOnlyRecord (class)">ReadOnlyRecord</a></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_content'> is marked as readonly</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_readonly?'>readonly?</span>
+  <span class='id identifier rubyid__raise_readonly_record_error'>_raise_readonly_record_error</span> <span class='kw'>if</span> <span class='id identifier rubyid_readonly?'>readonly?</span>
   <span class='id identifier rubyid_destroy_associations'>destroy_associations</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_add_transaction_record'>add_transaction_record</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_destroy_row'>destroy_row</span> <span class='kw'>if</span> <span class='id identifier rubyid_persisted?'>persisted?</span>
+  <span class='ivar'>@_trigger_destroy_callback</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_persisted?'>persisted?</span>
+    <span class='id identifier rubyid_destroy_row'>destroy_row</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+  <span class='kw'>else</span>
+    <span class='kw'>true</span>
+  <span class='kw'>end</span>
   <span class='ivar'>@destroyed</span> <span class='op'>=</span> <span class='kw'>true</span>
   <span class='id identifier rubyid_freeze'>freeze</span>
 <span class='kw'>end</span>
@@ -749,16 +750,16 @@ cancelled and <code>#destroy!</code> raises <a href="RecordNotDestroyed.html" ti
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L196-L198'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L202-L204'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-196
-197
-198</pre>
+202
+203
+204</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 196</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 202</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy!'>destroy!</span>
@@ -783,18 +784,18 @@ attributes. Returns <code>self</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L327-L331'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L337-L341'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-327
-328
-329
-330
-331</pre>
+337
+338
+339
+340
+341</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 327</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 337</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_by'>by</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
@@ -809,7 +810,7 @@ attributes. Returns <code>self</code>.</p>
 
 <section class='method_details' id="increment!-instance_method">
   <h3 class='signature '>
-    #<strong>increment!</strong>(attribute, by = 1)  
+    #<strong>increment!</strong>(attribute, by = 1, touch: nil)  
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -817,30 +818,31 @@ attributes. Returns <code>self</code>.</p>
 <p>Wrapper around <a href="#increment-instance_method" title="ActiveRecord::Persistence#increment (method)">#increment</a> that writes the update to the database. Only
 <code>attribute</code> is updated; the record itself is not saved. This means that any
 other modified attributes will still be dirty. <a href="Validations.html" title="ActiveRecord::Validations (module)">Validations</a>
-and callbacks are skipped. Returns <code>self</code>.</p>
+and callbacks are skipped. Supports the `touch` option from
+<code>update_counters</code>, see that for more. Returns <code>self</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L337-L343'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L349-L355'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-337
-338
-339
-340
-341
-342
-343</pre>
+349
+350
+351
+352
+353
+354
+355</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 337</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 349</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_increment!'>increment!</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_by'>by</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_increment!'>increment!</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_by'>by</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_by'>by</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_change'>change</span> <span class='op'>=</span> <span class='id identifier rubyid_public_send'>public_send</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='rparen'>)</span> <span class='op'>-</span> <span class='lparen'>(</span><span class='id identifier rubyid_attribute_was'>attribute_was</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='int'>0</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_update_counters'>update_counters</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_attribute'>attribute</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_change'>change</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_change'>change</span> <span class='op'>=</span> <span class='id identifier rubyid_public_send'>public_send</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='rparen'>)</span> <span class='op'>-</span> <span class='lparen'>(</span><span class='id identifier rubyid_attribute_in_database'>attribute_in_database</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='int'>0</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_update_counters'>update_counters</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_attribute'>attribute</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_change'>change</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='id identifier rubyid_touch'>touch</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_clear_attribute_change'>clear_attribute_change</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='rparen'>)</span> <span class='comment'># eww
 </span>  <span class='kw'>self</span>
 <span class='kw'>end</span>
@@ -858,7 +860,7 @@ and callbacks are skipped. Returns <code>self</code>.</p>
     
 <p>Reloads the record from the database.</p>
 
-<p>This method finds record by its primary key (which could be assigned
+<p>This method finds the record by its primary key (which could be assigned
 manually) and modifies the receiver in-place:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_account'>account</span> <span class='op'>=</span> <span class='const'>Account</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -908,27 +910,27 @@ in the database but not the object in memory:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L433-L446'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L447-L460'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-433
-434
-435
-436
-437
-438
-439
-440
-441
-442
-443
-444
-445
-446</pre>
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 433</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 447</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reload'>reload</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -941,7 +943,7 @@ in the database but not the object in memory:</p>
       <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_unscoped'>unscoped</span> <span class='lbrace'>{</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
     <span class='kw'>end</span>
 
-  <span class='ivar'>@attributes</span> <span class='op'>=</span> <span class='id identifier rubyid_fresh_object'>fresh_object</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>@attributes</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='ivar'>@attributes</span> <span class='op'>=</span> <span class='id identifier rubyid_fresh_object'>fresh_object</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@attributes</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='ivar'>@new_record</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='kw'>self</span>
 <span class='kw'>end</span>
@@ -964,8 +966,8 @@ existing record gets updated.</p>
 
 <p>By default, save always runs validations. If any of them fail the action is
 cancelled and <code>#save</code> returns <code>false</code>, and the record won&#39;t be saved.
-However, if you supply validate: false, validations are bypassed
-altogether. See <a href="Validations.html" title="ActiveRecord::Validations (module)">Validations</a> for more information.</p>
+However, if you supply <code>validate: false</code>, validations are
+bypassed altogether. See <a href="Validations.html" title="ActiveRecord::Validations (module)">Validations</a> for more information.</p>
 
 <p>By default, <code>#save</code> also sets the <code>updated_at</code>/<code>updated_on</code> attributes to
 the current time. However, if you supply <code>touch: false</code>, these
@@ -981,7 +983,7 @@ record is being updated.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L124-L128'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L124-L128'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1019,8 +1021,8 @@ existing record gets updated.</p>
 
 <p>By default, <code>#save!</code> always runs validations. If any of them fail
 <a href="RecordInvalid.html" title="ActiveRecord::RecordInvalid (class)">RecordInvalid</a> gets raised, and the record won&#39;t be
-saved. However, if you supply validate: false, validations are bypassed
-altogether. See <a href="Validations.html" title="ActiveRecord::Validations (module)">Validations</a> for more information.</p>
+saved. However, if you supply <code>validate: false</code>, validations are
+bypassed altogether. See <a href="Validations.html" title="ActiveRecord::Validations (module)">Validations</a> for more information.</p>
 
 <p>By default, <code>#save!</code> also sets the <code>updated_at</code>/<code>updated_on</code> attributes to
 the current time. However, if you supply <code>touch: false</code>, these
@@ -1034,18 +1036,20 @@ cancelled and <code>#save!</code> raises <a href="RecordNotSaved.html" title="Ac
 <p><a href="Attributes.html" title="ActiveRecord::Attributes (module)">Attributes</a> marked as readonly are silently ignored if the
 record is being updated.</p>
 
+<p>Unless an error is raised, returns true.</p>
+
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L151-L153'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L153-L155'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-151
-152
-153</pre>
+153
+154
+155</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 151</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 153</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_save!'>save!</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
@@ -1077,17 +1081,17 @@ toggles directly the underlying value without calling any setter. Returns
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L372-L375'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L386-L389'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-372
-373
-374
-375</pre>
+386
+387
+388
+389</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 372</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 386</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_toggle'>toggle</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='rparen'>)</span>
@@ -1113,16 +1117,16 @@ record could be saved.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L381-L383'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L395-L397'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-381
-382
-383</pre>
+395
+396
+397</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 381</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 395</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_toggle!'>toggle!</span><span class='lparen'>(</span><span class='id identifier rubyid_attribute'>attribute</span><span class='rparen'>)</span>
@@ -1178,25 +1182,11 @@ object.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L482-L522'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L496-L537'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-482
-483
-484
-485
-486
-487
-488
-489
-490
-491
-492
-493
-494
-495
 496
 497
 498
@@ -1223,9 +1213,24 @@ object.</p>
 519
 520
 521
-522</pre>
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 482</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 496</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_touch'>touch</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_names'>names</span><span class='comma'>,</span> <span class='label'>time:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -1248,7 +1253,6 @@ object.</p>
       <span class='id identifier rubyid_changes'>changes</span><span class='lbracket'>[</span><span class='id identifier rubyid_column'>column</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_write_attribute'>write_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='comma'>,</span> <span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
 
-    <span class='id identifier rubyid_clear_attribute_changes'>clear_attribute_changes</span><span class='lparen'>(</span><span class='id identifier rubyid_changes'>changes</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_primary_key'>primary_key</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_primary_key'>primary_key</span>
     <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_unscoped'>unscoped</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_primary_key'>primary_key</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid__read_attribute'>_read_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_primary_key'>primary_key</span><span class='rparen'>)</span><span class='rparen'>)</span>
 
@@ -1258,12 +1262,14 @@ object.</p>
       <span class='id identifier rubyid_changes'>changes</span><span class='lbracket'>[</span><span class='id identifier rubyid_locking_column'>locking_column</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_increment_lock'>increment_lock</span>
     <span class='kw'>end</span>
 
+    <span class='id identifier rubyid_clear_attribute_changes'>clear_attribute_changes</span><span class='lparen'>(</span><span class='id identifier rubyid_changes'>changes</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_update_all'>update_all</span><span class='lparen'>(</span><span class='id identifier rubyid_changes'>changes</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>1</span>
 
     <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_result'>result</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_locking_enabled?'>locking_enabled?</span>
       <span class='id identifier rubyid_raise'>raise</span> <span class='const'><a href="../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="StaleObjectError.html" title="ActiveRecord::StaleObjectError (class)">StaleObjectError</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="StaleObjectError.html#new-class_method" title="ActiveRecord::StaleObjectError.new (method)">new</a></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>touch</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
 
+    <span class='ivar'>@_trigger_update_callback</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span>
     <span class='id identifier rubyid_result'>result</span>
   <span class='kw'>else</span>
     <span class='kw'>true</span>
@@ -1288,21 +1294,21 @@ will fail and false will be returned.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L262-L269'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L272-L279'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-262
-263
-264
-265
-266
-267
-268
-269</pre>
+272
+273
+274
+275
+276
+277
+278
+279</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 262</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 272</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
@@ -1332,21 +1338,21 @@ fail.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L275-L282'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L285-L292'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-275
-276
-277
-278
-279
-280
-281
-282</pre>
+285
+286
+287
+288
+289
+290
+291
+292</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 275</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 285</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update!'>update!</span><span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
@@ -1388,20 +1394,24 @@ is marked as readonly.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L251-L257'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L257-L267'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-251
-252
-253
-254
-255
-256
-257</pre>
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 251</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 257</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_attribute'>update_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1409,7 +1419,11 @@ is marked as readonly.</p>
   <span class='id identifier rubyid_verify_readonly_attribute'>verify_readonly_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_public_send'>public_send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>=</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_changed?'>changed?</span> <span class='op'>?</span> <span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span><span class='label'>validate:</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>true</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_has_changes_to_save?'>has_changes_to_save?</span>
+    <span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span><span class='label'>validate:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>true</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1427,14 +1441,14 @@ is marked as readonly.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L271-L271'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L281-L281'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-271</pre>
+281</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 271</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 281</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='id identifier rubyid_update_attributes'>update_attributes</span> <span class='id identifier rubyid_update'>update</span>
@@ -1454,14 +1468,14 @@ is marked as readonly.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L284-L284'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L294-L294'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-284</pre>
+294</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 284</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 294</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='id identifier rubyid_update_attributes!'>update_attributes!</span> <span class='id identifier rubyid_update!'>update!</span>
@@ -1481,16 +1495,16 @@ is marked as readonly.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L287-L289'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L297-L299'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-287
-288
-289</pre>
+297
+298
+299</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 287</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 297</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_column'>update_column</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1540,29 +1554,29 @@ objects, or when at least one of the attributes is marked as readonly.</p>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/persistence.rb#L307-L322'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/persistence.rb#L317-L332'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-307
-308
-309
-310
-311
-312
-313
-314
-315
-316
 317
 318
 319
 320
 321
-322</pre>
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 307</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/persistence.rb', line 317</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_columns'>update_columns</span><span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActionController::Renderer &mdash; Rails-5-0-stable</title>
+<title>Class: ActionController::Renderer &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_R'>Index (R)</a> &raquo; 
         <a href="../ActionController.html" title="ActionController (module)">ActionController</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Renderer&nbsp;&#x25B2;</a></span>
@@ -79,7 +79,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/renderer.rb#L36'>actionpack/lib/action_controller/renderer.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/renderer.rb#L36'>actionpack/lib/action_controller/renderer.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -89,11 +89,11 @@
 <div class='docstring'>
   <div class='discussion'>
     
-<p><code>Renderer</code> allows to render arbitrary templates without
+<p><code>Renderer</code> allows you to render arbitrary templates without
 requirement of being in controller actions.</p>
 
 <p>You get a concrete renderer class by invoking
-<code>ActionController::Base#renderer</code>. For example,</p>
+<code>ActionController::Base#renderer</code>. For example:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>ApplicationController</span><span class='period'>.</span><span class='id identifier rubyid_renderer'>renderer</span></code></pre>
 
@@ -106,7 +106,7 @@ requirement of being in controller actions.</p>
 <pre class="code ruby"><code class="ruby"><span class='const'>ApplicationController</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span> <span class='label'>template:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span></code></pre>
 
 <p><a href="#render-instance_method" title="ActionController::Renderer#render (method)">#render</a> allows you to use the same options that you can use when
-rendering in a controller. For example,</p>
+rendering in a controller. For example:</p>
 
 <pre class="code ruby"><code class="ruby">FooController.render :action, locals: { ... }, assigns: { ... }</code></pre>
 
@@ -131,35 +131,35 @@ through <code>ActionController::Renderer#env</code>. You can set it up in two wa
   <li>
     <span id='DEFAULTS-constant' class='summary_signature'>DEFAULTS =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/renderer.rb#L39-L45'># File 'actionpack/lib/action_controller/renderer.rb', line 39</a>    <pre class='code ruby'><span class='lbrace'>{</span>
-  <span class='label'>http_host:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.org</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/renderer.rb#L39-L45'># File 'actionpack/lib/action_controller/renderer.rb', line 39</a>    <pre class='code ruby'><span class='lbrace'>{</span>
+  <span class='label'>http_host:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>example.org</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
   <span class='label'>https:</span> <span class='kw'>false</span><span class='comma'>,</span>
-  <span class='label'>method:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>get</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>script_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>input:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='label'>method:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>get</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>script_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>input:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
 <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre>
   </li>
   <li>
     <span id='IDENTITY-constant' class='summary_signature'>IDENTITY =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/renderer.rb#L100-L100'># File 'actionpack/lib/action_controller/renderer.rb', line 100</a>    <pre class='code ruby'><span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid__'>_</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid__'>_</span> <span class='rbrace'>}</span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/renderer.rb#L100-L100'># File 'actionpack/lib/action_controller/renderer.rb', line 100</a>    <pre class='code ruby'><span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid__'>_</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid__'>_</span> <span class='rbrace'>}</span></pre>
   </li>
   <li>
     <span id='RACK_KEY_TRANSLATION-constant' class='summary_signature'>RACK_KEY_TRANSLATION =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/renderer.rb#L92-L98'># File 'actionpack/lib/action_controller/renderer.rb', line 92</a>    <pre class='code ruby'><span class='lbrace'>{</span>
-  <span class='label'>http_host:</span>   <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HTTP_HOST</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>https:</span>       <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HTTPS</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>method:</span>      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>REQUEST_METHOD</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>script_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SCRIPT_NAME</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>input:</span>       <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>rack.input</span><span class='tstring_end'>&#39;</span></span>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/renderer.rb#L92-L98'># File 'actionpack/lib/action_controller/renderer.rb', line 92</a>    <pre class='code ruby'><span class='lbrace'>{</span>
+  <span class='label'>http_host:</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>HTTP_HOST</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>https:</span>       <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>HTTPS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>method:</span>      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>REQUEST_METHOD</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>script_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCRIPT_NAME</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>input:</span>       <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rack.input</span><span class='tstring_end'>&quot;</span></span>
 <span class='rbrace'>}</span></pre>
   </li>
   <li>
     <span id='RACK_VALUE_TRANSLATION-constant' class='summary_signature'>RACK_VALUE_TRANSLATION =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/renderer.rb#L102-L105'># File 'actionpack/lib/action_controller/renderer.rb', line 102</a>    <pre class='code ruby'><span class='lbrace'>{</span>
-  <span class='label'>https:</span> <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_v'>v</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>on</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>off</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/renderer.rb#L102-L105'># File 'actionpack/lib/action_controller/renderer.rb', line 102</a>    <pre class='code ruby'><span class='lbrace'>{</span>
+  <span class='label'>https:</span> <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_v'>v</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>on</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>off</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>method:</span> <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span> <span class='rbrace'>}</span><span class='comma'>,</span>
 <span class='rbrace'>}</span></pre>
   </li>
@@ -257,7 +257,7 @@ merged with the default <a href="../Rack.html" title="Rack (module)">::Rack</a> 
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/renderer.rb#L65-L69'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/renderer.rb#L65-L69'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -293,7 +293,7 @@ merged with the default <a href="../Rack.html" title="Rack (module)">::Rack</a> 
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/renderer.rb#L48-L50'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/renderer.rb#L48-L50'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -318,7 +318,7 @@ merged with the default <a href="../Rack.html" title="Rack (module)">::Rack</a> 
   <h3 class='signature ro first'>
     #<strong>controller</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/renderer.rb#L37-L37'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/renderer.rb#L37-L37'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -338,7 +338,7 @@ merged with the default <a href="../Rack.html" title="Rack (module)">::Rack</a> 
   <h3 class='signature ro'>
     #<strong>defaults</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/renderer.rb#L37-L37'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/renderer.rb#L37-L37'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -366,7 +366,7 @@ merged with the default <a href="../Rack.html" title="Rack (module)">::Rack</a> 
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/renderer.rb#L53-L55'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/renderer.rb#L53-L55'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -398,7 +398,7 @@ merged with the default <a href="../Rack.html" title="Rack (module)">::Rack</a> 
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/renderer.rb#L72-L82'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/renderer.rb#L72-L82'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -419,7 +419,7 @@ merged with the default <a href="../Rack.html" title="Rack (module)">::Rack</a> 
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>missing controller</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_controller'>controller</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>missing controller</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_controller'>controller</span>
 
   <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='const'><a href="../ActionDispatch.html" title="ActionDispatch (module)">ActionDispatch</a></span><span class='op'>::</span><span class='const'><a href="../ActionDispatch/Request.html" title="ActionDispatch::Request (class)">Request</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../ActionDispatch/Request.html#new-class_method" title="ActionDispatch::Request.new (method)">new</a></span> <span class='ivar'>@env</span>
   <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_routes'>routes</span> <span class='op'>=</span> <span class='id identifier rubyid_controller'>controller</span><span class='period'>.</span><span class='id identifier rubyid__routes'>_routes</span>
@@ -445,7 +445,7 @@ merged with the default <a href="../Rack.html" title="Rack (module)">::Rack</a> 
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/renderer.rb#L58-L60'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/renderer.rb#L58-L60'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -458,7 +458,7 @@ merged with the default <a href="../Rack.html" title="Rack (module)">::Rack</a> 
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_with_defaults'>with_defaults</span><span class='lparen'>(</span><span class='id identifier rubyid_defaults'>defaults</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_controller'>controller</span><span class='comma'>,</span> <span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_defaults'>defaults</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_defaults'>defaults</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_controller'>controller</span><span class='comma'>,</span> <span class='ivar'>@env</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_defaults'>defaults</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_defaults'>defaults</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>

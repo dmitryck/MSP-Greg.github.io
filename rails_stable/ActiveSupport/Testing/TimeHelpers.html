@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveSupport::Testing::TimeHelpers &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveSupport::Testing::TimeHelpers &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_T'>Index (T)</a> &raquo; 
         <a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a> &raquo; 
         <a href="../Testing.html" title="ActiveSupport::Testing (module)">Testing</a> &raquo; 
@@ -78,6 +78,7 @@
       <div class='box_11'>
         <a href="../../ActionController/TestCase.html" title="ActionController::TestCase (class)">::ActionController::TestCase</a>,
           <a href="../../ActionDispatch/IntegrationTest.html" title="ActionDispatch::IntegrationTest (class)">::ActionDispatch::IntegrationTest</a>,
+          <a href="../../ActionDispatch/SystemTestCase.html" title="ActionDispatch::SystemTestCase (class)">::ActionDispatch::SystemTestCase</a>,
           <a href="../../ActionMailer/TestCase.html" title="ActionMailer::TestCase (class)">::ActionMailer::TestCase</a>,
           <a href="../../ActionView/TestCase.html" title="ActionView::TestCase (class)">::ActionView::TestCase</a>,
           <a href="../../ActiveJob/TestCase.html" title="ActiveJob::TestCase (class)">::ActiveJob::TestCase</a>,
@@ -87,7 +88,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/testing/time_helpers.rb#L43'>activesupport/lib/active_support/testing/time_helpers.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/testing/time_helpers.rb#L50'>activesupport/lib/active_support/testing/time_helpers.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -164,16 +165,16 @@ to its original state at the end of the block:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/testing/time_helpers.rb#L61-L63'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/testing/time_helpers.rb#L68-L70'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-61
-62
-63</pre>
+68
+69
+70</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/testing/time_helpers.rb', line 61</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/testing/time_helpers.rb', line 68</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_travel'>travel</span><span class='lparen'>(</span><span class='id identifier rubyid_duration'>duration</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -195,23 +196,23 @@ to its original state at the end of the block:</p>
 added by `travel` and `travel_to`.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_current'><a href="../../Time.html#current-class_method" title="Time.current (method)">current</a></span> <span class='comment'># =&gt; Sat, 09 Nov 2013 15:34:49 EST -05:00
-</span><span class='id identifier rubyid_travel_to'>travel_to</span> <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>2004</span><span class='comma'>,</span> <span class='int'>11</span><span class='comma'>,</span> <span class='int'>24</span><span class='comma'>,</span> <span class='int'>01</span><span class='comma'>,</span> <span class='int'>04</span><span class='comma'>,</span> <span class='int'>44</span><span class='rparen'>)</span>
+</span><span class='id identifier rubyid_travel_to'>travel_to</span> <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_zone'><a href="../../Time.html#zone-class_method" title="Time.zone (method)">zone</a></span><span class='period'>.</span><span class='id identifier rubyid_local'>local</span><span class='lparen'>(</span><span class='int'>2004</span><span class='comma'>,</span> <span class='int'>11</span><span class='comma'>,</span> <span class='int'>24</span><span class='comma'>,</span> <span class='int'>01</span><span class='comma'>,</span> <span class='int'>04</span><span class='comma'>,</span> <span class='int'>44</span><span class='rparen'>)</span>
 <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_current'><a href="../../Time.html#current-class_method" title="Time.current (method)">current</a></span> <span class='comment'># =&gt; Wed, 24 Nov 2004 01:04:44 EST -05:00
 </span><span class='id identifier rubyid_travel_back'>travel_back</span>
 <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_current'><a href="../../Time.html#current-class_method" title="Time.current (method)">current</a></span> <span class='comment'># =&gt; Sat, 09 Nov 2013 15:34:49 EST -05:00</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/testing/time_helpers.rb#L123-L125'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/testing/time_helpers.rb#L158-L160'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-123
-124
-125</pre>
+158
+159
+160</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/testing/time_helpers.rb', line 123</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/testing/time_helpers.rb', line 158</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_travel_back'>travel_back</span>
@@ -234,7 +235,7 @@ added by `travel` and `travel_to`.</p>
 this method.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_current'><a href="../../Time.html#current-class_method" title="Time.current (method)">current</a></span>     <span class='comment'># =&gt; Sat, 09 Nov 2013 15:34:49 EST -05:00
-</span><span class='id identifier rubyid_travel_to'>travel_to</span> <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>2004</span><span class='comma'>,</span> <span class='int'>11</span><span class='comma'>,</span> <span class='int'>24</span><span class='comma'>,</span> <span class='int'>01</span><span class='comma'>,</span> <span class='int'>04</span><span class='comma'>,</span> <span class='int'>44</span><span class='rparen'>)</span>
+</span><span class='id identifier rubyid_travel_to'>travel_to</span> <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_zone'><a href="../../Time.html#zone-class_method" title="Time.zone (method)">zone</a></span><span class='period'>.</span><span class='id identifier rubyid_local'>local</span><span class='lparen'>(</span><span class='int'>2004</span><span class='comma'>,</span> <span class='int'>11</span><span class='comma'>,</span> <span class='int'>24</span><span class='comma'>,</span> <span class='int'>01</span><span class='comma'>,</span> <span class='int'>04</span><span class='comma'>,</span> <span class='int'>44</span><span class='rparen'>)</span>
 <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_current'><a href="../../Time.html#current-class_method" title="Time.current (method)">current</a></span>     <span class='comment'># =&gt; Wed, 24 Nov 2004 01:04:44 EST -05:00
 </span><span class='const'><a href="../../Date.html" title="Date (class)">Date</a></span><span class='period'>.</span><span class='id identifier rubyid_current'><a href="../../Date.html#current-class_method" title="Date.current (method)">current</a></span>     <span class='comment'># =&gt; Wed, 24 Nov 2004
 </span><span class='const'><a href="../../DateTime.html" title="DateTime (class)">DateTime</a></span><span class='period'>.</span><span class='id identifier rubyid_current'><a href="../../DateTime.html#current-class_method" title="DateTime.current (method)">current</a></span> <span class='comment'># =&gt; Wed, 24 Nov 2004 01:04:44 -0500</span></code></pre>
@@ -255,25 +256,18 @@ floor, leading to off-by-one-second errors).</p>
 to its original state at the end of the block:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_current'><a href="../../Time.html#current-class_method" title="Time.current (method)">current</a></span> <span class='comment'># =&gt; Sat, 09 Nov 2013 15:34:49 EST -05:00
-</span><span class='id identifier rubyid_travel_to'>travel_to</span> <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>2004</span><span class='comma'>,</span> <span class='int'>11</span><span class='comma'>,</span> <span class='int'>24</span><span class='comma'>,</span> <span class='int'>01</span><span class='comma'>,</span> <span class='int'>04</span><span class='comma'>,</span> <span class='int'>44</span><span class='rparen'>)</span> <span class='kw'>do</span>
+</span><span class='id identifier rubyid_travel_to'>travel_to</span> <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_zone'><a href="../../Time.html#zone-class_method" title="Time.zone (method)">zone</a></span><span class='period'>.</span><span class='id identifier rubyid_local'>local</span><span class='lparen'>(</span><span class='int'>2004</span><span class='comma'>,</span> <span class='int'>11</span><span class='comma'>,</span> <span class='int'>24</span><span class='comma'>,</span> <span class='int'>01</span><span class='comma'>,</span> <span class='int'>04</span><span class='comma'>,</span> <span class='int'>44</span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_current'><a href="../../Time.html#current-class_method" title="Time.current (method)">current</a></span> <span class='comment'># =&gt; Wed, 24 Nov 2004 01:04:44 EST -05:00
 </span><span class='kw'>end</span>
 <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_current'><a href="../../Time.html#current-class_method" title="Time.current (method)">current</a></span> <span class='comment'># =&gt; Sat, 09 Nov 2013 15:34:49 EST -05:00</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/testing/time_helpers.rb#L95-L113'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/testing/time_helpers.rb#L102-L148'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-95
-96
-97
-98
-99
-100
-101
 102
 103
 104
@@ -285,12 +279,75 @@ to its original state at the end of the block:</p>
 110
 111
 112
-113</pre>
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/testing/time_helpers.rb', line 95</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/testing/time_helpers.rb', line 102</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_travel_to'>travel_to</span><span class='lparen'>(</span><span class='id identifier rubyid_date_or_time'>date_or_time</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_simple_stubs'>simple_stubs</span><span class='period'>.</span><span class='id identifier rubyid_stubbing'>stubbing</span><span class='lparen'>(</span><span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_travel_to_nested_block_call'>travel_to_nested_block_call</span> <span class='op'>=</span> <span class='heredoc_beg'>&lt;&lt;-MSG</span><span class='period'>.</span><span class='id identifier rubyid_strip_heredoc'>strip_heredoc</span>
+<span class='tstring_content'>
+Calling `travel_to` with a block, when we have previously already made a call to `travel_to`, can lead to confusing time stubbing.
+
+Instead of:
+
+   travel_to 2.days.from_now do
+     # 2 days from today
+     travel_to 3.days.from_now do
+       # 5 days from today
+     end
+   end
+
+preferred way to achieve above is:
+
+   travel 2.days do
+     # 2 days from today
+   end
+
+   travel 5.days do
+     # 5 days from today
+   end
+
+</span><span class='heredoc_end'>    MSG
+</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_travel_to_nested_block_call'>travel_to_nested_block_call</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>if</span> <span class='id identifier rubyid_date_or_time'>date_or_time</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="../../Date.html" title="Date (class)">Date</a></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_date_or_time'>date_or_time</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="../../DateTime.html" title="DateTime (class)">DateTime</a></span><span class='rparen'>)</span>
     <span class='id identifier rubyid_now'>now</span> <span class='op'>=</span> <span class='id identifier rubyid_date_or_time'>date_or_time</span><span class='period'>.</span><span class='id identifier rubyid_midnight'>midnight</span><span class='period'>.</span><span class='id identifier rubyid_to_time'>to_time</span>
   <span class='kw'>else</span>
@@ -299,7 +356,7 @@ to its original state at the end of the block:</p>
 
   <span class='id identifier rubyid_simple_stubs'>simple_stubs</span><span class='period'>.</span><span class='id identifier rubyid_stub_object'>stub_object</span><span class='lparen'>(</span><span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
   <span class='id identifier rubyid_simple_stubs'>simple_stubs</span><span class='period'>.</span><span class='id identifier rubyid_stub_object'>stub_object</span><span class='lparen'>(</span><span class='const'><a href="../../Date.html" title="Date (class)">Date</a></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_today'>today</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_jd'>jd</span><span class='lparen'>(</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_date'>to_date</span><span class='period'>.</span><span class='id identifier rubyid_jd'>jd</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-  <span class='id identifier rubyid_simple_stubs'>simple_stubs</span><span class='period'>.</span><span class='id identifier rubyid_stub_object'>stub_object</span><span class='lparen'>(</span><span class='const'><a href="../../DateTime.html" title="DateTime (class)">DateTime</a></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_jd'>jd</span><span class='lparen'>(</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_date'>to_date</span><span class='period'>.</span><span class='id identifier rubyid_jd'>jd</span><span class='comma'>,</span> <span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span><span class='comma'>,</span> <span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span><span class='comma'>,</span> <span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_sec'>sec</span><span class='comma'>,</span> <span class='const'>Rational</span><span class='lparen'>(</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_utc_offset'>utc_offset</span><span class='comma'>,</span> <span class='int'>86400</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_simple_stubs'>simple_stubs</span><span class='period'>.</span><span class='id identifier rubyid_stub_object'>stub_object</span><span class='lparen'>(</span><span class='const'><a href="../../DateTime.html" title="DateTime (class)">DateTime</a></span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_jd'>jd</span><span class='lparen'>(</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_date'>to_date</span><span class='period'>.</span><span class='id identifier rubyid_jd'>jd</span><span class='comma'>,</span> <span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span><span class='comma'>,</span> <span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span><span class='comma'>,</span> <span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_sec'>sec</span><span class='comma'>,</span> <span class='const'><a href="../../Rational.html" title="Rational (class)">Rational</a></span><span class='lparen'>(</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_utc_offset'>utc_offset</span><span class='comma'>,</span> <span class='int'>86400</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
     <span class='kw'>begin</span>

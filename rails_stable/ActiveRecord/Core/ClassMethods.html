@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Core::ClassMethods &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Core::ClassMethods &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../Core.html" title="ActiveRecord::Core (module)">Core</a> &raquo; 
@@ -81,7 +81,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L132'>activerecord/lib/active_record/core.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L152'>activerecord/lib/active_record/core.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -132,16 +132,16 @@ association proxies.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L244-L246'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L262-L264'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-244
-245
-246</pre>
+262
+263
+264</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 244</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 262</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>===</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
@@ -156,17 +156,17 @@ association proxies.</p>
   <h3 class='signature '>
     #<strong>allocate</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L133-L136'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L153-L156'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-133
-134
-135
-136</pre>
+153
+154
+155
+156</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 133</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 153</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_allocate'>allocate</span>
@@ -182,26 +182,30 @@ association proxies.</p>
   <h3 class='signature '>
     #<strong>generated_association_methods</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L219-L225'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L235-L243'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-219
-220
-221
-222
-223
-224
-225</pre>
+235
+236
+237
+238
+239
+240
+241
+242
+243</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 219</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 235</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generated_association_methods'>generated_association_methods</span>
   <span class='ivar'>@generated_association_methods</span> <span class='op'>||=</span> <span class='kw'>begin</span>
     <span class='id identifier rubyid_mod'>mod</span> <span class='op'>=</span> <span class='id identifier rubyid_const_set'>const_set</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='const'>GeneratedAssociationMethods</span><span class='comma'>,</span> <span class='const'><a href="../../Module.html" title="Module (class)">Module</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_private_constant'>private_constant</span> <span class='symbeg'>:</span><span class='const'>GeneratedAssociationMethods</span>
     <span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_mod'>mod</span>
+
     <span class='id identifier rubyid_mod'>mod</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
@@ -221,27 +225,27 @@ association proxies.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L228-L241'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L246-L259'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-228
-229
-230
-231
-232
-233
-234
-235
-236
-237
-238
-239
-240
-241</pre>
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 228</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 246</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
@@ -252,7 +256,7 @@ association proxies.</p>
   <span class='kw'>elsif</span> <span class='op'>!</span><span class='id identifier rubyid_connected?'>connected?</span>
     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>super</span><span class='embexpr_end'>}</span><span class='tstring_content'> (call &#39;</span><span class='embexpr_beg'>#{</span><span class='kw'>super</span><span class='embexpr_end'>}</span><span class='tstring_content'>.connection&#39; to establish a connection)</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_table_exists?'>table_exists?</span>
-    <span class='id identifier rubyid_attr_list'>attr_list</span> <span class='op'>=</span> <span class='id identifier rubyid_attribute_types'>attribute_types</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='op'>|</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span> <span class='op'>*</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_attr_list'>attr_list</span> <span class='op'>=</span> <span class='id identifier rubyid_attribute_types'>attribute_types</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='op'>|</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span> <span class='op'>*</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span>
     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>super</span><span class='embexpr_end'>}</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_attr_list'>attr_list</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>else</span>
     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>super</span><span class='embexpr_end'>}</span><span class='tstring_content'>(Table doesn&#39;t exist)</span><span class='tstring_end'>&quot;</span></span>

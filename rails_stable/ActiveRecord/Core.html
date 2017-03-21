@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Core &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Core &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Core&nbsp;&#x25B2;</a></span>
@@ -96,7 +96,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L7'>activerecord/lib/active_record/core.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L7'>activerecord/lib/active_record/core.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -280,7 +280,7 @@ values as values.</p></div>
 <h2 class='y_details'>DSL Calls</h2>
 <section class='method_details first' id="included-dslcall">
 <h3 class='signature'><strong>included</strong></h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L10-L130'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L10-L150'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -405,7 +405,27 @@ values as values.</p></div>
 127
 128
 129
-130</pre>
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 10</span></pre>
 <pre class='code ruby'>
@@ -475,11 +495,31 @@ values as values.</p></div>
 
   <span class='comment'>##
 </span>  <span class='comment'># :singleton-method:
-</span>  <span class='comment'># Specifies if an error should be raised on query limit or order being
+</span>  <span class='comment'># Specifies if an error should be raised if the query has an order being
 </span>  <span class='comment'># ignored when doing batch queries. Useful in applications where the
-</span>  <span class='comment'># limit or scope being ignored is error-worthy, rather than a warning.
-</span>  <span class='id identifier rubyid_mattr_accessor'>mattr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_error_on_ignored_order_or_limit'>error_on_ignored_order_or_limit</span><span class='comma'>,</span> <span class='label'>instance_writer:</span> <span class='kw'>false</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_error_on_ignored_order_or_limit'>error_on_ignored_order_or_limit</span> <span class='op'>=</span> <span class='kw'>false</span>
+</span>  <span class='comment'># scope being ignored is error-worthy, rather than a warning.
+</span>  <span class='id identifier rubyid_mattr_accessor'>mattr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_error_on_ignored_order'>error_on_ignored_order</span><span class='comma'>,</span> <span class='label'>instance_writer:</span> <span class='kw'>false</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_error_on_ignored_order'>error_on_ignored_order</span> <span class='op'>=</span> <span class='kw'>false</span>
+
+  <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_error_on_ignored_order_or_limit'>error_on_ignored_order_or_limit</span>
+    <span class='const'><a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='period'>.</span><span class='id identifier rubyid_warn'><a href="../ActiveSupport/Deprecation/Reporting.html#warn-instance_method" title="ActiveSupport::Deprecation::Reporting#warn (method)">warn</a></span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-MSG</span><span class='period'>.</span><span class='id identifier rubyid_squish'>squish</span><span class='rparen'>)</span>
+<span class='tstring_content'>      The flag error_on_ignored_order_or_limit is deprecated. Limits are
+      now supported. Please use error_on_ignored_order instead.
+</span><span class='heredoc_end'>    MSG
+</span>    <span class='id identifier rubyid_error_on_ignored_order'>error_on_ignored_order</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_error_on_ignored_order_or_limit'>error_on_ignored_order_or_limit</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_error_on_ignored_order_or_limit'>error_on_ignored_order_or_limit</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_error_on_ignored_order_or_limit='>error_on_ignored_order_or_limit=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+    <span class='const'><a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='period'>.</span><span class='id identifier rubyid_warn'><a href="../ActiveSupport/Deprecation/Reporting.html#warn-instance_method" title="ActiveSupport::Deprecation::Reporting#warn (method)">warn</a></span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-MSG</span><span class='period'>.</span><span class='id identifier rubyid_squish'>squish</span><span class='rparen'>)</span>
+<span class='tstring_content'>      The flag error_on_ignored_order_or_limit is deprecated. Limits are
+      now supported. Please use error_on_ignored_order= instead.
+</span><span class='heredoc_end'>    MSG
+</span>    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_error_on_ignored_order'>error_on_ignored_order</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+  <span class='kw'>end</span>
 
   <span class='comment'>##
 </span>  <span class='comment'># :singleton-method:
@@ -550,16 +590,16 @@ values as values.</p></div>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L452-L454'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L468-L470'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-452
-453
-454</pre>
+468
+469
+470</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 452</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 468</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_frozen?'>frozen?</span>
@@ -585,16 +625,16 @@ saved.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L467-L469'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L483-L485'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-467
-468
-469</pre>
+483
+484
+485</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 467</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 483</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_readonly?'>readonly?</span>
@@ -617,25 +657,25 @@ saved.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L457-L463'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L473-L479'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-457
-458
-459
-460
-461
-462
-463</pre>
+473
+474
+475
+476
+477
+478
+479</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 457</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 473</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>&lt;=&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_other_object'>other_object</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_other_object'>other_object</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_to_key'>to_key</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_other_object'>other_object</span><span class='period'>.</span><span class='id identifier rubyid_to_key'>to_key</span>
+    <span class='id identifier rubyid_to_key'>to_key</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_other_object'>other_object</span><span class='period'>.</span><span class='id identifier rubyid_to_key'>to_key</span>
   <span class='kw'>else</span>
     <span class='kw'>super</span>
   <span class='kw'>end</span>
@@ -667,19 +707,19 @@ so deleted models are still comparable.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L425-L430'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L441-L446'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-425
-426
-427
-428
-429
-430</pre>
+441
+442
+443
+444
+445
+446</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 425</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 441</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_comparison_object'>comparison_object</span><span class='rparen'>)</span>
@@ -719,14 +759,14 @@ use the <a href="#dup-instance_method" title="ActiveRecord::Core#dup (method)">#
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L358-L358'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L376-L376'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-358</pre>
+376</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 358</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 376</span></pre>
 <pre class='code ruby'>
 
 rdoc_method :method: clone
@@ -739,16 +779,16 @@ rdoc_method :method: clone
   <h3 class='signature '>
     #<strong>connection_handler</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L476-L478'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L492-L494'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-476
-477
-478</pre>
+492
+493
+494</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 476</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 492</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connection_handler'>connection_handler</span>
@@ -774,14 +814,14 @@ The dup method does not preserve the timestamps (created|updated)_(at|on).</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L375-L375'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L393-L393'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-375</pre>
+393</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 375</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 393</span></pre>
 <pre class='code ruby'>
 
 rdoc_method :method: dup
@@ -811,28 +851,24 @@ to match the structure of <code>coder</code> passed to the <a href="#init_with-i
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L408-L414'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L426-L430'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-408
-409
-410
-411
-412
-413
-414</pre>
+426
+427
+428
+429
+430</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 408</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 426</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encode_with'>encode_with</span><span class='lparen'>(</span><span class='id identifier rubyid_coder'>coder</span><span class='rparen'>)</span>
-  <span class='comment'># FIXME: Remove this when we better serialize attributes
-</span>  <span class='id identifier rubyid_coder'>coder</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>raw_attributes</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_attributes_before_type_cast'>attributes_before_type_cast</span>
-  <span class='id identifier rubyid_coder'>coder</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>attributes</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@attributes</span>
-  <span class='id identifier rubyid_coder'>coder</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>new_record</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_new_record?'>new_record?</span>
-  <span class='id identifier rubyid_coder'>coder</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>active_record_yaml_version</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>1</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_yaml_encoder'>yaml_encoder</span><span class='period'>.</span><span class='id identifier rubyid_encode'>encode</span><span class='lparen'>(</span><span class='ivar'>@attributes</span><span class='comma'>,</span> <span class='id identifier rubyid_coder'>coder</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_coder'>coder</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>new_record</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_new_record?'>new_record?</span>
+  <span class='id identifier rubyid_coder'>coder</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>active_record_yaml_version</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>2</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -850,14 +886,14 @@ to match the structure of <code>coder</code> passed to the <a href="#init_with-i
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L431-L431'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L447-L447'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-431</pre>
+447</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 431</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 447</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='symbeg'>:</span><span class='id identifier rubyid_eql?'>eql?</span> <span class='symbeg'>:</span><span class='op'>==</span>
@@ -879,17 +915,17 @@ frozen.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L446-L449'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L462-L465'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-446
-447
-448
-449</pre>
+462
+463
+464
+465</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 446</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 462</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_freeze'>freeze</span>
@@ -915,25 +951,25 @@ work with something like:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L435-L441'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L451-L457'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-435
-436
-437
-438
-439
-440
-441</pre>
+451
+452
+453
+454
+455
+456
+457</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 435</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 451</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hash'>hash</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span>
-    <span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span> <span class='op'>^</span> <span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span>
   <span class='kw'>else</span>
     <span class='kw'>super</span>
   <span class='kw'>end</span>
@@ -984,39 +1020,39 @@ of previously encoding an Active Record model, using <a href="#encode_with-insta
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L339-L355'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L357-L373'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-339
-340
-341
-342
-343
-344
-345
-346
-347
-348
-349
-350
-351
-352
-353
-354
-355</pre>
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 339</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 357</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_init_with'>init_with</span><span class='lparen'>(</span><span class='id identifier rubyid_coder'>coder</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_coder'>coder</span> <span class='op'>=</span> <span class='const'><a href="LegacyYamlAdapter.html" title="ActiveRecord::LegacyYamlAdapter (module)">LegacyYamlAdapter</a></span><span class='period'>.</span><span class='id identifier rubyid_convert'><a href="LegacyYamlAdapter.html#convert-class_method" title="ActiveRecord::LegacyYamlAdapter.convert (method)">convert</a></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='comma'>,</span> <span class='id identifier rubyid_coder'>coder</span><span class='rparen'>)</span>
-  <span class='ivar'>@attributes</span> <span class='op'>=</span> <span class='id identifier rubyid_coder'>coder</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>attributes</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@attributes</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_yaml_encoder'>yaml_encoder</span><span class='period'>.</span><span class='id identifier rubyid_decode'>decode</span><span class='lparen'>(</span><span class='id identifier rubyid_coder'>coder</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_init_internals'>init_internals</span>
 
-  <span class='ivar'>@new_record</span> <span class='op'>=</span> <span class='id identifier rubyid_coder'>coder</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>new_record</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@new_record</span> <span class='op'>=</span> <span class='id identifier rubyid_coder'>coder</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>new_record</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
 
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_define_attribute_methods'>define_attribute_methods</span>
 
@@ -1071,25 +1107,25 @@ table columns.</p>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L312-L323'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L330-L341'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-312
-313
-314
-315
-316
-317
-318
-319
-320
-321
-322
-323</pre>
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 312</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 330</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -1120,41 +1156,43 @@ table columns.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L481-L494'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L497-L511'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-481
-482
-483
-484
-485
-486
-487
-488
-489
-490
-491
-492
-493
-494</pre>
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 481</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 497</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='comment'># We check defined?(@attributes) not to issue warnings if the object is
 </span>  <span class='comment'># allocated but not initialized.
 </span>  <span class='id identifier rubyid_inspection'>inspection</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@attributes</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@attributes</span>
-                 <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_column_names'>column_names</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
-                   <span class='kw'>if</span> <span class='id identifier rubyid_has_attribute?'>has_attribute?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-                     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_attribute_for_inspect'>attribute_for_inspect</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-                   <span class='kw'>end</span>
-                 <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-               <span class='kw'>else</span>
-                 <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>not initialized</span><span class='tstring_end'>&quot;</span></span>
-               <span class='kw'>end</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_attribute_names'>attribute_names</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_has_attribute?'>has_attribute?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_attribute_for_inspect'>attribute_for_inspect</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>not initialized</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_inspection'>inspection</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span>
 </pre>
@@ -1174,34 +1212,34 @@ nice result from <code>pp record</code> when pp is required.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L498-L518'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L515-L535'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-498
-499
-500
-501
-502
-503
-504
-505
-506
-507
-508
-509
-510
-511
-512
-513
-514
 515
 516
 517
-518</pre>
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 498</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 515</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pretty_print'>pretty_print</span><span class='lparen'>(</span><span class='id identifier rubyid_pp'>pp</span><span class='rparen'>)</span>
@@ -1209,19 +1247,19 @@ nice result from <code>pp record</code> when pp is required.</p>
   <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_object_address_group'>object_address_group</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='kw'>if</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@attributes</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@attributes</span>
       <span class='id identifier rubyid_column_names'>column_names</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_column_names'>column_names</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span> <span class='id identifier rubyid_has_attribute?'>has_attribute?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_new_record?'>new_record?</span> <span class='rbrace'>}</span>
-      <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_seplist'>seplist</span><span class='lparen'>(</span><span class='id identifier rubyid_column_names'>column_names</span><span class='comma'>,</span> <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>,</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_column_name'>column_name</span><span class='op'>|</span>
+      <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_seplist'>seplist</span><span class='lparen'>(</span><span class='id identifier rubyid_column_names'>column_names</span><span class='comma'>,</span> <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_column_name'>column_name</span><span class='op'>|</span>
         <span class='id identifier rubyid_column_value'>column_value</span> <span class='op'>=</span> <span class='id identifier rubyid_read_attribute'>read_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
-        <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_breakable'>breakable</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span>
+        <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_breakable'>breakable</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>
         <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_group'>group</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span> <span class='kw'>do</span>
           <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='id identifier rubyid_column_name'>column_name</span>
-          <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>:</span><span class='tstring_end'>&#39;</span></span>
+          <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>:</span><span class='tstring_end'>&quot;</span></span>
           <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_breakable'>breakable</span>
           <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_pp'>pp</span> <span class='id identifier rubyid_column_value'>column_value</span>
         <span class='kw'>end</span>
       <span class='kw'>end</span>
     <span class='kw'>else</span>
-      <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_breakable'>breakable</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span>
-      <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>not initialized</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_breakable'>breakable</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_pp'>pp</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>not initialized</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
@@ -1241,16 +1279,16 @@ nice result from <code>pp record</code> when pp is required.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L472-L474'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L488-L490'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-472
-473
-474</pre>
+488
+489
+490</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 472</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 488</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_readonly!'>readonly!</span>
@@ -1273,20 +1311,20 @@ values as values.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/core.rb#L521-L523'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/core.rb#L538-L540'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-521
-522
-523</pre>
+538
+539
+540</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 521</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/core.rb', line 538</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_slice'>slice</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_methods'>methods</span><span class='rparen'>)</span>
-  <span class='const'><a href="../Hash.html" title="Hash (class)">Hash</a></span><span class='lbracket'>[</span><span class='id identifier rubyid_methods'>methods</span><span class='period'>.</span><span class='id identifier rubyid_map!'>map!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_method'>method</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_public_send'>public_send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_with_indifferent_access'>with_indifferent_access</span>
+  <span class='const'><a href="../Hash.html" title="Hash (class)">Hash</a></span><span class='lbracket'>[</span><span class='id identifier rubyid_methods'>methods</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_map!'>map!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_method'>method</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_public_send'>public_send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_with_indifferent_access'>with_indifferent_access</span>
 <span class='kw'>end</span>
 </pre>
   </div>

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveJob::Enqueuing &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveJob::Enqueuing &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_E'>Index (E)</a> &raquo; 
         <a href="../ActiveJob.html" title="ActiveJob (module)">ActiveJob</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Enqueuing&nbsp;&#x25B2;</a></span>
@@ -96,7 +96,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activejob/lib/active_job/enqueuing.rb#L5'>activejob/lib/active_job/enqueuing.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activejob/lib/active_job/enqueuing.rb#L5'>activejob/lib/active_job/enqueuing.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -106,7 +106,7 @@
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Provides behavior for enqueuing and retrying jobs.</p>
+<p>Provides behavior for enqueuing jobs.</p>
 
   </div>
 </div>
@@ -138,14 +138,6 @@
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Enqueues the job to be performed by the queue adapter.</p></div>
-    </div>
-  </li>
-  <li>
-    <span class='summary_signature '>
-      <a href="#retry_job-instance_method" title="#retry_job (instance method)">#<strong>retry_job</strong>(options = {})  </a>
-    </span>
-    <div class='summary_desc'>
-      <div class='inline'><p>Reschedules the job to be re-executed.</p></div>
     </div>
   </li>
 </ul>
@@ -181,98 +173,42 @@
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activejob/lib/active_job/enqueuing.rb#L67-L80'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activejob/lib/active_job/enqueuing.rb#L42-L55'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80</pre>
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activejob/lib/active_job/enqueuing.rb', line 67</span></pre>
+<pre><span class='info file'># File 'activejob/lib/active_job/enqueuing.rb', line 42</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_enqueue'>enqueue</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_enqueue'>enqueue</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_scheduled_at'>scheduled_at</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_wait'>wait</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_seconds'>seconds</span><span class='period'>.</span><span class='id identifier rubyid_from_now'>from_now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_wait'>wait</span><span class='rbracket'>]</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_scheduled_at'>scheduled_at</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_wait_until'>wait_until</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_wait_until'>wait_until</span><span class='rbracket'>]</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_queue_name'>queue_name</span>   <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_queue_name_from_part'>queue_name_from_part</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_queue'>queue</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_queue'>queue</span><span class='rbracket'>]</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_priority'>priority</span>     <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_priority'>priority</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_priority'>priority</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_run_callbacks'>run_callbacks</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enqueue'>enqueue</span> <span class='kw'>do</span>
-    <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_scheduled_at'>scheduled_at</span>
-      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_queue_adapter'>queue_adapter</span><span class='period'>.</span><span class='id identifier rubyid_enqueue_at'>enqueue_at</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_scheduled_at'>scheduled_at</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_scheduled_at'>scheduled_at</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_queue_adapter'>queue_adapter</span><span class='period'>.</span><span class='id identifier rubyid_enqueue_at'>enqueue_at</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_scheduled_at'>scheduled_at</span>
     <span class='kw'>else</span>
       <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_queue_adapter'>queue_adapter</span><span class='period'>.</span><span class='id identifier rubyid_enqueue'>enqueue</span> <span class='kw'>self</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
   <span class='kw'>self</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="retry_job-instance_method">
-  <h3 class='signature '>
-    #<strong>retry_job</strong>(options = {})  
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>Reschedules the job to be re-executed. This is useful in combination with
-the <code>rescue_from</code> option. When you rescue an exception from your job you
-can ask Active Job to retry performing your job.</p>
-
-<h4 id="label-Options">Options</h4>
-<ul><li>
-<p><code>:wait</code> - Enqueues the job with the specified delay</p>
-</li><li>
-<p><code>:wait_until</code> - Enqueues the job at the time specified</p>
-</li><li>
-<p><code>:queue</code> - Enqueues the job on the specified queue</p>
-</li><li>
-<p><code>:priority</code> - Enqueues the job with the specified priority</p>
-</li></ul>
-
-<h4 id="label-Examples">Examples</h4>
-
-<pre class="code ruby"><code class="ruby">class SiteScraperJob &lt; {ActiveJob::Base}
-  rescue_from(ErrorLoadingSite) do
-    retry_job queue: :low_priority
-  end
-
-  def perform(*args)
-    # raise ErrorLoadingSite if cannot scrape
-  end
-end</code></pre>
-
-  </div>
-</div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activejob/lib/active_job/enqueuing.rb#L48-L50'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-48
-49
-50</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activejob/lib/active_job/enqueuing.rb', line 48</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_retry_job'>retry_job</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_enqueue'>enqueue</span> <span class='id identifier rubyid_options'>options</span>
 <span class='kw'>end</span>
 </pre>
   </div>

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveRecord::ConnectionAdapters::ConnectionHandler &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveRecord::ConnectionAdapters::ConnectionHandler &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
@@ -80,7 +80,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L835'>activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L863'>activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -136,7 +136,7 @@ will use the default connection pool to "my_application".</p>
 handler to determine the connection pool that they should use.</p>
 
 <p>The ConnectionHandler class is not coupled with the Active models, as it
-has no knowlodge about the model. The model, needs to pass a specification
+has no knowlodge about the model. The model needs to pass a specification
 name to the handler, in order to lookup the correct connection pool.</p>
 
   </div>
@@ -225,7 +225,7 @@ already been opened.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#establish_connection-instance_method" title="#establish_connection (instance method)">#<strong>establish_connection</strong>(spec)  </a>
+      <a href="#establish_connection-instance_method" title="#establish_connection (instance method)">#<strong>establish_connection</strong>(config)  </a>
     </span>
   </li>
   <li>
@@ -241,8 +241,8 @@ already been opened.</p></div>
       <a href="#retrieve_connection_pool-instance_method" title="#retrieve_connection_pool (instance method)">#<strong>retrieve_connection_pool</strong>(spec_name)  </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Retrieving the connection pool happens a lot so we cache it in
-@class_to_pool.</p></div>
+      <div class='inline'><p>Retrieving the connection pool happens a lot, so we cache it in
+@owner_to_pool.</p></div>
     </div>
   </li>
 </ul>
@@ -260,25 +260,25 @@ already been opened.</p></div>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L836-L841'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L864-L869'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-836
-837
-838
-839
-840
-841</pre>
+864
+865
+866
+867
+868
+869</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 836</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 864</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='comment'># These caches are keyed by spec.name (ConnectionSpecification#name).
-</span>  <span class='ivar'>@owner_to_pool</span> <span class='op'>=</span> <span class='const'>Concurrent</span><span class='op'>::</span><span class='const'>Map</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_initial_capacity'>initial_capacity</span> <span class='op'>=&gt;</span> <span class='int'>2</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span>
-    <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Concurrent</span><span class='op'>::</span><span class='const'>Map</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_initial_capacity'>initial_capacity</span> <span class='op'>=&gt;</span> <span class='int'>2</span><span class='rparen'>)</span>
+</span>  <span class='ivar'>@owner_to_pool</span> <span class='op'>=</span> <span class='const'>Concurrent</span><span class='op'>::</span><span class='const'>Map</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>initial_capacity:</span> <span class='int'>2</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span> <span class='id identifier rubyid_k'>k</span><span class='op'>|</span>
+    <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Concurrent</span><span class='op'>::</span><span class='const'>Map</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>initial_capacity:</span> <span class='int'>2</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
@@ -301,16 +301,16 @@ that the <code>ConnectionHandler</code> is managing.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L854-L856'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L900-L902'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-854
-855
-856</pre>
+900
+901
+902</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 854</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 900</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_active_connections?'>active_connections?</span>
@@ -335,16 +335,16 @@ alive.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L861-L863'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L907-L909'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-861
-862
-863</pre>
+907
+908
+909</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 861</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 907</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear_active_connections!'>clear_active_connections!</span>
@@ -359,16 +359,16 @@ alive.</p>
   <h3 class='signature '>
     #<strong>clear_all_connections!</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L872-L874'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L918-L920'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-872
-873
-874</pre>
+918
+919
+920</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 872</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 918</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear_all_connections!'>clear_all_connections!</span>
@@ -392,16 +392,16 @@ alive.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L868-L870'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L914-L916'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-868
-869
-870</pre>
+914
+915
+916</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 868</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 914</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear_reloadable_connections!'>clear_reloadable_connections!</span>
@@ -426,17 +426,17 @@ already been opened.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L890-L893'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L936-L939'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-890
-891
-892
-893</pre>
+936
+937
+938
+939</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 890</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 936</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connected?'>connected?</span><span class='lparen'>(</span><span class='id identifier rubyid_spec_name'>spec_name</span><span class='rparen'>)</span>
@@ -453,16 +453,16 @@ already been opened.</p>
     #<strong>connection_pool_list</strong>  
     <span class='aliases'>Also known as: <span class='names'>#connection_pools</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L843-L845'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L871-L873'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-843
-844
-845</pre>
+871
+872
+873</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 843</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 871</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connection_pool_list'>connection_pool_list</span>
@@ -485,14 +485,14 @@ already been opened.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L846-L846'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L874-L874'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-846</pre>
+874</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 846</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 874</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='symbeg'>:</span><span class='id identifier rubyid_connection_pools'>connection_pools</span> <span class='symbeg'>:</span><span class='id identifier rubyid_connection_pool_list'>connection_pool_list</span>
@@ -503,22 +503,58 @@ already been opened.</p>
 
 <section class='method_details' id="establish_connection-instance_method">
   <h3 class='signature '>
-    #<strong>establish_connection</strong>(spec)  
+    #<strong>establish_connection</strong>(config)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L848-L850'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L876-L896'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-848
-849
-850</pre>
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 848</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 876</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_establish_connection'>establish_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_owner_to_pool'>owner_to_pool</span><span class='lbracket'>[</span><span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><a href="../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a></span><span class='op'>::</span><span class='const'><a href="ConnectionPool.html" title="ActiveRecord::ConnectionAdapters::ConnectionPool (class)">ConnectionPool</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ConnectionPool.html#new-class_method" title="ActiveRecord::ConnectionAdapters::ConnectionPool.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_establish_connection'>establish_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_resolver'>resolver</span> <span class='op'>=</span> <span class='const'><a href="ConnectionSpecification.html" title="ActiveRecord::ConnectionAdapters::ConnectionSpecification (class)">ConnectionSpecification</a></span><span class='op'>::</span><span class='const'><a href="ConnectionSpecification/Resolver.html" title="ActiveRecord::ConnectionAdapters::ConnectionSpecification::Resolver (class)">Resolver</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ConnectionSpecification/Resolver.html#new-class_method" title="ActiveRecord::ConnectionAdapters::ConnectionSpecification::Resolver.new (method)">new</a></span><span class='lparen'>(</span><span class='const'><a href="../Base.html" title="ActiveRecord::Base (class)">Base</a></span><span class='period'>.</span><span class='id identifier rubyid_configurations'><a href="../Base.html#configurations-class_method" title="ActiveRecord::Base.configurations (method)">configurations</a></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_spec'>spec</span> <span class='op'>=</span> <span class='id identifier rubyid_resolver'>resolver</span><span class='period'>.</span><span class='id identifier rubyid_spec'>spec</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_remove_connection'>remove_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_message_bus'>message_bus</span> <span class='op'>=</span> <span class='const'><a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../../ActiveSupport/Notifications.html" title="ActiveSupport::Notifications (module)">Notifications</a></span><span class='period'>.</span><span class='id identifier rubyid_instrumenter'><a href="../../ActiveSupport/Notifications.html#instrumenter-class_method" title="ActiveSupport::Notifications.instrumenter (method)">instrumenter</a></span>
+  <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='label'>connection_id:</span> <span class='id identifier rubyid_object_id'>object_id</span>
+  <span class='rbrace'>}</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_spec'>spec</span>
+    <span class='id identifier rubyid_payload'>payload</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_spec_name'>spec_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+    <span class='id identifier rubyid_payload'>payload</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_config'>config</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_message_bus'>message_bus</span><span class='period'>.</span><span class='id identifier rubyid_instrument'>instrument</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>!connection.active_record</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_owner_to_pool'>owner_to_pool</span><span class='lbracket'>[</span><span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><a href="../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a></span><span class='op'>::</span><span class='const'><a href="ConnectionPool.html" title="ActiveRecord::ConnectionAdapters::ConnectionPool (class)">ConnectionPool</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ConnectionPool.html#new-class_method" title="ActiveRecord::ConnectionAdapters::ConnectionPool.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_owner_to_pool'>owner_to_pool</span><span class='lbracket'>[</span><span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -534,25 +570,25 @@ already been opened.</p>
     
 <p>Remove the connection for this class. This will close the active connection
 and the defined connection (if they exist). The result can be used as an
-argument for establish_connection, for easily re-establishing the
+argument for <a href="#establish_connection-instance_method" title="ActiveRecord::ConnectionAdapters::ConnectionHandler#establish_connection (method)">#establish_connection</a>, for easily re-establishing the
 connection.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L899-L905'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L945-L951'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-899
-900
-901
-902
-903
-904
-905</pre>
+945
+946
+947
+948
+949
+950
+951</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 899</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 945</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove_connection'>remove_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_spec_name'>spec_name</span><span class='rparen'>)</span>
@@ -574,50 +610,47 @@ connection.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Retrieving the connection pool happens a lot so we cache it in
-@class_to_pool. This makes retrieving the connection pool O(1) once the
+<p>Retrieving the connection pool happens a lot, so we cache it in
+@owner_to_pool. This makes retrieving the connection pool O(1) once the
 process is warm. When a connection is established or removed, we invalidate
 the cache.</p>
 
-<p>Ideally we would use <code>#fetch</code> here, as <a href="klass">class_to_pool</a>
-may sometimes be nil. However, benchmarking (<a
-href="https://gist.github.com/jonleighton/3552829">gist.github.com/jonleighton/3552829</a>)
-showed that <code>#fetch</code> is significantly slower than <code>#[]</code>. So in the nil
-case, no caching will take place, but that&#39;s ok since the nil case is
-not the common one that we wish to optimise for.</p>
-
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L916-L929'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L956-L971'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-916
-917
-918
-919
-920
-921
-922
-923
-924
-925
-926
-927
-928
-929</pre>
+956
+957
+958
+959
+960
+961
+962
+963
+964
+965
+966
+967
+968
+969
+970
+971</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 916</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb', line 956</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_retrieve_connection_pool'>retrieve_connection_pool</span><span class='lparen'>(</span><span class='id identifier rubyid_spec_name'>spec_name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_owner_to_pool'>owner_to_pool</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_spec_name'>spec_name</span><span class='rparen'>)</span> <span class='kw'>do</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_ancestor_pool'>ancestor_pool</span> <span class='op'>=</span> <span class='id identifier rubyid_pool_from_any_process_for'>pool_from_any_process_for</span><span class='lparen'>(</span><span class='id identifier rubyid_spec_name'>spec_name</span><span class='rparen'>)</span>
+    <span class='comment'># Check if a connection was previously established in an ancestor process,
+</span>    <span class='comment'># which may have been forked.
+</span>    <span class='kw'>if</span> <span class='id identifier rubyid_ancestor_pool'>ancestor_pool</span> <span class='op'>=</span> <span class='id identifier rubyid_pool_from_any_process_for'>pool_from_any_process_for</span><span class='lparen'>(</span><span class='id identifier rubyid_spec_name'>spec_name</span><span class='rparen'>)</span>
       <span class='comment'># A connection was established in an ancestor process that must have
 </span>      <span class='comment'># subsequently forked. We can&#39;t reuse the connection, but we can copy
 </span>      <span class='comment'># the specification and establish a new connection with it.
-</span>      <span class='id identifier rubyid_establish_connection'>establish_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_ancestor_pool'>ancestor_pool</span><span class='period'>.</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_pool'>pool</span><span class='op'>|</span>
+</span>      <span class='id identifier rubyid_establish_connection'>establish_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_ancestor_pool'>ancestor_pool</span><span class='period'>.</span><span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_to_hash'>to_hash</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_pool'>pool</span><span class='op'>|</span>
         <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_schema_cache'>schema_cache</span> <span class='op'>=</span> <span class='id identifier rubyid_ancestor_pool'>ancestor_pool</span><span class='period'>.</span><span class='id identifier rubyid_schema_cache'>schema_cache</span> <span class='kw'>if</span> <span class='id identifier rubyid_ancestor_pool'>ancestor_pool</span><span class='period'>.</span><span class='id identifier rubyid_schema_cache'>schema_cache</span>
       <span class='kw'>end</span>
     <span class='kw'>else</span>

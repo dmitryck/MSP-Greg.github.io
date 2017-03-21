@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActionController::ParamsWrapper &mdash; Rails-5-0-stable</title>
+<title>Module: ActionController::ParamsWrapper &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_P'>Index (P)</a> &raquo; 
         <a href="../ActionController.html" title="ActionController (module)">ActionController</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>ParamsWrapper&nbsp;&#x25B2;</a></span>
@@ -98,7 +98,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/params_wrapper.rb#L69'>actionpack/lib/action_controller/metal/params_wrapper.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/params_wrapper.rb#L69'>actionpack/lib/action_controller/metal/params_wrapper.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -181,7 +181,7 @@ will then fallback to use <code>user</code> as the key.</p>
   <li>
     <span id='EXCLUDE_PARAMETERS-constant' class='summary_signature'>EXCLUDE_PARAMETERS =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/params_wrapper.rb#L72-L72'># File 'actionpack/lib/action_controller/metal/params_wrapper.rb', line 72</a>    <pre class='code ruby'><span class='qwords'><span class='qwords_beg'>%w(</span><span class='tstring_content'>authenticity_token</span><span class='words_sep'> </span><span class='tstring_content'>_method</span><span class='words_sep'> </span><span class='tstring_content'>utf8</span><span class='words_sep'>)</span></span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/params_wrapper.rb#L72-L72'># File 'actionpack/lib/action_controller/metal/params_wrapper.rb', line 72</a>    <pre class='code ruby'><span class='qwords'><span class='qwords_beg'>%w(</span><span class='tstring_content'>authenticity_token</span><span class='words_sep'> </span><span class='tstring_content'>_method</span><span class='words_sep'> </span><span class='tstring_content'>utf8</span><span class='words_sep'>)</span></span></pre>
   </li>
 </ul>
 </div>
@@ -220,7 +220,7 @@ will then fallback to use <code>user</code> as the key.</p>
 <h2 class='y_details'>DSL Calls</h2>
 <section class='method_details first' id="included-dslcall">
 <h3 class='signature'><strong>included</strong></h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/params_wrapper.rb#L157-L160'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/params_wrapper.rb#L157-L160'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -250,12 +250,12 @@ will then fallback to use <code>user</code> as the key.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Performs parameters wrapping upon the request. Will be called automatically
-by the metal call stack.</p>
+<p>Performs parameters wrapping upon the request. Called automatically by the
+metal call stack.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/params_wrapper.rb#L230-L249'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/params_wrapper.rb#L230-L249'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -295,11 +295,11 @@ by the metal call stack.</p>
     <span class='id identifier rubyid_wrapped_keys'>wrapped_keys</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_request_parameters'>request_parameters</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
     <span class='id identifier rubyid_wrapped_filtered_hash'>wrapped_filtered_hash</span> <span class='op'>=</span> <span class='id identifier rubyid__wrap_parameters'>_wrap_parameters</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_filtered_parameters'>filtered_parameters</span><span class='period'>.</span><span class='id identifier rubyid_slice'>slice</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_wrapped_keys'>wrapped_keys</span><span class='rparen'>)</span>
 
-    <span class='comment'># This will make the wrapped hash accessible from controller and view
+    <span class='comment'># This will make the wrapped hash accessible from controller and view.
 </span>    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_parameters'>parameters</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span> <span class='id identifier rubyid_wrapped_hash'>wrapped_hash</span>
     <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_request_parameters'>request_parameters</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span> <span class='id identifier rubyid_wrapped_hash'>wrapped_hash</span>
 
-    <span class='comment'># This will display the wrapped hash in the log file
+    <span class='comment'># This will display the wrapped hash in the log file.
 </span>    <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_filtered_parameters'>filtered_parameters</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span> <span class='id identifier rubyid_wrapped_filtered_hash'>wrapped_filtered_hash</span>
   <span class='kw'>end</span>
   <span class='kw'>super</span>

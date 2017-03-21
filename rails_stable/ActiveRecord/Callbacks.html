@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Callbacks &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Callbacks &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Callbacks&nbsp;&#x25B2;</a></span>
@@ -90,7 +90,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/callbacks.rb#L258'>activerecord/lib/active_record/callbacks.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/callbacks.rb#L307'>activerecord/lib/active_record/callbacks.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -355,6 +355,55 @@ executed, the children are not available because the <a href="Persistence.html#d
 <p>This way, the <code>before_destroy</code> gets executed before the <code>dependent:
 :destroy</code> is called, and the data is still available.</p>
 
+<p>Also, there are cases when you want several callbacks of the same type to
+be executed in order.</p>
+
+<p>For example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Topic</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbeg'>:</span><span class='id identifier rubyid_children'>children</span>
+
+  <span class='id identifier rubyid_after_save'>after_save</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_children'>log_children</span>
+  <span class='id identifier rubyid_after_save'>after_save</span> <span class='symbeg'>:</span><span class='id identifier rubyid_do_something_else'>do_something_else</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_log_chidren'>log_chidren</span>
+    <span class='comment'># Child processing
+</span>  <span class='kw'>end</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_do_something_else'>do_something_else</span>
+    <span class='comment'># Something else
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span></code></pre>
+
+<p>In this case the <code>log_children</code> gets executed before <code>do_something_else</code>.
+The same applies to all non-transactional callbacks.</p>
+
+<p>In case there are multiple transactional callbacks as seen below, the order
+is reversed.</p>
+
+<p>For example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Topic</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbeg'>:</span><span class='id identifier rubyid_children'>children</span>
+
+  <span class='id identifier rubyid_after_commit'>after_commit</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_children'>log_children</span>
+  <span class='id identifier rubyid_after_commit'>after_commit</span> <span class='symbeg'>:</span><span class='id identifier rubyid_do_something_else'>do_something_else</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_log_chidren'>log_chidren</span>
+    <span class='comment'># Child processing
+</span>  <span class='kw'>end</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_do_something_else'>do_something_else</span>
+    <span class='comment'># Something else
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span></code></pre>
+
+<p>In this case the <code>do_something_else</code> gets executed before <code>log_children</code>.</p>
+
 <h3 id="label-Transactions">Transactions</h3>
 
 <p>The entire callback chain of a <a href="Persistence.html#save-instance_method" title="ActiveRecord::Persistence#save (method)">#save</a>, <a href="Persistence.html#save!-instance_method" title="ActiveRecord::Persistence#save! (method)">#save!</a>, or <a href="Persistence.html#destroy-instance_method" title="ActiveRecord::Persistence#destroy (method)">#destroy</a> call runs within a transaction.
@@ -399,7 +448,7 @@ before_save callback chain on a Topic model.</p>
   <li>
     <span id='CALLBACKS-constant' class='summary_signature'>CALLBACKS =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/callbacks.rb#L261-L266'># File 'activerecord/lib/active_record/callbacks.rb', line 261</a>    <pre class='code ruby'><span class='lbracket'>[</span>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/callbacks.rb#L310-L315'># File 'activerecord/lib/active_record/callbacks.rb', line 310</a>    <pre class='code ruby'><span class='lbracket'>[</span>
   <span class='symbeg'>:</span><span class='id identifier rubyid_after_initialize'>after_initialize</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_after_find'>after_find</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_after_touch'>after_touch</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_before_validation'>before_validation</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_after_validation'>after_validation</span><span class='comma'>,</span>
   <span class='symbeg'>:</span><span class='id identifier rubyid_before_save'>before_save</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_around_save'>around_save</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_after_save'>after_save</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_before_create'>before_create</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_around_create'>around_create</span><span class='comma'>,</span>
   <span class='symbeg'>:</span><span class='id identifier rubyid_after_create'>after_create</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_before_update'>before_update</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_around_update'>around_update</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_after_update'>after_update</span><span class='comma'>,</span>
@@ -425,35 +474,6 @@ before_save callback chain on a Topic model.</p>
   </tbody>
 </table></div>
 </div>
-<h2 class='y_details'>DSL Calls</h2>
-<section class='method_details first' id="included-dslcall">
-<h3 class='signature'><strong>included</strong></h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/callbacks.rb#L272-L277'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-272
-273
-274
-275
-276
-277</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/callbacks.rb', line 272</span></pre>
-<pre class='code ruby'>
-
-<span class='id identifier rubyid_included'>included</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_include'>include</span> <span class='const'><a href="../ActiveModel.html" title="ActiveModel (module)">ActiveModel</a></span><span class='op'>::</span><span class='const'><a href="../ActiveModel/Validations.html" title="ActiveModel::Validations (module)">Validations</a></span><span class='op'>::</span><span class='const'><a href="../ActiveModel/Validations/Callbacks.html" title="ActiveModel::Validations::Callbacks (module)">Callbacks</a></span>
-
-  <span class='id identifier rubyid_define_model_callbacks'>define_model_callbacks</span> <span class='symbeg'>:</span><span class='id identifier rubyid_initialize'>initialize</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_find'>find</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_touch'>touch</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_only'>only</span> <span class='op'>=&gt;</span> <span class='symbeg'>:</span><span class='id identifier rubyid_after'>after</span>
-  <span class='id identifier rubyid_define_model_callbacks'>define_model_callbacks</span> <span class='symbeg'>:</span><span class='id identifier rubyid_save'>save</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_create'>create</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_update'>update</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_destroy'>destroy</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
 
 <div id='footer'>
   Generated by

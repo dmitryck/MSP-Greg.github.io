@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActionMailer::Previews::ClassMethods &mdash; Rails-5-0-stable</title>
+<title>Module: ActionMailer::Previews::ClassMethods &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../../ActionMailer.html" title="ActionMailer (module)">ActionMailer</a> &raquo; 
         <a class='nodoc' href="../Previews.html" title="ActionMailer::Previews (module)">Previews</a> &raquo; 
@@ -74,7 +74,7 @@
   <tbody>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/preview.rb#L27'>actionmailer/lib/action_mailer/preview.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/preview.rb#L27'>actionmailer/lib/action_mailer/preview.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -116,7 +116,7 @@ is passed in it will be <code>constantize</code>d.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/preview.rb#L36-L47'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/preview.rb#L36-L48'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -132,13 +132,15 @@ is passed in it will be <code>constantize</code>d.</p>
 44
 45
 46
-47</pre>
+47
+48</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'actionmailer/lib/action_mailer/preview.rb', line 36</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_preview_interceptor'>register_preview_interceptor</span><span class='lparen'>(</span><span class='id identifier rubyid_interceptor'>interceptor</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_preview_interceptor'>preview_interceptor</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_interceptor'>interceptor</span>
+  <span class='id identifier rubyid_preview_interceptor'>preview_interceptor</span> <span class='op'>=</span> \
+    <span class='kw'>case</span> <span class='id identifier rubyid_interceptor'>interceptor</span>
     <span class='kw'>when</span> <span class='const'><a href="../../String.html" title="String (class)">String</a></span><span class='comma'>,</span> <span class='const'><a href="../../Symbol.html" title="Symbol (class)">Symbol</a></span>
       <span class='id identifier rubyid_interceptor'>interceptor</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_camelize'>camelize</span><span class='period'>.</span><span class='id identifier rubyid_constantize'>constantize</span>
     <span class='kw'>else</span>
@@ -166,7 +168,7 @@ previewed.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionmailer/lib/action_mailer/preview.rb#L29-L31'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionmailer/lib/action_mailer/preview.rb#L29-L31'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 

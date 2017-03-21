@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: 5.0 Release Notes &mdash; Rails-5-0-stable</title>
+<title>File: 5.0 Release Notes &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: 5.0 Release Notes&nbsp;&#x25B2;</a></span>
             </div>
@@ -100,8 +100,6 @@ guide.</p>
 <h2>Major Features</h2>
 
 <h3>Action Cable</h3>
-
-<p><a href="https://github.com/rails/rails/pull/22586">Pull Request</a></p>
 
 <p>Action Cable is a new framework in Rails 5. It seamlessly integrates
 <a href="https://en.wikipedia.org/wiki/WebSocket">WebSockets</a> with the rest of your
@@ -215,7 +213,7 @@ calling <code>serialize</code> on your type object.</p>
 tracking is performed.</p>
 
 <p>See its
-<a href="http://api.rubyonrails.org/classes/ActiveRecord/Attributes/ClassMethods.html">documentation</a>
+<a href="http://api.rubyonrails.org/v5.0.1/classes/ActiveRecord/Attributes/ClassMethods.html">documentation</a>
 for a detailed write up.</p>
 
 <h3>Test Runner</h3>
@@ -297,7 +295,7 @@ the order they are invoked by Rails.
 (<a href="https://github.com/rails/rails/pull/22457">Pull Request</a>,
  <a href="https://github.com/rails/rails/pull/22288">Pull Request</a>)</p></li>
 <li><p>New applications are generated with the evented file system monitor enabled
-on Linux and Mac OS X. The feature can be opted out by passing
+on Linux and macOS. The feature can be opted out by passing
 <code>--skip-listen</code> to the generator.
 (<a href="https://github.com/rails/rails/commit/de6ad5665d2679944a9ee9407826ba88395a1003">commit</a>,
 <a href="https://github.com/rails/rails/commit/94dbc48887bf39c241ee2ce1741ee680d773f202">commit</a>)</p></li>
@@ -392,7 +390,7 @@ keyword arguments. (<a href="https://github.com/rails/rails/pull/18323">Pull Req
 (<a href="https://github.com/rails/rails/pull/23980">Pull Request</a>)</p></li>
 <li><p>Deprecated env method on controller instances.
 (<a href="https://github.com/rails/rails/commit/05934d24aff62d66fc62621aa38dae6456e276be">commit</a>)</p></li>
-<li><p><a href="ActionDispatch/ParamsParser.html" title="ActionDispatch::ParamsParser (class)">::ActionDispatch::ParamsParser</a> is deprecated and was removed from the
+<li><p><a href="ActionDispatch/ParamsParser.html" title="ActionDispatch::ParamsParser (module)">::ActionDispatch::ParamsParser</a> is deprecated and was removed from the
 middleware stack. To configure the parameter parsers use
 <code>ActionDispatch::Request.parameter_parsers=</code>.
 (<a href="https://github.com/rails/rails/commit/38d2bf5fd1f3e014f2397898d371c339baa627b1">commit</a>,
@@ -550,7 +548,7 @@ whether your templates should perform caching or not.
 <li><p>Removed deprecated behavior allowing nested arrays to be passed as query
 values. (<a href="https://github.com/rails/rails/pull/17919">Pull Request</a>)</p></li>
 <li><p>Removed deprecated <a href="ActiveRecord/Tasks/DatabaseTasks.html#load_schema-instance_method" title="ActiveRecord::Tasks::DatabaseTasks#load_schema (method)">ActiveRecord::Tasks::DatabaseTasks#load_schema</a>. This
-method was replaced by <a href="ActiveRecord/Tasks/DatabaseTasks.html#load_schema_for-instance_method" title="ActiveRecord::Tasks::DatabaseTasks#load_schema_for (method)">ActiveRecord::Tasks::DatabaseTasks#load_schema_for</a>.
+method was replaced by <code>ActiveRecord::Tasks::DatabaseTasks#load_schema_for</code>.
 (<a href="https://github.com/rails/rails/commit/ad783136d747f73329350b9bb5a5e17c8f8800da">commit</a>)</p></li>
 <li><p>Removed deprecated <code>serialized_attributes</code>.
 (<a href="https://github.com/rails/rails/commit/82043ab53cb186d59b1b3be06122861758f814b2">commit</a>)</p></li>
@@ -744,6 +742,14 @@ or not.
 <li><p>Added <code>:time</code> option to <code>touch</code> method to touch records with different time
 than the current time.
 (<a href="https://github.com/rails/rails/pull/18956">Pull Request</a>)</p></li>
+<li><p>Change transaction callbacks to not swallow errors.
+Before this change any errors raised inside a transaction callback
+were getting rescued and printed in the logs, unless you used
+the (newly deprecated) <code>raise_in_transactional_callbacks = true</code> option.</p>
+
+<p>Now these errors are not rescued anymore and just bubble up, matching the
+behavior of other callbacks.
+(<a href="https://github.com/rails/rails/commit/07d3d402341e81ada0214f2cb2be1da69eadfe72">commit</a>)</p></li>
 </ul>
 
 <h2>Active Model</h2>
@@ -769,13 +775,13 @@ than the current time.
 <li><p>Deprecated returning <code>false</code> as a way to halt Active Model and
 <a href="ActiveModel/Validations.html" title="ActiveModel::Validations (module)">::ActiveModel::Validations</a> callback chains. The recommended way is to
 <code>throw(:abort)</code>. (<a href="https://github.com/rails/rails/pull/17227">Pull Request</a>)</p></li>
-<li><p>Deprecated <a href="ActiveModel/Errors.html#get-instance_method" title="ActiveModel::Errors#get (method)">ActiveModel::Errors#get</a>, <a href="ActiveModel/Errors.html#set-instance_method" title="ActiveModel::Errors#set (method)">ActiveModel::Errors#set</a> and
-<a href="ActiveModel/Errors.html#[]=-instance_method" title="ActiveModel::Errors#[]= (method)">ActiveModel::Errors#[]=</a> methods that have inconsistent behavior.
+<li><p>Deprecated <code>ActiveModel::Errors#get</code>, <code>ActiveModel::Errors#set</code> and
+<code>ActiveModel::Errors#[]=</code> methods that have inconsistent behavior.
 (<a href="https://github.com/rails/rails/pull/18634">Pull Request</a>)</p></li>
 <li><p>Deprecated the <code>:tokenizer</code> option for <code>validates_length_of</code>, in favor of
 plain Ruby.
 (<a href="https://github.com/rails/rails/pull/19585">Pull Request</a>)</p></li>
-<li><p>Deprecated <a href="ActiveModel/Errors.html#add_on_empty-instance_method" title="ActiveModel::Errors#add_on_empty (method)">ActiveModel::Errors#add_on_empty</a> and <a href="ActiveModel/Errors.html#add_on_blank-instance_method" title="ActiveModel::Errors#add_on_blank (method)">ActiveModel::Errors#add_on_blank</a>
+<li><p>Deprecated <code>ActiveModel::Errors#add_on_empty</code> and <code>ActiveModel::Errors#add_on_blank</code>
 with no replacement.
 (<a href="https://github.com/rails/rails/pull/18996">Pull Request</a>)</p></li>
 </ul>
@@ -864,12 +870,12 @@ Use <a href="Class.html#class_attribute-instance_method" title="Class#class_attr
 <h3>Deprecations</h3>
 
 <ul>
-<li><p>Deprecated <a href="#MissingSourceFile-constant" title="MissingSourceFile (constant)">MissingSourceFile</a> in favor of <a href="LoadError.html" title="LoadError (class)">LoadError</a>.
+<li><p>Deprecated <code>MissingSourceFile</code> in favor of <a href="LoadError.html" title="LoadError (class)">LoadError</a>.
 (<a href="https://github.com/rails/rails/commit/734d97d2">commit</a>)</p></li>
 <li><p>Deprecated <code>alias_method_chain</code> in favour of <code>Module#prepend</code> introduced in
 Ruby 2.0.
 (<a href="https://github.com/rails/rails/pull/19434">Pull Request</a>)</p></li>
-<li><p>Deprecated <a href="ActiveSupport/Concurrency/Latch.html" title="ActiveSupport::Concurrency::Latch (class)">::ActiveSupport::Concurrency::Latch</a> in favor of
+<li><p>Deprecated <code>ActiveSupport::Concurrency::Latch</code> in favor of
 <code>Concurrent::CountDownLatch</code> from concurrent-ruby.
 (<a href="https://github.com/rails/rails/pull/20866">Pull Request</a>)</p></li>
 <li><p>Deprecated <code>:prefix</code> option of <code>number_to_human_size</code> with no replacement.
@@ -879,9 +885,9 @@ Ruby 2.0.
 (<a href="https://github.com/rails/rails/pull/17845">Pull Request</a>)</p></li>
 <li><p>Deprecated passing string to define callback.
 (<a href="https://github.com/rails/rails/pull/22598">Pull Request</a>)</p></li>
-<li><p>Deprecated ActiveSupport::Cache::Store#namespaced_key,
+<li><p>Deprecated <code>ActiveSupport::Cache::Store#namespaced_key</code>,
 <code>ActiveSupport::Cache::MemCachedStore#escape_key</code>, and
-ActiveSupport::Cache::FileStore#key_file_path.
+<code>ActiveSupport::Cache::FileStore#key_file_path</code>.
 Use <code>normalize_key</code> instead.
 (<a href="https://github.com/rails/rails/pull/22215">Pull Request</a>,
  <a href="https://github.com/rails/rails/commit/a8f773b0">commit</a>)</p></li>
@@ -889,7 +895,7 @@ Use <code>normalize_key</code> instead.
 (<a href="https://github.com/rails/rails/pull/22215">Pull Request</a>)</p></li>
 <li><p>Deprecated passing arguments to <code>assert_nothing_raised</code>.
 (<a href="https://github.com/rails/rails/pull/23789">Pull Request</a>)</p></li>
-<li><p>Deprecated <a href="Module.html#local_constants-instance_method" title="Module#local_constants (method)">Module#local_constants</a> in favor of <code>Module.constants(false)</code>.
+<li><p>Deprecated <code>Module.local_constants</code> in favor of <code>Module.constants(false)</code>.
 (<a href="https://github.com/rails/rails/pull/23936">Pull Request</a>)</p></li>
 </ul>
 

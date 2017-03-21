@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Locking::Pessimistic &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Locking::Pessimistic &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_P'>Index (P)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../Locking.html" title="ActiveRecord::Locking (module)">Locking</a> &raquo; 
@@ -81,7 +81,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/locking/pessimistic.rb#L56'>activerecord/lib/active_record/locking/pessimistic.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/locking/pessimistic.rb#L56'>activerecord/lib/active_record/locking/pessimistic.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -189,7 +189,7 @@ lock). Returns the locked record.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/locking/pessimistic.rb#L61-L64'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/locking/pessimistic.rb#L61-L73'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -197,13 +197,31 @@ lock). Returns the locked record.</p>
 61
 62
 63
-64</pre>
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'activerecord/lib/active_record/locking/pessimistic.rb', line 61</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lock!'>lock!</span><span class='lparen'>(</span><span class='id identifier rubyid_lock'>lock</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_reload'>reload</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_lock'>lock</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_lock'>lock</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_persisted?'>persisted?</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_persisted?'>persisted?</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_changed?'>changed?</span>
+      <span class='const'><a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../../ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='period'>.</span><span class='id identifier rubyid_warn'><a href="../../ActiveSupport/Deprecation/Reporting.html#warn-instance_method" title="ActiveSupport::Deprecation::Reporting#warn (method)">warn</a></span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-MSG</span><span class='period'>.</span><span class='id identifier rubyid_squish'>squish</span><span class='rparen'>)</span>
+<span class='tstring_content'>        Locking a record with unpersisted changes is deprecated and will raise an
+        exception in Rails 5.2. Use `save` to persist the changes, or `reload` to
+        discard them explicitly.
+</span><span class='heredoc_end'>      MSG
+</span>    <span class='kw'>end</span>
+    <span class='id identifier rubyid_reload'>reload</span><span class='lparen'>(</span><span class='label'>lock:</span> <span class='id identifier rubyid_lock'>lock</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
   <span class='kw'>self</span>
 <span class='kw'>end</span>
 </pre>
@@ -223,19 +241,19 @@ yielding. You can pass the SQL locking clause as argument (see <a href="#lock!-i
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/locking/pessimistic.rb#L69-L74'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/locking/pessimistic.rb#L78-L83'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-69
-70
-71
-72
-73
-74</pre>
+78
+79
+80
+81
+82
+83</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/locking/pessimistic.rb', line 69</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/locking/pessimistic.rb', line 78</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_with_lock'>with_lock</span><span class='lparen'>(</span><span class='id identifier rubyid_lock'>lock</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveRecord::ConnectionAdapters::ConnectionPool::Reaper &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveRecord::ConnectionAdapters::ConnectionPool::Reaper &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../../index.html'>Home</a> &raquo; 
-        <a href='../../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../../_index.html#alpha_R'>Index (R)</a> &raquo; 
         <a href="../../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
@@ -81,7 +81,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L290'>activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L290'>activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -92,7 +92,7 @@
   <div class='discussion'>
     
 <p>Every <a href="#frequency-instance_method" title="ActiveRecord::ConnectionAdapters::ConnectionPool::Reaper#frequency (method)">#frequency</a> seconds, the reaper will call <a href="../ConnectionPool.html#reap-instance_method" title="ActiveRecord::ConnectionAdapters::ConnectionPool#reap (method)">#reap</a> on <a href="#pool-instance_method" title="ActiveRecord::ConnectionAdapters::ConnectionPool::Reaper#pool (method)">#pool</a>. A reaper
-instantiated with a nil frequency will never reap the connection pool.</p>
+instantiated with a <code>nil</code> frequency will never reap the connection pool.</p>
 
 <p>Configure the frequency by setting "reaping_frequency" in your database
 yaml file.</p>
@@ -156,7 +156,7 @@ yaml file.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L293-L296'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L293-L296'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -183,7 +183,7 @@ yaml file.</p>
   <h3 class='signature ro first'>
     #<strong>frequency</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L291-L291'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L291-L291'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -203,7 +203,7 @@ yaml file.</p>
   <h3 class='signature ro'>
     #<strong>pool</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L291-L291'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L291-L291'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -224,7 +224,7 @@ yaml file.</p>
   <h3 class='signature  first'>
     #<strong>run</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L298-L306'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb#L298-L306'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -245,7 +245,7 @@ yaml file.</p>
 <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span>
   <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_frequency'>frequency</span>
   <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_frequency'>frequency</span><span class='comma'>,</span> <span class='id identifier rubyid_pool'>pool</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='comma'>,</span> <span class='id identifier rubyid_p'>p</span><span class='op'>|</span>
-    <span class='kw'>while</span> <span class='kw'>true</span>
+    <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
       <span class='id identifier rubyid_sleep'>sleep</span> <span class='id identifier rubyid_t'>t</span>
       <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_reap'>reap</span>
     <span class='kw'>end</span>

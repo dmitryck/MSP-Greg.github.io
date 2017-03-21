@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Active Record Migrations &mdash; Rails-5-0-stable</title>
+<title>File: Active Record Migrations &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Active Record Migrations&nbsp;&#x25B2;</a></span>
             </div>
@@ -268,7 +268,7 @@ XXX with the columns listed will be generated. For example:</p>
 or remove from it as you see fit by editing the
 <code>db/migrate/YYYYMMDDHHMMSS_add_details_to_products.rb</code> file.</p>
 
-<p>Also, the generator accepts column type as <code>references</code>(also available as
+<p>Also, the generator accepts column type as <code>references</code> (also available as
 <code>belongs_to</code>). For instance:</p>
 
 <pre class="code bash"><code class="bash">$ bin/rails generate migration AddUserRefToProducts user:references
@@ -278,7 +278,7 @@ or remove from it as you see fit by editing the
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>AddUserRefToProducts</span> <span class='op'>&lt;</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Migration.html" title="ActiveRecord::Migration (class)">Migration</a></span><span class='lbracket'>[</span><span class='float'>5.0</span><span class='rbracket'>]</span>
   <span class='kw'>def</span> <span class='id identifier rubyid_change'>change</span>
-    <span class='id identifier rubyid_add_reference'>add_reference</span> <span class='symbeg'>:</span><span class='id identifier rubyid_products'>products</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='label'>index:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>foreign_key:</span> <span class='kw'>true</span>
+    <span class='id identifier rubyid_add_reference'>add_reference</span> <span class='symbeg'>:</span><span class='id identifier rubyid_products'>products</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='label'>foreign_key:</span> <span class='kw'>true</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></code></pre>
 
@@ -341,7 +341,7 @@ the command line. They are enclosed by curly braces and follow the field type:</
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>AddDetailsToProducts</span> <span class='op'>&lt;</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Migration.html" title="ActiveRecord::Migration (class)">Migration</a></span><span class='lbracket'>[</span><span class='float'>5.0</span><span class='rbracket'>]</span>
   <span class='kw'>def</span> <span class='id identifier rubyid_change'>change</span>
     <span class='id identifier rubyid_add_column'>add_column</span> <span class='symbeg'>:</span><span class='id identifier rubyid_products'>products</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_price'>price</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_decimal'>decimal</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='int'>5</span><span class='comma'>,</span> <span class='label'>scale:</span> <span class='int'>2</span>
-    <span class='id identifier rubyid_add_reference'>add_reference</span> <span class='symbeg'>:</span><span class='id identifier rubyid_products'>products</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_supplier'>supplier</span><span class='comma'>,</span> <span class='label'>polymorphic:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>index:</span> <span class='kw'>true</span>
+    <span class='id identifier rubyid_add_reference'>add_reference</span> <span class='symbeg'>:</span><span class='id identifier rubyid_products'>products</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_supplier'>supplier</span><span class='comma'>,</span> <span class='label'>polymorphic:</span> <span class='kw'>true</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></code></pre>
 
@@ -954,10 +954,10 @@ migration:</p>
 
   <span class='id identifier rubyid_create_table'>create_table</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>products</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>force:</span> <span class='kw'>true</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
     <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span>
-    <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>description</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>description</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span>
-    <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>part_number</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>part_number</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></code></pre>
 
@@ -1013,10 +1013,10 @@ such features, the <code>execute</code> method can be used to execute arbitrary 
 
 <h2>Migrations and Seed Data</h2>
 
-<p>The main purpose of Rails&#39; migration feature is to issue commands that modify the 
-schema using a consistent process. Migrations can also be used 
-to add or modify data. This is useful in an existing database that can&#39;t be destroyed 
-and recreated, such as a production database. </p>
+<p>The main purpose of Rails&#39; migration feature is to issue commands that modify the
+schema using a consistent process. Migrations can also be used
+to add or modify data. This is useful in an existing database that can&#39;t be destroyed
+and recreated, such as a production database.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>AddInitialProducts</span> <span class='op'>&lt;</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Migration.html" title="ActiveRecord::Migration (class)">Migration</a></span><span class='lbracket'>[</span><span class='float'>5.0</span><span class='rbracket'>]</span>
   <span class='kw'>def</span> <span class='id identifier rubyid_up'>up</span>
@@ -1030,10 +1030,10 @@ and recreated, such as a production database. </p>
   <span class='kw'>end</span>
 <span class='kw'>end</span></code></pre>
 
-<p>To add initial data after a database is created, Rails has a built-in 
-&#39;seeds&#39; feature that makes the process quick and easy. This is especially 
-useful when reloading the database frequently in development and test environments. 
-It&#39;s easy to get started with this feature: just fill up <code>db/seeds.rb</code> with some 
+<p>To add initial data after a database is created, Rails has a built-in
+&#39;seeds&#39; feature that makes the process quick and easy. This is especially
+useful when reloading the database frequently in development and test environments.
+It&#39;s easy to get started with this feature: just fill up <code>db/seeds.rb</code> with some
 Ruby code, and run <code>rails db:seed</code>:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='int'>5</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>

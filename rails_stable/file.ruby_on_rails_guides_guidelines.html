@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Ruby On Rails Guides Guidelines &mdash; Rails-5-0-stable</title>
+<title>File: Ruby On Rails Guides Guidelines &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Ruby On Rails Guides Guidelines&nbsp;&#x25B2;</a></span>
             </div>
@@ -107,6 +107,36 @@ Section
 
 <pre class="code ruby"><code class="ruby"><span class='comment'>##### The `:content_type` Option</span></code></pre>
 
+<h2>Linking to the API</h2>
+
+<p>Links to the API (<code>api.rubyonrails.org</code>) are processed by the guides generator in the following manner:</p>
+
+<p>Links that include a release tag are left untouched. For example</p>
+
+<pre class="code ruby"><code class="ruby">http://api.rubyonrails.org/v5.0.1/classes/ActiveRecord/Attributes/ClassMethods.html</code></pre>
+
+<p>is not modified.</p>
+
+<p>Please use these in release notes, since they should point to the corresponding version no matter the target being generated.</p>
+
+<p>If the link does not include a release tag and edge guides are being generated, the domain is replaced by <code>edgeapi.rubyonrails.org</code>. For example,</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_http'>http</span><span class='symbeg'>:</span><span class='op'>/</span><span class='op'>/</span><span class='id identifier rubyid_api'>api</span><span class='period'>.</span><span class='id identifier rubyid_rubyonrails'>rubyonrails</span><span class='period'>.</span><span class='id identifier rubyid_org'>org</span><span class='op'>/</span><span class='id identifier rubyid_classes'>classes</span><span class='op'>/</span><span class='const'>ActionDispatch</span><span class='op'>/</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span></code></pre>
+
+<p>becomes</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_http'>http</span><span class='symbeg'>:</span><span class='op'>/</span><span class='op'>/</span><span class='id identifier rubyid_edgeapi'>edgeapi</span><span class='period'>.</span><span class='id identifier rubyid_rubyonrails'>rubyonrails</span><span class='period'>.</span><span class='id identifier rubyid_org'>org</span><span class='op'>/</span><span class='id identifier rubyid_classes'>classes</span><span class='op'>/</span><span class='const'>ActionDispatch</span><span class='op'>/</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span></code></pre>
+
+<p>If the link does not include a release tag and release guides are being generated, the Rails version is injected. For example, if we are generating the guides for v5.1.0 the link</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_http'>http</span><span class='symbeg'>:</span><span class='op'>/</span><span class='op'>/</span><span class='id identifier rubyid_api'>api</span><span class='period'>.</span><span class='id identifier rubyid_rubyonrails'>rubyonrails</span><span class='period'>.</span><span class='id identifier rubyid_org'>org</span><span class='op'>/</span><span class='id identifier rubyid_classes'>classes</span><span class='op'>/</span><span class='const'>ActionDispatch</span><span class='op'>/</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span></code></pre>
+
+<p>becomes</p>
+
+<pre class="code ruby"><code class="ruby">http://api.rubyonrails.org/v5.1.0/classes/ActionDispatch/Response.html</code></pre>
+
+<p>Please don&#39;t link to <code>edgeapi.rubyonrails.org</code> manually.</p>
+
 <h2>API Documentation Guidelines</h2>
 
 <p>The guides and the API should be coherent and consistent where appropriate. In particular, these sections of the <a href="file.api_documentation_guidelines.html" title="API Documentation Guidelines">API Documentation Guidelines</a> also apply to the guides:</p>
@@ -147,8 +177,6 @@ bundle exec rake guides:generate ONLY=my_guide</code></pre>
 <p>By default, guides that have not been modified are not processed, so <code>ONLY</code> is rarely needed in practice.</p>
 
 <p>To force processing all the guides, pass <code>ALL=1</code>.</p>
-
-<p>It is also recommended that you work with <code>WARNINGS=1</code>. This detects duplicate IDs and warns about broken internal links.</p>
 
 <p>If you want to generate guides in a language other than English, you can keep them in a separate directory under <code>source</code> (eg. <code>source/es</code>) and use the <code>GUIDES_LANGUAGE</code> environment variable:</p>
 

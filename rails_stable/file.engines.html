@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Engines &mdash; Rails-5-0-stable</title>
+<title>File: Engines &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Engines&nbsp;&#x25B2;</a></span>
             </div>
@@ -76,9 +76,9 @@ easy-to-use interface.</p>
 <ul>
 <li>What makes an engine.</li>
 <li>How to generate an engine.</li>
-<li>Building features for the engine.</li>
-<li>Hooking the engine into an application.</li>
-<li>Overriding engine functionality in the application.</li>
+<li>How to build features for the engine.</li>
+<li>How to hook the engine into an application.</li>
+<li>How to override engine functionality in the application.</li>
 </ul>
 
 <hr>
@@ -90,7 +90,7 @@ their host applications. A Rails application is actually just a &quot;supercharg
 engine, with the <a href="Rails/Application.html" title="Rails::Application (class)">::Rails::Application</a> class inheriting a lot of its behavior
 from <a href="Rails/Engine.html" title="Rails::Engine (class)">::Rails::Engine</a>.</p>
 
-<p>Therefore, engines and applications can be thought of almost the same thing,
+<p>Therefore, engines and applications can be thought of as almost the same thing,
 just with subtle differences, as you&#39;ll see throughout this guide. Engines and
 applications also share a common structure.</p>
 
@@ -111,7 +111,7 @@ see how to hook it into an application.</p>
 
 <p>Engines can also be isolated from their host applications. This means that an
 application is able to have a path provided by a routing helper such as
-<code>articles_path</code> and use an engine also that provides a path also called
+<code>articles_path</code> and use an engine that also provides a path also called
 <code>articles_path</code>, and the two would not clash. Along with this, controllers, models
 and table names are also namespaced. You&#39;ll see how to do this later in this
 guide.</p>
@@ -124,7 +124,7 @@ only be enhancing it, rather than changing it drastically.</p>
 <p>To see demonstrations of other engines, check out
 <a href="https://github.com/plataformatec/devise">Devise</a>, an engine that provides
 authentication for its parent applications, or
-<a href="https://github.com/radar/forem">Forem</a>, an engine that provides forum
+<a href="https://github.com/thredded/thredded">Thredded</a>, an engine that provides forum
 functionality. There&#39;s also <a href="https://github.com/spree/spree">Spree</a> which
 provides an e-commerce platform, and
 <a href="https://github.com/refinery/refinerycms">RefineryCMS</a>, a CMS engine.</p>
@@ -232,7 +232,7 @@ perfect for that. Place the methods inside the module and you&#39;ll be good to 
 <p>By inheriting from the <a href="Rails/Engine.html" title="Rails::Engine (class)">::Rails::Engine</a> class, this gem notifies Rails that
 there&#39;s an engine at the specified path, and will correctly mount the engine
 inside the application, performing tasks such as adding the <code>app</code> directory of
-the engine to the load path for models, mailers, controllers and views.</p>
+the engine to the load path for models, mailers, controllers, and views.</p>
 
 <p>The <code>isolate_namespace</code> method here deserves special notice. This call is
 responsible for isolating the controllers, models, routes and other things into
@@ -1296,7 +1296,7 @@ your engine assets when <code>bin/rails assets:precompile</code> is triggered.</
 <p>You can define assets for precompilation in <code>engine.rb</code>:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_initializer'>initializer</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>blorgh.assets.precompile</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_app'>app</span><span class='op'>|</span>
-  <span class='id identifier rubyid_app'>app</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_assets'>assets</span><span class='period'>.</span><span class='id identifier rubyid_precompile'>precompile</span> <span class='op'>+=</span> <span class='qwords'><span class='qwords_beg'>%w(</span><span class='tstring_content'>admin.css</span><span class='words_sep'> </span><span class='tstring_content'>admin.js</span><span class='words_sep'>)</span></span>
+  <span class='id identifier rubyid_app'>app</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_assets'>assets</span><span class='period'>.</span><span class='id identifier rubyid_precompile'>precompile</span> <span class='op'>+=</span> <span class='qwords'><span class='qwords_beg'>%w( </span><span class='tstring_content'>admin.js</span><span class='words_sep'> </span><span class='tstring_content'>admin.css</span><span class='words_sep'> )</span>
 <span class='kw'>end</span></code></pre>
 
 <p>For more information, read the <a href="file.asset_pipeline.html" title="Asset Pipeline guide">Asset Pipeline guide</a>.</p>

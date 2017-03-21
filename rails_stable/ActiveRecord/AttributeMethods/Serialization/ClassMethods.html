@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::AttributeMethods::Serialization::ClassMethods &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::AttributeMethods::Serialization::ClassMethods &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../../index.html'>Home</a> &raquo; 
-        <a href='../../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../../AttributeMethods.html" title="ActiveRecord::AttributeMethods (module)">AttributeMethods</a> &raquo; 
@@ -82,7 +82,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/attribute_methods/serialization.rb#L6'>activerecord/lib/active_record/attribute_methods/serialization.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/attribute_methods/serialization.rb#L6'>activerecord/lib/active_record/attribute_methods/serialization.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -133,8 +133,8 @@ domain objects, consider using the <a href="../../Attributes.html" title="Active
 <ul><li>
 <p><code>attr_name</code> - The field name that should be serialized.</p>
 </li><li>
-<p><code>class_name_or_coder</code> - Optional, a coder object, which responds to `.load`
-/ `.dump` or a class name that the object type should be equal to.</p>
+<p><code>class_name_or_coder</code> - Optional, a coder object, which responds to <code>.load</code>
+and <code>.dump</code> or a class name that the object type should be equal to.</p>
 </li></ul>
 
 <h4 id="label-Example">Example</h4>
@@ -156,7 +156,7 @@ domain objects, consider using the <a href="../../Attributes.html" title="Active
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/attribute_methods/serialization.rb#L48-L63'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/attribute_methods/serialization.rb#L48-L63'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -186,12 +186,12 @@ domain objects, consider using the <a href="../../Attributes.html" title="Active
 </span>  <span class='comment'># to ensure special objects (e.g. Active Record models) are dumped correctly
 </span>  <span class='comment'># using the #as_json hook.
 </span>  <span class='id identifier rubyid_coder'>coder</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_class_name_or_coder'>class_name_or_coder</span> <span class='op'>==</span> <span class='op'>::</span><span class='const'>JSON</span>
-            <span class='const'><a href="../../Coders.html" title="ActiveRecord::Coders (module)">Coders</a></span><span class='op'>::</span><span class='const'><a href="../../Coders/JSON.html" title="ActiveRecord::Coders::JSON (class)">JSON</a></span>
-          <span class='kw'>elsif</span> <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_load'>load</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_dump'>dump</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_class_name_or_coder'>class_name_or_coder</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-            <span class='id identifier rubyid_class_name_or_coder'>class_name_or_coder</span>
-          <span class='kw'>else</span>
-            <span class='const'><a href="../../Coders.html" title="ActiveRecord::Coders (module)">Coders</a></span><span class='op'>::</span><span class='const'><a href="../../Coders/YAMLColumn.html" title="ActiveRecord::Coders::YAMLColumn (class)">YAMLColumn</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../../Coders/YAMLColumn.html#new-class_method" title="ActiveRecord::Coders::YAMLColumn.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_class_name_or_coder'>class_name_or_coder</span><span class='rparen'>)</span>
-          <span class='kw'>end</span>
+    <span class='const'><a href="../../Coders.html" title="ActiveRecord::Coders (module)">Coders</a></span><span class='op'>::</span><span class='const'><a href="../../Coders/JSON.html" title="ActiveRecord::Coders::JSON (class)">JSON</a></span>
+  <span class='kw'>elsif</span> <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_load'>load</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_dump'>dump</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_class_name_or_coder'>class_name_or_coder</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_class_name_or_coder'>class_name_or_coder</span>
+  <span class='kw'>else</span>
+    <span class='const'><a href="../../Coders.html" title="ActiveRecord::Coders (module)">Coders</a></span><span class='op'>::</span><span class='const'><a href="../../Coders/YAMLColumn.html" title="ActiveRecord::Coders::YAMLColumn (class)">YAMLColumn</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../../Coders/YAMLColumn.html#new-class_method" title="ActiveRecord::Coders::YAMLColumn.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_attr_name'>attr_name</span><span class='comma'>,</span> <span class='id identifier rubyid_class_name_or_coder'>class_name_or_coder</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
   <span class='id identifier rubyid_decorate_attribute_type'>decorate_attribute_type</span><span class='lparen'>(</span><span class='id identifier rubyid_attr_name'>attr_name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_serialize'>serialize</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_type'>type</span><span class='op'>|</span>
     <span class='const'><a href="../../Type.html" title="ActiveRecord::Type (module)">Type</a></span><span class='op'>::</span><span class='const'><a href="../../Type/Serialized.html" title="ActiveRecord::Type::Serialized (class)">Serialized</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../../Type/Serialized.html#new-class_method" title="ActiveRecord::Type::Serialized.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_coder'>coder</span><span class='rparen'>)</span>

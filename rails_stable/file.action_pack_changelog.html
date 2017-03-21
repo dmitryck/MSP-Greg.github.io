@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Action Pack Changelog &mdash; Rails-5-0-stable</title>
+<title>File: Action Pack Changelog &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Action Pack Changelog&nbsp;&#x25B2;</a></span>
             </div>
@@ -63,7 +63,15 @@
     <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
   </header>
 <div id='content' class='file'>
+<h2>Rails 5.1.0.rc1 (March 20, 2017)</h2>
+
 <ul>
+<li><p>Fix <a href="NameError.html" title="NameError (class)">NameError</a> raised in <a href="ActionController/Renderer.html#with_defaults-instance_method" title="ActionController::Renderer#with_defaults (method)">ActionController::Renderer#with_defaults</a></p>
+
+<p><em>Hiroyuki Ishii</em></p></li>
+<li><p>Added <code>#reverse_merge</code> and <code>#reverse_merge!</code> methods to <a href="ActionController/Parameters.html" title="ActionController::Parameters (class)">::ActionController::Parameters</a></p>
+
+<p><em>Edouard Chin</em>, <em>Mitsutaka Mimura</em></p></li>
 <li><p>Fix malformed URLS when using <code>ApplicationController.renderer</code></p>
 
 <p>The Rack environment variable <code>rack.url_scheme</code> was not being set so <code>scheme</code> was
@@ -80,50 +88,71 @@ Fix this by setting <code>rack.url_scheme</code> when the environment is normali
 <p><em>Andrew White</em></p></li>
 </ul>
 
-<h2>Rails 5.0.2 (March 01, 2017)</h2>
+<h2>Rails 5.1.0.beta1 (February 23, 2017)</h2>
 
 <ul>
-<li><p>Make <code>with_routing</code> test helper work when testing controllers inheriting from <a href="ActionController/API.html" title="ActionController::API (class)">::ActionController::API</a>.</p>
+<li><p>Prefer <code>remove_method</code> over <code>undef_method</code> when reloading routes</p>
+
+<p>When <code>undef_method</code> is used it prevents access to other implementations of that
+url helper in the ancestor chain so use <code>remove_method</code> instead to restore access.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Add the <code>resolve</code> method to the routing DSL</p>
+
+<p>This new method allows customization of the polymorphic mapping of models:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_resource'>resource</span> <span class='symbeg'>:</span><span class='id identifier rubyid_basket'>basket</span>
+<span class='id identifier rubyid_resolve'>resolve</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Basket</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_basket'>basket</span><span class='rbracket'>]</span> <span class='rbrace'>}</span></code></pre>
+
+<pre class="code erb"><code class="erb">&lt;%= form_for @basket do |form| %&gt;
+&lt;!-- basket form --&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>This generates the correct singular URL for the form instead of the default
+resources member url, e.g. <code>/basket</code> vs. <code>/basket/:id</code>.</p>
+
+<p>Fixes #1769.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Add the <code>direct</code> method to the routing DSL</p>
+
+<p>This new method allows creation of custom url helpers, e.g:</p>
+
+<pre class="code ruby"><code class="ruby">direct(:apple) { &quot;http://www.apple.com&quot; }
+
+&gt;&gt; apple_url
+#=&gt; &quot;http://www.apple.com&quot;</code></pre>
+
+<p>This has the advantage of being available everywhere url helpers are available
+unlike custom url helpers defined in helper modules, etc.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Add <a href="ActionDispatch/SystemTestCase.html" title="ActionDispatch::SystemTestCase (class)">::ActionDispatch::SystemTestCase</a> to Action Pack</p>
+
+<p>Adds Capybara integration directly into Rails through Action Pack!</p>
+
+<p>See PR <a href="https://github.com/rails/rails/pull/26703">#26703</a></p>
+
+<p><em>Eileen M. Uchitelle</em></p></li>
+<li><p>Remove deprecated <code>.to_prepare</code>, <code>.to_cleanup</code>, <code>.prepare!</code> and <code>.cleanup!</code> from <a href="ActionDispatch/Reloader.html" title="ActionDispatch::Reloader (class)">::ActionDispatch::Reloader</a>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>ActionDispatch::Callbacks.to_prepare</code> and <code>ActionDispatch::Callbacks.to_cleanup</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>ActionController::Metal.call</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>ActionController::Metal#env</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Make <code>with_routing</code> test helper work when testing controllers inheriting from <a href="ActionController/API.html" title="ActionController::API (class)">::ActionController::API</a></p>
 
 <p><em>Julia López</em></p></li>
-</ul>
-
-<h2>Rails 5.0.1 (December 21, 2016)</h2>
-
-<ul>
-<li><p>Restored correct <code>charset</code> behavior on <code>send_data</code> and <code>send_file</code>: while
-they should pass along any supplied value, they should not add a default.</p>
-
-<p>Fixes #27344.</p>
-
-<p><em>Matthew Draper</em></p></li>
-</ul>
-
-<h2>Rails 5.0.1.rc2 (December 10, 2016)</h2>
-
-<ul>
-<li><p>Move <code>cookies</code>, <code>flash</code>, and <code>session</code> methods back to
-<a href="ActionDispatch/Integration/Session.html" title="ActionDispatch::Integration::Session (class)">::ActionDispatch::Integration::Session</a>.</p>
-
-<p><em>Matthew Draper</em></p></li>
-<li><p>Do not reset in <code>ActionDispatch::IntegrationTest#open_session</code>; doing so
-is incompatible with existing (unintended) API usage.</p>
-
-<p><em>Sean Griffin</em></p></li>
-</ul>
-
-<h2>Rails 5.0.1.rc1 (December 01, 2016)</h2>
-
-<ul>
-<li><p>Fixed error caused by <code>force_ssl_redirect</code> when <code>session_store</code> is
-enabled.</p>
-
-<p>Fixes #19679.</p>
-
-<p><em>Taishi Kasuga</em></p></li>
 <li><p>Use accept header in integration tests with <code>as: :json</code></p>
 
-<p>Instead of appending the <code>format</code> to the request path. Rails will figure
+<p>Instead of appending the <code>format</code> to the request path, Rails will figure
 out the format from the header instead.</p>
 
 <p>This allows devs to use <code>:as</code> on routes that don&#39;t have a format.</p>
@@ -131,17 +160,12 @@ out the format from the header instead.</p>
 <p>Fixes #27144.</p>
 
 <p><em>Kasper Timm Hansen</em></p></li>
-<li><p>Fixed integration test requests appending and changing request paths.</p>
+<li><p>Reset a new session directly after its creation in <code>ActionDispatch::IntegrationTest#open_session</code>.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='comment'>#Before
-</span><span class='id identifier rubyid_post'>post</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/anything</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>params:</span> <span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='label'>headers:</span> <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_json'>json</span></code></pre>
+<p>Fixes #22742.</p>
 
-<p>&quot;/anything&quot; would be converted to &quot;/anything.json&quot; based on format.
-The path is now maintained and the format is respected based on <code>:as</code>
-option.</p>
-
-<p>Fixes #27144.</p></li>
-<li><p>Fixes incorrect output from rails routes when using singular resources.</p>
+<p><em>Tawan Sierek</em></p></li>
+<li><p>Fixes incorrect output from <code>rails routes</code> when using singular resources.</p>
 
 <p>Fixes #26606.</p>
 
@@ -153,15 +177,119 @@ from <code>DebugExceptions</code> middleware.</p>
 <p>Fixes #26134.</p>
 
 <p><em>Vipul A M</em></p></li>
+<li><p>Add support for arbitrary hashes in strong parameters:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='label'>preferences:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+
+<p><em>Xavier Noria</em></p></li>
 <li><p>Add <a href="ActionController/Parameters.html#merge!-instance_method" title="ActionController::Parameters#merge! (method)">ActionController::Parameters#merge!</a>, which behaves the same as <code>Hash#merge!</code>.</p>
 
 <p><em>Yuji Yaginuma</em></p></li>
-<li><p>Added <a href="ActionController/Parameters.html#deep_dup-instance_method" title="ActionController::Parameters#deep_dup (method)">ActionController::Parameters#deep_dup</a> which actually creates
-a params copy, instead of refereing to old references in params.</p>
+<li><p>Allow keys not found in <code>RACK_KEY_TRANSLATION</code> for setting the environment when rendering
+arbitrary templates.</p>
 
-<p>Fixes #26566.</p>
+<p><em>Sammy Larbi</em></p></li>
+<li><p>Remove deprecated support to non-keyword arguments in <code>ActionDispatch::IntegrationTest#process</code>,
+<code>#get</code>, <code>#post</code>, <code>#patch</code>, <code>#put</code>, <code>#delete</code>, and <code>#head</code>.</p>
 
-<p><em>Pavel Evstigneev</em>, <em>Rafael Mendonça França</em></p></li>
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>ActionDispatch::IntegrationTest#*_via_redirect</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>ActionDispatch::IntegrationTest#xml_http_request</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support for passing <code>:path</code> and route path as strings in <code>ActionDispatch::Routing::Mapper#match</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support for passing path as <code>nil</code> in <code>ActionDispatch::Routing::Mapper#match</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>cache_control</code> argument from <code>ActionDispatch::Static#initialize</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support to passing strings or symbols to the middleware stack.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Change HSTS subdomain to true.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>host</code> and <code>port</code> ssl options.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>const_error</code> argument in
+<code>ActionDispatch::Session::SessionRestoreError#initialize</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>#original_exception</code> in <a href="ActionDispatch/Session/SessionRestoreError.html" title="ActionDispatch::Session::SessionRestoreError (class)">::ActionDispatch::Session::SessionRestoreError</a>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Deprecate <a href="ActionDispatch/ParamsParser.html#ParseError-constant" title="ActionDispatch::ParamsParser::ParseError (constant)">ActionDispatch::ParamsParser::ParseError</a> in favor of
+<a href="ActionDispatch/Http/Parameters/ParseError.html" title="ActionDispatch::Http::Parameters::ParseError (class)">::ActionDispatch::Http::Parameters::ParseError</a>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <a href="ActionDispatch/ParamsParser.html" title="ActionDispatch::ParamsParser (module)">::ActionDispatch::ParamsParser</a>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>original_exception</code> and <code>message</code> arguments in
+<code>ActionDispatch::ParamsParser::ParseError#initialize</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>#original_exception</code> in <a href="ActionDispatch/ParamsParser.html#ParseError-constant" title="ActionDispatch::ParamsParser::ParseError (constant)">ActionDispatch::ParamsParser::ParseError</a>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated access to mime types through constants.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support to non-keyword arguments in <code>ActionController::TestCase#process</code>,
+<code>#get</code>, <code>#post</code>, <code>#patch</code>, <code>#put</code>, <code>#delete</code>, and <code>#head</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>xml_http_request</code> and <code>xhr</code> methods in <a href="ActionController/TestCase.html" title="ActionController::TestCase (class)">::ActionController::TestCase</a>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated methods in <a href="ActionController/Parameters.html" title="ActionController::Parameters (class)">::ActionController::Parameters</a>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support to comparing a <a href="ActionController/Parameters.html" title="ActionController::Parameters (class)">::ActionController::Parameters</a>
+with a <a href="Hash.html" title="Hash (class)">Hash</a>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support to <code>:text</code> in <code>render</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support to <code>:nothing</code> in <code>render</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support to <code>:back</code> in <code>redirect_to</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support to passing status as option <code>head</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support to passing original exception to <a href="ActionController/BadRequest.html" title="ActionController::BadRequest (class)">::ActionController::BadRequest</a>
+and the <code>ActionController::BadRequest#original_exception</code> method.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated methods <code>skip_action_callback</code>, <code>skip_filter</code>, <code>before_filter</code>,
+<code>prepend_before_filter</code>, <code>skip_before_filter</code>, <code>append_before_filter</code>, <code>around_filter</code>
+<code>prepend_around_filter</code>, <code>skip_around_filter</code>, <code>append_around_filter</code>, <code>after_filter</code>,
+<code>prepend_after_filter</code>, <code>skip_after_filter</code> and <code>append_after_filter</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Show an &quot;unmatched constraints&quot; error when params fail to match constraints
+on a matched route, rather than a &quot;missing keys&quot; error.</p>
+
+<p>Fixes #26470.</p>
+
+<p><em>Chris Carter</em></p></li>
+<li><p>Fix adding implicitly rendered template digests to ETags.</p>
+
+<p>Fixes a case when modifying an implicitly rendered template for a
+controller action using <code>fresh_when</code> or <code>stale?</code> would not result in a new
+<code>ETag</code> value.</p>
+
+<p><em>Javan Makhmali</em></p></li>
 <li><p>Make <code>fixture_file_upload</code> work in integration tests.</p>
 
 <p><em>Yuji Yaginuma</em></p></li>
@@ -187,6 +315,20 @@ and new routes.</p>
 <p>Fixes #26148.</p>
 
 <p><em>Ryo Hashimoto</em>, <em>Andrew White</em></p></li>
+<li><p>Include the content of the flash in the auto-generated etag. This solves the following problem:</p></li>
+</ul>
+
+<pre class="code ruby"><code class="ruby">1. POST /messages
+  2. redirect_to messages_url, notice: &#39;Message was created&#39;
+  3. GET /messages/1
+  4. GET /messages
+
+  Step 4 would before still include the flash message, even though it&#39;s no longer relevant,
+  because the etag cache was recorded with the flash in place and didn&#39;t change when it was gone.
+
+*DHH*</code></pre>
+
+<ul>
 <li><p>SSL: Changes redirect behavior for all non-GET and non-HEAD requests
 (like POST/PUT/PATCH etc) to <code>http://</code> resources to redirect to <code>https://</code>
 with a <a href="http://tools.ietf.org/html/rfc7231#section-6.4.7">307 status code</a> instead of <a href="http://tools.ietf.org/html/rfc7231#section-6.4.2">301 status code</a>.</p>
@@ -212,23 +354,34 @@ POST https://example.com/articles (i.e. ArticlesContoller#create)</code></pre>
 in controller tests without manually doing this through <code>@request.headers[&#39;CONTENT_TYPE&#39;]</code>.</p>
 
 <p><em>Everest Stefan Munro-Zeisberger</em></p></li>
-<li><p>Prevent autoload from deadlocking while ActionController::Live is streaming.</p>
+<li><p>Show cache hits and misses when rendering partials.</p>
 
-<p><em>Alex Chinn</em></p></li>
+<p>Partials using the <code>cache</code> helper will show whether a render hit or missed
+the cache:</p>
+
+<pre class="code ruby"><code class="ruby">Rendered messages/_message.html.erb in 1.2 ms [cache hit]
+Rendered recordings/threads/_thread.html.erb in 1.5 ms [cache miss]</code></pre>
+
+<p>This removes the need for the old fragment cache logging:</p>
+
+<pre class="code ruby"><code class="ruby">Read fragment views/v1/2914079/v1/2914079/recordings/70182313-20160225015037000000/d0bdf2974e1ef6d31685c3b392ad0b74 (0.6ms)
+Rendered messages/_message.html.erb in 1.2 ms [cache hit]
+Write fragment views/v1/2914079/v1/2914079/recordings/70182313-20160225015037000000/3b4e249ac9d168c617e32e84b99218b5 (1.1ms)
+Rendered recordings/threads/_thread.html.erb in 1.5 ms [cache miss]</code></pre>
+
+<p>Though that full output can be reenabled with
+<code>config.action_controller.enable_fragment_cache_logging = true</code>.</p>
+
+<p><em>Stan Lo</em></p></li>
 <li><p>Don&#39;t override the <code>Accept</code> header in integration tests when called with <code>xhr: true</code>.</p>
 
 <p>Fixes #25859.</p>
 
 <p><em>David Chen</em></p></li>
-<li><p>Reset a new session directly after its creation in <code>ActionDispatch::IntegrationTest#open_session</code>.</p>
-
-<p>Fixes #22742.</p>
-
-<p><em>Tawan Sierek</em></p></li>
-<li><p>Fix &#39;defaults&#39; option for root route.</p>
+<li><p>Fix <code>defaults</code> option for root route.</p>
 
 <p>A regression from some refactoring for the 5.0 release, this change
-fixes the use of &#39;defaults&#39; (default parameters) in the &#39;root&#39; routing method.</p>
+fixes the use of <code>defaults</code> (default parameters) in the <code>root</code> routing method.</p>
 
 <p><em>Chris Arcand</em></p></li>
 <li><p>Check <code>request.path_parameters</code> encoding at the point they&#39;re set.</p>
@@ -240,781 +393,23 @@ controller instantiation for some other reason, had to defend against
 non-UTF8 characters themselves.</p>
 
 <p><em>Grey Baker</em></p></li>
-<li><p>Don&#39;t raise ActionController::UnknownHttpMethod from ActionDispatch::Static</p>
+<li><p>Don&#39;t raise <a href="ActionController/UnknownHttpMethod.html" title="ActionController::UnknownHttpMethod (class)">::ActionController::UnknownHttpMethod</a> from <a href="ActionDispatch/Static.html" title="ActionDispatch::Static (class)">::ActionDispatch::Static</a>.</p>
 
 <p>Pass <code>Rack::Request</code> objects to <a href="ActionDispatch/FileHandler.html" title="ActionDispatch::FileHandler (class)">::ActionDispatch::FileHandler</a> to avoid it
 raising <a href="ActionController/UnknownHttpMethod.html" title="ActionController::UnknownHttpMethod (class)">::ActionController::UnknownHttpMethod</a>. If an unknown method is
-passed, it should exception higher in the stack instead, once we&#39;ve had a
+passed, it should pass exception higher in the stack instead, once we&#39;ve had a
 chance to define exception handling behaviour.</p>
 
 <p><em>Grey Baker</em></p></li>
-<li><p>Handle <code>Rack::QueryParser</code> errors in <a href="ActionDispatch/ExceptionWrapper.html" title="ActionDispatch::ExceptionWrapper (class)">::ActionDispatch::ExceptionWrapper</a></p>
+<li><p>Handle <code>Rack::QueryParser</code> errors in <a href="ActionDispatch/ExceptionWrapper.html" title="ActionDispatch::ExceptionWrapper (class)">::ActionDispatch::ExceptionWrapper</a>.</p>
 
 <p>Updated <a href="ActionDispatch/ExceptionWrapper.html" title="ActionDispatch::ExceptionWrapper (class)">::ActionDispatch::ExceptionWrapper</a> to handle the Rack 2.0 namespace
 for <code>ParameterTypeError</code> and <code>InvalidParameterError</code> errors.</p>
 
 <p><em>Grey Baker</em></p></li>
-<li><p>Deprecated omitting the route path.
-Specify the path with a String or a Symbol instead.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='comment'># Before
-</span><span class='id identifier rubyid_get'>get</span> <span class='label'>action:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_show'>show</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_show'>show</span>
-<span class='comment'># After
-</span><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>action:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_show'>show</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_show'>show</span></code></pre>
-
-<p><em>Volmer</em></p></li>
-<li><p>Added new <a href="ActionDispatch/DebugLocks.html" title="ActionDispatch::DebugLocks (class)">::ActionDispatch::DebugLocks</a> middleware that can be used
-to diagnose deadlocks in the autoload interlock.
-To use it, insert it near the top of the middleware stack, using
-<code>config/application.rb</code>:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_middleware'>middleware</span><span class='period'>.</span><span class='id identifier rubyid_insert_before'>insert_before</span> <span class='const'><a href="Rack.html" title="Rack (module)">Rack</a></span><span class='op'>::</span><span class='const'>Sendfile</span><span class='comma'>,</span> <span class='const'><a href="ActionDispatch.html" title="ActionDispatch (module)">ActionDispatch</a></span><span class='op'>::</span><span class='const'><a href="ActionDispatch/DebugLocks.html" title="ActionDispatch::DebugLocks (class)">DebugLocks</a></span></code></pre>
-
-<p>After adding, visiting <code>/rails/locks</code> will show a summary of all
-threads currently known to the interlock.</p>
-
-<p><em>Matthew Draper</em></p></li>
-<li><p>Fix request encoding in Integration tests when string literals are
-frozen using <code>--enable-frozen-string-literal</code> or <code># frozen_string_literal: true</code>.</p>
-
-<p><em>Volmer</em></p></li>
-<li><p>Since long keys are truncated when passed to ciphers, Ruby 2.4
-doesn&#39;t accept keys greater than their max length.
-Fixed default key length on cipher for <a href="ActiveSupport/MessageEncryptor.html" title="ActiveSupport::MessageEncryptor (class)">::ActiveSupport::MessageEncryptor</a>,
-which was causing errors on Ruby 2.4.</p>
-
-<p><em>Vipul A M</em></p></li>
-<li><p>Fixed adding implicitly rendered template digests to ETags.
-Properly ignore implicit template cache option to ETag, if <code>template: false</code>
-is passed when rendering.</p>
-
-<p><em>Javan Makhmali</em></p></li>
 </ul>
 
-<h2>Rails 5.0.0 (June 30, 2016)</h2>
-
-<ul>
-<li><p>Add <code>ActionController#helpers</code> to get access to the view context at the controller
-level.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Routing: Refactor <code>:action</code> default handling to ensure that path
-parameters are not mutated during route generation.</p>
-
-<p><em>Andrew White</em></p></li>
-<li><p>Add extension synonyms <code>yml</code> and <code>yaml</code> for MIME type <code>application/x-yaml</code>.</p>
-
-<p><em>bogdanvlviv</em></p></li>
-<li><p>Adds support for including ActionController::Cookies in API controllers.
-Previously, including the module would raise when trying to define
-a <code>cookies</code> helper method. Skip calling #helper_method if it is not
-defined -- if we don&#39;t have helpers, we needn&#39;t define one.</p>
-
-<p>Fixes #24304</p>
-
-<p><em>Ryan T. Hosford</em></p></li>
-<li><p>ETags: Introduce <code>Response#strong_etag=</code> and <code>#weak_etag=</code> and analogous
-options for <code>fresh_when</code> and <code>stale?</code>. <code>Response#etag=</code> sets a weak ETag.</p>
-
-<p>Strong ETags are desirable when you&#39;re serving byte-for-byte identical
-responses that support Range requests, like PDFs or videos (typically
-done by reproxying the response from a backend storage service).
-Also desirable when fronted by some CDNs that support strong ETags
-only, like Akamai.</p>
-
-<p><em>Jeremy Daer</em></p></li>
-<li><p>ETags: No longer strips quotes (&quot;) from ETag values before comparing them.
-Quotes are significant, part of the ETag. A quoted ETag and an unquoted
-one are not the same entity.</p>
-
-<p><em>Jeremy Daer</em></p></li>
-<li><p>ETags: Support <code>If-None-Match: *</code>. Rarely useful for GET requests; meant
-to provide some optimistic concurrency control for PUT requests.</p>
-
-<p><em>Jeremy Daer</em></p></li>
-<li><p><a href="ActionDispatch/ParamsParser.html" title="ActionDispatch::ParamsParser (class)">::ActionDispatch::ParamsParser</a> is deprecated and was removed from the middleware
-stack. To configure the parameter parsers use <code>ActionDispatch::Request.parameter_parsers=</code>.</p>
-
-<p><em>tenderlove</em></p></li>
-<li><p>When a <code>respond_to</code> collector with a block doesn&#39;t have a response, then
-a <code>:no_content</code> response should be rendered.  This brings the default
-rendering behavior introduced by <a href="https://github.com/rails/rails/issues/19036">https://github.com/rails/rails/issues/19036</a>
-to controller methods employing <code>respond_to</code>.</p>
-
-<p><em>Justin Coyne</em></p></li>
-<li><p>Add <a href="ActionController/Parameters.html#dig-instance_method" title="ActionController::Parameters#dig (method)">ActionController::Parameters#dig</a> on Ruby 2.3 and greater, which
-behaves the same as <code>Hash#dig</code>.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Add request headers in the payload of the <code>start_processing.action_controller</code>
-and <code>process_action.action_controller</code> notifications.</p>
-
-<p><em>Gareth du Plooy</em></p></li>
-<li><p>Add <code>action_dispatch_integration_test</code> load hook. The hook can be used to
-extend <a href="ActionDispatch/IntegrationTest.html" title="ActionDispatch::IntegrationTest (class)">::ActionDispatch::IntegrationTest</a> once it has been loaded.</p>
-
-<p><em>Yuichiro Kaneko</em></p></li>
-<li><p>Update default rendering policies when the controller action did
-not explicitly indicate a response.</p>
-
-<p>For API controllers, the implicit render always renders &quot;204 No Content&quot;
-and does not account for any templates.</p>
-
-<p>For other controllers, the following conditions are checked:</p>
-
-<p>First, if a template exists for the controller action, it is rendered.
-This template lookup takes into account the action name, locales, format,
-variant, template handlers, etc. (see <code>render</code> for details).</p>
-
-<p>Second, if other templates exist for the controller action but is not in
-the right format (or variant, etc.), an <a href="ActionController/UnknownFormat.html" title="ActionController::UnknownFormat (class)">::ActionController::UnknownFormat</a>
-is raised. The list of available templates is assumed to be a complete
-enumeration of all the possible formats (or variants, etc.); that is,
-having only HTML and JSON templates indicate that the controller action is
-not meant to handle XML requests.</p>
-
-<p>Third, if the current request is an &quot;interactive&quot; browser request (the user
-navigated here by entering the URL in the address bar, submitting a form,
-clicking on a link, etc. as opposed to an XHR or non-browser API request),
-<code>ActionView::UnknownFormat</code> is raised to display a helpful error
-message.</p>
-
-<p>Finally, it falls back to the same &quot;204 No Content&quot; behavior as API controllers.</p>
-
-<p><em>Godfrey Chan</em>, <em>Jon Moss</em>, <em>Kasper Timm Hansen</em>, <em>Mike Clark</em>, <em>Matthew Draper</em></p></li>
-<li><p>Add &quot;application/gzip&quot; as a default mime type.</p>
-
-<p><em>Mehmet Emin İNAÇ</em></p></li>
-<li><p>Add request encoding and response parsing to integration tests.</p>
-
-<p>What previously was:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>test_helper</span><span class='tstring_end'>&#39;</span></span>
-
-<span class='kw'>class</span> <span class='const'>ApiTest</span> <span class='op'>&lt;</span> <span class='const'><a href="ActionDispatch.html" title="ActionDispatch (module)">ActionDispatch</a></span><span class='op'>::</span><span class='const'><a href="ActionDispatch/IntegrationTest.html" title="ActionDispatch::IntegrationTest (class)">IntegrationTest</a></span>
-  <span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>creates articles</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_assert_difference'>assert_difference</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='const'>Article</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='rbrace'>}</span> <span class='kw'>do</span>
-      <span class='id identifier rubyid_post'>post</span> <span class='id identifier rubyid_articles_path'>articles_path</span><span class='lparen'>(</span><span class='label'>format:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_json'>json</span><span class='rparen'>)</span><span class='comma'>,</span>
-        <span class='label'>params:</span> <span class='lbrace'>{</span> <span class='label'>article:</span> <span class='lbrace'>{</span> <span class='label'>title:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Ahoy!</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='comma'>,</span>
-        <span class='label'>headers:</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Content-Type</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>application/json</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
-    <span class='kw'>end</span>
-
-    <span class='id identifier rubyid_assert_equal'>assert_equal</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'>Article</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>title</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Ahoy!</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></code></pre>
-
-<p>Can now be written as:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>test_helper</span><span class='tstring_end'>&#39;</span></span>
-
-<span class='kw'>class</span> <span class='const'>ApiTest</span> <span class='op'>&lt;</span> <span class='const'><a href="ActionDispatch.html" title="ActionDispatch (module)">ActionDispatch</a></span><span class='op'>::</span><span class='const'><a href="ActionDispatch/IntegrationTest.html" title="ActionDispatch::IntegrationTest (class)">IntegrationTest</a></span>
-  <span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>creates articles</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_assert_difference'>assert_difference</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='const'>Article</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='rbrace'>}</span> <span class='kw'>do</span>
-      <span class='id identifier rubyid_post'>post</span> <span class='id identifier rubyid_articles_path'>articles_path</span><span class='comma'>,</span> <span class='label'>params:</span> <span class='lbrace'>{</span> <span class='label'>article:</span> <span class='lbrace'>{</span> <span class='label'>title:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Ahoy!</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_json'>json</span>
-    <span class='kw'>end</span>
-
-    <span class='id identifier rubyid_assert_equal'>assert_equal</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'>Article</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>title</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Ahoy!</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_parsed_body'>parsed_body</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></code></pre>
-
-<p>Passing <code>as: :json</code> to integration test request helpers will set the format,
-content type and encode the parameters as JSON.</p>
-
-<p>Then on the response side, <code>parsed_body</code> will parse the body according to the
-content type the response has.</p>
-
-<p>Currently JSON is the only supported MIME type. Add your own with
-<code>ActionDispatch::IntegrationTest.register_encoder</code>.</p>
-
-<p><em>Kasper Timm Hansen</em></p></li>
-<li><p>Add &quot;image/svg+xml&quot; as a default mime type.</p>
-
-<p><em>DHH</em></p></li>
-<li><p>Add <code>-g</code> and <code>-c</code> options to <code>bin/rails routes</code>. These options return the url <code>name</code>, <code>verb</code> and
-<code>path</code> field that match the pattern or match a specific controller.</p>
-
-<p>Deprecate <code>CONTROLLER</code> env variable in <code>bin/rails routes</code>.</p>
-
-<p>See #18902.</p>
-
-<p><em>Anton Davydov</em>, <em>Vipul A M</em></p></li>
-<li><p>Response etags to always be weak: Prefixes &#39;W/&#39; to value returned by
-<a href="ActionDispatch/Http/Cache/Response.html#etag=-instance_method" title="ActionDispatch::Http::Cache::Response#etag= (method)">ActionDispatch::Http::Cache::Response#etag=</a>, such that etags set in
-<code>fresh_when</code> and <code>stale?</code> are weak.</p>
-
-<p>Fixes #17556.</p>
-
-<p><em>Abhishek Yadav</em></p></li>
-<li><p>Provide the name of HTTP Status code in assertions.</p>
-
-<p><em>Sean Collins</em></p></li>
-<li><p>More explicit error message when running <code>rake routes</code>. <code>CONTROLLER</code> argument
-can now be supplied in different ways:
-<a href="Rails/WelcomeController.html" title="Rails::WelcomeController (class)">::Rails::WelcomeController</a>, <code>Rails::Welcome</code>, <code>rails/welcome</code>.</p>
-
-<p>Fixes #22918.</p>
-
-<p><em>Edouard Chin</em></p></li>
-<li><p>Allow <a href="ActionController/Parameters.html" title="ActionController::Parameters (class)">::ActionController::Parameters</a> instances as an argument to URL
-helper methods. An <code>ArgumentError</code> will be raised if the passed parameters
-are not secure.</p>
-
-<p>Fixes #22832.</p>
-
-<p><em>Prathamesh Sonpatki</em></p></li>
-<li><p>Add option for per-form CSRF tokens.</p>
-
-<p><em>Greg Ose</em>, <em>Ben Toews</em></p></li>
-<li><p>Fix ActionController::Parameters#convert_parameters_to_hashes to return filtered
-or unfiltered values based on from where it is called, <code>to_h</code> or <code>to_unsafe_h</code>
-respectively.</p>
-
-<p>Fixes #22841.</p>
-
-<p><em>Prathamesh Sonpatki</em></p></li>
-<li><p>Add <a href="ActionController/Parameters.html#include%3F-instance_method" title="ActionController::Parameters#include? (method)">ActionController::Parameters#include?</a></p>
-
-<p><em>Justin Coyne</em></p></li>
-<li><p>Deprecate <code>redirect_to :back</code> in favor of <code>redirect_back</code>, which accepts a
-required <code>fallback_location</code> argument, thus eliminating the possibility of a
-<code>RedirectBackError</code>.</p>
-
-<p><em>Derek Prior</em></p></li>
-<li><p>Add <code>redirect_back</code> method to <a href="ActionController/Redirecting.html" title="ActionController::Redirecting (module)">::ActionController::Redirecting</a> to provide a
-way to safely redirect to the <code>HTTP_REFERER</code> if it is present, falling back
-to a provided redirect otherwise.</p>
-
-<p><em>Derek Prior</em></p></li>
-<li><p><a href="ActionController/TestCase.html" title="ActionController::TestCase (class)">::ActionController::TestCase</a> will be moved to its own gem in Rails 5.1.</p>
-
-<p>With the speed improvements made to <a href="ActionDispatch/IntegrationTest.html" title="ActionDispatch::IntegrationTest (class)">::ActionDispatch::IntegrationTest</a> we no
-longer need to keep two separate code bases for testing controllers. In
-Rails 5.1 <a href="ActionController/TestCase.html" title="ActionController::TestCase (class)">::ActionController::TestCase</a> will be deprecated and moved into a
-gem outside of Rails source.</p>
-
-<p>This is a documentation deprecation so that going forward new tests will use
-<a href="ActionDispatch/IntegrationTest.html" title="ActionDispatch::IntegrationTest (class)">::ActionDispatch::IntegrationTest</a> instead of <a href="ActionController/TestCase.html" title="ActionController::TestCase (class)">::ActionController::TestCase</a>.</p>
-
-<p><em>Eileen M. Uchitelle</em></p></li>
-<li><p>Add a <code>response_format</code> option to <a href="ActionDispatch/DebugExceptions.html" title="ActionDispatch::DebugExceptions (class)">::ActionDispatch::DebugExceptions</a>
-to configure the format of the response when errors occur in
-development mode.</p>
-
-<p>If <code>response_format</code> is <code>:default</code> the debug info will be rendered
-in an HTML page. In the other hand, if the provided value is <code>:api</code>
-the debug info will be rendered in the original response format.</p>
-
-<p><em>Jorge Bejar</em></p></li>
-<li><p>Change the <code>protect_from_forgery</code> prepend default to <code>false</code>.</p>
-
-<p>Per this comment
-<a href="https://github.com/rails/rails/pull/18334#issuecomment-69234050">https://github.com/rails/rails/pull/18334#issuecomment-69234050</a> we want
-<code>protect_from_forgery</code> to default to <code>prepend: false</code>.</p>
-
-<p><code>protect_from_forgery</code> will now be inserted into the callback chain at the
-point it is called in your application. This is useful for cases where you
-want to <code>protect_from_forgery</code> after you perform required authentication
-callbacks or other callbacks that are required to run after forgery protection.</p>
-
-<p>If you want <code>protect_from_forgery</code> callbacks to always run first, regardless of
-position they are called in your application then you can add <code>prepend: true</code>
-to your <code>protect_from_forgery</code> call.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_protect_from_forgery'>protect_from_forgery</span> <span class='label'>prepend:</span> <span class='kw'>true</span></code></pre>
-
-<p><em>Eileen M. Uchitelle</em></p></li>
-<li><p>In url_for, never append a question mark to the URL when the query string
-is empty anyway.  (It used to do that when called like <code>url_for(controller:
-&#39;x&#39;, action: &#39;y&#39;, q: {})</code>.)</p>
-
-<p><em>Paul Grayson</em></p></li>
-<li><p>Catch invalid UTF-8 querystring values and respond with BadRequest</p>
-
-<p>Check querystring params for invalid UTF-8 characters, and raise an
-ActionController::BadRequest error if present. Previously these strings
-would typically trigger errors further down the stack.</p>
-
-<p><em>Grey Baker</em></p></li>
-<li><p>Parse RSS/ATOM responses as XML, not HTML.</p>
-
-<p><em>Alexander Kaupanin</em></p></li>
-<li><p>Show helpful message in <code>BadRequest</code> exceptions due to invalid path
-parameter encodings.</p>
-
-<p>Fixes #21923.</p>
-
-<p><em>Agis Anastasopoulos</em></p></li>
-<li><p>Add the ability of returning arbitrary headers to <a href="ActionDispatch/Static.html" title="ActionDispatch::Static (class)">::ActionDispatch::Static</a>.</p>
-
-<p>Now ActionDispatch::Static can accept HTTP headers so that developers
-will have control of returning arbitrary headers like
-&#39;Access-Control-Allow-Origin&#39; when a response is delivered. They can be
-configured with <code>#config</code>:</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Cache-Control</span><span class='tstring_end'>&quot;</span></span>               <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>public, max-age=60</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Access-Control-Allow-Origin</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://rubyonrails.org</span><span class='tstring_end'>&quot;</span></span>
-<span class='rbrace'>}</span></code></pre>
-
-<p><em>Yuki Nishijima</em></p></li>
-<li><p>Allow multiple <code>root</code> routes in same scope level. Example:</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_root'>root</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>blog#show</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>constraints:</span> <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='const'>Hostname</span><span class='period'>.</span><span class='id identifier rubyid_blog_site?'>blog_site?</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-<span class='id identifier rubyid_root'>root</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>landing#show</span><span class='tstring_end'>&#39;</span></span></code></pre>
-
-<p><em>Rafael Sales</em></p></li>
-<li><p>Fix regression in mounted engine named routes generation for app deployed to
-a subdirectory. <code>relative_url_root</code> was prepended to the path twice (e.g.
-&quot;/subdir/subdir/engine_path&quot; instead of &quot;/subdir/engine_path&quot;)</p>
-
-<p>Fixes #20920. Fixes #21459.</p>
-
-<p><em>Matthew Erhard</em></p></li>
-<li><p><code>ActionDispatch::Response#new</code> no longer applies default headers. If you want
-default headers applied to the response object, then call
-<a href="ActionDispatch/Response.html#create-class_method" title="ActionDispatch::Response.create (method)">ActionDispatch::Response.create</a>. This change only impacts people who are
-directly constructing an <a href="ActionDispatch/Response.html" title="ActionDispatch::Response (class)">::ActionDispatch::Response</a> object.</p></li>
-<li><p>Accessing mime types via constants like <code>Mime::HTML</code> is deprecated. Please
-change code like this:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'><a href="Mime.html" title="Mime (module)">Mime</a></span><span class='op'>::</span><span class='const'>HTML</span></code></pre>
-
-<p>To this:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'><a href="Mime.html" title="Mime (module)">Mime</a></span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_html'>html</span><span class='rbracket'>]</span></code></pre>
-
-<p>This change is so that Rails will not manage a list of constants, and fixes
-an issue where if a type isn&#39;t registered you could possibly get the wrong
-object.</p>
-
-<p><code>Mime[:html]</code> is available in older versions of Rails, too, so you can
-safely change libraries and plugins and maintain compatibility with
-multiple versions of Rails.</p></li>
-<li><p><code>url_for</code> does not modify its arguments when generating polymorphic URLs.</p>
-
-<p><em>Bernerd Schaefer</em></p></li>
-<li><p>Make it easier to opt in to <code>config.force_ssl</code> and <code>config.ssl_options</code> by
-making them less dangerous to try and easier to disable.</p>
-
-<p>SSL redirect:</p>
-
-<ul>
-<li>Move <code>:host</code> and <code>:port</code> options within <code>redirect: { … }</code>. Deprecate.</li>
-<li>Introduce <code>:status</code> and <code>:body</code> to customize the redirect response.
-The 301 permanent default makes it difficult to test the redirect and
-back out of it since browsers remember the 301. Test with a 302 or 307
-instead, then switch to 301 once you&#39;re confident that all is well.</li>
-</ul>
-
-<p>HTTP Strict Transport Security (HSTS):</p>
-
-<ul>
-<li>Shorter max-age. Shorten the default max-age from 1 year to 180 days,
-the low end for <a href="https://www.ssllabs.com/ssltest/">https://www.ssllabs.com/ssltest/</a> grading and greater
-than the 18-week minimum to qualify for browser preload lists.</li>
-<li>Disabling HSTS. Setting <code>hsts: false</code> now sets <code>hsts { expires: 0 }</code>
-instead of omitting the header. Omitting does nothing to disable HSTS
-since browsers hang on to your previous settings until they expire.
-Sending <code>{ hsts: { expires: 0 }}</code> flushes out old browser settings and
-actually disables HSTS:
-  <a href="http://tools.ietf.org/html/rfc6797#section-6.1.1">http://tools.ietf.org/html/rfc6797#section-6.1.1</a></li>
-<li>HSTS Preload. Introduce <code>preload: true</code> to set the <code>preload</code> flag,
-indicating that your site may be included in browser preload lists,
-including Chrome, Firefox, Safari, IE11, and Edge. Submit your site:
-  <a href="https://hstspreload.appspot.com">https://hstspreload.appspot.com</a></li>
-</ul>
-
-<p><em>Jeremy Daer</em></p></li>
-<li><p>Update <a href="ActionController/TestSession.html#fetch-instance_method" title="ActionController::TestSession#fetch (method)">ActionController::TestSession#fetch</a> to behave more like
-<a href="ActionDispatch/Request/Session.html#fetch-instance_method" title="ActionDispatch::Request::Session#fetch (method)">ActionDispatch::Request::Session#fetch</a> when using non-string keys.</p>
-
-<p><em>Jeremy Friesen</em></p></li>
-<li><p>Using strings or symbols for middleware class names is deprecated. Convert
-things like this:</p>
-
-<p>middleware.use &quot;Foo::Bar&quot;</p>
-
-<p>to this:</p>
-
-<p>middleware.use Foo::Bar</p></li>
-<li><p><a href="ActionController/TestSession.html" title="ActionController::TestSession (class)">::ActionController::TestSession</a> now accepts a default value as well as
-a block for generating a default value based off the key provided.</p>
-
-<p>This fixes calls to <code>session#fetch</code> in <code>ApplicationController</code> instances that
-take more two arguments or a block from raising <code>ArgumentError: wrong
-number of arguments (2 for 1)</code> when performing controller tests.</p>
-
-<p><em>Matthew Gerrior</em></p></li>
-<li><p>Fix <a href="ActionController/Parameters.html#fetch-instance_method" title="ActionController::Parameters#fetch (method)">ActionController::Parameters#fetch</a> overwriting <code>KeyError</code> returned by
-default block.</p>
-
-<p><em>Jonas Schuber Erlandsson</em>, <em>Roque Pinel</em></p></li>
-<li><p><a href="ActionController/Parameters.html" title="ActionController::Parameters (class)">::ActionController::Parameters</a> no longer inherits from
-<a href="#HashWithIndifferentAccess-constant" title="HashWithIndifferentAccess (constant)">HashWithIndifferentAccess</a></p>
-
-<p>Inheriting from <a href="#HashWithIndifferentAccess-constant" title="HashWithIndifferentAccess (constant)">HashWithIndifferentAccess</a> allowed users to call any
-enumerable methods on <code>Parameters</code> object, resulting in a risk of losing the
-<code>permitted?</code> status or even getting back a pure <a href="Hash.html" title="Hash (class)">Hash</a> object instead of
-a <code>Parameters</code> object with proper sanitization.</p>
-
-<p>By not inheriting from <a href="#HashWithIndifferentAccess-constant" title="HashWithIndifferentAccess (constant)">HashWithIndifferentAccess</a>, we are able to make
-sure that all methods that are defined in <code>Parameters</code> object will return
-a proper <code>Parameters</code> object with a correct <code>permitted?</code> flag.</p>
-
-<p><em>Prem Sichanugrist</em></p></li>
-<li><p>Replaced <a href="ActiveSupport/Concurrency/Latch.html" title="ActiveSupport::Concurrency::Latch (class)">::ActiveSupport::Concurrency::Latch</a> with <code>Concurrent::CountDownLatch</code>
-from the concurrent-ruby gem.</p>
-
-<p><em>Jerry D&#39;Antonio</em></p></li>
-<li><p>Add ability to filter parameters based on parent keys.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='comment'># matches {credit_card: {code: &quot;xxxx&quot;}}
-</span><span class='comment'># doesn&#39;t match {file: { code: &quot;xxxx&quot;}}
-</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_filter_parameters'>filter_parameters</span> <span class='op'>+=</span> <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>credit_card.code</span><span class='tstring_end'>&quot;</span></span> <span class='rbracket'>]</span></code></pre>
-
-<p>See #13897.</p>
-
-<p><em>Guillaume Malette</em></p></li>
-<li><p>Deprecate passing first parameter as <a href="Hash.html" title="Hash (class)">Hash</a> and default status code for <code>head</code> method.</p>
-
-<p><em>Mehmet Emin İNAÇ</em></p></li>
-<li><p>Adds<code>Rack::Utils::ParameterTypeError</code> and <code>Rack::Utils::InvalidParameterError</code>
-to the rescue_responses hash in <code>ExceptionWrapper</code> (Rack recommends
-integrators serve 400s for both of these).</p>
-
-<p><em>Grey Baker</em></p></li>
-<li><p>Add support for API only apps.
-<a href="ActionController/API.html" title="ActionController::API (class)">::ActionController::API</a> is added as a replacement of
-<a href="ActionController/Base.html" title="ActionController::Base (class)">::ActionController::Base</a> for this kind of applications.</p>
-
-<p><em>Santiago Pastorino</em>, <em>Jorge Bejar</em></p></li>
-<li><p>Remove <code>assigns</code> and <code>assert_template</code>. Both methods have been extracted
-into a gem at <a href="https://github.com/rails/rails-controller-testing">https://github.com/rails/rails-controller-testing</a>.</p>
-
-<p>See #18950.</p>
-
-<p><em>Alan Guo Xiang Tan</em></p></li>
-<li><p><code>FileHandler</code> and <code>Static</code> middleware initializers accept <code>index</code> argument
-to configure the directory index file name. Defaults to <code>index</code> (as in
-<code>index.html</code>).</p>
-
-<p>See #20017.</p>
-
-<p><em>Eliot Sykes</em></p></li>
-<li><p>Deprecate <code>:nothing</code> option for <code>render</code> method.</p>
-
-<p><em>Mehmet Emin İNAÇ</em></p></li>
-<li><p>Fix <code>rake routes</code> not showing the right format when
-nesting multiple routes.</p>
-
-<p>See #18373.</p>
-
-<p><em>Ravil Bayramgalin</em></p></li>
-<li><p>Add ability to override default form builder for a controller.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>AdminController</span> <span class='op'>&lt;</span> <span class='const'>ApplicationController</span>
-  <span class='id identifier rubyid_default_form_builder'>default_form_builder</span> <span class='const'>AdminFormBuilder</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Kevin McPhillips</em></p></li>
-<li><p>For actions with no corresponding templates, render <code>head :no_content</code>
-instead of raising an error. This allows for slimmer API controller
-methods that simply work, without needing further instructions.</p>
-
-<p>See #19036.</p>
-
-<p><em>Stephen Bussey</em></p></li>
-<li><p>Provide friendlier access to request variants.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_variant'>variant</span> <span class='op'>=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_phone'>phone</span>
-<span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_variant'>variant</span><span class='period'>.</span><span class='id identifier rubyid_phone?'>phone?</span>  <span class='comment'># true
-</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_variant'>variant</span><span class='period'>.</span><span class='id identifier rubyid_tablet?'>tablet?</span> <span class='comment'># false
-</span>
-<span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_variant'>variant</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_phone'>phone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_tablet'>tablet</span><span class='rbracket'>]</span>
-<span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_variant'>variant</span><span class='period'>.</span><span class='id identifier rubyid_phone?'>phone?</span>                  <span class='comment'># true
-</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_variant'>variant</span><span class='period'>.</span><span class='id identifier rubyid_desktop?'>desktop?</span>                <span class='comment'># false
-</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_variant'>variant</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_phone'>phone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_desktop'>desktop</span><span class='rparen'>)</span>  <span class='comment'># true
-</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_variant'>variant</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_desktop'>desktop</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_watch'>watch</span><span class='rparen'>)</span>  <span class='comment'># false</span></code></pre>
-
-<p><em>George Claghorn</em></p></li>
-<li><p>Fix regression where a gzip file response would have a Content-type,
-even when it was a 304 status code.</p>
-
-<p>See #19271.</p>
-
-<p><em>Kohei Suzuki</em></p></li>
-<li><p>Fix handling of empty <code>X_FORWARDED_HOST</code> header in <code>raw_host_with_port</code>.</p>
-
-<p>Previously, an empty <code>X_FORWARDED_HOST</code> header would cause
-<code>Actiondispatch::Http:URL.raw_host_with_port</code> to return <code>nil</code>, causing
-<code>Actiondispatch::Http:URL.host</code> to raise a <code>NoMethodError</code>.</p>
-
-<p><em>Adam Forsyth</em></p></li>
-<li><p>Allow <code>Bearer</code> as token-keyword in <code>Authorization-Header</code>.</p>
-
-<p>Additionally to <code>Token</code>, the keyword <code>Bearer</code> is acceptable as a keyword
-for the auth-token. The <code>Bearer</code> keyword is described in the original
-OAuth RFC and used in libraries like Angular-JWT.</p>
-
-<p>See #19094.</p>
-
-<p><em>Peter Schröder</em></p></li>
-<li><p>Drop request class from <code>RouteSet</code> constructor.</p>
-
-<p>If you would like to use a custom request class, please subclass and implement
-the <code>request_class</code> method.</p>
-
-<p><em><a href="mailto:tenderlove@ruby-lang.org">tenderlove@ruby-lang.org</a></em></p></li>
-<li><p>Fallback to <code>ENV['RAILS_RELATIVE_URL_ROOT']</code> in <code>url_for</code>.</p>
-
-<p>Fixed an issue where the <code>RAILS_RELATIVE_URL_ROOT</code> environment variable is not
-prepended to the path when <code>url_for</code> is called. If <code>SCRIPT_NAME</code> (used by Rack)
-is set, it takes precedence.</p>
-
-<p>Fixes #5122.</p>
-
-<p><em>Yasyf Mohamedali</em></p></li>
-<li><p>Partitioning of routes is now done when the routes are being drawn. This
-helps to decrease the time spent filtering the routes during the first request.</p>
-
-<p><em>Guo Xiang Tan</em></p></li>
-<li><p>Fix regression in functional tests. Responses should have default headers
-assigned.</p>
-
-<p>See #18423.</p>
-
-<p><em>Jeremy Kemper</em>, <em>Yves Senn</em></p></li>
-<li><p>Deprecate <code>AbstractController#skip_action_callback</code> in favor of individual skip_callback methods
-(which can be made to raise an error if no callback was removed).</p>
-
-<p><em>Iain Beeston</em></p></li>
-<li><p>Alias the <a href="ActionDispatch/Request.html#uuid-instance_method" title="ActionDispatch::Request#uuid (method)">ActionDispatch::Request#uuid</a> method to <a href="ActionDispatch/Request.html#request_id-instance_method" title="ActionDispatch::Request#request_id (method)">ActionDispatch::Request#request_id</a>.
-Due to implementation, <code>config.log_tags = [:request_id]</code> also works in substitute
-for <code>config.log_tags = [:uuid]</code>.</p>
-
-<p><em>David Ilizarov</em></p></li>
-<li><p>Change filter on /rails/info/routes to use an actual path regexp from rails
-and not approximate javascript version. Oniguruma supports much more
-extensive list of features than javascript regexp engine.</p>
-
-<p>Fixes #18402.</p>
-
-<p><em>Ravil Bayramgalin</em></p></li>
-<li><p>Non-string authenticity tokens do not raise NoMethodError when decoding
-the masked token.</p>
-
-<p><em>Ville Lautanala</em></p></li>
-<li><p>Add <code>http_cache_forever</code> to Action Controller, so we can cache a response
-that never gets expired.</p>
-
-<p><em>arthurnn</em></p></li>
-<li><p><code>ActionController#translate</code> supports symbols as shortcuts.
-When a shortcut is given it also performs the lookup without the action
-name.</p>
-
-<p><em>Max Melentiev</em></p></li>
-<li><p>Expand <a href="ActionController/ConditionalGet.html#fresh_when-instance_method" title="ActionController::ConditionalGet#fresh_when (method)">ActionController::ConditionalGet#fresh_when</a> and <code>stale?</code> to also
-accept a collection of records as the first argument, so that the
-following code can be written in a shorter form.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='comment'># Before
-</span><span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
-  <span class='ivar'>@articles</span> <span class='op'>=</span> <span class='const'>Article</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
-  <span class='id identifier rubyid_fresh_when'>fresh_when</span><span class='lparen'>(</span><span class='label'>etag:</span> <span class='ivar'>@articles</span><span class='comma'>,</span> <span class='label'>last_modified:</span> <span class='ivar'>@articles</span><span class='period'>.</span><span class='id identifier rubyid_maximum'>maximum</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_updated_at'>updated_at</span><span class='rparen'>)</span><span class='rparen'>)</span>
-<span class='kw'>end</span>
-
-<span class='comment'># After
-</span><span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
-  <span class='ivar'>@articles</span> <span class='op'>=</span> <span class='const'>Article</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
-  <span class='id identifier rubyid_fresh_when'>fresh_when</span><span class='lparen'>(</span><span class='ivar'>@articles</span><span class='rparen'>)</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>claudiob</em></p></li>
-<li><p>Explicitly ignored wildcard verbs when searching for HEAD routes before fallback</p>
-
-<p>Fixes an issue where a mounted rack app at root would intercept the HEAD
-request causing an incorrect behavior during the fall back to GET requests.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_draw'>draw</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/home</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>test#index</span><span class='tstring_end'>&#39;</span></span>
-    <span class='id identifier rubyid_mount'>mount</span> <span class='id identifier rubyid_rack_app'>rack_app</span><span class='comma'>,</span> <span class='label'>at:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span>
-<span class='kw'>end</span>
-<span class='id identifier rubyid_head'>head</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/home</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_assert_response'>assert_response</span> <span class='symbeg'>:</span><span class='id identifier rubyid_success'>success</span></code></pre>
-
-<p>In this case, a HEAD request runs through the routes the first time and fails
-to match anything. Then, it runs through the list with the fallback and matches
-<code>get &#39;/home&#39;</code>. The original behavior would match the rack app in the first pass.</p>
-
-<p><em>Terence Sun</em></p></li>
-<li><p>Discarded flash messages get removed before storing into session.</p>
-
-<p><em>Samuel Cochran</em></p></li>
-<li><p>Migrating xhr methods to keyword arguments syntax
-in <a href="ActionController/TestCase.html" title="ActionController::TestCase (class)">::ActionController::TestCase</a> and <a href="ActionDispatch/Integration.html" title="ActionDispatch::Integration (module)">::ActionDispatch::Integration</a></p>
-
-<p>Old syntax:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_xhr'>xhr</span> <span class='symbeg'>:</span><span class='id identifier rubyid_get'>get</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_create'>create</span><span class='comma'>,</span> <span class='label'>params:</span> <span class='lbrace'>{</span> <span class='label'>id:</span> <span class='int'>1</span> <span class='rbrace'>}</span></code></pre>
-
-<p>New syntax example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='symbeg'>:</span><span class='id identifier rubyid_create'>create</span><span class='comma'>,</span> <span class='label'>params:</span> <span class='lbrace'>{</span> <span class='label'>id:</span> <span class='int'>1</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>xhr:</span> <span class='kw'>true</span></code></pre>
-
-<p><em>Kir Shatrov</em></p></li>
-<li><p>Migrating to keyword arguments syntax in <a href="ActionController/TestCase.html" title="ActionController::TestCase (class)">::ActionController::TestCase</a> and
-<a href="ActionDispatch/Integration.html" title="ActionDispatch::Integration (module)">::ActionDispatch::Integration</a> HTTP request methods.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_post'>post</span> <span class='symbeg'>:</span><span class='id identifier rubyid_create'>create</span><span class='comma'>,</span> <span class='label'>params:</span> <span class='lbrace'>{</span> <span class='label'>y:</span> <span class='id identifier rubyid_x'>x</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>session:</span> <span class='lbrace'>{</span> <span class='label'>a:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>b</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
-<span class='id identifier rubyid_get'>get</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='label'>params:</span> <span class='lbrace'>{</span> <span class='label'>id:</span> <span class='int'>1</span> <span class='rbrace'>}</span>
-<span class='id identifier rubyid_get'>get</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view'>view</span><span class='comma'>,</span> <span class='label'>params:</span> <span class='lbrace'>{</span> <span class='label'>id:</span> <span class='int'>1</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>format:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_json'>json</span></code></pre>
-
-<p><em>Kir Shatrov</em></p></li>
-<li><p>Preserve default url options when generating URLs.</p>
-
-<p>Fixes an issue that would cause <code>default_url_options</code> to be lost when
-generating URLs with fewer positional arguments than parameters in the
-route definition.</p>
-
-<p><em>Tekin Suleyman</em></p></li>
-<li><p>Deprecate <code>*_via_redirect</code> integration test methods.</p>
-
-<p>Use <code>follow_redirect!</code> manually after the request call for the same behavior.</p>
-
-<p><em>Aditya Kapoor</em></p></li>
-<li><p>Add <a href="ActionController/Renderer.html" title="ActionController::Renderer (class)">::ActionController::Renderer</a> to render arbitrary templates
-outside controller actions.</p>
-
-<p>Its functionality is accessible through class methods <code>render</code> and
-<code>renderer</code> of <a href="ActionController/Base.html" title="ActionController::Base (class)">::ActionController::Base</a>.</p>
-
-<p><em>Ravil Bayramgalin</em></p></li>
-<li><p>Support <code>:assigns</code> option when rendering with controllers/mailers.</p>
-
-<p><em>Ravil Bayramgalin</em></p></li>
-<li><p>Default headers, removed in controller actions, are no longer reapplied on
-the test response.</p>
-
-<p><em>Jonas Baumann</em></p></li>
-<li><p>Deprecate all <code>*_filter</code> callbacks in favor of <code>*_action</code> callbacks.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Allow you to pass <code>prepend: false</code> to <code>protect_from_forgery</code> to have the
-verification callback appended instead of prepended to the chain.
-This allows you to let the verification step depend on prior callbacks.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>ApplicationController</span> <span class='op'>&lt;</span> <span class='const'><a href="ActionController.html" title="ActionController (module)">ActionController</a></span><span class='op'>::</span><span class='const'><a href="ActionController/Base.html" title="ActionController::Base (class)">Base</a></span>
-  <span class='id identifier rubyid_before_action'>before_action</span> <span class='symbeg'>:</span><span class='id identifier rubyid_authenticate'>authenticate</span>
-  <span class='id identifier rubyid_protect_from_forgery'>protect_from_forgery</span> <span class='label'>prepend:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>unless:</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='ivar'>@authenticated_by</span><span class='period'>.</span><span class='id identifier rubyid_oauth?'>oauth?</span> <span class='rbrace'>}</span>
-
-  <span class='id identifier rubyid_private'>private</span>
-    <span class='kw'>def</span> <span class='id identifier rubyid_authenticate'>authenticate</span>
-      <span class='kw'>if</span> <span class='id identifier rubyid_oauth_request?'>oauth_request?</span>
-        <span class='comment'># authenticate with oauth
-</span>        <span class='ivar'>@authenticated_by</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>oauth</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_inquiry'>inquiry</span>
-      <span class='kw'>else</span>
-        <span class='comment'># authenticate with cookies
-</span>        <span class='ivar'>@authenticated_by</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cookie</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_inquiry'>inquiry</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Josef Šimánek</em></p></li>
-<li><p>Remove <code>ActionController::HideActions</code>.</p>
-
-<p><em>Ravil Bayramgalin</em></p></li>
-<li><p>Remove <code>respond_to</code>/<code>respond_with</code> placeholder methods, this functionality
-has been extracted to the <code>responders</code> gem.</p>
-
-<p><em>Carlos Antonio da Silva</em></p></li>
-<li><p>Remove deprecated assertion files.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated usage of string keys in URL helpers.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated <code>only_path</code> option on <code>*_path</code> helpers.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated <code>NamedRouteCollection#helpers</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated support to define routes with <code>:to</code> option that doesn&#39;t contain <code>#</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated <code>ActionDispatch::Response#to_ary</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated <code>ActionDispatch::Request#deep_munge</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated <code>ActionDispatch::Http::Parameters#symbolized_path_parameters</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated option <code>use_route</code> in controller tests.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Ensure <code>append_info_to_payload</code> is called even if an exception is raised.</p>
-
-<p>Fixes an issue where when an exception is raised in the request the additional
-payload data is not available.</p>
-
-<p>See #14903.</p>
-
-<p><em>Dieter Komendera</em>, <em>Margus Pärt</em></p></li>
-<li><p>Correctly rely on the response&#39;s status code to handle calls to <code>head</code>.</p>
-
-<p><em>Robin Dupret</em></p></li>
-<li><p>Using <code>head</code> method returns empty response_body instead
-of returning a single space &quot; &quot;.</p>
-
-<p>The old behavior was added as a workaround for a bug in an early
-version of Safari, where the HTTP headers are not returned correctly
-if the response body has a 0-length. This is been fixed since and
-the workaround is no longer necessary.</p>
-
-<p>Fixes #18253.</p>
-
-<p><em>Prathamesh Sonpatki</em></p></li>
-<li><p>Fix how polymorphic routes works with objects that implement <code>to_model</code>.</p>
-
-<p><em>Travis Grathwell</em></p></li>
-<li><p>Stop converting empty arrays in <code>params</code> to <code>nil</code>.</p>
-
-<p>This behavior was introduced in response to CVE-2012-2660, CVE-2012-2694
-and CVE-2013-0155</p>
-
-<p>ActiveRecord now issues a safe query when passing an empty array into
-a where clause, so there is no longer a need to defend against this type
-of input (any nils are still stripped from the array).</p>
-
-<p><em>Chris Sinjakli</em></p></li>
-<li><p>Remove <code>ActionController::ModelNaming</code> module.</p>
-
-<p><em>claudiob</em></p></li>
-<li><p>Fixed usage of optional scopes in url helpers.</p>
-
-<p><em>Alex Robbin</em></p></li>
-<li><p>Fixed handling of positional url helper arguments when <code>format: false</code>.</p>
-
-<p>Fixes #17819.</p>
-
-<p><em>Andrew White</em>, <em>Tatiana Soukiassian</em></p></li>
-</ul>
-
-<p>Please check <a href="https://github.com/rails/rails/blob/4-2-stable/actionpack/CHANGELOG.md">4-2-stable</a> for previous changes.</p>
+<p>Please check <a href="https://github.com/rails/rails/blob/5-0-stable/actionpack/CHANGELOG.md">5-0-stable</a> for previous changes.</p>
 
 <div id='footer'>
   Generated by

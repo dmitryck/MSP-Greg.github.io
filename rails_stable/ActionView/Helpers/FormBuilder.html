@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActionView::Helpers::FormBuilder &mdash; Rails-5-0-stable</title>
+<title>Class: ActionView::Helpers::FormBuilder &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_F'>Index (F)</a> &raquo; 
         <a href="../../ActionView.html" title="ActionView (module)">ActionView</a> &raquo; 
         <a class='nodoc' href="../Helpers.html" title="ActionView::Helpers (module)">Helpers</a> &raquo; 
@@ -80,7 +80,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1246'>actionview/lib/action_view/helpers/form_helper.rb</a><span class='defines'>,<br /><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/date_helper.rb#L1106'>actionview/lib/action_view/helpers/date_helper.rb</a>,<br/> <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L807'>actionview/lib/action_view/helpers/form_options_helper.rb</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1601'>actionview/lib/action_view/helpers/form_helper.rb</a><span class='defines'>,<br /><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/date_helper.rb#L1108'>actionview/lib/action_view/helpers/date_helper.rb</a>,<br/> <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L807'>actionview/lib/action_view/helpers/form_options_helper.rb</a></span>
       </td>
     </tr>
   </tbody>
@@ -311,6 +311,14 @@ builders:</p></div>
   </li>
   <li>
     <span class='summary_signature '>
+      <a href="#fields-instance_method" title="#fields (instance method)">#<strong>fields</strong>(scope = nil, model: nil, **options, &amp;block)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>See the docs for the <code>ActionView::FormHelper.fields</code> helper method.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
       <a href="#fields_for-instance_method" title="#fields_for (instance method)">#<strong>fields_for</strong>(record_name, record_object = nil, fields_options = {}, &amp;block)  </a>
     </span>
     <div class='summary_desc'>
@@ -432,40 +440,48 @@ builders:</p></div>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1284-L1297'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1639-L1656'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1284
-1285
-1286
-1287
-1288
-1289
-1290
-1291
-1292
-1293
-1294
-1295
-1296
-1297</pre>
+1639
+1640
+1641
+1642
+1643
+1644
+1645
+1646
+1647
+1648
+1649
+1650
+1651
+1652
+1653
+1654
+1655
+1656</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1284</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1639</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_object_name'>object_name</span><span class='comma'>,</span> <span class='id identifier rubyid_object'>object</span><span class='comma'>,</span> <span class='id identifier rubyid_template'>template</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='ivar'>@nested_child_index</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='ivar'>@object_name</span><span class='comma'>,</span> <span class='ivar'>@object</span><span class='comma'>,</span> <span class='ivar'>@template</span><span class='comma'>,</span> <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_object_name'>object_name</span><span class='comma'>,</span> <span class='id identifier rubyid_object'>object</span><span class='comma'>,</span> <span class='id identifier rubyid_template'>template</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span>
-  <span class='ivar'>@default_options</span> <span class='op'>=</span> <span class='ivar'>@options</span> <span class='op'>?</span> <span class='ivar'>@options</span><span class='period'>.</span><span class='id identifier rubyid_slice'>slice</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_namespace'>namespace</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='ivar'>@default_options</span> <span class='op'>=</span> <span class='ivar'>@options</span> <span class='op'>?</span> <span class='ivar'>@options</span><span class='period'>.</span><span class='id identifier rubyid_slice'>slice</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_namespace'>namespace</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_skip_default_ids'>skip_default_ids</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_allow_method_names_outside_object'>allow_method_names_outside_object</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_convert_to_legacy_options'>convert_to_legacy_options</span><span class='lparen'>(</span><span class='ivar'>@options</span><span class='rparen'>)</span>
+
   <span class='kw'>if</span> <span class='ivar'>@object_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\[\]$</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_object'>object</span> <span class='op'>||=</span> <span class='ivar'>@template</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@</span><span class='embexpr_beg'>#{</span><span class='const'><a href="../../Regexp.html" title="Regexp (class)">Regexp</a></span><span class='period'>.</span><span class='id identifier rubyid_last_match'>last_match</span><span class='period'>.</span><span class='id identifier rubyid_pre_match'>pre_match</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_to_param'>to_param</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span> <span class='op'>||=</span> <span class='ivar'>@template</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@</span><span class='embexpr_beg'>#{</span><span class='const'><a href="../../Regexp.html" title="Regexp (class)">Regexp</a></span><span class='period'>.</span><span class='id identifier rubyid_last_match'>last_match</span><span class='period'>.</span><span class='id identifier rubyid_pre_match'>pre_match</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_to_param'>to_param</span><span class='rparen'>)</span>
       <span class='ivar'>@auto_index</span> <span class='op'>=</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_to_param'>to_param</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>object[] naming but object param and @object var don&#39;t exist or don&#39;t respond to to_param: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
+
   <span class='ivar'>@multipart</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='ivar'>@index</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_child_index'>child_index</span><span class='rbracket'>]</span>
 <span class='kw'>end</span>
@@ -479,14 +495,14 @@ builders:</p></div>
   <h3 class='signature rw first'>
     .<strong>field_helpers</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1250-L1250'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1605-L1605'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1250</pre>
+1605</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1250</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1605</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_field_helpers'>field_helpers</span>
@@ -499,14 +515,14 @@ builders:</p></div>
   <h3 class='signature rw'>
     .<strong>field_helpers?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1250-L1250'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1605-L1605'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1250</pre>
+1605</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1250</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1605</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_field_helpers'>field_helpers</span>
@@ -520,20 +536,20 @@ builders:</p></div>
   <h3 class='signature  first'>
     .<strong>_to_partial_path</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1272-L1274'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1627-L1629'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1272
-1273
-1274</pre>
+1627
+1628
+1629</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1272</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1627</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__to_partial_path'>_to_partial_path</span>
-  <span class='ivar'>@_to_partial_path</span> <span class='op'>||=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_demodulize'>demodulize</span><span class='period'>.</span><span class='id identifier rubyid_underscore'>underscore</span><span class='period'>.</span><span class='id identifier rubyid_sub!'>sub!</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>_builder$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='ivar'>@_to_partial_path</span> <span class='op'>||=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_demodulize'>demodulize</span><span class='period'>.</span><span class='id identifier rubyid_underscore'>underscore</span><span class='period'>.</span><span class='id identifier rubyid_sub!'>sub!</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>_builder$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -545,16 +561,16 @@ builders:</p></div>
   <h3 class='signature ro first'>
     #<strong>emitted_hidden_id?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1862-L1864'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L2231-L2233'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1862
-1863
-1864</pre>
+2231
+2232
+2233</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1862</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 2231</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emitted_hidden_id?'>emitted_hidden_id?</span>
@@ -569,14 +585,14 @@ builders:</p></div>
   <h3 class='signature rw'>
     #<strong>field_helpers</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1250-L1250'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1605-L1605'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1250</pre>
+1605</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1250</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1605</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_field_helpers'>field_helpers</span>
@@ -589,14 +605,14 @@ builders:</p></div>
   <h3 class='signature rw'>
     #<strong>field_helpers?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1250-L1250'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1605-L1605'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1250</pre>
+1605</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1250</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1605</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_field_helpers'>field_helpers</span>
@@ -609,14 +625,14 @@ builders:</p></div>
   <h3 class='signature ro'>
     #<strong>index</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1261-L1261'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1616-L1616'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1261</pre>
+1616</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1261</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1616</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_multipart'>multipart</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_index'>index</span>
@@ -629,20 +645,20 @@ builders:</p></div>
   <h3 class='signature rw'>
     #<strong>multipart=</strong>(multipart)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1264-L1270'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1619-L1625'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1264
-1265
-1266
-1267
-1268
-1269
-1270</pre>
+1619
+1620
+1621
+1622
+1623
+1624
+1625</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1264</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1619</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_multipart='>multipart=</span><span class='lparen'>(</span><span class='id identifier rubyid_multipart'>multipart</span><span class='rparen'>)</span>
@@ -668,14 +684,14 @@ builders:</p></div>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1262-L1262'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1617-L1617'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1262</pre>
+1617</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1262</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1617</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='symbeg'>:</span><span class='id identifier rubyid_multipart?'>multipart?</span> <span class='symbeg'>:</span><span class='id identifier rubyid_multipart'>multipart</span>
@@ -688,14 +704,14 @@ builders:</p></div>
   <h3 class='signature rw'>
     #<strong>object</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1259-L1259'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1614-L1614'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1259</pre>
+1614</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1259</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1614</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_object_name'>object_name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_object'>object</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_options'>options</span>
@@ -708,14 +724,14 @@ builders:</p></div>
   <h3 class='signature rw'>
     #<strong>object_name</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1259-L1259'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1614-L1614'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1259</pre>
+1614</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1259</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1614</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_object_name'>object_name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_object'>object</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_options'>options</span>
@@ -728,14 +744,14 @@ builders:</p></div>
   <h3 class='signature rw'>
     #<strong>options</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1259-L1259'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1614-L1614'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1259</pre>
+1614</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1259</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1614</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_object_name'>object_name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_object'>object</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_options'>options</span>
@@ -794,18 +810,18 @@ interpolation:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1856-L1860'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L2225-L2229'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1856
-1857
-1858
-1859
-1860</pre>
+2225
+2226
+2227
+2228
+2229</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1856</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 2225</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_button'>button</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -888,16 +904,16 @@ hashes instead of arrays.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1698-L1700'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L2067-L2069'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1698
-1699
-1700</pre>
+2067
+2068
+2069</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1698</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 2067</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_box'>check_box</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_checked_value'>checked_value</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_unchecked_value'>unchecked_value</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -927,7 +943,7 @@ form builders:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L864-L866'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L864-L866'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -966,7 +982,7 @@ form builders:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L876-L878'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L876-L878'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1005,7 +1021,7 @@ builders:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L828-L830'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L828-L830'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1043,16 +1059,16 @@ builders:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/date_helper.rb#L1115-L1117'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/date_helper.rb#L1117-L1119'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1115
-1116
-1117</pre>
+1117
+1118
+1119</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/date_helper.rb', line 1115</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/date_helper.rb', line 1117</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_date_select'>date_select</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1081,20 +1097,61 @@ builders:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/date_helper.rb#L1139-L1141'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/date_helper.rb#L1141-L1143'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1139
-1140
-1141</pre>
+1141
+1142
+1143</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/date_helper.rb', line 1139</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/date_helper.rb', line 1141</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_datetime_select'>datetime_select</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@template</span><span class='period'>.</span><span class='id identifier rubyid_datetime_select'>datetime_select</span><span class='lparen'>(</span><span class='ivar'>@object_name</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_objectify_options'>objectify_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="fields-instance_method">
+  <h3 class='signature '>
+    #<strong>fields</strong>(scope = nil, model: nil, **options, &amp;block)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>See the docs for the <code>ActionView::FormHelper.fields</code> helper method.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1949-L1956'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+1949
+1950
+1951
+1952
+1953
+1954
+1955
+1956</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1949</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_fields'>fields</span><span class='lparen'>(</span><span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>model:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_allow_method_names_outside_object'>allow_method_names_outside_object</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_skip_default_ids'>skip_default_ids</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+
+  <span class='id identifier rubyid_convert_to_legacy_options'>convert_to_legacy_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_fields_for'>fields_for</span><span class='lparen'>(</span><span class='id identifier rubyid_scope'>scope</span> <span class='op'>||</span> <span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1355,49 +1412,49 @@ fields_for from rendering it automatically.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1552-L1587'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1911-L1946'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1552
-1553
-1554
-1555
-1556
-1557
-1558
-1559
-1560
-1561
-1562
-1563
-1564
-1565
-1566
-1567
-1568
-1569
-1570
-1571
-1572
-1573
-1574
-1575
-1576
-1577
-1578
-1579
-1580
-1581
-1582
-1583
-1584
-1585
-1586
-1587</pre>
+1911
+1912
+1913
+1914
+1915
+1916
+1917
+1918
+1919
+1920
+1921
+1922
+1923
+1924
+1925
+1926
+1927
+1928
+1929
+1930
+1931
+1932
+1933
+1934
+1935
+1936
+1937
+1938
+1939
+1940
+1941
+1942
+1943
+1944
+1945
+1946</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1552</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1911</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_fields_for'>fields_for</span><span class='lparen'>(</span><span class='id identifier rubyid_record_name'>record_name</span><span class='comma'>,</span> <span class='id identifier rubyid_record_object'>record_object</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_fields_options'>fields_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1425,13 +1482,13 @@ fields_for from rendering it automatically.</p>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_record_name'>record_name</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_index'>index</span>
-                  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_name'>object_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='embexpr_end'>}</span><span class='tstring_content'>][</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_record_name'>record_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span>
-                <span class='kw'>elsif</span> <span class='id identifier rubyid_record_name'>record_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_end_with?'>end_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>[]</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-                  <span class='id identifier rubyid_record_name'>record_name</span> <span class='op'>=</span> <span class='id identifier rubyid_record_name'>record_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(.*)\[\]$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[\\1][</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_record_object'>record_object</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-                  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_name'>object_name</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_record_name'>record_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-                <span class='kw'>else</span>
-                  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_name'>object_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_record_name'>record_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span>
-                <span class='kw'>end</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_name'>object_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='embexpr_end'>}</span><span class='tstring_content'>][</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_record_name'>record_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_record_name'>record_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_end_with?'>end_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_record_name'>record_name</span> <span class='op'>=</span> <span class='id identifier rubyid_record_name'>record_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(.*)\[\]$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[\\1][</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_record_object'>record_object</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_name'>object_name</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_record_name'>record_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>else</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_name'>object_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_record_name'>record_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
   <span class='id identifier rubyid_fields_options'>fields_options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_child_index'>child_index</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_index'>index</span>
 
   <span class='ivar'>@template</span><span class='period'>.</span><span class='id identifier rubyid_fields_for'>fields_for</span><span class='lparen'>(</span><span class='id identifier rubyid_record_name'>record_name</span><span class='comma'>,</span> <span class='id identifier rubyid_record_object'>record_object</span><span class='comma'>,</span> <span class='id identifier rubyid_fields_options'>fields_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1496,17 +1553,17 @@ validations.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1780-L1783'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L2149-L2152'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1780
-1781
-1782
-1783</pre>
+2149
+2150
+2151
+2152</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1780</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 2149</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_file_field'>file_field</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1537,7 +1594,7 @@ for form builders:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L840-L842'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L840-L842'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1586,17 +1643,17 @@ element attribute as in the example shown.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1742-L1745'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L2111-L2114'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1742
-1743
-1744
-1745</pre>
+2111
+2112
+2113
+2114</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1742</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 2111</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hidden_field'>hidden_field</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1671,16 +1728,16 @@ end
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1637-L1639'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L2006-L2008'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1637
-1638
-1639</pre>
+2006
+2007
+2008</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1637</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 2006</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_label'>label</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_text'>text</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1696,14 +1753,14 @@ end
     #<strong>multipart</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
     <span class='aliases'>Also known as: <span class='names'>#multipart?</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1261-L1261'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1616-L1616'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1261</pre>
+1616</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1261</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1616</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_multipart'>multipart</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_index'>index</span>
@@ -1733,7 +1790,7 @@ the <a href="#options-instance_method" title="ActionView::Helpers::FormBuilder#o
 <span class='comment'># =&gt; &lt;input type=&quot;radio&quot; id=&quot;post_category_rails&quot; name=&quot;post[category]&quot; value=&quot;rails&quot; checked=&quot;checked&quot; /&gt;
 </span><span class='comment'>#    &lt;input type=&quot;radio&quot; id=&quot;post_category_java&quot; name=&quot;post[category]&quot; value=&quot;java&quot; /&gt;
 </span>
-<span class='comment'># Let&#39;s say that @user.category returns &quot;no&quot;:
+<span class='comment'># Let&#39;s say that @user.receive_newsletter returns &quot;no&quot;:
 </span><span class='id identifier rubyid_radio_button'>radio_button</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>receive_newsletter</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>yes</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='id identifier rubyid_radio_button'>radio_button</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>receive_newsletter</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &lt;input type=&quot;radio&quot; id=&quot;user_receive_newsletter_yes&quot; name=&quot;user[receive_newsletter]&quot; value=&quot;yes&quot; /&gt;
@@ -1741,16 +1798,16 @@ the <a href="#options-instance_method" title="ActionView::Helpers::FormBuilder#o
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1720-L1722'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L2089-L2091'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1720
-1721
-1722</pre>
+2089
+2090
+2091</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1720</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 2089</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_radio_button'>radio_button</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_tag_value'>tag_value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1779,7 +1836,7 @@ the <a href="#options-instance_method" title="ActionView::Helpers::FormBuilder#o
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L816-L818'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L816-L818'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1835,21 +1892,21 @@ and accept the %<code>model</code> as translation interpolation:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1812-L1816'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L2181-L2185'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1812
-1813
-1814
-1815
-1816</pre>
+2181
+2182
+2183
+2184
+2185</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1812</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 2181</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_submit'>submit</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_submit'>submit</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="../../Hash.html" title="Hash (class)">Hash</a></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_value'>value</span> <span class='op'>||=</span> <span class='id identifier rubyid_submit_default_value'>submit_default_value</span>
   <span class='ivar'>@template</span><span class='period'>.</span><span class='id identifier rubyid_submit_tag'>submit_tag</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -1877,16 +1934,16 @@ and accept the %<code>model</code> as translation interpolation:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/date_helper.rb#L1127-L1129'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/date_helper.rb#L1129-L1131'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1127
-1128
-1129</pre>
+1129
+1130
+1131</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/date_helper.rb', line 1127</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/date_helper.rb', line 1129</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_time_select'>time_select</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1916,7 +1973,7 @@ builders:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L852-L854'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L852-L854'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1940,16 +1997,16 @@ builders:</p>
   <h3 class='signature '>
     #<strong>to_model</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1280-L1282'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1635-L1637'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1280
-1281
-1282</pre>
+1635
+1636
+1637</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1280</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1635</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_model'>to_model</span>
@@ -1964,16 +2021,16 @@ builders:</p>
   <h3 class='signature '>
     #<strong>to_partial_path</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_helper.rb#L1276-L1278'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_helper.rb#L1631-L1633'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-1276
-1277
-1278</pre>
+1631
+1632
+1633</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1276</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/form_helper.rb', line 1631</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_partial_path'>to_partial_path</span>

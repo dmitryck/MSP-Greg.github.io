@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Form Helpers &mdash; Rails-5-0-stable</title>
+<title>File: Form Helpers &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Form Helpers&nbsp;&#x25B2;</a></span>
             </div>
@@ -467,8 +467,6 @@ output:
 
 <p>Whenever Rails sees that the internal value of an option being generated matches this value, it will add the <code>selected</code> attribute to that option.</p>
 
-<p>TIP: The second argument to <code>options_for_select</code> must be exactly equal to the desired internal value. In particular if the value is the integer <code>2</code> you cannot pass <code>&quot;2&quot;</code> to <code>options_for_select</code> - you must pass <code>2</code>. Be aware of values extracted from the <code>params</code> hash as they are all strings.</p>
-
 <p>WARNING: When <code>:include_blank</code> or <code>:prompt</code> are not present, <code>:include_blank</code> is forced true if the select attribute <code>required</code> is true, display <code>size</code> is one and <code>multiple</code> is not true.</p>
 
 <p>You can add arbitrary attributes to the options using hashes:</p>
@@ -551,7 +549,7 @@ output:
 <pre class="code erb"><code class="erb">&lt;%= time_zone_select(:person, :time_zone) %&gt;
 </code></pre>
 
-<p>There is also <code>time_zone_options_for_select</code> helper for a more manual (therefore more customizable) way of doing this. Read the API documentation to learn about the possible arguments for these two methods.</p>
+<p>There is also <code>time_zone_options_for_select</code> helper for a more manual (therefore more customizable) way of doing this. Read the <a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-time_zone_options_for_select">API documentation</a> to learn about the possible arguments for these two methods.</p>
 
 <p>Rails <em>used</em> to have a <code>country_select</code> helper for choosing countries, but this has been extracted to the <a href="https://github.com/stefanpenner/country_select">country_select plugin</a>. When using this, be aware that the exclusion or inclusion of certain names from the list can be somewhat controversial (and was the reason this functionality was extracted from Rails).</p>
 

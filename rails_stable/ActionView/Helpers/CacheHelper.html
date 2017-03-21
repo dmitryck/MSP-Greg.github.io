@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActionView::Helpers::CacheHelper &mdash; Rails-5-0-stable</title>
+<title>Module: ActionView::Helpers::CacheHelper &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../../ActionView.html" title="ActionView (module)">ActionView</a> &raquo; 
         <a class='nodoc' href="../Helpers.html" title="ActionView::Helpers (module)">Helpers</a> &raquo; 
@@ -85,7 +85,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/cache_helper.rb#L4'>actionview/lib/action_view/helpers/cache_helper.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/cache_helper.rb#L4'>actionview/lib/action_view/helpers/cache_helper.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -180,10 +180,10 @@ of them will expire the cache.</p>
 <h4 id="label-Template+digest">Template digest</h4>
 
 <p>The template digest that&#39;s added to the cache key is computed by taking
-an md5 of the contents of the entire template file. This ensures that your
+an MD5 of the contents of the entire template file. This ensures that your
 caches will automatically expire when you change the template file.</p>
 
-<p>Note that the md5 is taken of the entire template file, not just what&#39;s
+<p>Note that the MD5 is taken of the entire template file, not just what&#39;s
 within the cache do/end call. So it&#39;s possible that changing something
 outside of that call will still expire the cache.</p>
 
@@ -210,11 +210,11 @@ render &quot;comments/comments&quot;
 render &#39;comments/comments&#39;
 render(&#39;comments/comments&#39;)
 
-render &quot;header&quot; =&gt; render(&quot;comments/header&quot;)
+render &quot;header&quot; translates to render(&quot;comments/header&quot;)
 
-render(@topic)         =&gt; render(&quot;topics/topic&quot;)
-render(topics)         =&gt; render(&quot;topics/topic&quot;)
-render(message.topics) =&gt; render(&quot;topics/topic&quot;)</code></pre>
+render(@topic)         translates to render(&quot;topics/topic&quot;)
+render(topics)         translates to render(&quot;topics/topic&quot;)
+render(message.topics) translates to render(&quot;topics/topic&quot;)</code></pre>
 
 <p>It&#39;s not possible to derive all render calls like that, though. Here
 are a few examples of things that can&#39;t be derived:</p>
@@ -229,7 +229,7 @@ are a few examples of things that can&#39;t be derived:</p>
 
 <h3 id="label-Explicit+dependencies">Explicit dependencies</h3>
 
-<p>Some times you&#39;ll have template dependencies that can&#39;t be derived
+<p>Sometimes you&#39;ll have template dependencies that can&#39;t be derived
 at all. This is typically the case when you have template rendering that
 happens in helpers. Here&#39;s an example:</p>
 
@@ -262,7 +262,7 @@ per line.</p>
 
 <p>If you use a helper method, for example, inside a cached block and you then
 update that helper, you&#39;ll have to bump the cache as well. It
-doesn&#39;t really matter how you do it, but the md5 of the template file
+doesn&#39;t really matter how you do it, but the MD5 of the template file
 must change. One recommendation is to simply be explicit in a comment,
 like:</p>
 
@@ -275,9 +275,11 @@ changes.</p>
 <h3 id="label-Collection+Caching">Collection Caching</h3>
 
 <p>When rendering a collection of objects that each use the same partial, a
-`cached` option can be passed. For collections rendered such:</p>
+`cached` option can be passed.</p>
 
-<pre class="code ruby"><code class="ruby">&lt;%= render partial: &#39;notifications/notification&#39;, collection: @notifications, cached: true %&gt;</code></pre>
+<p>For collections rendered such:</p>
+
+<pre class="code ruby"><code class="ruby">&lt;%= render partial: &#39;projects/project&#39;, collection: @projects, cached: true %&gt;</code></pre>
 
 <p>The `cached: true` will make Action View&#39;s rendering read several
 templates from cache at once instead of one call per template.</p>
@@ -287,33 +289,42 @@ templates from cache at once instead of one call per template.</p>
 <p>Works great alongside individual template fragment caching. For instance if
 the template the collection renders is cached like:</p>
 
-<pre class="code ruby"><code class="ruby"># notifications/_notification.html.erb
-&lt;% cache notification do %&gt;
+<pre class="code ruby"><code class="ruby"># projects/_project.html.erb
+&lt;% cache project do %&gt;
   &lt;%# ... %&gt;
 &lt;% end %&gt;</code></pre>
 
 <p>Any collection renders will find those cached templates when attempting to
 read multiple templates at once.</p>
 
+<p>If your collection cache depends on multiple sources (try to avoid this to
+keep things simple), you can name all these dependencies as part of a block
+that returns an array:</p>
+
+<pre class="code ruby"><code class="ruby">&lt;%= render partial: &#39;projects/project&#39;, collection: @projects, cached: -&gt; project { [ project, current_user ] } %&gt;</code></pre>
+
+<p>This will include both records as part of the cache key and updating either
+of them will expire the cache.</p>
+
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/cache_helper.rb#L152-L161'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/cache_helper.rb#L161-L170'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161</pre>
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/cache_helper.rb', line 152</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/cache_helper.rb', line 161</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cache'>cache</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -349,20 +360,20 @@ provided.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/cache_helper.rb#L197-L203'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/cache_helper.rb#L206-L212'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-197
-198
-199
-200
-201
-202
-203</pre>
+206
+207
+208
+209
+210
+211
+212</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/cache_helper.rb', line 197</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/cache_helper.rb', line 206</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cache_fragment_name'>cache_fragment_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>skip_digest:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>virtual_path:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -393,22 +404,22 @@ provided.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/cache_helper.rb#L169-L177'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/cache_helper.rb#L178-L186'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-169
-170
-171
-172
-173
-174
-175
-176
-177</pre>
+178
+179
+180
+181
+182
+183
+184
+185
+186</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/cache_helper.rb', line 169</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/cache_helper.rb', line 178</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cache_if'>cache_if</span><span class='lparen'>(</span><span class='id identifier rubyid_condition'>condition</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -441,16 +452,16 @@ provided.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/cache_helper.rb#L185-L187'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/cache_helper.rb#L194-L196'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-185
-186
-187</pre>
+194
+195
+196</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/cache_helper.rb', line 185</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/cache_helper.rb', line 194</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cache_unless'>cache_unless</span><span class='lparen'>(</span><span class='id identifier rubyid_condition'>condition</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>

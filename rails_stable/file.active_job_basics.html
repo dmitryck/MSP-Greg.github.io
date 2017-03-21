@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Active Job Basics &mdash; Rails-5-0-stable</title>
+<title>File: Active Job Basics &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Active Job Basics&nbsp;&#x25B2;</a></span>
             </div>
@@ -97,8 +97,9 @@ Delayed Job and Resque. Picking your queuing backend becomes more of an operatio
 concern, then. And you&#39;ll be able to switch between them without having to rewrite
 your jobs.</p>
 
-<p>NOTE: Rails by default comes with an &quot;immediate runner&quot; queuing implementation.
-That means that each job that has been enqueued will run immediately.</p>
+<p>NOTE: Rails by default comes with an asynchronous queuing implementation that
+runs jobs with an in-process thread pool. Jobs will run asynchronously, but any
+jobs in the queue will be dropped upon restart.</p>
 
 <h2>Creating a Job</h2>
 
@@ -157,11 +158,11 @@ create  app/jobs/guests_cleanup_job.rb
 
 <h2>Job Execution</h2>
 
-<p>For enqueuing and executing jobs in production you need to set up a queuing backend, 
+<p>For enqueuing and executing jobs in production you need to set up a queuing backend,
 that is to say you need to decide for a 3rd-party queuing library that Rails should use.
 Rails itself only provides an in-process queuing system, which only keeps the jobs in RAM.
 If the process crashes or the machine is reset, then all outstanding jobs are lost with the
-default async back-end. This may be fine for smaller apps or non-critical jobs, but most
+default async backend. This may be fine for smaller apps or non-critical jobs, but most
 production apps will need to pick a persistent backend.</p>
 
 <h3>Backends</h3>

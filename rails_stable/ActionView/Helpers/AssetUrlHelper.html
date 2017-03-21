@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActionView::Helpers::AssetUrlHelper &mdash; Rails-5-0-stable</title>
+<title>Module: ActionView::Helpers::AssetUrlHelper &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_A'>Index (A)</a> &raquo; 
         <a href="../../ActionView.html" title="ActionView (module)">ActionView</a> &raquo; 
         <a class='nodoc' href="../Helpers.html" title="ActionView::Helpers (module)">Helpers</a> &raquo; 
@@ -86,7 +86,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L117'>actionview/lib/action_view/helpers/asset_url_helper.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L117'>actionview/lib/action_view/helpers/asset_url_helper.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -129,8 +129,8 @@ host. The exact number varies by browser and version. This limit may cause
 some asset downloads to wait for previous assets to finish before they can
 begin. You can use the <code>%d</code> wildcard in the <code>asset_host</code> to
 distribute the requests over four hosts. For example,
-&lt;tt&gt;assets%d.example.com&lt;tt&gt; will spread the asset requests
-over "assets0.example.com", ..., "assets3.example.com".</p>
+<code>assets%d.example.com</code> will spread the asset requests over
+"assets0.example.com", ..., "assets3.example.com".</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_image_tag'>image_tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rails.png</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://assets0.example.com/assets/rails.png&quot; /&gt;
@@ -193,8 +193,8 @@ still sending assets for plain HTTP requests from asset hosts. If you
 don&#39;t have SSL certificates for each of the asset hosts this technique
 allows you to avoid warnings in the client about mixed media. Note that the
 request parameter might not be supplied, e.g. when the assets are
-precompiled via a Rake task. Make sure to use a Proc instead of a lambda,
-since a Proc allows missing parameters and sets them to nil.</p>
+precompiled via a Rake task. Make sure to use a <code>Proc</code> instead of a lambda,
+since a <code>Proc</code> allows missing parameters and sets them to <code>nil</code>.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_action_controller'>action_controller</span><span class='period'>.</span><span class='id identifier rubyid_asset_host'>asset_host</span> <span class='op'>=</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='op'>|</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_request'>request</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_ssl?'>ssl?</span>
@@ -220,9 +220,9 @@ and takes either one or two parameters just like the proc.</p>
   <li>
     <span id='ASSET_EXTENSIONS-constant' class='summary_signature'>ASSET_EXTENSIONS =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L175-L178'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 175</a>    <pre class='code ruby'><span class='lbrace'>{</span>
-  <span class='label'>javascript:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.js</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>stylesheet:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.css</span><span class='tstring_end'>&#39;</span></span>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L230-L233'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 230</a>    <pre class='code ruby'><span class='lbrace'>{</span>
+  <span class='label'>javascript:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.js</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>stylesheet:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.css</span><span class='tstring_end'>&quot;</span></span>
 <span class='rbrace'>}</span></pre>
   </li>
   <li>
@@ -234,19 +234,19 @@ and takes either one or two parameters just like the proc.</p>
 
   </div>
 </div>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L189-L196'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 189</a>    <pre class='code ruby'><span class='lbrace'>{</span>
-  <span class='label'>audio:</span>      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/audios</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>font:</span>       <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/fonts</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>image:</span>      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/images</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>javascript:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/javascripts</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>stylesheet:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/stylesheets</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>video:</span>      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/videos</span><span class='tstring_end'>&#39;</span></span>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L248-L255'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 248</a>    <pre class='code ruby'><span class='lbrace'>{</span>
+  <span class='label'>audio:</span>      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/audios</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>font:</span>       <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/fonts</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>image:</span>      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/images</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>javascript:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/javascripts</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>stylesheet:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/stylesheets</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>video:</span>      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/videos</span><span class='tstring_end'>&quot;</span></span>
 <span class='rbrace'>}</span></pre>
   </li>
   <li>
     <span id='URI_REGEXP-constant' class='summary_signature'>URI_REGEXP =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L118-L118'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 118</a>    <pre class='code ruby'><span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>^[-a-z]+://|^(?:cid|data):|^//</span><span class='regexp_end'>}i</span></span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L118-L118'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 118</a>    <pre class='code ruby'><span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>^[-a-z]+://|^(?:cid|data):|^//</span><span class='regexp_end'>}i</span></span></pre>
   </li>
 </ul>
 </div>
@@ -261,7 +261,7 @@ and takes either one or two parameters just like the proc.</p>
       (also: #path_to_asset)
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Computes the path to asset in public directory.</p></div>
+      <div class='inline'><p>This is the entry point for all assets.</p></div>
     </div>
   </li>
   <li>
@@ -310,6 +310,7 @@ and takes either one or two parameters just like the proc.</p>
   <li>
     <span class='summary_signature '>
       <a href="#compute_asset_path-instance_method" title="#compute_asset_path (instance method)">#<strong>compute_asset_path</strong>(source, options = {})  </a>
+      (also: #public_compute_asset_path)
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Computes asset path to public directory.</p></div>
@@ -429,6 +430,14 @@ directory.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
+      <a href="#public_compute_asset_path-instance_method" title="#public_compute_asset_path (instance method)">#<strong>public_compute_asset_path</strong>(source, options = {})  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Alias for <a href="#compute_asset_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#compute_asset_path (method)">#compute_asset_path</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
       <a href="#stylesheet_path-instance_method" title="#stylesheet_path (instance method)">#<strong>stylesheet_path</strong>(source, options = {})  </a>
       (also: #path_to_stylesheet)
     </span>
@@ -532,16 +541,69 @@ directory.</p></div>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Computes the path to asset in public directory. If :type options is set, a
-file extension will be appended and scoped to the corresponding public
-directory.</p>
+<p>This is the entry point for all assets. When using the asset pipeline (i.e.
+sprockets and sprockets-rails), the behavior is "enhanced". You can bypass
+the asset pipeline by passing in <code>skip_pipeline: true</code> to the
+options.</p>
 
 <p>All other asset *_path helpers delegate through this method.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_asset_path'>asset_path</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>application.js</span><span class='tstring_end'>&quot;</span></span>                     <span class='comment'># =&gt; /assets/application.js
-</span><span class='id identifier rubyid_asset_path'>asset_path</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>application</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_javascript'>javascript</span>     <span class='comment'># =&gt; /assets/application.js
-</span><span class='id identifier rubyid_asset_path'>asset_path</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>application</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_stylesheet'>stylesheet</span>     <span class='comment'># =&gt; /assets/application.css
-</span><span class='id identifier rubyid_asset_path'>asset_path</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://www.example.com/js/xmlhr.js</span><span class='tstring_end'>&quot;</span></span> <span class='comment'># =&gt; http://www.example.com/js/xmlhr.js</span></code></pre>
+<h3 id="label-With+the+asset+pipeline">With the asset pipeline</h3>
+
+<p>All options passed to <code>asset_path</code> will be passed to
+<a href="#compute_asset_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#compute_asset_path (method)">#compute_asset_path</a> which is implemented by sprockets-rails.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>application.js</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;/assets/application-60aa4fdc5cea14baf5400fba1abf4f2a46a5166bad4772b1effe341570f07de9.js&quot;</span></code></pre>
+
+<h3 id="label-Without+the+asset+pipeline+-28skip_pipeline-3A+true-29">Without the asset pipeline (<code>skip_pipeline: true</code>)</h3>
+
+<p>Accepts a <code>type</code> option that can specify the asset&#39;s extension. No
+error checking is done to verify the source passed into
+<code>asset_path</code> is valid and that the file exists on disk.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>application.js</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>skip_pipeline:</span> <span class='kw'>true</span><span class='rparen'>)</span>                 <span class='comment'># =&gt; &quot;application.js&quot;
+</span><span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>filedoesnotexist.png</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>skip_pipeline:</span> <span class='kw'>true</span><span class='rparen'>)</span>           <span class='comment'># =&gt; &quot;filedoesnotexist.png&quot;
+</span><span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>application</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_javascript'>javascript</span><span class='comma'>,</span> <span class='label'>skip_pipeline:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;/javascripts/application.js&quot;
+</span><span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>application</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_stylesheet'>stylesheet</span><span class='comma'>,</span> <span class='label'>skip_pipeline:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;/stylesheets/application.css&quot;</span></code></pre>
+
+<h3 id="label-Options+applying+to+all+assets">Options applying to all assets</h3>
+
+<p>Below lists scenarios that apply to <code>asset_path</code> whether or not
+you&#39;re using the asset pipeline.</p>
+<ul><li>
+<p>All fully qualified urls are returned immediately. This bypasses the asset
+pipeline and all other behavior described.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://www.example.com/js/xmlhr.js</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;http://www.example.com/js/xmlhr.js&quot;</span></code></pre>
+</li><li>
+<p>All assets that begin with a forward slash are assumed to be full urls and
+will not be expanded. This will bypass the asset pipeline.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/foo.png</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;/foo.png&quot;</span></code></pre>
+</li><li>
+<p>All blank strings will be returned immediately. This bypasses the asset
+pipeline and all other behavior described.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;&quot;</span></code></pre>
+</li><li>
+<p>If <code>config.relative_url_root</code> is specified, all assets will have
+that root prepended.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="../../Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_application'><a href="../../Rails.html#application-class_method" title="Rails.application (method)">application</a></span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_relative_url_root'>relative_url_root</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bar</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>foo.js</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>skip_pipeline:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;bar/foo.js&quot;</span></code></pre>
+</li><li>
+<p>A different asset host can be specified via
+<code>config.action_controller.asset_host</code> this is commonly used in
+conjunction with a CDN.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="../../Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_application'><a href="../../Rails.html#application-class_method" title="Rails.application (method)">application</a></span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_action_controller'>action_controller</span><span class='period'>.</span><span class='id identifier rubyid_asset_host'>asset_host</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>assets.example.com</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>foo.js</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>skip_pipeline:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;http://assets.example.com/foo.js&quot;</span></code></pre>
+</li><li>
+<p>An extension name can be specified manually with <code>extname</code>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>foo</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>skip_pipeline:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>extname:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.js</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>     <span class='comment'># =&gt; &quot;/foo.js&quot;
+</span><span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>foo.css</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>skip_pipeline:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>extname:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.js</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;/foo.css.js&quot;</span></code></pre>
+</li></ul>
 
   </div>
 </div>
@@ -553,58 +615,66 @@ directory.</p>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L130-L157'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L181-L212'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157</pre>
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 130</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 181</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_asset_path'>asset_path</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>nil is not a valid asset source</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
 
   <span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_source'>source</span> <span class='kw'>if</span> <span class='id identifier rubyid_source'>source</span> <span class='op'>=~</span> <span class='const'><a href="#URI_REGEXP-constant" title="ActionView::Helpers::AssetUrlHelper::URI_REGEXP (constant)">URI_REGEXP</a></span>
+  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_source'>source</span> <span class='kw'>if</span> <span class='const'><a href="#URI_REGEXP-constant" title="ActionView::Helpers::AssetUrlHelper::URI_REGEXP (constant)">URI_REGEXP</a></span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_tail'>tail</span><span class='comma'>,</span> <span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='id identifier rubyid_source'>source</span><span class='lbracket'>[</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>([\?#].+)$</span><span class='regexp_end'>/</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>([\?#].+)$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_tail'>tail</span><span class='comma'>,</span> <span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='id identifier rubyid_source'>source</span><span class='lbracket'>[</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>([\?#].+)$</span><span class='regexp_end'>/</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>([\?#].+)$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_extname'>extname</span> <span class='op'>=</span> <span class='id identifier rubyid_compute_asset_extname'>compute_asset_extname</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_source'>source</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_extname'>extname</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_source'>source</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='CHAR'>?/</span>
-    <span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='id identifier rubyid_compute_asset_path'>compute_asset_path</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_skip_pipeline'>skip_pipeline</span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='id identifier rubyid_public_compute_asset_path'>public_compute_asset_path</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='id identifier rubyid_compute_asset_path'>compute_asset_path</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_relative_url_root'>relative_url_root</span> <span class='op'>=</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_relative_url_root'>relative_url_root</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_relative_url_root'>relative_url_root</span>
@@ -643,20 +713,20 @@ directory.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L170-L172'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L225-L227'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-170
-171
-172</pre>
+225
+226
+227</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 170</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 225</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_asset_url'>asset_url</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_protocol'>protocol</span> <span class='op'>=&gt;</span> <span class='symbeg'>:</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>protocol:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -683,20 +753,20 @@ paths from the document root will be passed through. Used internally by
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L362-L364'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L424-L426'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-362
-363
-364</pre>
+424
+425
+426</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 362</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 424</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_audio_path'>audio_path</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_audio'>audio</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_audio'>audio</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -721,20 +791,20 @@ can set :host options. If :host options is set, it overwrites global
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L374-L376'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L436-L438'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-374
-375
-376</pre>
+436
+437
+438</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 374</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 436</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_audio_url'>audio_url</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_audio'>audio</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_audio'>audio</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -748,29 +818,37 @@ can set :host options. If :host options is set, it overwrites global
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Compute extname to append to asset path. Returns nil if nothing should be
+<p>Compute extname to append to asset path. Returns <code>nil</code> if nothing should be
 added.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L182-L186'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L237-L245'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-182
-183
-184
-185
-186</pre>
+237
+238
+239
+240
+241
+242
+243
+244
+245</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 182</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 237</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_compute_asset_extname'>compute_asset_extname</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_extname'>extname</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>false</span>
   <span class='id identifier rubyid_extname'>extname</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_extname'>extname</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><a href="#ASSET_EXTENSIONS-constant" title="ActionView::Helpers::AssetUrlHelper::ASSET_EXTENSIONS (constant)">ASSET_EXTENSIONS</a></span><span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_extname'>extname</span> <span class='kw'>if</span> <span class='id identifier rubyid_extname'>extname</span> <span class='op'>&amp;&amp;</span> <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_extname'>extname</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span> <span class='op'>!=</span> <span class='id identifier rubyid_extname'>extname</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_extname'>extname</span> <span class='op'>&amp;&amp;</span> <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_extname'>extname</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span> <span class='op'>!=</span> <span class='id identifier rubyid_extname'>extname</span>
+    <span class='id identifier rubyid_extname'>extname</span>
+  <span class='kw'>else</span>
+    <span class='kw'>nil</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -792,44 +870,46 @@ otherwise).</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L211-L241'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L271-L303'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-211
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229
-230
-231
-232
-233
-234
-235
-236
-237
-238
-239
-240
-241</pre>
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 211</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 271</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_compute_asset_host'>compute_asset_host</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -837,19 +917,21 @@ otherwise).</p>
   <span class='id identifier rubyid_host'>host</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_host'>host</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_host'>host</span> <span class='op'>||=</span> <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_asset_host'>asset_host</span> <span class='kw'>if</span> <span class='kw'>defined?</span> <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_asset_host'>asset_host</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_call'>call</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_arity'>arity</span> <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_arity'>arity</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_arity'>arity</span> <span class='op'>:</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_call'>call</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_arity'>arity</span>
-    <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_source'>source</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_args'>args</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_request'>request</span> <span class='kw'>if</span> <span class='id identifier rubyid_request'>request</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='id identifier rubyid_arity'>arity</span> <span class='op'>&gt;</span> <span class='int'>1</span> <span class='op'>||</span> <span class='id identifier rubyid_arity'>arity</span> <span class='op'>&lt;</span> <span class='int'>0</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_host'>host</span> <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_host'>host</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>%d</span><span class='regexp_end'>/</span></span>
-    <span class='id identifier rubyid_host'>host</span> <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span> <span class='op'>%</span> <span class='lparen'>(</span><span class='const'>Zlib</span><span class='period'>.</span><span class='id identifier rubyid_crc32'>crc32</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span> <span class='op'>%</span> <span class='int'>4</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_host'>host</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_call'>call</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_arity'>arity</span> <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_arity'>arity</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_arity'>arity</span> <span class='op'>:</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_call'>call</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_arity'>arity</span>
+      <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_source'>source</span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_args'>args</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_request'>request</span> <span class='kw'>if</span> <span class='id identifier rubyid_request'>request</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='id identifier rubyid_arity'>arity</span> <span class='op'>&gt;</span> <span class='int'>1</span> <span class='op'>||</span> <span class='id identifier rubyid_arity'>arity</span> <span class='op'>&lt;</span> <span class='int'>0</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_host'>host</span> <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%d</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_host'>host</span> <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span> <span class='op'>%</span> <span class='lparen'>(</span><span class='const'>Zlib</span><span class='period'>.</span><span class='id identifier rubyid_crc32'>crc32</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span> <span class='op'>%</span> <span class='int'>4</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_host'>host</span> <span class='op'>||=</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_base_url'>base_url</span> <span class='kw'>if</span> <span class='id identifier rubyid_request'>request</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_protocol'>protocol</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbeg'>:</span><span class='id identifier rubyid_request'>request</span>
   <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_host'>host</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_host'>host</span> <span class='op'>=~</span> <span class='const'><a href="#URI_REGEXP-constant" title="ActionView::Helpers::AssetUrlHelper::URI_REGEXP (constant)">URI_REGEXP</a></span>
+  <span class='kw'>if</span> <span class='const'><a href="#URI_REGEXP-constant" title="ActionView::Helpers::AssetUrlHelper::URI_REGEXP (constant)">URI_REGEXP</a></span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_host'>host</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_protocol'>protocol</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_protocol'>protocol</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_default_asset_host_protocol'>default_asset_host_protocol</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span> <span class='op'>?</span> <span class='symbeg'>:</span><span class='id identifier rubyid_request'>request</span> <span class='op'>:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_relative'>relative</span><span class='rparen'>)</span>
@@ -871,6 +953,7 @@ otherwise).</p>
 <section class='method_details' id="compute_asset_path-instance_method">
   <h3 class='signature '>
     #<strong>compute_asset_path</strong>(source, options = {})  
+    <span class='aliases'>Also known as: <span class='names'>#public_compute_asset_path</span></span>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -881,17 +964,17 @@ or query strings.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L201-L204'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L260-L263'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-201
-202
-203
-204</pre>
+260
+261
+262
+263</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 201</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 260</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_compute_asset_path'>compute_asset_path</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -922,20 +1005,20 @@ be passed through.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L387-L389'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L449-L451'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-387
-388
-389</pre>
+449
+450
+451</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 387</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 449</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_font_path'>font_path</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_font'>font</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_font'>font</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -960,20 +1043,20 @@ options. If :host options is set, it overwrites global
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L399-L401'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L461-L463'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-399
-400
-401</pre>
+461
+462
+463</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 399</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 461</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_font_url'>font_url</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_font'>font</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_font'>font</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1004,20 +1087,20 @@ so.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L310-L312'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L372-L374'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-310
-311
-312</pre>
+372
+373
+374</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 310</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 372</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_image_path'>image_path</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_image'>image</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_image'>image</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1042,20 +1125,20 @@ options. If :host options is set, it overwrites global
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L322-L324'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L384-L386'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-322
-323
-324</pre>
+384
+385
+386</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 322</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 384</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_image_url'>image_url</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_image'>image</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_image'>image</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1084,20 +1167,20 @@ script path.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L253-L255'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L315-L317'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-253
-254
-255</pre>
+315
+316
+317</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 253</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 315</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_javascript_path'>javascript_path</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_javascript'>javascript</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_javascript'>javascript</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1122,20 +1205,20 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L265-L267'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L327-L329'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-265
-266
-267</pre>
+327
+328
+329</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 265</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 327</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_javascript_url'>javascript_url</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_javascript'>javascript</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_javascript'>javascript</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1153,14 +1236,14 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L158-L158'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L213-L213'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-158</pre>
+213</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 158</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 213</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_asset_path'>asset_path</span> <span class='comment'># aliased to avoid conflicts with an asset_path named route</span>
@@ -1180,14 +1263,14 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L365-L365'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L427-L427'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-365</pre>
+427</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 365</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 427</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_path_to_audio'>path_to_audio</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_audio_path'>audio_path</span> <span class='comment'># aliased to avoid conflicts with an audio_path named route</span>
@@ -1207,17 +1290,17 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L390-L390'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L452-L452'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-390</pre>
+452</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 390</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 452</span></pre>
 <pre class='code ruby'>
 
-<span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_path_to_font'>path_to_font</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_font_path'>font_path</span> <span class='comment'># aliased to avoid conflicts with an font_path named route</span>
+<span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_path_to_font'>path_to_font</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_font_path'>font_path</span> <span class='comment'># aliased to avoid conflicts with a font_path named route</span>
 </pre>
   </div>
 </div>
@@ -1234,14 +1317,14 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L313-L313'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L375-L375'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-313</pre>
+375</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 313</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 375</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_path_to_image'>path_to_image</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_image_path'>image_path</span> <span class='comment'># aliased to avoid conflicts with an image_path named route</span>
@@ -1261,14 +1344,14 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L256-L256'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L318-L318'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-256</pre>
+318</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 256</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 318</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_path_to_javascript'>path_to_javascript</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_javascript_path'>javascript_path</span> <span class='comment'># aliased to avoid conflicts with a javascript_path named route</span>
@@ -1288,14 +1371,14 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L283-L283'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L345-L345'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-283</pre>
+345</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 283</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 345</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_path_to_stylesheet'>path_to_stylesheet</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_stylesheet_path'>stylesheet_path</span> <span class='comment'># aliased to avoid conflicts with a stylesheet_path named route</span>
@@ -1315,17 +1398,44 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L339-L339'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L401-L401'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-339</pre>
+401</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 339</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 401</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_path_to_video'>path_to_video</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_video_path'>video_path</span> <span class='comment'># aliased to avoid conflicts with a video_path named route</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="public_compute_asset_path-instance_method">
+  <h3 class='signature '>
+    #<strong>public_compute_asset_path</strong>(source, options = {})  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Alias for <a href="#compute_asset_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#compute_asset_path (method)">#compute_asset_path</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L264-L264'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+264</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 264</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>alias</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_compute_asset_path'>public_compute_asset_path</span> <span class='symbeg'>:</span><span class='id identifier rubyid_compute_asset_path'>compute_asset_path</span>
 </pre>
   </div>
 </div>
@@ -1353,20 +1463,20 @@ stylesheet path.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L280-L282'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L342-L344'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-280
-281
-282</pre>
+342
+343
+344</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 280</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 342</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stylesheet_path'>stylesheet_path</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_stylesheet'>stylesheet</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_stylesheet'>stylesheet</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1391,20 +1501,20 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L292-L294'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L354-L356'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-292
-293
-294</pre>
+354
+355
+356</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 292</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 354</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stylesheet_url'>stylesheet_url</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_stylesheet'>stylesheet</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_stylesheet'>stylesheet</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1422,14 +1532,14 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L173-L173'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L228-L228'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-173</pre>
+228</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 173</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 228</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_asset_url'>asset_url</span> <span class='comment'># aliased to avoid conflicts with an asset_url named route</span>
@@ -1449,14 +1559,14 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L377-L377'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L439-L439'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-377</pre>
+439</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 377</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 439</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_url_to_audio'>url_to_audio</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_audio_url'>audio_url</span> <span class='comment'># aliased to avoid conflicts with an audio_url named route</span>
@@ -1476,17 +1586,17 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L402-L402'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L464-L464'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-402</pre>
+464</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 402</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 464</span></pre>
 <pre class='code ruby'>
 
-<span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_url_to_font'>url_to_font</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_font_url'>font_url</span> <span class='comment'># aliased to avoid conflicts with an font_url named route</span>
+<span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_url_to_font'>url_to_font</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_font_url'>font_url</span> <span class='comment'># aliased to avoid conflicts with a font_url named route</span>
 </pre>
   </div>
 </div>
@@ -1503,14 +1613,14 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L325-L325'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L387-L387'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-325</pre>
+387</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 325</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 387</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_url_to_image'>url_to_image</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_image_url'>image_url</span> <span class='comment'># aliased to avoid conflicts with an image_url named route</span>
@@ -1530,14 +1640,14 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L268-L268'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L330-L330'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-268</pre>
+330</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 268</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 330</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_url_to_javascript'>url_to_javascript</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_javascript_url'>javascript_url</span> <span class='comment'># aliased to avoid conflicts with a javascript_url named route</span>
@@ -1557,14 +1667,14 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L295-L295'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L357-L357'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-295</pre>
+357</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 295</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 357</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_url_to_stylesheet'>url_to_stylesheet</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_stylesheet_url'>stylesheet_url</span> <span class='comment'># aliased to avoid conflicts with a stylesheet_url named route</span>
@@ -1584,17 +1694,17 @@ overwrites global <code>config.action_controller.asset_host</code> setting.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L351-L351'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L413-L413'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-351</pre>
+413</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 351</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 413</span></pre>
 <pre class='code ruby'>
 
-<span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_url_to_video'>url_to_video</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_video_url'>video_url</span> <span class='comment'># aliased to avoid conflicts with an video_url named route</span>
+<span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_url_to_video'>url_to_video</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_video_url'>video_url</span> <span class='comment'># aliased to avoid conflicts with a video_url named route</span>
 </pre>
   </div>
 </div>
@@ -1620,20 +1730,20 @@ paths from the document root will be passed through. Used internally by
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L336-L338'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L398-L400'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-336
-337
-338</pre>
+398
+399
+400</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 336</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 398</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_video_path'>video_path</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_video'>video</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path_to_asset'>path_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_video'>video</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1658,20 +1768,20 @@ set :host options. If :host options is set, it overwrites global
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L348-L350'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/asset_url_helper.rb#L410-L412'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-348
-349
-350</pre>
+410
+411
+412</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 348</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/asset_url_helper.rb', line 410</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_video_url'>video_url</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_video'>video</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url_to_asset'>url_to_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_video'>video</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Transactions::ClassMethods &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Transactions::ClassMethods &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../Transactions.html" title="ActiveRecord::Transactions (module)">Transactions</a> &raquo; 
@@ -81,7 +81,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/transactions.rb#L208'>activerecord/lib/active_record/transactions.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/transactions.rb#L207'>activerecord/lib/active_record/transactions.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -268,14 +268,14 @@ could trigger the cache to be regenerated before the database is updated.</p>
 
 <h4 id="label-Caveats">Caveats</h4>
 
-<p>If you&#39;re on MySQL, then do not use DDL operations in nested
-transactions blocks that are emulated with savepoints. That is, do not
-execute statements like &#39;CREATE TABLE&#39; inside such blocks. This is
-because MySQL automatically releases all savepoints upon executing a DDL
-operation. When <a href="#transaction-instance_method" title="ActiveRecord::Transactions::ClassMethods#transaction (method)">#transaction</a> is finished and tries to release the
-savepoint it created earlier, a database error will occur because the
-savepoint has already been automatically released. The following example
-demonstrates the problem:</p>
+<p>If you&#39;re on MySQL, then do not use Data Definition Language(DDL)
+operations in nested transactions blocks that are emulated with savepoints.
+That is, do not execute statements like &#39;CREATE TABLE&#39; inside such
+blocks. This is because MySQL automatically releases all savepoints upon
+executing a DDL operation. When <a href="#transaction-instance_method" title="ActiveRecord::Transactions::ClassMethods#transaction (method)">#transaction</a> is finished and tries to
+release the savepoint it created earlier, a database error will occur
+because the savepoint has already been automatically released. The
+following example demonstrates the problem:</p>
 
 <pre class="code ruby"><code class="ruby">Model.connection.transaction do                           # BEGIN
   Model.connection.transaction(requires_new: true) do     # CREATE SAVEPOINT active_record_1
@@ -289,25 +289,6 @@ end</code></pre>
   </div>
 </div>
 </div>        
-
-<h2 class='h2_sum' id='instance_Attribute_summary'>Instance Attribute Summary</h2>
-<div class='div_sum'>
-<ul class='summary full'>
-  <li>
-    <span class='summary_signature rw'>
-      <a href="#raise_in_transactional_callbacks-instance_method" title="#raise_in_transactional_callbacks (instance method)">#<strong>raise_in_transactional_callbacks</strong>  </a>
-    </span>
-    <span class='note title rw'>rw</span>
-  </li>
-  <li>
-    <span class='summary_signature rw'>
-      <a href="#raise_in_transactional_callbacks=-instance_method" title="#raise_in_transactional_callbacks= (instance method)">#<strong>raise_in_transactional_callbacks=</strong>(value)  </a>
-    </span>
-    <span class='note title rw'>rw</span>
-  </li>
-</ul>
-</div>
-        
 
 <h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
 <div class='div_sum'>
@@ -363,59 +344,6 @@ destroyed.</p></div>
   </li>
 </ul>
 </div>
-<h2 class='y_details'>Instance Attribute Details</h2>
-<section class='method_details first' id="raise_in_transactional_callbacks-instance_method">
-  <h3 class='signature rw first'>
-    #<strong>raise_in_transactional_callbacks</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/transactions.rb#L277-L280'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-277
-278
-279
-280</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 277</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_raise_in_transactional_callbacks'>raise_in_transactional_callbacks</span>
-  <span class='const'><a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../../ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='period'>.</span><span class='id identifier rubyid_warn'><a href="../../ActiveSupport/Deprecation/Reporting.html#warn-instance_method" title="ActiveSupport::Deprecation::Reporting#warn (method)">warn</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ActiveRecord::Base.raise_in_transactional_callbacks is deprecated and will be removed without replacement.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='kw'>true</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="raise_in_transactional_callbacks=-instance_method">
-  <h3 class='signature rw'>
-    #<strong>raise_in_transactional_callbacks=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/transactions.rb#L282-L285'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-282
-283
-284
-285</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 282</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_raise_in_transactional_callbacks='>raise_in_transactional_callbacks=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='const'><a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../../ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='period'>.</span><span class='id identifier rubyid_warn'><a href="../../ActiveSupport/Deprecation/Reporting.html#warn-instance_method" title="ActiveSupport::Deprecation::Reporting#warn (method)">warn</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_value'>value</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
 <h2 class='y_details'>Instance Method Details</h2>
 <section class='method_details first' id="after_commit-instance_method">
   <h3 class='signature  first'>
@@ -439,17 +367,17 @@ with the <code>:on</code> option:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/transactions.rb#L231-L234'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/transactions.rb#L230-L233'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+230
 231
 232
-233
-234</pre>
+233</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 231</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 230</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_after_commit'>after_commit</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -472,17 +400,17 @@ with the <code>:on</code> option:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/transactions.rb#L237-L240'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/transactions.rb#L236-L239'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+236
 237
 238
-239
-240</pre>
+239</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 237</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 236</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_after_create_commit'>after_create_commit</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -505,17 +433,17 @@ with the <code>:on</code> option:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/transactions.rb#L249-L252'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/transactions.rb#L248-L251'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+248
 249
 250
-251
-252</pre>
+251</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 249</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 248</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_after_destroy_commit'>after_destroy_commit</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -540,17 +468,17 @@ with the <code>:on</code> option:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/transactions.rb#L257-L260'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/transactions.rb#L256-L259'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+256
 257
 258
-259
-260</pre>
+259</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 257</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 256</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_after_rollback'>after_rollback</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -573,17 +501,17 @@ with the <code>:on</code> option:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/transactions.rb#L243-L246'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/transactions.rb#L242-L245'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+242
 243
 244
-245
-246</pre>
+245</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 243</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 242</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_after_update_commit'>after_update_commit</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -606,16 +534,16 @@ with the <code>:on</code> option:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/transactions.rb#L210-L212'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/transactions.rb#L209-L211'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+209
 210
-211
-212</pre>
+211</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 210</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/transactions.rb', line 209</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_transaction'>transaction</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>

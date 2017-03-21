@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActionView::Helpers::RenderingHelper &mdash; Rails-5-0-stable</title>
+<title>Module: ActionView::Helpers::RenderingHelper &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_R'>Index (R)</a> &raquo; 
         <a href="../../ActionView.html" title="ActionView (module)">ActionView</a> &raquo; 
         <a class='nodoc' href="../Helpers.html" title="ActionView::Helpers (module)">Helpers</a> &raquo; 
@@ -85,7 +85,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/rendering_helper.rb#L8'>actionview/lib/action_view/helpers/rendering_helper.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/rendering_helper.rb#L8'>actionview/lib/action_view/helpers/rendering_helper.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -187,7 +187,7 @@ an argument. The result would be</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/rendering_helper.rb#L87-L95'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/rendering_helper.rb#L87-L95'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -255,7 +255,7 @@ a partial and use the second parameter as the locals hash.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/rendering_helper.rb#L26-L37'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/rendering_helper.rb#L26-L37'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -280,12 +280,12 @@ a partial and use the second parameter as the locals hash.</p>
   <span class='kw'>case</span> <span class='id identifier rubyid_options'>options</span>
   <span class='kw'>when</span> <span class='const'><a href="../../Hash.html" title="Hash (class)">Hash</a></span>
     <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-      <span class='id identifier rubyid_view_renderer'>view_renderer</span><span class='period'>.</span><span class='id identifier rubyid_render_partial'>render_partial</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_partial'>partial</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_layout'>layout</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_view_renderer'>view_renderer</span><span class='period'>.</span><span class='id identifier rubyid_render_partial'>render_partial</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>partial:</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_layout'>layout</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_view_renderer'>view_renderer</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_view_renderer'>view_renderer</span><span class='period'>.</span><span class='id identifier rubyid_render_partial'>render_partial</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_partial'>partial</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locals'>locals</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_locals'>locals</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_view_renderer'>view_renderer</span><span class='period'>.</span><span class='id identifier rubyid_render_partial'>render_partial</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='label'>partial:</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='label'>locals:</span> <span class='id identifier rubyid_locals'>locals</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>

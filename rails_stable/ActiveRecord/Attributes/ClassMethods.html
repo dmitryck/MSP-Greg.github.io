@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Attributes::ClassMethods &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Attributes::ClassMethods &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../Attributes.html" title="ActiveRecord::Attributes (module)">Attributes</a> &raquo; 
@@ -81,7 +81,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/attributes.rb#L13'>activerecord/lib/active_record/attributes.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/attributes.rb#L13'>activerecord/lib/active_record/attributes.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -92,7 +92,7 @@
 <ul class='summary full'>
   <li>
     <span class='summary_signature '>
-      <a href="#attribute-instance_method" title="#attribute (instance method)">#<strong>attribute</strong>(name, cast_type, **options)  </a>
+      <a href="#attribute-instance_method" title="#attribute (instance method)">#<strong>attribute</strong>(name, cast_type = Type::Value.new, **options)  </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Defines an attribute with a type on this model.</p></div>
@@ -111,7 +111,7 @@
 <h2 class='y_details'>Instance Method Details</h2>
 <section class='method_details first' id="attribute-instance_method">
   <h3 class='signature  first'>
-    #<strong>attribute</strong>(name, cast_type, **options)  
+    #<strong>attribute</strong>(name, cast_type = Type::Value.new, **options)  
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -220,9 +220,9 @@ the examples below).</p>
 <p>Users may also define their own custom types, as long as they respond to
 the methods defined on the value type. The method <code>deserialize</code> or <code>cast</code>
 will be called on your type object, with raw input from the database or
-from your controllers. See <a href="../Type.html#Value-constant" title="ActiveRecord::Type::Value (constant)">Type::Value</a> for the expected
-API. It is recommended that your type objects inherit from an existing
-type, or from <a href="../Type.html#Value-constant" title="ActiveRecord::Type::Value (constant)">Type::Value</a></p>
+from your controllers. See <a href="../../ActiveModel/Type/Value.html" title="ActiveModel::Type::Value (class)">::ActiveModel::Type::Value</a> for the expected API.
+It is recommended that your type objects inherit from an existing type, or
+from <a href="../Type.html#Value-constant" title="ActiveRecord::Type::Value (constant)">Type::Value</a></p>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>MoneyType</span> <span class='op'>&lt;</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../Type.html" title="ActiveRecord::Type (module)">Type</a></span><span class='op'>::</span><span class='const'><a href="../Type.html#Integer-constant" title="ActiveRecord::Type::Integer (constant)">Integer</a></span>
   <span class='kw'>def</span> <span class='id identifier rubyid_cast'>cast</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -247,7 +247,7 @@ type, or from <a href="../Type.html#Value-constant" title="ActiveRecord::Type::V
 <span class='id identifier rubyid_store_listing'>store_listing</span><span class='period'>.</span><span class='id identifier rubyid_price_in_cents'>price_in_cents</span> <span class='comment'># =&gt; 1000</span></code></pre>
 
 <p>For more details on creating custom types, see the documentation for
-<a href="../Type.html#Value-constant" title="ActiveRecord::Type::Value (constant)">Type::Value</a>. For more details on registering your types to
+<a href="../../ActiveModel/Type/Value.html" title="ActiveModel::Type::Value (class)">::ActiveModel::Type::Value</a>. For more details on registering your types to
 be referenced by a symbol, see <a href="../Type.html#register-class_method" title="ActiveRecord::Type.register (method)">Type.register</a>. You can also
 pass a type object directly, in place of a symbol.</p>
 
@@ -294,11 +294,11 @@ the type defined by the model class to convert the value to SQL, calling
 <p>The type of an attribute is given the opportunity to change how dirty
 tracking is performed. The methods <code>changed?</code> and <code>changed_in_place?</code> will
 be called from <a href="../../ActiveModel/Dirty.html" title="ActiveModel::Dirty (module)">::ActiveModel::Dirty</a>. See the documentation for those
-methods in <a href="../Type.html#Value-constant" title="ActiveRecord::Type::Value (constant)">Type::Value</a> for more details.</p>
+methods in <a href="../../ActiveModel/Type/Value.html" title="ActiveModel::Type::Value (class)">::ActiveModel::Type::Value</a> for more details.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/attributes.rb#L194-L202'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/attributes.rb#L194-L202'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -316,7 +316,7 @@ methods in <a href="../Type.html#Value-constant" title="ActiveRecord::Type::Valu
 <pre><span class='info file'># File 'activerecord/lib/active_record/attributes.rb', line 194</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_attribute'>attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_cast_type'>cast_type</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_attribute'>attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_cast_type'>cast_type</span> <span class='op'>=</span> <span class='const'><a href="../Type.html" title="ActiveRecord::Type (module)">Type</a></span><span class='op'>::</span><span class='const'><a href="../Type.html#Value-constant" title="ActiveRecord::Type::Value (constant)">Value</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_reload_schema_from_cache'>reload_schema_from_cache</span>
 
@@ -358,7 +358,7 @@ be called once each time a new value is needed.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/attributes.rb#L222-L230'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/attributes.rb#L222-L230'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 

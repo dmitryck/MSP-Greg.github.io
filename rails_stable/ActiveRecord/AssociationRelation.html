@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveRecord::AssociationRelation &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveRecord::AssociationRelation &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_A'>Index (A)</a> &raquo; 
         <a href="../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>AssociationRelation&nbsp;&#x25B2;</a></span>
@@ -110,7 +110,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/association_relation.rb#L2'>activerecord/lib/active_record/association_relation.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/association_relation.rb#L2'>activerecord/lib/active_record/association_relation.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -119,12 +119,13 @@
 <div>
   <h3 class='inherited'><a href="Batches.html" title="ActiveRecord::Batches (module)">Batches</a> - Included</h3>
   <p  class='inherited'>
-    <a href="Batches.html#ORDER_OR_LIMIT_IGNORED_MESSAGE-constant" title="ActiveRecord::Batches::ORDER_OR_LIMIT_IGNORED_MESSAGE (constant)">ORDER_OR_LIMIT_IGNORED_MESSAGE</a>
+    <a href="Batches.html#ORDER_IGNORE_MESSAGE-constant" title="ActiveRecord::Batches::ORDER_IGNORE_MESSAGE (constant)">ORDER_IGNORE_MESSAGE</a>
   </p>
   <h3 class='inherited'><a href="QueryMethods.html" title="ActiveRecord::QueryMethods (module)">QueryMethods</a> - Included</h3>
   <p  class='inherited'>
     <a href="QueryMethods.html#FROZEN_EMPTY_ARRAY-constant" title="ActiveRecord::QueryMethods::FROZEN_EMPTY_ARRAY (constant)">FROZEN_EMPTY_ARRAY</a>, 
     <a href="QueryMethods.html#FROZEN_EMPTY_HASH-constant" title="ActiveRecord::QueryMethods::FROZEN_EMPTY_HASH (constant)">FROZEN_EMPTY_HASH</a>, 
+    <a href="QueryMethods.html#STRUCTURAL_OR_METHODS-constant" title="ActiveRecord::QueryMethods::STRUCTURAL_OR_METHODS (constant)">STRUCTURAL_OR_METHODS</a>, 
     <a href="QueryMethods.html#VALID_UNSCOPING_VALUES-constant" title="ActiveRecord::QueryMethods::VALID_UNSCOPING_VALUES (constant)">VALID_UNSCOPING_VALUES</a>
   </p>
   <h3 class='inherited'><a href="FinderMethods.html" title="ActiveRecord::FinderMethods (module)">FinderMethods</a> - Included</h3>
@@ -396,11 +397,6 @@ loaded already.</p></div></td>
       <td><div class='inline'><p>Returns sql statement for the relation.</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m deprecated' href="Relation.html#uniq_value-instance_method" title="ActiveRecord::Relation#uniq_value (method)">#uniq_value</a></td>
-      <td><div class='inline'><p><a href="QueryMethods.html#uniq-instance_method" title="ActiveRecord::QueryMethods#uniq (method)">#uniq</a> and <a href="QueryMethods.html#uniq!-instance_method" title="ActiveRecord::QueryMethods#uniq! (method)">#uniq!</a> are silently
-deprecated.</p></div></td>
-    </tr>
-    <tr class='i_ds'>
       <td><a class='i_m ' href="Relation.html#update-instance_method" title="ActiveRecord::Relation#update (method)">#update</a></td>
       <td><div class='inline'><p>Updates an object (or multiple objects) and saves it to the database, if
 validations pass.</p></div></td>
@@ -539,19 +535,6 @@ found.</p></div></td>
       <td><div class='inline'><p>Same as <code>#third_to_last</code> but raises <a href="RecordNotFound.html" title="ActiveRecord::RecordNotFound (class)">RecordNotFound</a> if no
 record is found.</p></div></td>
     </tr>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m prot' href="FinderMethods.html#find_nth-instance_method" title="ActiveRecord::FinderMethods#find_nth (method)">#find_nth</a>,
-        <a class='i_m prot' href="FinderMethods.html#find_nth!-instance_method" title="ActiveRecord::FinderMethods#find_nth! (method)">#find_nth!</a>,
-        <a class='i_m prot' href="FinderMethods.html#find_nth_from_last-instance_method" title="ActiveRecord::FinderMethods#find_nth_from_last (method)">#find_nth_from_last</a>,
-        <a class='i_m prot' href="FinderMethods.html#find_nth_with_limit-instance_method" title="ActiveRecord::FinderMethods#find_nth_with_limit (method)">#find_nth_with_limit</a>,
-        <a class='i_m prot' href="FinderMethods.html#find_one-instance_method" title="ActiveRecord::FinderMethods#find_one (method)">#find_one</a>,
-        <a class='i_m prot' href="FinderMethods.html#find_some-instance_method" title="ActiveRecord::FinderMethods#find_some (method)">#find_some</a>,
-        <a class='i_m prot' href="FinderMethods.html#find_some_ordered-instance_method" title="ActiveRecord::FinderMethods#find_some_ordered (method)">#find_some_ordered</a>,
-        <a class='i_m prot' href="FinderMethods.html#find_take-instance_method" title="ActiveRecord::FinderMethods#find_take (method)">#find_take</a>,
-        <a class='i_m prot' href="FinderMethods.html#find_with_ids-instance_method" title="ActiveRecord::FinderMethods#find_with_ids (method)">#find_with_ids</a>
-      </td>
-    </tr>
   </tbody>
 </table></div>
 
@@ -670,10 +653,6 @@ through a block provided.</p></div></td>
       <td><div class='inline'><p>Alias for <a href="QueryMethods.html#left_outer_joins-instance_method" title="ActiveRecord::QueryMethods#left_outer_joins (method)">QueryMethods#left_outer_joins</a>.</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m ' href="QueryMethods.html#left_joins!-instance_method" title="ActiveRecord::QueryMethods#left_joins! (method)">#left_joins!</a></td>
-      <td><div class='inline'><p>Alias for <a href="QueryMethods.html#left_outer_joins!-instance_method" title="ActiveRecord::QueryMethods#left_outer_joins! (method)">QueryMethods#left_outer_joins!</a>.</p></div></td>
-    </tr>
-    <tr class='i_ds'>
       <td><a class='i_m ' href="QueryMethods.html#left_outer_joins-instance_method" title="ActiveRecord::QueryMethods#left_outer_joins (method)">#left_outer_joins</a></td>
       <td><div class='inline'><p>Performs a left outer joins on <code>args</code>:</p></div></td>
     </tr>
@@ -733,14 +712,6 @@ attribute, instead of appending to that condition.</p></div></td>
     <tr class='i_ds'>
       <td><a class='i_m ' href="QueryMethods.html#select-instance_method" title="ActiveRecord::QueryMethods#select (method)">#select</a></td>
       <td><div class='inline'><p>Works in two unique ways.</p></div></td>
-    </tr>
-    <tr class='i_ds'>
-      <td><a class='i_m deprecated' href="QueryMethods.html#uniq-instance_method" title="ActiveRecord::QueryMethods#uniq (method)">#uniq</a></td>
-      <td><div class='inline'><p>Alias for <a href="QueryMethods.html#distinct-instance_method" title="ActiveRecord::QueryMethods#distinct (method)">QueryMethods#distinct</a>.</p></div></td>
-    </tr>
-    <tr class='i_ds'>
-      <td><a class='i_m deprecated' href="QueryMethods.html#uniq!-instance_method" title="ActiveRecord::QueryMethods#uniq! (method)">#uniq!</a></td>
-      <td><div class='inline'><p>Alias for <a href="QueryMethods.html#distinct!-instance_method" title="ActiveRecord::QueryMethods#distinct! (method)">QueryMethods#distinct!</a>.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="QueryMethods.html#unscope-instance_method" title="ActiveRecord::QueryMethods#unscope (method)">#unscope</a></td>
@@ -815,7 +786,7 @@ array.</p></div></td>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/association_relation.rb#L3-L6'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/association_relation.rb#L3-L6'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -842,7 +813,7 @@ array.</p></div></td>
   <h3 class='signature  first'>
     #<strong>==</strong>(other)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/association_relation.rb#L12-L14'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/association_relation.rb#L12-L14'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -867,7 +838,7 @@ array.</p></div></td>
     #<strong>build</strong>(*args, &amp;block)  
     <span class='aliases'>Also known as: <span class='names'>#new</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/association_relation.rb#L16-L18'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/association_relation.rb#L16-L18'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -891,7 +862,7 @@ array.</p></div></td>
   <h3 class='signature '>
     #<strong>create</strong>(*args, &amp;block)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/association_relation.rb#L21-L23'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/association_relation.rb#L21-L23'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -915,7 +886,7 @@ array.</p></div></td>
   <h3 class='signature '>
     #<strong>create!</strong>(*args, &amp;block)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/association_relation.rb#L25-L27'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/association_relation.rb#L25-L27'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -946,7 +917,7 @@ array.</p></div></td>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/association_relation.rb#L19-L19'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/association_relation.rb#L19-L19'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -966,7 +937,7 @@ array.</p></div></td>
   <h3 class='signature '>
     #<strong>proxy_association</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/association_relation.rb#L8-L10'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/association_relation.rb#L8-L10'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveRecord::DynamicMatchers::Method &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveRecord::DynamicMatchers::Method &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_M'>Index (M)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a class='nodoc' href="../DynamicMatchers.html" title="ActiveRecord::DynamicMatchers (module)">DynamicMatchers</a> &raquo; 
@@ -89,7 +89,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/dynamic_matchers.rb#L25'>activerecord/lib/active_record/dynamic_matchers.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/dynamic_matchers.rb#L26'>activerecord/lib/active_record/dynamic_matchers.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -195,25 +195,25 @@
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/dynamic_matchers.rb#L51-L56'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/dynamic_matchers.rb#L52-L57'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-51
 52
 53
 54
 55
-56</pre>
+56
+57</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 51</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 52</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='ivar'>@model</span>           <span class='op'>=</span> <span class='id identifier rubyid_model'>model</span>
   <span class='ivar'>@name</span>            <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-  <span class='ivar'>@attribute_names</span> <span class='op'>=</span> <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_and_</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='ivar'>@attribute_names</span> <span class='op'>=</span> <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>_and_</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='ivar'>@attribute_names</span><span class='period'>.</span><span class='id identifier rubyid_map!'>map!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_n'>n</span><span class='op'>|</span> <span class='ivar'>@model</span><span class='period'>.</span><span class='id identifier rubyid_attribute_aliases'>attribute_aliases</span><span class='lbracket'>[</span><span class='id identifier rubyid_n'>n</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_n'>n</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span>
 </pre>
@@ -226,14 +226,14 @@
   <h3 class='signature ro first'>
     .<strong>matchers</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/dynamic_matchers.rb#L29-L29'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/dynamic_matchers.rb#L30-L30'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-29</pre>
+30</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 29</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 30</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_matchers'>matchers</span>
@@ -247,21 +247,21 @@
   <h3 class='signature  first'>
     .<strong>match</strong>(model, name)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/dynamic_matchers.rb#L31-L34'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/dynamic_matchers.rb#L32-L35'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-31
 32
 33
-34</pre>
+34
+35</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 31</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 32</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='id identifier rubyid_matchers'>matchers</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=~</span> <span class='id identifier rubyid_k'>k</span><span class='period'>.</span><span class='id identifier rubyid_pattern'>pattern</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='id identifier rubyid_matchers'>matchers</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_k'>k</span><span class='period'>.</span><span class='id identifier rubyid_pattern'>pattern</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
   <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_klass'>klass</span>
 <span class='kw'>end</span>
 </pre>
@@ -273,16 +273,16 @@
   <h3 class='signature '>
     .<strong>pattern</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/dynamic_matchers.rb#L36-L38'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/dynamic_matchers.rb#L37-L39'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-36
 37
-38</pre>
+38
+39</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 36</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 37</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pattern'>pattern</span>
@@ -310,16 +310,16 @@
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/dynamic_matchers.rb#L40-L42'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/dynamic_matchers.rb#L41-L43'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-40
 41
-42</pre>
+42
+43</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 40</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 41</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_prefix'>prefix</span>
@@ -334,20 +334,20 @@
   <h3 class='signature '>
     .<strong>suffix</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/dynamic_matchers.rb#L44-L46'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/dynamic_matchers.rb#L45-L47'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-44
 45
-46</pre>
+46
+47</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 44</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 45</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_suffix'>suffix</span>
-  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -359,14 +359,14 @@
   <h3 class='signature ro first'>
     #<strong>attribute_names</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/dynamic_matchers.rb#L49-L49'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/dynamic_matchers.rb#L50-L50'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-49</pre>
+50</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 49</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 50</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_attribute_names'>attribute_names</span>
@@ -379,14 +379,14 @@
   <h3 class='signature ro'>
     #<strong>model</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/dynamic_matchers.rb#L49-L49'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/dynamic_matchers.rb#L50-L50'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-49</pre>
+50</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 49</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 50</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_attribute_names'>attribute_names</span>
@@ -399,14 +399,14 @@
   <h3 class='signature ro'>
     #<strong>name</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/dynamic_matchers.rb#L49-L49'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/dynamic_matchers.rb#L50-L50'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-49</pre>
+50</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 49</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 50</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_attribute_names'>attribute_names</span>
@@ -419,16 +419,16 @@
   <h3 class='signature ro'>
     #<strong>valid?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/dynamic_matchers.rb#L58-L60'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/dynamic_matchers.rb#L59-L61'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-58
 59
-60</pre>
+60
+61</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 58</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 59</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span>
@@ -444,20 +444,20 @@
   <h3 class='signature  first'>
     #<strong>define</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/dynamic_matchers.rb#L62-L68'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/dynamic_matchers.rb#L63-L69'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-62
 63
 64
 65
 66
 67
-68</pre>
+68
+69</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 62</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/dynamic_matchers.rb', line 63</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_define'>define</span>

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveRecord::ConnectionAdapters::AbstractMysqlAdapter &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveRecord::ConnectionAdapters::AbstractMysqlAdapter &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_A'>Index (A)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
@@ -105,7 +105,6 @@
         <div class='box_2'>Instance Chain:</div>
         <div class='box_22'>
           self,
-          <a href="MySQL/ColumnDumper.html" title="ActiveRecord::ConnectionAdapters::MySQL::ColumnDumper (module)">MySQL::ColumnDumper</a>,
           <a href="AbstractAdapter.html" title="ActiveRecord::ConnectionAdapters::AbstractAdapter (class)">AbstractAdapter</a>,
           <a href="Savepoints.html" title="ActiveRecord::ConnectionAdapters::Savepoints (module)">Savepoints</a>,
           <a href="ColumnDumper.html" title="ActiveRecord::ConnectionAdapters::ColumnDumper (module)">ColumnDumper</a>,
@@ -131,7 +130,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L15'>activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L16'>activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -142,32 +141,85 @@
   <li>
     <span id='CHARSETS_OF_4BYTES_MAXLEN-constant' class='summary_signature'>CHARSETS_OF_4BYTES_MAXLEN =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L75-L75'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 75</a>    <pre class='code ruby'><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>utf8mb4</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>utf16</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>utf16le</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>utf32</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L78-L78'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 78</a>    <pre class='code ruby'><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>utf8mb4</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>utf16</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>utf16le</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>utf32</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span></pre>
+  </li>
+  <li>
+    <span id='ER_CANNOT_ADD_FOREIGN-constant' class='summary_signature'>ER_CANNOT_ADD_FOREIGN =</span>
+    <br/>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L692-L692'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 692</a>    <pre class='code ruby'><span class='int'>1215</span></pre>
+  </li>
+  <li>
+    <span id='ER_CANNOT_CREATE_TABLE-constant' class='summary_signature'>ER_CANNOT_CREATE_TABLE =</span>
+    <br/>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L693-L693'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 693</a>    <pre class='code ruby'><span class='int'>1005</span></pre>
+  </li>
+  <li>
+    <span id='ER_DATA_TOO_LONG-constant' class='summary_signature'>ER_DATA_TOO_LONG =</span>
+    <br/>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L689-L689'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 689</a>    <pre class='code ruby'><span class='int'>1406</span></pre>
+  </li>
+  <li>
+    <span id='ER_DO_NOT_HAVE_DEFAULT-constant' class='summary_signature'>ER_DO_NOT_HAVE_DEFAULT =</span>
+    <br/>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L687-L687'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 687</a>    <pre class='code ruby'><span class='int'>1364</span></pre>
+  </li>
+  <li>
+    <span id='ER_DUP_ENTRY-constant' class='summary_signature'>ER_DUP_ENTRY =</span>
+    <div class='docstring'>
+  <div class='discussion'>
+    
+<p>See <a
+href="https://dev.mysql.com/doc/refman/5.7/en/error-messages-server.html">dev.mysql.com/doc/refman/5.7/en/error-messages-server.html</a></p>
+
+  </div>
+</div>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L685-L685'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 685</a>    <pre class='code ruby'><span class='int'>1062</span></pre>
+  </li>
+  <li>
+    <span id='ER_LOCK_DEADLOCK-constant' class='summary_signature'>ER_LOCK_DEADLOCK =</span>
+    <br/>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L691-L691'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 691</a>    <pre class='code ruby'><span class='int'>1213</span></pre>
+  </li>
+  <li>
+    <span id='ER_NOT_NULL_VIOLATION-constant' class='summary_signature'>ER_NOT_NULL_VIOLATION =</span>
+    <br/>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L686-L686'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 686</a>    <pre class='code ruby'><span class='int'>1048</span></pre>
+  </li>
+  <li>
+    <span id='ER_NO_REFERENCED_ROW_2-constant' class='summary_signature'>ER_NO_REFERENCED_ROW_2 =</span>
+    <br/>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L688-L688'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 688</a>    <pre class='code ruby'><span class='int'>1452</span></pre>
+  </li>
+  <li>
+    <span id='ER_OUT_OF_RANGE-constant' class='summary_signature'>ER_OUT_OF_RANGE =</span>
+    <br/>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L690-L690'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 690</a>    <pre class='code ruby'><span class='int'>1264</span></pre>
   </li>
   <li>
     <span id='INDEX_TYPES-constant' class='summary_signature'>INDEX_TYPES =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L56-L56'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 56</a>    <pre class='code ruby'><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_fulltext'>fulltext</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_spatial'>spatial</span><span class='rbracket'>]</span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L59-L59'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 59</a>    <pre class='code ruby'><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_fulltext'>fulltext</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_spatial'>spatial</span><span class='rbracket'>]</span></pre>
   </li>
   <li>
     <span id='INDEX_USINGS-constant' class='summary_signature'>INDEX_USINGS =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L57-L57'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 57</a>    <pre class='code ruby'><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_btree'>btree</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_hash'>hash</span><span class='rbracket'>]</span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L60-L60'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 60</a>    <pre class='code ruby'><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_btree'>btree</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_hash'>hash</span><span class='rbracket'>]</span></pre>
   </li>
   <li>
     <span id='NATIVE_DATABASE_TYPES-constant' class='summary_signature'>NATIVE_DATABASE_TYPES =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L41-L54'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 41</a>    <pre class='code ruby'><span class='lbrace'>{</span>
-  <span class='label'>primary_key:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>int auto_increment PRIMARY KEY</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L43-L57'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 43</a>    <pre class='code ruby'><span class='lbrace'>{</span>
+  <span class='label'>primary_key:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bigint auto_increment PRIMARY KEY</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
   <span class='label'>string:</span>      <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>varchar</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>limit:</span> <span class='int'>255</span> <span class='rbrace'>}</span><span class='comma'>,</span>
-  <span class='label'>text:</span>        <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>text</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>text:</span>        <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>text</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>limit:</span> <span class='int'>65535</span> <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>integer:</span>     <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>int</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>limit:</span> <span class='int'>4</span> <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>float:</span>       <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>float</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>decimal:</span>     <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>decimal</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>datetime:</span>    <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>datetime</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>timestamp:</span>   <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>timestamp</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>time:</span>        <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>time</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>date:</span>        <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>date</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
-  <span class='label'>binary:</span>      <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>blob</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>binary:</span>      <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>blob</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>limit:</span> <span class='int'>65535</span> <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>boolean:</span>     <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tinyint</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>limit:</span> <span class='int'>1</span> <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>json:</span>        <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>json</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
 <span class='rbrace'>}</span></pre>
@@ -201,6 +253,18 @@
     <span class='note title rw'>rw</span>
   </li>
 </ul>
+
+<h3 class='inherited'><a href="AbstractAdapter.html" title="ActiveRecord::ConnectionAdapters::AbstractAdapter (class)">AbstractAdapter</a> - Inherited</h3>
+<div class='inherited'><table class='inherited'>
+  <tbody>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m rw' href="AbstractAdapter.html#__callbacks-class_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter.__callbacks (method)">.__callbacks</a>,
+        <a class='i_m rw' href="AbstractAdapter.html#__callbacks%3F-class_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter.__callbacks? (method)">.__callbacks?</a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
 </div>
         
 
@@ -341,21 +405,6 @@ at the moment (5.5) it doesn&#39;t yet implement them.</p></div>
   </li>
   <li>
     <span class='summary_signature ro'>
-      <a href="#supports_migrations%3F-instance_method" title="#supports_migrations? (instance method)">#<strong>supports_migrations?</strong>  &#x21d2; Boolean </a>
-    </span>
-    <span class='note title readonly'>readonly</span>
-    <div class='summary_desc'>
-      <div class='inline'><p>Returns true, since this connection adapter supports migrations.</p></div>
-    </div>
-  </li>
-  <li>
-    <span class='summary_signature ro'>
-      <a href="#supports_primary_key%3F-instance_method" title="#supports_primary_key? (instance method)">#<strong>supports_primary_key?</strong>  &#x21d2; Boolean </a>
-    </span>
-    <span class='note title readonly'>readonly</span>
-  </li>
-  <li>
-    <span class='summary_signature ro'>
       <a href="#supports_statement_cache%3F-instance_method" title="#supports_statement_cache? (instance method)">#<strong>supports_statement_cache?</strong>  &#x21d2; Boolean </a>
     </span>
     <span class='note title readonly'>readonly</span>
@@ -376,6 +425,12 @@ caching.</p></div>
     </span>
     <span class='note title readonly'>readonly</span>
   </li>
+  <li>
+    <span class='summary_signature ro'>
+      <a href="#supports_virtual_columns%3F-instance_method" title="#supports_virtual_columns? (instance method)">#<strong>supports_virtual_columns?</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title readonly'>readonly</span>
+  </li>
 </ul>
 
 <h3 class='inherited'><a href="AbstractAdapter.html" title="ActiveRecord::ConnectionAdapters::AbstractAdapter (class)">AbstractAdapter</a> - Inherited</h3>
@@ -387,6 +442,8 @@ caching.</p></div>
         <a class='i_m rw' href="AbstractAdapter.html#schema_cache-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#schema_cache (method)">#schema_cache</a>,
         <a class='i_m rw' href="AbstractAdapter.html#schema_cache=-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#schema_cache= (method)">#schema_cache=</a>,
         <a class='i_m rw' href="AbstractAdapter.html#visitor-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#visitor (method)">#visitor</a>,
+        <a class='i_m ro' href="AbstractAdapter.html#__callbacks-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#__callbacks (method)">#__callbacks</a>,
+        <a class='i_m ro' href="AbstractAdapter.html#__callbacks%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#__callbacks? (method)">#__callbacks?</a>,
       </td>
     </tr>
     <tr class='i_ds'>
@@ -454,6 +511,11 @@ CREATE TABLE or ALTER TABLE get rolled back by a transaction?</p></div></td>
       <td><div class='inline'><p>Does this adapter support creating foreign key constraints?</p></div></td>
     </tr>
     <tr class='i_ds'>
+      <td><a class='i_m ro' href="AbstractAdapter.html#supports_foreign_keys_in_create%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#supports_foreign_keys_in_create? (method)">#supports_foreign_keys_in_create?</a></td>
+      <td><div class='inline'><p>Does this adapter support creating foreign key constraints in the same
+statement as creating the table?</p></div></td>
+    </tr>
+    <tr class='i_ds'>
       <td><a class='i_m ro' href="AbstractAdapter.html#supports_index_sort_order%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#supports_index_sort_order? (method)">#supports_index_sort_order?</a></td>
       <td><div class='inline'><p>Does this adapter support index sort order?</p></div></td>
     </tr>
@@ -467,21 +529,12 @@ creating the table?</p></div></td>
       <td><div class='inline'><p>Does this adapter support json data type?</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m ro' href="AbstractAdapter.html#supports_migrations%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#supports_migrations? (method)">#supports_migrations?</a></td>
-      <td><div class='inline'><p>Does this adapter support migrations?</p></div></td>
-    </tr>
-    <tr class='i_ds'>
       <td><a class='i_m ro' href="AbstractAdapter.html#supports_multi_insert%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#supports_multi_insert? (method)">#supports_multi_insert?</a></td>
       <td><div class='inline'><p>Does this adapter support multi-value insert?</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ro' href="AbstractAdapter.html#supports_partial_index%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#supports_partial_index? (method)">#supports_partial_index?</a></td>
       <td><div class='inline'><p>Does this adapter support partial indices?</p></div></td>
-    </tr>
-    <tr class='i_ds'>
-      <td><a class='i_m ro' href="AbstractAdapter.html#supports_primary_key%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#supports_primary_key? (method)">#supports_primary_key?</a></td>
-      <td><div class='inline'><p>Can this adapter determine the primary key for tables not attached to an
-Active Record class, such as join tables?</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ro' href="AbstractAdapter.html#supports_savepoints%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#supports_savepoints? (method)">#supports_savepoints?</a></td>
@@ -494,6 +547,10 @@ Active Record class, such as join tables?</p></div></td>
     <tr class='i_ds'>
       <td><a class='i_m ro' href="AbstractAdapter.html#supports_views%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#supports_views? (method)">#supports_views?</a></td>
       <td><div class='inline'><p>Does this adapter support views?</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ro' href="AbstractAdapter.html#supports_virtual_columns%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#supports_virtual_columns? (method)">#supports_virtual_columns?</a></td>
+      <td><div class='inline'><p>Does this adapter support virtual columns?</p></div></td>
     </tr>
   </tbody>
 </table></div>
@@ -523,17 +580,6 @@ caching, otherwise returns <code>false</code></p></div></td>
     </tr>
   </tbody>
 </table></div>
-
-<h3 class='inherited'><a href="../../ActiveSupport/Callbacks.html" title="ActiveSupport::Callbacks (module)">::ActiveSupport::Callbacks</a> - Included</h3>
-<div class='inherited'><table class='inherited'>
-  <tbody>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m ro' href="../../ActiveSupport/Callbacks.html#halt_and_display_warning_on_return_false-instance_method" title="ActiveSupport::Callbacks#halt_and_display_warning_on_return_false (method)">#halt_and_display_warning_on_return_false</a>
-      </td>
-    </tr>
-  </tbody>
-</table></div>
 </div>
         
 
@@ -548,11 +594,6 @@ caching, otherwise returns <code>false</code></p></div></td>
   <li>
     <span class='summary_signature '>
       <a href="#begin_isolated_db_transaction-instance_method" title="#begin_isolated_db_transaction (instance method)">#<strong>begin_isolated_db_transaction</strong>(isolation)  </a>
-    </span>
-  </li>
-  <li>
-    <span class='summary_signature '>
-      <a href="#case_sensitive_comparison-instance_method" title="#case_sensitive_comparison (instance method)">#<strong>case_sensitive_comparison</strong>(table, attribute, column, value)  </a>
     </span>
   </li>
   <li>
@@ -591,16 +632,6 @@ optional <code>:charset</code> and <code>:collation</code>.</p></div>
   <li>
     <span class='summary_signature '>
       <a href="#current_database-instance_method" title="#current_database (instance method)">#<strong>current_database</strong>  </a>
-    </span>
-  </li>
-  <li>
-    <span class='summary_signature '>
-      <a href="#data_source_exists%3F-instance_method" title="#data_source_exists? (instance method)">#<strong>data_source_exists?</strong>(table_name)  &#x21d2; Boolean </a>
-    </span>
-  </li>
-  <li>
-    <span class='summary_signature '>
-      <a href="#data_sources-instance_method" title="#data_sources (instance method)">#<strong>data_sources</strong>  </a>
     </span>
   </li>
   <li>
@@ -676,125 +707,10 @@ using the provided <code>options</code>.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#table_exists%3F-instance_method" title="#table_exists? (instance method)">#<strong>table_exists?</strong>(table_name)  &#x21d2; Boolean </a>
-    </span>
-  </li>
-  <li>
-    <span class='summary_signature '>
       <a href="#truncate-instance_method" title="#truncate (instance method)">#<strong>truncate</strong>(table_name, name = nil)  </a>
     </span>
   </li>
-  <li>
-    <span class='summary_signature '>
-      <a href="#type_to_sql-instance_method" title="#type_to_sql (instance method)">#<strong>type_to_sql</strong>(type, limit = nil, precision = nil, scale = nil, unsigned = nil)  </a>
-    </span>
-    <div class='summary_desc'>
-      <div class='inline'><p>Maps logical <a href="../../Rails.html" title="Rails (module)">::Rails</a> types to MySQL-specific data types.</p></div>
-    </div>
-  </li>
-  <li>
-    <span class='summary_signature '>
-      <a href="#valid_type%3F-instance_method" title="#valid_type? (instance method)">#<strong>valid_type?</strong>(type)  &#x21d2; Boolean </a>
-    </span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#add_column_sql-instance_method" title="#add_column_sql (instance method)">#<strong>add_column_sql</strong>(table_name, column_name, type, options = {})  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#add_index_length-instance_method" title="#add_index_length (instance method)">#<strong>add_index_length</strong>(quoted_columns, **options)  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#add_index_sql-instance_method" title="#add_index_sql (instance method)">#<strong>add_index_sql</strong>(table_name, column_name, options = {})  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#add_options_for_index_columns-instance_method" title="#add_options_for_index_columns (instance method)">#<strong>add_options_for_index_columns</strong>(quoted_columns, **options)  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#add_timestamps_sql-instance_method" title="#add_timestamps_sql (instance method)">#<strong>add_timestamps_sql</strong>(table_name, options = {})  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#change_column_sql-instance_method" title="#change_column_sql (instance method)">#<strong>change_column_sql</strong>(table_name, column_name, type, options = {})  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#extract_precision-instance_method" title="#extract_precision (instance method)">#<strong>extract_precision</strong>(sql_type)  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#fetch_type_metadata-instance_method" title="#fetch_type_metadata (instance method)">#<strong>fetch_type_metadata</strong>(sql_type, extra = &quot;&quot;)  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#remove_column_sql-instance_method" title="#remove_column_sql (instance method)">#<strong>remove_column_sql</strong>(table_name, column_name, type = nil, options = {})  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#remove_columns_sql-instance_method" title="#remove_columns_sql (instance method)">#<strong>remove_columns_sql</strong>(table_name, *column_names)  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#remove_index_sql-instance_method" title="#remove_index_sql (instance method)">#<strong>remove_index_sql</strong>(table_name, options = {})  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#remove_timestamps_sql-instance_method" title="#remove_timestamps_sql (instance method)">#<strong>remove_timestamps_sql</strong>(table_name, options = {})  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#rename_column_sql-instance_method" title="#rename_column_sql (instance method)">#<strong>rename_column_sql</strong>(table_name, column_name, new_column_name)  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
-  <li>
-    <span class='summary_signature prot'>
-      <a href="#translate_exception-instance_method" title="#translate_exception (instance method)">#<strong>translate_exception</strong>(exception, message)  </a>
-    </span>
-    <span class='note title protected'>protected</span>
-  </li>
 </ul>
-
-<h3 class='inherited'><a href="MySQL/ColumnDumper.html" title="ActiveRecord::ConnectionAdapters::MySQL::ColumnDumper (module)">MySQL::ColumnDumper</a> - Included</h3>
-<div class='inherited'><table class='inherited'>
-  <tbody>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m ' href="MySQL/ColumnDumper.html#column_spec_for_primary_key-instance_method" title="ActiveRecord::ConnectionAdapters::MySQL::ColumnDumper#column_spec_for_primary_key (method)">#column_spec_for_primary_key</a>,
-        <a class='i_m ' href="MySQL/ColumnDumper.html#migration_keys-instance_method" title="ActiveRecord::ConnectionAdapters::MySQL::ColumnDumper#migration_keys (method)">#migration_keys</a>,
-        <a class='i_m ' href="MySQL/ColumnDumper.html#prepare_column_options-instance_method" title="ActiveRecord::ConnectionAdapters::MySQL::ColumnDumper#prepare_column_options (method)">#prepare_column_options</a>
-      </td>
-    </tr>
-  </tbody>
-</table></div>
 
 <h3 class='inherited'><a href="AbstractAdapter.html" title="ActiveRecord::ConnectionAdapters::AbstractAdapter (class)">AbstractAdapter</a> - Inherited</h3>
 <div class='inherited'><table class='inherited'>
@@ -802,12 +718,6 @@ using the provided <code>options</code>.</p></div>
     <tr class='i_ds'>
       <td><a class='i_m ' href="AbstractAdapter.html#adapter_name-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#adapter_name (method)">#adapter_name</a></td>
       <td><div class='inline'><p>Returns the human-readable name of the adapter.</p></div></td>
-    </tr>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m ' href="AbstractAdapter.html#case_insensitive_comparison-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#case_insensitive_comparison (method)">#case_insensitive_comparison</a>,
-        <a class='i_m ' href="AbstractAdapter.html#case_sensitive_comparison-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#case_sensitive_comparison (method)">#case_sensitive_comparison</a>,
-      </td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="AbstractAdapter.html#clear_cache!-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#clear_cache! (method)">#clear_cache!</a></td>
@@ -881,7 +791,6 @@ transactions and other connection-related server-side state.</p></div></td>
       <td colspan='2'>
         <a class='i_m ' href="AbstractAdapter.html#schema_creation-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#schema_creation (method)">#schema_creation</a>,
         <a class='i_m ' href="AbstractAdapter.html#unprepared_statement-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#unprepared_statement (method)">#unprepared_statement</a>,
-        <a class='i_m ' href="AbstractAdapter.html#valid_type%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#valid_type? (method)">#valid_type?</a>,
       </td>
     </tr>
     <tr class='i_ds'>
@@ -891,10 +800,7 @@ stale).</p></div></td>
     </tr>
     <tr>
       <td colspan='2'>
-        <a class='i_m prot' href="AbstractAdapter.html#log-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#log (method)">#log</a>,
-        <a class='i_m prot' href="AbstractAdapter.html#translate_exception-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#translate_exception (method)">#translate_exception</a>,
-        <a class='i_m prot' href="AbstractAdapter.html#translate_exception_class-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#translate_exception_class (method)">#translate_exception_class</a>,
-        <a class='i_m prot' href="AbstractAdapter.html#without_prepared_statement%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#without_prepared_statement? (method)">#without_prepared_statement?</a>
+        <a class='i_m priv' href="AbstractAdapter.html#log-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#log (method)">#log</a>
       </td>
     </tr>
   </tbody>
@@ -922,10 +828,6 @@ stale).</p></div></td>
         <a class='i_m ' href="ColumnDumper.html#column_spec-instance_method" title="ActiveRecord::ConnectionAdapters::ColumnDumper#column_spec (method)">#column_spec</a>,
         <a class='i_m ' href="ColumnDumper.html#column_spec_for_primary_key-instance_method" title="ActiveRecord::ConnectionAdapters::ColumnDumper#column_spec_for_primary_key (method)">#column_spec_for_primary_key</a>,
       </td>
-    </tr>
-    <tr class='i_ds'>
-      <td><a class='i_m ' href="ColumnDumper.html#migration_keys-instance_method" title="ActiveRecord::ConnectionAdapters::ColumnDumper#migration_keys (method)">#migration_keys</a></td>
-      <td><div class='inline'><p>Lists the valid migration options.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="ColumnDumper.html#prepare_column_options-instance_method" title="ActiveRecord::ConnectionAdapters::ColumnDumper#prepare_column_options (method)">#prepare_column_options</a></td>
@@ -1073,10 +975,6 @@ after_rollback callbacks can be called.</p></div></td>
       <td><a class='i_m ' href="DatabaseStatements.html#delete-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#delete (method)">#delete</a></td>
       <td><div class='inline'><p>Executes the delete statement and returns the number of rows affected.</p></div></td>
     </tr>
-    <tr class='i_ds'>
-      <td><a class='i_m deprecated' href="DatabaseStatements.html#delete_sql-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#delete_sql (method)">#delete_sql</a></td>
-      <td><div class='inline'><p>Alias for <a href="DatabaseStatements.html#delete-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#delete (method)">DatabaseStatements#delete</a>.</p></div></td>
-    </tr>
     <tr>
       <td colspan='2'>
         <a class='i_m ' href="DatabaseStatements.html#empty_insert_statement_value-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#empty_insert_statement_value (method)">#empty_insert_statement_value</a>,
@@ -1119,10 +1017,6 @@ the raw result from the connection adapter.</p></div></td>
     <tr class='i_ds'>
       <td><a class='i_m ' href="DatabaseStatements.html#insert_fixture-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#insert_fixture (method)">#insert_fixture</a></td>
       <td><div class='inline'><p>Inserts the given fixture into the table.</p></div></td>
-    </tr>
-    <tr class='i_ds'>
-      <td><a class='i_m deprecated' href="DatabaseStatements.html#insert_sql-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#insert_sql (method)">#insert_sql</a></td>
-      <td><div class='inline'><p>Alias for <a href="DatabaseStatements.html#insert-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#insert (method)">DatabaseStatements#insert</a>.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="DatabaseStatements.html#join_to_delete-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#join_to_delete (method)">#join_to_delete</a></td>
@@ -1189,30 +1083,6 @@ the block.</p></div></td>
     <tr class='i_ds'>
       <td><a class='i_m ' href="DatabaseStatements.html#update-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#update (method)">#update</a></td>
       <td><div class='inline'><p>Executes the update statement and returns the number of rows affected.</p></div></td>
-    </tr>
-    <tr class='i_ds'>
-      <td><a class='i_m deprecated' href="DatabaseStatements.html#update_sql-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#update_sql (method)">#update_sql</a></td>
-      <td><div class='inline'><p>Alias for <a href="DatabaseStatements.html#update-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#update (method)">DatabaseStatements#update</a>.</p></div></td>
-    </tr>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m prot' href="DatabaseStatements.html#binds_from_relation-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#binds_from_relation (method)">#binds_from_relation</a>,
-        <a class='i_m prot' href="DatabaseStatements.html#last_inserted_id-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#last_inserted_id (method)">#last_inserted_id</a>,
-      </td>
-    </tr>
-    <tr class='i_ds'>
-      <td><a class='i_m prot' href="DatabaseStatements.html#select-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#select (method)">#select</a></td>
-      <td><div class='inline'><p>Returns an <a href="../Result.html" title="ActiveRecord::Result (class)">::ActiveRecord::Result</a> instance.</p></div></td>
-    </tr>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m prot' href="DatabaseStatements.html#select_prepared-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#select_prepared (method)">#select_prepared</a>,
-        <a class='i_m prot' href="DatabaseStatements.html#sql_for_insert-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#sql_for_insert (method)">#sql_for_insert</a>,
-      </td>
-    </tr>
-    <tr class='i_ds'>
-      <td><a class='i_m prot' href="DatabaseStatements.html#subquery_for-instance_method" title="ActiveRecord::ConnectionAdapters::DatabaseStatements#subquery_for (method)">#subquery_for</a></td>
-      <td><div class='inline'><p>Returns a subquery for the given key using the join information.</p></div></td>
     </tr>
   </tbody>
 </table></div>
@@ -1321,14 +1191,9 @@ definition.</p></div></td>
       <td><a class='i_m ' href="SchemaStatements.html#index_name_exists%3F-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#index_name_exists? (method)">#index_name_exists?</a></td>
       <td><div class='inline'><p>Verifies the existence of an index with a given name.</p></div></td>
     </tr>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m ' href="SchemaStatements.html#initialize_internal_metadata_table-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#initialize_internal_metadata_table (method)">#initialize_internal_metadata_table</a>,
-      </td>
-    </tr>
     <tr class='i_ds'>
-      <td><a class='i_m ' href="SchemaStatements.html#initialize_schema_migrations_table-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#initialize_schema_migrations_table (method)">#initialize_schema_migrations_table</a></td>
-      <td><div class='inline'><p>Should not be called normally, but this operation is non-destructive.</p></div></td>
+      <td><a class='i_m ' href="SchemaStatements.html#indexes-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#indexes (method)">#indexes</a></td>
+      <td><div class='inline'><p>Returns an array of indexes for the given table.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="SchemaStatements.html#native_database_types-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#native_database_types (method)">#native_database_types</a></td>
@@ -1415,24 +1280,6 @@ table definition.</p></div></td>
       <td><a class='i_m ' href="SchemaStatements.html#views-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#views (method)">#views</a></td>
       <td><div class='inline'><p>Returns an array of view names defined in the database.</p></div></td>
     </tr>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m prot' href="SchemaStatements.html#add_index_sort_order-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#add_index_sort_order (method)">#add_index_sort_order</a>,
-      </td>
-    </tr>
-    <tr class='i_ds'>
-      <td><a class='i_m prot' href="SchemaStatements.html#add_options_for_index_columns-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#add_options_for_index_columns (method)">#add_options_for_index_columns</a></td>
-      <td><div class='inline'><p>Overridden by the <a href="MySQL.html" title="ActiveRecord::ConnectionAdapters::MySQL (module)">MySQL</a> adapter for
-supporting index lengths.</p></div></td>
-    </tr>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m prot' href="SchemaStatements.html#index_name_for_remove-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#index_name_for_remove (method)">#index_name_for_remove</a>,
-        <a class='i_m prot' href="SchemaStatements.html#quoted_columns_for_index-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#quoted_columns_for_index (method)">#quoted_columns_for_index</a>,
-        <a class='i_m prot' href="SchemaStatements.html#rename_column_indexes-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#rename_column_indexes (method)">#rename_column_indexes</a>,
-        <a class='i_m prot' href="SchemaStatements.html#rename_table_indexes-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#rename_table_indexes (method)">#rename_table_indexes</a>
-      </td>
-    </tr>
   </tbody>
 </table></div>
 
@@ -1459,22 +1306,22 @@ supporting index lengths.</p></div></td>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L65-L73'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L68-L76'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-65
-66
-67
 68
 69
 70
 71
 72
-73</pre>
+73
+74
+75
+76</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 65</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 68</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='id identifier rubyid_logger'>logger</span><span class='comma'>,</span> <span class='id identifier rubyid_connection_options'>connection_options</span><span class='comma'>,</span> <span class='id identifier rubyid_config'>config</span><span class='rparen'>)</span>
@@ -1482,8 +1329,8 @@ supporting index lengths.</p></div></td>
 
   <span class='ivar'>@statements</span> <span class='op'>=</span> <span class='const'><a href="AbstractMysqlAdapter/StatementPool.html" title="ActiveRecord::ConnectionAdapters::AbstractMysqlAdapter::StatementPool (class)">StatementPool</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="StatementPool.html#new-class_method" title="ActiveRecord::ConnectionAdapters::StatementPool.new (method)">new</a></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_type_cast_config_to_integer'>type_cast_config_to_integer</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_statement_limit'>statement_limit</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_version'>version</span> <span class='op'>&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>5.0.0</span><span class='tstring_end'>&#39;</span></span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Your version of MySQL (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_full_version'>full_version</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\d\.\d\.\d+</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>) is too old. Active Record supports MySQL &gt;= 5.0.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_version'>version</span> <span class='op'>&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>5.1.10</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Your version of MySQL (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_full_version'>full_version</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\d\.\d\.\d+</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>) is too old. Active Record supports MySQL &gt;= 5.1.10.</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
@@ -1496,14 +1343,14 @@ supporting index lengths.</p></div></td>
   <h3 class='signature rw first'>
     .<strong>emulate_booleans</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L38-L38'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L40-L40'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-38</pre>
+40</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 38</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 40</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_emulate_booleans'>emulate_booleans</span>
@@ -1516,14 +1363,14 @@ supporting index lengths.</p></div></td>
   <h3 class='signature rw'>
     .<strong>emulate_booleans?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L38-L38'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L40-L40'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-38</pre>
+40</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 38</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 40</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_emulate_booleans'>emulate_booleans</span>
@@ -1537,14 +1384,14 @@ supporting index lengths.</p></div></td>
   <h3 class='signature rw first'>
     #<strong>emulate_booleans</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L38-L38'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L40-L40'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-38</pre>
+40</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 38</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 40</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_emulate_booleans'>emulate_booleans</span>
@@ -1557,14 +1404,14 @@ supporting index lengths.</p></div></td>
   <h3 class='signature rw'>
     #<strong>emulate_booleans?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L38-L38'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L40-L40'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-38</pre>
+40</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 38</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 40</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_emulate_booleans'>emulate_booleans</span>
@@ -1577,16 +1424,16 @@ supporting index lengths.</p></div></td>
   <h3 class='signature ro'>
     #<strong>strict_mode?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L644-L646'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L593-L595'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-644
-645
-646</pre>
+593
+594
+595</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 644</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 593</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_strict_mode?'>strict_mode?</span>
@@ -1601,16 +1448,16 @@ supporting index lengths.</p></div></td>
   <h3 class='signature ro'>
     #<strong>supports_advisory_locks?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L144-L146'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L146-L148'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-144
-145
-146</pre>
+146
+147
+148</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 144</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 146</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_advisory_locks?'>supports_advisory_locks?</span>
@@ -1625,27 +1472,27 @@ supporting index lengths.</p></div></td>
   <h3 class='signature ro'>
     #<strong>supports_datetime_with_precision?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L136-L142'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L130-L136'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-136
-137
-138
-139
-140
-141
-142</pre>
+130
+131
+132
+133
+134
+135
+136</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 136</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 130</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_datetime_with_precision?'>supports_datetime_with_precision?</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_mariadb?'>mariadb?</span>
-    <span class='id identifier rubyid_version'>version</span> <span class='op'>&gt;=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>5.3.0</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_version'>version</span> <span class='op'>&gt;=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>5.3.0</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_version'>version</span> <span class='op'>&gt;=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>5.6.4</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_version'>version</span> <span class='op'>&gt;=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>5.6.4</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
@@ -1657,16 +1504,16 @@ supporting index lengths.</p></div></td>
   <h3 class='signature ro'>
     #<strong>supports_explain?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L120-L122'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L114-L116'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-120
-121
-122</pre>
+114
+115
+116</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 120</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 114</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_explain?'>supports_explain?</span>
@@ -1681,16 +1528,16 @@ supporting index lengths.</p></div></td>
   <h3 class='signature ro'>
     #<strong>supports_foreign_keys?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L128-L130'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L122-L124'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-128
-129
-130</pre>
+122
+123
+124</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 128</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 122</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_foreign_keys?'>supports_foreign_keys?</span>
@@ -1715,16 +1562,16 @@ at the moment (5.5) it doesn&#39;t yet implement them</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L112-L114'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L106-L108'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-112
-113
-114</pre>
+106
+107
+108</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 112</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 106</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_index_sort_order?'>supports_index_sort_order?</span>
@@ -1739,76 +1586,19 @@ at the moment (5.5) it doesn&#39;t yet implement them</p>
   <h3 class='signature ro'>
     #<strong>supports_indexes_in_create?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L124-L126'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L118-L120'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-124
-125
-126</pre>
+118
+119
+120</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 124</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 118</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_indexes_in_create?'>supports_indexes_in_create?</span>
-  <span class='kw'>true</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="supports_migrations?-instance_method">
-  <h3 class='signature ro'>
-    #<strong>supports_migrations?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>Returns true, since this connection adapter supports migrations.</p>
-
-  </div>
-</div>
-<div class='tags'>
-  
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L92-L94'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-92
-93
-94</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 92</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_supports_migrations?'>supports_migrations?</span>
-  <span class='kw'>true</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="supports_primary_key?-instance_method">
-  <h3 class='signature ro'>
-    #<strong>supports_primary_key?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L96-L98'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-96
-97
-98</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 96</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_supports_primary_key?'>supports_primary_key?</span>
   <span class='kw'>true</span>
 <span class='kw'>end</span>
 </pre>
@@ -1830,16 +1620,16 @@ caching.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L106-L108'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L100-L102'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-106
-107
-108</pre>
+100
+101
+102</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 106</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 100</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_statement_cache?'>supports_statement_cache?</span>
@@ -1854,16 +1644,16 @@ caching.</p>
   <h3 class='signature ro'>
     #<strong>supports_transaction_isolation?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L116-L118'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L110-L112'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-116
-117
-118</pre>
+110
+111
+112</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 116</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 110</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_transaction_isolation?'>supports_transaction_isolation?</span>
@@ -1878,16 +1668,16 @@ caching.</p>
   <h3 class='signature ro'>
     #<strong>supports_views?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L132-L134'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L126-L128'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-132
-133
-134</pre>
+126
+127
+128</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 132</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 126</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_views?'>supports_views?</span>
@@ -1898,171 +1688,53 @@ caching.</p>
 </div>
 </section>
 
-<h2 class='y_details'>Instance Method Details</h2>
-<section class='method_details first' id="add_column_sql-instance_method">
-  <h3 class='signature prot first'>
-    #<strong>add_column_sql</strong>(table_name, column_name, type, options = {})   <span class="extras">(<span class='prot'>protected</span>)</span>
+<section class='method_details' id="supports_virtual_columns?-instance_method">
+  <h3 class='signature ro'>
+    #<strong>supports_virtual_columns?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L748-L752'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L138-L144'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-748
-749
-750
-751
-752</pre>
+138
+139
+140
+141
+142
+143
+144</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 748</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 138</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_add_column_sql'>add_column_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_td'>td</span> <span class='op'>=</span> <span class='id identifier rubyid_create_table_definition'>create_table_definition</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_cd'>cd</span> <span class='op'>=</span> <span class='id identifier rubyid_td'>td</span><span class='period'>.</span><span class='id identifier rubyid_new_column_definition'>new_column_definition</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_schema_creation'>schema_creation</span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span><span class='lparen'>(</span><span class='const'><a href="AddColumnDefinition.html" title="ActiveRecord::ConnectionAdapters::AddColumnDefinition (class)">AddColumnDefinition</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_cd'>cd</span><span class='rparen'>)</span><span class='rparen'>)</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="add_index_length-instance_method">
-  <h3 class='signature prot'>
-    #<strong>add_index_length</strong>(quoted_columns, **options)   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L716-L728'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-716
-717
-718
-719
-720
-721
-722
-723
-724
-725
-726
-727
-728</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 716</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_add_index_length'>add_index_length</span><span class='lparen'>(</span><span class='id identifier rubyid_quoted_columns'>quoted_columns</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_length'>length</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_length'>length</span><span class='rbracket'>]</span>
-    <span class='kw'>case</span> <span class='id identifier rubyid_length'>length</span>
-    <span class='kw'>when</span> <span class='const'><a href="../../Hash.html" title="Hash (class)">Hash</a></span>
-      <span class='id identifier rubyid_length'>length</span> <span class='op'>=</span> <span class='id identifier rubyid_length'>length</span><span class='period'>.</span><span class='id identifier rubyid_symbolize_keys'>symbolize_keys</span>
-      <span class='id identifier rubyid_quoted_columns'>quoted_columns</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_column'>column</span><span class='op'>|</span> <span class='id identifier rubyid_column'>column</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_length'>length</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_length'>length</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='rbrace'>}</span>
-    <span class='kw'>when</span> <span class='const'><a href="../../Integer.html" title="Integer (class)">Integer</a></span>
-      <span class='id identifier rubyid_quoted_columns'>quoted_columns</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_column'>column</span><span class='op'>|</span> <span class='id identifier rubyid_column'>column</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_length'>length</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
-    <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_supports_virtual_columns?'>supports_virtual_columns?</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_mariadb?'>mariadb?</span>
+    <span class='id identifier rubyid_version'>version</span> <span class='op'>&gt;=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>5.2.0</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_version'>version</span> <span class='op'>&gt;=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>5.7.5</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_quoted_columns'>quoted_columns</span>
 <span class='kw'>end</span>
 </pre>
   </div>
 </div>
 </section>
 
-<section class='method_details' id="add_index_sql-instance_method">
-  <h3 class='signature prot'>
-    #<strong>add_index_sql</strong>(table_name, column_name, options = {})   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L792-L796'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-792
-793
-794
-795
-796</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 792</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_add_index_sql'>add_index_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_index_name'>index_name</span><span class='comma'>,</span> <span class='id identifier rubyid_index_type'>index_type</span><span class='comma'>,</span> <span class='id identifier rubyid_index_columns'>index_columns</span><span class='comma'>,</span> <span class='id identifier rubyid__'>_</span><span class='comma'>,</span> <span class='id identifier rubyid_index_algorithm'>index_algorithm</span><span class='comma'>,</span> <span class='id identifier rubyid_index_using'>index_using</span> <span class='op'>=</span> <span class='id identifier rubyid_add_index_options'>add_index_options</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_index_algorithm'>index_algorithm</span><span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_index_algorithm'>index_algorithm</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ADD </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index_type'>index_type</span><span class='embexpr_end'>}</span><span class='tstring_content'> INDEX </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_quote_column_name'>quote_column_name</span><span class='lparen'>(</span><span class='id identifier rubyid_index_name'>index_name</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index_using'>index_using</span><span class='embexpr_end'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index_columns'>index_columns</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index_algorithm'>index_algorithm</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="add_options_for_index_columns-instance_method">
-  <h3 class='signature prot'>
-    #<strong>add_options_for_index_columns</strong>(quoted_columns, **options)   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L730-L733'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-730
-731
-732
-733</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 730</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_add_options_for_index_columns'>add_options_for_index_columns</span><span class='lparen'>(</span><span class='id identifier rubyid_quoted_columns'>quoted_columns</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_quoted_columns'>quoted_columns</span> <span class='op'>=</span> <span class='id identifier rubyid_add_index_length'>add_index_length</span><span class='lparen'>(</span><span class='id identifier rubyid_quoted_columns'>quoted_columns</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
-  <span class='kw'>super</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="add_timestamps_sql-instance_method">
-  <h3 class='signature prot'>
-    #<strong>add_timestamps_sql</strong>(table_name, options = {})   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L803-L805'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-803
-804
-805</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 803</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_add_timestamps_sql'>add_timestamps_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='lbracket'>[</span><span class='id identifier rubyid_add_column_sql'>add_column_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_created_at'>created_at</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_datetime'>datetime</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_add_column_sql'>add_column_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_updated_at'>updated_at</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_datetime'>datetime</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rbracket'>]</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="begin_db_transaction-instance_method">
-  <h3 class='signature '>
+<h2 class='y_details'>Instance Method Details</h2>
+<section class='method_details first' id="begin_db_transaction-instance_method">
+  <h3 class='signature  first'>
     #<strong>begin_db_transaction</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L228-L230'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L234-L236'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-228
-229
-230</pre>
+234
+235
+236</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 228</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 234</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_begin_db_transaction'>begin_db_transaction</span>
@@ -2077,102 +1749,22 @@ caching.</p>
   <h3 class='signature '>
     #<strong>begin_isolated_db_transaction</strong>(isolation)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L232-L235'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L238-L241'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-232
-233
-234
-235</pre>
+238
+239
+240
+241</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 232</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 238</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_begin_isolated_db_transaction'>begin_isolated_db_transaction</span><span class='lparen'>(</span><span class='id identifier rubyid_isolation'>isolation</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_execute'>execute</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SET TRANSACTION ISOLATION LEVEL </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_transaction_isolation_levels'>transaction_isolation_levels</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_isolation'>isolation</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_begin_db_transaction'>begin_db_transaction</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="case_sensitive_comparison-instance_method">
-  <h3 class='signature '>
-    #<strong>case_sensitive_comparison</strong>(table, attribute, column, value)  
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L616-L622'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-616
-617
-618
-619
-620
-621
-622</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 616</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_case_sensitive_comparison'>case_sensitive_comparison</span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='comma'>,</span> <span class='id identifier rubyid_attribute'>attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_column'>column</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_collation'>collation</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_case_sensitive?'>case_sensitive?</span>
-    <span class='id identifier rubyid_table'>table</span><span class='lbracket'>[</span><span class='id identifier rubyid_attribute'>attribute</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='const'>Arel</span><span class='op'>::</span><span class='const'>Nodes</span><span class='op'>::</span><span class='const'>Bin</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>Arel</span><span class='op'>::</span><span class='const'>Nodes</span><span class='op'>::</span><span class='const'>BindParam</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='kw'>super</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="change_column_sql-instance_method">
-  <h3 class='signature prot'>
-    #<strong>change_column_sql</strong>(table_name, column_name, type, options = {})   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L754-L768'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-754
-755
-756
-757
-758
-759
-760
-761
-762
-763
-764
-765
-766
-767
-768</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 754</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_change_column_sql'>change_column_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_column'>column</span> <span class='op'>=</span> <span class='id identifier rubyid_column_for'>column_for</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
-
-  <span class='kw'>unless</span> <span class='id identifier rubyid_options_include_default?'>options_include_default?</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_default'>default</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_default'>default</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>unless</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_null'>null</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_null'>null</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_null'>null</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_td'>td</span> <span class='op'>=</span> <span class='id identifier rubyid_create_table_definition'>create_table_definition</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_cd'>cd</span> <span class='op'>=</span> <span class='id identifier rubyid_td'>td</span><span class='period'>.</span><span class='id identifier rubyid_new_column_definition'>new_column_definition</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_schema_creation'>schema_creation</span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span><span class='lparen'>(</span><span class='const'><a href="ChangeColumnDefinition.html" title="ActiveRecord::ConnectionAdapters::ChangeColumnDefinition (class)">ChangeColumnDefinition</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_cd'>cd</span><span class='comma'>,</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -2190,20 +1782,20 @@ caching.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L300-L302'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L306-L308'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-300
-301
-302</pre>
+306
+307
+308</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 300</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 306</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_charset'>charset</span>
-  <span class='id identifier rubyid_show_variable'>show_variable</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>character_set_database</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_show_variable'>show_variable</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>character_set_database</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -2221,17 +1813,17 @@ caching.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L198-L201'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L200-L203'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-198
-199
 200
-201</pre>
+201
+202
+203</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 198</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 200</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear_cache!'>clear_cache!</span>
@@ -2254,20 +1846,20 @@ caching.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L305-L307'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L311-L313'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-305
-306
-307</pre>
+311
+312
+313</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 305</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 311</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_collation'>collation</span>
-  <span class='id identifier rubyid_show_variable'>show_variable</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>collation_database</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_show_variable'>show_variable</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>collation_database</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -2293,20 +1885,20 @@ defaults to utf8.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L279-L285'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L285-L291'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-279
-280
-281
-282
-283
-284
-285</pre>
+285
+286
+287
+288
+289
+290
+291</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 279</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 285</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_database'>create_database</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -2325,95 +1917,20 @@ defaults to utf8.</p>
   <h3 class='signature '>
     #<strong>current_database</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L295-L297'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L301-L303'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-295
-296
-297</pre>
+301
+302
+303</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 295</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 301</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_current_database'>current_database</span>
-  <span class='id identifier rubyid_select_value'>select_value</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT DATABASE() as db</span><span class='tstring_end'>&#39;</span></span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="data_source_exists?-instance_method">
-  <h3 class='signature '>
-    #<strong>data_source_exists?</strong>(table_name)  &#x21d2; <code>Boolean</code> 
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-  </div>
-</div>
-<div class='tags'>
-  
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L347-L356'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-347
-348
-349
-350
-351
-352
-353
-354
-355
-356</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 347</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_data_source_exists?'>data_source_exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_table_name'>table_name</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span>
-
-  <span class='id identifier rubyid_schema'>schema</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_schema_qualified_name'>extract_schema_qualified_name</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_sql'>sql</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT table_name FROM information_schema.tables </span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_sql'>sql</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>WHERE table_schema = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_schema'>schema</span><span class='embexpr_end'>}</span><span class='tstring_content'> AND table_name = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-
-  <span class='id identifier rubyid_select_values'>select_values</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="data_sources-instance_method">
-  <h3 class='signature '>
-    #<strong>data_sources</strong>  
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L325-L330'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-325
-326
-327
-328
-329
-330</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 325</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_data_sources'>data_sources</span>
-  <span class='id identifier rubyid_sql'>sql</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT table_name FROM information_schema.tables </span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_sql'>sql</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>WHERE table_schema = DATABASE()</span><span class='tstring_end'>&quot;</span></span>
-
-  <span class='id identifier rubyid_select_values'>select_values</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_select_value'>select_value</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT DATABASE() as db</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -2448,16 +1965,16 @@ create_table.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L465-L467'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L413-L415'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-465
-466
-467</pre>
+413
+414
+415</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 465</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 413</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_drop_table'>drop_table</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -2472,16 +1989,16 @@ create_table.</p>
   <h3 class='signature '>
     #<strong>empty_insert_statement_value</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L257-L259'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L263-L265'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-257
-258
-259</pre>
+263
+264
+265</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 257</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 263</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_empty_insert_statement_value'>empty_insert_statement_value</span>
@@ -2503,20 +2020,28 @@ create_table.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L217-L219'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L219-L225'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-217
-218
-219</pre>
+219
+220
+221
+222
+223
+224
+225</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 217</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 219</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='ivar'>@connection</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='const'><a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../../ActiveSupport/Dependencies.html" title="ActiveSupport::Dependencies (module)">Dependencies</a></span><span class='period'>.</span><span class='id identifier rubyid_interlock'><a href="../../ActiveSupport/Dependencies.html#interlock-class_method" title="ActiveSupport::Dependencies.interlock (method)">interlock</a></span><span class='period'>.</span><span class='id identifier rubyid_permit_concurrent_loads'>permit_concurrent_loads</span> <span class='kw'>do</span>
+      <span class='ivar'>@connection</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -2527,86 +2052,30 @@ create_table.</p>
   <h3 class='signature '>
     #<strong>explain</strong>(arel, binds = [])  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L207-L214'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L209-L216'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-207
-208
 209
 210
 211
 212
 213
-214</pre>
+214
+215
+216</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 207</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 209</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_explain'>explain</span><span class='lparen'>(</span><span class='id identifier rubyid_arel'>arel</span><span class='comma'>,</span> <span class='id identifier rubyid_binds'>binds</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sql'>sql</span>     <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>EXPLAIN </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_to_sql'>to_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_arel'>arel</span><span class='comma'>,</span> <span class='id identifier rubyid_binds'>binds</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_start'>start</span>   <span class='op'>=</span> <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
-  <span class='id identifier rubyid_result'>result</span>  <span class='op'>=</span> <span class='id identifier rubyid_exec_query'>exec_query</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>EXPLAIN</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_binds'>binds</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span>  <span class='op'>=</span> <span class='id identifier rubyid_exec_query'>exec_query</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>EXPLAIN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_binds'>binds</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_elapsed'>elapsed</span> <span class='op'>=</span> <span class='const'><a href="../../Time.html" title="Time (class)">Time</a></span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_start'>start</span>
 
   <span class='const'><a href="MySQL.html" title="ActiveRecord::ConnectionAdapters::MySQL (module)">MySQL</a></span><span class='op'>::</span><span class='const'><a href="MySQL/ExplainPrettyPrinter.html" title="ActiveRecord::ConnectionAdapters::MySQL::ExplainPrettyPrinter (class)">ExplainPrettyPrinter</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='period'>.</span><span class='id identifier rubyid_pp'><a href="MySQL/ExplainPrettyPrinter.html#pp-instance_method" title="ActiveRecord::ConnectionAdapters::MySQL::ExplainPrettyPrinter#pp (method)">pp</a></span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='id identifier rubyid_elapsed'>elapsed</span><span class='rparen'>)</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="extract_precision-instance_method">
-  <h3 class='signature prot'>
-    #<strong>extract_precision</strong>(sql_type)   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L704-L710'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-704
-705
-706
-707
-708
-709
-710</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 704</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_extract_precision'>extract_precision</span><span class='lparen'>(</span><span class='id identifier rubyid_sql_type'>sql_type</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>time</span><span class='regexp_end'>/</span></span> <span class='op'>===</span> <span class='id identifier rubyid_sql_type'>sql_type</span>
-    <span class='kw'>super</span> <span class='op'>||</span> <span class='int'>0</span>
-  <span class='kw'>else</span>
-    <span class='kw'>super</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="fetch_type_metadata-instance_method">
-  <h3 class='signature prot'>
-    #<strong>fetch_type_metadata</strong>(sql_type, extra = &quot;&quot;)   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L712-L714'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-712
-713
-714</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 712</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_fetch_type_metadata'>fetch_type_metadata</span><span class='lparen'>(</span><span class='id identifier rubyid_sql_type'>sql_type</span><span class='comma'>,</span> <span class='id identifier rubyid_extra'>extra</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='const'><a href="MySQL.html" title="ActiveRecord::ConnectionAdapters::MySQL (module)">MySQL</a></span><span class='op'>::</span><span class='const'><a href="MySQL/TypeMetadata.html" title="ActiveRecord::ConnectionAdapters::MySQL::TypeMetadata (class)">TypeMetadata</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="MySQL/TypeMetadata.html#new-class_method" title="ActiveRecord::ConnectionAdapters::MySQL::TypeMetadata.new (method)">new</a></span><span class='lparen'>(</span><span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_sql_type'>sql_type</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>extra:</span> <span class='id identifier rubyid_extra'>extra</span><span class='comma'>,</span> <span class='label'>strict:</span> <span class='id identifier rubyid_strict_mode?'>strict_mode?</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -2630,55 +2099,55 @@ create_table.</p>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L515-L548'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L463-L496'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-515
-516
-517
-518
-519
-520
-521
-522
-523
-524
-525
-526
-527
-528
-529
-530
-531
-532
-533
-534
-535
-536
-537
-538
-539
-540
-541
-542
-543
-544
-545
-546
-547
-548</pre>
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 515</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 463</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_foreign_keys'>foreign_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span> <span class='kw'>unless</span> <span class='id identifier rubyid_table_name'>table_name</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span>
 
-  <span class='id identifier rubyid_schema'>schema</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_schema_qualified_name'>extract_schema_qualified_name</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='id identifier rubyid_quoted_scope'>quoted_scope</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_fk_info'>fk_info</span> <span class='op'>=</span> <span class='id identifier rubyid_select_all'>select_all</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-SQL</span><span class='period'>.</span><span class='id identifier rubyid_strip_heredoc'>strip_heredoc</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_fk_info'>fk_info</span> <span class='op'>=</span> <span class='id identifier rubyid_select_all'>select_all</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-SQL</span><span class='period'>.</span><span class='id identifier rubyid_strip_heredoc'>strip_heredoc</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='tstring_content'>    SELECT fk.referenced_table_name AS &#39;to_table&#39;,
            fk.referenced_column_name AS &#39;primary_key&#39;,
            fk.column_name AS &#39;column&#39;,
@@ -2689,22 +2158,22 @@ create_table.</p>
     JOIN information_schema.referential_constraints rc
     USING (constraint_schema, constraint_name)
     WHERE fk.referenced_column_name IS NOT NULL
-      AND fk.table_schema = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_schema'>schema</span><span class='embexpr_end'>}</span><span class='tstring_content'>
-      AND fk.table_name = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>
-      AND rc.table_name = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      AND fk.table_schema = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_schema'>schema</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      AND fk.table_name = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      AND rc.table_name = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>
 </span><span class='heredoc_end'>  SQL
 </span>
   <span class='id identifier rubyid_fk_info'>fk_info</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_row'>row</span><span class='op'>|</span>
     <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-      <span class='label'>column:</span> <span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>column</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
-      <span class='label'>name:</span> <span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
-      <span class='label'>primary_key:</span> <span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>primary_key</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+      <span class='label'>column:</span> <span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>column</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+      <span class='label'>name:</span> <span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+      <span class='label'>primary_key:</span> <span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>primary_key</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
     <span class='rbrace'>}</span>
 
-    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_on_update'>on_update</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_foreign_key_action'>extract_foreign_key_action</span><span class='lparen'>(</span><span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>on_update</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_on_delete'>on_delete</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_foreign_key_action'>extract_foreign_key_action</span><span class='lparen'>(</span><span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>on_delete</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_on_update'>on_update</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_foreign_key_action'>extract_foreign_key_action</span><span class='lparen'>(</span><span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>on_update</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_on_delete'>on_delete</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_foreign_key_action'>extract_foreign_key_action</span><span class='lparen'>(</span><span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>on_delete</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
 
-    <span class='const'><a href="ForeignKeyDefinition.html" title="ActiveRecord::ConnectionAdapters::ForeignKeyDefinition (class)">ForeignKeyDefinition</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>to_table</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+    <span class='const'><a href="ForeignKeyDefinition.html" title="ActiveRecord::ConnectionAdapters::ForeignKeyDefinition (class)">ForeignKeyDefinition</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>to_table</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
@@ -2716,20 +2185,20 @@ create_table.</p>
   <h3 class='signature '>
     #<strong>index_algorithms</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L160-L162'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L162-L164'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-160
-161
-162</pre>
+162
+163
+164</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 160</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 162</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index_algorithms'>index_algorithms</span>
-  <span class='lbrace'>{</span> <span class='label'>default:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ALGORITHM = DEFAULT</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>copy:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ALGORITHM = COPY</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>inplace:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ALGORITHM = INPLACE</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
+  <span class='lbrace'>{</span> <span class='label'>default:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ALGORITHM = DEFAULT</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>copy:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ALGORITHM = COPY</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>inplace:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ALGORITHM = INPLACE</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -2740,16 +2209,16 @@ create_table.</p>
   <h3 class='signature '>
     #<strong>native_database_types</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L156-L158'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L158-L160'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-156
-157
-158</pre>
+158
+159
+160</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 156</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 158</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_native_database_types'>native_database_types</span>
@@ -2772,19 +2241,19 @@ using the provided <code>options</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L265-L270'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L271-L276'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-265
-266
-267
-268
-269
-270</pre>
+271
+272
+273
+274
+275
+276</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 265</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 271</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_recreate_database'>recreate_database</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -2798,168 +2267,26 @@ using the provided <code>options</code>.</p>
 </div>
 </section>
 
-<section class='method_details' id="remove_column_sql-instance_method">
-  <h3 class='signature prot'>
-    #<strong>remove_column_sql</strong>(table_name, column_name, type = nil, options = {})   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L784-L786'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-784
-785
-786</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 784</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_remove_column_sql'>remove_column_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DROP </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_quote_column_name'>quote_column_name</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="remove_columns_sql-instance_method">
-  <h3 class='signature prot'>
-    #<strong>remove_columns_sql</strong>(table_name, *column_names)   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L788-L790'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-788
-789
-790</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 788</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_remove_columns_sql'>remove_columns_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_column_names'>column_names</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_column_names'>column_names</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_column_name'>column_name</span><span class='op'>|</span> <span class='id identifier rubyid_remove_column_sql'>remove_column_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="remove_index_sql-instance_method">
-  <h3 class='signature prot'>
-    #<strong>remove_index_sql</strong>(table_name, options = {})   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L798-L801'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-798
-799
-800
-801</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 798</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_remove_index_sql'>remove_index_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_index_name'>index_name</span> <span class='op'>=</span> <span class='id identifier rubyid_index_name_for_remove'>index_name_for_remove</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DROP INDEX </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index_name'>index_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="remove_timestamps_sql-instance_method">
-  <h3 class='signature prot'>
-    #<strong>remove_timestamps_sql</strong>(table_name, options = {})   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L807-L809'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-807
-808
-809</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 807</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_remove_timestamps_sql'>remove_timestamps_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='lbracket'>[</span><span class='id identifier rubyid_remove_column_sql'>remove_column_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_updated_at'>updated_at</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_remove_column_sql'>remove_column_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_created_at'>created_at</span><span class='rparen'>)</span><span class='rbracket'>]</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="rename_column_sql-instance_method">
-  <h3 class='signature prot'>
-    #<strong>rename_column_sql</strong>(table_name, column_name, new_column_name)   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L770-L782'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-770
-771
-772
-773
-774
-775
-776
-777
-778
-779
-780
-781
-782</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 770</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_rename_column_sql'>rename_column_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_new_column_name'>new_column_name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_column'>column</span>  <span class='op'>=</span> <span class='id identifier rubyid_column_for'>column_for</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-    <span class='label'>default:</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_default'>default</span><span class='comma'>,</span>
-    <span class='label'>null:</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_null'>null</span><span class='comma'>,</span>
-    <span class='label'>auto_increment:</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_auto_increment?'>auto_increment?</span>
-  <span class='rbrace'>}</span>
-
-  <span class='id identifier rubyid_current_type'>current_type</span> <span class='op'>=</span> <span class='id identifier rubyid_select_one'>select_one</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SHOW COLUMNS FROM </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_quote_table_name'>quote_table_name</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> LIKE &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_column_name'>column_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Type</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_td'>td</span> <span class='op'>=</span> <span class='id identifier rubyid_create_table_definition'>create_table_definition</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_cd'>cd</span> <span class='op'>=</span> <span class='id identifier rubyid_td'>td</span><span class='period'>.</span><span class='id identifier rubyid_new_column_definition'>new_column_definition</span><span class='lparen'>(</span><span class='id identifier rubyid_new_column_name'>new_column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_current_type'>current_type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_schema_creation'>schema_creation</span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span><span class='lparen'>(</span><span class='const'><a href="ChangeColumnDefinition.html" title="ActiveRecord::ConnectionAdapters::ChangeColumnDefinition (class)">ChangeColumnDefinition</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_cd'>cd</span><span class='comma'>,</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='rparen'>)</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
 <section class='method_details' id="rename_index-instance_method">
   <h3 class='signature '>
     #<strong>rename_index</strong>(table_name, old_name, new_name)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L469-L477'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L417-L425'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-469
-470
-471
-472
-473
-474
-475
-476
-477</pre>
+417
+418
+419
+420
+421
+422
+423
+424
+425</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 469</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 417</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rename_index'>rename_index</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_old_name'>old_name</span><span class='comma'>,</span> <span class='id identifier rubyid_new_name'>new_name</span><span class='rparen'>)</span>
@@ -2991,17 +2318,17 @@ using the provided <code>options</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L445-L448'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L393-L396'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-445
-446
-447
-448</pre>
+393
+394
+395
+396</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 445</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 393</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rename_table'>rename_table</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_new_name'>new_name</span><span class='rparen'>)</span>
@@ -3024,111 +2351,24 @@ using the provided <code>options</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L595-L599'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L544-L548'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-595
-596
-597
-598
-599</pre>
+544
+545
+546
+547
+548</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 595</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 544</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show_variable'>show_variable</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_select_value'>select_value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT @@</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_select_value'>select_value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT @@</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>rescue</span> <span class='const'><a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="../StatementInvalid.html" title="ActiveRecord::StatementInvalid (class)">StatementInvalid</a></span>
   <span class='kw'>nil</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="table_exists?-instance_method">
-  <h3 class='signature '>
-    #<strong>table_exists?</strong>(table_name)  &#x21d2; <code>Boolean</code> 
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-  </div>
-</div>
-<div class='tags'>
-  
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L336-L345'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-336
-337
-338
-339
-340
-341
-342
-343
-344
-345</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 336</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_table_exists?'>table_exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
-  <span class='comment'># Update lib/active_record/internal_metadata.rb when this gets removed
-</span>  <span class='const'><a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="../../ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='period'>.</span><span class='id identifier rubyid_warn'><a href="../../ActiveSupport/Deprecation/Reporting.html#warn-instance_method" title="ActiveSupport::Deprecation::Reporting#warn (method)">warn</a></span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;-MSG</span><span class='period'>.</span><span class='id identifier rubyid_squish'>squish</span><span class='rparen'>)</span>
-<span class='tstring_content'>    #table_exists? currently checks both tables and views.
-    This behavior is deprecated and will be changed with Rails 5.1 to only check tables.
-    Use #data_source_exists? instead.
-</span><span class='heredoc_end'>  MSG
-</span>
-  <span class='id identifier rubyid_data_source_exists?'>data_source_exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="translate_exception-instance_method">
-  <h3 class='signature prot'>
-    #<strong>translate_exception</strong>(exception, message)   <span class="extras">(<span class='prot'>protected</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L735-L746'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-735
-736
-737
-738
-739
-740
-741
-742
-743
-744
-745
-746</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 735</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_translate_exception'>translate_exception</span><span class='lparen'>(</span><span class='id identifier rubyid_exception'>exception</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_error_number'>error_number</span><span class='lparen'>(</span><span class='id identifier rubyid_exception'>exception</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='int'>1062</span>
-    <span class='const'><a href="../RecordNotUnique.html" title="ActiveRecord::RecordNotUnique (class)">RecordNotUnique</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../StatementInvalid.html#new-class_method" title="ActiveRecord::StatementInvalid.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='int'>1452</span>
-    <span class='const'><a href="../InvalidForeignKey.html" title="ActiveRecord::InvalidForeignKey (class)">InvalidForeignKey</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../StatementInvalid.html#new-class_method" title="ActiveRecord::StatementInvalid.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='int'>1406</span>
-    <span class='const'><a href="../ValueTooLong.html" title="ActiveRecord::ValueTooLong (class)">ValueTooLong</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../StatementInvalid.html#new-class_method" title="ActiveRecord::StatementInvalid.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='kw'>super</span>
-  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -3139,118 +2379,20 @@ using the provided <code>options</code>.</p>
   <h3 class='signature '>
     #<strong>truncate</strong>(table_name, name = nil)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L332-L334'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L315-L317'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-332
-333
-334</pre>
+315
+316
+317</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 332</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 315</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_truncate'>truncate</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_execute'>execute</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TRUNCATE TABLE </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_quote_table_name'>quote_table_name</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="type_to_sql-instance_method">
-  <h3 class='signature '>
-    #<strong>type_to_sql</strong>(type, limit = nil, precision = nil, scale = nil, unsigned = nil)  
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>Maps logical <a href="../../Rails.html" title="Rails (module)">::Rails</a> types to MySQL-specific data types.</p>
-
-  </div>
-</div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L572-L592'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-572
-573
-574
-575
-576
-577
-578
-579
-580
-581
-582
-583
-584
-585
-586
-587
-588
-589
-590
-591
-592</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 572</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_type_to_sql'>type_to_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_limit'>limit</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_precision'>precision</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_scale'>scale</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_unsigned'>unsigned</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_sql'>sql</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>integer</span><span class='tstring_end'>&#39;</span></span>
-    <span class='id identifier rubyid_integer_to_sql'>integer_to_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_limit'>limit</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>text</span><span class='tstring_end'>&#39;</span></span>
-    <span class='id identifier rubyid_text_to_sql'>text_to_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_limit'>limit</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>blob</span><span class='tstring_end'>&#39;</span></span>
-    <span class='id identifier rubyid_binary_to_sql'>binary_to_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_limit'>limit</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>binary</span><span class='tstring_end'>&#39;</span></span>
-    <span class='kw'>if</span> <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>0xfff</span><span class='rparen'>)</span> <span class='op'>===</span> <span class='id identifier rubyid_limit'>limit</span>
-      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>varbinary(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_limit'>limit</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
-    <span class='kw'>else</span>
-      <span class='id identifier rubyid_binary_to_sql'>binary_to_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_limit'>limit</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
-  <span class='kw'>else</span>
-    <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_limit'>limit</span><span class='comma'>,</span> <span class='id identifier rubyid_precision'>precision</span><span class='comma'>,</span> <span class='id identifier rubyid_scale'>scale</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_sql'>sql</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> unsigned</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_unsigned'>unsigned</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>!=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_primary_key'>primary_key</span>
-  <span class='id identifier rubyid_sql'>sql</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="valid_type?-instance_method">
-  <h3 class='signature '>
-    #<strong>valid_type?</strong>(type)  &#x21d2; <code>Boolean</code> 
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-  </div>
-</div>
-<div class='tags'>
-  
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L648-L650'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-648
-649
-650</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb', line 648</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_valid_type?'>valid_type?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
-  <span class='op'>!</span><span class='id identifier rubyid_native_database_types'>native_database_types</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
 <span class='kw'>end</span>
 </pre>
   </div>

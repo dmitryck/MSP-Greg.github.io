@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: I18n &mdash; Rails-5-0-stable</title>
+<title>File: I18n &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: I18n&nbsp;&#x25B2;</a></span>
             </div>
@@ -140,11 +140,13 @@
 
 <p>There are also attribute readers and writers for the following attributes:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_load_path'>load_path</span>         <span class='comment'># Announce your custom translation files
-</span><span class='id identifier rubyid_locale'>locale</span>            <span class='comment'># Get and set the current locale
-</span><span class='id identifier rubyid_default_locale'>default_locale</span>    <span class='comment'># Get and set the default locale
-</span><span class='id identifier rubyid_exception_handler'>exception_handler</span> <span class='comment'># Use a different exception_handler
-</span><span class='id identifier rubyid_backend'>backend</span>           <span class='comment'># Use a different backend</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_load_path'>load_path</span>                 <span class='comment'># Announce your custom translation files
+</span><span class='id identifier rubyid_locale'>locale</span>                    <span class='comment'># Get and set the current locale
+</span><span class='id identifier rubyid_default_locale'>default_locale</span>            <span class='comment'># Get and set the default locale
+</span><span class='id identifier rubyid_available_locales'>available_locales</span>         <span class='comment'># Whitelist locales available for the application
+</span><span class='id identifier rubyid_enforce_available_locales'>enforce_available_locales</span> <span class='comment'># Enforce locale whitelisting (true or false)
+</span><span class='id identifier rubyid_exception_handler'>exception_handler</span>         <span class='comment'># Use a different exception_handler
+</span><span class='id identifier rubyid_backend'>backend</span>                   <span class='comment'># Use a different backend</span></code></pre>
 
 <p>So, let&#39;s internationalize a simple Rails application from the ground up in the next chapters!</p>
 
@@ -174,11 +176,9 @@
 
 <p>NOTE: The backend lazy-loads these translations when a translation is looked up for the first time. This backend can be swapped with something else even after translations have already been announced.</p>
 
-<p>You can change the default locale and also configure the translations load
-paths in <code>config/application.rb</code> as follows:</p>
+<p>You can change the default locale as well as configure the translations load paths in <code>config/application.rb</code> as follows:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_i18n'>i18n</span><span class='period'>.</span><span class='id identifier rubyid_load_path'>load_path</span> <span class='op'>+=</span> <span class='const'>Dir</span><span class='lbracket'>[</span><span class='const'><a href="Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_root'><a href="Rails.html#root-class_method" title="Rails.root (method)">root</a></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>my</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>locales</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>*.{rb,yml}</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span>
-
   <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_i18n'>i18n</span><span class='period'>.</span><span class='id identifier rubyid_default_locale'>default_locale</span> <span class='op'>=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_de'>de</span></code></pre>
 
 <p>The load path must be specified before any translations are looked up. To change the default locale from an initializer instead of <code>config/application.rb</code>:</p>
@@ -187,6 +187,9 @@ paths in <code>config/application.rb</code> as follows:</p>
 </span>
 <span class='comment'># Where the I18n library should search for translation files
 </span><span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_load_path'>load_path</span> <span class='op'>+=</span> <span class='const'>Dir</span><span class='lbracket'>[</span><span class='const'><a href="Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_root'><a href="Rails.html#root-class_method" title="Rails.root (method)">root</a></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>lib</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>locale</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>*.{rb,yml}</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span>
+
+<span class='comment'># Whitelist locales available for the application
+</span><span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_available_locales'>available_locales</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_en'>en</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_pt'>pt</span><span class='rbracket'>]</span>
 
 <span class='comment'># Set default locale to something other than :en
 </span><span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_default_locale'>default_locale</span> <span class='op'>=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_pt'>pt</span></code></pre>
@@ -436,6 +439,34 @@ pirate:
 
 <p>You may use YAML (<code>.yml</code>) or plain Ruby (<code>.rb</code>) files for storing your translations in SimpleStore. YAML is the preferred option among Rails developers. However, it has one big disadvantage. YAML is very sensitive to whitespace and special characters, so the application may not load your dictionary properly. Ruby files will crash your application on first request, so you may easily find what&#39;s wrong. (If you encounter any &quot;weird issues&quot; with YAML dictionaries, try putting the relevant portion of your dictionary into a Ruby file.)</p>
 
+<p>If your translations are stored in YAML files, certain keys must be escaped. They are:</p>
+
+<ul>
+<li>true, on, yes</li>
+<li>false, off, no</li>
+</ul>
+
+<p>Examples:</p>
+
+<pre class="code erb"><code class="erb"># config/locales/en.yml
+en:
+  success:
+    &#39;true&#39;:  &#39;True!&#39;
+    &#39;on&#39;:    &#39;On!&#39;
+    &#39;false&#39;: &#39;False!&#39;
+  failure:
+    true:    &#39;True!&#39;
+    off:     &#39;Off!&#39;
+    false:   &#39;False!&#39;
+</code></pre>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>success.true</span><span class='tstring_end'>&#39;</span></span> <span class='comment'># =&gt; &#39;True!&#39;
+</span><span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>success.on</span><span class='tstring_end'>&#39;</span></span> <span class='comment'># =&gt; &#39;On!&#39;
+</span><span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>success.false</span><span class='tstring_end'>&#39;</span></span> <span class='comment'># =&gt; &#39;False!&#39;
+</span><span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>failure.false</span><span class='tstring_end'>&#39;</span></span> <span class='comment'># =&gt; Translation Missing
+</span><span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>failure.off</span><span class='tstring_end'>&#39;</span></span> <span class='comment'># =&gt; Translation Missing
+</span><span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>failure.true</span><span class='tstring_end'>&#39;</span></span> <span class='comment'># =&gt; Translation Missing</span></code></pre>
+
 <h3>Passing Variables to Translations</h3>
 
 <p>One key consideration for successfully internationalizing an application is to
@@ -668,25 +699,31 @@ cover its features in more depth.</p>
 
 <h3>Pluralization</h3>
 
-<p>In English there are only one singular and one plural form for a given string, e.g. &quot;1 message&quot; and &quot;2 messages&quot;. Other languages (<a href="http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html#ar">Arabic</a>, <a href="http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html#ja">Japanese</a>, <a href="http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html#ru">Russian</a> and many more) have different grammars that have additional or fewer <a href="http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html">plural forms</a>. Thus, the I18n API provides a flexible pluralization feature.</p>
+<p>In English there are only one singular and one plural form for a given string, e.g. &quot;1 message&quot; and &quot;2 messages&quot;. Other languages (<a href="http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html#ar">Arabic</a>, <a href="http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html#ja">Japanese</a>, <a href="http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html#ru">Russian</a> and many more) have different grammars that have additional or fewer <a href="http://cldr.unicode.org/index/cldr-spec/plural-rules">plural forms</a>. Thus, the I18n API provides a flexible pluralization feature.</p>
 
 <p>The <code>:count</code> interpolation variable has a special role in that it both is interpolated to the translation and used to pick a pluralization from the translations according to the pluralization rules defined by CLDR:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_store_translations'>store_translations</span> <span class='symbeg'>:</span><span class='id identifier rubyid_en'>en</span><span class='comma'>,</span> <span class='label'>inbox:</span> <span class='lbrace'>{</span>
-  <span class='label'>one:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>one message</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='label'>zero:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>no messages</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='comment'># optional
+</span>  <span class='label'>one:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>one message</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
   <span class='label'>other:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%{count} messages</span><span class='tstring_end'>&#39;</span></span>
 <span class='rbrace'>}</span>
 <span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_inbox'>inbox</span><span class='comma'>,</span> <span class='label'>count:</span> <span class='int'>2</span>
 <span class='comment'># =&gt; &#39;2 messages&#39;
 </span>
 <span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_inbox'>inbox</span><span class='comma'>,</span> <span class='label'>count:</span> <span class='int'>1</span>
-<span class='comment'># =&gt; &#39;one message&#39;</span></code></pre>
+<span class='comment'># =&gt; &#39;one message&#39;
+</span>
+<span class='const'><a href="I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_inbox'>inbox</span><span class='comma'>,</span> <span class='label'>count:</span> <span class='int'>0</span>
+<span class='comment'># =&gt; &#39;no messages&#39;</span></code></pre>
 
 <p>The algorithm for pluralizations in <code>:en</code> is as simple as:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_entry'>entry</span><span class='lbracket'>[</span><span class='id identifier rubyid_count'>count</span> <span class='op'>==</span> <span class='int'>1</span> <span class='op'>?</span> <span class='int'>0</span> <span class='op'>:</span> <span class='int'>1</span><span class='rbracket'>]</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_lookup_key'>lookup_key</span> <span class='op'>=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_zero'>zero</span> <span class='kw'>if</span> <span class='id identifier rubyid_count'>count</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_zero'>zero</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_lookup_key'>lookup_key</span> <span class='op'>||=</span> <span class='id identifier rubyid_count'>count</span> <span class='op'>==</span> <span class='int'>1</span> <span class='op'>?</span> <span class='symbeg'>:</span><span class='id identifier rubyid_one'>one</span> <span class='op'>:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_other'>other</span>
+<span class='id identifier rubyid_entry'>entry</span><span class='lbracket'>[</span><span class='id identifier rubyid_lookup_key'>lookup_key</span><span class='rbracket'>]</span></code></pre>
 
-<p>I.e. the translation denoted as <code>:one</code> is regarded as singular, the other is used as plural (including the count being zero).</p>
+<p>The translation denoted as <code>:one</code> is regarded as singular, and the <code>:other</code> is used as plural. If the count is zero, and a <code>:zero</code> entry is present, then it will be used instead of <code>:other</code>.</p>
 
 <p>If the lookup for the key does not return a Hash suitable for pluralization, an <code>I18n::InvalidPluralizationData</code> exception is raised.</p>
 
@@ -840,7 +877,7 @@ errors.messages</code></pre>
 
 <h4>Error Message Interpolation</h4>
 
-<p>The translated model name, translated attribute name, and value are always available for interpolation.</p>
+<p>The translated model name, translated attribute name, and value are always available for interpolation as <code>model</code>, <code>attribute</code> and <code>value</code> respectively.</p>
 
 <p>So, for example, instead of the default error message <code>&quot;cannot be blank&quot;</code> you could use the attribute name like this : <code>&quot;Please fill in your %{attribute}&quot;</code>.</p>
 
@@ -938,6 +975,12 @@ errors.messages</code></pre>
 <td>associated</td>
 <td>-</td>
 <td>:invalid</td>
+<td>-</td>
+</tr>
+<tr>
+<td>non-optional association</td>
+<td>-</td>
+<td>:required</td>
 <td>-</td>
 </tr>
 <tr>
@@ -1198,7 +1241,7 @@ it in your translations. The performed lookup will use the pattern
 
 <p>Thus we encourage everybody to experiment with new ideas and features in gems or other libraries and make them available to the community. (Don&#39;t forget to announce your work on our <a href="http://groups.google.com/group/rails-i18n">mailing list</a>!)</p>
 
-<p>If you find your own locale (language) missing from our <a href="https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale">example translations data</a> repository for Ruby on Rails, please <a href="https://github.com/guides/fork-a-project-and-submit-your-modifications"><em>fork</em></a> the repository, add your data and send a <a href="https://github.com/guides/pull-requests">pull request</a>.</p>
+<p>If you find your own locale (language) missing from our <a href="https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale">example translations data</a> repository for Ruby on Rails, please <a href="https://github.com/guides/fork-a-project-and-submit-your-modifications"><em>fork</em></a> the repository, add your data and send a <a href="https://help.github.com/articles/about-pull-requests/">pull request</a>.</p>
 
 <h2>Resources</h2>
 

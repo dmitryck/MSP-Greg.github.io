@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActionCable::Connection::WebSocket &mdash; Rails-5-0-stable</title>
+<title>Class: ActionCable::Connection::WebSocket &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_W'>Index (W)</a> &raquo; 
         <a href="../../ActionCable.html" title="ActionCable (module)">ActionCable</a> &raquo; 
         <a href="../Connection.html" title="ActionCable::Connection (module)">Connection</a> &raquo; 
@@ -80,7 +80,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actioncable/lib/action_cable/connection/web_socket.rb#L6'>actioncable/lib/action_cable/connection/web_socket.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actioncable/lib/action_cable/connection/web_socket.rb#L6'>actioncable/lib/action_cable/connection/web_socket.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -101,7 +101,7 @@
 <ul class='summary full'>
   <li>
     <span class='summary_signature '>
-      <a href="#new-class_method" title=".new (class method)">.<strong>new</strong>(env, event_target, event_loop, client_socket_class, protocols: ActionCable::INTERNAL[:protocols])  &#x21d2; WebSocket </a>
+      <a href="#new-class_method" title=".new (class method)">.<strong>new</strong>(env, event_target, event_loop, protocols: ActionCable::INTERNAL[:protocols])  &#x21d2; WebSocket </a>
     </span>
     <span class='note title constructor'>constructor</span>
   </li>
@@ -164,7 +164,7 @@
 
   <section class='method_details first' id="new-class_method">
   <h3 class='signature  first'>
-    .<strong>new</strong>(env, event_target, event_loop, client_socket_class, protocols: ActionCable::INTERNAL[:protocols])  &#x21d2; <code>WebSocket</code> 
+    .<strong>new</strong>(env, event_target, event_loop, protocols: ActionCable::INTERNAL[:protocols])  &#x21d2; <code>WebSocket</code> 
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -173,7 +173,7 @@
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actioncable/lib/action_cable/connection/web_socket.rb#L7-L9'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actioncable/lib/action_cable/connection/web_socket.rb#L7-L9'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -185,8 +185,8 @@
 <pre><span class='info file'># File 'actioncable/lib/action_cable/connection/web_socket.rb', line 7</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='id identifier rubyid_event_target'>event_target</span><span class='comma'>,</span> <span class='id identifier rubyid_event_loop'>event_loop</span><span class='comma'>,</span> <span class='id identifier rubyid_client_socket_class'>client_socket_class</span><span class='comma'>,</span> <span class='label'>protocols:</span> <span class='const'><a href="../../ActionCable.html" title="ActionCable (module)">ActionCable</a></span><span class='op'>::</span><span class='const'><a href="../../ActionCable.html#INTERNAL-constant" title="ActionCable::INTERNAL (constant)">INTERNAL</a></span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_protocols'>protocols</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='ivar'>@websocket</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>WebSocket</span><span class='op'>::</span><span class='const'>Driver</span><span class='period'>.</span><span class='id identifier rubyid_websocket?'>websocket?</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_client_socket_class'>client_socket_class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='id identifier rubyid_event_target'>event_target</span><span class='comma'>,</span> <span class='id identifier rubyid_event_loop'>event_loop</span><span class='comma'>,</span> <span class='id identifier rubyid_protocols'>protocols</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>nil</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='id identifier rubyid_event_target'>event_target</span><span class='comma'>,</span> <span class='id identifier rubyid_event_loop'>event_loop</span><span class='comma'>,</span> <span class='label'>protocols:</span> <span class='const'><a href="../../ActionCable.html" title="ActionCable (module)">ActionCable</a></span><span class='op'>::</span><span class='const'><a href="../../ActionCable.html#INTERNAL-constant" title="ActionCable::INTERNAL (constant)">INTERNAL</a></span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_protocols'>protocols</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@websocket</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>WebSocket</span><span class='op'>::</span><span class='const'>Driver</span><span class='period'>.</span><span class='id identifier rubyid_websocket?'>websocket?</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='const'><a href="ClientSocket.html" title="ActionCable::Connection::ClientSocket (class)">ClientSocket</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="ClientSocket.html#new-class_method" title="ActionCable::Connection::ClientSocket.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='id identifier rubyid_event_target'>event_target</span><span class='comma'>,</span> <span class='id identifier rubyid_event_loop'>event_loop</span><span class='comma'>,</span> <span class='id identifier rubyid_protocols'>protocols</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>nil</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -198,7 +198,7 @@
   <h3 class='signature ro first'>
     #<strong>alive?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actioncable/lib/action_cable/connection/web_socket.rb#L15-L17'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actioncable/lib/action_cable/connection/web_socket.rb#L15-L17'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -222,7 +222,7 @@
   <h3 class='signature ro'>
     #<strong>possible?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actioncable/lib/action_cable/connection/web_socket.rb#L11-L13'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actioncable/lib/action_cable/connection/web_socket.rb#L11-L13'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -246,14 +246,14 @@
   <h3 class='signature ro prot'>
     #<strong>websocket</strong>   <span class="extras">(<span class='readonly'>readonly</span>, <span class='prot'>protected</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actioncable/lib/action_cable/connection/web_socket.rb#L36-L36'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actioncable/lib/action_cable/connection/web_socket.rb#L38-L38'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-36</pre>
+38</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actioncable/lib/action_cable/connection/web_socket.rb', line 36</span></pre>
+<pre><span class='info file'># File 'actioncable/lib/action_cable/connection/web_socket.rb', line 38</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_websocket'>websocket</span>
@@ -267,7 +267,7 @@
   <h3 class='signature  first'>
     #<strong>close</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actioncable/lib/action_cable/connection/web_socket.rb#L23-L25'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actioncable/lib/action_cable/connection/web_socket.rb#L23-L25'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -291,7 +291,7 @@
   <h3 class='signature '>
     #<strong>protocol</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actioncable/lib/action_cable/connection/web_socket.rb#L27-L29'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actioncable/lib/action_cable/connection/web_socket.rb#L27-L29'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -315,7 +315,7 @@
   <h3 class='signature '>
     #<strong>rack_response</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actioncable/lib/action_cable/connection/web_socket.rb#L31-L33'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actioncable/lib/action_cable/connection/web_socket.rb#L31-L33'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -339,7 +339,7 @@
   <h3 class='signature '>
     #<strong>transmit</strong>(data)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actioncable/lib/action_cable/connection/web_socket.rb#L19-L21'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actioncable/lib/action_cable/connection/web_socket.rb#L19-L21'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 

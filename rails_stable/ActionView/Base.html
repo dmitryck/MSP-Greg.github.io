@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActionView::Base &mdash; Rails-5-0-stable</title>
+<title>Class: ActionView::Base &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_B'>Index (B)</a> &raquo; 
         <a href="../ActionView.html" title="ActionView (module)">ActionView</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Base&nbsp;&#x25B2;</a></span>
@@ -132,7 +132,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L139'>actionview/lib/action_view/base.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L139'>actionview/lib/action_view/base.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -144,36 +144,39 @@
     
 <p>Action View templates can be written in several ways. If the template file
 has a <code>.erb</code> extension, then it uses the <a
-href="https://rubygems.org/gems/erubis">erubis</a> template system which
-can embed Ruby into an HTML document. If the template file has a <code>.builder</code>
+href="https://rubygems.org/gems/erubi">erubi</a> template system which can
+embed Ruby into an HTML document. If the template file has a <code>.builder</code>
 extension, then Jim Weirich&#39;s <code>Builder::XmlMarkup</code> library is used.</p>
 
 <h3 id="label-7BERB-7D"><a href="../ERB.html" title="ERB (class)">::ERB</a></h3>
 
-<p>You trigger <a href="../ERB.html" title="ERB (class)">::ERB</a> by using embeddings such as &lt;% %&gt;, &lt;% -%&gt;,
-and &lt;%= %&gt;. The &lt;%= %&gt; tag set is used when you want output.
-Consider the following loop for names:</p>
+<p>You trigger <a href="../ERB.html" title="ERB (class)">::ERB</a> by using embeddings such as <code>&lt;% %&gt;</code>,
+<code>&lt;% -%&gt;</code>, and <code>&lt;%= %&gt;</code>. The <code>&lt;%=
+%&gt;</code> tag set is used when you want output. Consider the following
+loop for names:</p>
 
 <pre class="code ruby"><code class="ruby">&lt;b&gt;Names of all the people&lt;/b&gt;
 &lt;% @people.each do |person| %&gt;
   Name: &lt;%= person.name %&gt;&lt;br/&gt;
 &lt;% end %&gt;</code></pre>
 
-<p>The loop is setup in regular embedding tags &lt;% %&gt; and the name is
-written using the output embedding tag &lt;%= %&gt;. Note that this is not
-just a usage suggestion. Regular output functions like print or puts
-won&#39;t work with <a href="../ERB.html" title="ERB (class)">::ERB</a> templates. So this would be wrong:</p>
+<p>The loop is setup in regular embedding tags <code>&lt;% %&gt;</code>, and
+the name is written using the output embedding tag <code>&lt;%=
+%&gt;</code>. Note that this is not just a usage suggestion. Regular output
+functions like print or puts won&#39;t work with <a href="../ERB.html" title="ERB (class)">::ERB</a> templates. So this
+would be wrong:</p>
 
 <pre class="code ruby"><code class="ruby">&lt;%# WRONG %&gt;
 Hi, Mr. &lt;% puts &quot;Frodo&quot; %&gt;</code></pre>
 
 <p>If you absolutely must write from within a function use <code>concat</code>.</p>
 
-<p>When on a line that only contains whitespaces except for the tag, &lt;%
-%&gt; suppress leading and trailing whitespace, including the trailing
-newline. &lt;% %&gt; and &lt;%- -%&gt; are the same. Note however that
-&lt;%= %&gt; and &lt;%= -%&gt; are different: only the latter removes
-trailing whitespaces.</p>
+<p>When on a line that only contains whitespaces except for the tag,
+<code>&lt;% %&gt;</code> suppresses leading and trailing whitespace,
+including the trailing newline. <code>&lt;% %&gt;</code> and <code>&lt;%-
+-%&gt;</code> are the same. Note however that <code>&lt;%= %&gt;</code> and
+<code>&lt;%= -%&gt;</code> are different: only the latter removes trailing
+whitespaces.</p>
 
 <h4 id="label-Using+sub+templates">Using sub templates</h4>
 
@@ -260,7 +263,7 @@ markup in the block. For example, the following:</p>
   &lt;p&gt;A product of Danish Design during the Winter of &#39;79...&lt;/p&gt;
 &lt;/div&gt;</code></pre>
 
-<p>A full-length RSS example actually used on Basecamp:</p>
+<p>Here is a full-length RSS example actually used on Basecamp:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='id identifier rubyid_rss'>rss</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>version</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>2.0</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>xmlns:dc</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://purl.org/dc/elements/1.1/</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='id identifier rubyid_channel'>channel</span> <span class='kw'>do</span>
@@ -801,6 +804,10 @@ by <code>object</code>).</p></div></td>
       <td><div class='inline'><p>Returns a text_field of type "email".</p></div></td>
     </tr>
     <tr class='i_ds'>
+      <td><a class='i_m ' href="Helpers/FormHelper.html#fields-instance_method" title="ActionView::Helpers::FormHelper#fields (method)">#fields</a></td>
+      <td><div class='inline'><p>Scopes input fields with either an explicit scope or model.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
       <td><a class='i_m ' href="Helpers/FormHelper.html#fields_for-instance_method" title="ActionView::Helpers::FormHelper#fields_for (method)">#fields_for</a></td>
       <td><div class='inline'><p>Creates a scope around a specific model object like form_for, but
 doesn&#39;t create the form tags themselves.</p></div></td>
@@ -815,6 +822,10 @@ attribute (identified by <code>method</code>) on an object assigned to the templ
       <td><a class='i_m ' href="Helpers/FormHelper.html#form_for-instance_method" title="ActionView::Helpers::FormHelper#form_for (method)">#form_for</a></td>
       <td><div class='inline'><p>Creates a form that allows the user to create or update the attributes of a
 specific model object.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Helpers/FormHelper.html#form_with-instance_method" title="ActionView::Helpers::FormHelper#form_with (method)">#form_with</a></td>
+      <td><div class='inline'><p>Creates a form tag based on mixing URLs, scopes, or models.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Helpers/FormHelper.html#hidden_field-instance_method" title="ActionView::Helpers::FormHelper#hidden_field (method)">#hidden_field</a></td>
@@ -906,7 +917,7 @@ attribute (identified by <code>method</code>) on an object assigned to the templ
 with the id following an underscore.</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m prot' href="RecordIdentifier.html#record_key_for_dom_id-instance_method" title="ActionView::RecordIdentifier#record_key_for_dom_id (method)">#record_key_for_dom_id</a></td>
+      <td><a class='i_m priv' href="RecordIdentifier.html#record_key_for_dom_id-instance_method" title="ActionView::RecordIdentifier#record_key_for_dom_id (method)">#record_key_for_dom_id</a></td>
       <td><div class='inline'><p>Returns a string representation of the key attribute(s) that is suitable
 for use in an HTML DOM id.</p></div></td>
     </tr>
@@ -918,8 +929,8 @@ for use in an HTML DOM id.</p></div></td>
   <tbody>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Helpers/FormTagHelper.html#button_tag-instance_method" title="ActionView::Helpers::FormTagHelper#button_tag (method)">#button_tag</a></td>
-      <td><div class='inline'><p>Creates a button element that defines a <code>submit</code> button, <code>reset</code>button or a
-generic button which can be used in JavaScript, for example.</p></div></td>
+      <td><div class='inline'><p>Creates a button element that defines a <code>submit</code> button, <code>reset</code> button or
+a generic button which can be used in JavaScript, for example.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Helpers/FormTagHelper.html#check_box_tag-instance_method" title="ActionView::Helpers::FormTagHelper#check_box_tag (method)">#check_box_tag</a></td>
@@ -1119,7 +1130,8 @@ whitelisted.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Helpers/SanitizeHelper.html#strip_tags-instance_method" title="ActionView::Helpers::SanitizeHelper#strip_tags (method)">#strip_tags</a></td>
-      <td><div class='inline'><p>Strips all HTML tags from <code>html</code>, including comments.</p></div></td>
+      <td><div class='inline'><p>Strips all HTML tags from <code>html</code>, including comments and special
+characters.</p></div></td>
     </tr>
   </tbody>
 </table></div>
@@ -1372,8 +1384,7 @@ entities.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Helpers/TagHelper.html#tag-instance_method" title="ActionView::Helpers::TagHelper#tag (method)">#tag</a></td>
-      <td><div class='inline'><p>Returns an empty HTML tag of type <code>name</code> which by default is XHTML
-compliant.</p></div></td>
+      <td><div class='inline'><p>Returns an HTML tag.</p></div></td>
     </tr>
   </tbody>
 </table></div>
@@ -1428,7 +1439,7 @@ back to the layout.</p></div></td>
   <tbody>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Helpers/AssetUrlHelper.html#asset_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#asset_path (method)">#asset_path</a></td>
-      <td><div class='inline'><p>Computes the path to asset in public directory.</p></div></td>
+      <td><div class='inline'><p>This is the entry point for all assets.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Helpers/AssetUrlHelper.html#asset_url-instance_method" title="ActionView::Helpers::AssetUrlHelper#asset_url (method)">#asset_url</a></td>
@@ -1507,6 +1518,10 @@ directory.</p></div></td>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Helpers/AssetUrlHelper.html#path_to_video-instance_method" title="ActionView::Helpers::AssetUrlHelper#path_to_video (method)">#path_to_video</a></td>
       <td><div class='inline'><p>Alias for <a href="Helpers/AssetUrlHelper.html#video_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#video_path (method)">Helpers::AssetUrlHelper#video_path</a>.</p></div></td>
+    </tr>
+    <tr class='i_ds'>
+      <td><a class='i_m ' href="Helpers/AssetUrlHelper.html#public_compute_asset_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#public_compute_asset_path (method)">#public_compute_asset_path</a></td>
+      <td><div class='inline'><p>Alias for <a href="Helpers/AssetUrlHelper.html#compute_asset_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#compute_asset_path (method)">Helpers::AssetUrlHelper#compute_asset_path</a>.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Helpers/AssetUrlHelper.html#stylesheet_path-instance_method" title="ActionView::Helpers::AssetUrlHelper#stylesheet_path (method)">#stylesheet_path</a></td>
@@ -1588,7 +1603,7 @@ buffer on <code>yield</code>.</p></div></td>
   <h3 class='signature rw first'>
     .<strong>_routes</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L168-L168'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L168-L168'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1608,7 +1623,7 @@ buffer on <code>yield</code>.</p></div></td>
   <h3 class='signature rw'>
     .<strong>_routes?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L168-L168'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L168-L168'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1636,7 +1651,7 @@ buffer on <code>yield</code>.</p></div></td>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L165-L165'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L165-L165'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1656,7 +1671,7 @@ buffer on <code>yield</code>.</p></div></td>
   <h3 class='signature rw'>
     .<strong>cache_template_loading</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L174-L176'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L174-L176'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1680,7 +1695,7 @@ buffer on <code>yield</code>.</p></div></td>
   <h3 class='signature rw'>
     .<strong>cache_template_loading=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L178-L180'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L178-L180'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1712,7 +1727,7 @@ buffer on <code>yield</code>.</p></div></td>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L158-L158'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L158-L158'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1741,7 +1756,7 @@ errors.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L143-L143'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L143-L143'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1761,7 +1776,7 @@ errors.</p>
   <h3 class='signature rw'>
     .<strong>logger</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L169-L169'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L169-L169'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1781,7 +1796,7 @@ errors.</p>
   <h3 class='signature rw'>
     .<strong>logger?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L169-L169'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L169-L169'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1811,7 +1826,7 @@ partial paths for <a href="../ActiveModel.html" title="ActiveModel (module)">::A
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L154-L154'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L154-L154'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1839,7 +1854,7 @@ partial paths for <a href="../ActiveModel.html" title="ActiveModel (module)">::A
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L161-L161'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L161-L161'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1868,7 +1883,7 @@ guess: first try to close the attribute, then the tag.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L148-L148'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L148-L148'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1889,7 +1904,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw first'>
     #<strong>_routes</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L168-L168'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L168-L168'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1909,7 +1924,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>_routes?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L168-L168'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L168-L168'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1929,7 +1944,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>assigns</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L188-L188'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L188-L188'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1949,7 +1964,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>automatically_disable_submit_tag</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L165-L165'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L165-L165'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1969,7 +1984,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>config</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L188-L188'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L188-L188'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1989,7 +2004,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>default_formats</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L158-L158'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L158-L158'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2009,7 +2024,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>field_error_proc</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L143-L143'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L143-L143'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2029,7 +2044,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>formats</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L191-L191'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L191-L191'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2039,7 +2054,7 @@ guess: first try to close the attribute, then the tag.</p>
 <pre><span class='info file'># File 'actionview/lib/action_view/base.rb', line 191</span></pre>
 <pre class='code ruby'>
 
-<span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_formats'>formats</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_formats='>formats=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale'>locale</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale='>locale=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_paths'>view_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_paths='>view_paths=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to'>to</span> <span class='op'>=&gt;</span> <span class='symbeg'>:</span><span class='id identifier rubyid_lookup_context'>lookup_context</span>
+<span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_formats'>formats</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_formats='>formats=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale'>locale</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale='>locale=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_paths'>view_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_paths='>view_paths=</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_lookup_context'>lookup_context</span>
 </pre>
   </div>
 </div>
@@ -2049,7 +2064,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>locale</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L191-L191'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L191-L191'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2059,7 +2074,7 @@ guess: first try to close the attribute, then the tag.</p>
 <pre><span class='info file'># File 'actionview/lib/action_view/base.rb', line 191</span></pre>
 <pre class='code ruby'>
 
-<span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_formats'>formats</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_formats='>formats=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale'>locale</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale='>locale=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_paths'>view_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_paths='>view_paths=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to'>to</span> <span class='op'>=&gt;</span> <span class='symbeg'>:</span><span class='id identifier rubyid_lookup_context'>lookup_context</span>
+<span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_formats'>formats</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_formats='>formats=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale'>locale</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale='>locale=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_paths'>view_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_paths='>view_paths=</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_lookup_context'>lookup_context</span>
 </pre>
   </div>
 </div>
@@ -2069,7 +2084,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>logger</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L169-L169'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L169-L169'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2089,7 +2104,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>logger?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L169-L169'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L169-L169'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2109,7 +2124,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature ro'>
     #<strong>lookup_context</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L190-L190'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L190-L190'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2119,7 +2134,7 @@ guess: first try to close the attribute, then the tag.</p>
 <pre><span class='info file'># File 'actionview/lib/action_view/base.rb', line 190</span></pre>
 <pre class='code ruby'>
 
-<span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_lookup_context'>lookup_context</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to'>to</span> <span class='op'>=&gt;</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_renderer'>view_renderer</span>
+<span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_lookup_context'>lookup_context</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_renderer'>view_renderer</span>
 </pre>
   </div>
 </div>
@@ -2129,7 +2144,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>prefix_partial_path_with_controller_namespace</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L154-L154'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L154-L154'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2149,7 +2164,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>raise_on_missing_translations</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L161-L161'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L161-L161'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2169,7 +2184,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>streaming_completion_on_exception</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L148-L148'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L148-L148'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2189,7 +2204,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>view_paths</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L191-L191'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L191-L191'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -2199,7 +2214,7 @@ guess: first try to close the attribute, then the tag.</p>
 <pre><span class='info file'># File 'actionview/lib/action_view/base.rb', line 191</span></pre>
 <pre class='code ruby'>
 
-<span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_formats'>formats</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_formats='>formats=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale'>locale</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale='>locale=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_paths'>view_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_paths='>view_paths=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to'>to</span> <span class='op'>=&gt;</span> <span class='symbeg'>:</span><span class='id identifier rubyid_lookup_context'>lookup_context</span>
+<span class='id identifier rubyid_delegate'>delegate</span> <span class='symbeg'>:</span><span class='id identifier rubyid_formats'>formats</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_formats='>formats=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale'>locale</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale='>locale=</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_paths'>view_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_view_paths='>view_paths=</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_lookup_context'>lookup_context</span>
 </pre>
   </div>
 </div>
@@ -2209,7 +2224,7 @@ guess: first try to close the attribute, then the tag.</p>
   <h3 class='signature rw'>
     #<strong>view_renderer</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/base.rb#L187-L187'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/base.rb#L187-L187'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActionView::Helpers::FormOptionsHelper &mdash; Rails-5-0-stable</title>
+<title>Module: ActionView::Helpers::FormOptionsHelper &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_F'>Index (F)</a> &raquo; 
         <a href="../../ActionView.html" title="ActionView (module)">ActionView</a> &raquo; 
         <a class='nodoc' href="../Helpers.html" title="ActionView::Helpers (module)">Helpers</a> &raquo; 
@@ -99,7 +99,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L93'>actionview/lib/action_view/helpers/form_options_helper.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L93'>actionview/lib/action_view/helpers/form_options_helper.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -402,8 +402,7 @@ entities.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="TagHelper.html#tag-instance_method" title="ActionView::Helpers::TagHelper#tag (method)">#tag</a></td>
-      <td><div class='inline'><p>Returns an empty HTML tag of type <code>name</code> which by default is XHTML
-compliant.</p></div></td>
+      <td><div class='inline'><p>Returns an HTML tag.</p></div></td>
     </tr>
   </tbody>
 </table></div>
@@ -471,7 +470,8 @@ whitelisted.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="SanitizeHelper.html#strip_tags-instance_method" title="ActionView::Helpers::SanitizeHelper#strip_tags (method)">#strip_tags</a></td>
-      <td><div class='inline'><p>Strips all HTML tags from <code>html</code>, including comments.</p></div></td>
+      <td><div class='inline'><p>Strips all HTML tags from <code>html</code>, including comments and special
+characters.</p></div></td>
     </tr>
   </tbody>
 </table></div>
@@ -573,7 +573,7 @@ field name as the checkboxes with a blank value.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L750-L752'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L750-L752'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -671,13 +671,13 @@ methods, respectively. You can use them like this:</p>
 
 <p>The HTML specification says when nothing is select on a collection of radio
 buttons web browsers do not send any value to server. Unfortunately this
-introduces a gotcha: if a <code>User</code> model has a <code>category_id</code> field, and in
-the form none category is selected no <code>category_id</code> parameter is sent. So,
-any strong parameters idiom like</p>
+introduces a gotcha: if a <code>User</code> model has a <code>category_id</code> field and in the
+form no category is selected, no <code>category_id</code> parameter is sent. So, any
+strong parameters idiom like:</p>
 
 <pre class="code ruby"><code class="ruby">params.require(:user).permit(...)</code></pre>
 
-<p>will raise an error since no <tt>{user: ...}</tt> will be present.</p>
+<p>will raise an error since no <code>{user: ...}</code> will be present.</p>
 
 <p>To prevent this the helper generates an auxiliary hidden field before every
 collection of radio buttons. The hidden field has the same name as
@@ -688,7 +688,7 @@ can specify <code>include_hidden: false</code> option.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L666-L668'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L666-L668'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -759,7 +759,7 @@ return:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L201-L203'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L201-L203'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -856,7 +856,7 @@ as the contents of its <code>&lt;option&gt;</code> tag.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L257-L259'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L257-L259'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -962,7 +962,7 @@ the output in an appropriate <code>&lt;select&gt;</code> tag.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L525-L549'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L525-L549'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1103,7 +1103,7 @@ the output in an appropriate <code>&lt;select&gt;</code> tag.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L455-L462'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L455-L462'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1206,7 +1206,7 @@ regular HTML select tag.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L351-L368'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L351-L368'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1248,7 +1248,7 @@ regular HTML select tag.</p>
     <span class='id identifier rubyid_html_attributes'>html_attributes</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_disabled'>disabled</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='id identifier rubyid_disabled'>disabled</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_option_value_selected?'>option_value_selected?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_disabled'>disabled</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_html_attributes'>html_attributes</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_value'>value</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
 
-    <span class='id identifier rubyid_content_tag_string'>content_tag_string</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_option'>option</span><span class='comma'>,</span> <span class='id identifier rubyid_text'>text</span><span class='comma'>,</span> <span class='id identifier rubyid_html_attributes'>html_attributes</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_tag_builder'>tag_builder</span><span class='period'>.</span><span class='id identifier rubyid_content_tag_string'>content_tag_string</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_option'>option</span><span class='comma'>,</span> <span class='id identifier rubyid_text'>text</span><span class='comma'>,</span> <span class='id identifier rubyid_html_attributes'>html_attributes</span><span class='rparen'>)</span>
   <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
 <span class='kw'>end</span>
 </pre>
@@ -1298,7 +1298,7 @@ the same as &#39;1&#39; (a string)</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L394-L405'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L394-L405'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1422,7 +1422,7 @@ can specify <code>include_hidden: false</code> option.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L162-L164'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L162-L164'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1470,7 +1470,7 @@ regular HTML select tag.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L569-L588'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L569-L588'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1511,7 +1511,7 @@ regular HTML select tag.</p>
     <span class='kw'>end</span>
 
     <span class='id identifier rubyid_zone_options'>zone_options</span><span class='period'>.</span><span class='id identifier rubyid_safe_concat'>safe_concat</span> <span class='id identifier rubyid_options_for_select'>options_for_select</span><span class='lparen'>(</span><span class='id identifier rubyid_convert_zones'>convert_zones</span><span class='lbracket'>[</span><span class='id identifier rubyid_priority_zones'>priority_zones</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_selected'>selected</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_zone_options'>zone_options</span><span class='period'>.</span><span class='id identifier rubyid_safe_concat'>safe_concat</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>option</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-------------</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>disabled:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_zone_options'>zone_options</span><span class='period'>.</span><span class='id identifier rubyid_safe_concat'>safe_concat</span> <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>option</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-------------</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>disabled:</span> <span class='kw'>true</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_zone_options'>zone_options</span><span class='period'>.</span><span class='id identifier rubyid_safe_concat'>safe_concat</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
 
     <span class='id identifier rubyid_zones'>zones</span> <span class='op'>=</span> <span class='id identifier rubyid_zones'>zones</span> <span class='op'>-</span> <span class='id identifier rubyid_priority_zones'>priority_zones</span>
@@ -1563,7 +1563,7 @@ a default <a href="../../ActiveSupport/TimeZone.html" title="ActiveSupport::Time
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L291-L293'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/form_options_helper.rb#L291-L293'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 

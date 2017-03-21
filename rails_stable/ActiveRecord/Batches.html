@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Batches &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Batches &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_B'>Index (B)</a> &raquo; 
         <a href="../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Batches&nbsp;&#x25B2;</a></span>
@@ -88,7 +88,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/relation/batches.rb#L4'>activerecord/lib/active_record/relation/batches.rb</a><span class='defines'>,<br /><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/relation/batches/batch_enumerator.rb#L2'>activerecord/lib/active_record/relation/batches/batch_enumerator.rb</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/relation/batches.rb#L4'>activerecord/lib/active_record/relation/batches.rb</a><span class='defines'>,<br /><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/relation/batches/batch_enumerator.rb#L2'>activerecord/lib/active_record/relation/batches/batch_enumerator.rb</a></span>
       </td>
     </tr>
   </tbody>
@@ -98,9 +98,9 @@
 <div>
 <ul class='constants summary full'>
   <li>
-    <span id='ORDER_OR_LIMIT_IGNORED_MESSAGE-constant' class='summary_signature'>ORDER_OR_LIMIT_IGNORED_MESSAGE =</span>
+    <span id='ORDER_IGNORE_MESSAGE-constant' class='summary_signature'>ORDER_IGNORE_MESSAGE =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/relation/batches.rb#L5-L5'># File 'activerecord/lib/active_record/relation/batches.rb', line 5</a>    <pre class='code ruby'><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Scoped order and limit are ignored, it&#39;s forced to be batch order and batch size.</span><span class='tstring_end'>&quot;</span></span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/relation/batches.rb#L5-L5'># File 'activerecord/lib/active_record/relation/batches.rb', line 5</a>    <pre class='code ruby'><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Scoped order is ignored, it&#39;s forced to be batch order.</span><span class='tstring_end'>&quot;</span></span></pre>
   </li>
 </ul>
 </div>
@@ -185,16 +185,20 @@ of the value.</p>
 <p><code>:error_on_ignore</code> - Overrides the application config to specify
 if an error should be raised when</p>
 
-<pre class="code ruby"><code class="ruby">the order and limit have to be ignored due to batching.</code></pre>
+<pre class="code ruby"><code class="ruby">an order is present in the relation.</code></pre>
 </li></ul>
 
-<p>This is especially useful if you want multiple workers dealing with the
-same processing queue. You can make worker 1 handle all the records between
-id 0 and 10,000 and worker 2 handle from 10,000 and beyond (by setting the
-<code>:start</code> and <code>:finish</code> option on each worker).</p>
+<p>Limits are honored, and if present there is no requirement for the batch
+size, it can be less than, equal, or greater than the limit.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='comment'># Let&#39;s process for a batch of 2000 records, skipping the first 2000 rows
-</span><span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_find_each'>find_each</span><span class='lparen'>(</span><span class='label'>start:</span> <span class='int'>2000</span><span class='comma'>,</span> <span class='label'>batch_size:</span> <span class='int'>2000</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_person'>person</span><span class='op'>|</span>
+<p>The options <code>start</code> and <code>finish</code> are especially useful if you want multiple
+workers dealing with the same processing queue. You can make worker 1
+handle all the records between id 1 and 9999 and worker 2 handle from 10000
+and beyond by setting the <code>:start</code> and <code>:finish</code>
+option on each worker.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Let&#39;s process from record 10_000 on.
+</span><span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_find_each'>find_each</span><span class='lparen'>(</span><span class='label'>start:</span> <span class='int'>10_000</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_person'>person</span><span class='op'>|</span>
   <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_party_all_night!'>party_all_night!</span>
 <span class='kw'>end</span></code></pre>
 
@@ -203,20 +207,16 @@ ascending on the primary key ("id ASC") to make the batch ordering work.
 This also means that this method only works when the primary key is
 orderable (e.g. an integer or string).</p>
 
-<p>NOTE: You can&#39;t set the limit either, that&#39;s used to control the
-batch sizes.</p>
+<p>NOTE: By its nature, batch processing is subject to race conditions if
+other processes are modifying the database.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/relation/batches.rb#L56-L67'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/relation/batches.rb#L60-L71'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-56
-57
-58
-59
 60
 61
 62
@@ -224,9 +224,13 @@ batch sizes.</p>
 64
 65
 66
-67</pre>
+67
+68
+69
+70
+71</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/batches.rb', line 56</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/batches.rb', line 60</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_each'>find_each</span><span class='lparen'>(</span><span class='label'>start:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>finish:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>batch_size:</span> <span class='int'>1000</span><span class='comma'>,</span> <span class='label'>error_on_ignore:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -285,16 +289,20 @@ of the value.</p>
 <p><code>:error_on_ignore</code> - Overrides the application config to specify
 if an error should be raised when</p>
 
-<pre class="code ruby"><code class="ruby">the order and limit have to be ignored due to batching.</code></pre>
+<pre class="code ruby"><code class="ruby">an order is present in the relation.</code></pre>
 </li></ul>
 
-<p>This is especially useful if you want multiple workers dealing with the
-same processing queue. You can make worker 1 handle all the records between
-id 0 and 10,000 and worker 2 handle from 10,000 and beyond (by setting the
-<code>:start</code> and <code>:finish</code> option on each worker).</p>
+<p>Limits are honored, and if present there is no requirement for the batch
+size, it can be less than, equal, or greater than the limit.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='comment'># Let&#39;s process the next 2000 records
-</span><span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_find_in_batches'>find_in_batches</span><span class='lparen'>(</span><span class='label'>start:</span> <span class='int'>2000</span><span class='comma'>,</span> <span class='label'>batch_size:</span> <span class='int'>2000</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_group'>group</span><span class='op'>|</span>
+<p>The options <code>start</code> and <code>finish</code> are especially useful if you want multiple
+workers dealing with the same processing queue. You can make worker 1
+handle all the records between id 1 and 9999 and worker 2 handle from 10000
+and beyond by setting the <code>:start</code> and <code>:finish</code>
+option on each worker.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Let&#39;s process from record 10_000 on.
+</span><span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_find_in_batches'>find_in_batches</span><span class='lparen'>(</span><span class='label'>start:</span> <span class='int'>10_000</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_group'>group</span><span class='op'>|</span>
   <span class='id identifier rubyid_group'>group</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_person'>person</span><span class='op'>|</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_party_all_night!'>party_all_night!</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></code></pre>
 
@@ -303,31 +311,31 @@ ascending on the primary key ("id ASC") to make the batch ordering work.
 This also means that this method only works when the primary key is
 orderable (e.g. an integer or string).</p>
 
-<p>NOTE: You can&#39;t set the limit either, that&#39;s used to control the
-batch sizes.</p>
+<p>NOTE: By its nature, batch processing is subject to race conditions if
+other processes are modifying the database.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/relation/batches.rb#L111-L123'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/relation/batches.rb#L119-L131'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-111
-112
-113
-114
-115
-116
-117
-118
 119
 120
 121
 122
-123</pre>
+123
+124
+125
+126
+127
+128
+129
+130
+131</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/batches.rb', line 111</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/batches.rb', line 119</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_in_batches'>find_in_batches</span><span class='lparen'>(</span><span class='label'>start:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>finish:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>batch_size:</span> <span class='int'>1000</span><span class='comma'>,</span> <span class='label'>error_on_ignore:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -393,18 +401,20 @@ of the value.</p>
 <p><code>:error_on_ignore</code> - Overrides the application config to specify
 if an error should be raised when</p>
 
-<pre class="code ruby"><code class="ruby">the order and limit have to be ignored due to batching.</code></pre>
+<pre class="code ruby"><code class="ruby">an order is present in the relation.</code></pre>
 </li></ul>
 
-<p>This is especially useful if you want to work with the
-<a href="Relation.html" title="ActiveRecord::Relation (class)">Relation</a> object instead of the array of records, or if you
-want multiple workers dealing with the same processing queue. You can make
-worker 1 handle all the records between id 0 and 10,000 and worker 2 handle
-from 10,000 and beyond (by setting the <code>:start</code> and
-<code>:finish</code> option on each worker).</p>
+<p>Limits are honored, and if present there is no requirement for the batch
+size, it can be less than, equal, or greater than the limit.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='comment'># Let&#39;s process the next 2000 records
-</span><span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_in_batches'>in_batches</span><span class='lparen'>(</span><span class='label'>of:</span> <span class='int'>2000</span><span class='comma'>,</span> <span class='label'>start:</span> <span class='int'>2000</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_update_all'>update_all</span><span class='lparen'>(</span><span class='label'>awesome:</span> <span class='kw'>true</span><span class='rparen'>)</span></code></pre>
+<p>The options <code>start</code> and <code>finish</code> are especially useful if you want multiple
+workers dealing with the same processing queue. You can make worker 1
+handle all the records between id 1 and 9999 and worker 2 handle from 10000
+and beyond by setting the <code>:start</code> and <code>:finish</code>
+option on each worker.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Let&#39;s process from record 10_000 on.
+</span><span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_in_batches'>in_batches</span><span class='lparen'>(</span><span class='label'>start:</span> <span class='int'>10_000</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_update_all'>update_all</span><span class='lparen'>(</span><span class='label'>awesome:</span> <span class='kw'>true</span><span class='rparen'>)</span></code></pre>
 
 <p>An example of calling where query method on the relation:</p>
 
@@ -424,26 +434,16 @@ ascending on the primary key ("id ASC") to make the batch ordering
 consistent. Therefore the primary key must be orderable, e.g an integer or
 a string.</p>
 
-<p>NOTE: You can&#39;t set the limit either, that&#39;s used to control the
-batch sizes.</p>
+<p>NOTE: By its nature, batch processing is subject to race conditions if
+other processes are modifying the database.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/relation/batches.rb#L184-L219'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/relation/batches.rb#L194-L248'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
 194
 195
 196
@@ -469,9 +469,38 @@ batch sizes.</p>
 216
 217
 218
-219</pre>
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/batches.rb', line 184</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/batches.rb', line 194</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_in_batches'>in_batches</span><span class='lparen'>(</span><span class='label'>of:</span> <span class='int'>1000</span><span class='comma'>,</span> <span class='label'>start:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>finish:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>load:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>error_on_ignore:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -480,11 +509,17 @@ batch sizes.</p>
     <span class='kw'>return</span> <span class='const'><a href="Batches/BatchEnumerator.html" title="ActiveRecord::Batches::BatchEnumerator (class)">BatchEnumerator</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Batches/BatchEnumerator.html#new-class_method" title="ActiveRecord::Batches::BatchEnumerator.new (method)">new</a></span><span class='lparen'>(</span><span class='label'>of:</span> <span class='id identifier rubyid_of'>of</span><span class='comma'>,</span> <span class='label'>start:</span> <span class='id identifier rubyid_start'>start</span><span class='comma'>,</span> <span class='label'>finish:</span> <span class='id identifier rubyid_finish'>finish</span><span class='comma'>,</span> <span class='label'>relation:</span> <span class='kw'>self</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_arel'>arel</span><span class='period'>.</span><span class='id identifier rubyid_orders'>orders</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>||</span> <span class='id identifier rubyid_arel'>arel</span><span class='period'>.</span><span class='id identifier rubyid_taken'>taken</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span>
-    <span class='id identifier rubyid_act_on_order_or_limit_ignored'>act_on_order_or_limit_ignored</span><span class='lparen'>(</span><span class='id identifier rubyid_error_on_ignore'>error_on_ignore</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_arel'>arel</span><span class='period'>.</span><span class='id identifier rubyid_orders'>orders</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span>
+    <span class='id identifier rubyid_act_on_ignored_order'>act_on_ignored_order</span><span class='lparen'>(</span><span class='id identifier rubyid_error_on_ignore'>error_on_ignore</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_relation'>relation</span> <span class='op'>=</span> <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_reorder'>reorder</span><span class='lparen'>(</span><span class='id identifier rubyid_batch_order'>batch_order</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_limit'>limit</span><span class='lparen'>(</span><span class='id identifier rubyid_of'>of</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_batch_limit'>batch_limit</span> <span class='op'>=</span> <span class='id identifier rubyid_of'>of</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_limit_value'>limit_value</span>
+    <span class='id identifier rubyid_remaining'>remaining</span>   <span class='op'>=</span> <span class='id identifier rubyid_limit_value'>limit_value</span>
+    <span class='id identifier rubyid_batch_limit'>batch_limit</span> <span class='op'>=</span> <span class='id identifier rubyid_remaining'>remaining</span> <span class='kw'>if</span> <span class='id identifier rubyid_remaining'>remaining</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_batch_limit'>batch_limit</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_relation'>relation</span> <span class='op'>=</span> <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_reorder'>reorder</span><span class='lparen'>(</span><span class='id identifier rubyid_batch_order'>batch_order</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_limit'>limit</span><span class='lparen'>(</span><span class='id identifier rubyid_batch_limit'>batch_limit</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_relation'>relation</span> <span class='op'>=</span> <span class='id identifier rubyid_apply_limits'>apply_limits</span><span class='lparen'>(</span><span class='id identifier rubyid_relation'>relation</span><span class='comma'>,</span> <span class='id identifier rubyid_start'>start</span><span class='comma'>,</span> <span class='id identifier rubyid_finish'>finish</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_batch_relation'>batch_relation</span> <span class='op'>=</span> <span class='id identifier rubyid_relation'>relation</span>
 
@@ -492,11 +527,11 @@ batch sizes.</p>
     <span class='kw'>if</span> <span class='id identifier rubyid_load'>load</span>
       <span class='id identifier rubyid_records'>records</span> <span class='op'>=</span> <span class='id identifier rubyid_batch_relation'>batch_relation</span><span class='period'>.</span><span class='id identifier rubyid_records'>records</span>
       <span class='id identifier rubyid_ids'>ids</span> <span class='op'>=</span> <span class='id identifier rubyid_records'>records</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbeg'>:</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_yielded_relation'>yielded_relation</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_primary_key'>primary_key</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_ids'>ids</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_yielded_relation'>yielded_relation</span> <span class='op'>=</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_primary_key'>primary_key</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_ids'>ids</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_yielded_relation'>yielded_relation</span><span class='period'>.</span><span class='id identifier rubyid_load_records'>load_records</span><span class='lparen'>(</span><span class='id identifier rubyid_records'>records</span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_ids'>ids</span> <span class='op'>=</span> <span class='id identifier rubyid_batch_relation'>batch_relation</span><span class='period'>.</span><span class='id identifier rubyid_pluck'>pluck</span><span class='lparen'>(</span><span class='id identifier rubyid_primary_key'>primary_key</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_yielded_relation'>yielded_relation</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_primary_key'>primary_key</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_ids'>ids</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_yielded_relation'>yielded_relation</span> <span class='op'>=</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_primary_key'>primary_key</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_ids'>ids</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
 
     <span class='kw'>break</span> <span class='kw'>if</span> <span class='id identifier rubyid_ids'>ids</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -506,7 +541,20 @@ batch sizes.</p>
 
     <span class='kw'>yield</span> <span class='id identifier rubyid_yielded_relation'>yielded_relation</span>
 
-    <span class='kw'>break</span> <span class='kw'>if</span> <span class='id identifier rubyid_ids'>ids</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_of'>of</span>
+    <span class='kw'>break</span> <span class='kw'>if</span> <span class='id identifier rubyid_ids'>ids</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_batch_limit'>batch_limit</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_limit_value'>limit_value</span>
+      <span class='id identifier rubyid_remaining'>remaining</span> <span class='op'>-=</span> <span class='id identifier rubyid_ids'>ids</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+
+      <span class='kw'>if</span> <span class='id identifier rubyid_remaining'>remaining</span> <span class='op'>==</span> <span class='int'>0</span>
+        <span class='comment'># Saves a useless iteration when the limit is a multiple of the
+</span>        <span class='comment'># batch size.
+</span>        <span class='kw'>break</span>
+      <span class='kw'>elsif</span> <span class='id identifier rubyid_remaining'>remaining</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_batch_limit'>batch_limit</span>
+        <span class='id identifier rubyid_relation'>relation</span> <span class='op'>=</span> <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_limit'>limit</span><span class='lparen'>(</span><span class='id identifier rubyid_remaining'>remaining</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
     <span class='id identifier rubyid_batch_relation'>batch_relation</span> <span class='op'>=</span> <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_arel_attribute'>arel_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_primary_key'>primary_key</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gt'>gt</span><span class='lparen'>(</span><span class='id identifier rubyid_primary_key_offset'>primary_key_offset</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>

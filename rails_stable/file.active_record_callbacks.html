@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Active Record Callbacks &mdash; Rails-5-0-stable</title>
+<title>File: Active Record Callbacks &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Active Record Callbacks&nbsp;&#x25B2;</a></span>
             </div>
@@ -99,7 +99,7 @@ objects.</p>
 
   <span class='id identifier rubyid_before_validation'>before_validation</span> <span class='symbeg'>:</span><span class='id identifier rubyid_ensure_login_has_a_value'>ensure_login_has_a_value</span>
 
-  <span class='id identifier rubyid_protected'>protected</span>
+  <span class='id identifier rubyid_private'>private</span>
     <span class='kw'>def</span> <span class='id identifier rubyid_ensure_login_has_a_value'>ensure_login_has_a_value</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_login'>login</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
         <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_login'>login</span> <span class='op'>=</span> <span class='id identifier rubyid_email'>email</span> <span class='kw'>unless</span> <span class='id identifier rubyid_email'>email</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
@@ -125,7 +125,7 @@ objects.</p>
   <span class='comment'># :on takes an array as well
 </span>  <span class='id identifier rubyid_after_validation'>after_validation</span> <span class='symbeg'>:</span><span class='id identifier rubyid_set_location'>set_location</span><span class='comma'>,</span> <span class='label'>on:</span> <span class='lbracket'>[</span> <span class='symbeg'>:</span><span class='id identifier rubyid_create'>create</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_update'>update</span> <span class='rbracket'>]</span>
 
-  <span class='id identifier rubyid_protected'>protected</span>
+  <span class='id identifier rubyid_private'>private</span>
     <span class='kw'>def</span> <span class='id identifier rubyid_normalize_name'>normalize_name</span>
       <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span><span class='period'>.</span><span class='id identifier rubyid_titleize'>titleize</span>
     <span class='kw'>end</span>
@@ -135,7 +135,7 @@ objects.</p>
     <span class='kw'>end</span>
 <span class='kw'>end</span></code></pre>
 
-<p>It is considered good practice to declare callback methods as protected or private. If left public, they can be called from outside of the model and violate the principle of object encapsulation.</p>
+<p>It is considered good practice to declare callback methods as private. If left public, they can be called from outside of the model and violate the principle of object encapsulation.</p>
 
 <h2>Available Callbacks</h2>
 
@@ -344,7 +344,7 @@ Article destroyed
 
 <h2>Conditional Callbacks</h2>
 
-<p>As with validations, we can also make the calling of a callback method conditional on the satisfaction of a given predicate. We can do this using the <code>:if</code> and <code>:unless</code> options, which can take a symbol, a string, a <code>Proc</code> or an <a href="Array.html" title="Array (class)">Array</a>. You may use the <code>:if</code> option when you want to specify under which conditions the callback <strong>should</strong> be called. If you want to specify the conditions under which the callback <strong>should not</strong> be called, then you may use the <code>:unless</code> option.</p>
+<p>As with validations, we can also make the calling of a callback method conditional on the satisfaction of a given predicate. We can do this using the <code>:if</code> and <code>:unless</code> options, which can take a symbol, a <code>Proc</code> or an <a href="Array.html" title="Array (class)">Array</a>. You may use the <code>:if</code> option when you want to specify under which conditions the callback <strong>should</strong> be called. If you want to specify the conditions under which the callback <strong>should not</strong> be called, then you may use the <code>:unless</code> option.</p>
 
 <h3>Using <code>:if</code> and <code>:unless</code> with a <a href="Symbol.html" title="Symbol (class)">Symbol</a></h3>
 
@@ -352,14 +352,6 @@ Article destroyed
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Order</span> <span class='op'>&lt;</span> <span class='const'>ApplicationRecord</span>
   <span class='id identifier rubyid_before_save'>before_save</span> <span class='symbeg'>:</span><span class='id identifier rubyid_normalize_card_number'>normalize_card_number</span><span class='comma'>,</span> <span class='label'>if:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_paid_with_card?'>paid_with_card?</span>
-<span class='kw'>end</span></code></pre>
-
-<h3>Using <code>:if</code> and <code>:unless</code> with a String</h3>
-
-<p>You can also use a string that will be evaluated using <code>eval</code> and hence needs to contain valid Ruby code. You should use this option only when the string represents a really short condition:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Order</span> <span class='op'>&lt;</span> <span class='const'>ApplicationRecord</span>
-  <span class='id identifier rubyid_before_save'>before_save</span> <span class='symbeg'>:</span><span class='id identifier rubyid_normalize_card_number'>normalize_card_number</span><span class='comma'>,</span> <span class='label'>if:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>paid_with_card?</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></code></pre>
 
 <h3>Using <code>:if</code> and <code>:unless</code> with a <code>Proc</code></h3>
@@ -432,7 +424,7 @@ Article destroyed
 <p>By using the <code>after_commit</code> callback we can account for this case.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>PictureFile</span> <span class='op'>&lt;</span> <span class='const'>ApplicationRecord</span>
-  <span class='id identifier rubyid_after_commit'>after_commit</span> <span class='symbeg'>:</span><span class='id identifier rubyid_delete_picture_file_from_disk'>delete_picture_file_from_disk</span><span class='comma'>,</span> <span class='label'>on:</span> <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_destroy'>destroy</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_after_commit'>after_commit</span> <span class='symbeg'>:</span><span class='id identifier rubyid_delete_picture_file_from_disk'>delete_picture_file_from_disk</span><span class='comma'>,</span> <span class='label'>on:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_destroy'>destroy</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_delete_picture_file_from_disk'>delete_picture_file_from_disk</span>
     <span class='kw'>if</span> <span class='const'><a href="File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_filepath'>filepath</span><span class='rparen'>)</span>
@@ -441,7 +433,7 @@ Article destroyed
   <span class='kw'>end</span>
 <span class='kw'>end</span></code></pre>
 
-<p>NOTE: the <code>:on</code> option specifies when a callback will be fired. If you
+<p>NOTE: The <code>:on</code> option specifies when a callback will be fired. If you
 don&#39;t supply the <code>:on</code> option the callback will fire for every action.</p>
 
 <p>Since using <code>after_commit</code> callback only on create, update or delete is
@@ -463,7 +455,7 @@ common, there are aliases for those operations:</p>
   <span class='kw'>end</span>
 <span class='kw'>end</span></code></pre>
 
-<p>WARNING. The <code>after_commit</code> and <code>after_rollback</code> callbacks are guaranteed to be called for all models created, updated, or destroyed within a transaction block. If any exceptions are raised within one of these callbacks, they will be ignored so that they don&#39;t interfere with the other callbacks. As such, if your callback code could raise an exception, you&#39;ll need to rescue it and handle it appropriately within the callback.</p>
+<p>WARNING. The <code>after_commit</code> and <code>after_rollback</code> callbacks are called for all models created, updated, or destroyed within a transaction block. However, if an exception is raised within one of these callbacks, the exception will bubble up and any remaining <code>after_commit</code> or <code>after_rollback</code> methods will <em>not</em> be executed. As such, if your callback code could raise an exception, you&#39;ll need to rescue it and handle it within the callback in order to allow other callbacks to run.</p>
 
 <div id='footer'>
   Generated by

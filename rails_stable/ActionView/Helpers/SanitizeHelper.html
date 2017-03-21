@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActionView::Helpers::SanitizeHelper &mdash; Rails-5-0-stable</title>
+<title>Module: ActionView::Helpers::SanitizeHelper &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_S'>Index (S)</a> &raquo; 
         <a href="../../ActionView.html" title="ActionView (module)">ActionView</a> &raquo; 
         <a class='nodoc' href="../Helpers.html" title="ActionView::Helpers (module)">Helpers</a> &raquo; 
@@ -99,7 +99,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/sanitize_helper.rb#L9'>actionview/lib/action_view/helpers/sanitize_helper.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/sanitize_helper.rb#L9'>actionview/lib/action_view/helpers/sanitize_helper.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -167,7 +167,8 @@ whitelisted.</p></div>
       <a href="#strip_tags-instance_method" title="#strip_tags (instance method)">#<strong>strip_tags</strong>(html)  </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Strips all HTML tags from <code>html</code>, including comments.</p></div>
+      <div class='inline'><p>Strips all HTML tags from <code>html</code>, including comments and special
+characters.</p></div>
     </div>
   </li>
 </ul>
@@ -186,21 +187,11 @@ whitelisted.</p>
 <p>It also strips href/src attributes with unsafe protocols like
 <code>javascript:</code>, while also protecting against attempts to use
 Unicode, ASCII, and hex character references to work around these protocol
-filters.</p>
+filters. All special characters will be escaped.</p>
 
 <p>The default sanitizer is <a
 href="https://github.com/rails/rails-html-sanitizer">Rails::Html::WhiteListSanitizer}.
-See <a href="../../Rails.html" title="Rails (module)">HTML Sanitizers</a> for more information.</p>  <p>Custom sanitization rules can also be provided.</p>  <p>Please note that sanitizing user-provided text does not guarantee that the resulting markup is valid or even well-formed. For example, the output may still contain unescaped characters like {&lt;</a>, <code>></code>, or <code>&</code>.</p>
-
-<h4 id="label-Options">Options</h4>
-<ul><li>
-<p><code>:tags</code> - An array of allowed tags.</p>
-</li><li>
-<p><code>:attributes</code> - An array of allowed attributes.</p>
-</li><li>
-<p><code>:scrubber</code> - A <a
-href="https://github.com/rails/rails-html-sanitizer">Rails::Html
-scrubber</a> or <a href="https://github.com/flavorjones/loofah" target="_parent" title="Loofah::Scrubber">Loofah::Scrubber</a>
+See <a href="../../Rails.html" title="Rails (module)">HTML Sanitizers</a> for more information.</p>  <p>Custom sanitization rules can also be provided.</p>  <p>Please note that sanitizing user-provided text does not guarantee that the resulting markup is valid or even well-formed.</p>  <h4 id="label-Options">Options</h4> <ul><li> <p><code>:tags</code> - An array of allowed tags.</p> </li><li> <p><code>:attributes</code> - An array of allowed attributes.</p> </li><li> <p><code>:scrubber</code> - A <a href="https://github.com/rails/rails-html-sanitizer">Rails::Html scrubber</a> or {https://github.com/flavorjones/loofah Loofah::Scrubber</a>
 object that defines custom sanitization rules. A custom scrubber takes
 precedence over custom tags and attributes.</p>
 </li></ul>
@@ -218,16 +209,14 @@ precedence over custom tags and attributes.</p>
 <p>Providing a custom <code>Rails::Html</code> scrubber:</p>
 
 <pre class="code ruby"><code class="ruby">class CommentScrubber &lt; Rails::Html::PermitScrubber
-  def allowed_node?(node)
-    !%w(form script comment blockquote).include?(node.name)
+  def initialize
+    super
+    self.tags = %w( form script comment blockquote )
+    self.attributes = %w( style )
   end
 
   def skip_node?(node)
     node.text?
-  end
-
-  def scrub_attribute?(name)
-    name == &#39;style&#39;
   end
 end
 
@@ -256,16 +245,16 @@ documentation</a> for more information about defining custom
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/sanitize_helper.rb#L82-L84'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/sanitize_helper.rb#L80-L82'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-82
-83
-84</pre>
+80
+81
+82</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/sanitize_helper.rb', line 82</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/sanitize_helper.rb', line 80</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sanitize'>sanitize</span><span class='lparen'>(</span><span class='id identifier rubyid_html'>html</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -288,16 +277,16 @@ style attribute.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/sanitize_helper.rb#L87-L89'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/sanitize_helper.rb#L85-L87'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-87
-88
-89</pre>
+85
+86
+87</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/sanitize_helper.rb', line 87</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/sanitize_helper.rb', line 85</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sanitize_css'>sanitize_css</span><span class='lparen'>(</span><span class='id identifier rubyid_style'>style</span><span class='rparen'>)</span>
@@ -324,20 +313,23 @@ style attribute.</p>
 <span class='comment'># =&gt; Please e-mail me at me@email.com.
 </span>
 <span class='id identifier rubyid_strip_links'>strip_links</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Blog: &lt;a href=&quot;http://www.myblog.com/&quot; class=&quot;nav&quot; target=\&quot;_blank\&quot;&gt;Visit&lt;/a&gt;.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-<span class='comment'># =&gt; Blog: Visit.</span></code></pre>
+<span class='comment'># =&gt; Blog: Visit.
+</span>
+<span class='id identifier rubyid_strip_links'>strip_links</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;&lt;a href=&quot;https://example.org&quot;&gt;malformed &amp; link&lt;/a&gt;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &amp;lt;malformed &amp;amp; link</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/sanitize_helper.rb#L115-L117'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/sanitize_helper.rb#L119-L121'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-115
-116
-117</pre>
+119
+120
+121</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/sanitize_helper.rb', line 115</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/sanitize_helper.rb', line 119</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_strip_links'>strip_links</span><span class='lparen'>(</span><span class='id identifier rubyid_html'>html</span><span class='rparen'>)</span>
@@ -355,7 +347,8 @@ style attribute.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Strips all HTML tags from <code>html</code>, including comments.</p>
+<p>Strips all HTML tags from <code>html</code>, including comments and special
+characters.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_strip_tags'>strip_tags</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Strip &lt;i&gt;these&lt;/i&gt; tags!</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; Strip these tags!
@@ -364,24 +357,27 @@ style attribute.</p>
 <span class='comment'># =&gt; Bold no more!  See more here...
 </span>
 <span class='id identifier rubyid_strip_tags'>strip_tags</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;div id=&#39;top-bar&#39;&gt;Welcome to my website!&lt;/div&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-<span class='comment'># =&gt; Welcome to my website!</span></code></pre>
+<span class='comment'># =&gt; Welcome to my website!
+</span>
+<span class='id identifier rubyid_strip_tags'>strip_tags</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&gt; A quote from Smith &amp; Wesson</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &amp;gt; A quote from Smith &amp;amp; Wesson</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/sanitize_helper.rb#L101-L103'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/sanitize_helper.rb#L102-L104'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-101
 102
-103</pre>
+103
+104</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/helpers/sanitize_helper.rb', line 101</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/helpers/sanitize_helper.rb', line 102</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_strip_tags'>strip_tags</span><span class='lparen'>(</span><span class='id identifier rubyid_html'>html</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_full_sanitizer'>full_sanitizer</span><span class='period'>.</span><span class='id identifier rubyid_sanitize'>sanitize</span><span class='lparen'>(</span><span class='id identifier rubyid_html'>html</span><span class='comma'>,</span> <span class='label'>encode_special_chars:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_full_sanitizer'>full_sanitizer</span><span class='period'>.</span><span class='id identifier rubyid_sanitize'>sanitize</span><span class='lparen'>(</span><span class='id identifier rubyid_html'>html</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Active Record Changelog &mdash; Rails-5-0-stable</title>
+<title>File: Active Record Changelog &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Active Record Changelog&nbsp;&#x25B2;</a></span>
             </div>
@@ -63,7 +63,36 @@
     <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
   </header>
 <div id='content' class='file'>
+<h2>Rails 5.1.0.rc1 (March 20, 2017)</h2>
+
 <ul>
+<li><p>Remove comments from structure.sql when using postgresql adapter to avoid
+version-specific parts of the file.</p>
+
+<p>Fixes #28153.</p>
+
+<p><em>Ari Pollak</em></p></li>
+<li><p>Add <code>:default</code> option to <code>belongs_to</code>.</p>
+
+<p>Use it to specify that an association should be initialized with a particular
+record before validation. For example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Before
+</span><span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_account'>account</span>
+<span class='id identifier rubyid_before_validation'>before_validation</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_account'>account</span> <span class='op'>||=</span> <span class='const'>Current</span><span class='period'>.</span><span class='id identifier rubyid_account'>account</span> <span class='rbrace'>}</span>
+
+<span class='comment'># After
+</span><span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='const'>Current</span><span class='period'>.</span><span class='id identifier rubyid_account'>account</span> <span class='rbrace'>}</span></code></pre>
+
+<p><em>George Claghorn</em></p></li>
+<li><p>Deprecate <code>Migrator.schema_migrations_table_name</code>.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Fix select with block doesn&#39;t return newly built records in has_many association.</p>
+
+<p>Fixes #28348.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
 <li><p>Check whether <a href="Rails.html#application-class_method" title="Rails.application (method)">Rails.application</a> defined before calling it</p>
 
 <p>In #27674 we changed the migration generator to generate migrations at the
@@ -72,7 +101,9 @@ for the presence of the <a href="Rails.html" title="Rails (module)">Rails</a> co
 method which caused problems when using Active Record and generators outside
 of the context of a Rails application.</p>
 
-<p>Fixes #28325.</p></li>
+<p>Fixes #28325.</p>
+
+<p><em>Andrew White</em></p></li>
 <li><p>Fix <code>deserialize</code> with JSON array.</p>
 
 <p>Fixes #28285.</p>
@@ -93,77 +124,305 @@ column a string so options like <code>unsigned: true</code> will result in an in
 table definition.</p>
 
 <p><em>Ryuta Kamizono</em></p></li>
+<li><p>Use <code>max_identifier_length</code> for <code>index_name_length</code> in PostgreSQL adapter.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Deprecate <code>supports_migrations?</code> on connection adapters.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
 <li><p>Fix regression of #1969 with SELECT aliases in HAVING clause.</p>
 
 <p><em>Eugene Kenny</em></p></li>
-</ul>
+<li><p>Deprecate using <code>#quoted_id</code> in quoting.</p>
 
-<h2>Rails 5.0.2 (March 01, 2017)</h2>
-
-<ul>
+<p><em>Ryuta Kamizono</em></p></li>
 <li><p>Fix <code>wait_timeout</code> to configurable for mysql2 adapter.</p>
 
 <p>Fixes #26556.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+</ul>
+
+<h2>Rails 5.1.0.beta1 (February 23, 2017)</h2>
+
+<ul>
+<li><p>Correctly dump native timestamp types for MySQL.</p>
+
+<p>The native timestamp type in MySQL is different from datetime type.
+Internal representation of the timestamp type is UNIX time, This means
+that timestamp columns are affected by time zone.</p>
+
+<pre class="code ruby"><code class="ruby">&gt; SET time_zone = &#39;+00:00&#39;;
+Query OK, 0 rows affected (0.00 sec)
+
+&gt; INSERT INTO time_with_zone(ts,dt) VALUES (NOW(),NOW());
+Query OK, 1 row affected (0.02 sec)
+
+&gt; SELECT * FROM time_with_zone;
+------------------------------------------+
+| ts                  | dt                  |
+------------------------------------------+
+| 2016-02-07 22:11:44 | 2016-02-07 22:11:44 |
+------------------------------------------+
+1 row in set (0.00 sec)
+
+&gt; SET time_zone = &#39;-08:00&#39;;
+Query OK, 0 rows affected (0.00 sec)
+
+&gt; SELECT * FROM time_with_zone;
+------------------------------------------+
+| ts                  | dt                  |
+------------------------------------------+
+| 2016-02-07 14:11:44 | 2016-02-07 22:11:44 |
+------------------------------------------+
+1 row in set (0.00 sec)</code></pre>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>All integer-like PKs are autoincrement unless they have an explicit default.</p>
+
+<p><em>Matthew Draper</em></p></li>
+<li><p>Omit redundant <code>using: :btree</code> for schema dumping.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Deprecate passing <code>default</code> to <code>index_name_exists?</code>.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>PostgreSQL: schema dumping support for interval and OID columns.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Deprecate <code>supports_primary_key?</code> on connection adapters since it&#39;s
+been long unused and unsupported.</p>
 
 <p><em>Ryuta Kamizono</em></p></li>
 <li><p>Make <code>table_name=</code> reset current statement cache,
 so queries are not run against the previous table name.</p>
 
 <p><em>namusyaka</em></p></li>
-<li><p>Allow ActiveRecord::Base#as_json to be passed a frozen Hash.</p>
+<li><p>Allow <code>ActiveRecord::Base#as_json</code> to be passed a frozen Hash.</p>
 
 <p><em>Isaac Betesh</em></p></li>
 <li><p>Fix inspection behavior when the :id column is not primary key.</p>
 
 <p><em>namusyaka</em></p></li>
-<li><p>Fix <code>association_primary_key_type</code> for reflections with symbol primary key</p>
+<li><p>Deprecate locking records with unpersisted changes.</p>
 
-<p>Fixes #27864</p>
+<p><em>Marc Schütz</em></p></li>
+<li><p>Remove deprecated behavior that halts callbacks when the return is false.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Deprecate <code>ColumnDumper#migration_keys</code>.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Fix <code>association_primary_key_type</code> for reflections with symbol primary key.</p>
+
+<p>Fixes #27864.</p>
 
 <p><em>Daniel Colson</em></p></li>
-<li><p>Place generated migrations into the path set by <code>config.paths[&quot;db/migrate&quot;]</code></p>
+<li><p>Virtual/generated column support for MySQL 5.7.5+ and MariaDB 5.2.0+.</p>
+
+<p>MySQL generated columns: <a href="https://dev.mysql.com/doc/refman/5.7/en/create-table-generated-columns.html">https://dev.mysql.com/doc/refman/5.7/en/create-table-generated-columns.html</a>
+MariaDB virtual columns: <a href="https://mariadb.com/kb/en/mariadb/virtual-computed-columns/">https://mariadb.com/kb/en/mariadb/virtual-computed-columns/</a></p>
+
+<p>Declare virtual columns with <code>t.virtual name, type: …, as: &quot;expression&quot;</code>.
+Pass <code>stored: true</code> to persist the generated value (false by default).</p>
+
+<p>Example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_generated_columns'>generated_columns</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
+  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>  <span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span>
+  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_virtual'>virtual</span> <span class='symbeg'>:</span><span class='id identifier rubyid_upper_name'>upper_name</span><span class='comma'>,</span>  <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span>  <span class='label'>as:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UPPER(name)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_virtual'>virtual</span> <span class='symbeg'>:</span><span class='id identifier rubyid_name_length'>name_length</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_integer'>integer</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>LENGTH(name)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>stored:</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span> <span class='symbeg'>:</span><span class='id identifier rubyid_name_length'>name_length</span>  <span class='comment'># May be indexed, too!
+</span><span class='kw'>end</span></code></pre>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Deprecate <code>initialize_schema_migrations_table</code> and <code>initialize_internal_metadata_table</code>.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Support foreign key creation for SQLite3.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Place generated migrations into the path set by <code>config.paths[&quot;db/migrate&quot;]</code>.</p>
 
 <p><em>Kevin Glowacz</em></p></li>
+<li><p>Raise <a href="ActiveRecord/InvalidForeignKey.html" title="ActiveRecord::InvalidForeignKey (class)">::ActiveRecord::InvalidForeignKey</a> when a foreign key constraint fails on SQLite3.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Add the touch option to <code>#increment!</code> and <code>#decrement!</code>.</p>
+
+<p><em>Hiroaki Izu</em></p></li>
+<li><p>Deprecate passing a class to the <code>class_name</code> because it eagerloads more classes than
+necessary and potentially creates circular dependencies.</p>
+
+<p><em>Kir Shatrov</em></p></li>
+<li><p>Raise error when has_many through is defined before through association.</p>
+
+<p>Fixes #26834.</p>
+
+<p><em>Chris Holmes</em></p></li>
+<li><p>Deprecate passing <code>name</code> to <code>indexes</code>.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Remove deprecated tasks: <code>db:test:clone</code>, <code>db:test:clone_schema</code>, <code>db:test:clone_structure</code>.</p>
+
+<p><em>Rafel Mendonça França</em></p></li>
 <li><p>Compare deserialized values for <code>PostgreSQL::OID::Hstore</code> types when
-calling <code>ActiveRecord::Dirty#changed_in_place?</code></p>
+calling <code>ActiveRecord::Dirty#changed_in_place?</code>.</p>
 
 <p>Fixes #27502.</p>
 
 <p><em>Jon Moss</em></p></li>
+<li><p>Raise <code>ArgumentError</code> when passing an <a href="ActiveRecord/Base.html" title="ActiveRecord::Base (class)">::ActiveRecord::Base</a> instance to <code>.find</code>,
+<code>.exists?</code> and <code>.update</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
 <li><p>Respect precision option for arrays of timestamps.</p>
 
 <p>Fixes #27514.</p>
 
 <p><em>Sean Griffin</em></p></li>
-</ul>
+<li><p>Optimize slow model instantiation when using STI and <code>store_full_sti_class = false</code> option.</p>
 
-<h2>Rails 5.0.1 (December 21, 2016)</h2>
+<p><em>Konstantin Lazarev</em></p></li>
+<li><p>Add <code>touch</code> option to counter cache modifying methods.</p>
 
-<ul>
-<li>  No changes.</li>
-</ul>
+<p>Works when updating, resetting, incrementing and decrementing counters:</p>
 
-<h2>Rails 5.0.1.rc2 (December 10, 2016)</h2>
+<pre class="code ruby"><code class="ruby"><span class='comment'># Touches `updated_at`/`updated_on`.
+</span><span class='const'>Topic</span><span class='period'>.</span><span class='id identifier rubyid_increment_counter'>increment_counter</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_messages_count'>messages_count</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+<span class='const'>Topic</span><span class='period'>.</span><span class='id identifier rubyid_decrement_counter'>decrement_counter</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_messages_count'>messages_count</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='kw'>true</span><span class='rparen'>)</span>
 
-<ul>
-<li><p>Correct resolution of associated class in <code>has_many :through</code>
-associations&#39; <code>*_ids</code> setters.</p>
+<span class='comment'># Touches `last_discussed_at`.
+</span><span class='const'>Topic</span><span class='period'>.</span><span class='id identifier rubyid_reset_counters'>reset_counters</span><span class='lparen'>(</span><span class='int'>18</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_messages'>messages</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_last_discussed_at'>last_discussed_at</span><span class='rparen'>)</span>
 
-<p>Fixes #27297.</p>
+<span class='comment'># Touches `updated_at` and `last_discussed_at`.
+</span><span class='const'>Topic</span><span class='period'>.</span><span class='id identifier rubyid_update_counters'>update_counters</span><span class='lparen'>(</span><span class='int'>18</span><span class='comma'>,</span> <span class='label'>messages_count:</span> <span class='int'>5</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='qsymbols'><span class='qsymbols_beg'>%i( </span><span class='tstring_content'>updated_at</span><span class='words_sep'> </span><span class='tstring_content'>last_discussed_at</span><span class='words_sep'> )</span><span class='rparen'>)</span></span></code></pre>
 
-<p><em>Matthew Draper</em></p></li>
+<p>Fixes #26724.</p>
+
+<p><em>Jarred Trost</em></p></li>
+<li><p>Remove deprecated <code>#uniq</code>, <code>#uniq!</code>, and <code>#uniq_value</code>.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Remove deprecated <code>#insert_sql</code>, <code>#update_sql</code>, and <code>#delete_sql</code>.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Remove deprecated <code>#use_transactional_fixtures</code> configuration.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>#raise_in_transactional_callbacks</code> configuration.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>#load_schema_for</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated conditions parameter from <code>#destroy_all</code> and <code>#delete_all</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support to passing arguments to <code>#select</code> when a block is provided.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support to query using commas on LIMIT.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support to passing a class as a value in a query.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Raise <a href="ActiveRecord/IrreversibleOrderError.html" title="ActiveRecord::IrreversibleOrderError (class)">::ActiveRecord::IrreversibleOrderError</a> when using <code>last</code> with an irreversible
+order.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Raise when a <code>has_many :through</code> association has an ambiguous reflection name.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Raise when <a href="ActiveRecord/Migration.html" title="ActiveRecord::Migration (class)">::ActiveRecord::Migration</a> is inherited from directly.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>original_exception</code> argument in <code>ActiveRecord::StatementInvalid#initialize</code>
+and <code>ActiveRecord::StatementInvalid#original_exception</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p><code>#tables</code> and <code>#table_exists?</code> return only tables and not views.</p>
+
+<p>All the deprecations on those methods were removed.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>name</code> argument from <code>#tables</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated support to passing a column to <code>#quote</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Set <code>:time</code> as a timezone aware type and remove deprecation when
+<code>config.active_record.time_zone_aware_types</code> is not explicitly set.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated force reload argument in singular and collection association readers.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Remove deprecated <code>activerecord.errors.messages.restrict_dependent_destroy.one</code> and
+<code>activerecord.errors.messages.restrict_dependent_destroy.many</code> i18n scopes.</p>
+
+<p><em>Rafael Mendonça França</em></p></li>
+<li><p>Allow passing extra flags to <code>db:structure:load</code> and <code>db:structure:dump</code></p>
+
+<p>Introduces <code>ActiveRecord::Tasks::DatabaseTasks.structure_(load|dump)_flags</code> to customize the
+eventual commands run against the database, e.g. mysqldump/pg_dump.</p>
+
+<p><em>Kir Shatrov</em></p></li>
+<li><p>Notifications see frozen SQL string.</p>
+
+<p>Fixes #23774.</p>
+
+<p><em>Richard Monette</em></p></li>
+<li><p>RuntimeErrors are no longer translated to <a href="ActiveRecord/StatementInvalid.html" title="ActiveRecord::StatementInvalid (class)">::ActiveRecord::StatementInvalid</a>.</p>
+
+<p><em>Richard Monette</em></p></li>
+<li><p>Change the schema cache format to use YAML instead of Marshal.</p>
+
+<p><em>Kir Shatrov</em></p></li>
 <li><p>Support index length and order options using both string and symbol
 column names.</p>
 
 <p>Fixes #27243.</p>
 
 <p><em>Ryuta Kamizono</em></p></li>
-</ul>
+<li><p>Raise <a href="ActiveRecord/RangeError.html" title="ActiveRecord::RangeError (class)">::ActiveRecord::RangeError</a> when values that executed are out of range.</p>
 
-<h2>Rails 5.0.1.rc1 (December 01, 2016)</h2>
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Raise <a href="ActiveRecord/NotNullViolation.html" title="ActiveRecord::NotNullViolation (class)">::ActiveRecord::NotNullViolation</a> when a record cannot be inserted
+or updated because it would violate a not null constraint.</p>
 
-<ul>
-<li><p>Fix that unsigned with zerofill is treated as signed.</p>
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Emulate db trigger behaviour for after_commit :destroy, :update.</p>
+
+<p>Race conditions can occur when an ActiveRecord is destroyed
+twice or destroyed and updated. The callbacks should only be
+triggered once, similar to a SQL database trigger.</p>
+
+<p><em>Stefan Budeanu</em></p></li>
+<li><p>Moved <code>DecimalWithoutScale</code>, <code>Text</code>, and <code>UnsignedInteger</code> from Active Model to Active Record.</p>
+
+<p><em>Iain Beeston</em></p></li>
+<li><p>Fix <code>write_attribute</code> method to check whether an attribute is aliased or not, and
+use the aliased attribute name if needed.</p>
+
+<p><em>Prathamesh Sonpatki</em></p></li>
+<li><p>Fix <code>read_attribute</code> method to check whether an attribute is aliased or not, and
+use the aliased attribute name if needed.</p>
+
+<p>Fixes #26417.</p>
+
+<p><em>Prathamesh Sonpatki</em></p></li>
+<li><p>PostgreSQL &amp; MySQL: Use big integer as primary key type for new tables.</p>
+
+<p><em>Jon McCartie</em>, <em>Pavel Pravosud</em></p></li>
+<li><p>Change the type argument of <code>ActiveRecord::Base#attribute</code> to be optional.
+The default is now <code>ActiveRecord::Type::Value.new</code>, which provides no type
+casting behavior.</p>
+
+<p><em>Sean Griffin</em></p></li>
+<li><p>Don&#39;t treat unsigned integers with zerofill as signed.</p>
 
 <p>Fixes #27125.</p>
 
@@ -171,7 +430,7 @@ column names.</p>
 <li><p>Fix the uniqueness validation scope with a polymorphic association.</p>
 
 <p><em>Sergey Alekseev</em></p></li>
-<li><p>Raise ActiveRecord::RecordNotFound from collection <code>*_ids</code> setters
+<li><p>Raise <a href="ActiveRecord/RecordNotFound.html" title="ActiveRecord::RecordNotFound (class)">::ActiveRecord::RecordNotFound</a> from collection <code>*_ids</code> setters
 for unknown IDs with a better error message.</p>
 
 <p>Changes the collection <code>*_ids</code> setters to cast provided IDs the data
@@ -179,6 +438,10 @@ type of the primary key set in the association, not the model
 primary key.</p>
 
 <p><em>Dominic Cleal</em></p></li>
+<li><p>For PostgreSQL &gt;= 9.4 use <code>pgcrypto</code>&#39;s <code>gen_random_uuid()</code> instead of
+<code>uuid-ossp</code>&#39;s UUID generation function.</p>
+
+<p><em>Yuji Yaginuma</em>, <em>Yaw Boakye</em></p></li>
 <li><p>Introduce <code>Model#reload_<association></code> to bring back the behavior
 of <code>Article.category(true)</code> where <code>category</code> is a singular
 association.</p>
@@ -202,29 +465,58 @@ values for Postgres HStore columns.</p>
 <p>Fixes #26904.</p>
 
 <p><em>Jon Moss</em></p></li>
-<li><p>Configure query caching (per thread) on the connection pool.</p>
+<li><p>Added <code>stat</code> method to <a href="ActiveRecord/ConnectionAdapters/ConnectionPool.html" title="ActiveRecord::ConnectionAdapters::ConnectionPool (class)">::ActiveRecord::ConnectionAdapters::ConnectionPool</a>.</p>
 
-<p>Moving the configuration to the pool means we don&#39;t allocate a connection
-until it&#39;s actually needed.</p>
+<p>Example:</p>
 
-<p>Applications that manually interact with the connection pool and/or query
-cache may notice that the connection&#39;s cache is now cleared and disabled
-when it gets returned to the pool, even if the request is not yet completed.</p>
+<pre class="code ruby"><code class="ruby"><span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Base.html" title="ActiveRecord::Base (class)">Base</a></span><span class='period'>.</span><span class='id identifier rubyid_connection_pool'><a href="ActiveRecord/ConnectionHandling.html#connection_pool-instance_method" title="ActiveRecord::ConnectionHandling#connection_pool (method)">connection_pool</a></span><span class='period'>.</span><span class='id identifier rubyid_stat'>stat</span> <span class='comment'># =&gt;
+</span><span class='lbrace'>{</span> <span class='label'>size:</span> <span class='int'>15</span><span class='comma'>,</span> <span class='label'>connections:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>busy:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>dead:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>idle:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>waiting:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>checkout_timeout:</span> <span class='int'>5</span> <span class='rbrace'>}</span></code></pre>
 
-<p><em>Samuel Cochran</em>, <em>Matthew Draper</em></p></li>
+<p><em>Pavel Evstigneev</em></p></li>
+<li><p>Avoid <code>unscope(:order)</code> when <code>limit_value</code> is presented for <code>count</code>
+and <code>exists?</code>.</p>
+
+<p>If <code>limit_value</code> is presented, records fetching order is very important
+for performance. We should not unscope the order in the case.</p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>Fix an Active Record <a href="DateTime.html" title="DateTime (class)">DateTime</a> field <code>NoMethodError</code> caused by incomplete
+datetime.</p>
+
+<p>Fixes #24195.</p>
+
+<p><em>Sen Zhang</em></p></li>
+<li><p>Allow <code>slice</code> to take an array of methods(without the need for splatting).</p>
+
+<p><em>Cohen Carlisle</em></p></li>
+<li><p>Improved partial writes with HABTM and has many through associations
+to fire database query only if relation has been changed.</p>
+
+<p>Fixes #19663.</p>
+
+<p><em>Mehmet Emin İNAÇ</em></p></li>
+<li><p>Deprecate passing arguments and block at the same time to
+<a href="ActiveRecord/QueryMethods.html#select-instance_method" title="ActiveRecord::QueryMethods#select (method)">ActiveRecord::QueryMethods#select</a>.</p>
+
+<p><em>Prathamesh Sonpatki</em></p></li>
+<li><p>Fixed: Optimistic locking does not work well with <code>null</code> in the database.</p>
+
+<p>Fixes #26024.</p>
+
+<p><em>bogdanvlviv</em></p></li>
 <li><p>Fixed support for case insensitive comparisons of <code>text</code> columns in
 PostgreSQL.</p>
 
 <p><em>Edho Arief</em></p></li>
+<li><p>Serialize JSON attribute value <code>nil</code> as SQL <code>NULL</code>, not JSON <code>null</code>.</p>
+
+<p><em>Trung Duc Tran</em></p></li>
 <li><p>Return <code>true</code> from <code>update_attribute</code> when the value of the attribute
 to be updated is unchanged.</p>
 
 <p>Fixes #26593.</p>
 
 <p><em>Prathamesh Sonpatki</em></p></li>
-<li><p>Serialize JSON attribute value <code>nil</code> as SQL <code>NULL</code>, not JSON <code>null</code></p>
-
-<p><em>Trung Duc Tran</em></p></li>
 <li><p>Always store errors details information with symbols.</p>
 
 <p>When the association is autosaved we were storing the details with
@@ -239,14 +531,16 @@ be accessed as strings keys but now it can not.</p>
 <p>Fix #26499.</p>
 
 <p><em>Rafael Mendonça França</em>, <em>Marcus Vieira</em></p></li>
+<li><p>Calling <code>touch</code> on a model using optimistic locking will now leave the model
+in a non-dirty state with no attribute changes.</p>
+
+<p>Fixes #26496.</p>
+
+<p><em>Jakob Skjerning</em></p></li>
 <li><p>Using a mysql2 connection after it fails to reconnect will now have an error message
 saying the connection is closed rather than an undefined method error message.</p>
 
 <p><em>Dylan Thacker-Smith</em></p></li>
-<li><p>Remove unnecessarily association load when a <code>belongs_to</code> association has already been
-loaded then the foreign key is changed directly and the record saved.</p>
-
-<p><em>James Coleman</em></p></li>
 <li><p>PostgreSQL array columns will now respect the encoding of strings contained
 in the array.</p>
 
@@ -259,25 +553,60 @@ in the array.</p>
 <p>Fixes #26320.</p>
 
 <p><em>Sean Griffin</em></p></li>
+<li><p>Remove unnecessarily association load when a <code>belongs_to</code> association has already been
+loaded then the foreign key is changed directly and the record saved.</p>
+
+<p><em>James Coleman</em></p></li>
+<li><p>Remove standardized column types/arguments spaces in schema dump.</p>
+
+<p><em>Tim Petricola</em></p></li>
 <li><p>Avoid loading records from database when they are already loaded using
 the <code>pluck</code> method on a collection.</p>
 
 <p>Fixes #25921.</p>
 
 <p><em>Ryuta Kamizono</em></p></li>
-<li><p>Sqlite3 migrations to add a column to an existing table can now be
+<li><p>Remove text default treated as an empty string in non-strict mode for
+consistency with other types.</p>
+
+<p>Strict mode controls how MySQL handles invalid or missing values in
+data-change statements such as INSERT or UPDATE. If strict mode is not
+in effect, MySQL inserts adjusted values for invalid or missing values
+and produces warnings.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>def</span> <span class='id identifier rubyid_test_mysql_not_null_defaults_non_strict'>test_mysql_not_null_defaults_non_strict</span>
+  <span class='id identifier rubyid_using_strict'>using_strict</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_with_mysql_not_null_table'>with_mysql_not_null_table</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_klass'>klass</span><span class='op'>|</span>
+      <span class='id identifier rubyid_record'>record</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+      <span class='id identifier rubyid_assert_nil'>assert_nil</span> <span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_non_null_integer'>non_null_integer</span>
+      <span class='id identifier rubyid_assert_nil'>assert_nil</span> <span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_non_null_string'>non_null_string</span>
+      <span class='id identifier rubyid_assert_nil'>assert_nil</span> <span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_non_null_text'>non_null_text</span>
+      <span class='id identifier rubyid_assert_nil'>assert_nil</span> <span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_non_null_blob'>non_null_blob</span>
+
+      <span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_save!'>save!</span>
+      <span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_reload'>reload</span>
+
+      <span class='id identifier rubyid_assert_equal'>assert_equal</span> <span class='int'>0</span><span class='comma'>,</span>  <span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_non_null_integer'>non_null_integer</span>
+      <span class='id identifier rubyid_assert_equal'>assert_equal</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_non_null_string'>non_null_string</span>
+      <span class='id identifier rubyid_assert_equal'>assert_equal</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_non_null_text'>non_null_text</span>
+      <span class='id identifier rubyid_assert_equal'>assert_equal</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_non_null_blob'>non_null_blob</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></code></pre>
+
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sql-mode-strict">https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sql-mode-strict</a></p>
+
+<p><em>Ryuta Kamizono</em></p></li>
+<li><p>SQLite3 migrations to add a column to an existing table can now be
 successfully rolled back when the column was given and invalid column
 type.</p>
 
-<p>Fixes #26087</p>
+<p>Fixes #26087.</p>
 
 <p><em>Travis O&#39;Neill</em></p></li>
-<li><p>Hashes can once again be passed to setters of <code>composed_of</code>, if all of the
-mapping methods are methods implemented on <a href="Hash.html" title="Hash (class)">Hash</a>.</p>
+<li><p>Deprecate <code>sanitize_conditions</code>. Use <code>sanitize_sql</code> instead.</p>
 
-<p>Fixes #25978.</p>
-
-<p><em>Sean Griffin</em></p></li>
+<p><em>Ryuta Kamizono</em></p></li>
 <li><p>Doing count on relations that contain LEFT OUTER JOIN Arel node no longer
 force a DISTINCT. This solves issues when using count after a left_joins.</p>
 
@@ -286,50 +615,77 @@ force a DISTINCT. This solves issues when using count after a left_joins.</p>
 <code>model</code> methods to be consistent with RecordNotFound raised by Record.find.</p>
 
 <p><em>Michel Pigassou</em></p></li>
+<li><p>Hashes can once again be passed to setters of <code>composed_of</code>, if all of the
+mapping methods are methods implemented on <a href="Hash.html" title="Hash (class)">Hash</a>.</p>
+
+<p>Fixes #25978.</p>
+
+<p><em>Sean Griffin</em></p></li>
 <li><p>Fix the SELECT statement in <code>#table_comment</code> for MySQL.</p>
 
 <p><em>Takeshi Akima</em></p></li>
 <li><p>Virtual attributes will no longer raise when read on models loaded from the
-database</p>
+database.</p>
 
 <p><em>Sean Griffin</em></p></li>
+<li><p>Support calling the method <code>merge</code> in <code>scope</code>&#39;s lambda.</p>
+
+<p><em>Yasuhiro Sugino</em></p></li>
 <li><p>Fixes multi-parameter attributes conversion with invalid params.</p>
 
 <p><em>Hiroyuki Ishii</em></p></li>
 <li><p>Add newline between each migration in <code>structure.sql</code>.</p>
 
 <p>Keeps schema migration inserts as a single commit, but allows for easier
-git diff-ing. Fixes #25504.</p>
+git diffing.</p>
+
+<p>Fixes #25504.</p>
 
 <p><em>Grey Baker</em>, <em>Norberto Lopes</em></p></li>
+<li><p>The flag <code>error_on_ignored_order_or_limit</code> has been deprecated in favor of
+the current <code>error_on_ignored_order</code>.</p>
+
+<p><em>Xavier Noria</em></p></li>
+<li><p>Batch processing methods support <code>limit</code>:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>Post</span><span class='period'>.</span><span class='id identifier rubyid_limit'>limit</span><span class='lparen'>(</span><span class='int'>10_000</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_find_each'>find_each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_post'>post</span><span class='op'>|</span>
+  <span class='comment'># ...
+</span><span class='kw'>end</span></code></pre>
+
+<p>It also works in <code>find_in_batches</code> and <code>in_batches</code>.</p>
+
+<p><em>Xavier Noria</em></p></li>
 <li><p>Using <code>group</code> with an attribute that has a custom type will properly cast
 the hash keys after calling a calculation method like <code>count</code>.</p>
 
 <p>Fixes #25595.</p>
 
 <p><em>Sean Griffin</em></p></li>
+<li><p>Fix the generated <code>#to_param</code> method to use <code>omission: &#39;&#39;</code> so that
+the resulting output is actually up to 20 characters, not
+effectively 17 to leave room for the default &quot;...&quot;.
+Also call <code>#parameterize</code> before <code>#truncate</code> and make the
+<code>separator: /-/</code> to maximize the information included in the
+output.</p>
+
+<p>Fixes #23635.</p>
+
+<p><em>Rob Biedenharn</em></p></li>
 <li><p>Ensure concurrent invocations of the connection reaper cannot allocate the
 same connection to two threads.</p>
 
 <p>Fixes #25585.</p>
 
 <p><em>Matthew Draper</em></p></li>
-<li><p>Fixed dumping of foreign key&#39;s referential actions when MySQL connection
-uses <code>sql_mode = ANSI_QUOTES</code>.</p>
-
-<p>Fixes #25300.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-</ul>
-
-<h2>Rails 5.0.0 (June 30, 2016)</h2>
-
-<ul>
 <li><p>Inspecting an object with an associated array of over 10 elements no longer
 truncates the array, preventing <code>inspect</code> from looping infinitely in some
 cases.</p>
 
 <p><em>Kevin McPhillips</em></p></li>
+<li><p>Removed the unused methods <code>ActiveRecord::Base.connection_id</code> and
+<code>ActiveRecord::Base.connection_id=</code>.</p>
+
+<p><em>Sean Griffin</em></p></li>
 <li><p>Ensure hashes can be assigned to attributes created using <code>composed_of</code>.</p>
 
 <p>Fixes #25210.</p>
@@ -343,1843 +699,25 @@ was provided as a Hash.</p>
 adapter returns <code>&#39;&#39;</code> instead of <code>nil</code>.</p>
 
 <p><em>Johannes Opper</em></p></li>
-<li><p>PostgreSQL: Support Expression Indexes and Operator Classes.</p>
+<li><p>Introduce new Active Record transaction error classes for catching
+transaction serialization failures or deadlocks.</p>
+
+<p><em>Erol Fornoles</em></p></li>
+<li><p>PostgreSQL: Fix <code>db:structure:load</code> silent failure on SQL error.</p>
+
+<p>The command line flag <code>-v ON_ERROR_STOP=1</code> should be used
+when invoking <code>psql</code> to make sure errors are not suppressed.</p>
 
 <p>Example:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_users'>users</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>lower(name) varchar_pattern_ops</span><span class='tstring_end'>&#39;</span></span>
-<span class='kw'>end</span></code></pre>
+<pre class="code ruby"><code class="ruby">psql -v ON_ERROR_STOP=1 -q -f awesome-file.sql my-app-db</code></pre>
 
-<p>Fixes #19090, #21765, #21819, #24359.</p>
+<p>Fixes #23818.</p>
 
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>MySQL: Prepared statements support.</p>
-
-<p>To enable, set <code>prepared_statements: true</code> in config/database.yml.
-Requires mysql2 0.4.4+.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Schema dumper: Indexes are now included in the <code>create_table</code> block
-instead of listed afterward as separate <code>add_index</code> lines.</p>
-
-<p>This tidies up schema.rb and makes it easy to read as a list of tables.</p>
-
-<p>Bonus: Allows databases that support it (MySQL) to perform as single
-<code>CREATE TABLE</code> query, no additional query per index.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>SQLite: Fix uniqueness validation when values exceed the column limit.</p>
-
-<p>SQLite doesn&#39;t impose length restrictions on strings, BLOBs, or numeric
-values. It treats them as helpful metadata. When we truncate strings
-before checking uniqueness, we&#39;d miss values that exceed the column limit.</p>
-
-<p>Other databases enforce length limits. A large value will pass uniqueness
-validation since the column limit guarantees no value that long exists.
-When we insert the row, it&#39;ll raise <a href="ActiveRecord/ValueTooLong.html" title="ActiveRecord::ValueTooLong (class)">::ActiveRecord::ValueTooLong</a> as we
-expect.</p>
-
-<p>This fixes edge-case incorrect validation failures for values that exceed
-the column limit but are identical to an existing value <em>when truncated</em>.
-Now these will pass validation and raise an exception.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Raise <a href="ActiveRecord/ValueTooLong.html" title="ActiveRecord::ValueTooLong (class)">::ActiveRecord::ValueTooLong</a> when column limits are exceeded.
-Supported by MySQL and PostgreSQL adapters.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Migrations: <code>#foreign_key</code> respects <code>table_name_prefix</code> and <code>_suffix</code>.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>SQLite: Force NOT NULL primary keys.</p>
-
-<p>From SQLite docs: <a href="https://www.sqlite.org/lang_createtable.html">https://www.sqlite.org/lang_createtable.html</a>
-    According to the SQL standard, PRIMARY KEY should always imply NOT
-    NULL. Unfortunately, due to a bug in some early versions, this is not
-    the case in SQLite. Unless the column is an INTEGER PRIMARY KEY or the
-    table is a WITHOUT ROWID table or the column is declared NOT NULL,
-    SQLite allows NULL values in a PRIMARY KEY column. SQLite could be
-    fixed to conform to the standard, but doing so might break legacy
-    applications. Hence, it has been decided to merely document the fact
-    that SQLite allowing NULLs in most PRIMARY KEY columns.</p>
-
-<p>Now we override column options to explicitly set NOT NULL rather than rely
-on implicit NOT NULL like MySQL and PostgreSQL adapters.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Added notice when a database is successfully created or dropped.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby">$ bin/rails db:create
-Created database &#39;blog_development&#39;
-Created database &#39;blog_test&#39;
-
-$ bin/rails db:drop
-Dropped database &#39;blog_development&#39;
-Dropped database &#39;blog_test&#39;</code></pre>
-
-<p>Changed older notices
-<code>blog_development already exists</code> to <code>Database &#39;blog_development&#39; already exists</code>.
-and
-<code>Couldn&#39;t drop blog_development</code> to <code>Couldn&#39;t drop database &#39;blog_development&#39;</code>.</p>
-
-<p><em>bogdanvlviv</em></p></li>
-<li><p>Database comments. Annotate database objects (tables, columns, indexes)
-with comments stored in database metadata. PostgreSQL &amp; MySQL support.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_pages'>pages</span><span class='comma'>,</span> <span class='label'>force:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_cascade'>cascade</span><span class='comma'>,</span> <span class='label'>comment:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CMS content pages</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='symbeg'>:</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span>   <span class='label'>comment:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Path fragment of page URL used for routing</span><span class='tstring_end'>&#39;</span></span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale'>locale</span><span class='comma'>,</span> <span class='label'>comment:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>RFC 3066 locale code of website language section</span><span class='tstring_end'>&#39;</span></span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span> <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale'>locale</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>comment:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Look up pages by URI</span><span class='tstring_end'>&#39;</span></span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Andrey Novikov</em></p></li>
-<li><p>Add <code>quoted_time</code> for truncating the date part of a TIME column value.
-This fixes queries on TIME column on MariaDB, as it doesn&#39;t ignore the
-date part of the string when it coerces to time.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Properly accept all valid JSON primitives in the JSON data type.</p>
-
-<p>Fixes #24234</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>MariaDB 5.3+ supports microsecond datetime precision.</p>
-
-<p><em>Jeremy Daer</em></p></li>
-<li><p>Delegate <code>none?</code> and <code>one?</code>. Now they can be invoked as model class methods.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='comment'># When no record is found on the table
-</span><span class='const'>Topic</span><span class='period'>.</span><span class='id identifier rubyid_none?'>none?</span>  <span class='comment'># =&gt; true
-</span>
-<span class='comment'># When only one record is found on the table
-</span><span class='const'>Topic</span><span class='period'>.</span><span class='id identifier rubyid_one?'>one?</span>   <span class='comment'># =&gt; true</span></code></pre>
-
-<p><em>Kenta Shirai</em></p></li>
-<li><p>The form builder now properly displays values when passing a proc form
-default to the attributes API.</p>
-
-<p>Fixes #24249.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>The schema cache is now cleared after the <code>db:migrate</code> task is run.</p>
-
-<p>Closes #24273.</p>
-
-<p><em>Chris Arcand</em></p></li>
-<li><p>MySQL: strict mode respects other SQL modes rather than overwriting them.
-Setting <code>strict: true</code> adds <code>STRICT_ALL_TABLES</code> to <code>sql_mode</code>. Setting
-<code>strict: false</code> removes <code>STRICT_TRANS_TABLES</code>, <code>STRICT_ALL_TABLES</code>, and
-<code>TRADITIONAL</code> from <code>sql_mode</code>.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Execute default_scope defined by abstract class in the context of subclass.</p>
-
-<p>Fixes #23413.
-Fixes #10658.</p>
-
-<p><em>Mehmet Emin İNAÇ</em></p></li>
-<li><p>Fix an issue when preloading associations with extensions.
-Previously every association with extension methods was transformed into an
-instance dependent scope. This is no longer the case.</p>
-
-<p>Fixes #23934.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Deprecate <code>{insert|update|delete}_sql</code> in <code>DatabaseStatements</code>.
-Use the <code>{insert|update|delete}</code> public methods instead.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Added a configuration option to have active record raise an ArgumentError
-if the order or limit is ignored in a batch query, rather than logging a
-warning message.</p>
-
-<p><em>Scott Ringwelski</em></p></li>
-<li><p>Honour the order of the joining model in a <code>has_many :through</code> association when eager loading.</p>
-
-<p>Example:</p>
-
-<p>The below will now follow the order of <code>by_lines</code> when eager loading <code>authors</code>.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Article</span> <span class='op'>&lt;</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Base.html" title="ActiveRecord::Base (class)">Base</a></span>
-  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbeg'>:</span><span class='id identifier rubyid_by_lines'>by_lines</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_position'>position</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbeg'>:</span><span class='id identifier rubyid_authors'>authors</span><span class='comma'>,</span> <span class='label'>through:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_by_lines'>by_lines</span>
-<span class='kw'>end</span></code></pre>
-
-<p>Fixes #17864.</p>
-
-<p><em>Yasyf Mohamedali</em>, <em>Joel Turkel</em></p></li>
-<li><p>Ensure that the Suppressor runs before validations.</p>
-
-<p>This moves the suppressor up to be run before validations rather than after
-validations. There&#39;s no reason to validate a record you aren&#39;t planning on saving.</p>
-
-<p><em>Eileen M. Uchitelle</em></p></li>
-<li><p>Save many-to-many objects based on association primary key.</p>
-
-<p>Fixes #20995.</p>
-
-<p><em>himesh-r</em></p></li>
-<li><p>Ensure that mutations of the array returned from <a href="ActiveRecord/Relation.html#to_a-instance_method" title="ActiveRecord::Relation#to_a (method)">ActiveRecord::Relation#to_a</a>
-do not affect the original relation, by returning a duplicate array each time.</p>
-
-<p>This brings the behavior in line with <code>CollectionProxy#to_a</code>, which was
-already more careful.</p>
-
-<p><em>Matthew Draper</em></p></li>
-<li><p>Fixed <code>where</code> for polymorphic associations when passed an array containing different types.</p>
-
-<p>Fixes #17011.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby">PriceEstimate.where(estimate_of: [Treasure.find(1), Car.find(2)])
-# =&gt; SELECT &quot;price_estimates&quot;.* FROM &quot;price_estimates&quot;
-     WHERE ((&quot;price_estimates&quot;.&quot;estimate_of_type&quot; = &#39;Treasure&#39; AND &quot;price_estimates&quot;.&quot;estimate_of_id&quot; = 1)
-     OR (&quot;price_estimates&quot;.&quot;estimate_of_type&quot; = &#39;Car&#39; AND &quot;price_estimates&quot;.&quot;estimate_of_id&quot; = 2))</code></pre>
-
-<p><em>Philippe Huibonhoa</em></p></li>
-<li><p>Fix a bug where using <code>t.foreign_key</code> twice with the same <code>to_table</code> within
-the same table definition would only create one foreign key.</p>
-
-<p><em>George Millo</em></p></li>
-<li><p>Fix a regression on has many association, where calling a child from parent in child&#39;s callback
-results in same child records getting added repeatedly to target.</p>
-
-<p>Fixes #13387.</p>
-
-<p><em>Bogdan Gusiev</em>, <em>Jon Hinson</em></p></li>
-<li><p>Rework <code>ActiveRecord::Relation#last</code>.</p></li>
+<p><em>Ralin Chimev</em></p></li>
 </ul>
 
-<pre class="code ruby"><code class="ruby">1. Never perform additional SQL on loaded relation
-2. Use SQL reverse order instead of loading relation if relation doesn&#39;t have limit
-3. Deprecated relation loading when SQL order can not be automatically reversed
-
-    Topic.order(&quot;title&quot;).load.last(3)
-      # before: SELECT ...
-      # after: No SQL
-
-    Topic.order(&quot;title&quot;).last
-      # before: SELECT * FROM `topics`
-      # after:  SELECT * FROM `topics` ORDER BY `topics`.`title` DESC LIMIT 1
-
-    Topic.order(&quot;coalesce(author, title)&quot;).last
-      # before: SELECT * FROM `topics`
-      # after:  Deprecation Warning for irreversible order
-
-*Bogdan Gusiev*</code></pre>
-
-<ul>
-<li><p>Allow <code>joins</code> to be unscoped.</p>
-
-<p>Fixes #13775.</p>
-
-<p><em>Takashi Kokubun</em></p></li>
-<li><p>Add <code>#second_to_last</code> and <code>#third_to_last</code> finder methods.</p>
-
-<p><em>Brian Christian</em></p></li>
-<li><p>Added <code>numeric</code> helper into migrations.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_numeric_types'>numeric_types</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_numeric'>numeric</span> <span class='symbeg'>:</span><span class='id identifier rubyid_numeric_type'>numeric_type</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='int'>10</span><span class='comma'>,</span> <span class='label'>scale:</span> <span class='int'>2</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Mehmet Emin İNAÇ</em></p></li>
-<li><p>Bumped the minimum supported version of PostgreSQL to &gt;= 9.1.
-Both PG 9.0 and 8.4 are past their end of life date:
-<a href="http://www.postgresql.org/support/versioning/">http://www.postgresql.org/support/versioning/</a></p>
-
-<p><em>Remo Mueller</em></p></li>
-<li><p><code>ActiveRecord::Relation#reverse_order</code> throws <a href="ActiveRecord/IrreversibleOrderError.html" title="ActiveRecord::IrreversibleOrderError (class)">::ActiveRecord::IrreversibleOrderError</a>
-when the order can not be reversed using current trivial algorithm.
-Also raises the same error when <code>#reverse_order</code> is called on
-relation without any order and table has no primary key:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>Topic</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>concat(author_name, title)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_reverse_order'>reverse_order</span>
-  <span class='comment'># Before: SELECT `topics`.* FROM `topics` ORDER BY concat(author_name DESC, title) DESC
-</span>  <span class='comment'># After: raises ActiveRecord::IrreversibleOrderError
-</span><span class='const'>Edge</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_reverse_order'>reverse_order</span>
-  <span class='comment'># Before: SELECT `edges`.* FROM `edges` ORDER BY `edges`.`` DESC
-</span>  <span class='comment'># After: raises ActiveRecord::IrreversibleOrderError</span></code></pre>
-
-<p><em>Bogdan Gusiev</em></p></li>
-<li><p>Improve schema_migrations insertion performance by inserting all versions
-in one INSERT SQL.</p>
-
-<p><em>Akira Matsuda</em>, <em>Naoto Koshikawa</em></p></li>
-<li><p>Using <code>references</code> or <code>belongs_to</code> in migrations will always add index
-for the referenced column by default, without adding <code>index: true</code> option
-to generated migration file. Users can opt out of this by passing
-<code>index: false</code>.</p>
-
-<p>Fixes #18146.</p>
-
-<p><em>Matthew Draper</em>, <em>Prathamesh Sonpatki</em></p></li>
-<li><p>Run <code>type</code> attributes through attributes API type-casting before
-instantiating the corresponding subclass. This makes it possible to define
-custom STI mappings.</p>
-
-<p>Fixes #21986.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Don&#39;t try to quote functions or expressions passed to <code>:default</code> option if
-they are passed as procs.</p>
-
-<p>This will generate proper query with the passed function or expression for
-the default option, instead of trying to quote it in incorrect fashion.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_posts'>posts</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='symbeg'>:</span><span class='id identifier rubyid_published_at'>published_at</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>NOW()</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Fix regression when loading fixture files with symbol keys.</p>
-
-<p>Fixes #22584.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Use <code>version</code> column as primary key for schema_migrations table because
-<code>schema_migrations</code> versions are guaranteed to be unique.</p>
-
-<p>This makes it possible to use <code>update_attributes</code> on models that do
-not have a primary key.</p>
-
-<p><em>Richard Schneeman</em></p></li>
-<li><p>Add short-hand methods for text and blob types in MySQL.</p>
-
-<p>In Pg and Sqlite3, <code>:text</code> and <code>:binary</code> have variable unlimited length.
-But in MySQL, these have limited length for each types (ref #21591, #21619).
-This change adds short-hand methods for each text and blob types.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foos'>foos</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_tinyblob'>tinyblob</span>   <span class='symbeg'>:</span><span class='id identifier rubyid_tiny_blob'>tiny_blob</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_mediumblob'>mediumblob</span> <span class='symbeg'>:</span><span class='id identifier rubyid_medium_blob'>medium_blob</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_longblob'>longblob</span>   <span class='symbeg'>:</span><span class='id identifier rubyid_long_blob'>long_blob</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_tinytext'>tinytext</span>   <span class='symbeg'>:</span><span class='id identifier rubyid_tiny_text'>tiny_text</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_mediumtext'>mediumtext</span> <span class='symbeg'>:</span><span class='id identifier rubyid_medium_text'>medium_text</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_longtext'>longtext</span>   <span class='symbeg'>:</span><span class='id identifier rubyid_long_text'>long_text</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Take into account UTC offset when assigning string representation of
-timestamp with offset specified to attribute of time type.</p>
-
-<p><em>Andrey Novikov</em></p></li>
-<li><p>When calling <code>first</code> with a <code>limit</code> argument, return directly from the
-<code>loaded?</code> records if available.</p>
-
-<p><em>Ben Woosley</em></p></li>
-<li><p>Deprecate sending the <code>offset</code> argument to <code>find_nth</code>. Please use the
-<code>offset</code> method on relation instead.</p>
-
-<p><em>Ben Woosley</em></p></li>
-<li><p>Limit record touching to once per transaction.</p>
-
-<p>If you have a parent/grand-parent relation like:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>Comment</span> <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='kw'>true</span>
-<span class='const'>Message</span> <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_project'>project</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='kw'>true</span>
-<span class='const'>Project</span> <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='label'>touch:</span> <span class='kw'>true</span></code></pre>
-
-<p>When the lowest entry(<code>Comment</code>) is saved, now, it won&#39;t repeat the touch
-call multiple times for the parent records.</p>
-
-<p>Related #18606.</p>
-
-<p><em>arthurnn</em></p></li>
-<li><p>Order the result of <code>find(ids)</code> to match the passed array, if the relation
-has no explicit order defined.</p>
-
-<p>Fixes #20338.</p>
-
-<p><em>Miguel Grazziotin</em>, <em>Matthew Draper</em></p></li>
-<li><p>Omit default limit values in dumped schema. It&#39;s tidier, and if the defaults
-change in the future, we can address that via Migration API Versioning.</p>
-
-<p><em>Jean Boussier</em></p></li>
-<li><p>Support passing the schema name as a prefix to table name in
-<code>ConnectionAdapters::SchemaStatements#indexes</code>. Previously the prefix would
-be considered a full part of the index name, and only the schema in the
-current search path would be considered.</p>
-
-<p><em>Grey Baker</em></p></li>
-<li><p>Ignore index name in <code>index_exists?</code> and <code>remove_index</code> when not passed a
-name to check for.</p>
-
-<p><em>Grey Baker</em></p></li>
-<li><p>Extract support for the legacy <code>mysql</code> database adapter from core. It will
-live on in a separate gem for now, but most users should just use <code>mysql2</code>.</p>
-
-<p><em>Abdelkader Boudih</em></p></li>
-<li><p>ApplicationRecord is a new superclass for all app models, analogous to app
-controllers subclassing ApplicationController instead of
-ActionController::Base. This gives apps a single spot to configure app-wide
-model behavior.</p>
-
-<p>Newly generated applications have <code>app/models/application_record.rb</code>
-present by default.</p>
-
-<p><em>Genadi Samokovarov</em></p></li>
-<li><p>Version the API presented to migration classes, so we can change parameter
-defaults without breaking existing migrations, or forcing them to be
-rewritten through a deprecation cycle.</p>
-
-<p>New migrations specify the Rails version they were written for:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>AddStatusToOrders</span> <span class='op'>&lt;</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Migration.html" title="ActiveRecord::Migration (class)">Migration</a></span><span class='lbracket'>[</span><span class='float'>5.0</span><span class='rbracket'>]</span>
-  <span class='kw'>def</span> <span class='id identifier rubyid_change'>change</span>
-    <span class='comment'># ...
-</span>  <span class='kw'>end</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Matthew Draper</em>, <em>Ravil Bayramgalin</em></p></li>
-<li><p>Use bind params for <code>limit</code> and <code>offset</code>. This will generate significantly
-fewer prepared statements for common tasks like pagination. To support this
-change, passing a string containing a comma to <code>limit</code> has been deprecated,
-and passing an Arel node to <code>limit</code> is no longer supported.</p>
-
-<p>Fixes #22250.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Introduce after_<code>create,update,delete</code>_commit callbacks.</p>
-
-<p>Before:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_after_commit'>after_commit</span> <span class='symbeg'>:</span><span class='id identifier rubyid_add_to_index_later'>add_to_index_later</span><span class='comma'>,</span> <span class='label'>on:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_create'>create</span>
-<span class='id identifier rubyid_after_commit'>after_commit</span> <span class='symbeg'>:</span><span class='id identifier rubyid_update_in_index_later'>update_in_index_later</span><span class='comma'>,</span> <span class='label'>on:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_update'>update</span>
-<span class='id identifier rubyid_after_commit'>after_commit</span> <span class='symbeg'>:</span><span class='id identifier rubyid_remove_from_index_later'>remove_from_index_later</span><span class='comma'>,</span> <span class='label'>on:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_destroy'>destroy</span></code></pre>
-
-<p>After:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_after_create_commit'>after_create_commit</span>  <span class='symbeg'>:</span><span class='id identifier rubyid_add_to_index_later'>add_to_index_later</span>
-<span class='id identifier rubyid_after_update_commit'>after_update_commit</span>  <span class='symbeg'>:</span><span class='id identifier rubyid_update_in_index_later'>update_in_index_later</span>
-<span class='id identifier rubyid_after_destroy_commit'>after_destroy_commit</span> <span class='symbeg'>:</span><span class='id identifier rubyid_remove_from_index_later'>remove_from_index_later</span></code></pre>
-
-<p>Fixes #22515.</p>
-
-<p><em>Genadi Samokovarov</em></p></li>
-<li><p>Respect the column default values for <code>inheritance_column</code> when
-instantiating records through the base class.</p>
-
-<p>Fixes #17121.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='comment'># The schema of BaseModel has `t.string :type, default: &#39;SubType&#39;`
-</span><span class='id identifier rubyid_subtype'>subtype</span> <span class='op'>=</span> <span class='const'>BaseModel</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-<span class='id identifier rubyid_assert_equals'>assert_equals</span> <span class='const'>SubType</span><span class='comma'>,</span> <span class='id identifier rubyid_subtype'>subtype</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span></code></pre>
-
-<p><em>Kuldeep Aggarwal</em></p></li>
-<li><p>Fix <code>rake db:structure:dump</code> on Postgres when multiple schemas are used.</p>
-
-<p>Fixes #22346.</p>
-
-<p><em>Nick Muerdter</em>, <em>ckoenig</em></p></li>
-<li><p>Add schema dumping support for PostgreSQL geometric data types.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Except keys of <code>build_record</code>&#39;s argument from <code>create_scope</code> in <code>initialize_attributes</code>.</p>
-
-<p>Fixes #21893.</p>
-
-<p><em>Yuichiro Kaneko</em></p></li>
-<li><p>Deprecate <code>connection.tables</code> on the SQLite3 and MySQL adapters.
-Also deprecate passing arguments to <code>#tables</code>.
-And deprecate <code>table_exists?</code>.</p>
-
-<p>The <code>#tables</code> method of some adapters (mysql, mysql2, sqlite3) would return
-both tables and views while others (postgresql) just return tables. To make
-their behavior consistent, <code>#tables</code> will return only tables in the future.</p>
-
-<p>The <code>#table_exists?</code> method would check both tables and views. To make
-their behavior consistent with <code>#tables</code>, <code>#table_exists?</code> will check only
-tables in the future.</p>
-
-<p><em>Yuichiro Kaneko</em></p></li>
-<li><p>Improve support for non Active Record objects on <code>validates_associated</code></p>
-
-<p>Skipping <code>marked_for_destruction?</code> when the associated object does not responds
-to it make easier to validate virtual associations built on top of Active Model
-objects and/or serialized objects that implement a <code>valid?</code> instance method.</p>
-
-<p><em>Kassio Borges</em>, <em>Lucas Mazza</em></p></li>
-<li><p>Change connection management middleware to return a new response with
-a body proxy, rather than mutating the original.</p>
-
-<p><em>Kevin Buchanan</em></p></li>
-<li><p>Make <code>db:migrate:status</code> to render <code>1_some.rb</code> format migrate files.</p>
-
-<p>These files are in <code>db/migrate</code>:</p>
-
-<pre class="code ruby"><code class="ruby">* 1_valid_people_have_last_names.rb
-* 20150819202140_irreversible_migration.rb
-* 20150823202140_add_admin_flag_to_users.rb
-* 20150823202141_migration_tests.rb
-* 2_we_need_reminders.rb
-* 3_innocent_jointable.rb</code></pre>
-
-<p>Before:</p>
-
-<pre class="code ruby"><code class="ruby">$ bundle exec rake db:migrate:status
-#...
-
- Status   Migration ID    Migration Name
---------------------------------------------------
-   up     001             ********** NO FILE **********
-   up     002             ********** NO FILE **********
-   up     003             ********** NO FILE **********
-   up     20150819202140  Irreversible migration
-   up     20150823202140  Add admin flag to users
-   up     20150823202141  Migration tests</code></pre>
-
-<p>After:</p>
-
-<pre class="code ruby"><code class="ruby">$ bundle exec rake db:migrate:status
-#...
-
- Status   Migration ID    Migration Name
---------------------------------------------------
-   up     001             Valid people have last names
-   up     002             We need reminders
-   up     003             Innocent jointable
-   up     20150819202140  Irreversible migration
-   up     20150823202140  Add admin flag to users
-   up     20150823202141  Migration tests</code></pre>
-
-<p><em>Yuichiro Kaneko</em></p></li>
-<li><p>Define <code>ActiveRecord::Sanitization.sanitize_sql_for_order</code> and use it inside
-<code>preprocess_order_args</code>.</p>
-
-<p><em>Yuichiro Kaneko</em></p></li>
-<li><p>Allow bigint with default nil for avoiding auto increment primary key.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Remove <code>DEFAULT_CHARSET</code> and <code>DEFAULT_COLLATION</code> in <code>MySQLDatabaseTasks</code>.</p>
-
-<p>We should omit the collation entirely rather than providing a default.
-Then the choice is the responsibility of the server and MySQL distribution.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Alias <code>ActiveRecord::Relation#left_joins</code> to
-<code>ActiveRecord::Relation#left_outer_joins</code>.</p>
-
-<p><em>Takashi Kokubun</em></p></li>
-<li><p>Use advisory locking to raise a <code>ConcurrentMigrationError</code> instead of
-attempting to migrate when another migration is currently running.</p>
-
-<p><em>Sam Davies</em></p></li>
-<li><p>Added <code>ActiveRecord::Relation#left_outer_joins</code>.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby">User.left_outer_joins(:posts)
-# =&gt; SELECT &quot;users&quot;.* FROM &quot;users&quot; LEFT OUTER JOIN &quot;posts&quot; ON
-     &quot;posts&quot;.&quot;user_id&quot; = &quot;users&quot;.&quot;id&quot;</code></pre>
-
-<p><em>Florian Thomas</em></p></li>
-<li><p>Support passing an array to <code>order</code> for SQL parameter sanitization.</p>
-
-<p><em>Aaron Suggs</em></p></li>
-<li><p>Avoid disabling errors on the PostgreSQL connection when enabling the
-<code>standard_conforming_strings</code> setting. Errors were previously disabled because
-the setting wasn&#39;t writable in Postgres 8.1 and didn&#39;t exist in earlier
-versions. Now Rails only supports Postgres 8.2+ we&#39;re fine to assume the
-setting exists. Disabling errors caused problems when using a connection
-pooling tool like PgBouncer because it&#39;s not guaranteed to have the same
-connection between calls to <code>execute</code> and it could leave the connection
-with errors disabled.</p>
-
-<p>Fixes #22101.</p>
-
-<p><em>Harry Marr</em></p></li>
-<li><p>Set <code>scope.reordering_value</code> to <code>true</code> if <code>:reordering</code>-values are specified.</p>
-
-<p>Fixes #21886.</p>
-
-<p><em>Hiroaki Izu</em></p></li>
-<li><p>Add support for bidirectional destroy dependencies.</p>
-
-<p>Fixes #13609.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Content</span> <span class='op'>&lt;</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Base.html" title="ActiveRecord::Base (class)">Base</a></span>
-  <span class='id identifier rubyid_has_one'>has_one</span> <span class='symbeg'>:</span><span class='id identifier rubyid_position'>position</span><span class='comma'>,</span> <span class='label'>dependent:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_destroy'>destroy</span>
-<span class='kw'>end</span>
-
-<span class='kw'>class</span> <span class='const'>Position</span> <span class='op'>&lt;</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Base.html" title="ActiveRecord::Base (class)">Base</a></span>
-  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='label'>dependent:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_destroy'>destroy</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Seb Jacobs</em></p></li>
-<li><p>Includes HABTM returns correct size now. It&#39;s caused by the join dependency
-only instantiates one HABTM object because the join table hasn&#39;t a primary key.</p>
-
-<p>Fixes #16032.</p>
-
-<p>Examples:</p>
-
-<pre class="code ruby"><code class="ruby">before:
-
-Project.first.salaried_developers.size # =&gt; 3
-Project.includes(:salaried_developers).first.salaried_developers.size # =&gt; 1
-
-after:
-
-Project.first.salaried_developers.size # =&gt; 3
-Project.includes(:salaried_developers).first.salaried_developers.size # =&gt; 3</code></pre>
-
-<p><em>Bigxiang</em></p></li>
-<li><p>Add option to index errors in nested attributes.</p>
-
-<p>For models which have nested attributes, errors within those models will
-now be indexed if <code>:index_errors</code> option is set to true when defining a
-<code>has_many</code> relationship or by setting the configuration option
-<code>config.active_record.index_nested_attribute_errors</code> to true.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Guitar</span> <span class='op'>&lt;</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Base.html" title="ActiveRecord::Base (class)">Base</a></span>
-  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbeg'>:</span><span class='id identifier rubyid_tuning_pegs'>tuning_pegs</span><span class='comma'>,</span> <span class='label'>index_errors:</span> <span class='kw'>true</span>
-  <span class='id identifier rubyid_accepts_nested_attributes_for'>accepts_nested_attributes_for</span> <span class='symbeg'>:</span><span class='id identifier rubyid_tuning_pegs'>tuning_pegs</span>
-<span class='kw'>end</span>
-
-<span class='kw'>class</span> <span class='const'>TuningPeg</span> <span class='op'>&lt;</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Base.html" title="ActiveRecord::Base (class)">Base</a></span>
-  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_guitar'>guitar</span>
-  <span class='id identifier rubyid_validates_numericality_of'>validates_numericality_of</span> <span class='symbeg'>:</span><span class='id identifier rubyid_pitch'>pitch</span>
-<span class='kw'>end</span>
-
-<span class='comment'># Before
-</span><span class='id identifier rubyid_guitar'>guitar</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tuning_pegs.pitch</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>is not a number</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-
-<span class='comment'># After
-</span><span class='id identifier rubyid_guitar'>guitar</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tuning_pegs[1].pitch</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>is not a number</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span></code></pre>
-
-<p><em>Michael Probber</em>, <em>Terence Sun</em></p></li>
-<li><p>Exit with non-zero status for failed database rake tasks.</p>
-
-<p><em>Jay Hayes</em></p></li>
-<li><p>Queries such as <code>Computer.joins(:monitor).group(:status).count</code> will now be
-interpreted as  <code>Computer.joins(:monitor).group('computers.status').count</code>
-so that when <code>Computer</code> and <code>Monitor</code> have both <code>status</code> columns we don&#39;t
-have conflicts in projection.</p>
-
-<p><em>Rafael Sales</em></p></li>
-<li><p>Add ability to default to <code>uuid</code> as primary key when generating database migrations.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_generators'>generators</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
-  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_orm'>orm</span> <span class='symbeg'>:</span><span class='id identifier rubyid_active_record'>active_record</span><span class='comma'>,</span> <span class='label'>primary_key_type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_uuid'>uuid</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Jon McCartie</em></p></li>
-<li><p>Don&#39;t cache arguments in <code>#find_by</code> if they are an <a href="ActiveRecord/Relation.html" title="ActiveRecord::Relation (class)">::ActiveRecord::Relation</a>.</p>
-
-<p>Fixes #20817.</p>
-
-<p><em>Hiroaki Izu</em></p></li>
-<li><p>Qualify column name inserted by <code>group</code> in calculation.</p>
-
-<p>Giving <code>group</code> an unqualified column name now works, even if the relation
-has <code>JOIN</code> with another table which also has a column of the name.</p>
-
-<p><em>Soutaro Matsumoto</em></p></li>
-<li><p>Don&#39;t cache prepared statements containing an IN clause or a SQL literal, as
-these queries will change often and are unlikely to have a cache hit.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Fix <code>rewhere</code> in a <code>has_many</code> association.</p>
-
-<p>Fixes #21955.</p>
-
-<p><em>Josh Branchaud</em>, <em>Kal</em></p></li>
-<li><p><code>where</code> raises ArgumentError on unsupported types.</p>
-
-<p>Fixes #20473.</p>
-
-<p><em>Jake Worth</em></p></li>
-<li><p>Add an immutable string type to help reduce memory usage for apps which do
-not need mutation detection on strings.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Give <a href="ActiveRecord/Relation.html#update-instance_method" title="ActiveRecord::Relation#update (method)">ActiveRecord::Relation#update</a> its own deprecation warning when
-passed an <a href="ActiveRecord/Base.html" title="ActiveRecord::Base (class)">::ActiveRecord::Base</a> instance.</p>
-
-<p>Fixes #21945.</p>
-
-<p><em>Ted Johansson</em></p></li>
-<li><p>Make it possible to pass <code>:to_table</code> when adding a foreign key through
-<code>add_reference</code>.</p>
-
-<p>Fixes #21563.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>No longer pass deprecated option <code>-i</code> to <code>pg_dump</code>.</p>
-
-<p><em>Paul Sadauskas</em></p></li>
-<li><p>Concurrent <code>AR::Base#increment!</code> and <code>#decrement!</code> on the same record
-are all reflected in the database rather than overwriting each other.</p>
-
-<p><em>Bogdan Gusiev</em></p></li>
-<li><p>Avoid leaking the first relation we call <code>first</code> on, per model.</p>
-
-<p>Fixes #21921.</p>
-
-<p><em>Matthew Draper</em>, <em>Jean Boussier</em></p></li>
-<li><p>Remove unused <code>pk_and_sequence_for</code> in <code>AbstractMysqlAdapter</code>.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Allow fixtures files to set the model class in the YAML file itself.</p>
-
-<p>To load the fixtures file <code>accounts.yml</code> as the <code>User</code> model, use:</p>
-
-<pre class="code ruby"><code class="ruby">_fixture:
-  model_class: User
-david:
-  name: David</code></pre>
-
-<p>Fixes #9516.</p>
-
-<p><em>Roque Pinel</em></p></li>
-<li><p>Don&#39;t require a database connection to load a class which uses acceptance
-validations.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Correctly apply <code>unscope</code> when preloading through associations.</p>
-
-<p><em>Jimmy Bourassa</em></p></li>
-<li><p>Fixed taking precision into count when assigning a value to timestamp attribute.</p>
-
-<p>Timestamp column can have less precision than ruby timestamp
-In result in how big a fraction of a second can be stored in the
-database.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_m'>m</span> <span class='op'>=</span> <span class='const'>Model</span><span class='period'>.</span><span class='id identifier rubyid_create!'>create!</span>
-<span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_created_at'>created_at</span><span class='period'>.</span><span class='id identifier rubyid_usec'>usec</span> <span class='op'>==</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reload'>reload</span><span class='period'>.</span><span class='id identifier rubyid_created_at'>created_at</span><span class='period'>.</span><span class='id identifier rubyid_usec'>usec</span> <span class='comment'># =&gt; false
-</span><span class='comment'># due to different precision in Time.now and database column</span></code></pre>
-
-<p>If the precision is low enough, (mysql default is 0, so it is always low
-enough by default) the value changes when model is reloaded from the
-database. This patch fixes that issue ensuring that any timestamp
-assigned as an attribute is converted to column precision under the
-attribute.</p>
-
-<p><em>Bogdan Gusiev</em></p></li>
-<li><p>Introduce <code>connection.data_sources</code> and <code>connection.data_source_exists?</code>.
-These methods determine what relations can be used to back Active Record
-models (usually tables and views).</p>
-
-<p>Also deprecate <code>SchemaCache#tables</code>, <code>SchemaCache#table_exists?</code> and
-<code>SchemaCache#clear_table_cache!</code> in favor of their new data source
-counterparts.</p>
-
-<p><em>Yves Senn</em>, <em>Matthew Draper</em></p></li>
-<li><p>Add <a href="ActiveRecord/Base.html#ignored_columns-class_method" title="ActiveRecord::Base.ignored_columns (method)">ActiveRecord::Base.ignored_columns</a> to make some columns
-invisible from Active Record.</p>
-
-<p><em>Jean Boussier</em></p></li>
-<li><p><a href="ActiveRecord/Tasks/MySQLDatabaseTasks.html" title="ActiveRecord::Tasks::MySQLDatabaseTasks (class)">::ActiveRecord::Tasks::MySQLDatabaseTasks</a> fails if shellout to
-mysql commands (like <code>mysqldump</code>) is not successful.</p>
-
-<p><em>Steve Mitchell</em></p></li>
-<li><p>Ensure <code>select</code> quotes aliased attributes, even when using <code>from</code>.</p>
-
-<p>Fixes #21488.</p>
-
-<p><em>Sean Griffin</em>, <em>@johanlunds</em></p></li>
-<li><p>MySQL: support <code>unsigned</code> numeric data types.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foos'>foos</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_unsigned_integer'>unsigned_integer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_quantity'>quantity</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_unsigned_bigint'>unsigned_bigint</span>  <span class='symbeg'>:</span><span class='id identifier rubyid_total'>total</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_unsigned_float'>unsigned_float</span>   <span class='symbeg'>:</span><span class='id identifier rubyid_percentage'>percentage</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_unsigned_decimal'>unsigned_decimal</span> <span class='symbeg'>:</span><span class='id identifier rubyid_price'>price</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='int'>10</span><span class='comma'>,</span> <span class='label'>scale:</span> <span class='int'>2</span>
-<span class='kw'>end</span></code></pre>
-
-<p>The <code>unsigned: true</code> option may be used for the primary key:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foos'>foos</span><span class='comma'>,</span> <span class='label'>id:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_bigint'>bigint</span><span class='comma'>,</span> <span class='label'>unsigned:</span> <span class='kw'>true</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_…'>…</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Add <code>#views</code> and <code>#view_exists?</code> methods on connection adapters.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Correctly dump composite primary key.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_barcodes'>barcodes</span><span class='comma'>,</span> <span class='label'>primary_key:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>region</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>code</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='symbeg'>:</span><span class='id identifier rubyid_region'>region</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_integer'>integer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_code'>code</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Lookup the attribute name for <code>restrict_with_error</code> messages on the
-model class that defines the association.</p>
-
-<p><em>kuboon</em>, <em>Ronak Jangir</em></p></li>
-<li><p>Correct query for PostgreSQL 8.2 compatibility.</p>
-
-<p><em>Ben Murphy</em>, <em>Matthew Draper</em></p></li>
-<li><p><code>bin/rails db:migrate</code> uses
-<a href="ActiveRecord/Tasks/DatabaseTasks.html#migrations_paths-instance_method" title="ActiveRecord::Tasks::DatabaseTasks#migrations_paths (method)">ActiveRecord::Tasks::DatabaseTasks#migrations_paths</a> instead of
-<code>Migrator.migrations_paths</code>.</p>
-
-<p><em>Tobias Bielohlawek</em></p></li>
-<li><p>Support dropping indexes concurrently in PostgreSQL.</p>
-
-<p>See <a href="http://www.postgresql.org/docs/9.4/static/sql-dropindex.html">http://www.postgresql.org/docs/9.4/static/sql-dropindex.html</a> for more
-details.</p>
-
-<p><em>Grey Baker</em></p></li>
-<li><p>Deprecate passing conditions to <a href="ActiveRecord/Relation.html#delete_all-instance_method" title="ActiveRecord::Relation#delete_all (method)">ActiveRecord::Relation#delete_all</a>
-and <a href="ActiveRecord/Relation.html#destroy_all-instance_method" title="ActiveRecord::Relation#destroy_all (method)">ActiveRecord::Relation#destroy_all</a>.</p>
-
-<p><em>Wojciech Wnętrzak</em></p></li>
-<li><p>Instantiating an AR model with <a href="ActionController/Parameters.html" title="ActionController::Parameters (class)">::ActionController::Parameters</a> now raises
-an <a href="ActiveModel/ForbiddenAttributesError.html" title="ActiveModel::ForbiddenAttributesError (class)">::ActiveModel::ForbiddenAttributesError</a> if the parameters include a
-<code>type</code> field that has not been explicitly permitted. Previously, the
-<code>type</code> field was simply ignored in the same situation.</p>
-
-<p><em>Prem Sichanugrist</em></p></li>
-<li><p>PostgreSQL, <code>create_schema</code>, <code>drop_schema</code> and <code>rename_table</code> now quote
-schema names.</p>
-
-<p>Fixes #21418.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_schema'>create_schema</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my.schema</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-<span class='comment'># CREATE SCHEMA &quot;my.schema&quot;;</span></code></pre>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>PostgreSQL, add <code>:if_exists</code> option to <code>#drop_schema</code>. This makes it
-possible to drop a schema that might exist without raising an exception if
-it doesn&#39;t.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Only try to nullify has_one target association if the record is persisted.</p>
-
-<p>Fixes #21223.</p>
-
-<p><em>Agis Anastasopoulos</em></p></li>
-<li><p>Uniqueness validator raises descriptive error when running on a persisted
-record without primary key.</p>
-
-<p>Fixes #21304.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Add a native JSON data type support in MySQL.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_json_data_type'>json_data_type</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_json'>json</span> <span class='symbeg'>:</span><span class='id identifier rubyid_settings'>settings</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Descriptive error message when fixtures contain a missing column.</p>
-
-<p>Fixes #21201.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p><a href="ActiveRecord/Tasks/PostgreSQLDatabaseTasks.html" title="ActiveRecord::Tasks::PostgreSQLDatabaseTasks (class)">::ActiveRecord::Tasks::PostgreSQLDatabaseTasks</a> fail if shellout to
-postgresql commands (like <code>pg_dump</code>) is not successful.</p>
-
-<p><em>Bryan Paxton</em>, <em>Nate Berkopec</em></p></li>
-<li><p>Add <code>ActiveRecord::Relation#in_batches</code> to work with records and relations
-in batches.</p>
-
-<p>Available options are <code>of</code> (batch size), <code>load</code>, <code>start</code>, and <code>finish</code>.</p>
-
-<p>Examples:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_in_batches'>in_batches</span><span class='period'>.</span><span class='id identifier rubyid_each_record'>each_record</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbeg'>:</span><span class='id identifier rubyid_party_all_night!'>party_all_night!</span><span class='rparen'>)</span>
-<span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_in_batches'>in_batches</span><span class='period'>.</span><span class='id identifier rubyid_update_all'>update_all</span><span class='lparen'>(</span><span class='label'>awesome:</span> <span class='kw'>true</span><span class='rparen'>)</span>
-<span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_in_batches'>in_batches</span><span class='period'>.</span><span class='id identifier rubyid_delete_all'>delete_all</span>
-<span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_in_batches'>in_batches</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_relation'>relation</span><span class='op'>|</span>
-  <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_delete_all'>delete_all</span>
-  <span class='id identifier rubyid_sleep'>sleep</span> <span class='int'>10</span> <span class='comment'># Throttles the delete queries
-</span><span class='kw'>end</span></code></pre>
-
-<p>Fixes #20933.</p>
-
-<p><em>Sina Siadat</em></p></li>
-<li><p>Added methods for PostgreSQL geometric data types to use in migrations.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foo'>foo</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foo_line'>foo_line</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_lseg'>lseg</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foo_lseg'>foo_lseg</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foo_box'>foo_box</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foo_path'>foo_path</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_polygon'>polygon</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foo_polygon'>foo_polygon</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_circle'>circle</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foo_circle'>foo_circle</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Mehmet Emin İNAÇ</em></p></li>
-<li><p>Add <code>cache_key</code> to <a href="ActiveRecord/Relation.html" title="ActiveRecord::Relation (class)">::ActiveRecord::Relation</a>.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='ivar'>@users</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name like ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%Alberto%</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-<span class='ivar'>@users</span><span class='period'>.</span><span class='id identifier rubyid_cache_key'>cache_key</span>
-<span class='comment'># =&gt; &quot;/users/query-5942b155a43b139f2471b872ac54251f-3-20150714212107656125000&quot;</span></code></pre>
-
-<p><em>Alberto Fernández-Capel</em></p></li>
-<li><p>Properly allow uniqueness validations on primary keys.</p>
-
-<p>Fixes #20966.</p>
-
-<p><em>Sean Griffin</em>, <em>presskey</em></p></li>
-<li><p>Don&#39;t raise an error if an association failed to destroy when <code>destroy</code> was
-called on the parent (as opposed to <code>destroy!</code>).</p>
-
-<p>Fixes #20991.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p><a href="ActiveRecord/RecordNotFound.html" title="ActiveRecord::RecordNotFound (class)">::ActiveRecord::RecordNotFound</a> modified to store model name, primary_key and
-id of the caller model. It allows the catcher of this exception to make
-a better decision to what to do with it.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>SomeAbstractController</span> <span class='op'>&lt;</span> <span class='const'><a href="ActionController.html" title="ActionController (module)">ActionController</a></span><span class='op'>::</span><span class='const'><a href="ActionController/Base.html" title="ActionController::Base (class)">Base</a></span>
-  <span class='id identifier rubyid_rescue_from'>rescue_from</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/RecordNotFound.html" title="ActiveRecord::RecordNotFound (class)">RecordNotFound</a></span><span class='comma'>,</span> <span class='label'>with:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_redirect_to_404'>redirect_to_404</span>
-
-  <span class='id identifier rubyid_private'>private</span> <span class='kw'>def</span> <span class='id identifier rubyid_redirect_to_404'>redirect_to_404</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_posts_url'>posts_url</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_model'>model</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Post</span><span class='tstring_end'>&#39;</span></span>
-    <span class='id identifier rubyid_raise'>raise</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Sameer Rahmani</em></p></li>
-<li><p>Deprecate the keys for association <code>restrict_dependent_destroy</code> errors in favor
-of new key names.</p>
-
-<p>Previously <code>has_one</code> and <code>has_many</code> associations were using the
-<code>one</code> and <code>many</code> keys respectively. Both of these keys have special
-meaning in I18n (they are considered to be pluralizations) so by
-renaming them to <code>has_one</code> and <code>has_many</code> we make the messages more explicit
-and most importantly they don&#39;t clash with linguistical systems that need to
-validate translation keys (and their pluralizations).</p>
-
-<p>The <code>:&#39;restrict_dependent_destroy.one&#39;</code> key should be replaced with
-<code>:&#39;restrict_dependent_destroy.has_one&#39;</code>, and <code>:&#39;restrict_dependent_destroy.many&#39;</code>
-with <code>:&#39;restrict_dependent_destroy.has_many&#39;</code>.</p>
-
-<p><em>Roque Pinel</em>, <em>Christopher Dell</em></p></li>
-<li><p>Fix state being carried over from previous transaction.</p>
-
-<p>Considering the following example where <code>name</code> is a required attribute.
-Before we had <code>new_record?</code> returning <code>true</code> for a persisted record:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_author'>author</span> <span class='op'>=</span> <span class='const'>Author</span><span class='period'>.</span><span class='id identifier rubyid_create!'>create!</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>foo</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_author'>author</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span>
-<span class='id identifier rubyid_author'>author</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>        <span class='comment'># =&gt; false
-</span><span class='id identifier rubyid_author'>author</span><span class='period'>.</span><span class='id identifier rubyid_new_record?'>new_record?</span> <span class='comment'># =&gt; true</span></code></pre>
-
-<p>Fixes #20824.</p>
-
-<p><em>Roque Pinel</em></p></li>
-<li><p>Correctly ignore <code>mark_for_destruction</code> when <code>autosave</code> isn&#39;t set to <code>true</code>
-when validating associations.</p>
-
-<p>Fixes #20882.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Fix a bug where counter_cache doesn&#39;t always work with polymorphic
-relations.</p>
-
-<p>Fixes #16407.</p>
-
-<p><em>Stefan Kanev</em>, <em>Sean Griffin</em></p></li>
-<li><p>Ensure that cyclic associations with autosave don&#39;t cause duplicate errors
-to be added to the parent record.</p>
-
-<p>Fixes #20874.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Ensure that <a href="ActionController/Parameters.html" title="ActionController::Parameters (class)">::ActionController::Parameters</a> can still be passed to nested
-attributes.</p>
-
-<p>Fixes #20922.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Deprecate force association reload by passing a truthy argument to
-association method.</p>
-
-<p>For collection association, you can call <code>#reload</code> on association proxy to
-force a reload:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='ivar'>@user</span><span class='period'>.</span><span class='id identifier rubyid_posts'>posts</span><span class='period'>.</span><span class='id identifier rubyid_reload'>reload</span>   <span class='comment'># Instead of @user.posts(true)</span></code></pre>
-
-<p>For singular association, you can call <code>#reload</code> on the parent object to
-clear its association cache then call the association method:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='ivar'>@user</span><span class='period'>.</span><span class='id identifier rubyid_reload'>reload</span><span class='period'>.</span><span class='id identifier rubyid_profile'>profile</span>   <span class='comment'># Instead of @user.profile(true)</span></code></pre>
-
-<p>Passing a truthy argument to force association to reload will be removed in
-Rails 5.1.</p>
-
-<p><em>Prem Sichanugrist</em></p></li>
-<li><p>Replaced <a href="ActiveSupport/Concurrency/Latch.html" title="ActiveSupport::Concurrency::Latch (class)">::ActiveSupport::Concurrency::Latch</a> with <code>Concurrent::CountDownLatch</code>
-from the concurrent-ruby gem.</p>
-
-<p><em>Jerry D&#39;Antonio</em></p></li>
-<li><p>Fix through associations using scopes having the scope merged multiple
-times.</p>
-
-<p>Fixes #20721.
-Fixes #20727.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p><a href="ActiveRecord/Base.html#dump_schema_after_migration-class_method" title="ActiveRecord::Base.dump_schema_after_migration (method)">ActiveRecord::Base.dump_schema_after_migration</a> applies migration tasks
-other than <code>db:migrate</code>. (eg. <code>db:rollback</code>, <code>db:migrate:dup</code>, ...)</p>
-
-<p>Fixes #20743.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Add alternate syntax to make <code>change_column_default</code> reversible.</p>
-
-<p>User can pass in <code>:from</code> and <code>:to</code> to make <code>change_column_default</code> command
-become reversible.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_change_column_default'>change_column_default</span> <span class='symbeg'>:</span><span class='id identifier rubyid_posts'>posts</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_status'>status</span><span class='comma'>,</span> <span class='label'>from:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>draft</span><span class='tstring_end'>&quot;</span></span>
-<span class='id identifier rubyid_change_column_default'>change_column_default</span> <span class='symbeg'>:</span><span class='id identifier rubyid_users'>users</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_authorized'>authorized</span><span class='comma'>,</span> <span class='label'>from:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='kw'>false</span></code></pre>
-
-<p><em>Prem Sichanugrist</em></p></li>
-<li><p>Prevent error when using <code>force_reload: true</code> on an unassigned polymorphic
-belongs_to association.</p>
-
-<p>Fixes #20426.</p>
-
-<p><em>James Dabbs</em></p></li>
-<li><p>Correctly raise <a href="ActiveRecord/AssociationTypeMismatch.html" title="ActiveRecord::AssociationTypeMismatch (class)">::ActiveRecord::AssociationTypeMismatch</a> when assigning
-a wrong type to a namespaced association.</p>
-
-<p>Fixes #20545.</p>
-
-<p><em>Diego Carrion</em></p></li>
-<li><p><code>validates_absence_of</code> respects <code>marked_for_destruction?</code>.</p>
-
-<p>Fixes #20449.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Include the <a href="Enumerable.html" title="Enumerable (module)">Enumerable</a> module in <a href="ActiveRecord/Relation.html" title="ActiveRecord::Relation (class)">::ActiveRecord::Relation</a></p>
-
-<p><em>Sean Griffin</em>, <em>bogdan</em></p></li>
-<li><p>Use <a href="Enumerable.html#sum-instance_method" title="Enumerable#sum (method)">Enumerable#sum</a> in <a href="ActiveRecord/Relation.html" title="ActiveRecord::Relation (class)">::ActiveRecord::Relation</a> if a block is given.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Let <code>WITH</code> queries (Common Table Expressions) be explainable.</p>
-
-<p><em>Vladimir Kochnev</em></p></li>
-<li><p>Make <code>remove_index :table, :column</code> reversible.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Fixed an error which would occur in dirty checking when calling
-<code>update_attributes</code> from a getter.</p>
-
-<p>Fixes #20531.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Make <code>remove_foreign_key</code> reversible. Any foreign key options must be
-specified, similar to <code>remove_column</code>.</p>
-
-<p><em>Aster Ryan</em></p></li>
-<li><p>Add <code>:_prefix</code> and <code>:_suffix</code> options to <code>enum</code> definition.</p>
-
-<p>Fixes #17511, #17415.</p>
-
-<p><em>Igor Kapkov</em></p></li>
-<li><p>Correctly handle decimal arrays with defaults in the schema dumper.</p>
-
-<p>Fixes #20515.</p>
-
-<p><em>Sean Griffin</em>, <em>jmondo</em></p></li>
-<li><p>Deprecate the PostgreSQL <code>:point</code> type in favor of a new one which will return
-<code>Point</code> objects instead of an <a href="Array.html" title="Array (class)">Array</a></p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Ensure symbols passed to <code>ActiveRecord::Relation#select</code> are always treated
-as columns.</p>
-
-<p>Fixes #20360.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Do not set <code>sql_mode</code> if <code>strict: :default</code> is specified.</p>
-
-<pre class="code ruby"><code class="ruby"># config/database.yml
-production:
-  adapter: mysql2
-  database: foo_prod
-  user: foo
-  strict: :default</code></pre>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Allow proc defaults to be passed to the attributes API. See documentation
-for examples.</p>
-
-<p><em>Sean Griffin</em>, <em>Kir Shatrov</em></p></li>
-<li><p>SQLite: <code>:collation</code> support for string and text columns.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foo'>foo</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='symbeg'>:</span><span class='id identifier rubyid_string_nocase'>string_nocase</span><span class='comma'>,</span> <span class='label'>collation:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>NOCASE</span><span class='tstring_end'>&#39;</span></span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='symbeg'>:</span><span class='id identifier rubyid_text_rtrim'>text_rtrim</span><span class='comma'>,</span> <span class='label'>collation:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>RTRIM</span><span class='tstring_end'>&#39;</span></span>
-<span class='kw'>end</span>
-
-<span class='id identifier rubyid_add_column'>add_column</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foo'>foo</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='label'>collation:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>RTRIM</span><span class='tstring_end'>&#39;</span></span>
-
-<span class='id identifier rubyid_change_column'>change_column</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foo'>foo</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='label'>collation:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>NOCASE</span><span class='tstring_end'>&#39;</span></span></code></pre>
-
-<p><em>Akshay Vishnoi</em></p></li>
-<li><p>Allow the use of symbols or strings to specify enum values in test
-fixtures:</p>
-
-<pre class="code ruby"><code class="ruby">awdr:
-  title: &quot;Agile Web Development with Rails&quot;
-  status: :proposed</code></pre>
-
-<p><em>George Claghorn</em></p></li>
-<li><p>Clear query cache when <code>ActiveRecord::Base#reload</code> is called.</p>
-
-<p><em>Shane Hender, Pierre Nespo</em></p></li>
-<li><p>Include stored procedures and function on the MySQL structure dump.</p>
-
-<p><em>Jonathan Worek</em></p></li>
-<li><p>Pass <code>:extend</code> option for <code>has_and_belongs_to_many</code> associations to the
-underlying <code>has_many :through</code>.</p>
-
-<p><em>Jaehyun Shin</em></p></li>
-<li><p>Deprecate <code>Relation#uniq</code> use <code>Relation#distinct</code> instead.</p>
-
-<p>See #9683.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Allow single table inheritance instantiation to work when storing
-demodulized class names.</p>
-
-<p><em>Alex Robbin</em></p></li>
-<li><p>Correctly pass MySQL options when using <code>structure_dump</code> or
-<code>structure_load</code>.</p>
-
-<p>Specifically, it fixes an issue when using SSL authentication.</p>
-
-<p><em>Alex Coomans</em></p></li>
-<li><p>Correctly dump <code>:options</code> on <code>create_table</code> for MySQL.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>PostgreSQL: <code>:collation</code> support for string and text columns.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foos'>foos</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='symbeg'>:</span><span class='id identifier rubyid_string_en'>string_en</span><span class='comma'>,</span> <span class='label'>collation:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>en_US.UTF-8</span><span class='tstring_end'>&#39;</span></span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>   <span class='symbeg'>:</span><span class='id identifier rubyid_text_ja'>text_ja</span><span class='comma'>,</span>   <span class='label'>collation:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ja_JP.UTF-8</span><span class='tstring_end'>&#39;</span></span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Remove <code>ActiveRecord::Serialization::XmlSerializer</code> from core.</p>
-
-<p><em>Zachary Scott</em></p></li>
-<li><p>Make <code>unscope</code> aware of &quot;less than&quot; and &quot;greater than&quot; conditions.</p>
-
-<p><em>TAKAHASHI Kazuaki</em></p></li>
-<li><p><code>find_by</code> and <code>find_by!</code> raise <code>ArgumentError</code> when called without
-arguments.</p>
-
-<p><em>Kohei Suzuki</em></p></li>
-<li><p>Revert behavior of <code>db:schema:load</code> back to loading the full
-environment. This ensures that initializers are run.</p>
-
-<p>Fixes #19545.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Fix missing index when using <code>timestamps</code> with the <code>index</code> option.</p>
-
-<p>The <code>index</code> option used with <code>timestamps</code> should be passed to both
-<code>column</code> definitions for <code>created_at</code> and <code>updated_at</code> rather than just
-the first.</p>
-
-<p><em>Paul Mucur</em></p></li>
-<li><p>Rename <code>:class</code> to <code>:anonymous_class</code> in association options.</p>
-
-<p>Fixes #19659.</p>
-
-<p><em>Andrew White</em></p></li>
-<li><p>Autosave existing records on a has many through association when the parent
-is new.</p>
-
-<p>Fixes #19782.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Fixed a bug where uniqueness validations would error on out of range values,
-even if an validation should have prevented it from hitting the database.</p>
-
-<p><em>Andrey Voronkov</em></p></li>
-<li><p>MySQL: <code>:charset</code> and <code>:collation</code> support for string and text columns.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foos'>foos</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='symbeg'>:</span><span class='id identifier rubyid_string_utf8_bin'>string_utf8_bin</span><span class='comma'>,</span> <span class='label'>charset:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>utf8</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>collation:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>utf8_bin</span><span class='tstring_end'>&#39;</span></span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>   <span class='symbeg'>:</span><span class='id identifier rubyid_text_ascii'>text_ascii</span><span class='comma'>,</span>      <span class='label'>charset:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ascii</span><span class='tstring_end'>&#39;</span></span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Foreign key related methods in the migration DSL respect
-<code>ActiveRecord::Base.pluralize_table_names = false</code>.</p>
-
-<p>Fixes #19643.</p>
-
-<p><em>Mehmet Emin İNAÇ</em></p></li>
-<li><p>Reduce memory usage from loading types on PostgreSQL.</p>
-
-<p>Fixes #19578.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Add <code>config.active_record.warn_on_records_fetched_greater_than</code> option.</p>
-
-<p>When set to an integer, a warning will be logged whenever a result set
-larger than the specified size is returned by a query.</p>
-
-<p>Fixes #16463.</p>
-
-<p><em>Jason Nochlin</em></p></li>
-<li><p>Ignore <code>.psqlrc</code> when loading database structure.</p>
-
-<p><em>Jason Weathered</em></p></li>
-<li><p>Fix referencing wrong table aliases while joining tables of has many through
-association (only when calling calculation methods).</p>
-
-<p>Fixes #19276.</p>
-
-<p><em>pinglamb</em></p></li>
-<li><p>Correctly persist a serialized attribute that has been returned to
-its default value by an in-place modification.</p>
-
-<p>Fixes #19467.</p>
-
-<p><em>Matthew Draper</em></p></li>
-<li><p>Fix generating the schema file when using PostgreSQL <code>BigInt[]</code> data type.
-Previously the <code>limit: 8</code> was not coming through, and this caused it to
-become <code>Int[]</code> data type after rebuilding from the schema.</p>
-
-<p>Fixes #19420.</p>
-
-<p><em>Jake Waller</em></p></li>
-<li><p>Reuse the <code>CollectionAssociation#reader</code> cache when the foreign key is
-available prior to save.</p>
-
-<p><em>Ben Woosley</em></p></li>
-<li><p>Add <code>config.active_record.dump_schemas</code> to fix <code>db:structure:dump</code>
-when using schema_search_path and PostgreSQL extensions.</p>
-
-<p>Fixes #17157.</p>
-
-<p><em>Ryan Wallace</em></p></li>
-<li><p>Renaming <code>use_transactional_fixtures</code> to <code>use_transactional_tests</code> for clarity.</p>
-
-<p>Fixes #18864.</p>
-
-<p><em>Brandon Weiss</em></p></li>
-<li><p>Increase pg gem version requirement to <code>~&gt; 0.18</code>. Earlier versions of the
-pg gem are known to have problems with Ruby 2.2.</p>
-
-<p><em>Matt Brictson</em></p></li>
-<li><p>Correctly dump <code>serial</code> and <code>bigserial</code>.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Fix default <code>format</code> value in <a href="ActiveRecord/Tasks/DatabaseTasks.html#schema_file-instance_method" title="ActiveRecord::Tasks::DatabaseTasks#schema_file (method)">ActiveRecord::Tasks::DatabaseTasks#schema_file</a>.</p>
-
-<p><em>James Cox</em></p></li>
-<li><p>Don&#39;t enroll records in the transaction if they don&#39;t have commit callbacks.
-This was causing a memory leak when creating many records inside a transaction.</p>
-
-<p>Fixes #15549.</p>
-
-<p><em>Will Bryant</em>, <em>Aaron Patterson</em></p></li>
-<li><p>Correctly create through records when created on a has many through
-association when using <code>where</code>.</p>
-
-<p>Fixes #19073.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Add <code>SchemaMigration.create_table</code> support for any unicode charsets with MySQL.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>PostgreSQL no longer disables user triggers if system triggers can&#39;t be
-disabled. Disabling user triggers does not fulfill what the method promises.
-Rails currently requires superuser privileges for this method.</p>
-
-<p>If you absolutely rely on this behavior, consider patching
-<code>disable_referential_integrity</code>.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Restore aborted transaction state when <code>disable_referential_integrity</code> fails
-due to missing permissions.</p>
-
-<p><em>Toby Ovod-Everett</em>, <em>Yves Senn</em></p></li>
-<li><p>In PostgreSQL, print a warning message if <code>disable_referential_integrity</code>
-fails due to missing permissions.</p>
-
-<p><em>Andrey Nering</em>, <em>Yves Senn</em></p></li>
-<li><p>Allow a <code>:limit</code> option for MySQL bigint primary key support.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foos'>foos</span><span class='comma'>,</span> <span class='label'>id:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_primary_key'>primary_key</span><span class='comma'>,</span> <span class='label'>limit:</span> <span class='int'>8</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-<span class='kw'>end</span>
-
-<span class='comment'># or
-</span>
-<span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foos'>foos</span><span class='comma'>,</span> <span class='label'>id:</span> <span class='kw'>false</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_primary_key'>primary_key</span> <span class='symbeg'>:</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='label'>limit:</span> <span class='int'>8</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p><code>belongs_to</code> will now trigger a validation error by default if the association is not present.
-You can turn this off on a per-association basis with <code>optional: true</code>.
-(Note this new default only applies to new Rails apps that will be generated with
-<code>config.active_record.belongs_to_required_by_default = true</code> in initializer.)</p>
-
-<p><em>Josef Šimánek</em></p></li>
-<li><p>Fixed <code>ActiveRecord::Relation#becomes!</code> and <code>changed_attributes</code> issues for type
-columns.</p>
-
-<p>Fixes #17139.</p>
-
-<p><em>Miklos Fazekas</em></p></li>
-<li><p>Format the time string according to the precision of the time column.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Allow a <code>:precision</code> option for time type columns.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Add <code>ActiveRecord::Base.suppress</code> to prevent the receiver from being saved
-during the given block.</p>
-
-<p>For example, here&#39;s a pattern of creating notifications when new comments
-are posted. (The notification may in turn trigger an email, a push
-notification, or just appear in the UI somewhere):</p>
-
-<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Comment</span> <span class='op'>&lt;</span> <span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Base.html" title="ActiveRecord::Base (class)">Base</a></span>
-  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_commentable'>commentable</span><span class='comma'>,</span> <span class='label'>polymorphic:</span> <span class='kw'>true</span>
-  <span class='id identifier rubyid_after_create'>after_create</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='const'>Notification</span><span class='period'>.</span><span class='id identifier rubyid_create!'>create!</span> <span class='label'>comment:</span> <span class='kw'>self</span><span class='comma'>,</span>
-    <span class='label'>recipients:</span> <span class='id identifier rubyid_commentable'>commentable</span><span class='period'>.</span><span class='id identifier rubyid_recipients'>recipients</span> <span class='rbrace'>}</span>
-<span class='kw'>end</span></code></pre>
-
-<p>That&#39;s what you want the bulk of the time. A new comment creates a new
-Notification. There may be edge cases where you don&#39;t want that, like
-when copying a commentable and its comments, in which case write a
-concern with something like this:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='kw'>module</span> <span class='const'>Copyable</span>
-  <span class='kw'>def</span> <span class='id identifier rubyid_copy_to'>copy_to</span><span class='lparen'>(</span><span class='id identifier rubyid_destination'>destination</span><span class='rparen'>)</span>
-    <span class='const'>Notification</span><span class='period'>.</span><span class='id identifier rubyid_suppress'>suppress</span> <span class='kw'>do</span>
-      <span class='comment'># Copy logic that creates new comments that we do not want triggering
-</span>      <span class='comment'># notifications.
-</span>    <span class='kw'>end</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Michael Ryan</em></p></li>
-<li><p><code>:time</code> option added for <code>#touch</code>.</p>
-
-<p>Fixes #18905.</p>
-
-<p><em>Hyonjee Joo</em></p></li>
-<li><p>Add <code>foreign_key_exists?</code> method.</p>
-
-<p><em>Tõnis Simo</em></p></li>
-<li><p>Use SQL COUNT and LIMIT 1 queries for <code>none?</code> and <code>one?</code> methods
-if no block or limit is given, instead of loading the entire
-collection into memory. This applies to relations (e.g. <code>User.all</code>)
-as well as associations (e.g. <code>account.users</code>)</p>
-
-<pre class="code ruby"><code class="ruby"><span class='comment'># Before:
-</span>
-<span class='id identifier rubyid_users'>users</span><span class='period'>.</span><span class='id identifier rubyid_none?'>none?</span>
-<span class='comment'># SELECT &quot;users&quot;.* FROM &quot;users&quot;
-</span>
-<span class='id identifier rubyid_users'>users</span><span class='period'>.</span><span class='id identifier rubyid_one?'>one?</span>
-<span class='comment'># SELECT &quot;users&quot;.* FROM &quot;users&quot;
-</span>
-<span class='comment'># After:
-</span>
-<span class='id identifier rubyid_users'>users</span><span class='period'>.</span><span class='id identifier rubyid_none?'>none?</span>
-<span class='comment'># SELECT 1 AS one FROM &quot;users&quot; LIMIT 1
-</span>
-<span class='id identifier rubyid_users'>users</span><span class='period'>.</span><span class='id identifier rubyid_one?'>one?</span>
-<span class='comment'># SELECT COUNT(*) FROM &quot;users&quot;</span></code></pre>
-
-<p><em>Eugene Gilburg</em></p></li>
-<li><p>Have <code>enum</code> perform type casting consistently with the rest of Active
-Record, such as <code>where</code>.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p><code>scoping</code> no longer pollutes the current scope of sibling classes when using
-STI.</p>
-
-<p>Fixes #18806.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>StiOne</span><span class='period'>.</span><span class='id identifier rubyid_none'>none</span><span class='period'>.</span><span class='id identifier rubyid_scoping'>scoping</span> <span class='kw'>do</span>
-  <span class='const'>StiTwo</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p><code>remove_reference</code> with <code>foreign_key: true</code> removes the foreign key before
-removing the column. This fixes a bug where it was not possible to remove
-the column on MySQL.</p>
-
-<p>Fixes #18664.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p><code>find_in_batches</code> now accepts an <code>:finish</code> parameter that complements the <code>:start</code>
- parameter to specify where to stop batch processing.</p>
-
-<p><em>Vipul A M</em></p></li>
-<li><p>Fix a rounding problem for PostgreSQL timestamp columns.</p>
-
-<p>If a timestamp column has a precision specified, it needs to
-format according to that.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Respect the database default charset for <code>schema_migrations</code> table.</p>
-
-<p>The charset of <code>version</code> column in <code>schema_migrations</code> table depends
-on the database default charset and collation rather than the encoding
-of the connection.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Raise <code>ArgumentError</code> when passing <code>nil</code> or <code>false</code> to <code>Relation#merge</code>.</p>
-
-<p>These are not valid values to merge in a relation, so it should warn users
-early.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Use <code>SCHEMA</code> instead of <code>DB_STRUCTURE</code> for specifying a structure file.</p>
-
-<p>This makes the <code>db:structure</code> tasks consistent with <code>test:load_structure</code>.</p>
-
-<p><em>Dieter Komendera</em></p></li>
-<li><p>Respect custom primary keys for associations when calling <code>Relation#where</code></p>
-
-<p>Fixes #18813.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Fix several edge cases which could result in a counter cache updating
-twice or not updating at all for <code>has_many</code> and <code>has_many :through</code>.</p>
-
-<p>Fixes #10865.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Foreign keys added by migrations were given random, generated names. This
-meant a different <code>structure.sql</code> would be generated every time a developer
-ran migrations on their machine.</p>
-
-<p>The generated part of foreign key names is now a hash of the table name and
-column name, which is consistent every time you run the migration.</p>
-
-<p><em>Chris Sinjakli</em></p></li>
-<li><p>Fix n+1 query problem when eager loading nil associations (fixes #18312)</p>
-
-<p><em>Sammy Larbi</em></p></li>
-<li><p>Change the default error message from <code>can&#39;t be blank</code> to <code>must exist</code> for
-the presence validator of the <code>:required</code> option on <code>belongs_to</code>/<code>has_one</code>
-associations.</p>
-
-<p><em>Henrik Nygren</em></p></li>
-<li><p>Fixed <code>ActiveRecord::Relation#group</code> method when an argument is an SQL
-reserved keyword:</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>SplitTest</span><span class='period'>.</span><span class='id identifier rubyid_group'>group</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
-<span class='const'>Property</span><span class='period'>.</span><span class='id identifier rubyid_group'>group</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span></code></pre>
-
-<p><em>Bogdan Gusiev</em></p></li>
-<li><p>Added the <code>#or</code> method on <a href="ActiveRecord/Relation.html" title="ActiveRecord::Relation (class)">::ActiveRecord::Relation</a>, allowing use of the OR
-operator to combine WHERE or HAVING clauses.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>Post</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id = 1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_or'>or</span><span class='lparen'>(</span><span class='const'>Post</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id = 2</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
-<span class='comment'># =&gt; SELECT * FROM posts WHERE (id = 1) OR (id = 2)</span></code></pre>
-
-<p><em>Sean Griffin</em>, <em>Matthew Draper</em>, <em>Gael Muller</em>, <em>Olivier El Mekki</em></p></li>
-<li><p>Don&#39;t define autosave association callbacks twice from
-<code>accepts_nested_attributes_for</code>.</p>
-
-<p>Fixes #18704.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Integer types will no longer raise a <code>RangeError</code> when assigning an
-attribute, but will instead raise when going to the database.</p>
-
-<p>Fixes several vague issues which were never reported directly. See the
-commit message from the commit which added this line for some examples.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Values which would error while being sent to the database (such as an
-ASCII-8BIT string with invalid UTF-8 bytes on SQLite3), no longer error on
-assignment. They will still error when sent to the database, but you are
-given the ability to re-assign it to a valid value.</p>
-
-<p>Fixes #18580.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Don&#39;t remove join dependencies in <code>Relation#exists?</code></p>
-
-<p>Fixes #18632.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Invalid values assigned to a JSON column are assumed to be <code>nil</code>.</p>
-
-<p>Fixes #18629.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Add <code>ActiveRecord::Base#accessed_fields</code>, which can be used to quickly
-discover which fields were read from a model when you are looking to only
-select the data you need from the database.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Introduce the <code>:if_exists</code> option for <code>drop_table</code>.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_drop_table'>drop_table</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_posts'>posts</span><span class='comma'>,</span> <span class='label'>if_exists:</span> <span class='kw'>true</span><span class='rparen'>)</span></code></pre>
-
-<p>That would execute:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>DROP</span> <span class='const'>TABLE</span> <span class='const'>IF</span> <span class='const'>EXISTS</span> <span class='id identifier rubyid_posts'>posts</span></code></pre>
-
-<p>If the table doesn&#39;t exist, <code>if_exists: false</code> (the default) raises an
-exception whereas <code>if_exists: true</code> does nothing.</p>
-
-<p><em>Cody Cutrer</em>, <em>Stefan Kanev</em>, <em>Ryuta Kamizono</em></p></li>
-<li><p>Don&#39;t run SQL if attribute value is not changed for update_attribute method.</p>
-
-<p><em>Prathamesh Sonpatki</em></p></li>
-<li><p><code>time</code> columns can now get affected by <code>time_zone_aware_attributes</code>. If you have
-set <code>config.time_zone</code> to a value other than <code>&#39;UTC&#39;</code>, they will be treated
-as in that time zone by default in Rails 5.1. If this is not the desired
-behavior, you can set</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'><a href="ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span><span class='op'>::</span><span class='const'><a href="ActiveRecord/Base.html" title="ActiveRecord::Base (class)">Base</a></span><span class='period'>.</span><span class='id identifier rubyid_time_zone_aware_types'>time_zone_aware_types</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_datetime'>datetime</span><span class='rbracket'>]</span></code></pre>
-
-<p>A deprecation warning will be emitted if you have a <code>:time</code> column, and have
-not explicitly opted out.</p>
-
-<p>Fixes #3145.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Tests now run after_commit callbacks. You no longer have to declare
-<code>uses_transaction ‘test name’</code> to test the results of an after_commit.</p>
-
-<p>after_commit callbacks run after committing a transaction whose parent
-is not <code>joinable?</code>: un-nested transactions, transactions within test cases,
-and transactions in <code>console --sandbox</code>.</p>
-
-<p><em>arthurnn</em>, <em>Ravil Bayramgalin</em>, <em>Matthew Draper</em></p></li>
-<li><p><code>nil</code> as a value for a binary column in a query no longer logs as
-&quot;<NULL binary data>&quot;, and instead logs as just &quot;nil&quot;.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p><code>attribute_will_change!</code> will no longer cause non-persistable attributes to
-be sent to the database.</p>
-
-<p>Fixes #18407.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Remove support for the <code>protected_attributes</code> gem.</p>
-
-<p><em>Carlos Antonio da Silva</em>, <em>Roberto Miranda</em></p></li>
-<li><p>Fix accessing of fixtures having non-string labels like Fixnum.</p>
-
-<p><em>Prathamesh Sonpatki</em></p></li>
-<li><p>Remove deprecated support to preload instance-dependent associations.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Remove deprecated support for PostgreSQL ranges with exclusive lower bounds.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Remove deprecation when modifying a relation with cached Arel.
-This raises an <code>ImmutableRelation</code> error instead.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Added <a href="ActiveRecord/SecureToken.html" title="ActiveRecord::SecureToken (module)">::ActiveRecord::SecureToken</a> in order to encapsulate generation of
-unique tokens for attributes in a model using <a href="SecureRandom.html" title="SecureRandom (module)">SecureRandom</a>.</p>
-
-<p><em>Roberto Miranda</em></p></li>
-<li><p>Change the behavior of boolean columns to be closer to Ruby&#39;s semantics.</p>
-
-<p>Before this change we had a small set of &quot;truthy&quot;, and all others are &quot;falsy&quot;.</p>
-
-<p>Now, we have a small set of &quot;falsy&quot; values and all others are &quot;truthy&quot; matching
-Ruby&#39;s semantics.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Deprecate <code>ActiveRecord::Base.errors_in_transactional_callbacks=</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Change transaction callbacks to not swallow errors.</p>
-
-<p>Before this change any errors raised inside a transaction callback
-were getting rescued and printed in the logs.</p>
-
-<p>Now these errors are not rescued anymore and just bubble up, as the other callbacks.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated <code>sanitize_sql_hash_for_conditions</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated <code>Reflection#source_macro</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated <code>symbolized_base_class</code> and <code>symbolized_sti_name</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated <code>ActiveRecord::Base.disable_implicit_join_references=</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated access to connection specification using a string accessor.</p>
-
-<p>Now all strings will be handled as a URL.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Change the default <code>null</code> value for <code>timestamps</code> to <code>false</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Return an array of pools from <code>connection_pools</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Return a null column from <code>column_for_attribute</code> when no column exists.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated <code>serialized_attributes</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Remove deprecated automatic counter caches on <code>has_many :through</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Change the way in which callback chains can be halted.</p>
-
-<p>The preferred method to halt a callback chain from now on is to explicitly
-<code>throw(:abort)</code>.
-In the past, returning <code>false</code> in an Active Record <code>before_</code> callback had the
-side effect of halting the callback chain.
-This is not recommended anymore and, depending on the value of the
-<a href="ActiveSupport.html#halt_callback_chains_on_return_false-class_method" title="ActiveSupport.halt_callback_chains_on_return_false (method)">ActiveSupport.halt_callback_chains_on_return_false</a> option, will
-either not work at all or display a deprecation warning.</p>
-
-<p><em>claudiob</em></p></li>
-<li><p>Clear query cache on rollback.</p>
-
-<p><em>Florian Weingarten</em></p></li>
-<li><p>Fix setting of foreign_key for through associations when building a new record.</p>
-
-<p>Fixes #12698.</p>
-
-<p><em>Ivan Antropov</em></p></li>
-<li><p>Improve dumping of the primary key. If it is not a default primary key,
-correctly dump the type and options.</p>
-
-<p>Fixes #14169, #16599.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Format the datetime string according to the precision of the datetime field.</p>
-
-<p>Incompatible to rounding behavior between MySQL 5.6 and earlier.</p>
-
-<p>In 5.5, when you insert <code>2014-08-17 12:30:00.999999</code> the fractional part
-is ignored. In 5.6, it&#39;s rounded to <code>2014-08-17 12:30:01</code>:</p>
-
-<p><a href="http://bugs.mysql.com/bug.php?id=68760">http://bugs.mysql.com/bug.php?id=68760</a></p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Allow a precision option for MySQL datetimes.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Fixed automatic <code>inverse_of</code> for models nested in a module.</p>
-
-<p><em>Andrew McCloud</em></p></li>
-<li><p>Change <a href="ActiveRecord/Relation.html#update-instance_method" title="ActiveRecord::Relation#update (method)">ActiveRecord::Relation#update</a> behavior so that it can
-be called without passing ids of the records to be updated.</p>
-
-<p>This change allows updating multiple records returned by
-<a href="ActiveRecord/Relation.html" title="ActiveRecord::Relation (class)">::ActiveRecord::Relation</a> with callbacks and validations.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='comment'># Before
-</span><span class='comment'># ArgumentError: wrong number of arguments (1 for 2)
-</span><span class='const'>Comment</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>group:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>expert</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='label'>body:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Group of Rails Experts</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-
-<span class='comment'># After
-</span><span class='comment'># Comments with group expert updated with body &quot;Group of Rails Experts&quot;
-</span><span class='const'>Comment</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>group:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>expert</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='label'>body:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Group of Rails Experts</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
-
-<p><em>Prathamesh Sonpatki</em></p></li>
-<li><p>Fix <code>reaping_frequency</code> option when the value is a string.</p>
-
-<p>This usually happens when it is configured using <code>DATABASE_URL</code>.</p>
-
-<p><em>korbin</em></p></li>
-<li><p>Fix error message when trying to create an associated record and the foreign
-key is missing.</p>
-
-<p>Before this fix the following exception was being raised:</p>
-
-<pre class="code ruby"><code class="ruby">NoMethodError: undefined method `val&#39; for #&lt;Arel::Nodes::BindParam:0x007fc64d19c218&gt;</code></pre>
-
-<p>Now the message is:</p>
-
-<pre class="code ruby"><code class="ruby">ActiveRecord::UnknownAttributeError: unknown attribute &#39;foreign_key&#39; for Model.</code></pre>
-
-<p><em>Rafael Mendonça França</em></p></li>
-<li><p>Fix change detection problem for PostgreSQL bytea type and
-<code>ArgumentError: string contains null byte</code> exception with pg-0.18.</p>
-
-<p>Fixes #17680.</p>
-
-<p><em>Lars Kanis</em></p></li>
-<li><p>When a table has a composite primary key, the <code>primary_key</code> method for
-SQLite3 and PostgreSQL adapters was only returning the first field of the key.
-Ensures that it will return nil instead, as Active Record doesn&#39;t support
-composite primary keys.</p>
-
-<p>Fixes #18070.</p>
-
-<p><em>arthurnn</em></p></li>
-<li><p><code>validates_size_of</code> / <code>validates_length_of</code> do not count records
-which are <code>marked_for_destruction?</code>.</p>
-
-<p>Fixes #7247.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Ensure <code>first!</code> and friends work on loaded associations.</p>
-
-<p>Fixes #18237.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p><code>eager_load</code> preserves readonly flag for associations.</p>
-
-<p>Fixes #15853.</p>
-
-<p><em>Takashi Kokubun</em></p></li>
-<li><p>Provide <code>:touch</code> option to <code>save()</code> to accommodate saving without updating
-timestamps.</p>
-
-<p>Fixes #18202.</p>
-
-<p><em>Dan Olson</em></p></li>
-<li><p>Provide a more helpful error message when an unsupported class is passed to
-<code>serialize</code>.</p>
-
-<p>Fixes #18224.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Add bigint primary key support for MySQL.</p>
-
-<p>Example:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create_table'>create_table</span> <span class='symbeg'>:</span><span class='id identifier rubyid_foos'>foos</span><span class='comma'>,</span> <span class='label'>id:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_bigint'>bigint</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
-<span class='kw'>end</span></code></pre>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Support for any type of primary key.</p>
-
-<p>Fixes #14194.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Dump the default <code>nil</code> for PostgreSQL UUID primary key.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Add a <code>:foreign_key</code> option to <code>references</code> and associated migration
-methods. The model and migration generators now use this option, rather than
-the <code>add_foreign_key</code> form.</p>
-
-<p><em>Sean Griffin</em></p></li>
-<li><p>Don&#39;t raise when writing an attribute with an out-of-range datetime passed
-by the user.</p>
-
-<p><em>Grey Baker</em></p></li>
-<li><p>Replace deprecated <a href="ActiveRecord/Tasks/DatabaseTasks.html#load_schema-instance_method" title="ActiveRecord::Tasks::DatabaseTasks#load_schema (method)">ActiveRecord::Tasks::DatabaseTasks#load_schema</a> with
-<a href="ActiveRecord/Tasks/DatabaseTasks.html#load_schema_for-instance_method" title="ActiveRecord::Tasks::DatabaseTasks#load_schema_for (method)">ActiveRecord::Tasks::DatabaseTasks#load_schema_for</a>.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Fix bug with <code>ActiveRecord::Type::Numeric</code> that caused negative values to
-be marked as having changed when set to the same negative value.</p>
-
-<p>Fixes #18161.</p>
-
-<p><em>Daniel Fox</em></p></li>
-<li><p>Introduce <code>force: :cascade</code> option for <code>create_table</code>. Using this option
-will recreate tables even if they have dependent objects (like foreign keys).
-<code>db/schema.rb</code> now uses <code>force: :cascade</code>. This makes it possible to
-reload the schema when foreign keys are in place.</p>
-
-<p><em>Matthew Draper</em>, <em>Yves Senn</em></p></li>
-<li><p><code>db:schema:load</code> and <code>db:structure:load</code> no longer purge the database
-before loading the schema. This is left for the user to do.
-<code>db:test:prepare</code> will still purge the database.</p>
-
-<p>Fixes #17945.</p>
-
-<p><em>Yves Senn</em></p></li>
-<li><p>Fix undesirable RangeError by <code>Type::Integer</code>. Add <code>Type::UnsignedInteger</code>.</p>
-
-<p><em>Ryuta Kamizono</em></p></li>
-<li><p>Add <code>foreign_type</code> option to <code>has_one</code> and <code>has_many</code> association macros.</p>
-
-<p>This option enables to define the column name of associated object&#39;s type for polymorphic associations.</p>
-
-<p><em>Ulisses Almeida</em>, <em>Kassio Borges</em></p></li>
-<li><p>Remove deprecated behavior allowing nested arrays to be passed as query
-values.</p>
-
-<p><em>Melanie Gilman</em></p></li>
-<li><p>Deprecate passing a class as a value in a query. Users should pass strings
-instead.</p>
-
-<p><em>Melanie Gilman</em></p></li>
-<li><p><code>add_timestamps</code> and <code>remove_timestamps</code> now properly reversible with
-options.</p>
-
-<p><em>Noam Gagliardi-Rabinovich</em></p></li>
-<li><p><a href="ActiveRecord/ConnectionAdapters/ColumnDumper.html#column_spec-instance_method" title="ActiveRecord::ConnectionAdapters::ColumnDumper#column_spec (method)">ActiveRecord::ConnectionAdapters::ColumnDumper#column_spec</a> and
-<a href="ActiveRecord/ConnectionAdapters/ColumnDumper.html#prepare_column_options-instance_method" title="ActiveRecord::ConnectionAdapters::ColumnDumper#prepare_column_options (method)">ActiveRecord::ConnectionAdapters::ColumnDumper#prepare_column_options</a> no
-longer have a <code>types</code> argument. They should access
-<code>connection#native_database_types</code> directly.</p>
-
-<p><em>Yves Senn</em></p></li>
-</ul>
-
-<p>Please check <a href="https://github.com/rails/rails/blob/4-2-stable/activerecord/CHANGELOG.md">4-2-stable</a> for previous changes.</p>
+<p>Please check <a href="https://github.com/rails/rails/blob/5-0-stable/activerecord/CHANGELOG.md">5-0-stable</a> for previous changes.</p>
 
 <div id='footer'>
   Generated by

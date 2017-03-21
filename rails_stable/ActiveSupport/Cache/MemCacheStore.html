@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveSupport::Cache::MemCacheStore &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveSupport::Cache::MemCacheStore &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_M'>Index (M)</a> &raquo; 
         <a href="../../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a> &raquo; 
         <a href="../Cache.html" title="ActiveSupport::Cache (module)">Cache</a> &raquo; 
@@ -104,7 +104,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L26'>activesupport/lib/active_support/cache/mem_cache_store.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L26'>activesupport/lib/active_support/cache/mem_cache_store.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -138,7 +138,7 @@ which implements an in-memory cache inside of a block.</p>
   <li>
     <span id='ESCAPE_KEY_CHARS-constant' class='summary_signature'>ESCAPE_KEY_CHARS =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L52-L52'># File 'activesupport/lib/active_support/cache/mem_cache_store.rb', line 52</a>    <pre class='code ruby'><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[\x00-\x20%\x7F-\xFF]</span><span class='regexp_end'>/n</span></span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L52-L52'># File 'activesupport/lib/active_support/cache/mem_cache_store.rb', line 52</a>    <pre class='code ruby'><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[\x00-\x20%\x7F-\xFF]</span><span class='regexp_end'>/n</span></span></pre>
   </li>
 </ul>
 </div>
@@ -215,6 +215,22 @@ server addresses.</p></div>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Clear the entire cache on all memcached servers.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#decrement-instance_method" title="#decrement (instance method)">#<strong>decrement</strong>(name, amount = 1, options = nil)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Decrement a cached value.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#increment-instance_method" title="#increment (instance method)">#<strong>increment</strong>(name, amount = 1, options = nil)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Increment a cached value.</p></div>
     </div>
   </li>
   <li>
@@ -301,7 +317,7 @@ all keys.</p></div>
       <td><div class='inline'><p>Writes the value to the cache, with the key.</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m prot' href="Store.html#key_matcher-instance_method" title="ActiveSupport::Cache::Store#key_matcher (method)">#key_matcher</a></td>
+      <td><a class='i_m priv' href="Store.html#key_matcher-instance_method" title="ActiveSupport::Cache::Store#key_matcher (method)">#key_matcher</a></td>
       <td><div class='inline'><p>Adds the namespace defined in the options to a pattern designed to match
 keys.</p></div></td>
     </tr>
@@ -330,7 +346,7 @@ to localhost port 11211 (the default memcached port).</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L76-L91'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L76-L91'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -367,7 +383,7 @@ to localhost port 11211 (the default memcached port).</p>
     <span class='ivar'>@data</span> <span class='op'>=</span> <span class='id identifier rubyid_addresses'>addresses</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_mem_cache_options'>mem_cache_options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
-    <span class='const'><a href="../Cache.html#UNIVERSAL_OPTIONS-constant" title="ActiveSupport::Cache::UNIVERSAL_OPTIONS (constant)">UNIVERSAL_OPTIONS</a></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span> <span class='id identifier rubyid_mem_cache_options'>mem_cache_options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='rbrace'>}</span>
+    <span class='const'><a href="../Cache.html#UNIVERSAL_OPTIONS-constant" title="ActiveSupport::Cache::UNIVERSAL_OPTIONS (constant)">UNIVERSAL_OPTIONS</a></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span> <span class='id identifier rubyid_mem_cache_options'>mem_cache_options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
     <span class='ivar'>@data</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_build_mem_cache'>build_mem_cache</span><span class='lparen'>(</span><span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_addresses'>addresses</span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='id identifier rubyid_mem_cache_options'>mem_cache_options</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
@@ -389,7 +405,7 @@ with care when shared cache is being used.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L137-L139'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L137-L139'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -409,6 +425,94 @@ with care when shared cache is being used.</p>
 </div>
 </section>
 
+<section class='method_details' id="decrement-instance_method">
+  <h3 class='signature '>
+    #<strong>decrement</strong>(name, amount = 1, options = nil)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Decrement a cached value. This method uses the memcached decr atomic
+operator and can only be used on values written with the :raw option.
+Calling it on a value not stored with :raw will initialize that value to
+zero.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L126-L133'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+126
+127
+128
+129
+130
+131
+132
+133</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/mem_cache_store.rb', line 126</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_merged_options'>merged_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_instrument'>instrument</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_decrement'>decrement</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='label'>amount:</span> <span class='id identifier rubyid_amount'>amount</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_rescue_error_with'>rescue_error_with</span> <span class='kw'>nil</span> <span class='kw'>do</span>
+      <span class='ivar'>@data</span><span class='period'>.</span><span class='id identifier rubyid_decr'>decr</span><span class='lparen'>(</span><span class='id identifier rubyid_normalize_key'>normalize_key</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="increment-instance_method">
+  <h3 class='signature '>
+    #<strong>increment</strong>(name, amount = 1, options = nil)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Increment a cached value. This method uses the memcached incr atomic
+operator and can only be used on values written with the :raw option.
+Calling it on a value not stored with :raw will initialize that value to
+zero.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L113-L120'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+113
+114
+115
+116
+117
+118
+119
+120</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activesupport/lib/active_support/cache/mem_cache_store.rb', line 113</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_merged_options'>merged_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_instrument'>instrument</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_increment'>increment</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='label'>amount:</span> <span class='id identifier rubyid_amount'>amount</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_rescue_error_with'>rescue_error_with</span> <span class='kw'>nil</span> <span class='kw'>do</span>
+      <span class='ivar'>@data</span><span class='period'>.</span><span class='id identifier rubyid_incr'>incr</span><span class='lparen'>(</span><span class='id identifier rubyid_normalize_key'>normalize_key</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
 <section class='method_details' id="read_multi-instance_method">
   <h3 class='signature '>
     #<strong>read_multi</strong>(*names)  
@@ -421,7 +525,7 @@ all keys. Options can be passed in the last argument.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L95-L107'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L95-L107'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -447,7 +551,7 @@ all keys. Options can be passed in the last argument.</p>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_names'>names</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_merged_options'>merged_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_keys_to_names'>keys_to_names</span> <span class='op'>=</span> <span class='const'><a href="../../Hash.html" title="Hash (class)">Hash</a></span><span class='lbracket'>[</span><span class='id identifier rubyid_names'>names</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_normalize_key'>normalize_key</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_keys_to_names'>keys_to_names</span> <span class='op'>=</span> <span class='const'><a href="../../Hash.html" title="Hash (class)">Hash</a></span><span class='lbracket'>[</span><span class='id identifier rubyid_names'>names</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_normalize_key'>normalize_key</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_raw_values'>raw_values</span> <span class='op'>=</span> <span class='ivar'>@data</span><span class='period'>.</span><span class='id identifier rubyid_get_multi'>get_multi</span><span class='lparen'>(</span><span class='id identifier rubyid_keys_to_names'>keys_to_names</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_raw_values'>raw_values</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
@@ -472,7 +576,7 @@ all keys. Options can be passed in the last argument.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L142-L144'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/cache/mem_cache_store.rb#L142-L144'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveSupport::StringInquirer &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveSupport::StringInquirer &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_S'>Index (S)</a> &raquo; 
         <a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>StringInquirer&nbsp;&#x25B2;</a></span>
@@ -103,7 +103,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/string_inquirer.rb#L11'>activesupport/lib/active_support/string_inquirer.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/string_inquirer.rb#L17'>activesupport/lib/active_support/string_inquirer.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -122,6 +122,12 @@ equality. The value returned by <a href="../Rails.html#env-class_method" title="
 <p>you can call this:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'><a href="../Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_env'><a href="../Rails.html#env-class_method" title="Rails.env (method)">env</a></span><span class='period'>.</span><span class='id identifier rubyid_production?'>production?</span></code></pre>
+
+<h3 id="label-Instantiating+a+new+StringInquirer">Instantiating a new <code>StringInquirer</code></h3>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_vehicle'>vehicle</span> <span class='op'>=</span> <span class='const'><a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'>StringInquirer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>car</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_vehicle'>vehicle</span><span class='period'>.</span><span class='id identifier rubyid_car?'>car?</span>   <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_vehicle'>vehicle</span><span class='period'>.</span><span class='id identifier rubyid_bike?'>bike?</span>  <span class='comment'># =&gt; false</span></code></pre>
 
   </div>
 </div>
@@ -357,24 +363,24 @@ create a nicer looking title.</p></div></td>
   <h3 class='signature priv first'>
     #<strong>method_missing</strong>(method_name, *arguments)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/string_inquirer.rb#L18-L24'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/string_inquirer.rb#L24-L30'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-18
-19
-20
-21
-22
-23
-24</pre>
+24
+25
+26
+27
+28
+29
+30</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/string_inquirer.rb', line 18</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/string_inquirer.rb', line 24</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_method_name'>method_name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_method_name'>method_name</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>?</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_method_name'>method_name</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>self</span> <span class='op'>==</span> <span class='id identifier rubyid_method_name'>method_name</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>..</span><span class='op'>-</span><span class='int'>2</span><span class='rbracket'>]</span>
   <span class='kw'>else</span>
     <span class='kw'>super</span>

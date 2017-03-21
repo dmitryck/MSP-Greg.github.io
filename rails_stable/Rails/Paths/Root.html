@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: Rails::Paths::Root &mdash; Rails-5-0-stable</title>
+<title>Class: Rails::Paths::Root &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_R'>Index (R)</a> &raquo; 
         <a href="../../Rails.html" title="Rails (module)">Rails</a> &raquo; 
         <a href="../Paths.html" title="Rails::Paths (module)">Paths</a> &raquo; 
@@ -80,7 +80,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L44'>railties/lib/rails/paths.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L44'>railties/lib/rails/paths.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -92,13 +92,13 @@
     
 <p>This object is an extended hash that behaves as root of the <a href="../Paths.html" title="Rails::Paths (module)">::Rails::Paths</a>
 system. It allows you to collect information about how you want to
-structure your application paths by a <a href="../../Hash.html" title="Hash (class)">::Hash</a> like <a href="../API.html" title="Rails::API (module)">::Rails::API</a>. It requires
-you to give a physical path on initialization.</p>
+structure your application paths through a Hash-like <a href="../API.html" title="Rails::API (module)">::Rails::API</a>. It
+requires you to give a physical path on initialization.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span> <span class='op'>=</span> <span class='const'>Root</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="Rails::Paths::Root.new (method)">new</a></span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/rails</span><span class='tstring_end'>&quot;</span></span>
 <span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>app/controllers</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>eager_load:</span> <span class='kw'>true</span></code></pre>
 
-<p>The command above creates a new root object and adds "app/controllers" as a
+<p>The above command creates a new root object and adds "app/controllers" as a
 path. This means we can get a <a href="Path.html" title="Rails::Paths::Path (class)">Path</a> object back like below:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>app/controllers</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
@@ -123,7 +123,7 @@ situations, you may not want this behavior, so you can give
 <span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>config/routes</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span> <span class='comment'># =&gt; [&quot;config/routes.rb&quot;]</span></code></pre>
 
 <p>The <a href="#add-instance_method" title="Rails::Paths::Root#add (method)">#add</a> method accepts the following options as arguments: eager_load,
-autoload, autoload_once and glob.</p>
+autoload, autoload_once, and glob.</p>
 
 <p>Finally, the <a href="Path.html" title="Rails::Paths::Path (class)">Path</a> object also provides a few helpers:</p>
 
@@ -238,7 +238,7 @@ autoload, autoload_once and glob.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L47-L51'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L47-L50'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -246,14 +246,12 @@ autoload, autoload_once and glob.</p>
 47
 48
 49
-50
-51</pre>
+50</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 47</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
-  <span class='ivar'>@current</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='ivar'>@path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span>
   <span class='ivar'>@root</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
 <span class='kw'>end</span>
@@ -267,7 +265,7 @@ autoload, autoload_once and glob.</p>
   <h3 class='signature rw first'>
     #<strong>path</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L45-L45'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L45-L45'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -288,16 +286,16 @@ autoload, autoload_once and glob.</p>
   <h3 class='signature  first'>
     #<strong>[]</strong>(path)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L63-L65'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L62-L64'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+62
 63
-64
-65</pre>
+64</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 63</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 62</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
@@ -312,17 +310,17 @@ autoload, autoload_once and glob.</p>
   <h3 class='signature '>
     #<strong>[]=</strong>(path, value)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L53-L56'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L52-L55'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+52
 53
 54
-55
-56</pre>
+55</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 53</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 52</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>[]=</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -338,17 +336,17 @@ autoload, autoload_once and glob.</p>
   <h3 class='signature '>
     #<strong>add</strong>(path, options = {})  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L58-L61'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L57-L60'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+57
 58
 59
-60
-61</pre>
+60</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 58</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 57</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -364,16 +362,16 @@ autoload, autoload_once and glob.</p>
   <h3 class='signature '>
     #<strong>all_paths</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L79-L81'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L78-L80'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+78
 79
-80
-81</pre>
+80</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 79</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 78</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_all_paths'>all_paths</span>
@@ -388,16 +386,16 @@ autoload, autoload_once and glob.</p>
   <h3 class='signature '>
     #<strong>autoload_once</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L83-L85'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L82-L84'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+82
 83
-84
-85</pre>
+84</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 83</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 82</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_autoload_once'>autoload_once</span>
@@ -412,16 +410,16 @@ autoload, autoload_once and glob.</p>
   <h3 class='signature '>
     #<strong>autoload_paths</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L91-L93'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L90-L92'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+90
 91
-92
-93</pre>
+92</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 91</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 90</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_autoload_paths'>autoload_paths</span>
@@ -436,16 +434,16 @@ autoload, autoload_once and glob.</p>
   <h3 class='signature '>
     #<strong>eager_load</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L87-L89'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L86-L88'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+86
 87
-88
-89</pre>
+88</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 87</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 86</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_eager_load'>eager_load</span>
@@ -460,16 +458,16 @@ autoload, autoload_once and glob.</p>
   <h3 class='signature '>
     #<strong>keys</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L71-L73'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L70-L72'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+70
 71
-72
-73</pre>
+72</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 71</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 70</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_keys'>keys</span>
@@ -484,16 +482,16 @@ autoload, autoload_once and glob.</p>
   <h3 class='signature '>
     #<strong>load_paths</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L95-L97'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L94-L96'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+94
 95
-96
-97</pre>
+96</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 95</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 94</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load_paths'>load_paths</span>
@@ -508,16 +506,16 @@ autoload, autoload_once and glob.</p>
   <h3 class='signature '>
     #<strong>values</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L67-L69'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L66-L68'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+66
 67
-68
-69</pre>
+68</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 67</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 66</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_values'>values</span>
@@ -532,16 +530,16 @@ autoload, autoload_once and glob.</p>
   <h3 class='signature '>
     #<strong>values_at</strong>(*list)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/paths.rb#L75-L77'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L74-L76'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+74
 75
-76
-77</pre>
+76</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 75</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 74</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_values_at'>values_at</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_list'>list</span><span class='rparen'>)</span>

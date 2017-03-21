@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: SourceAnnotationExtractor::Annotation &mdash; Rails-5-0-stable</title>
+<title>Class: SourceAnnotationExtractor::Annotation &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_A'>Index (A)</a> &raquo; 
         <a href="../SourceAnnotationExtractor.html" title="SourceAnnotationExtractor (class)">SourceAnnotationExtractor</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Annotation&nbsp;&#x25B2;</a></span>
@@ -84,36 +84,11 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/source_annotation_extractor.rb#L16'>railties/lib/rails/source_annotation_extractor.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/source_annotation_extractor.rb#L16'>railties/lib/rails/source_annotation_extractor.rb</a>      </td>
     </tr>
   </tbody>
 </table>
 </div>        
-
-<h2 class='h2_sum' id='class_Method_summary'>Class Method Summary</h2>
-<div class='div_sum'>
-<ul class='summary full'>
-  <li>
-    <span class='summary_signature '>
-      <a href="#directories-class_method" title=".directories (class method)">.<strong>directories</strong>  </a>
-    </span>
-  </li>
-  <li>
-    <span class='summary_signature '>
-      <a href="#extensions-class_method" title=".extensions (class method)">.<strong>extensions</strong>  </a>
-    </span>
-  </li>
-  <li>
-    <span class='summary_signature '>
-      <a href="#register_extensions-class_method" title=".register_extensions (class method)">.<strong>register_extensions</strong>(*exts, &amp;block)  </a>
-    </span>
-    <div class='summary_desc'>
-      <div class='inline'><p>Registers new Annotations File Extensions.</p></div>
-    </div>
-  </li>
-</ul>
-</div>
-        
 
 <h2 class='h2_sum' id='instance_Attribute_summary'>Instance Attribute Summary</h2>
 <div class='div_sum'>
@@ -138,109 +113,12 @@
   </li>
 </ul>
 </div>
-        
-
-<h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
-<div class='div_sum'>
-<ul class='summary full'>
-  <li>
-    <span class='summary_signature '>
-      <a href="#to_s-instance_method" title="#to_s (instance method)">#<strong>to_s</strong>(options = {})  </a>
-    </span>
-    <div class='summary_desc'>
-      <div class='inline'><p>Returns a representation of the annotation that looks like this:</p></div>
-    </div>
-  </li>
-</ul>
-</div>
-<h2 class='y_details'>Class Method Details</h2>
-<section class='method_details first' id="directories-class_method">
-  <h3 class='signature  first'>
-    .<strong>directories</strong>  
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/source_annotation_extractor.rb#L17-L19'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-17
-18
-19</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/source_annotation_extractor.rb', line 17</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_directories'>directories</span>
-  <span class='cvar'>@@directories</span> <span class='op'>||=</span> <span class='qwords'><span class='qwords_beg'>%w(</span><span class='tstring_content'>app</span><span class='words_sep'> </span><span class='tstring_content'>config</span><span class='words_sep'> </span><span class='tstring_content'>db</span><span class='words_sep'> </span><span class='tstring_content'>lib</span><span class='words_sep'> </span><span class='tstring_content'>test</span><span class='words_sep'>)</span></span> <span class='op'>+</span> <span class='lparen'>(</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SOURCE_ANNOTATION_DIRECTORIES</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>,</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="extensions-class_method">
-  <h3 class='signature '>
-    .<strong>extensions</strong>  
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/source_annotation_extractor.rb#L21-L23'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-21
-22
-23</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/source_annotation_extractor.rb', line 21</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_extensions'>extensions</span>
-  <span class='cvar'>@@extensions</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="register_extensions-class_method">
-  <h3 class='signature '>
-    .<strong>register_extensions</strong>(*exts, &amp;block)  
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>Registers new Annotations File Extensions</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'><a href="../SourceAnnotationExtractor.html" title="SourceAnnotationExtractor (class)">SourceAnnotationExtractor</a></span><span class='op'>::</span><span class='const'>Annotation</span><span class='period'>.</span><span class='id identifier rubyid_register_extensions'>register_extensions</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>css</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>scss</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sass</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>less</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>js</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_tag'>tag</span><span class='op'>|</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\/\/\s*(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_tag'>tag</span><span class='embexpr_end'>}</span><span class='tstring_content'>):?\s*(.*)$</span><span class='regexp_end'>/</span></span> <span class='rbrace'>}</span></code></pre>
-
-  </div>
-</div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/source_annotation_extractor.rb#L27-L29'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-27
-28
-29</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/source_annotation_extractor.rb', line 27</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_register_extensions'>register_extensions</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_exts'>exts</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_extensions'>extensions</span><span class='lbracket'>[</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\.(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_exts'>exts</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>|</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)$</span><span class='regexp_end'>/</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_block'>block</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
 <h2 class='y_details'>Instance Attribute Details</h2>
 <section class='method_details first' id="line-instance_method">
   <h3 class='signature rw first'>
     #<strong>line</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/source_annotation_extractor.rb#L16-L16'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/source_annotation_extractor.rb#L16-L16'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -250,7 +128,7 @@
 <pre><span class='info file'># File 'railties/lib/rails/source_annotation_extractor.rb', line 16</span></pre>
 <pre class='code ruby'>
 
-class Annotation &lt; Struct.new(:line, :tag, :text)
+<span class='const'>Annotation</span> <span class='op'>=</span> <span class='const'><a href="../Struct.html" title="Struct (class)">Struct</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_tag'>tag</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_text'>text</span><span class='rparen'>)</span>
 </pre>
   </div>
 </div>
@@ -260,7 +138,7 @@ class Annotation &lt; Struct.new(:line, :tag, :text)
   <h3 class='signature rw'>
     #<strong>tag</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/source_annotation_extractor.rb#L16-L16'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/source_annotation_extractor.rb#L16-L16'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -270,7 +148,7 @@ class Annotation &lt; Struct.new(:line, :tag, :text)
 <pre><span class='info file'># File 'railties/lib/rails/source_annotation_extractor.rb', line 16</span></pre>
 <pre class='code ruby'>
 
-class Annotation &lt; Struct.new(:line, :tag, :text)
+<span class='const'>Annotation</span> <span class='op'>=</span> <span class='const'><a href="../Struct.html" title="Struct (class)">Struct</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_tag'>tag</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_text'>text</span><span class='rparen'>)</span>
 </pre>
   </div>
 </div>
@@ -280,7 +158,7 @@ class Annotation &lt; Struct.new(:line, :tag, :text)
   <h3 class='signature rw'>
     #<strong>text</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/source_annotation_extractor.rb#L16-L16'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/source_annotation_extractor.rb#L16-L16'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -290,48 +168,7 @@ class Annotation &lt; Struct.new(:line, :tag, :text)
 <pre><span class='info file'># File 'railties/lib/rails/source_annotation_extractor.rb', line 16</span></pre>
 <pre class='code ruby'>
 
-class Annotation &lt; Struct.new(:line, :tag, :text)
-</pre>
-  </div>
-</div>
-</section>
-
-<h2 class='y_details'>Instance Method Details</h2>
-<section class='method_details first' id="to_s-instance_method">
-  <h3 class='signature  first'>
-    #<strong>to_s</strong>(options = {})  
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>Returns a representation of the annotation that looks like this:</p>
-
-<pre class="code ruby"><code class="ruby">[126] [TODO] This algorithm is simple and clearly correct, make it faster.</code></pre>
-
-<p>If <code>options</code> has a flag <code>:tag</code> the tag is shown as in the
-example above. Otherwise the string contains just line and text.</p>
-
-  </div>
-</div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/source_annotation_extractor.rb#L41-L45'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-41
-42
-43
-44
-45</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/source_annotation_extractor.rb', line 41</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_rjust'>rjust</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_indent'>indent</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>] </span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_s'>s</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_tag'>tag</span><span class='embexpr_end'>}</span><span class='tstring_content'>] </span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_tag'>tag</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_s'>s</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_text'>text</span>
-<span class='kw'>end</span>
+<span class='const'>Annotation</span> <span class='op'>=</span> <span class='const'><a href="../Struct.html" title="Struct (class)">Struct</a></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_tag'>tag</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_text'>text</span><span class='rparen'>)</span>
 </pre>
   </div>
 </div>

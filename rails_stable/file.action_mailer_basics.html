@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Action Mailer Basics &mdash; Rails-5-0-stable</title>
+<title>File: Action Mailer Basics &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Action Mailer Basics&nbsp;&#x25B2;</a></span>
             </div>
@@ -215,8 +215,8 @@ Thanks for joining and have a great day!
 <h4>Calling the Mailer</h4>
 
 <p>Mailers are really just another way to render a view. Instead of rendering a
-view and sending out the HTTP protocol, they are just sending it out through the
-email protocols instead. Due to this, it makes sense to just have your
+view and sending it over the HTTP protocol, they are just sending it out through
+the email protocols instead. Due to this, it makes sense to just have your
 controller tell the Mailer to send an email when a user is successfully created.</p>
 
 <p>Setting this up is painfully simple.</p>
@@ -441,7 +441,7 @@ templates or even render inline or text without using a template file:</p>
     <span class='id identifier rubyid_mail'>mail</span><span class='lparen'>(</span><span class='label'>to:</span> <span class='ivar'>@user</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span><span class='comma'>,</span>
          <span class='label'>subject:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Welcome to My Awesome Site</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_format'>format</span><span class='op'>|</span>
       <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>another_template</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
-      <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='label'>text:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Render text</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='label'>plain:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Render text</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></code></pre>
@@ -547,7 +547,7 @@ instead of using</p>
 
 <h4>Generating URLs with <code>url_for</code></h4>
 
-<p><code>url_for</code> generate full URL by default in templates.</p>
+<p><code>url_for</code> generates a full URL by default in templates.</p>
 
 <p>If you did not configure the <code>:host</code> option globally make sure to pass it to
 <code>url_for</code>.</p>
@@ -569,8 +569,9 @@ url helper.</p>
 <pre class="code erb"><code class="erb">&lt;%= user_url(@user, host: &#39;example.com&#39;) %&gt;
 </code></pre>
 
-<p>NOTE: non-<code>GET</code> links require <a href="https://github.com/rails/jquery-ujs">jQuery UJS</a>
-and won&#39;t work in mailer templates. They will result in normal <code>GET</code> requests.</p>
+<p>NOTE: non-<code>GET</code> links require <a href="https://github.com/rails/rails-ujs">rails-ujs</a> or
+<a href="https://github.com/rails/jquery-ujs">jQuery UJS</a>, and won&#39;t work in mailer templates.
+They will result in normal <code>GET</code> requests.</p>
 
 <h3>Adding images in Action Mailer Views</h3>
 
@@ -589,7 +590,7 @@ configure it globally in config/application.rb:</p>
 <h3>Sending Multipart Emails</h3>
 
 <p>Action Mailer will automatically send multipart emails if you have different
-templates for the same action. So, for our UserMailer example, if you have
+templates for the same action. So, for our <code>UserMailer</code> example, if you have
 <code>welcome_email.text.erb</code> and <code>welcome_email.html.erb</code> in
 <code>app/views/user_mailer</code>, Action Mailer will automatically send a multipart email
 with the HTML and text versions setup as different parts.</p>
@@ -749,7 +750,7 @@ files (environment.rb, production.rb, etc...)</p>
 </tr>
 <tr>
 <td><code>smtp_settings</code></td>
-<td>Allows detailed configuration for <code>:smtp</code> delivery method:<ul><li><code>:address</code> - Allows you to use a remote mail server. Just change it from its default <code>&quot;localhost&quot;</code> setting.</li><li><code>:port</code> - On the off chance that your mail server doesn&#39;t run on port 25, you can change it.</li><li><code>:domain</code> - If you need to specify a HELO domain, you can do it here.</li><li><code>:user_name</code> - If your mail server requires authentication, set the username in this setting.</li><li><code>:password</code> - If your mail server requires authentication, set the password in this setting.</li><li><code>:authentication</code> - If your mail server requires authentication, you need to specify the authentication type here. This is a symbol and one of <code>:plain</code> (will send the password in the clear), <code>:login</code> (will send password Base64 encoded) or <code>:cram_md5</code> (combines a Challenge/Response mechanism to exchange information and a cryptographic Message Digest 5 algorithm to hash important information)</li><li><code>:enable_starttls_auto</code> - Detects if STARTTLS is enabled in your SMTP server and starts to use it. Defaults to <code>true</code>.</li><li><code>:openssl_verify_mode</code> - When using TLS, you can set how OpenSSL checks the certificate. This is really useful if you need to validate a self-signed and/or a wildcard certificate. You can use the name of an OpenSSL verify constant (&#39;none&#39;, &#39;peer&#39;, &#39;client_once&#39;, &#39;fail_if_no_peer_cert&#39;) or directly the constant (<code>OpenSSL::SSL::VERIFY_NONE</code>, <code>OpenSSL::SSL::VERIFY_PEER</code>, ...).</li></ul></td>
+<td>Allows detailed configuration for <code>:smtp</code> delivery method:<ul><li><code>:address</code> - Allows you to use a remote mail server. Just change it from its default <code>&quot;localhost&quot;</code> setting.</li><li><code>:port</code> - On the off chance that your mail server doesn&#39;t run on port 25, you can change it.</li><li><code>:domain</code> - If you need to specify a HELO domain, you can do it here.</li><li><code>:user_name</code> - If your mail server requires authentication, set the username in this setting.</li><li><code>:password</code> - If your mail server requires authentication, set the password in this setting.</li><li><code>:authentication</code> - If your mail server requires authentication, you need to specify the authentication type here. This is a symbol and one of <code>:plain</code> (will send the password in the clear), <code>:login</code> (will send password Base64 encoded) or <code>:cram_md5</code> (combines a Challenge/Response mechanism to exchange information and a cryptographic Message Digest 5 algorithm to hash important information)</li><li><code>:enable_starttls_auto</code> - Detects if STARTTLS is enabled in your SMTP server and starts to use it. Defaults to <code>true</code>.</li><li><code>:openssl_verify_mode</code> - When using TLS, you can set how OpenSSL checks the certificate. This is really useful if you need to validate a self-signed and/or a wildcard certificate. You can use the name of an OpenSSL verify constant (&#39;none&#39; or &#39;peer&#39;) or directly the constant (<code>OpenSSL::SSL::VERIFY_NONE</code> or <code>OpenSSL::SSL::VERIFY_PEER</code>).</li></ul></td>
 </tr>
 <tr>
 <td><code>sendmail_settings</code></td>

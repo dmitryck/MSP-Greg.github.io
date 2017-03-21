@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveModel::Conversion &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveModel::Conversion &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../ActiveModel.html" title="ActiveModel (module)">ActiveModel</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Conversion&nbsp;&#x25B2;</a></span>
@@ -91,7 +91,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/conversion.rb#L22'>activemodel/lib/active_model/conversion.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/conversion.rb#L22'>activemodel/lib/active_model/conversion.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -198,24 +198,28 @@ attributes.</p>
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Person</span>
   <span class='id identifier rubyid_include'>include</span> <span class='const'><a href="../ActiveModel.html" title="ActiveModel (module)">ActiveModel</a></span><span class='op'>::</span><span class='const'>Conversion</span>
   <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_id'>id</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+    <span class='ivar'>@id</span> <span class='op'>=</span> <span class='id identifier rubyid_id'>id</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span>
 
-<span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='int'>1</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
 <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_to_key'>to_key</span> <span class='comment'># =&gt; [1]</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/conversion.rb#L53-L56'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/conversion.rb#L57-L60'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-53
-54
-55
-56</pre>
+57
+58
+59
+60</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/conversion.rb', line 53</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/conversion.rb', line 57</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_key'>to_key</span>
@@ -251,7 +255,7 @@ your object with Active Model compliant methods.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/conversion.rb#L39-L41'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/conversion.rb#L39-L41'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -284,30 +288,35 @@ URLs, or <code>nil</code> if <code>persisted?</code> is <code>false</code>.</p>
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Person</span>
   <span class='id identifier rubyid_include'>include</span> <span class='const'><a href="../ActiveModel.html" title="ActiveModel (module)">ActiveModel</a></span><span class='op'>::</span><span class='const'>Conversion</span>
   <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_id'>id</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+    <span class='ivar'>@id</span> <span class='op'>=</span> <span class='id identifier rubyid_id'>id</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_persisted?'>persisted?</span>
     <span class='kw'>true</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 
-<span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='int'>1</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
 <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_to_param'>to_param</span> <span class='comment'># =&gt; &quot;1&quot;</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/conversion.rb#L71-L73'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/conversion.rb#L80-L82'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-71
-72
-73</pre>
+80
+81
+82</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/conversion.rb', line 71</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/conversion.rb', line 80</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_param'>to_param</span>
-  <span class='lparen'>(</span><span class='id identifier rubyid_persisted?'>persisted?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_to_key'>to_key</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>nil</span>
+  <span class='lparen'>(</span><span class='id identifier rubyid_persisted?'>persisted?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_to_key'>to_key</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>nil</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -333,16 +342,16 @@ URLs, or <code>nil</code> if <code>persisted?</code> is <code>false</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activemodel/lib/active_model/conversion.rb#L84-L86'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activemodel/lib/active_model/conversion.rb#L93-L95'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-84
-85
-86</pre>
+93
+94
+95</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/conversion.rb', line 84</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/conversion.rb', line 93</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_partial_path'>to_partial_path</span>

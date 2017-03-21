@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActionView::Helpers::OutputSafetyHelper &mdash; Rails-5-0-stable</title>
+<title>Module: ActionView::Helpers::OutputSafetyHelper &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_O'>Index (O)</a> &raquo; 
         <a href="../../ActionView.html" title="ActionView (module)">ActionView</a> &raquo; 
         <a class='nodoc' href="../Helpers.html" title="ActionView::Helpers (module)">Helpers</a> &raquo; 
@@ -94,7 +94,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/output_safety_helper.rb#L6'>actionview/lib/action_view/helpers/output_safety_helper.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/output_safety_helper.rb#L6'>actionview/lib/action_view/helpers/output_safety_helper.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -151,7 +151,7 @@ user&#39;s input.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/output_safety_helper.rb#L16-L18'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/output_safety_helper.rb#L16-L18'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -183,15 +183,15 @@ return. The array is flattened, and all items, including the supplied
 separator, are HTML escaped unless they are HTML safe, and the returned
 string is marked as HTML safe.</p>
 
-<pre class="code ruby"><code class="ruby">safe_join([raw(&quot;&lt;p&gt;foo&lt;/p&gt;&quot;), &quot;&lt;p&gt;bar&lt;/p&gt;&quot;], &quot;&lt;br /&gt;&quot;)
-# =&gt; &quot;&lt;p&gt;foo&lt;/p&gt;&amp;lt;br /&amp;gt;&amp;lt;p&amp;gt;bar&amp;lt;/p&amp;gt;&quot;
-
-safe_join([raw(&quot;&lt;p&gt;foo&lt;/p&gt;&quot;), raw(&quot;&lt;p&gt;bar&lt;/p&gt;&quot;)], raw(&quot;&lt;br /&gt;&quot;)
-# =&gt; &quot;&lt;p&gt;foo&lt;/p&gt;&lt;br /&gt;&lt;p&gt;bar&lt;/p&gt;&quot;</code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_safe_join'>safe_join</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_raw'>raw</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;p&gt;foo&lt;/p&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;p&gt;bar&lt;/p&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;br /&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &quot;&lt;p&gt;foo&lt;/p&gt;&amp;lt;br /&amp;gt;&amp;lt;p&amp;gt;bar&amp;lt;/p&amp;gt;&quot;
+</span>
+<span class='id identifier rubyid_safe_join'>safe_join</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_raw'>raw</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;p&gt;foo&lt;/p&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_raw'>raw</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;p&gt;bar&lt;/p&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_raw'>raw</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;br /&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &quot;&lt;p&gt;foo&lt;/p&gt;&lt;br /&gt;&lt;p&gt;bar&lt;/p&gt;&quot;</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/output_safety_helper.rb#L31-L35'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/output_safety_helper.rb#L31-L35'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -205,7 +205,7 @@ safe_join([raw(&quot;&lt;p&gt;foo&lt;/p&gt;&quot;), raw(&quot;&lt;p&gt;bar&lt;/p
 <pre><span class='info file'># File 'actionview/lib/action_view/helpers/output_safety_helper.rb', line 31</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_safe_join'>safe_join</span><span class='lparen'>(</span><span class='id identifier rubyid_array'>array</span><span class='comma'>,</span> <span class='id identifier rubyid_sep'>sep</span><span class='op'>=</span><span class='gvar'>$,</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_safe_join'>safe_join</span><span class='lparen'>(</span><span class='id identifier rubyid_array'>array</span><span class='comma'>,</span> <span class='id identifier rubyid_sep'>sep</span> <span class='op'>=</span> <span class='gvar'>$,</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sep'>sep</span> <span class='op'>=</span> <span class='const'><a href="../../ERB.html" title="ERB (class)">ERB</a></span><span class='op'>::</span><span class='const'><a href="../../ERB/Util.html" title="ERB::Util (module)">Util</a></span><span class='period'>.</span><span class='id identifier rubyid_unwrapped_html_escape'><a href="../../ERB/Util.html#unwrapped_html_escape-class_method" title="ERB::Util.unwrapped_html_escape (method)">unwrapped_html_escape</a></span><span class='lparen'>(</span><span class='id identifier rubyid_sep'>sep</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_array'>array</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_map!'>map!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='const'><a href="../../ERB.html" title="ERB (class)">ERB</a></span><span class='op'>::</span><span class='const'><a href="../../ERB/Util.html" title="ERB::Util (module)">Util</a></span><span class='period'>.</span><span class='id identifier rubyid_unwrapped_html_escape'><a href="../../ERB/Util.html#unwrapped_html_escape-class_method" title="ERB::Util.unwrapped_html_escape (method)">unwrapped_html_escape</a></span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_sep'>sep</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
@@ -229,7 +229,7 @@ ActiveSupport&#39;s
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/helpers/output_safety_helper.rb#L41-L65'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/helpers/output_safety_helper.rb#L41-L65'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -267,9 +267,9 @@ ActiveSupport&#39;s
   <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_assert_valid_keys'>assert_valid_keys</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_words_connector'>words_connector</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_two_words_connector'>two_words_connector</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_last_word_connector'>last_word_connector</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_locale'>locale</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_default_connectors'>default_connectors</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-    <span class='symbeg'>:</span><span class='id identifier rubyid_words_connector'>words_connector</span>     <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-    <span class='symbeg'>:</span><span class='id identifier rubyid_two_words_connector'>two_words_connector</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> and </span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-    <span class='symbeg'>:</span><span class='id identifier rubyid_last_word_connector'>last_word_connector</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, and </span><span class='tstring_end'>&#39;</span></span>
+    <span class='label'>words_connector:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>two_words_connector:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> and </span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>last_word_connector:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, and </span><span class='tstring_end'>&quot;</span></span>
   <span class='rbrace'>}</span>
   <span class='kw'>if</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='const'><a href="../../I18n.html" title="I18n (module)">I18n</a></span><span class='rparen'>)</span>
     <span class='id identifier rubyid_i18n_connectors'>i18n_connectors</span> <span class='op'>=</span> <span class='const'><a href="../../I18n.html" title="I18n (module)">I18n</a></span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span><span class='lparen'>(</span><span class='symbeg'>:&#39;</span><span class='tstring_content'>support.array</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>locale:</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_locale'>locale</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -279,13 +279,13 @@ ActiveSupport&#39;s
 
   <span class='kw'>case</span> <span class='id identifier rubyid_array'>array</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
   <span class='kw'>when</span> <span class='int'>0</span>
-    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
   <span class='kw'>when</span> <span class='int'>1</span>
     <span class='const'><a href="../../ERB.html" title="ERB (class)">ERB</a></span><span class='op'>::</span><span class='const'><a href="../../ERB/Util.html" title="ERB::Util (module)">Util</a></span><span class='period'>.</span><span class='id identifier rubyid_html_escape'><a href="../../ERB/Util.html#html_escape-class_method" title="ERB::Util.html_escape (method)">html_escape</a></span><span class='lparen'>(</span><span class='id identifier rubyid_array'>array</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>when</span> <span class='int'>2</span>
     <span class='id identifier rubyid_safe_join'>safe_join</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_array'>array</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_array'>array</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_two_words_connector'>two_words_connector</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_safe_join'>safe_join</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_safe_join'>safe_join</span><span class='lparen'>(</span><span class='id identifier rubyid_array'>array</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>...</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_words_connector'>words_connector</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_last_word_connector'>last_word_connector</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_array'>array</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_safe_join'>safe_join</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_safe_join'>safe_join</span><span class='lparen'>(</span><span class='id identifier rubyid_array'>array</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>...</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_words_connector'>words_connector</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_last_word_connector'>last_word_connector</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_array'>array</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Store &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Store &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_S'>Index (S)</a> &raquo; 
         <a href="../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Store&nbsp;&#x25B2;</a></span>
@@ -96,7 +96,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/store.rb#L70'>activerecord/lib/active_record/store.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/store.rb#L70'>activerecord/lib/active_record/store.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -201,23 +201,23 @@ as the attribute) and calling <code>super</code> to actually change things.</p>
 <div class='div_sum'>
 <ul class='summary full'>
   <li>
-    <span class='summary_signature prot'>
+    <span class='summary_signature priv'>
       <a href="#read_store_attribute-instance_method" title="#read_store_attribute (instance method)">#<strong>read_store_attribute</strong>(store_attribute, key)  </a>
     </span>
-    <span class='note title protected'>protected</span>
+    <span class='note title private'>private</span>
   </li>
   <li>
-    <span class='summary_signature prot'>
+    <span class='summary_signature priv'>
       <a href="#write_store_attribute-instance_method" title="#write_store_attribute (instance method)">#<strong>write_store_attribute</strong>(store_attribute, key, value)  </a>
     </span>
-    <span class='note title protected'>protected</span>
+    <span class='note title private'>private</span>
   </li>
 </ul>
 </div>
 <h2 class='y_details'>DSL Calls</h2>
 <section class='method_details first' id="included-dslcall">
 <h3 class='signature'><strong>included</strong></h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/store.rb#L73-L77'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/store.rb#L73-L77'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -243,10 +243,10 @@ as the attribute) and calling <code>super</code> to actually change things.</p>
 
 <h2 class='y_details'>Instance Method Details</h2>
 <section class='method_details first' id="read_store_attribute-instance_method">
-  <h3 class='signature prot first'>
-    #<strong>read_store_attribute</strong>(store_attribute, key)   <span class="extras">(<span class='prot'>protected</span>)</span>
+  <h3 class='signature priv first'>
+    #<strong>read_store_attribute</strong>(store_attribute, key)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/store.rb#L125-L128'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/store.rb#L125-L128'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -259,8 +259,8 @@ as the attribute) and calling <code>super</code> to actually change things.</p>
 <pre><span class='info file'># File 'activerecord/lib/active_record/store.rb', line 125</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_read_store_attribute'>read_store_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_store_attribute'>store_attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_accessor'>accessor</span> <span class='op'>=</span> <span class='id identifier rubyid_store_accessor_for'>store_accessor_for</span><span class='lparen'>(</span><span class='id identifier rubyid_store_attribute'>store_attribute</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_read_store_attribute'>read_store_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_store_attribute'>store_attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='comment'># :doc:
+</span>  <span class='id identifier rubyid_accessor'>accessor</span> <span class='op'>=</span> <span class='id identifier rubyid_store_accessor_for'>store_accessor_for</span><span class='lparen'>(</span><span class='id identifier rubyid_store_attribute'>store_attribute</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_accessor'>accessor</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_store_attribute'>store_attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
@@ -269,10 +269,10 @@ as the attribute) and calling <code>super</code> to actually change things.</p>
 </section>
 
 <section class='method_details' id="write_store_attribute-instance_method">
-  <h3 class='signature prot'>
-    #<strong>write_store_attribute</strong>(store_attribute, key, value)   <span class="extras">(<span class='prot'>protected</span>)</span>
+  <h3 class='signature priv'>
+    #<strong>write_store_attribute</strong>(store_attribute, key, value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/store.rb#L130-L133'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/store.rb#L130-L133'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -285,8 +285,8 @@ as the attribute) and calling <code>super</code> to actually change things.</p>
 <pre><span class='info file'># File 'activerecord/lib/active_record/store.rb', line 130</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_write_store_attribute'>write_store_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_store_attribute'>store_attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_accessor'>accessor</span> <span class='op'>=</span> <span class='id identifier rubyid_store_accessor_for'>store_accessor_for</span><span class='lparen'>(</span><span class='id identifier rubyid_store_attribute'>store_attribute</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_write_store_attribute'>write_store_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_store_attribute'>store_attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='comment'># :doc:
+</span>  <span class='id identifier rubyid_accessor'>accessor</span> <span class='op'>=</span> <span class='id identifier rubyid_store_accessor_for'>store_accessor_for</span><span class='lparen'>(</span><span class='id identifier rubyid_store_attribute'>store_attribute</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_accessor'>accessor</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_store_attribute'>store_attribute</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>

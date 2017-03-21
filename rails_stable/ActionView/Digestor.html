@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActionView::Digestor &mdash; Rails-5-0-stable</title>
+<title>Class: ActionView::Digestor &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_D'>Index (D)</a> &raquo; 
         <a href="../ActionView.html" title="ActionView (module)">ActionView</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Digestor&nbsp;&#x25B2;</a></span>
@@ -94,7 +94,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/digestor.rb#L6'>actionview/lib/action_view/digestor.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/digestor.rb#L6'>actionview/lib/action_view/digestor.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -141,17 +141,16 @@
 <p><code>finder</code>  - An instance of <a href="LookupContext.html" title="ActionView::LookupContext (class)">LookupContext</a></p>
 </li><li>
 <p><code>dependencies</code>  - An array of dependent views</p>
-</li><li>
-<p><code>partial</code>  - Specifies whether the template is a partial</p>
 </li></ul>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/digestor.rb#L22-L38'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/digestor.rb#L21-L37'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+21
 22
 23
 24
@@ -167,15 +166,14 @@
 34
 35
 36
-37
-38</pre>
+37</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/digestor.rb', line 22</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/digestor.rb', line 21</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_digest'>digest</span><span class='lparen'>(</span><span class='label'>name:</span><span class='comma'>,</span> <span class='label'>finder:</span><span class='comma'>,</span> <span class='label'>dependencies:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_dependencies'>dependencies</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_cache_key'>cache_key</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_finder'>finder</span><span class='period'>.</span><span class='id identifier rubyid_rendered_format'>rendered_format</span><span class='comma'>,</span> <span class='id identifier rubyid_dependencies'>dependencies</span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_cache_key'>cache_key</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_finder'>finder</span><span class='period'>.</span><span class='id identifier rubyid_rendered_format'>rendered_format</span><span class='comma'>,</span> <span class='id identifier rubyid_dependencies'>dependencies</span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 
   <span class='comment'># this is a correctly done double-checked locking idiom
 </span>  <span class='comment'># (Concurrent::Map&#39;s lookups have volatile semantics)
@@ -199,16 +197,16 @@
   <h3 class='signature '>
     .<strong>logger</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/digestor.rb#L40-L42'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/digestor.rb#L39-L41'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+39
 40
-41
-42</pre>
+41</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/digestor.rb', line 40</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/digestor.rb', line 39</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_logger'>logger</span>
@@ -230,11 +228,12 @@
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionview/lib/action_view/digestor.rb#L45-L70'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionview/lib/action_view/digestor.rb#L44-L69'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+44
 45
 46
 47
@@ -259,10 +258,9 @@
 66
 67
 68
-69
-70</pre>
+69</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionview/lib/action_view/digestor.rb', line 45</span></pre>
+<pre><span class='info file'># File 'actionview/lib/action_view/digestor.rb', line 44</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tree'>tree</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_finder'>finder</span><span class='comma'>,</span> <span class='id identifier rubyid_partial'>partial</span> <span class='op'>=</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='id identifier rubyid_seen'>seen</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>

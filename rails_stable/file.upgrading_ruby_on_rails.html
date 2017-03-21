@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Upgrading Ruby On Rails &mdash; Rails-5-0-stable</title>
+<title>File: Upgrading Ruby On Rails &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Upgrading Ruby On Rails&nbsp;&#x25B2;</a></span>
             </div>
@@ -111,7 +111,7 @@
 
 <h3>The Update Task</h3>
 
-<p>Rails provides the <code>app:update</code> task (<code>rails:update</code> on 4.2 and earlier). After updating the Rails version
+<p>Rails provides the <code>app:update</code> task (<code>rake rails:update</code> on 4.2 and earlier). After updating the Rails version
 in the Gemfile, run this task.
 This will help you with the creation of new files and changes of old files in an
 interactive session.</p>
@@ -130,6 +130,24 @@ Overwrite /myapp/config/application.rb? (enter &quot;h&quot; for help) [Ynaqdh]
 </code></pre>
 
 <p>Don&#39;t forget to review the difference, to see if there were any unexpected changes.</p>
+
+<h2>Upgrading from Rails 5.0 to Rails 5.1</h2>
+
+<p>For more information on changes made to Rails 5.1 please see the <a href="file.5_1_release_notes.html" title="release notes">release notes</a>.</p>
+
+<h3>Top-level <a href="#HashWithIndifferentAccess-constant" title="HashWithIndifferentAccess (constant)">HashWithIndifferentAccess</a> is soft-deprecated</h3>
+
+<p>If your application uses the the top-level <a href="#HashWithIndifferentAccess-constant" title="HashWithIndifferentAccess (constant)">HashWithIndifferentAccess</a> class, you
+should slowly move your code to use the <a href="ActiveSupport/HashWithIndifferentAccess.html" title="ActiveSupport::HashWithIndifferentAccess (class)">::ActiveSupport::HashWithIndifferentAccess</a>
+one.</p>
+
+<p>It is only soft-deprecated, which means that your code will not break at the
+moment and no deprecation warning will be displayed but this constant will be
+removed in the future.</p>
+
+<p>Also, if you have pretty old YAML documents containing dumps of such objects,
+you may need to load and dump them again to make sure that they reference
+the right constant and that loading them won&#39;t break in the future.</p>
 
 <h2>Upgrading from Rails 4.2 to Rails 5.0</h2>
 
@@ -201,12 +219,22 @@ behavior has changed to now inherit from <code>ApplicationJob</code>.</p>
 
 <h3>Rails Controller Testing</h3>
 
+<h4>Extraction of some helper methods to <code>rails-controller-testing</code></h4>
+
 <p><code>assigns</code> and <code>assert_template</code> have been extracted to the <code>rails-controller-testing</code> gem. To
 continue using these methods in your controller tests, add <code>gem &#39;rails-controller-testing&#39;</code> to
 your Gemfile.</p>
 
 <p>If you are using Rspec for testing, please see the extra configuration required in the gem&#39;s
 documentation.</p>
+
+<h4>New behavior when uploading files</h4>
+
+<p>If you are using <a href="ActionDispatch/Http/UploadedFile.html" title="ActionDispatch::Http::UploadedFile (class)">::ActionDispatch::Http::UploadedFile</a> in your tests to
+upload files, you will need to change to use the similar <code>Rack::Test::UploadedFile</code>
+class instead.</p>
+
+<p>See <a href="https://github.com/rails/rails/issues/26404">#26404</a> for more details.</p>
 
 <h3>Autoloading is Disabled After Booting in the Production Environment</h3>
 
@@ -380,7 +408,7 @@ should support caching.</p>
 
 <h4>Configure the Output of <code>db:structure:dump</code></h4>
 
-<p>If you&#39;re using <code>schema_search_path</code> or other PostgreSQL extentions, you can control how the schema is
+<p>If you&#39;re using <code>schema_search_path</code> or other PostgreSQL extensions, you can control how the schema is
 dumped. Set to <code>:all</code> to generate all dumps, or to <code>:schema_search_path</code> to generate from schema search path.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_active_record'>active_record</span><span class='period'>.</span><span class='id identifier rubyid_dump_schemas'>dump_schemas</span> <span class='op'>=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_all'>all</span></code></pre>
@@ -728,7 +756,7 @@ will always yield string keys:</p>
 <p>MultiJSON has reached its <a href="https://github.com/rails/rails/pull/10576">end-of-life</a>
 and has been removed from Rails.</p>
 
-<p>If your application currently depend on MultiJSON directly, you have a few options:</p>
+<p>If your application currently depends on MultiJSON directly, you have a few options:</p>
 
 <ol>
 <li><p>Add &#39;multi_json&#39; to your Gemfile. Note that this might cease to work in the future</p></li>
@@ -1226,7 +1254,7 @@ the <code>resources</code> method to restrict the routes created as detailed in 
 <ul>
 <li><p>In Rails 4.0, precompiling assets no longer automatically copies non-JS/CSS assets from <code>vendor/assets</code> and <code>lib/assets</code>. Rails application and engine developers should put these assets in <code>app/assets</code> or configure <code>config.assets.precompile</code>.</p></li>
 <li><p>In Rails 4.0, <a href="ActionController/UnknownFormat.html" title="ActionController::UnknownFormat (class)">::ActionController::UnknownFormat</a> is raised when the action doesn&#39;t handle the request format. By default, the exception is handled by responding with 406 Not Acceptable, but you can override that now. In Rails 3, 406 Not Acceptable was always returned. No overrides.</p></li>
-<li><p>In Rails 4.0, a generic <a href="ActionDispatch/ParamsParser/ParseError.html" title="ActionDispatch::ParamsParser::ParseError (class)">::ActionDispatch::ParamsParser::ParseError</a> exception is raised when <code>ParamsParser</code> fails to parse request params. You will want to rescue this exception instead of the low-level <code>MultiJson::DecodeError</code>, for example.</p></li>
+<li><p>In Rails 4.0, a generic <a href="ActionDispatch/ParamsParser.html#ParseError-constant" title="ActionDispatch::ParamsParser::ParseError (constant)">ActionDispatch::ParamsParser::ParseError</a> exception is raised when <code>ParamsParser</code> fails to parse request params. You will want to rescue this exception instead of the low-level <code>MultiJson::DecodeError</code>, for example.</p></li>
 <li><p>In Rails 4.0, <code>SCRIPT_NAME</code> is properly nested when engines are mounted on an app that&#39;s served from a URL prefix. You no longer have to set <code>default_url_options[:script_name]</code> to work around overwritten URL prefixes.</p></li>
 <li><p>Rails 4.0 deprecated <code>ActionController::Integration</code> in favor of <a href="ActionDispatch/Integration.html" title="ActionDispatch::Integration (module)">::ActionDispatch::Integration</a>.</p></li>
 <li><p>Rails 4.0 deprecated <code>ActionController::IntegrationTest</code> in favor of <a href="ActionDispatch/IntegrationTest.html" title="ActionDispatch::IntegrationTest (class)">::ActionDispatch::IntegrationTest</a>.</p></li>
@@ -1379,7 +1407,7 @@ should upgrade to Rails 3.1 before attempting an update to Rails 3.2.</p>
 </span><span class='comment'># config.assets.manifest = YOUR_PATH
 </span>
 <span class='comment'># Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-</span><span class='comment'># config.assets.precompile += %w( search.js )
+</span><span class='comment'># config.assets.precompile += %w( admin.js admin.css )
 </span>
 <span class='comment'># Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
 </span><span class='comment'># config.force_ssl = true</span></code></pre>

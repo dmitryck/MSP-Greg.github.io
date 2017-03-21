@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActionController::HttpAuthentication::Token &mdash; Rails-5-0-stable</title>
+<title>Module: ActionController::HttpAuthentication::Token &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_T'>Index (T)</a> &raquo; 
         <a href="../../ActionController.html" title="ActionController (module)">ActionController</a> &raquo; 
         <a href="../HttpAuthentication.html" title="ActionController::HttpAuthentication (module)">HttpAuthentication</a> &raquo; 
@@ -80,7 +80,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L408'>actionpack/lib/action_controller/metal/http_authentication.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L407'>actionpack/lib/action_controller/metal/http_authentication.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -127,7 +127,7 @@ interface is protected by a session approach:</p>
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>ApplicationController</span> <span class='op'>&lt;</span> <span class='const'><a href="../../ActionController.html" title="ActionController (module)">ActionController</a></span><span class='op'>::</span><span class='const'><a href="../Base.html" title="ActionController::Base (class)">Base</a></span>
   <span class='id identifier rubyid_before_action'>before_action</span> <span class='symbeg'>:</span><span class='id identifier rubyid_set_account'>set_account</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_authenticate'>authenticate</span>
 
-  <span class='id identifier rubyid_protected'>protected</span>
+  <span class='id identifier rubyid_private'>private</span>
     <span class='kw'>def</span> <span class='id identifier rubyid_set_account'>set_account</span>
       <span class='ivar'>@account</span> <span class='op'>=</span> <span class='const'>Account</span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>url_name:</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_subdomains'>subdomains</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
@@ -176,17 +176,17 @@ cannot authenticate, try this rule in your Apache setup:</p>
   <li>
     <span id='AUTHN_PAIR_DELIMITERS-constant' class='summary_signature'>AUTHN_PAIR_DELIMITERS =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L411-L411'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 411</a>    <pre class='code ruby'><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?:,|;|\t+)</span><span class='regexp_end'>/</span></span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L410-L410'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 410</a>    <pre class='code ruby'><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?:,|;|\t+)</span><span class='regexp_end'>/</span></span></pre>
   </li>
   <li>
     <span id='TOKEN_KEY-constant' class='summary_signature'>TOKEN_KEY =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L409-L409'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 409</a>    <pre class='code ruby'><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>token=</span><span class='tstring_end'>&#39;</span></span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L408-L408'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 408</a>    <pre class='code ruby'><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>token=</span><span class='tstring_end'>&quot;</span></span></pre>
   </li>
   <li>
     <span id='TOKEN_REGEX-constant' class='summary_signature'>TOKEN_REGEX =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L410-L410'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 410</a>    <pre class='code ruby'><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^(Token|Bearer)\s+</span><span class='regexp_end'>/</span></span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L409-L409'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 409</a>    <pre class='code ruby'><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^(Token|Bearer)\s+</span><span class='regexp_end'>/</span></span></pre>
   </li>
 </ul>
 </div>
@@ -251,7 +251,7 @@ delimiters defined in <a href="#AUTHN_PAIR_DELIMITERS-constant" title="ActionCon
       <a href="#token_and_options-instance_method" title="#token_and_options (instance method)">#<strong>token_and_options</strong>(request)  </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Parses the token and options out of the token authorization header.</p></div>
+      <div class='inline'><p>Parses the token and options out of the token Authorization header.</p></div>
     </div>
   </li>
   <li>
@@ -286,19 +286,19 @@ present token and options.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L442-L447'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L441-L446'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+441
 442
 443
 444
 445
-446
-447</pre>
+446</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 442</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 441</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_authenticate'>authenticate</span><span class='lparen'>(</span><span class='id identifier rubyid_controller'>controller</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_login_procedure'>login_procedure</span><span class='rparen'>)</span>
@@ -328,18 +328,18 @@ realm      - <a href="../../String.html" title="String (class)">::String</a> rea
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L514-L518'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L513-L517'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+513
 514
 515
 516
-517
-518</pre>
+517</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 514</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 513</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_authentication_request'>authentication_request</span><span class='lparen'>(</span><span class='id identifier rubyid_controller'>controller</span><span class='comma'>,</span> <span class='id identifier rubyid_realm'>realm</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -367,19 +367,19 @@ realm      - <a href="../../String.html" title="String (class)">::String</a> rea
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L501-L506'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L500-L505'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+500
 501
 502
 503
 504
-505
-506</pre>
+505</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 501</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 500</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encode_credentials'>encode_credentials</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -404,16 +404,16 @@ realm      - <a href="../../String.html" title="String (class)">::String</a> rea
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L473-L475'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L472-L474'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+472
 473
-474
-475</pre>
+474</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 473</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 472</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_params_array_from'>params_array_from</span><span class='lparen'>(</span><span class='id identifier rubyid_raw_params'>raw_params</span><span class='rparen'>)</span>
@@ -437,11 +437,12 @@ delimiters defined in <a href="#AUTHN_PAIR_DELIMITERS-constant" title="ActionCon
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L485-L493'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L484-L492'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+484
 485
 486
 487
@@ -449,14 +450,13 @@ delimiters defined in <a href="#AUTHN_PAIR_DELIMITERS-constant" title="ActionCon
 489
 490
 491
-492
-493</pre>
+492</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 485</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 484</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_raw_params'>raw_params</span><span class='lparen'>(</span><span class='id identifier rubyid_auth'>auth</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid__raw_params'>_raw_params</span> <span class='op'>=</span> <span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='const'><a href="#TOKEN_REGEX-constant" title="ActionController::HttpAuthentication::Token::TOKEN_REGEX (constant)">TOKEN_REGEX</a></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\s*</span><span class='embexpr_beg'>#{</span><span class='const'><a href="#AUTHN_PAIR_DELIMITERS-constant" title="ActionController::HttpAuthentication::Token::AUTHN_PAIR_DELIMITERS (constant)">AUTHN_PAIR_DELIMITERS</a></span><span class='embexpr_end'>}</span><span class='tstring_content'>\s*</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid__raw_params'>_raw_params</span> <span class='op'>=</span> <span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='const'><a href="#TOKEN_REGEX-constant" title="ActionController::HttpAuthentication::Token::TOKEN_REGEX (constant)">TOKEN_REGEX</a></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\s*</span><span class='embexpr_beg'>#{</span><span class='const'><a href="#AUTHN_PAIR_DELIMITERS-constant" title="ActionController::HttpAuthentication::Token::AUTHN_PAIR_DELIMITERS (constant)">AUTHN_PAIR_DELIMITERS</a></span><span class='embexpr_end'>}</span><span class='tstring_content'>\s*</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid__raw_params'>_raw_params</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>\A</span><span class='embexpr_beg'>#{</span><span class='const'><a href="#TOKEN_KEY-constant" title="ActionController::HttpAuthentication::Token::TOKEN_KEY (constant)">TOKEN_KEY</a></span><span class='embexpr_end'>}</span><span class='regexp_end'>}</span></span><span class='rparen'>)</span>
     <span class='id identifier rubyid__raw_params'>_raw_params</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'><a href="#TOKEN_KEY-constant" title="ActionController::HttpAuthentication::Token::TOKEN_KEY (constant)">TOKEN_KEY</a></span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid__raw_params'>_raw_params</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -480,20 +480,20 @@ delimiters defined in <a href="#AUTHN_PAIR_DELIMITERS-constant" title="ActionCon
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L478-L480'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L477-L479'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+477
 478
-479
-480</pre>
+479</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 478</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 477</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rewrite_param_values'>rewrite_param_values</span><span class='lparen'>(</span><span class='id identifier rubyid_array_params'>array_params</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_array_params'>array_params</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_param'>param</span><span class='op'>|</span> <span class='lparen'>(</span><span class='id identifier rubyid_param'>param</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub!'>gsub!</span> <span class='tstring'><span class='regexp_beg'>%r/</span><span class='tstring_content'>^&quot;|&quot;$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_array_params'>array_params</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_param'>param</span><span class='op'>|</span> <span class='lparen'>(</span><span class='id identifier rubyid_param'>param</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub!'>gsub!</span> <span class='tstring'><span class='regexp_beg'>%r/</span><span class='tstring_content'>^&quot;|&quot;$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -507,7 +507,7 @@ delimiters defined in <a href="#AUTHN_PAIR_DELIMITERS-constant" title="ActionCon
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Parses the token and options out of the token authorization header. The
+<p>Parses the token and options out of the token Authorization header. The
 value for the Authorization header is expected to have the prefix
 <code>&quot;Token&quot;</code> or <code>&quot;Bearer&quot;</code>. If the
 header looks like this:</p>
@@ -524,20 +524,20 @@ Returns <code>nil</code> if no token is found.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L460-L466'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L459-L465'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+459
 460
 461
 462
 463
 464
-465
-466</pre>
+465</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 460</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 459</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_token_and_options'>token_and_options</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
@@ -556,16 +556,16 @@ Returns <code>nil</code> if no token is found.</p>
   <h3 class='signature '>
     #<strong>token_params_from</strong>(auth)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L468-L470'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_controller/metal/http_authentication.rb#L467-L469'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+467
 468
-469
-470</pre>
+469</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 468</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/http_authentication.rb', line 467</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_token_params_from'>token_params_from</span><span class='lparen'>(</span><span class='id identifier rubyid_auth'>auth</span><span class='rparen'>)</span>

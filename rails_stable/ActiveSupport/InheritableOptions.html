@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: ActiveSupport::InheritableOptions &mdash; Rails-5-0-stable</title>
+<title>Class: ActiveSupport::InheritableOptions &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_I'>Index (I)</a> &raquo; 
         <a href="../ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>InheritableOptions&nbsp;&#x25B2;</a></span>
@@ -115,7 +115,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/ordered_options.rb#L65'>activesupport/lib/active_support/ordered_options.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/ordered_options.rb#L67'>activesupport/lib/active_support/ordered_options.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -380,13 +380,11 @@ value.</p></div></td>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/ordered_options.rb#L66-L75'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/ordered_options.rb#L68-L77'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-66
-67
 68
 69
 70
@@ -394,17 +392,19 @@ value.</p></div></td>
 72
 73
 74
-75</pre>
+75
+76
+77</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/ordered_options.rb', line 66</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/ordered_options.rb', line 68</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_parent'>parent</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_parent'>parent</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'><a href="OrderedOptions.html" title="ActiveSupport::OrderedOptions (class)">OrderedOptions</a></span><span class='rparen'>)</span>
     <span class='comment'># use the faster _get when dealing with OrderedOptions
-</span>    <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_parent'>parent</span><span class='period'>.</span><span class='id identifier rubyid__get'>_get</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+</span>    <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span> <span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_parent'>parent</span><span class='period'>.</span><span class='id identifier rubyid__get'>_get</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_parent'>parent</span>
-    <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_parent'>parent</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span> <span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_parent'>parent</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
   <span class='kw'>else</span>
     <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -423,16 +423,16 @@ value.</p></div></td>
   <h3 class='signature  first'>
     #<strong>inheritable_copy</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activesupport/lib/active_support/ordered_options.rb#L77-L79'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/ordered_options.rb#L79-L81'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-77
-78
-79</pre>
+79
+80
+81</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/ordered_options.rb', line 77</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/ordered_options.rb', line 79</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inheritable_copy'>inheritable_copy</span>

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActionDispatch::Routing::Redirection &mdash; Rails-5-0-stable</title>
+<title>Module: ActionDispatch::Routing::Redirection &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_R'>Index (R)</a> &raquo; 
         <a href="../../ActionDispatch.html" title="ActionDispatch (module)">ActionDispatch</a> &raquo; 
         <a href="../Routing.html" title="ActionDispatch::Routing (module)">Routing</a> &raquo; 
@@ -81,7 +81,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/redirection.rb#L137'>actionpack/lib/action_dispatch/routing/redirection.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/redirection.rb#L137'>actionpack/lib/action_dispatch/routing/redirection.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -111,6 +111,10 @@
 <p><a href="Redirect.html" title="ActionDispatch::Routing::Redirect (class)">Redirect</a> any path to another path:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/stories</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/posts</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
+
+<p>This will redirect the user, while ignoring certain parts of the request,
+including query string, etc. `/stories`, `/stories?foo=bar`, etc all
+redirect to `/posts`.</p>
 
 <p>You can also use interpolation in the supplied redirect argument:</p>
 
@@ -142,7 +146,12 @@ url which need to change, it also supports interpolation of the path
 similar to the first example.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>stores/:name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>       <span class='label'>to:</span> <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='label'>subdomain:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>stores</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/%{name}</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-<span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>stores/:name(*all)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='label'>subdomain:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>stores</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/%{name}%{all}</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></code></pre>
+<span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>stores/:name(*all)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='label'>subdomain:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>stores</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/%{name}%{all}</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/stories</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/posts</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></code></pre>
+
+<p>This will redirect the user, while changing only the specified parts of the
+request, for example the `path` option in the last example. `/stories`,
+`/stories?foo=bar`, redirect to `/posts` and `/posts?foo=bar` respectively.</p>
 
 <p>Finally, an object which responds to call can be supplied to redirect,
 allowing you to reuse common redirect routes. The call method must accept
@@ -160,25 +169,25 @@ two arguments, params and request, and return a string.</p>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/actionpack/lib/action_dispatch/routing/redirection.rb#L178-L189'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/actionpack/lib/action_dispatch/routing/redirection.rb#L185-L196'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-178
-179
-180
-181
-182
-183
-184
 185
 186
 187
 188
-189</pre>
+189
+190
+191
+192
+193
+194
+195
+196</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/redirection.rb', line 178</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_dispatch/routing/redirection.rb', line 185</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>

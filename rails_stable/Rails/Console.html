@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: Rails::Console &mdash; Rails-5-0-stable</title>
+<title>Class: Rails::Console &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../Rails.html" title="Rails (module)">Rails</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Console&nbsp;&#x25B2;</a></span>
@@ -71,6 +71,12 @@
     <tr><td id='t2_relations' colspan='2'>Relationships & Source Files</td></tr>
   </thead>
   <tbody>
+    <tr><td class='box_h' colspan='2'>Namespace Children</td></tr>
+    <tr><td colspan='2'>
+      <div class='box_1'>Modules:</div>
+      <div class='box_11'>
+          <a href="Console/BacktraceCleaner.html" title="Rails::Console::BacktraceCleaner (module)">BacktraceCleaner</a>      </div>
+    </td></tr>
     <tr>
       <td id='t2_inherits' class='box_2'>Inherits:</td>
       <td class='box_rel'>
@@ -79,7 +85,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/commands/console.rb#L7'>railties/lib/rails/commands/console.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/commands/console/console_command.rb#L7'>railties/lib/rails/commands/console/console_command.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -96,7 +102,7 @@
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#parse_arguments-class_method" title=".parse_arguments (class method)">.<strong>parse_arguments</strong>(arguments)  </a>
+      <a href="#start-class_method" title=".start (class method)">.<strong>start</strong>(*args)  </a>
     </span>
   </li>
 </ul>
@@ -178,25 +184,29 @@
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/commands/console.rb#L29-L37'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/commands/console/console_command.rb#L22-L34'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+22
+23
+24
+25
+26
+27
+28
 29
 30
 31
 32
 33
-34
-35
-36
-37</pre>
+34</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/commands/console.rb', line 29</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/commands/console/console_command.rb', line 22</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_app'>app</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_app'>app</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@app</span>     <span class='op'>=</span> <span class='id identifier rubyid_app'>app</span>
   <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span>
 
@@ -204,6 +214,10 @@
   <span class='id identifier rubyid_app'>app</span><span class='period'>.</span><span class='id identifier rubyid_load_console'>load_console</span>
 
   <span class='ivar'>@console</span> <span class='op'>=</span> <span class='id identifier rubyid_app'>app</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_console'>console</span> <span class='op'>||</span> <span class='const'>IRB</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@console</span> <span class='op'>==</span> <span class='const'>IRB</span>
+    <span class='const'>IRB</span><span class='op'>::</span><span class='const'>WorkSpace</span><span class='period'>.</span><span class='id identifier rubyid_prepend'>prepend</span><span class='lparen'>(</span><span class='const'><a href="Console/BacktraceCleaner.html" title="Rails::Console::BacktraceCleaner (module)">BacktraceCleaner</a></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -211,46 +225,24 @@
 </section>
 
 <h2 class='y_details'>Class Method Details</h2>
-<section class='method_details first' id="parse_arguments-class_method">
+<section class='method_details first' id="start-class_method">
   <h3 class='signature  first'>
-    .<strong>parse_arguments</strong>(arguments)  
+    .<strong>start</strong>(*args)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/commands/console.rb#L11-L24'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/commands/console/console_command.rb#L16-L18'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-11
-12
-13
-14
-15
 16
 17
-18
-19
-20
-21
-22
-23
-24</pre>
+18</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/commands/console.rb', line 11</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/commands/console/console_command.rb', line 16</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_parse_arguments'>parse_arguments</span><span class='lparen'>(</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-
-  <span class='const'>OptionParser</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_opt'>opt</span><span class='op'>|</span>
-    <span class='id identifier rubyid_opt'>opt</span><span class='period'>.</span><span class='id identifier rubyid_banner'>banner</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Usage: rails console [environment] [options]</span><span class='tstring_end'>&quot;</span></span>
-    <span class='id identifier rubyid_opt'>opt</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-s</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--sandbox</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Rollback database modifications on exit.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_sandbox'>sandbox</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_v'>v</span> <span class='rbrace'>}</span>
-    <span class='id identifier rubyid_opt'>opt</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-e</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>--environment=name</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'><a href="../String.html" title="String (class)">String</a></span><span class='comma'>,</span>
-            <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Specifies the environment to run this console under (test/development/production).</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-            <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Default: development</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_environment'>environment</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span> <span class='rbrace'>}</span>
-    <span class='id identifier rubyid_opt'>opt</span><span class='period'>.</span><span class='id identifier rubyid_parse!'>parse!</span><span class='lparen'>(</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_set_options_env'>set_options_env</span><span class='lparen'>(</span><span class='id identifier rubyid_arguments'>arguments</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -262,14 +254,14 @@
   <h3 class='signature ro first'>
     #<strong>app</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/commands/console.rb#L27-L27'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/commands/console/console_command.rb#L20-L20'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-27</pre>
+20</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/commands/console.rb', line 27</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/commands/console/console_command.rb', line 20</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_app'>app</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_console'>console</span>
@@ -282,14 +274,14 @@
   <h3 class='signature ro'>
     #<strong>console</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/commands/console.rb#L27-L27'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/commands/console/console_command.rb#L20-L20'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-27</pre>
+20</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/commands/console.rb', line 27</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/commands/console/console_command.rb', line 20</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_app'>app</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_console'>console</span>
@@ -303,20 +295,20 @@
     #<strong>environment</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
     <span class='aliases'>Also known as: <span class='names'>#environment?</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/commands/console.rb#L43-L45'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/commands/console/console_command.rb#L40-L42'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-43
-44
-45</pre>
+40
+41
+42</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/commands/console.rb', line 43</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/commands/console/console_command.rb', line 40</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_environment'>environment</span>
-  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_environment'>environment</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='kw'>super</span>
+  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_environment'>environment</span><span class='rbracket'>]</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -334,14 +326,14 @@
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/commands/console.rb#L46-L46'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/commands/console/console_command.rb#L43-L43'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-46</pre>
+43</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/commands/console.rb', line 46</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/commands/console/console_command.rb', line 43</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_environment?'>environment?</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_environment'>environment</span>
@@ -354,14 +346,14 @@
   <h3 class='signature ro'>
     #<strong>options</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/commands/console.rb#L27-L27'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/commands/console/console_command.rb#L20-L20'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-27</pre>
+20</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/commands/console.rb', line 27</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/commands/console/console_command.rb', line 20</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_app'>app</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_console'>console</span>
@@ -374,16 +366,16 @@
   <h3 class='signature ro'>
     #<strong>sandbox?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/commands/console.rb#L39-L41'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/commands/console/console_command.rb#L36-L38'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-39
-40
-41</pre>
+36
+37
+38</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/commands/console.rb', line 39</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/commands/console/console_command.rb', line 36</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sandbox?'>sandbox?</span>
@@ -399,16 +391,16 @@
   <h3 class='signature  first'>
     #<strong>set_environment!</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/commands/console.rb#L48-L50'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/commands/console/console_command.rb#L45-L47'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-48
-49
-50</pre>
+45
+46
+47</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/commands/console.rb', line 48</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/commands/console/console_command.rb', line 45</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_environment!'>set_environment!</span>
@@ -423,11 +415,14 @@
   <h3 class='signature '>
     #<strong>start</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/railties/lib/rails/commands/console.rb#L52-L66'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/commands/console/console_command.rb#L49-L63'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+49
+50
+51
 52
 53
 54
@@ -439,12 +434,9 @@
 60
 61
 62
-63
-64
-65
-66</pre>
+63</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/commands/console.rb', line 52</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/commands/console/console_command.rb', line 49</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_start'>start</span>

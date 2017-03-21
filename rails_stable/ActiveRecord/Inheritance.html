@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::Inheritance &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::Inheritance &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../_index.html#alpha_I'>Index (I)</a> &raquo; 
         <a href="../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Inheritance&nbsp;&#x25B2;</a></span>
@@ -96,7 +96,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/inheritance.rb#L35'>activerecord/lib/active_record/inheritance.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/inheritance.rb#L35'>activerecord/lib/active_record/inheritance.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -126,7 +126,7 @@ then fetch this row again using <code>Company.where(name:
 <p>Be aware that because the type column is an attribute on the record every
 new subclass will instantly be marked as dirty and the type column will be
 included in the list of changed attributes on the record. This is different
-from non STI classes:</p>
+from non Single Table Inheritance(STI) classes:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>Company</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='period'>.</span><span class='id identifier rubyid_changed?'>changed?</span> <span class='comment'># =&gt; false
 </span><span class='const'>Firm</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='period'>.</span><span class='id identifier rubyid_changed?'>changed?</span>    <span class='comment'># =&gt; true
@@ -175,7 +175,7 @@ href="http://www.martinfowler.com/eaaCatalog/singleTableInheritance.html">www.ma
 <h2 class='y_details'>DSL Calls</h2>
 <section class='method_details first' id="included-dslcall">
 <h3 class='signature'><strong>included</strong></h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/inheritance.rb#L38-L42'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/inheritance.rb#L38-L43'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -184,13 +184,15 @@ href="http://www.martinfowler.com/eaaCatalog/singleTableInheritance.html">www.ma
 39
 40
 41
-42</pre>
+42
+43</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'activerecord/lib/active_record/inheritance.rb', line 38</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_included'>included</span> <span class='kw'>do</span>
   <span class='comment'># Determines whether to store the full constant name including namespace when using STI.
+</span>  <span class='comment'># This is true, by default.
 </span>  <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbeg'>:</span><span class='id identifier rubyid_store_full_sti_class'>store_full_sti_class</span><span class='comma'>,</span> <span class='label'>instance_writer:</span> <span class='kw'>false</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_store_full_sti_class'>store_full_sti_class</span> <span class='op'>=</span> <span class='kw'>true</span>
 <span class='kw'>end</span>
@@ -204,17 +206,17 @@ href="http://www.martinfowler.com/eaaCatalog/singleTableInheritance.html">www.ma
   <h3 class='signature  first'>
     #<strong>initialize_dup</strong>(other)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/inheritance.rb#L215-L218'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/inheritance.rb#L229-L232'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-215
-216
-217
-218</pre>
+229
+230
+231
+232</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/inheritance.rb', line 215</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/inheritance.rb', line 229</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize_dup'>initialize_dup</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>

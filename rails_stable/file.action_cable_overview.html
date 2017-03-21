@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Action Cable Overview &mdash; Rails-5-0-stable</title>
+<title>File: Action Cable Overview &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Action Cable Overview&nbsp;&#x25B2;</a></span>
             </div>
@@ -71,6 +71,7 @@ incorporate real-time features into your Rails application.</p>
 <p>After reading this guide, you will know:</p>
 
 <ul>
+<li>What Action Cable is and its integration on backend and frontend<br></li>
 <li>How to setup Action Cable</li>
 <li>How to setup channels</li>
 <li>Deployment and Architecture setup for running Action Cable</li>
@@ -124,7 +125,7 @@ be identified.</p>
       <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_current_user'>current_user</span> <span class='op'>=</span> <span class='id identifier rubyid_find_verified_user'>find_verified_user</span>
     <span class='kw'>end</span>
 
-    <span class='id identifier rubyid_protected'>protected</span>
+    <span class='id identifier rubyid_private'>private</span>
       <span class='kw'>def</span> <span class='id identifier rubyid_find_verified_user'>find_verified_user</span>
         <span class='kw'>if</span> <span class='id identifier rubyid_current_user'>current_user</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='id identifier rubyid_cookies'>cookies</span><span class='period'>.</span><span class='id identifier rubyid_signed'>signed</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
           <span class='id identifier rubyid_current_user'>current_user</span>
@@ -147,7 +148,7 @@ cookie with the user ID.</p>
 is attempted, and you use that to set the <code>current_user</code>. By identifying the connection
 by this same current user, you&#39;re also ensuring that you can later retrieve all open
 connections by a given user (and potentially disconnect them all if the user is deleted
-or deauthorized).</p>
+or unauthorized).</p>
 
 <h3>Channels</h3>
 
@@ -284,12 +285,12 @@ should they connect later.</p>
 <span class='rparen'>)</span></code></pre>
 
 <p>The <code>WebNotificationsChannel.broadcast_to</code> call places a message in the current
-subscription adapter (Redis by default)&#39;s pubsub queue under a separate
-broadcasting name for each user. For a user with an ID of 1, the broadcasting
-name would be <code>web_notifications_1</code>.</p>
+subscription adapter (by default <code>redis</code> for production and <code>async</code> for development and
+test environments)&#39;s pubsub queue under a separate broadcasting name for each user.
+For a user with an ID of 1, the broadcasting name would be <code>web_notifications:1</code>.</p>
 
 <p>The channel has been instructed to stream everything that arrives at
-<code>web_notifications_1</code> directly to the client by invoking the <code>received</code>
+<code>web_notifications:1</code> directly to the client by invoking the <code>received</code>
 callback.</p>
 
 <h3>Subscriptions</h3>
@@ -352,7 +353,7 @@ App.cable.subscriptions.create { channel: &quot;ChatChannel&quot;, room: &quot;B
 
 <pre class="code ruby"><code class="ruby"><span class='comment'># Somewhere in your app this is called, perhaps
 </span><span class='comment'># from a NewCommentJob.
-</span><span class='const'>ChatChannel</span><span class='period'>.</span><span class='id identifier rubyid_broadcast_to'>broadcast_to</span><span class='lparen'>(</span>
+</span><span class='const'><a href="ActionCable.html" title="ActionCable (module)">ActionCable</a></span><span class='period'>.</span><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_broadcast'>broadcast</span><span class='lparen'>(</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>chat_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_room'>room</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
   <span class='label'>sent_by:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Paul</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
   <span class='label'>body:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>This is a cool chat app.</span><span class='tstring_end'>&#39;</span></span>
@@ -456,7 +457,7 @@ App.cable.subscriptions.create &quot;AppearanceChannel&quot;,
   buttonSelector = &quot;[data-behavior~=appear_away]&quot;
 
   install: -&gt;
-    $(document).on &quot;page:change.appearance&quot;, =&gt;
+    $(document).on &quot;turbolinks:load.appearance&quot;, =&gt;
       @appear()
 
     $(document).on &quot;click.appearance&quot;, buttonSelector, =&gt;
@@ -537,10 +538,10 @@ application:</p>
 <p>The <code>WebNotificationsChannel.broadcast_to</code> call places a message in the current
 subscription adapter&#39;s pubsub queue under a separate broadcasting name for each
 user. For a user with an ID of 1, the broadcasting name would be
-&quot;web_notifications_1&quot;.</p>
+<code>web_notifications:1</code>.</p>
 
 <p>The channel has been instructed to stream everything that arrives at
-&quot;web_notifications_1&quot; directly to the client by invoking the <code>received</code>
+<code>web_notifications:1</code> directly to the client by invoking the <code>received</code>
 callback. The data passed as argument is the hash sent as the second parameter
 to the server-side broadcast call, JSON encoded for the trip across the wire,
 and unpacked for the data argument arriving to <code>received</code>.</p>
@@ -557,7 +558,7 @@ repository for a full example of how to setup Action Cable in a Rails app and ad
 <h3>Subscription Adapter</h3>
 
 <p>By default, Action Cable looks for a configuration file in <code>config/cable.yml</code>.
-The file must specify an adapter and a URL for each Rails environment. See the
+The file must specify an adapter for each Rails environment. See the
 <a href="#dependencies">Dependencies</a> section for additional information on adapters.</p>
 
 <pre class="code yaml"><code class="yaml">development:
@@ -569,7 +570,29 @@ test:
 production:
   adapter: redis
   url: redis://10.10.3.153:6381
+  channel_prefix: appname_production
 </code></pre>
+
+<h4>Adapter Configuration</h4>
+
+<p>Below is a list of the subscription adapters available for end users.</p>
+
+<h5>Async Adapter</h5>
+
+<p>The async adapter is intended for development/testing and should not be used in production.</p>
+
+<h5>Redis Adapter</h5>
+
+<p>Action Cable contains two Redis adapters: &quot;normal&quot; Redis and Evented Redis. Both
+of the adapters require users to provide a URL pointing to the Redis server.
+Additionally, a channel_prefix may be provided to avoid channel name collisions
+when using the same Redis server for multiple applications. See the <a href="https://redis.io/topics/pubsub#database-amp-scoping">Redis PubSub documentation</a> for more details.</p>
+
+<h5>PostgreSQL Adapter</h5>
+
+<p>The PostgreSQL adapter uses Active Record&#39;s connection pool, and thus the
+application&#39;s <code>config/database.yml</code> database configuration, for its connection.
+This may change in the future. <a href="https://github.com/rails/rails/issues/27214">#27214</a></p>
 
 <h3>Allowed Request Origins</h3>
 
@@ -594,11 +617,12 @@ environment configuration files.</p>
 
 <h3>Other Configurations</h3>
 
-<p>The other common option to configure is the log tags applied to the
-per-connection logger. Here&#39;s close to what we&#39;re using in Basecamp:</p>
+<p>The other common option to configure, is the log tags applied to the
+per-connection logger. Here&#39;s an example that uses
+the user account id if available, else &quot;no-account&quot; while tagging:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_action_cable'>action_cable</span><span class='period'>.</span><span class='id identifier rubyid_log_tags'>log_tags</span> <span class='op'>=</span> <span class='lbracket'>[</span>
-  <span class='comment'>#=&gt; request { request.env[&#39;bc.account_id&#39;] || &quot;no-account&quot; },
+  <span class='comment'>#=&gt; request { request.env[&#39;user_account_id&#39;] || &quot;no-account&quot; },
 </span>  <span class='symbeg'>:</span><span class='id identifier rubyid_action_cable'>action_cable</span><span class='comma'>,</span>
   <span class='comment'>#=&gt; request { request.uuid }
 </span><span class='rbracket'>]</span></code></pre>
@@ -607,7 +631,7 @@ per-connection logger. Here&#39;s close to what we&#39;re using in Basecamp:</p>
 <a href="ActionCable/Server/Configuration.html" title="ActionCable::Server::Configuration (class)">::ActionCable::Server::Configuration</a> class.</p>
 
 <p>Also note that your server must provide at least the same number of database
-connections as you have workers. The default worker pool size is set to 100, so
+connections as you have workers. The default worker pool size is set to 4, so
 that means you have to make at least that available. You can change that in
 <code>config/database.yml</code> through the <code>pool</code> attribute.</p>
 
@@ -640,7 +664,7 @@ still a Rack application, but it is its own Rack application. The recommended
 basic setup is as follows:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='comment'># cable/config.ru
-</span><span class='id identifier rubyid_require_relative'>require_relative</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>config/environment</span><span class='tstring_end'>&#39;</span></span>
+</span><span class='id identifier rubyid_require_relative'>require_relative</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>../config/environment</span><span class='tstring_end'>&#39;</span></span>
 <span class='const'><a href="Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_application'><a href="Rails.html#application-class_method" title="Rails.application (method)">application</a></span><span class='period'>.</span><span class='id identifier rubyid_eager_load!'>eager_load!</span>
 
 <span class='id identifier rubyid_run'>run</span> <span class='const'><a href="ActionCable.html" title="ActionCable (module)">ActionCable</a></span><span class='period'>.</span><span class='id identifier rubyid_server'>server</span></code></pre>

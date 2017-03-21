@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: ActiveRecord::ConnectionAdapters::ColumnDumper &mdash; Rails-5-0-stable</title>
+<title>Module: ActiveRecord::ConnectionAdapters::ColumnDumper &mdash; Rails-5-1-stable</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Rails-5-0-stable</a> &raquo; 
+        <a href='../../index.html'>Rails-5-1-stable</a> &raquo; 
         <a href='../../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
         <a href="../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
@@ -85,7 +85,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb#L8'>activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb#L8'>activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -120,14 +120,6 @@ code inside the database specific adapters</p>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#migration_keys-instance_method" title="#migration_keys (instance method)">#<strong>migration_keys</strong>  </a>
-    </span>
-    <div class='summary_desc'>
-      <div class='inline'><p>Lists the valid migration options.</p></div>
-    </div>
-  </li>
-  <li>
-    <span class='summary_signature '>
       <a href="#prepare_column_options-instance_method" title="#prepare_column_options (instance method)">#<strong>prepare_column_options</strong>(column)  </a>
     </span>
     <div class='summary_desc'>
@@ -143,26 +135,20 @@ datatypes (Example: Adding an array option in the
   <h3 class='signature  first'>
     #<strong>column_spec</strong>(column)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb#L9-L14'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb#L9-L11'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
 9
 10
-11
-12
-13
-14</pre>
+11</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb', line 9</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_column_spec'>column_spec</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_spec'>spec</span> <span class='op'>=</span> <span class='const'><a href="../../Hash.html" title="Hash (class)">Hash</a></span><span class='lbracket'>[</span><span class='id identifier rubyid_prepare_column_options'>prepare_column_options</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_v'>v</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span>
-  <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_schema_type'>schema_type</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-  <span class='id identifier rubyid_spec'>spec</span>
+  <span class='lbracket'>[</span><span class='id identifier rubyid_schema_type_with_virtual'>schema_type_with_virtual</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_prepare_column_options'>prepare_column_options</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span><span class='rbracket'>]</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -173,55 +159,28 @@ datatypes (Example: Adding an array option in the
   <h3 class='signature '>
     #<strong>column_spec_for_primary_key</strong>(column)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb#L16-L20'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb#L13-L19'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+13
+14
+15
 16
 17
 18
-19
-20</pre>
+19</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb', line 16</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb', line 13</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_column_spec_for_primary_key'>column_spec_for_primary_key</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='kw'>if</span> <span class='id identifier rubyid_default_primary_key?'>default_primary_key?</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_spec'>spec</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>id:</span> <span class='id identifier rubyid_schema_type'>schema_type</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span> <span class='rbrace'>}</span>
   <span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_prepare_column_options'>prepare_column_options</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_except!'>except!</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_null'>null</span><span class='rparen'>)</span><span class='rparen'>)</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="migration_keys-instance_method">
-  <h3 class='signature '>
-    #<strong>migration_keys</strong>  
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>Lists the valid migration options</p>
-
-  </div>
-</div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb#L55-L57'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-55
-56
-57</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb', line 55</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_migration_keys'>migration_keys</span>
-  <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_limit'>limit</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_precision'>precision</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_scale'>scale</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_default'>default</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_null'>null</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_collation'>collation</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_comment'>comment</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_default'>default</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>nil</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_explicit_primary_key_default?'>explicit_primary_key_default?</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_spec'>spec</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -241,11 +200,12 @@ datatypes (Example: Adding an array option in the
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-0-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb#L25-L52'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb#L24-L51'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+24
 25
 26
 27
@@ -272,10 +232,9 @@ datatypes (Example: Adding an array option in the
 48
 49
 50
-51
-52</pre>
+51</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb', line 25</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/schema_dumper.rb', line 24</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_prepare_column_options'>prepare_column_options</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
@@ -294,9 +253,9 @@ datatypes (Example: Adding an array option in the
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_default'>default</span> <span class='op'>=</span> <span class='id identifier rubyid_schema_default'>schema_default</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_has_default?'>has_default?</span>
-  <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_default'>default</span><span class='rbracket'>]</span>   <span class='op'>=</span> <span class='id identifier rubyid_default'>default</span> <span class='kw'>unless</span> <span class='id identifier rubyid_default'>default</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_default'>default</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_default'>default</span> <span class='kw'>unless</span> <span class='id identifier rubyid_default'>default</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
 
-  <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_null'>null</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>false</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_null'>null</span>
+  <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_null'>null</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>false</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_null'>null</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_collation'>collation</span> <span class='op'>=</span> <span class='id identifier rubyid_schema_collation'>schema_collation</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_collation'>collation</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_collation'>collation</span>
