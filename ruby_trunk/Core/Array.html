@@ -89,7 +89,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/array.c#L6139'>array.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/pack.c#L258'>pack.c</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/array.c#L6140'>array.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/pack.c#L258'>pack.c</a></span>
       </td>
     </tr>
   </tbody>
@@ -132,7 +132,8 @@ numbers, true or false.</p>
 This method is safe to use with mutable objects such as hashes, strings or
 other arrays:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="Array.new (method)">new</a></span><span class='lparen'>(</span><span class='int'>4</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='const'><a href="Hash.html" title="Hash (class)">Hash</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Hash.html#new-class_method" title="Hash.new (method)">new</a></span> <span class='rbrace'>}</span> <span class='comment'>#=&gt; [{}, {}, {}, {}]</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="Array.new (method)">new</a></span><span class='lparen'>(</span><span class='int'>4</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='const'><a href="Hash.html" title="Hash (class)">Hash</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Hash.html#new-class_method" title="Hash.new (method)">new</a></span> <span class='rbrace'>}</span>  <span class='comment'>#=&gt; [{}, {}, {}, {}]
+</span><span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="Array.new (method)">new</a></span><span class='lparen'>(</span><span class='int'>4</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='rbrace'>}</span> <span class='comment'>#=&gt; [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;]</span></code></pre>
 
 <p>This is also a quick way to build up multi-dimensional arrays:</p>
 
@@ -9138,14 +9139,14 @@ rb_ary_shuffle_bang(int argc, VALUE *argv, VALUE ary)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/array.c#L6210-L6210'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/array.c#L6211-L6211'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-6210</pre>
+6211</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'array.c', line 6210</span></pre>
+<pre><span class='info file'># File 'array.c', line 6211</span></pre>
 <pre class='code cpp'>
 
 rb_define_method(rb_cArray, &quot;slice&quot;, rb_ary_aref, -1);
