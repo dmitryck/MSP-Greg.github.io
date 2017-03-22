@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: Gem::Resolver &mdash; rubygems  Ruby-2.4.0 p0</title>
+<title>Class: Gem::Resolver &mdash; rubygems  Ruby-2.4.1 p110</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Ruby-2.4.0</a> &raquo; 
+        <a href='../../index.html'>Ruby-2.4.1</a> &raquo; 
         <a href='../index.html'>rubygems</a> &raquo; 
         <a href='../_index.html#alpha_R'>Index (R)</a> &raquo; 
         <a href="../Gem.html" title="Gem (module)">Gem</a> &raquo; 
@@ -126,7 +126,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L16'>lib/rubygems/resolver.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L13'>lib/rubygems/resolver.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -159,7 +159,13 @@ resolved.</p>
 
   </div>
 </div>
-    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L24-L24'># File 'lib/rubygems/resolver.rb', line 24</a>    <pre class='code ruby'><span class='op'>!</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DEBUG_RESOLVER</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span></pre>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L21-L21'># File 'lib/rubygems/resolver.rb', line 21</a>    <pre class='code ruby'><span class='op'>!</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DEBUG_RESOLVER</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span></pre>
+  </li>
+  <li>
+    <span id='SINGLE_POSSIBILITY_CONSTRAINT_PENALTY-constant' class='summary_signature priv'>SINGLE_POSSIBILITY_CONSTRAINT_PENALTY =</span>
+    <span class='note title private'>private</span>
+    <br/>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L268-L268'># File 'lib/rubygems/resolver.rb', line 268</a>    <pre class='code ruby'><span class='int'>1_000_000</span></pre>
   </li>
 </ul>
 </div>
@@ -327,6 +333,21 @@ sources.</p></div>
       <a href="#search_for-instance_method" title="#search_for (instance method)">#<strong>search_for</strong>(dependency)  </a>
     </span>
   </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#sort_dependencies-instance_method" title="#sort_dependencies (instance method)">#<strong>sort_dependencies</strong>(dependencies, activated, conflicts)  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature priv'>
+      <a href="#amount_constrained-instance_method" title="#amount_constrained (instance method)">#<strong>amount_constrained</strong>(dependency)  </a>
+    </span>
+    <span class='note title private'>private</span>
+    <div class='summary_desc'>
+      <div class='inline'><p>returns an integer in (-infty, 0] a number closer to 0 means the dependency
+is less constraining.</p></div>
+    </div>
+  </li>
 </ul>
 
 <h3 class='inherited'><a href="Resolver/Molinillo/SpecificationProvider.html" title="Gem::Resolver::Molinillo::SpecificationProvider (module)">Resolver::Molinillo::SpecificationProvider</a> - Included</h3>
@@ -419,11 +440,14 @@ will query rubygems.org.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L105-L116'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L102-L113'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+102
+103
+104
 105
 106
 107
@@ -432,12 +456,9 @@ will query rubygems.org.</p>
 110
 111
 112
-113
-114
-115
-116</pre>
+113</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 105</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 102</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_needed'>needed</span><span class='comma'>,</span> <span class='id identifier rubyid_set'>set</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -472,11 +493,14 @@ specification lookup in a uniform manner.  If one of the <code>sets</code> is it
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L65-L87'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L62-L84'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+62
+63
+64
 65
 66
 67
@@ -496,12 +520,9 @@ specification lookup in a uniform manner.  If one of the <code>sets</code> is it
 81
 82
 83
-84
-85
-86
-87</pre>
+84</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 65</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 62</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_compose_sets'>compose_sets</span> <span class='op'>*</span><span class='id identifier rubyid_sets'>sets</span>
@@ -544,16 +565,16 @@ installed gems for the <code>needed</code> dependencies.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L93-L95'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L90-L92'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-93
-94
-95</pre>
+90
+91
+92</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 93</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 90</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_for_current_gems'>for_current_gems</span> <span class='id identifier rubyid_needed'>needed</span>
@@ -569,16 +590,16 @@ installed gems for the <code>needed</code> dependencies.</p>
   <h3 class='signature ro first'>
     #<strong>debug?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L180-L182'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L177-L179'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-180
-181
-182</pre>
+177
+178
+179</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 180</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 177</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_debug?'>debug?</span>
@@ -601,14 +622,14 @@ considered.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L29-L29'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L26-L26'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-29</pre>
+26</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 29</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 26</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_development'>development</span>
@@ -629,14 +650,14 @@ be considered.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L34-L34'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L31-L31'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-34</pre>
+31</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 34</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 31</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_development_shallow'>development_shallow</span>
@@ -656,14 +677,14 @@ be considered.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L39-L39'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L36-L36'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-39</pre>
+36</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 39</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 36</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_ignore_dependencies'>ignore_dependencies</span>
@@ -684,14 +705,14 @@ sources.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L44-L44'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L41-L41'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-44</pre>
+41</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 44</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 41</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_missing'>missing</span>
@@ -712,14 +733,14 @@ specifications as values.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L52-L52'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L49-L49'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-52</pre>
+49</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 52</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 49</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_skip_gems'>skip_gems</span>
@@ -740,14 +761,14 @@ missing.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L58-L58'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L55-L55'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-58</pre>
+55</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 58</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 55</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_soft_missing'>soft_missing</span>
@@ -760,14 +781,14 @@ missing.</p>
   <h3 class='signature ro'>
     #<strong>stats</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L46-L46'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L43-L43'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-46</pre>
+43</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 46</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 43</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_stats'>stats</span>
@@ -788,17 +809,17 @@ missing.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L254-L257'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L251-L254'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-254
-255
-256
-257</pre>
+251
+252
+253
+254</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 254</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 251</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_allow_missing?'>allow_missing?</span><span class='lparen'>(</span><span class='id identifier rubyid_dependency'>dependency</span><span class='rparen'>)</span>
@@ -810,22 +831,82 @@ missing.</p>
 </div>
 </section>
 
-<section class='method_details' id="dependencies_for-instance_method">
-  <h3 class='signature '>
-    #<strong>dependencies_for</strong>(specification)  
+<section class='method_details' id="amount_constrained-instance_method">
+  <h3 class='signature priv'>
+    #<strong>amount_constrained</strong>(dependency)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L240-L244'>GitHub</a>&#8202;]</span>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>returns an integer in (-infty, 0] a number closer to 0 means the dependency
+is less constraining</p>
+
+<p>dependencies w/ 0 or 1 possibilities (ignoring version requirements) are
+given very negative values, so they <em>always</em> sort first, before
+dependencies that are unconstrained</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L277-L291'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-240
-241
-242
-243
-244</pre>
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 240</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 277</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_amount_constrained'>amount_constrained</span><span class='lparen'>(</span><span class='id identifier rubyid_dependency'>dependency</span><span class='rparen'>)</span>
+  <span class='ivar'>@amount_constrained</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='ivar'>@amount_constrained</span><span class='lbracket'>[</span><span class='id identifier rubyid_dependency'>dependency</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='kw'>begin</span>
+    <span class='id identifier rubyid_name_dependency'>name_dependency</span> <span class='op'>=</span> <span class='const'><a href="../Gem.html" title="Gem (module)">Gem</a></span><span class='op'>::</span><span class='const'><a href="Dependency.html" title="Gem::Dependency (class)">Dependency</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Dependency.html#new-class_method" title="Gem::Dependency.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_dependency'>dependency</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_dependency_request_for_name'>dependency_request_for_name</span> <span class='op'>=</span> <span class='const'><a href="../Gem.html" title="Gem (module)">Gem</a></span><span class='op'>::</span><span class='const'>Resolver</span><span class='op'>::</span><span class='const'><a href="Resolver/DependencyRequest.html" title="Gem::Resolver::DependencyRequest (class)">DependencyRequest</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Resolver/DependencyRequest.html#new-class_method" title="Gem::Resolver::DependencyRequest.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_name_dependency'>name_dependency</span><span class='comma'>,</span> <span class='id identifier rubyid_dependency'>dependency</span><span class='period'>.</span><span class='id identifier rubyid_requester'>requester</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_all'>all</span> <span class='op'>=</span> <span class='ivar'>@set</span><span class='period'>.</span><span class='id identifier rubyid_find_all'>find_all</span><span class='lparen'>(</span><span class='id identifier rubyid_dependency_request_for_name'>dependency_request_for_name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_all'>all</span> <span class='op'>&lt;=</span> <span class='int'>1</span>
+      <span class='id identifier rubyid_all'>all</span> <span class='op'>-</span> <span class='const'><a href="#SINGLE_POSSIBILITY_CONSTRAINT_PENALTY-constant" title="Gem::Resolver::SINGLE_POSSIBILITY_CONSTRAINT_PENALTY (constant)">SINGLE_POSSIBILITY_CONSTRAINT_PENALTY</a></span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_search'>search</span> <span class='op'>=</span> <span class='id identifier rubyid_search_for'>search_for</span><span class='lparen'>(</span><span class='id identifier rubyid_dependency'>dependency</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+      <span class='id identifier rubyid_search'>search</span> <span class='op'>-</span> <span class='id identifier rubyid_all'>all</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="dependencies_for-instance_method">
+  <h3 class='signature '>
+    #<strong>dependencies_for</strong>(specification)  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L237-L241'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+237
+238
+239
+240
+241</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 237</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dependencies_for'>dependencies_for</span><span class='lparen'>(</span><span class='id identifier rubyid_specification'>specification</span><span class='rparen'>)</span>
@@ -842,16 +923,16 @@ missing.</p>
   <h3 class='signature '>
     #<strong>name_for</strong>(dependency)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L250-L252'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L247-L249'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-250
-251
-252</pre>
+247
+248
+249</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 250</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 247</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name_for'>name_for</span><span class='lparen'>(</span><span class='id identifier rubyid_dependency'>dependency</span><span class='rparen'>)</span>
@@ -866,16 +947,16 @@ missing.</p>
   <h3 class='signature '>
     #<strong>output</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L176-L178'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L173-L175'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-176
-177
-178</pre>
+173
+174
+175</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 176</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 173</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_output'>output</span>
@@ -897,16 +978,16 @@ missing.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L246-L248'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L243-L245'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-246
-247
-248</pre>
+243
+244
+245</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 246</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 243</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_requirement_satisfied_by?'>requirement_satisfied_by?</span><span class='lparen'>(</span><span class='id identifier rubyid_requirement'>requirement</span><span class='comma'>,</span> <span class='id identifier rubyid_activated'>activated</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
@@ -929,22 +1010,22 @@ missing.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L189-L197'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L186-L194'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+186
+187
+188
 189
 190
 191
 192
 193
-194
-195
-196
-197</pre>
+194</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 189</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 186</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_resolve'>resolve</span>
@@ -965,11 +1046,14 @@ missing.</p>
   <h3 class='signature '>
     #<strong>search_for</strong>(dependency)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/resolver.rb#L228-L238'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L225-L235'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+225
+226
+227
 228
 229
 230
@@ -977,12 +1061,9 @@ missing.</p>
 232
 233
 234
-235
-236
-237
-238</pre>
+235</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 228</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 225</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_search_for'>search_for</span><span class='lparen'>(</span><span class='id identifier rubyid_dependency'>dependency</span><span class='rparen'>)</span>
@@ -995,6 +1076,46 @@ missing.</p>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_possibles'>possibles</span><span class='period'>.</span><span class='id identifier rubyid_sort_by'>sort_by</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_version'>version</span><span class='comma'>,</span> <span class='const'><a href="../Gem.html" title="Gem (module)">Gem</a></span><span class='op'>::</span><span class='const'><a href="Platform.html" title="Gem::Platform (class)">Platform</a></span><span class='period'>.</span><span class='id identifier rubyid_local'><a href="Platform.html#local-class_method" title="Gem::Platform.local (method)">local</a></span> <span class='op'>=~</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_platform'>platform</span> <span class='op'>?</span> <span class='int'>1</span> <span class='op'>:</span> <span class='int'>0</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span>
     <span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span> <span class='const'><a href="Resolver/ActivationRequest.html" title="Gem::Resolver::ActivationRequest (class)">ActivationRequest</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Resolver/ActivationRequest.html#new-class_method" title="Gem::Resolver::ActivationRequest.new (method)">new</a></span> <span class='id identifier rubyid_s'>s</span><span class='comma'>,</span> <span class='id identifier rubyid_dependency'>dependency</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="sort_dependencies-instance_method">
+  <h3 class='signature '>
+    #<strong>sort_dependencies</strong>(dependencies, activated, conflicts)  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/resolver.rb#L256-L266'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'lib/rubygems/resolver.rb', line 256</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sort_dependencies'>sort_dependencies</span><span class='lparen'>(</span><span class='id identifier rubyid_dependencies'>dependencies</span><span class='comma'>,</span> <span class='id identifier rubyid_activated'>activated</span><span class='comma'>,</span> <span class='id identifier rubyid_conflicts'>conflicts</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dependencies'>dependencies</span><span class='period'>.</span><span class='id identifier rubyid_sort_by'>sort_by</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_dependency'>dependency</span><span class='op'>|</span>
+    <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name_for'>name_for</span><span class='lparen'>(</span><span class='id identifier rubyid_dependency'>dependency</span><span class='rparen'>)</span>
+    <span class='lbracket'>[</span>
+      <span class='id identifier rubyid_activated'>activated</span><span class='period'>.</span><span class='id identifier rubyid_vertex_named'>vertex_named</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_payload'>payload</span> <span class='op'>?</span> <span class='int'>0</span> <span class='op'>:</span> <span class='int'>1</span><span class='comma'>,</span>
+      <span class='id identifier rubyid_amount_constrained'>amount_constrained</span><span class='lparen'>(</span><span class='id identifier rubyid_dependency'>dependency</span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='id identifier rubyid_conflicts'>conflicts</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>?</span> <span class='int'>0</span> <span class='op'>:</span> <span class='int'>1</span><span class='comma'>,</span>
+      <span class='id identifier rubyid_activated'>activated</span><span class='period'>.</span><span class='id identifier rubyid_vertex_named'>vertex_named</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_payload'>payload</span> <span class='op'>?</span> <span class='int'>0</span> <span class='op'>:</span> <span class='id identifier rubyid_search_for'>search_for</span><span class='lparen'>(</span><span class='id identifier rubyid_dependency'>dependency</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span><span class='comma'>,</span>
+    <span class='rbracket'>]</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
   </div>

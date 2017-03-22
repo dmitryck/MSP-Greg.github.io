@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Ruby-2.4.0</a> &raquo; 
+        <a href='../index.html'>Ruby-2.4.1</a> &raquo; 
         <a href='index.html'>date</a> &raquo; 
         <a href='_index.html#alpha_D'>Index (D)</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>DateTime&nbsp;&#x25B2;</a></span>
@@ -104,7 +104,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/ext/date/date_core.c#L9533'>ext/date/date_core.c</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/ext/date/date_core.c#L9577'>ext/date/date_core.c</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -114,46 +114,47 @@
 <div class='docstring'>
   <div class='discussion'>
     
-<p>A subclass of <a href="Date.html" title="Date (class)">::Date</a> that easily handles date, hour, minute, second and
+<p>A subclass of <a href="Date.html" title="Date (class)">::Date</a> that easily handles date, hour, minute, second, and
 offset.</p>
 
 <p><code>DateTime</code> does not consider any leap seconds, does not track
 any summer time rules.</p>
 
-<p><code>DateTime</code> object is created with <a href="#new-class_method" title="DateTime.new (method)">.new</a>, <a href="#jd-class_method" title="DateTime.jd (method)">.jd</a>,
+<p>A DateTime object is created with <a href="#new-class_method" title="DateTime.new (method)">.new</a>, <a href="#jd-class_method" title="DateTime.jd (method)">.jd</a>,
 <a href="#ordinal-class_method" title="DateTime.ordinal (method)">.ordinal</a>, <a href="#commercial-class_method" title="DateTime.commercial (method)">.commercial</a>, <a href="#parse-class_method" title="DateTime.parse (method)">.parse</a>,
-<a href="#strptime-class_method" title="DateTime.strptime (method)">.strptime</a>, <a href="#now-class_method" title="DateTime.now (method)">.now</a>, <a href="Time.html#to_datetime-instance_method" title="Time#to_datetime (method)">Time#to_datetime</a> or etc.</p>
+<a href="#strptime-class_method" title="DateTime.strptime (method)">.strptime</a>, <a href="#now-class_method" title="DateTime.now (method)">.now</a>, <a href="Time.html#to_datetime-instance_method" title="Time#to_datetime (method)">Time#to_datetime</a>, etc.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>date</span><span class='tstring_end'>&#39;</span></span>
 
 <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="DateTime.new (method)">new</a></span><span class='lparen'>(</span><span class='int'>2001</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>3</span><span class='comma'>,</span><span class='int'>4</span><span class='comma'>,</span><span class='int'>5</span><span class='comma'>,</span><span class='int'>6</span><span class='rparen'>)</span>
                     <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T04:05:06+00:00 ...&gt;</span></code></pre>
 
-<p>The last element of day, hour, minute or second can be fractional number.
-The fractional number&#39;s precision is assumed at most nanosecond.</p>
+<p>The last element of day, hour, minute, or second can be a fractional
+number. The fractional number&#39;s precision is assumed at most
+nanosecond.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="DateTime.new (method)">new</a></span><span class='lparen'>(</span><span class='int'>2001</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='float'>3.5</span><span class='rparen'>)</span>
                     <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T12:00:00+00:00 ...&gt;</span></code></pre>
 
-<p>An optional argument the offset indicates the difference between the local
-time and UTC. For example, <code>Rational(3,24)</code> represents ahead of
-3 hours of UTC, <code>Rational(-5,24)</code> represents behind of 5 hours
-of UTC. The offset should be -1 to +1, and its precision is assumed at most
-second. The default value is zero(equals to UTC).</p>
+<p>An optional argument, the offset, indicates the difference between the
+local time and UTC. For example, <code>Rational(3,24)</code> represents
+ahead of 3 hours of UTC, <code>Rational(-5,24)</code> represents behind of
+5 hours of UTC. The offset should be -1 to +1, and its precision is assumed
+at most second. The default value is zero (equals to UTC).</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="DateTime.new (method)">new</a></span><span class='lparen'>(</span><span class='int'>2001</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>3</span><span class='comma'>,</span><span class='int'>4</span><span class='comma'>,</span><span class='int'>5</span><span class='comma'>,</span><span class='int'>6</span><span class='comma'>,</span><span class='const'>Rational</span><span class='lparen'>(</span><span class='int'>3</span><span class='comma'>,</span><span class='int'>24</span><span class='rparen'>)</span><span class='rparen'>)</span>
                     <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T04:05:06+03:00 ...&gt;</span></code></pre>
 
-<p>also accepts string form.</p>
+<p>The offset also accepts string form:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="DateTime.new (method)">new</a></span><span class='lparen'>(</span><span class='int'>2001</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>3</span><span class='comma'>,</span><span class='int'>4</span><span class='comma'>,</span><span class='int'>5</span><span class='comma'>,</span><span class='int'>6</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>+03:00</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
                     <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T04:05:06+03:00 ...&gt;</span></code></pre>
 
-<p>An optional argument the day of calendar reform (start) denotes a Julian
-day number, which should be 2298874 to 2426355 or -/+oo.  The default value
-is <a href="Date.html#ITALY-constant" title="Date::ITALY (constant)">Date::ITALY</a> (2299161=1582-10-15).</p>
+<p>An optional argument, the day of calendar reform (<code>start</code>), denotes a
+Julian day number, which should be 2298874 to 2426355 or negative/positive
+infinity. The default value is <a href="Date.html#ITALY-constant" title="Date::ITALY (constant)">Date::ITALY</a> (2299161=1582-10-15).</p>
 
-<p><code>DateTime</code> object has various methods. See each reference.</p>
+<p>A DateTime object has various methods. See each reference.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_d'>d</span> <span class='op'>=</span> <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_parse'><a href="#parse-class_method" title="DateTime.parse (method)">parse</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>3rd Feb 2001 04:05:06+03:30</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
                     <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T04:05:06+03:30 ...&gt;
@@ -180,22 +181,22 @@ href="http://en.wikipedia.org/wiki/Miguel_de_Cervantes">Miguel de
 Cervantes</a> died on the same day in history - so much so that UNESCO
 named April 23 as <a
 href="http://en.wikipedia.org/wiki/World_Book_Day">World Book Day because
-of this fact</a>. However because England hadn&#39;t yet adopted <a
+of this fact</a>. However, because England hadn&#39;t yet adopted the <a
 href="http://en.wikipedia.org/wiki/Gregorian_calendar#Gregorian_reform">Gregorian
 Calendar Reform</a> (and wouldn&#39;t until <a
 href="http://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar">en.wikipedia.org/wiki/Calendar_(New_Style)_Act_1750
 1752}) their deaths are actually 10 days apart. Since Ruby's <a href="Time.html" title="Time (class)">::Time</a> class
 implements a <code>Gregorian calendar</a> and has no concept of
-calendar reform then there&#39;s no way to express this. This is where
-<code>DateTime</code> steps in:</p>
+calendar reform there&#39;s no way to express this with {Time</code> objects.
+This is where <code>DateTime</code> steps in:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_shakespeare'>shakespeare</span> <span class='op'>=</span> <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_iso8601'><a href="#iso8601-class_method" title="DateTime.iso8601 (method)">iso8601</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1616-04-23</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='const'><a href="Date.html" title="Date (class)">Date</a></span><span class='op'>::</span><span class='const'><a href="Date.html#ENGLAND-constant" title="Date::ENGLAND (constant)">ENGLAND</a></span><span class='rparen'>)</span>
  <span class='comment'>#=&gt; Tue, 23 Apr 1616 00:00:00 +0000
 </span><span class='id identifier rubyid_cervantes'>cervantes</span> <span class='op'>=</span> <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_iso8601'><a href="#iso8601-class_method" title="DateTime.iso8601 (method)">iso8601</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1616-04-23</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='const'><a href="Date.html" title="Date (class)">Date</a></span><span class='op'>::</span><span class='const'><a href="Date.html#ITALY-constant" title="Date::ITALY (constant)">ITALY</a></span><span class='rparen'>)</span>
  <span class='comment'>#=&gt; Sat, 23 Apr 1616 00:00:00 +0000</span></code></pre>
 
-<p>Already you can see something&#39;s weird - the days of the week are
-different, taking this further:</p>
+<p>Already you can see something is weird - the days of the week are
+different. Taking this further:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_cervantes'>cervantes</span> <span class='op'>==</span> <span class='id identifier rubyid_shakespeare'>shakespeare</span>
  <span class='comment'>#=&gt; false
@@ -204,7 +205,7 @@ different, taking this further:</p>
 
 <p>This shows that in fact they died 10 days apart (in reality 11 days since
 Cervantes died a day earlier but was buried on the 23rd). We can see the
-actual date of Shakespeare&#39;s death by using the {#gregorian</code> method to
+actual date of Shakespeare&#39;s death by using the <code>#gregorian</code> method to
 convert it:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_shakespeare'>shakespeare</span><span class='period'>.</span><span class='id identifier rubyid_gregorian'>gregorian</span>
@@ -288,25 +289,25 @@ and returns a hash of parsed elements.</p></div>
       <a href="#commercial-class_method" title="commercial (class method)">.<strong>commercial</strong>([cwyear = -4712[, cweek=1[, cwday=1[, hour=0[, minute=0[, second=0[, offset=0[, start=Date::ITALY]]]]]]]])  &#x21d2; DateTime </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Creates a date-time object denoting the given week date.</p></div>
+      <div class='inline'><p>Creates a <code>DateTime</code> object denoting the given week date.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#httpdate-class_method" title="httpdate (class method)">.<strong>httpdate</strong>(string = &#39;Mon, 01 Jan -4712 00:00:00 GMT&#39;[, start=ITALY])  &#x21d2; DateTime </a>
+      <a href="#httpdate-class_method" title="httpdate (class method)">.<strong>httpdate</strong>(string = &#39;Mon, 01 Jan -4712 00:00:00 GMT&#39;[, start=Date::ITALY])  &#x21d2; DateTime </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Creates a new <a href="Date.html" title="Date (class)">::Date</a> object by parsing from a string according to some RFC
-2616 format.</p></div>
+      <div class='inline'><p>Creates a new <code>DateTime</code> object by parsing from a string
+according to some RFC 2616 format.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#iso8601-class_method" title="iso8601 (class method)">.<strong>iso8601</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=ITALY])  &#x21d2; DateTime </a>
+      <a href="#iso8601-class_method" title="iso8601 (class method)">.<strong>iso8601</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=Date::ITALY])  &#x21d2; DateTime </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Creates a new <a href="Date.html" title="Date (class)">::Date</a> object by parsing from a string according to some
-typical ISO 8601 formats.</p></div>
+      <div class='inline'><p>Creates a new <code>DateTime</code> object by parsing from a string
+according to some typical ISO 8601 formats.</p></div>
     </div>
   </li>
   <li>
@@ -314,17 +315,17 @@ typical ISO 8601 formats.</p></div>
       <a href="#jd-class_method" title="jd (class method)">.<strong>jd</strong>([jd = 0[, hour=0[, minute=0[, second=0[, offset=0[, start=Date::ITALY]]]]]])  &#x21d2; DateTime </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Creates a datetime object denoting the given chronological Julian day
-number.</p></div>
+      <div class='inline'><p>Creates a <code>DateTime</code> object denoting the given chronological
+Julian day number.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#jisx0301-class_method" title="jisx0301 (class method)">.<strong>jisx0301</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=ITALY])  &#x21d2; DateTime </a>
+      <a href="#jisx0301-class_method" title="jisx0301 (class method)">.<strong>jisx0301</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=Date::ITALY])  &#x21d2; DateTime </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Creates a new <a href="Date.html" title="Date (class)">::Date</a> object by parsing from a string according to some
-typical JIS X 0301 formats.</p></div>
+      <div class='inline'><p>Creates a new <code>DateTime</code> object by parsing from a string
+according to some typical JIS X 0301 formats.</p></div>
     </div>
   </li>
   <li>
@@ -334,7 +335,7 @@ typical JIS X 0301 formats.</p></div>
     </span>
     <span class='note title constructor'>constructor</span>
     <div class='summary_desc'>
-      <div class='inline'><p>Creates a date-time object denoting the given calendar date.</p></div>
+      <div class='inline'><p>Creates a <code>DateTime</code> object denoting the given calendar date.</p></div>
     </div>
   </li>
   <li>
@@ -342,7 +343,7 @@ typical JIS X 0301 formats.</p></div>
       <a href="#now-class_method" title="now (class method)">.<strong>now</strong>([start = Date::ITALY])  &#x21d2; DateTime </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Creates a date-time object denoting the present time.</p></div>
+      <div class='inline'><p>Creates a <code>DateTime</code> object denoting the present time.</p></div>
     </div>
   </li>
   <li>
@@ -350,21 +351,21 @@ typical JIS X 0301 formats.</p></div>
       <a href="#ordinal-class_method" title="ordinal (class method)">.<strong>ordinal</strong>([year = -4712[, yday=1[, hour=0[, minute=0[, second=0[, offset=0[, start=Date::ITALY]]]]]]])  &#x21d2; DateTime </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Creates a date-time object denoting the given ordinal date.</p></div>
+      <div class='inline'><p>Creates a <code>DateTime</code> object denoting the given ordinal date.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#parse-class_method" title="parse (class method)">.<strong>parse</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, comp=true[, start=ITALY]])  &#x21d2; DateTime </a>
+      <a href="#parse-class_method" title="parse (class method)">.<strong>parse</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, comp=true[, start=Date::ITALY]])  &#x21d2; DateTime </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Parses the given representation of date and time, and creates a date
-object.</p></div>
+      <div class='inline'><p>Parses the given representation of date and time, and creates a
+<code>DateTime</code> object.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#rfc2822-class_method" title="rfc2822 (class method)">.<strong>rfc2822</strong>(string = &#39;Mon, 1 Jan -4712 00:00:00 +0000&#39;[, start=ITALY])  &#x21d2; DateTime </a>
+      <a href="#rfc2822-class_method" title="rfc2822 (class method)">.<strong>rfc2822</strong>(string = &#39;Mon, 1 Jan -4712 00:00:00 +0000&#39;[, start=Date::ITALY])  &#x21d2; DateTime </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Alias for <a href="#rfc822-class_method" title="DateTime.rfc822 (method)">.rfc822</a>.</p></div>
@@ -372,39 +373,39 @@ object.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#rfc3339-class_method" title="rfc3339 (class method)">.<strong>rfc3339</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=ITALY])  &#x21d2; DateTime </a>
+      <a href="#rfc3339-class_method" title="rfc3339 (class method)">.<strong>rfc3339</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=Date::ITALY])  &#x21d2; DateTime </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Creates a new <a href="Date.html" title="Date (class)">::Date</a> object by parsing from a string according to some
-typical RFC 3339 formats.</p></div>
+      <div class='inline'><p>Creates a new <code>DateTime</code> object by parsing from a string
+according to some typical RFC 3339 formats.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#rfc822-class_method" title="rfc822 (class method)">.<strong>rfc822</strong>(string = &#39;Mon, 1 Jan -4712 00:00:00 +0000&#39;[, start=ITALY])  &#x21d2; DateTime </a>
+      <a href="#rfc822-class_method" title="rfc822 (class method)">.<strong>rfc822</strong>(string = &#39;Mon, 1 Jan -4712 00:00:00 +0000&#39;[, start=Date::ITALY])  &#x21d2; DateTime </a>
       (also: .rfc2822)
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Creates a new <a href="Date.html" title="Date (class)">::Date</a> object by parsing from a string according to some
-typical RFC 2822 formats.</p></div>
+      <div class='inline'><p>Creates a new <code>DateTime</code> object by parsing from a string
+according to some typical RFC 2822 formats.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#strptime-class_method" title="strptime (class method)">.<strong>strptime</strong>([string = &#39;-4712-01-01T00:00:00+00:00&#39;[, format=&#39;%FT%T%z&#39;[ ,start=ITALY]]])  &#x21d2; DateTime </a>
+      <a href="#strptime-class_method" title="strptime (class method)">.<strong>strptime</strong>([string = &#39;-4712-01-01T00:00:00+00:00&#39;[, format=&#39;%FT%T%z&#39;[ ,start=Date::ITALY]]])  &#x21d2; DateTime </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Parses the given representation of date and time with the given template,
-and creates a date object.</p></div>
+and creates a <code>DateTime</code> object.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#xmlschema-class_method" title="xmlschema (class method)">.<strong>xmlschema</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=ITALY])  &#x21d2; DateTime </a>
+      <a href="#xmlschema-class_method" title="xmlschema (class method)">.<strong>xmlschema</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=Date::ITALY])  &#x21d2; DateTime </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Creates a new <a href="Date.html" title="Date (class)">::Date</a> object by parsing from a string according to some
-typical XML Schema formats.</p></div>
+      <div class='inline'><p>Creates a new <code>DateTime</code> object by parsing from a string
+according to some typical XML Schema formats.</p></div>
     </div>
   </li>
 </ul>
@@ -525,7 +526,7 @@ and creates a date object.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Date.html#today-class_method" title="Date.today (method)">.today</a></td>
-      <td><div class='inline'><p><a href="Date.html" title="Date (class)">::Date</a>.today                #=&gt; #&lt;Date: 2011-06-11 ..&gt;.</p></div></td>
+      <td><div class='inline'><p>Creates a date object denoting the present day.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Date.html#valid_civil%3F-class_method" title="Date.valid_civil? (method)">.valid_civil?</a></td>
@@ -624,7 +625,7 @@ typical XML Schema formats.</p></div></td>
       (also: #xmlschema)
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>This method is equivalent to strftime(&#39;%FT%T&#39;).</p></div>
+      <div class='inline'><p>This method is equivalent to strftime(&#39;%FT%T%:z&#39;).</p></div>
     </div>
   </li>
   <li>
@@ -640,7 +641,7 @@ typical XML Schema formats.</p></div></td>
       <a href="#rfc3339-instance_method" title="#rfc3339 (instance method)">#<strong>rfc3339</strong>([n = 0])  &#x21d2; String </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>This method is equivalent to strftime(&#39;%FT%T&#39;).</p></div>
+      <div class='inline'><p>This method is equivalent to strftime(&#39;%FT%T%:z&#39;).</p></div>
     </div>
   </li>
   <li>
@@ -672,8 +673,7 @@ typical XML Schema formats.</p></div></td>
       <a href="#to_s-instance_method" title="#to_s (instance method)">#<strong>to_s</strong>  &#x21d2; String </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Returns a string in an ISO 8601 format (This method doesn&#39;t use the
-expanded representations).</p></div>
+      <div class='inline'><p>Returns a string in an ISO 8601 format.</p></div>
     </div>
   </li>
   <li>
@@ -699,18 +699,18 @@ expanded representations).</p></div>
   <tbody>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Date.html#%2B-instance_method" title="Date#+ (method)">#+</a></td>
-      <td><div class='inline'><p>Returns a date object pointing other days after self.</p></div></td>
+      <td><div class='inline'><p>Returns a date object pointing <code>other</code> days after self.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Date.html#--instance_method" title="Date#- (method)">#-</a></td>
       <td><div class='inline'><p>Returns the difference between the two dates if the other is a date object.</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m ' href="Date.html#<<-instance_method" title="Date#&lt;&lt; (method)">#<<</a></td>
-      <td><div class='inline'><p>Returns a date object pointing n months before self.</p></div></td>
+      <td><a class='i_m ' href="Date.html#<<-instance_method" title="Date#&lt;&lt; (method)">#&lt;&lt;</a></td>
+      <td><div class='inline'><p>Returns a date object pointing <code>n</code> months before self.</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m ' href="Date.html#<=>-instance_method" title="Date#&lt;=&gt; (method)">#<=></a></td>
+      <td><a class='i_m ' href="Date.html#<=>-instance_method" title="Date#&lt;=&gt; (method)">#&lt;=&gt;</a></td>
       <td><div class='inline'><p>Compares the two dates and returns -1, zero, 1 or nil.</p></div></td>
     </tr>
     <tr class='i_ds'>
@@ -718,8 +718,8 @@ expanded representations).</p></div>
       <td><div class='inline'><p>Returns true if they are the same day.</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m ' href="Date.html#>>-instance_method" title="Date#&gt;&gt; (method)">#>></a></td>
-      <td><div class='inline'><p>Returns a date object pointing n months after self.</p></div></td>
+      <td><a class='i_m ' href="Date.html#>>-instance_method" title="Date#&gt;&gt; (method)">#&gt;&gt;</a></td>
+      <td><div class='inline'><p>Returns a date object pointing <code>n</code> months after self.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Date.html#ajd-instance_method" title="Date#ajd (method)">#ajd</a></td>
@@ -811,7 +811,7 @@ expanded representations).</p></div>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Date.html#new_start-instance_method" title="Date#new_start (method)">#new_start</a></td>
-      <td><div class='inline'><p>Duplicates self and resets its the day of calendar reform.</p></div></td>
+      <td><div class='inline'><p>Duplicates self and resets its day of calendar reform.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Date.html#next-instance_method" title="Date#next (method)">#next</a></td>
@@ -879,8 +879,7 @@ expanded representations).</p></div>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Date.html#to_s-instance_method" title="Date#to_s (method)">#to_s</a></td>
-      <td><div class='inline'><p>Returns a string in an ISO 8601 format (This method doesn&#39;t use the
-expanded representations).</p></div></td>
+      <td><div class='inline'><p>Returns a string in an ISO 8601 format.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Date.html#to_time-instance_method" title="Date#to_time (method)">#to_time</a></td>
@@ -962,7 +961,7 @@ expanded representations).</p></div></td>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Creates a date-time object denoting the given calendar date.</p>
+<p>Creates a <code>DateTime</code> object denoting the given calendar date.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>2001</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>3</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T00:00:00+00:00 ...&gt;
 </span><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>2001</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>3</span><span class='comma'>,</span><span class='int'>4</span><span class='comma'>,</span><span class='int'>5</span><span class='comma'>,</span><span class='int'>6</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>+7</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -988,7 +987,7 @@ expanded representations).</p></div></td>
 and returns a hash of parsed elements.  _strptime does not support
 specification of flags and width unlike strftime.</p>
 
-<pre class="code ruby"><code class="ruby">See also strptime(3) and strftime.</code></pre>
+<p>See also strptime(3) and <a href="#strftime-instance_method" title="DateTime#strftime (method)">#strftime</a>.</p>
 
   </div>
 </div>
@@ -1020,7 +1019,7 @@ specification of flags and width unlike strftime.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Creates a date-time object denoting the given week date.</p>
+<p>Creates a <code>DateTime</code> object denoting the given week date.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_commercial'>commercial</span><span class='lparen'>(</span><span class='int'>2001</span><span class='rparen'>)</span> <span class='comment'>#=&gt; #&lt;DateTime: 2001-01-01T00:00:00+00:00 ...&gt;
 </span><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_commercial'>commercial</span><span class='lparen'>(</span><span class='int'>2002</span><span class='rparen'>)</span> <span class='comment'>#=&gt; #&lt;DateTime: 2001-12-31T00:00:00+00:00 ...&gt;
@@ -1034,12 +1033,12 @@ specification of flags and width unlike strftime.</p>
 
 <section class='method_details' id="httpdate-class_method">
   <h3 class='signature '>
-    .<strong>httpdate</strong>(string = &#39;Mon, 01 Jan -4712 00:00:00 GMT&#39;[, start=ITALY])  &#x21d2; <code>DateTime</code>   </h3>
+    .<strong>httpdate</strong>(string = &#39;Mon, 01 Jan -4712 00:00:00 GMT&#39;[, start=Date::ITALY])  &#x21d2; <code>DateTime</code>   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Creates a new <a href="Date.html" title="Date (class)">::Date</a> object by parsing from a string according to some RFC
-2616 format.</p>
+<p>Creates a new <code>DateTime</code> object by parsing from a string
+according to some RFC 2616 format.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_httpdate'>httpdate</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Sat, 03 Feb 2001 04:05:06 GMT</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
                           <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T04:05:06+00:00 ...&gt;</span></code></pre>
@@ -1051,12 +1050,12 @@ specification of flags and width unlike strftime.</p>
 
 <section class='method_details' id="iso8601-class_method">
   <h3 class='signature '>
-    .<strong>iso8601</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=ITALY])  &#x21d2; <code>DateTime</code>   </h3>
+    .<strong>iso8601</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=Date::ITALY])  &#x21d2; <code>DateTime</code>   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Creates a new <a href="Date.html" title="Date (class)">::Date</a> object by parsing from a string according to some
-typical ISO 8601 formats.</p>
+<p>Creates a new <code>DateTime</code> object by parsing from a string
+according to some typical ISO 8601 formats.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_iso8601'>iso8601</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2001-02-03T04:05:06+07:00</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
                           <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T04:05:06+07:00 ...&gt;
@@ -1076,8 +1075,8 @@ typical ISO 8601 formats.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Creates a datetime object denoting the given chronological Julian day
-number.</p>
+<p>Creates a <code>DateTime</code> object denoting the given chronological
+Julian day number.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_jd'>jd</span><span class='lparen'>(</span><span class='int'>2451944</span><span class='rparen'>)</span>      <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T00:00:00+00:00 ...&gt;
 </span><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_jd'>jd</span><span class='lparen'>(</span><span class='int'>2451945</span><span class='rparen'>)</span>      <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-04T00:00:00+00:00 ...&gt;
@@ -1091,12 +1090,12 @@ number.</p>
 
 <section class='method_details' id="jisx0301-class_method">
   <h3 class='signature '>
-    .<strong>jisx0301</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=ITALY])  &#x21d2; <code>DateTime</code>   </h3>
+    .<strong>jisx0301</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=Date::ITALY])  &#x21d2; <code>DateTime</code>   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Creates a new <a href="Date.html" title="Date (class)">::Date</a> object by parsing from a string according to some
-typical JIS X 0301 formats.</p>
+<p>Creates a new <code>DateTime</code> object by parsing from a string
+according to some typical JIS X 0301 formats.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_jisx0301'>jisx0301</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>H13.02.03T04:05:06+07:00</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
                           <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T04:05:06+07:00 ...&gt;</span></code></pre>
@@ -1112,7 +1111,7 @@ typical JIS X 0301 formats.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Creates a date-time object denoting the present time.</p>
+<p>Creates a <code>DateTime</code> object denoting the present time.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>              <span class='comment'>#=&gt; #&lt;DateTime: 2011-06-11T21:20:44+09:00 ...&gt;</span></code></pre>
 
@@ -1127,7 +1126,7 @@ typical JIS X 0301 formats.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Creates a date-time object denoting the given ordinal date.</p>
+<p>Creates a <code>DateTime</code> object denoting the given ordinal date.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_ordinal'>ordinal</span><span class='lparen'>(</span><span class='int'>2001</span><span class='comma'>,</span><span class='int'>34</span><span class='rparen'>)</span> <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T00:00:00+00:00 ...&gt;
 </span><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_ordinal'>ordinal</span><span class='lparen'>(</span><span class='int'>2001</span><span class='comma'>,</span><span class='int'>34</span><span class='comma'>,</span><span class='int'>4</span><span class='comma'>,</span><span class='int'>5</span><span class='comma'>,</span><span class='int'>6</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>+7</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -1142,12 +1141,13 @@ typical JIS X 0301 formats.</p>
 
 <section class='method_details' id="parse-class_method">
   <h3 class='signature '>
-    .<strong>parse</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, comp=true[, start=ITALY]])  &#x21d2; <code>DateTime</code>   </h3>
+    .<strong>parse</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, comp=true[, start=Date::ITALY]])  &#x21d2; <code>DateTime</code>   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Parses the given representation of date and time, and creates a date
-object.  This method does not function as a validator.</p>
+<p>Parses the given representation of date and time, and creates a
+<code>DateTime</code> object.  This method does not function as a
+validator.</p>
 
 <p>If the optional second argument is true and the detected year is in the
 range "00" to "99", makes it full.</p>
@@ -1167,8 +1167,8 @@ range "00" to "99", makes it full.</p>
 <section class='method_details' id="rfc2822-class_method">
   <h3 class='signature '>
     <div class='inline-block'>
-      <span class='overload'>.<strong>rfc2822</strong>(string = &#39;Mon, 1 Jan -4712 00:00:00 +0000&#39;[, start=ITALY])  &#x21d2; <code>DateTime</code> </span>
-      <span class='overload'>.<strong>rfc822</strong>(string = &#39;Mon, 1 Jan -4712 00:00:00 +0000&#39;[, start=ITALY])  &#x21d2; <code>DateTime</code> </span>
+      <span class='overload'>.<strong>rfc2822</strong>(string = &#39;Mon, 1 Jan -4712 00:00:00 +0000&#39;[, start=Date::ITALY])  &#x21d2; <code>DateTime</code> </span>
+      <span class='overload'>.<strong>rfc822</strong>(string = &#39;Mon, 1 Jan -4712 00:00:00 +0000&#39;[, start=Date::ITALY])  &#x21d2; <code>DateTime</code> </span>
     </div>
   </h3>
 <div class='docstring'>
@@ -1185,12 +1185,12 @@ range "00" to "99", makes it full.</p>
 
 <section class='method_details' id="rfc3339-class_method">
   <h3 class='signature '>
-    .<strong>rfc3339</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=ITALY])  &#x21d2; <code>DateTime</code>   </h3>
+    .<strong>rfc3339</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=Date::ITALY])  &#x21d2; <code>DateTime</code>   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Creates a new <a href="Date.html" title="Date (class)">::Date</a> object by parsing from a string according to some
-typical RFC 3339 formats.</p>
+<p>Creates a new <code>DateTime</code> object by parsing from a string
+according to some typical RFC 3339 formats.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_rfc3339'>rfc3339</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2001-02-03T04:05:06+07:00</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
                           <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T04:05:06+07:00 ...&gt;</span></code></pre>
@@ -1203,16 +1203,16 @@ typical RFC 3339 formats.</p>
 <section class='method_details' id="rfc822-class_method">
   <h3 class='signature '>
     <div class='inline-block'>
-      <span class='overload'>.<strong>rfc2822</strong>(string = &#39;Mon, 1 Jan -4712 00:00:00 +0000&#39;[, start=ITALY])  &#x21d2; <code>DateTime</code> </span>
-      <span class='overload'>.<strong>rfc822</strong>(string = &#39;Mon, 1 Jan -4712 00:00:00 +0000&#39;[, start=ITALY])  &#x21d2; <code>DateTime</code> </span>
+      <span class='overload'>.<strong>rfc2822</strong>(string = &#39;Mon, 1 Jan -4712 00:00:00 +0000&#39;[, start=Date::ITALY])  &#x21d2; <code>DateTime</code> </span>
+      <span class='overload'>.<strong>rfc822</strong>(string = &#39;Mon, 1 Jan -4712 00:00:00 +0000&#39;[, start=Date::ITALY])  &#x21d2; <code>DateTime</code> </span>
     </div>
     <span class='aliases'>Also known as: <span class='names'>.rfc2822</span></span>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Creates a new <a href="Date.html" title="Date (class)">::Date</a> object by parsing from a string according to some
-typical RFC 2822 formats.</p>
+<p>Creates a new <code>DateTime</code> object by parsing from a string
+according to some typical RFC 2822 formats.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_rfc2822'><a href="#rfc2822-class_method" title="DateTime.rfc2822 (method)">rfc2822</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Sat, 3 Feb 2001 04:05:06 +0700</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
                          <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T04:05:06+07:00 ...&gt;</span></code></pre>
@@ -1226,13 +1226,13 @@ typical RFC 2822 formats.</p>
 
 <section class='method_details' id="strptime-class_method">
   <h3 class='signature '>
-    .<strong>strptime</strong>([string = &#39;-4712-01-01T00:00:00+00:00&#39;[, format=&#39;%FT%T%z&#39;[ ,start=ITALY]]])  &#x21d2; <code>DateTime</code>   </h3>
+    .<strong>strptime</strong>([string = &#39;-4712-01-01T00:00:00+00:00&#39;[, format=&#39;%FT%T%z&#39;[ ,start=Date::ITALY]]])  &#x21d2; <code>DateTime</code>   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
 <p>Parses the given representation of date and time with the given template,
-and creates a date object.  strptime does not support specification of
-flags and width unlike strftime.</p>
+and creates a <code>DateTime</code> object.  strptime does not support
+specification of flags and width unlike strftime.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_strptime'>strptime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2001-02-03T04:05:06+07:00</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%Y-%m-%dT%H:%M:%S%z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
                           <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T04:05:06+07:00 ...&gt;
@@ -1251,7 +1251,7 @@ flags and width unlike strftime.</p>
 </span><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_strptime'>strptime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>sat3feb014pm+7</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%a%d%b%y%H%p%z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
                           <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T16:00:00+07:00 ...&gt;</span></code></pre>
 
-<p>See also strptime(3) and strftime.</p>
+<p>See also strptime(3) and <a href="#strftime-instance_method" title="DateTime#strftime (method)">#strftime</a>.</p>
 
   </div>
 </div>
@@ -1260,12 +1260,12 @@ flags and width unlike strftime.</p>
 
 <section class='method_details' id="xmlschema-class_method">
   <h3 class='signature '>
-    .<strong>xmlschema</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=ITALY])  &#x21d2; <code>DateTime</code>   </h3>
+    .<strong>xmlschema</strong>(string = &#39;-4712-01-01T00:00:00+00:00&#39;[, start=Date::ITALY])  &#x21d2; <code>DateTime</code>   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Creates a new <a href="Date.html" title="Date (class)">::Date</a> object by parsing from a string according to some
-typical XML Schema formats.</p>
+<p>Creates a new <code>DateTime</code> object by parsing from a string
+according to some typical XML Schema formats.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_xmlschema'>xmlschema</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2001-02-03T04:05:06+07:00</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
                           <span class='comment'>#=&gt; #&lt;DateTime: 2001-02-03T04:05:06+07:00 ...&gt;</span></code></pre>
@@ -1287,8 +1287,8 @@ typical XML Schema formats.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>This method is equivalent to strftime(&#39;%FT%T&#39;).  The optional
-argument n is length of fractional seconds.</p>
+<p>This method is equivalent to strftime(&#39;%FT%T%:z&#39;). The optional
+argument <code>n</code> is the number of digits for fractional seconds.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_parse'><a href="#parse-class_method" title="DateTime.parse (method)">parse</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2001-02-03T04:05:06.123456789+07:00</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_iso8601'><a href="#iso8601-class_method" title="DateTime.iso8601 (method)">iso8601</a></span><span class='lparen'>(</span><span class='int'>9</span><span class='rparen'>)</span>
                           <span class='comment'>#=&gt; &quot;2001-02-03T04:05:06.123456789+07:00&quot;</span></code></pre>
@@ -1306,8 +1306,8 @@ argument n is length of fractional seconds.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Returns a string in a JIS X 0301 format.  The optional argument n is length
-of fractional seconds.</p>
+<p>Returns a string in a JIS X 0301 format. The optional argument <code>n</code> is the
+number of digits for fractional seconds.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_parse'><a href="#parse-class_method" title="DateTime.parse (method)">parse</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2001-02-03T04:05:06.123456789+07:00</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_jisx0301'><a href="#jisx0301-class_method" title="DateTime.jisx0301 (method)">jisx0301</a></span><span class='lparen'>(</span><span class='int'>9</span><span class='rparen'>)</span>
                           <span class='comment'>#=&gt; &quot;H13.02.03T04:05:06.123456789+07:00&quot;</span></code></pre>
@@ -1323,8 +1323,8 @@ of fractional seconds.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>This method is equivalent to strftime(&#39;%FT%T&#39;).  The optional
-argument n is length of fractional seconds.</p>
+<p>This method is equivalent to strftime(&#39;%FT%T%:z&#39;). The optional
+argument <code>n</code> is the number of digits for fractional seconds.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_parse'><a href="#parse-class_method" title="DateTime.parse (method)">parse</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2001-02-03T04:05:06.123456789+07:00</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_rfc3339'><a href="#rfc3339-class_method" title="DateTime.rfc3339 (method)">rfc3339</a></span><span class='lparen'>(</span><span class='int'>9</span><span class='rparen'>)</span>
                           <span class='comment'>#=&gt; &quot;2001-02-03T04:05:06.123456789+07:00&quot;</span></code></pre>
@@ -1341,12 +1341,12 @@ argument n is length of fractional seconds.</p>
   <div class='discussion'>
     
 <p>Formats date according to the directives in the given format string. The
-directives begins with a percent (%) character. Any text not listed as a
+directives begin with a percent (%) character. Any text not listed as a
 directive will be passed through to the output string.</p>
 
-<p>The directive consists of a percent (%) character, zero or more flags,
-optional minimum field width, optional modifier and a conversion specifier
-as follows.</p>
+<p>A directive consists of a percent (%) character, zero or more flags, an
+optional minimum field width, an optional modifier, and a conversion
+specifier as follows.</p>
 
 <pre class="code ruby"><code class="ruby">%&lt;flags&gt;&lt;width&gt;&lt;modifier&gt;&lt;conversion&gt;</code></pre>
 
@@ -1361,7 +1361,7 @@ _  use spaces for padding.
 
 <p>The minimum field width specifies the minimum width.</p>
 
-<p>The modifier is "E" and "O". They are ignored.</p>
+<p>The modifiers are "E" and "O". They are ignored.</p>
 
 <p>Format directives:</p>
 
@@ -1456,12 +1456,13 @@ Combination:
   %T - 24-hour time (%H:%M:%S)
   %+ - date(1) (%a %b %e %H:%M:%S %Z %Y)</code></pre>
 
-<p>This method is similar to strftime() function defined in ISO C and POSIX.
-Several directives (%a, %A, %b, %B, %c, %p, %r, %x, %X, %E*, %O* and %Z)
-are locale dependent in the function. However this method is locale
-independent. So, the result may differ even if a same format string is used
-in other systems such as C. It is good practice to avoid %x and %X because
-there are corresponding locale independent representations, %D and %T.</p>
+<p>This method is similar to the strftime() function defined in ISO C and
+POSIX. Several directives (%a, %A, %b, %B, %c, %p, %r, %x, %X, %E*, %O* and
+%Z) are locale dependent in the function. However, this method is locale
+independent. So, the result may differ even if the same format string is
+used in other systems such as C. It is good practice to avoid %x and %X
+because there are corresponding locale independent representations, %D and
+%T.</p>
 
 <p>Examples:</p>
 
@@ -1507,7 +1508,7 @@ there are corresponding locale independent representations, %D and %T.</p>
 %GW%V%uT%H%M%z   =&gt; 2007W471T0837-0600        Week date and local time and difference from UTC (basic)
 %G-W%V-%uT%R%:z  =&gt; 2007-W47-1T08:37-06:00    Week date and local time and difference from UTC (extended)</code></pre>
 
-<p>See also strftime(3) and strptime.</p>
+<p>See also strftime(3) and <a href="#strptime-class_method" title="DateTime.strptime (method)">.strptime</a>.</p>
 
   </div>
 </div>
@@ -1546,8 +1547,8 @@ there are corresponding locale independent representations, %D and %T.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Returns a string in an ISO 8601 format (This method doesn&#39;t use the
-expanded representations).</p>
+<p>Returns a string in an ISO 8601 format. (This method doesn&#39;t use the
+expanded representations.)</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="DateTime.new (method)">new</a></span><span class='lparen'>(</span><span class='int'>2001</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>3</span><span class='comma'>,</span><span class='int'>4</span><span class='comma'>,</span><span class='int'>5</span><span class='comma'>,</span><span class='int'>6</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-7</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
                          <span class='comment'>#=&gt; &quot;2001-02-03T04:05:06-07:00&quot;</span></code></pre>

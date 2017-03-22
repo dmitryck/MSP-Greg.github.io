@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: Fiber &mdash; Core Ruby-2.4.0 p0</title>
+<title>Class: Fiber &mdash; Core Ruby-2.4.1 p110</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Ruby-2.4.0</a> &raquo; 
+        <a href='../index.html'>Ruby-2.4.1</a> &raquo; 
         <a href='index.html'>Core</a> &raquo; 
         <a href='_index.html#alpha_F'>Index (F)</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Fiber&nbsp;&#x25B2;</a></span>
@@ -79,7 +79,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/cont.c#L1689'>cont.c</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/cont.c#L1685'>cont.c</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -96,8 +96,9 @@ never preempted and that the scheduling must be done by the programmer and
 not the VM.</p>
 
 <p>As opposed to other stackless light weight concurrency models, each fiber
-comes with a small 4KB stack. This enables the fiber to be paused from
-deeply nested function calls within the fiber block.</p>
+comes with a stack.  This enables the fiber to be paused from deeply nested
+function calls within the fiber block.  See the ruby(1) manpage to
+configure the size of the fiber stack(s).</p>
 
 <p>When a fiber is created it will not run automatically. Rather it must be
 explicitly asked to run using the <a href="#resume-instance_method" title="Fiber#resume (method)">#resume</a> method. The code running

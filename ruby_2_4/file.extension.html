@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Extension &mdash; Ruby-2.4.0</title>
+<title>File: Extension &mdash; Ruby-2.4.1</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Ruby-2.4.0</a> &raquo; 
+        <a href='index.html'>Ruby-2.4.1</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Extension&nbsp;&#x25B2;</a></span>
             </div>
@@ -66,9 +66,11 @@
 
 <p># extension.rdoc -  -*- RDoc -*- created at: Mon Aug  7 16:45:54 JST 1995</p>
 
+<h1 id="label-Creating+Extension+Libraries+for+Ruby">Creating Extension Libraries for Ruby</h1>
+
 <p>This document explains how to make extension libraries for Ruby.</p>
 
-<h1 id="label-Basic+Knowledge">Basic Knowledge</h1>
+<h2 id="label-Basic+Knowledge">Basic Knowledge</h2>
 
 <p>In C, variables have types and data do not have types.  In contrast, Ruby
 variables do not have a static type, and data themselves have types, so
@@ -86,7 +88,7 @@ has its data type.</p>
 
 <p>Converting to the wrong data type may cause serious problems.</p>
 
-<h2 id="label-Data+Types">Data Types</h2>
+<h3 id="label-Data+Types">Data Types</h3>
 
 <p>The Ruby interpreter has the following data types:</p>
 <dl class="rdoc-list note-list"><dt>T_NIL       
@@ -168,7 +170,7 @@ has its data type.</p>
 
 <p>Most of the types are represented by C structures.</p>
 
-<h2 id="label-Check+Data+Type+of+the+VALUE">Check Data Type of the VALUE</h2>
+<h3 id="label-Check+Data+Type+of+the+VALUE">Check Data Type of the VALUE</h3>
 
 <p>The macro TYPE() defined in ruby.h shows the data type of the VALUE. TYPE()
 returns the constant number T_XXXX described above.  To handle data types,
@@ -201,7 +203,7 @@ your code will look something like this:</p>
 <pre class="code ruby"><code class="ruby"><span class='const'>FIXNUM_P</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
 <span class='const'>NIL_P</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span></code></pre>
 
-<h2 id="label-Convert+VALUE+into+C+Data">Convert VALUE into C Data</h2>
+<h3 id="label-Convert+VALUE+into+C+Data">Convert VALUE into C Data</h3>
 
 <p>The data for type T_NIL, T_FALSE, T_TRUE are nil, false, true respectively.
 They are singletons for the data type. The equivalent C constants are:
@@ -250,7 +252,7 @@ allocated region can be accessed by `RSTRING_PTR(str)&#39;.</p>
 responsible for the result.  This ends up being the cause of interesting
 bugs.</p>
 
-<h2 id="label-Convert+C+Data+into+VALUE">Convert C Data into VALUE</h2>
+<h3 id="label-Convert+C+Data+into+VALUE">Convert C Data into VALUE</h3>
 
 <p>To convert C data to Ruby values:</p>
 <dl class="rdoc-list note-list"><dt>FIXNUM 
@@ -279,14 +281,14 @@ structures are defined in &lt;ruby.h&gt;.</p>
 <p>INT2NUM() converts an integer into a Bignum if it is out of the FIXNUM
 range, but is a bit slower.</p>
 
-<h2 id="label-Manipulating+Ruby+Data">Manipulating Ruby Data</h2>
+<h3 id="label-Manipulating+Ruby+Data">Manipulating Ruby Data</h3>
 
 <p>As I already mentioned, it is not recommended to modify an object&#39;s
 internal structure.  To manipulate objects, use the functions supplied by
 the Ruby interpreter. Some (not all) of the useful functions are listed
 below:</p>
 
-<h3 id="label-String+Functions">String Functions</h3>
+<h4 id="label-String+Functions">String Functions</h4>
 <dl class="rdoc-list note-list"><dt>rb_str_new(const char *ptr, long len) 
 <dd>
 <p>Creates a new Ruby string.</p>
@@ -367,7 +369,7 @@ raises an exception.  This function preserves the content up to len bytes,
 regardless RSTRING_LEN(str).  len must not exceed the capacity of str.</p>
 </dd></dl>
 
-<h3 id="label-Array+Functions">Array Functions</h3>
+<h4 id="label-Array+Functions">Array Functions</h4>
 <dl class="rdoc-list note-list"><dt>rb_ary_new() 
 <dd>
 <p>Creates an array with no elements.</p>
@@ -414,9 +416,9 @@ types are given.</p>
 <p>Appends len elements of objects from ptr to the array.</p>
 </dd></dl>
 
-<h1 id="label-Extending+Ruby+with+C">Extending Ruby with C</h1>
+<h2 id="label-Extending+Ruby+with+C">Extending Ruby with C</h2>
 
-<h2 id="label-Adding+New+Features+to+Ruby">Adding New Features to Ruby</h2>
+<h3 id="label-Adding+New+Features+to+Ruby">Adding New Features to Ruby</h3>
 
 <p>You can add new features (classes, methods, etc.) to the Ruby interpreter. 
 Ruby provides APIs for defining the following things:</p>
@@ -428,7 +430,7 @@ Ruby provides APIs for defining the following things:</p>
 <p>Constants</p>
 </li></ul>
 
-<h3 id="label-Class+and+Module+Definition">Class and Module Definition</h3>
+<h4 id="label-Class+and+Module+Definition">Class and Module Definition</h4>
 
 <p>To define a class or module, use the functions below:</p>
 
@@ -443,7 +445,7 @@ save this reference into a variable to use later.</p>
 <pre class="code ruby"><code class="ruby">VALUE rb_define_class_under(VALUE outer, const char *name, VALUE super)
 VALUE rb_define_module_under(VALUE outer, const char *name)</code></pre>
 
-<h3 id="label-Method+and+Singleton+Method+Definition">Method and Singleton Method Definition</h3>
+<h4 id="label-Method+and+Singleton+Method+Definition">Method and Singleton Method Definition</h4>
 
 <p>To define methods or singleton methods, use these functions:</p>
 
@@ -535,7 +537,7 @@ available), you can use:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>VALUE</span> <span class='id identifier rubyid_rb_current_receiver'>rb_current_receiver</span><span class='lparen'>(</span><span class='id identifier rubyid_void'>void</span><span class='rparen'>)</span></code></pre>
 
-<h3 id="label-Constant+Definition">Constant Definition</h3>
+<h4 id="label-Constant+Definition">Constant Definition</h4>
 
 <p>We have 2 functions to define constants:</p>
 
@@ -545,11 +547,11 @@ void rb_define_global_const(const char *name, VALUE val)</code></pre>
 <p>The former is to define a constant under specified class/module.  The
 latter is to define a global constant.</p>
 
-<h2 id="label-Use+Ruby+Features+from+C">Use Ruby Features from C</h2>
+<h3 id="label-Use+Ruby+Features+from+C">Use Ruby Features from C</h3>
 
 <p>There are several ways to invoke Ruby&#39;s features from C code.</p>
 
-<h3 id="label-Evaluate+Ruby+Programs+in+a+String">Evaluate Ruby Programs in a String</h3>
+<h4 id="label-Evaluate+Ruby+Programs+in+a+String">Evaluate Ruby Programs in a String</h4>
 
 <p>The easiest way to use Ruby&#39;s functionality from a C program is to
 evaluate the string as Ruby program.  This function will do the job:</p>
@@ -566,7 +568,7 @@ of the innermost method (which is defined by Ruby) can be accessed.</p>
 <p>It returns nil when an error occurred. Moreover, *state is zero if str was
 successfully evaluated, or nonzero otherwise.</p>
 
-<h3 id="label-ID+or+Symbol">ID or Symbol</h3>
+<h4 id="label-ID+or+Symbol">ID or Symbol</h4>
 
 <p>You can invoke methods directly, without parsing the string.  First I need
 to explain about ID.  ID is the integer number to represent Ruby&#39;s
@@ -616,7 +618,7 @@ Symbol instead of an ID.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>ID</span> <span class='const'>SYM2ID</span><span class='lparen'>(</span><span class='const'>VALUE</span> <span class='id identifier rubyid_symbol'>symbol</span><span class='rparen'>)</span></code></pre>
 
-<h3 id="label-Invoke+Ruby+Method+from+C">Invoke Ruby Method from C</h3>
+<h4 id="label-Invoke+Ruby+Method+from+C">Invoke Ruby Method from C</h4>
 
 <p>To invoke methods directly, you can use the function below</p>
 
@@ -625,7 +627,7 @@ Symbol instead of an ID.</p>
 <p>This function invokes a method on the recv, with the method name specified
 by the symbol mid.</p>
 
-<h3 id="label-Accessing+the+Variables+and+Constants">Accessing the Variables and Constants</h3>
+<h4 id="label-Accessing+the+Variables+and+Constants">Accessing the Variables and Constants</h4>
 
 <p>You can access class variables and instance variables using access
 functions.  Also, global variables can be shared between both environments.
@@ -644,7 +646,7 @@ VALUE rb_ivar_set(VALUE obj, ID id, VALUE val)</code></pre>
 
 <p>See also Constant Definition above.</p>
 
-<h1 id="label-Information+Sharing+Between+Ruby+and+C">Information Sharing Between Ruby and C</h1>
+<h2 id="label-Information+Sharing+Between+Ruby+and+C">Information Sharing Between Ruby and C</h2>
 
 <h3 id="label-Ruby+Constants+That+Can+Be+Accessed+From+C">Ruby Constants That Can Be Accessed From C</h3>
 
@@ -659,7 +661,7 @@ C.</p>
 <p>Ruby nil in C scope.</p>
 </dd></dl>
 
-<h2 id="label-Global+Variables+Shared+Between+C+and+Ruby">Global Variables Shared Between C and Ruby</h2>
+<h3 id="label-Global+Variables+Shared+Between+C+and+Ruby">Global Variables Shared Between C and Ruby</h3>
 
 <p>Information can be shared between the two environments using shared global
 variables.  To define them, you can use functions listed below:</p>
@@ -701,7 +703,7 @@ variable.  The value of the variable will be set/get only by hooks.</p>
 <pre class="code ruby"><code class="ruby">VALUE (*getter)(ID id);
 void (*setter)(VALUE val, ID id);</code></pre>
 
-<h2 id="label-Encapsulate+C+Data+into+a+Ruby+Object">Encapsulate C Data into a Ruby Object</h2>
+<h3 id="label-Encapsulate+C+Data+into+a+Ruby+Object">Encapsulate C Data into a Ruby Object</h3>
 
 <p>Sometimes you need to expose your struct in the C world as a Ruby object.
 In a situation like this, making use of the TypedData_XXX macro family, the
@@ -710,7 +712,7 @@ pointer to the struct and the Ruby object can be mutually converted.</p>
 <p>-- The old (non-Typed) Data_XXX macro family has been deprecated. In the
 future version of Ruby, it is possible old macros will not work. ++</p>
 
-<h3 id="label-C+struct+to+Ruby+object">C struct to Ruby object</h3>
+<h4 id="label-C+struct+to+Ruby+object">C struct to Ruby object</h4>
 
 <p>You can convert sval, a pointer to your struct, into a Ruby object with the
 next macro.</p>
@@ -805,7 +807,7 @@ structure, which is also allocated.  This macro works like:</p>
 TypedData_Wrap_Struct().  A pointer to the allocated structure will be
 assigned to sval, which should be a pointer of the type specified.</p>
 
-<h3 id="label-Ruby+object+to+C+struct">Ruby object to C struct</h3>
+<h4 id="label-Ruby+object+to+C+struct">Ruby object to C struct</h4>
 
 <p>To retrieve the C pointer from the Data object, use the macro
 Data_Get_Struct().</p>
@@ -816,23 +818,23 @@ Data_Get_Struct().</p>
 
 <p>See the example below for details.</p>
 
-<h1 id="label-Example+-+Creating+the+dbm+Extension">Example - Creating the dbm Extension</h1>
+<h2 id="label-Example+-+Creating+the+dbm+Extension">Example - Creating the dbm Extension</h2>
 
 <p>OK, here&#39;s the example of making an extension library.  This is the
 extension to access DBMs.  The full source is included in the ext/
 directory in the Ruby&#39;s source tree.</p>
 
-<h2 id="label-Make+the+Directory">Make the Directory</h2>
+<h3 id="label-Make+the+Directory">Make the Directory</h3>
 
 <pre class="code ruby"><code class="ruby">% mkdir ext/dbm</code></pre>
 
 <p>Make a directory for the extension library under ext directory.</p>
 
-<h2 id="label-Design+the+Library">Design the Library</h2>
+<h3 id="label-Design+the+Library">Design the Library</h3>
 
 <p>You need to design the library features, before making it.</p>
 
-<h2 id="label-Write+the+C+Code">Write the C Code</h2>
+<h3 id="label-Write+the+C+Code">Write the C Code</h3>
 
 <p>You need to write C code for your extension library.  If your library has
 only one source file, choosing "LIBRARY.c&#39;&#39; as a file name is
@@ -872,7 +874,7 @@ Init_dbm(void)
 }</code></pre>
 
 <p>The dbm extension wraps the dbm struct in the C environment using
-Data_Make_Struct.</p>
+TypedData_Make_Struct.</p>
 
 <pre class="code ruby"><code class="ruby">struct dbmdata {
     int  di_size;
@@ -957,7 +959,7 @@ protect them by</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_void'>void</span> <span class='id identifier rubyid_rb_global_variable'>rb_global_variable</span><span class='lparen'>(</span><span class='const'>VALUE</span> <span class='op'>*</span><span class='id identifier rubyid_var'>var</span><span class='rparen'>)</span></code></pre>
 
-<h2 id="label-Prepare+extconf.rb">Prepare extconf.rb</h2>
+<h3 id="label-Prepare+extconf.rb">Prepare extconf.rb</h3>
 
 <p>If the file named extconf.rb exists, it will be executed to generate
 Makefile.</p>
@@ -1006,7 +1008,7 @@ generated while building.</p>
 "create_makefile&#39;&#39;.  The Makefile will not be generated,
 compilation will not be done.</p>
 
-<h2 id="label-Prepare+Depend+-28Optional-29">Prepare Depend (Optional)</h2>
+<h3 id="label-Prepare+Depend+-28Optional-29">Prepare Depend (Optional)</h3>
 
 <p>If the file named depend exists, Makefile will include that file to check
 dependencies.  You can make this file by invoking</p>
@@ -1015,7 +1017,7 @@ dependencies.  You can make this file by invoking</p>
 
 <p>It&#39;s harmless.  Prepare it.</p>
 
-<h2 id="label-Generate+Makefile">Generate Makefile</h2>
+<h3 id="label-Generate+Makefile">Generate Makefile</h3>
 
 <p>Try generating the Makefile by:</p>
 
@@ -1030,7 +1032,7 @@ site_ruby directory, use --vendor option as follows.</p>
 directory of the ruby source tree.  In that case, compilation of the
 interpreter will do this step for you.</p>
 
-<h2 id="label-Run+make">Run make</h2>
+<h3 id="label-Run+make">Run make</h3>
 
 <p>Type</p>
 
@@ -1039,21 +1041,21 @@ interpreter will do this step for you.</p>
 <p>to compile your extension.  You don&#39;t need this step either if you have
 put the extension library under the ext directory of the ruby source tree.</p>
 
-<h2 id="label-Debug">Debug</h2>
+<h3 id="label-Debug">Debug</h3>
 
 <p>You may need to rb_debug the extension.  Extensions can be linked
 statically by adding the directory name in the ext/Setup file so that you
 can inspect the extension with the debugger.</p>
 
-<h2 id="label-Done-21+Now+You+Have+the+Extension+Library">Done! Now You Have the Extension Library</h2>
+<h3 id="label-Done-21+Now+You+Have+the+Extension+Library">Done! Now You Have the Extension Library</h3>
 
 <p>You can do anything you want with your library.  The author of Ruby will
 not claim any restrictions on your code depending on the Ruby API. Feel
 free to use, modify, distribute or sell your program.</p>
 
-<h1 id="label-Appendix+A.+Ruby+Source+Files+Overview">Appendix A. Ruby Source Files Overview</h1>
+<h2 id="label-Appendix+A.+Ruby+Source+Files+Overview">Appendix A. Ruby Source Files Overview</h2>
 
-<h2 id="label-Ruby+Language+Core">Ruby Language Core</h2>
+<h3 id="label-Ruby+Language+Core">Ruby Language Core</h3>
 <dl class="rdoc-list note-list"><dt>class.c    
 <dd>
 <p>classes and modules</p>
@@ -1074,7 +1076,7 @@ free to use, modify, distribute or sell your program.</p>
 <p>variables and constants</p>
 </dd></dl>
 
-<h2 id="label-Ruby+Syntax+Parser">Ruby Syntax Parser</h2>
+<h3 id="label-Ruby+Syntax+Parser">Ruby Syntax Parser</h3>
 <dl class="rdoc-list note-list"><dt>parse.y       
 <dd>
 <p>grammar definition</p>
@@ -1089,7 +1091,7 @@ free to use, modify, distribute or sell your program.</p>
 <p>automatically generated from keywords</p>
 </dd></dl>
 
-<h2 id="label-Ruby+Evaluator+-28a.k.a.+YARV-29">Ruby Evaluator (a.k.a. YARV)</h2>
+<h3 id="label-Ruby+Evaluator+-28a.k.a.+YARV-29">Ruby Evaluator (a.k.a. YARV)</h3>
 
 <pre class="code ruby"><code class="ruby">compile.c
 eval.c
@@ -1115,7 +1117,7 @@ defs/opt_operand.def     : definitions for optimization
   #=&gt; opt*.inc            : automatically generated
   #=&gt; vm.inc              : automatically generated</code></pre>
 
-<h2 id="label-Regular+Expression+Engine+-28Oniguruma-29">Regular Expression Engine (Oniguruma)</h2>
+<h3 id="label-Regular+Expression+Engine+-28Oniguruma-29">Regular Expression Engine (Oniguruma)</h3>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_regex'>regex</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span>
 <span class='id identifier rubyid_regcomp'>regcomp</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span>
@@ -1125,7 +1127,7 @@ defs/opt_operand.def     : definitions for optimization
 <span class='id identifier rubyid_regparse'>regparse</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span>
 <span class='id identifier rubyid_regsyntax'>regsyntax</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span></code></pre>
 
-<h2 id="label-Utility+Functions">Utility Functions</h2>
+<h3 id="label-Utility+Functions">Utility Functions</h3>
 <dl class="rdoc-list note-list"><dt>debug.c    
 <dd>
 <p>debug symbols for C debugger</p>
@@ -1143,7 +1145,7 @@ defs/opt_operand.def     : definitions for optimization
 <p>misc utilities</p>
 </dd></dl>
 
-<h2 id="label-Ruby+Interpreter+Implementation">Ruby Interpreter Implementation</h2>
+<h3 id="label-Ruby+Interpreter+Implementation">Ruby Interpreter Implementation</h3>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_dmyext'>dmyext</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span>
 <span class='id identifier rubyid_dmydln'>dmydln</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span>
@@ -1157,7 +1159,7 @@ defs/opt_operand.def     : definitions for optimization
 <span class='id identifier rubyid_gem_prelude'>gem_prelude</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span>
 <span class='id identifier rubyid_prelude'>prelude</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span></code></pre>
 
-<h2 id="label-Class+Library">Class Library</h2>
+<h3 id="label-Class+Library">Class Library</h3>
 <dl class="rdoc-list note-list"><dt>array.c      
 <dd>
 <p>Array</p>
@@ -1244,7 +1246,7 @@ defs/opt_operand.def     : definitions for optimization
 <p>automatically generated</p>
 </dd></dl>
 
-<h2 id="label-Multilingualization">Multilingualization</h2>
+<h3 id="label-Multilingualization">Multilingualization</h3>
 <dl class="rdoc-list note-list"><dt>encoding.c  
 <dd>
 <p>Encoding</p>
@@ -1259,15 +1261,15 @@ defs/opt_operand.def     : definitions for optimization
 <p>codepoint mapping tables</p>
 </dd></dl>
 
-<h2 id="label-goruby+Interpreter+Implementation">goruby Interpreter Implementation</h2>
+<h3 id="label-goruby+Interpreter+Implementation">goruby Interpreter Implementation</h3>
 
 <pre class="code ruby"><code class="ruby">goruby.c
 golf_prelude.rb     : goruby specific libraries.
   #=&gt; golf_prelude.c : automatically generated</code></pre>
 
-<h1 id="label-Appendix+B.+Ruby+Extension+API+Reference">Appendix B. Ruby Extension API Reference</h1>
+<h2 id="label-Appendix+B.+Ruby+Extension+API+Reference">Appendix B. Ruby Extension API Reference</h2>
 
-<h2 id="label-Types">Types</h2>
+<h3 id="label-Types">Types</h3>
 <dl class="rdoc-list note-list"><dt>VALUE 
 <dd>
 <p>The type for the Ruby object.  Actual structures are defined in ruby.h,
@@ -1275,7 +1277,7 @@ such as struct RString, etc.  To refer the values in structures, use
 casting macros like RSTRING(obj).</p>
 </dd></dl>
 
-<h2 id="label-Variables+and+Constants">Variables and Constants</h2>
+<h3 id="label-Variables+and+Constants">Variables and Constants</h3>
 <dl class="rdoc-list note-list"><dt>Qnil 
 <dd>
 <p>nil object</p>
@@ -1287,7 +1289,7 @@ casting macros like RSTRING(obj).</p>
 <p>false object</p>
 </dd></dl>
 
-<h2 id="label-C+Pointer+Wrapping">C Pointer Wrapping</h2>
+<h3 id="label-C+Pointer+Wrapping">C Pointer Wrapping</h3>
 <dl class="rdoc-list note-list"><dt>Data_Wrap_Struct(VALUE klass, void (*mark)(), void (*free)(), void *sval) 
 <dd>
 <p>Wrap a C pointer into a Ruby object.  If object has references to other
@@ -1304,7 +1306,7 @@ sval, and returns the DATA encapsulating the pointer to memory region.</p>
 variable sval.</p>
 </dd></dl>
 
-<h2 id="label-Checking+Data+Types">Checking Data Types</h2>
+<h3 id="label-Checking+Data+Types">Checking Data Types</h3>
 <dl class="rdoc-list note-list"><dt>RB_TYPE_P(value, type) 
 <dd>
 <p>Is <code>value</code> an internal type (T_NIL, T_FIXNUM, etc.)?</p>
@@ -1327,12 +1329,12 @@ variable sval.</p>
 <dd>
 <p>Ensures <code>value</code> is of the given internal <code>type</code> or
 raises a TypeError</p>
-</dd><dt>SaveStringValue(value) 
+</dd><dt>SafeStringValue(value) 
 <dd>
 <p>Checks that <code>value</code> is a String and is not tainted</p>
 </dd></dl>
 
-<h2 id="label-Data+Type+Conversion">Data Type Conversion</h2>
+<h3 id="label-Data+Type+Conversion">Data Type Conversion</h3>
 <dl class="rdoc-list note-list"><dt>FIX2INT(value), INT2FIX(i) 
 <dd>
 <p>Fixnum &lt;-&gt; integer</p>
@@ -1397,7 +1399,7 @@ guaranteed that the result data is NUL-terminated</p>
 <p>char * -&gt; String</p>
 </dd></dl>
 
-<h2 id="label-Defining+Classes+and+Modules">Defining Classes and Modules</h2>
+<h3 id="label-Defining+Classes+and+Modules">Defining Classes and Modules</h3>
 <dl class="rdoc-list note-list"><dt>VALUE rb_define_class(const char *name, VALUE super) 
 <dd>
 <p>Defines a new Ruby class as a subclass of super.</p>
@@ -1419,7 +1421,7 @@ namespace.</p>
 <p>Extend the object with the module&#39;s attributes.</p>
 </dd></dl>
 
-<h2 id="label-Defining+Global+Variables">Defining Global Variables</h2>
+<h3 id="label-Defining+Global+Variables">Defining Global Variables</h3>
 <dl class="rdoc-list note-list"><dt>void rb_define_variable(const char *name, VALUE *var) 
 <dd>
 <p>Defines a global variable which is shared between C and Ruby.  If name
@@ -1456,7 +1458,7 @@ The getter is called as</p>
 rb_global_variable tells GC to protect these variables.</p>
 </dd></dl>
 
-<h2 id="label-Constant+Definition">Constant Definition</h2>
+<h3 id="label-Constant+Definition">Constant Definition</h3>
 <dl class="rdoc-list note-list"><dt>void rb_define_const(VALUE klass, const char *name, VALUE val) 
 <dd>
 <p>Defines a new constant under the class/module.</p>
@@ -1467,7 +1469,7 @@ rb_global_variable tells GC to protect these variables.</p>
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_rb_define_const'>rb_define_const</span><span class='lparen'>(</span><span class='id identifier rubyid_rb_cObject'>rb_cObject</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span></code></pre>
 </dd></dl>
 
-<h2 id="label-Method+Definition">Method Definition</h2>
+<h3 id="label-Method+Definition">Method Definition</h3>
 <dl class="rdoc-list note-list"><dt>rb_define_method(VALUE klass, const char *name, VALUE (*func)(ANYARGS), int argc) 
 <dd>
 <p>Defines a method for the class.  func is the function pointer.  argc is the
@@ -1565,7 +1567,7 @@ non-symbol keys, then they are copied to another hash and the new hash is
 stored through <code>original_hash</code>, else 0 is stored.</p>
 </dd></dl>
 
-<h2 id="label-Invoking+Ruby+method">Invoking Ruby method</h2>
+<h3 id="label-Invoking+Ruby+method">Invoking Ruby method</h3>
 <dl class="rdoc-list note-list"><dt>VALUE rb_funcall(VALUE recv, ID mid, int narg, ...) 
 <dd>
 <p>Invokes a method.  To retrieve mid from a method name, use rb_intern().
@@ -1596,7 +1598,7 @@ only public methods.</p>
 <p>Returns true if the object responds to the message specified by id.</p>
 </dd></dl>
 
-<h2 id="label-Instance+Variables">Instance Variables</h2>
+<h3 id="label-Instance+Variables">Instance Variables</h3>
 <dl class="rdoc-list note-list"><dt>VALUE rb_iv_get(VALUE obj, const char *name) 
 <dd>
 <p>Retrieve the value of the instance variable.  If the name is not prefixed
@@ -1606,7 +1608,7 @@ by `@&#39;, that variable shall be inaccessible from Ruby.</p>
 <p>Sets the value of the instance variable.</p>
 </dd></dl>
 
-<h2 id="label-Control+Structure">Control Structure</h2>
+<h3 id="label-Control+Structure">Control Structure</h3>
 <dl class="rdoc-list note-list"><dt>VALUE rb_block_call(VALUE recv, ID mid, int argc, VALUE * argv, VALUE (*func) (ANYARGS), VALUE data2) 
 <dd>
 <p>Calls a method on the recv, with the method name specified by the symbol
@@ -1661,7 +1663,7 @@ caller.</p>
 return the given argument value.  This function never return to the caller.</p>
 </dd></dl>
 
-<h2 id="label-Exceptions+and+Errors">Exceptions and Errors</h2>
+<h3 id="label-Exceptions+and+Errors">Exceptions and Errors</h3>
 <dl class="rdoc-list note-list"><dt>void rb_warn(const char *fmt, ...) 
 <dd>
 <p>Prints a warning message according to a printf-like format.</p>
@@ -1691,7 +1693,7 @@ Object#inspect if &#39;+&#39; flag is set) output (and related argument
 must be a VALUE).  Since it conflicts with "%i", for integers in format
 strings, use "%d".</p>
 
-<h2 id="label-Initialize+and+Start+the+Interpreter">Initialize and Start the Interpreter</h2>
+<h3 id="label-Initialize+and+Start+the+Interpreter">Initialize and Start the Interpreter</h3>
 
 <p>The embedding API functions are below (not needed for extension libraries):</p>
 <dl class="rdoc-list note-list"><dt>void ruby_init() 
@@ -1712,7 +1714,7 @@ value.</p>
 <p>Specifies the name of the script ($0).</p>
 </dd></dl>
 
-<h2 id="label-Hooks+for+the+Interpreter+Events">Hooks for the Interpreter Events</h2>
+<h3 id="label-Hooks+for+the+Interpreter+Events">Hooks for the Interpreter Events</h3>
 <dl class="rdoc-list note-list"><dt>void rb_add_event_hook(rb_event_hook_func_t func, rb_event_flag_t events, VALUE data) 
 <dd>
 <p>Adds a hook function for the specified interpreter events. events should be
@@ -1741,7 +1743,7 @@ in 1.8.  See RB_EVENT_HOOKS_HAVE_CALLBACK_DATA below.</p>
 <p>Removes the specified hook function.</p>
 </dd></dl>
 
-<h2 id="label-Memory+usage">Memory usage</h2>
+<h3 id="label-Memory+usage">Memory usage</h3>
 <dl class="rdoc-list note-list"><dt>void rb_gc_adjust_memory_usage(ssize_t diff) 
 <dd>
 <p>Adjusts the amount of registered external memory.  You can tell GC how much
@@ -1753,7 +1755,7 @@ block is freed or a block is reallocated as smaller size.  This function
 may trigger the GC.</p>
 </dd></dl>
 
-<h2 id="label-Macros+for+Compatibility">Macros for Compatibility</h2>
+<h3 id="label-Macros+for+Compatibility">Macros for Compatibility</h3>
 
 <p>Some macros to check API compatibilities are available by default.</p>
 <dl class="rdoc-list note-list"><dt>NORETURN_STYLE_NEW 
@@ -1787,11 +1789,11 @@ st.h.</p>
 passed to the given event hook function.</p>
 </dd></dl>
 
-<h1 id="label-Appendix+C.+Functions+available+for+use+in+extconf.rb">Appendix C. Functions available for use in extconf.rb</h1>
+<h2 id="label-Appendix+C.+Functions+available+for+use+in+extconf.rb">Appendix C. Functions available for use in extconf.rb</h2>
 
 <p>See documentation for <a href="file.MakeMakefile.html">mkmf</a>.</p>
 
-<h1 id="label-Appendix+D.+Generational+GC">Appendix D. Generational GC</h1>
+<h2 id="label-Appendix+D.+Generational+GC">Appendix D. Generational GC</h2>
 
 <p>Ruby 2.1 introduced a generational garbage collector (called RGenGC).
 RGenGC (mostly) keeps compatibility.</p>
@@ -1805,7 +1807,7 @@ RGenGC works fine without write barriers in extension libraries.</p>
 improved. Especially, the "Don&#39;t touch pointers directly" section is
 important.</p>
 
-<h2 id="label-Incompatibility">Incompatibility</h2>
+<h3 id="label-Incompatibility">Incompatibility</h3>
 
 <p>You can&#39;t write RBASIC(obj)-&gt;klass field directly because it is
 const value now.</p>
@@ -1823,13 +1825,13 @@ ObjectSpace::each_object can&#39;t find this object.</p>
 by rb_obj_hide().</p>
 </dd></dl>
 
-<h2 id="label-Write+barriers">Write barriers</h2>
+<h3 id="label-Write+barriers">Write barriers</h3>
 
 <p>RGenGC doesn&#39;t require write barriers to support generational GC.
 However, caring about write barrier can improve the performance of RGenGC.
 Please check the following tips.</p>
 
-<h3 id="label-Don-27t+touch+pointers+directly">Don&#39;t touch pointers directly</h3>
+<h4 id="label-Don-27t+touch+pointers+directly">Don&#39;t touch pointers directly</h4>
 
 <p>In MRI (include/ruby/ruby.h), some macros to acquire pointers to the
 internal data structures are supported such as RARRAY_PTR(), RSTRUCT_PTR()
@@ -1838,7 +1840,7 @@ and so on.</p>
 <p>DO NOT USE THESE MACROS and instead use the corresponding C-APIs such as
 rb_ary_aref(), rb_ary_store() and so on.</p>
 
-<h3 id="label-Consider+whether+to+insert+write+barriers">Consider whether to insert write barriers</h3>
+<h4 id="label-Consider+whether+to+insert+write+barriers">Consider whether to insert write barriers</h4>
 
 <p>You don&#39;t need to care about write barriers if you only use built-in
 types.</p>
@@ -1860,7 +1862,7 @@ critical bugs. And inserting write barriers has several areas of overhead.
 Basically we don&#39;t recommend you insert write barriers. Please
 carefully consider the risks.</p>
 
-<h3 id="label-Combine+with+built-in+types">Combine with built-in types</h3>
+<h4 id="label-Combine+with+built-in+types">Combine with built-in types</h4>
 
 <p>Please consider utilizing built-in types. Most built-in types support write
 barrier, so you can use them to avoid manually inserting write barriers.</p>
@@ -1873,7 +1875,7 @@ array object. Or you can also use a Struct object to gather a T_DATA object
 <p>With use of such techniques, you don&#39;t need to insert write barriers
 anymore.</p>
 
-<h3 id="label-Insert+write+barriers">Insert write barriers</h3>
+<h4 id="label-Insert+write+barriers">Insert write barriers</h4>
 
 <p>[AGAIN] Inserting write barriers is a very difficult hack, and it is easy
 to introduce critical bugs. And inserting write barriers has several areas
@@ -1887,7 +1889,7 @@ available in include/ruby/ruby.h. An example is available in iseq.c.</p>
 <p>For a complete guide for RGenGC and write barriers, please refer to &lt;<a
 href="https://bugs.ruby-lang.org/projects/ruby-trunk/wiki/RGenGC">bugs.ruby-lang.org/projects/ruby-trunk/wiki/RGenGC</a>&gt;.</p>
 
-<h1 id="label-Appendix+E.+RB_GC_GUARD+to+protect+from+premature+GC">Appendix E. RB_GC_GUARD to protect from premature GC</h1>
+<h2 id="label-Appendix+E.+RB_GC_GUARD+to+protect+from+premature+GC">Appendix E. RB_GC_GUARD to protect from premature GC</h2>
 
 <p>C Ruby currently uses conservative garbage collection, thus VALUE variables
 must remain visible on the stack or registers to ensure any associated data

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: Gem::Server &mdash; rubygems  Ruby-2.4.0 p0</title>
+<title>Class: Gem::Server &mdash; rubygems  Ruby-2.4.1 p110</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Ruby-2.4.0</a> &raquo; 
+        <a href='../../index.html'>Ruby-2.4.1</a> &raquo; 
         <a href='../index.html'>rubygems</a> &raquo; 
         <a href='../_index.html#alpha_S'>Index (S)</a> &raquo; 
         <a href="../Gem.html" title="Gem (module)">Gem</a> &raquo; 
@@ -92,7 +92,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L30'>lib/rubygems/server.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L31'>lib/rubygems/server.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -136,7 +136,7 @@ name/version/platform index</p>
   <li>
     <span id='DOC_TEMPLATE-constant' class='summary_signature'>DOC_TEMPLATE =</span>
     <br/>
-    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L47-L128'># File 'lib/rubygems/server.rb', line 47</a>    <pre class='code ruby'><span class='heredoc_beg'>&lt;&lt;-&#39;ERB&#39;</span>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L48-L129'># File 'lib/rubygems/server.rb', line 48</a>    <pre class='code ruby'><span class='heredoc_beg'>&lt;&lt;-&#39;ERB&#39;</span>
 <span class='tstring_content'>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
 &lt;!DOCTYPE html
      PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
@@ -160,7 +160,7 @@ name/version/platform index</p>
       &lt;h1&gt;Summary&lt;/h1&gt;
 &lt;p&gt;There are &lt;%=values[&quot;gem_count&quot;]%&gt; gems installed:&lt;/p&gt;
 &lt;p&gt;
-&lt;%= values[&quot;specs&quot;].map { |v| &quot;&lt;a href\&quot;##{u v[&quot;name&quot;]}\&quot;&gt;#{h v[&quot;name&quot;]}&lt;/a&gt;&quot; }.join &#39;, &#39; %&gt;.
+&lt;%= values[&quot;specs&quot;].map { |v| &quot;&lt;a href=\&quot;##{u v[&quot;name&quot;]}\&quot;&gt;#{h v[&quot;name&quot;]}&lt;/a&gt;&quot; }.join &#39;, &#39; %&gt;.
 &lt;h1&gt;Gems&lt;/h1&gt;
 
 &lt;dl&gt;
@@ -173,20 +173,20 @@ name/version/platform index</p>
   &lt;b&gt;&lt;%=h spec[&quot;name&quot;]%&gt; &lt;%=h spec[&quot;version&quot;]%&gt;&lt;/b&gt;
 
   &lt;% if spec[&quot;ri_installed&quot;] || spec[&quot;rdoc_installed&quot;] then %&gt;
-    &lt;a href=&quot;&lt;%=u spec[&quot;doc_path&quot;]%&gt;&quot;&gt;[rdoc]&lt;/a&gt;
+    &lt;a href=&quot;&lt;%=spec[&quot;doc_path&quot;]%&gt;&quot;&gt;[rdoc]&lt;/a&gt;
   &lt;% else %&gt;
     &lt;span title=&quot;rdoc not installed&quot;&gt;[rdoc]&lt;/span&gt;
   &lt;% end %&gt;
 
   &lt;% if spec[&quot;homepage&quot;] then %&gt;
-    &lt;a href=&quot;&lt;%=u spec[&quot;homepage&quot;]%&gt;&quot; title=&quot;&lt;%=h spec[&quot;homepage&quot;]%&gt;&quot;&gt;[www]&lt;/a&gt;
+    &lt;a href=&quot;&lt;%=uri_encode spec[&quot;homepage&quot;]%&gt;&quot; title=&quot;&lt;%=h spec[&quot;homepage&quot;]%&gt;&quot;&gt;[www]&lt;/a&gt;
   &lt;% else %&gt;
     &lt;span title=&quot;no homepage available&quot;&gt;[www]&lt;/span&gt;
   &lt;% end %&gt;
 
   &lt;% if spec[&quot;has_deps&quot;] then %&gt;
    - depends on
-    &lt;%= spec[&quot;dependencies&quot;].map { |v| &quot;&lt;a href=\&quot;##{u v[&quot;name&quot;]}&gt;#{h v[&quot;name&quot;]}&lt;/a&gt;&quot; }.join &#39;, &#39; %&gt;.
+    &lt;%= spec[&quot;dependencies&quot;].map { |v| &quot;&lt;a href=\&quot;##{u v[&quot;name&quot;]}\&quot;&gt;#{h v[&quot;name&quot;]}&lt;/a&gt;&quot; }.join &#39;, &#39; %&gt;.
   &lt;% end %&gt;
   &lt;/dt&gt;
   &lt;dd&gt;
@@ -228,7 +228,7 @@ name/version/platform index</p>
 
   </div>
 </div>
-    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L131-L339'># File 'lib/rubygems/server.rb', line 131</a>    <pre class='code ruby'><span class='heredoc_beg'>&lt;&lt;-CSS</span>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L132-L340'># File 'lib/rubygems/server.rb', line 132</a>    <pre class='code ruby'><span class='heredoc_beg'>&lt;&lt;-CSS</span>
 <span class='tstring_content'>body {
   font-family: Verdana,Arial,Helvetica,sans-serif;
   font-size:   90%;
@@ -441,7 +441,7 @@ div.method-source-code pre { color: #ffdead; overflow: hidden; }
   <li>
     <span id='RDOC_NO_DOCUMENTATION-constant' class='summary_signature'>RDOC_NO_DOCUMENTATION =</span>
     <br/>
-    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L341-L373'># File 'lib/rubygems/server.rb', line 341</a>    <pre class='code ruby'><span class='heredoc_beg'>&lt;&lt;-&#39;ERB&#39;</span>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L342-L374'># File 'lib/rubygems/server.rb', line 342</a>    <pre class='code ruby'><span class='heredoc_beg'>&lt;&lt;-&#39;ERB&#39;</span>
 <span class='tstring_content'>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
 &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
         &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
@@ -478,7 +478,7 @@ div.method-source-code pre { color: #ffdead; overflow: hidden; }
   <li>
     <span id='RDOC_SEARCH_TEMPLATE-constant' class='summary_signature'>RDOC_SEARCH_TEMPLATE =</span>
     <br/>
-    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L375-L424'># File 'lib/rubygems/server.rb', line 375</a>    <pre class='code ruby'><span class='heredoc_beg'>&lt;&lt;-&#39;ERB&#39;</span>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L376-L425'># File 'lib/rubygems/server.rb', line 376</a>    <pre class='code ruby'><span class='heredoc_beg'>&lt;&lt;-&#39;ERB&#39;</span>
 <span class='tstring_content'>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
 &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
         &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
@@ -532,7 +532,7 @@ div.method-source-code pre { color: #ffdead; overflow: hidden; }
   <li>
     <span id='SEARCH-constant' class='summary_signature'>SEARCH =</span>
     <br/>
-    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L37-L45'># File 'lib/rubygems/server.rb', line 37</a>    <pre class='code ruby'><span class='heredoc_beg'>&lt;&lt;-ERB</span>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L38-L46'># File 'lib/rubygems/server.rb', line 38</a>    <pre class='code ruby'><span class='heredoc_beg'>&lt;&lt;-ERB</span>
 <span class='tstring_content'>    &lt;form class=&quot;headerSearch&quot; name=&quot;headerSearchForm&quot; method=&quot;get&quot; action=&quot;/rdoc&quot;&gt;
       &lt;div id=&quot;search&quot; style=&quot;float:right&quot;&gt;
         &lt;label for=&quot;q&quot;&gt;Filter/Search&lt;/label&gt;
@@ -670,6 +670,11 @@ pattern was found.</p></div>
       <a href="#specs-instance_method" title="#specs (instance method)">#<strong>specs</strong>(req, res)  </a>
     </span>
   </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#uri_encode-instance_method" title="#uri_encode (instance method)">#<strong>uri_encode</strong>(str)  </a>
+    </span>
+  </li>
 </ul>
 
 <h3 class='inherited'><a href="UserInteraction.html" title="Gem::UserInteraction (module)">UserInteraction</a> - Included</h3>
@@ -742,12 +747,11 @@ true.</p></div></td>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L431-L450'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L432-L451'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-431
 432
 433
 434
@@ -766,9 +770,10 @@ true.</p></div></td>
 447
 448
 449
-450</pre>
+450
+451</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 431</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 432</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_gem_dirs'>gem_dirs</span><span class='comma'>,</span> <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='id identifier rubyid_daemon'>daemon</span><span class='comma'>,</span> <span class='id identifier rubyid_launch'>launch</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_addresses'>addresses</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -801,17 +806,17 @@ true.</p></div></td>
   <h3 class='signature  first'>
     .<strong>run</strong>(options)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L426-L429'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L427-L430'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-426
 427
 428
-429</pre>
+429
+430</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 426</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 427</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -828,17 +833,17 @@ true.</p></div></td>
   <h3 class='signature ro first'>
     #<strong>have_rdoc_4_plus?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L466-L469'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L473-L476'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-466
-467
-468
-469</pre>
+473
+474
+475
+476</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 466</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 473</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_have_rdoc_4_plus?'>have_rdoc_4_plus?</span>
@@ -854,14 +859,14 @@ true.</p></div></td>
   <h3 class='signature ro'>
     #<strong>spec_dirs</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L32-L32'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L33-L33'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-32</pre>
+33</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 32</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 33</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_spec_dirs'>spec_dirs</span>
@@ -875,18 +880,18 @@ true.</p></div></td>
   <h3 class='signature  first'>
     #<strong>add_date</strong>(res)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L452-L456'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L453-L457'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-452
 453
 454
 455
-456</pre>
+456
+457</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 452</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 453</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_date'>add_date</span> <span class='id identifier rubyid_res'>res</span>
@@ -903,20 +908,20 @@ true.</p></div></td>
   <h3 class='signature '>
     #<strong>doc_root</strong>(gem_name)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L458-L464'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L465-L471'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-458
-459
-460
-461
-462
-463
-464</pre>
+465
+466
+467
+468
+469
+470
+471</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 458</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 465</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_doc_root'>doc_root</span> <span class='id identifier rubyid_gem_name'>gem_name</span>
@@ -935,18 +940,11 @@ true.</p></div></td>
   <h3 class='signature '>
     #<strong>latest_specs</strong>(req, res)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L471-L499'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L478-L506'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-471
-472
-473
-474
-475
-476
-477
 478
 479
 480
@@ -968,9 +966,16 @@ true.</p></div></td>
 496
 497
 498
-499</pre>
+499
+500
+501
+502
+503
+504
+505
+506</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 471</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 478</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_latest_specs'>latest_specs</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
@@ -1011,23 +1016,23 @@ true.</p></div></td>
   <h3 class='signature '>
     #<strong>launch</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L857-L866'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L864-L873'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-857
-858
-859
-860
-861
-862
-863
 864
 865
-866</pre>
+866
+867
+868
+869
+870
+871
+872
+873</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 857</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 864</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_launch'>launch</span>
@@ -1057,18 +1062,11 @@ given a server socket for all interfaces is created.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L505-L530'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L512-L537'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-505
-506
-507
-508
-509
-510
-511
 512
 513
 514
@@ -1087,9 +1085,16 @@ given a server socket for all interfaces is created.</p>
 527
 528
 529
-530</pre>
+530
+531
+532
+533
+534
+535
+536
+537</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 505</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 512</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_listen'>listen</span> <span class='id identifier rubyid_addresses'>addresses</span> <span class='op'>=</span> <span class='ivar'>@addresses</span>
@@ -1127,18 +1132,11 @@ given a server socket for all interfaces is created.</p>
   <h3 class='signature '>
     #<strong>prerelease_specs</strong>(req, res)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L532-L560'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L539-L567'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-532
-533
-534
-535
-536
-537
-538
 539
 540
 541
@@ -1160,9 +1158,16 @@ given a server socket for all interfaces is created.</p>
 557
 558
 559
-560</pre>
+560
+561
+562
+563
+564
+565
+566
+567</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 532</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 539</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_prerelease_specs'>prerelease_specs</span> <span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span>
@@ -1203,18 +1208,11 @@ given a server socket for all interfaces is created.</p>
   <h3 class='signature '>
     #<strong>quick</strong>(req, res)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L562-L596'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L569-L603'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-562
-563
-564
-565
-566
-567
-568
 569
 570
 571
@@ -1242,9 +1240,16 @@ given a server socket for all interfaces is created.</p>
 593
 594
 595
-596</pre>
+596
+597
+598
+599
+600
+601
+602
+603</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 562</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 569</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quick'>quick</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
@@ -1337,23 +1342,23 @@ sudo apt-get source ruby</code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L719-L728'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L726-L735'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-719
-720
-721
-722
-723
-724
-725
 726
 727
-728</pre>
+728
+729
+730
+731
+732
+733
+734
+735</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 719</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 726</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rdoc'>rdoc</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
@@ -1388,18 +1393,11 @@ sudo apt-get source ruby</code></pre>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L598-L683'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L605-L690'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-598
-599
-600
-601
-602
-603
-604
 605
 606
 607
@@ -1478,9 +1476,16 @@ sudo apt-get source ruby</code></pre>
 680
 681
 682
-683</pre>
+683
+684
+685
+686
+687
+688
+689
+690</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 598</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 605</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_root'><a href="../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
@@ -1578,18 +1583,11 @@ sudo apt-get source ruby</code></pre>
   <h3 class='signature '>
     #<strong>run</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L776-L829'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L783-L836'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-776
-777
-778
-779
-780
-781
-782
 783
 784
 785
@@ -1636,9 +1634,16 @@ sudo apt-get source ruby</code></pre>
 826
 827
 828
-829</pre>
+829
+830
+831
+832
+833
+834
+835
+836</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 776</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 783</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span>
@@ -1716,18 +1721,11 @@ Ruby core documentation - just put it underneath the main doc folder.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L745-L774'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L752-L781'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-745
-746
-747
-748
-749
-750
-751
 752
 753
 754
@@ -1750,9 +1748,16 @@ Ruby core documentation - just put it underneath the main doc folder.</p>
 771
 772
 773
-774</pre>
+774
+775
+776
+777
+778
+779
+780
+781</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 745</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 752</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show_rdoc_for_pattern'>show_rdoc_for_pattern</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
@@ -1794,18 +1799,11 @@ Ruby core documentation - just put it underneath the main doc folder.</p>
   <h3 class='signature '>
     #<strong>specs</strong>(req, res)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/server.rb#L831-L855'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L838-L862'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-831
-832
-833
-834
-835
-836
-837
 838
 839
 840
@@ -1823,9 +1821,16 @@ Ruby core documentation - just put it underneath the main doc folder.</p>
 852
 853
 854
-855</pre>
+855
+856
+857
+858
+859
+860
+861
+862</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/rubygems/server.rb', line 831</span></pre>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 838</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_specs'>specs</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
@@ -1851,6 +1856,34 @@ Ruby core documentation - just put it underneath the main doc folder.</p>
     <span class='id identifier rubyid_res'>res</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>content-length</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_specs'>specs</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_specs'>specs</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="uri_encode-instance_method">
+  <h3 class='signature '>
+    #<strong>uri_encode</strong>(str)  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/server.rb#L459-L463'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+459
+460
+461
+462
+463</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'lib/rubygems/server.rb', line 459</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_uri_encode'>uri_encode</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_str'>str</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='const'>URI</span><span class='op'>::</span><span class='const'>UNSAFE</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_match'>match</span><span class='op'>|</span>
+    <span class='id identifier rubyid_match'>match</span><span class='period'>.</span><span class='id identifier rubyid_each_byte'>each_byte</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%%%02X</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_ord'>ord</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>

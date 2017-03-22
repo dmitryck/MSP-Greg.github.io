@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: Symbol &mdash; Core Ruby-2.4.0 p0</title>
+<title>Class: Symbol &mdash; Core Ruby-2.4.1 p110</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Ruby-2.4.0</a> &raquo; 
+        <a href='../index.html'>Ruby-2.4.1</a> &raquo; 
         <a href='index.html'>Core</a> &raquo; 
         <a href='_index.html#alpha_S'>Index (S)</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Symbol&nbsp;&#x25B2;</a></span>
@@ -89,7 +89,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/string.c#L10087'>string.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/symbol.c#L813'>symbol.c</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/string.c#L10231'>string.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/symbol.c#L805'>symbol.c</a></span>
       </td>
     </tr>
   </tbody>
@@ -202,7 +202,7 @@ symbols.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#capitalize-instance_method" title="#capitalize (instance method)">#<strong>capitalize</strong>([options])  &#x21d2; Symbol </a>
+      <a href="#capitalize-instance_method" title="#capitalize (instance method)">#<strong>capitalize</strong>  &#x21d2; Symbol </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Same as <code>sym.to_s.capitalize.intern</code>.</p></div>
@@ -210,24 +210,24 @@ symbols.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#casecmp-instance_method" title="#casecmp (instance method)">#<strong>casecmp</strong>(other)  &#x21d2; 1, ... </a>
+      <a href="#casecmp-instance_method" title="#casecmp (instance method)">#<strong>casecmp</strong>(other_symbol)  &#x21d2; 1, ... </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Case-insensitive version of <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&lt;=&gt;</a>.</p></div>
+      <div class='inline'><p>Case-insensitive version of <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&amp;lt;=&amp;gt;</a>.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#casecmp%3F-instance_method" title="#casecmp? (instance method)">#<strong>casecmp?</strong>(other)  &#x21d2; true, ... </a>
+      <a href="#casecmp%3F-instance_method" title="#casecmp? (instance method)">#<strong>casecmp?</strong>(other_symbol)  &#x21d2; true, ... </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Returns true if sym and other are equal after Unicode case folding, false
-if they are not equal, and nil if other is not a symbol.</p></div>
+      <div class='inline'><p>Returns <code>true</code> if <code>sym</code> and <code>other_symbol</code> are equal after Unicode case
+folding, <code>false</code> if they are not equal.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#downcase-instance_method" title="#downcase (instance method)">#<strong>downcase</strong>([options])  &#x21d2; Symbol </a>
+      <a href="#downcase-instance_method" title="#downcase (instance method)">#<strong>downcase</strong>  &#x21d2; Symbol </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Same as <code>sym.to_s.downcase.intern</code>.</p></div>
@@ -326,7 +326,7 @@ if they are not equal, and nil if other is not a symbol.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#swapcase-instance_method" title="#swapcase (instance method)">#<strong>swapcase</strong>([options])  &#x21d2; Symbol </a>
+      <a href="#swapcase-instance_method" title="#swapcase (instance method)">#<strong>swapcase</strong>  &#x21d2; Symbol </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Same as <code>sym.to_s.swapcase.intern</code>.</p></div>
@@ -360,7 +360,7 @@ if they are not equal, and nil if other is not a symbol.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#upcase-instance_method" title="#upcase (instance method)">#<strong>upcase</strong>([options])  &#x21d2; Symbol </a>
+      <a href="#upcase-instance_method" title="#upcase (instance method)">#<strong>upcase</strong>  &#x21d2; Symbol </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Same as <code>sym.to_s.upcase.intern</code>.</p></div>
@@ -372,40 +372,40 @@ if they are not equal, and nil if other is not a symbol.</p></div>
 <div class='inherited'><table class='inherited'>
   <tbody>
     <tr class='i_ds'>
-      <td><a class='i_m ' href="Comparable.html#<-instance_method" title="Comparable#&lt; (method)">#<</a></td>
-      <td><div class='inline'><p>Compares two objects based on the receiver&#39;s <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&lt;=&gt;</a> method,
+      <td><a class='i_m ' href="Comparable.html#<-instance_method" title="Comparable#&lt; (method)">#&lt;</a></td>
+      <td><div class='inline'><p>Compares two objects based on the receiver&#39;s <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&amp;lt;=&amp;gt;</a> method,
 returning true if it returns -1.</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m ' href="Comparable.html#<=-instance_method" title="Comparable#&lt;= (method)">#<=</a></td>
-      <td><div class='inline'><p>Compares two objects based on the receiver&#39;s <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&lt;=&gt;</a> method,
+      <td><a class='i_m ' href="Comparable.html#<=-instance_method" title="Comparable#&lt;= (method)">#&lt;=</a></td>
+      <td><div class='inline'><p>Compares two objects based on the receiver&#39;s <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&amp;lt;=&amp;gt;</a> method,
 returning true if it returns -1 or 0.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Comparable.html#==-instance_method" title="Comparable#== (method)">#==</a></td>
-      <td><div class='inline'><p>Compares two objects based on the receiver&#39;s <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&lt;=&gt;</a> method,
+      <td><div class='inline'><p>Compares two objects based on the receiver&#39;s <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&amp;lt;=&amp;gt;</a> method,
 returning true if it returns 0.</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m ' href="Comparable.html#>-instance_method" title="Comparable#&gt; (method)">#></a></td>
-      <td><div class='inline'><p>Compares two objects based on the receiver&#39;s <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&lt;=&gt;</a> method,
+      <td><a class='i_m ' href="Comparable.html#>-instance_method" title="Comparable#&gt; (method)">#&gt;</a></td>
+      <td><div class='inline'><p>Compares two objects based on the receiver&#39;s <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&amp;lt;=&amp;gt;</a> method,
 returning true if it returns 1.</p></div></td>
     </tr>
     <tr class='i_ds'>
-      <td><a class='i_m ' href="Comparable.html#>=-instance_method" title="Comparable#&gt;= (method)">#>=</a></td>
-      <td><div class='inline'><p>Compares two objects based on the receiver&#39;s <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&lt;=&gt;</a> method,
+      <td><a class='i_m ' href="Comparable.html#>=-instance_method" title="Comparable#&gt;= (method)">#&gt;=</a></td>
+      <td><div class='inline'><p>Compares two objects based on the receiver&#39;s <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&amp;lt;=&amp;gt;</a> method,
 returning true if it returns 0 or 1.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Comparable.html#between%3F-instance_method" title="Comparable#between? (method)">#between?</a></td>
-      <td><div class='inline'><p>Returns <code>false</code> if <em>obj</em> <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&lt;=&gt;</a> <em>min</em> is less than zero
-or if <em>anObject</em> <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&lt;=&gt;</a> <em>max</em> is greater than zero,
+      <td><div class='inline'><p>Returns <code>false</code> if <em>obj</em> <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&amp;lt;=&amp;gt;</a> <em>min</em> is less than zero
+or if <em>anObject</em> <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&amp;lt;=&amp;gt;</a> <em>max</em> is greater than zero,
 <code>true</code> otherwise.</p></div></td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Comparable.html#clamp-instance_method" title="Comparable#clamp (method)">#clamp</a></td>
-      <td><div class='inline'><p>Returns <em>min</em> if <em>obj</em> <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&lt;=&gt;</a> <em>min</em> is less than
-zero, <em>max</em> if <em>obj</em> <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&lt;=&gt;</a> <em>max</em> is greater than
+      <td><div class='inline'><p>Returns <em>min</em> if <em>obj</em> <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&amp;lt;=&amp;gt;</a> <em>min</em> is less than
+zero, <em>max</em> if <em>obj</em> <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&amp;lt;=&amp;gt;</a> <em>max</em> is greater than
 zero and <em>obj</em> otherwise.</p></div></td>
     </tr>
   </tbody>
@@ -455,12 +455,12 @@ Symbol.all_symbols[1,20]   #=&gt; [:floor, :ARGV, :Binding, :symlink,
   <div class='discussion'>
     
 <p>Compares <code>symbol</code> with <code>other_symbol</code> after calling <a href="#to_s-instance_method" title="Symbol#to_s (method)">#to_s</a> on each of the
-symbols. Returns -1, 0, +1 or nil depending on whether <code>symbol</code> is less
+symbols. Returns -1, 0, +1, or <code>nil</code> depending on whether <code>symbol</code> is less
 than, equal to, or greater than <code>other_symbol</code>.</p>
 
-<pre class="code ruby"><code class="ruby">{nil} is returned if the two values are incomparable.</code></pre>
+<p><code>nil</code> is returned if the two values are incomparable.</p>
 
-<p>See <a href="String.html#<=>-instance_method" title="String#&lt;=&gt; (method)">String#&lt;=&gt;</a> for more information.</p>
+<p>See <a href="String.html#<=>-instance_method" title="String#&lt;=&gt; (method)">String#&amp;lt;=&amp;gt;</a> for more information.</p>
 
   </div>
 </div>
@@ -518,7 +518,11 @@ than, equal to, or greater than <code>other_symbol</code>.</p>
 
 <section class='method_details' id="capitalize-instance_method">
   <h3 class='signature '>
-    #<strong>capitalize</strong>([options])  &#x21d2; <code>Symbol</code>   </h3>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>capitalize</strong>  &#x21d2; <code>Symbol</code> </span>
+      <span class='overload'>#<strong>capitalize</strong>([options])  &#x21d2; <code>Symbol</code> </span>
+    </div>
+  </h3>
 <div class='docstring'>
   <div class='discussion'>
     
@@ -526,18 +530,31 @@ than, equal to, or greater than <code>other_symbol</code>.</p>
 
   </div>
 </div>
-
+<div class='tags'>
+  
+</div>
 </section>
 
 <section class='method_details' id="casecmp-instance_method">
   <h3 class='signature '>
-    #<strong>casecmp</strong>(other)  &#x21d2; <code>1</code>, ...   </h3>
+    #<strong>casecmp</strong>(other_symbol)  &#x21d2; <code>1</code>, ...   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Case-insensitive version of <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&lt;=&gt;</a>. Currently,
+<p>Case-insensitive version of <a href="#<=>-instance_method" title="Symbol#&lt;=&gt; (method)">#&amp;lt;=&amp;gt;</a>. Currently,
 case-insensitivity only works on characters A-Z/a-z, not all of Unicode.
 This is different from <a href="#casecmp%3F-instance_method" title="Symbol#casecmp? (method)">#casecmp?</a>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='symbeg'>:</span><span class='id identifier rubyid_aBcDeF'>aBcDeF</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcde'>abcde</span><span class='rparen'>)</span>     <span class='comment'>#=&gt; 1
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_aBcDeF'>aBcDeF</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcdef'>abcdef</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; 0
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_aBcDeF'>aBcDeF</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcdefg'>abcdefg</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; -1
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcdef'>abcdef</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='const'>ABCDEF</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; 0</span></code></pre>
+
+<p><code>nil</code> is returned if the two symbols have incompatible encodings, or if
+<code>other_symbol</code> is not a symbol.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='symbeg'>:</span><span class='id identifier rubyid_foo'>foo</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; nil
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\u{e4 f6 fc}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_encode'>encode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ISO-8859-1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='symbeg'>:&quot;</span><span class='tstring_content'>\u{c4 d6 dc}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; nil</span></code></pre>
 
   </div>
 </div>
@@ -546,12 +563,24 @@ This is different from <a href="#casecmp%3F-instance_method" title="Symbol#casec
 
 <section class='method_details' id="casecmp?-instance_method">
   <h3 class='signature '>
-    #<strong>casecmp?</strong>(other)  &#x21d2; <code>true</code>, ...   </h3>
+    #<strong>casecmp?</strong>(other_symbol)  &#x21d2; <code>true</code>, ...   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Returns true if sym and other are equal after Unicode case folding, false
-if they are not equal, and nil if other is not a symbol.</p>
+<p>Returns <code>true</code> if <code>sym</code> and <code>other_symbol</code> are equal after Unicode case
+folding, <code>false</code> if they are not equal.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='symbeg'>:</span><span class='id identifier rubyid_aBcDeF'>aBcDeF</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcde'>abcde</span><span class='rparen'>)</span>     <span class='comment'>#=&gt; false
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_aBcDeF'>aBcDeF</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcdef'>abcdef</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; true
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_aBcDeF'>aBcDeF</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcdefg'>abcdefg</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; false
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_abcdef'>abcdef</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='const'>ABCDEF</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; true
+</span><span class='symbeg'>:&quot;</span><span class='tstring_content'>\u{e4 f6 fc}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='symbeg'>:&quot;</span><span class='tstring_content'>\u{c4 d6 dc}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; true</span></code></pre>
+
+<p><code>nil</code> is returned if the two symbols have incompatible encodings, or if
+<code>other_symbol</code> is not a symbol.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='symbeg'>:</span><span class='id identifier rubyid_foo'>foo</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; nil
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\u{e4 f6 fc}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_encode'>encode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ISO-8859-1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='symbeg'>:&quot;</span><span class='tstring_content'>\u{c4 d6 dc}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; nil</span></code></pre>
 
   </div>
 </div>
@@ -560,7 +589,11 @@ if they are not equal, and nil if other is not a symbol.</p>
 
 <section class='method_details' id="downcase-instance_method">
   <h3 class='signature '>
-    #<strong>downcase</strong>([options])  &#x21d2; <code>Symbol</code>   </h3>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>downcase</strong>  &#x21d2; <code>Symbol</code> </span>
+      <span class='overload'>#<strong>downcase</strong>([options])  &#x21d2; <code>Symbol</code> </span>
+    </div>
+  </h3>
 <div class='docstring'>
   <div class='discussion'>
     
@@ -568,7 +601,9 @@ if they are not equal, and nil if other is not a symbol.</p>
 
   </div>
 </div>
-
+<div class='tags'>
+  
+</div>
 </section>
 
 <section class='method_details' id="encoding-instance_method">
@@ -760,7 +795,11 @@ if they are not equal, and nil if other is not a symbol.</p>
 
 <section class='method_details' id="swapcase-instance_method">
   <h3 class='signature '>
-    #<strong>swapcase</strong>([options])  &#x21d2; <code>Symbol</code>   </h3>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>swapcase</strong>  &#x21d2; <code>Symbol</code> </span>
+      <span class='overload'>#<strong>swapcase</strong>([options])  &#x21d2; <code>Symbol</code> </span>
+    </div>
+  </h3>
 <div class='docstring'>
   <div class='discussion'>
     
@@ -768,7 +807,9 @@ if they are not equal, and nil if other is not a symbol.</p>
 
   </div>
 </div>
-
+<div class='tags'>
+  
+</div>
 </section>
 
 <section class='method_details' id="to_proc-instance_method">
@@ -800,7 +841,8 @@ if they are not equal, and nil if other is not a symbol.</p>
     
 <p>Returns the name or string corresponding to <em>sym</em>.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='symbeg'>:</span><span class='id identifier rubyid_fred'>fred</span><span class='period'>.</span><span class='id identifier rubyid_id2name'>id2name</span>   <span class='comment'>#=&gt; &quot;fred&quot;</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='symbeg'>:</span><span class='id identifier rubyid_fred'>fred</span><span class='period'>.</span><span class='id identifier rubyid_id2name'>id2name</span>   <span class='comment'>#=&gt; &quot;fred&quot;
+</span><span class='symbeg'>:</span><span class='id identifier rubyid_ginger'>ginger</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>    <span class='comment'>#=&gt; &quot;ginger&quot;</span></code></pre>
 
   </div>
 </div>
@@ -830,7 +872,11 @@ if they are not equal, and nil if other is not a symbol.</p>
 
 <section class='method_details' id="upcase-instance_method">
   <h3 class='signature '>
-    #<strong>upcase</strong>([options])  &#x21d2; <code>Symbol</code>   </h3>
+    <div class='inline-block'>
+      <span class='overload'>#<strong>upcase</strong>  &#x21d2; <code>Symbol</code> </span>
+      <span class='overload'>#<strong>upcase</strong>([options])  &#x21d2; <code>Symbol</code> </span>
+    </div>
+  </h3>
 <div class='docstring'>
   <div class='discussion'>
     
@@ -838,7 +884,9 @@ if they are not equal, and nil if other is not a symbol.</p>
 
   </div>
 </div>
-
+<div class='tags'>
+  
+</div>
 </section>
 
 

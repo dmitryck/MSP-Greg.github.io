@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Extension.ja &mdash; Ruby-2.4.0</title>
+<title>File: Extension.ja &mdash; Ruby-2.4.1</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Ruby-2.4.0</a> &raquo; 
+        <a href='index.html'>Ruby-2.4.1</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Extension.ja&nbsp;&#x25B2;</a></span>
             </div>
@@ -67,9 +67,11 @@
 <p># extension.ja.rdoc -  -*- RDoc -*- created at: Mon Aug  7 16:45:54 JST
 1995</p>
 
+<h1 id="label-Ruby-E3-81-AE-E6-8B-A1-E5-BC-B5-E3-83-A9-E3-82-A4-E3-83-96-E3-83-A9-E3-83-AA-E3-81-AE-E4-BD-9C-E3-82-8A-E6-96-B9">Rubyの拡張ライブラリの作り方</h1>
+
 <p>Rubyの拡張ライブラリの作り方を説明します．</p>
 
-<h1 id="label-E5-9F-BA-E7-A4-8E-E7-9F-A5-E8-AD-98">基礎知識</h1>
+<h2 id="label-E5-9F-BA-E7-A4-8E-E7-9F-A5-E8-AD-98">基礎知識</h2>
 
 <p>Cの変数には型があり，データには型がありません．ですから，た とえばポインタをintの変数に代入すると，その値は整数として取
 り扱われます．逆にRubyの変数には型がなく，データに型がありま す．この違いのため，CとRubyは相互に変換しなければ，お互いの
@@ -87,7 +89,7 @@
 
 <p>の両方が必要です．(1)を忘れると間違ったデータの変換が行われ て，最悪プログラムがcore dumpします．</p>
 
-<h2 id="label-E3-83-87-E3-83-BC-E3-82-BF-E3-82-BF-E3-82-A4-E3-83-97">データタイプ</h2>
+<h3 id="label-E3-83-87-E3-83-BC-E3-82-BF-E3-82-BF-E3-82-A4-E3-83-97">データタイプ</h3>
 
 <p>Rubyにはユーザが使う可能性のある以下のタイプがあります．</p>
 <dl class="rdoc-list note-list"><dt>T_NIL      
@@ -159,7 +161,7 @@
 
 <p>ほとんどのタイプはCの構造体で実装されています．</p>
 
-<h2 id="label-VALUE-E3-81-AE-E3-83-87-E3-83-BC-E3-82-BF-E3-82-BF-E3-82-A4-E3-83-97-E3-82-92-E3-83-81-E3-82-A7-E3-83-83-E3-82-AF-E3-81-99-E3-82-8B">VALUEのデータタイプをチェックする</h2>
+<h3 id="label-VALUE-E3-81-AE-E3-83-87-E3-83-BC-E3-82-BF-E3-82-BF-E3-82-A4-E3-83-97-E3-82-92-E3-83-81-E3-82-A7-E3-83-83-E3-82-AF-E3-81-99-E3-82-8B">VALUEのデータタイプをチェックする</h3>
 
 <p>ruby.hではTYPE()というマクロが定義されていて，VALUEのデータ タイプを知ることが出来ます．TYPE()マクロは上で紹介したT_XXXX
 の形式の定数を返します．VALUEのデータタイプに応じて処理する 場合には，TYPE()の値で分岐することになります．</p>
@@ -192,7 +194,7 @@
 <pre class="code ruby"><code class="ruby"><span class='const'>FIXNUM_P</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
 <span class='const'>NIL_P</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span></code></pre>
 
-<h2 id="label-VALUE-E3-82-92C-E3-81-AE-E3-83-87-E3-83-BC-E3-82-BF-E3-81-AB-E5-A4-89-E6-8F-9B-E3-81-99-E3-82-8B">VALUEをCのデータに変換する</h2>
+<h3 id="label-VALUE-E3-82-92C-E3-81-AE-E3-83-87-E3-83-BC-E3-82-BF-E3-81-AB-E5-A4-89-E6-8F-9B-E3-81-99-E3-82-8B">VALUEをCのデータに変換する</h3>
 
 <p>データタイプがT_NIL，T_FALSE，T_TRUEである時，データはそれぞ
 れnil，false，trueです．このデータタイプのオブジェクトはひと つずつしか存在しません．</p>
@@ -232,7 +234,7 @@ char*として得るためには「RSTRING_PTR(str)」とします．</p>
 <p>Rubyの構造体を直接アクセスする時に気をつけなければならないこ とは，配列や文字列の構造体の中身は参照するだけで，直接変更し
 ないことです．直接変更した場合，オブジェクトの内容の整合性が とれなくなって，思わぬバグの原因になります．</p>
 
-<h2 id="label-C-E3-81-AE-E3-83-87-E3-83-BC-E3-82-BF-E3-82-92VALUE-E3-81-AB-E5-A4-89-E6-8F-9B-E3-81-99-E3-82-8B">CのデータをVALUEに変換する</h2>
+<h3 id="label-C-E3-81-AE-E3-83-87-E3-83-BC-E3-82-BF-E3-82-92VALUE-E3-81-AB-E5-A4-89-E6-8F-9B-E3-81-99-E3-82-8B">CのデータをVALUEに変換する</h3>
 
 <p>VALUEの実際の構造は</p>
 <dl class="rdoc-list note-list"><dt>FIXNUMの場合 
@@ -261,14 +263,14 @@ char*として得るためには「RSTRING_PTR(str)」とします．</p>
 
 <p>INT2NUM()は整数がFIXNUMの範囲に収まらない場合，Bignumに変換 してくれます(が，少し遅い)．</p>
 
-<h2 id="label-Ruby-E3-81-AE-E3-83-87-E3-83-BC-E3-82-BF-E3-82-92-E6-93-8D-E4-BD-9C-E3-81-99-E3-82-8B">Rubyのデータを操作する</h2>
+<h3 id="label-Ruby-E3-81-AE-E3-83-87-E3-83-BC-E3-82-BF-E3-82-92-E6-93-8D-E4-BD-9C-E3-81-99-E3-82-8B">Rubyのデータを操作する</h3>
 
 <p>先程も述べた通り，Rubyの構造体をアクセスする時に内容の更新を 行うことは勧められません．で，Rubyのデータを操作する時には
 Rubyが用意している関数を用いてください．</p>
 
 <p>ここではもっとも使われるであろう文字列と配列の生成/操作を行 う関数をあげます(全部ではないです)．</p>
 
-<h3 id="label-E6-96-87-E5-AD-97-E5-88-97-E3-81-AB-E5-AF-BE-E3-81-99-E3-82-8B-E9-96-A2-E6-95-B0">文字列に対する関数</h3>
+<h4 id="label-E6-96-87-E5-AD-97-E5-88-97-E3-81-AB-E5-AF-BE-E3-81-99-E3-82-8B-E9-96-A2-E6-95-B0">文字列に対する関数</h4>
 <dl class="rdoc-list note-list"><dt>rb_str_new(const char *ptr, long len) 
 <dd>
 <p>新しいRubyの文字列を生成する．</p>
@@ -338,7 +340,7 @@ rb_vsprintf(format, ap)) と同等である．</p>
 lenバイトまでの内容は保存される．lenはstrの容量を越えてい てはならない．</p>
 </dd></dl>
 
-<h3 id="label-E9-85-8D-E5-88-97-E3-81-AB-E5-AF-BE-E3-81-99-E3-82-8B-E9-96-A2-E6-95-B0">配列に対する関数</h3>
+<h4 id="label-E9-85-8D-E5-88-97-E3-81-AB-E5-AF-BE-E3-81-99-E3-82-8B-E9-96-A2-E6-95-B0">配列に対する関数</h4>
 <dl class="rdoc-list note-list"><dt>rb_ary_new() 
 <dd>
 <p>要素が0の配列を生成する．</p>
@@ -383,12 +385,12 @@ lenバイトまでの内容は保存される．lenはstrの容量を越えて�
 <p>配列aryにptrからlen個のオブジェクトを追加する．</p>
 </dd></dl>
 
-<h1 id="label-Ruby-E3-81-AE-E6-A9-9F-E8-83-BD-E3-82-92-E4-BD-BF-E3-81-86">Rubyの機能を使う</h1>
+<h2 id="label-Ruby-E3-81-AE-E6-A9-9F-E8-83-BD-E3-82-92-E4-BD-BF-E3-81-86">Rubyの機能を使う</h2>
 
 <p>原理的にRubyで書けることはCでも書けます．RubyそのものがCで記 述されているんですから，当然といえば当然なんですけど．ここで
 はRubyの拡張に使うことが多いだろうと予測される機能を中心に紹 介します．</p>
 
-<h2 id="label-Ruby-E3-81-AB-E6-A9-9F-E8-83-BD-E3-82-92-E8-BF-BD-E5-8A-A0-E3-81-99-E3-82-8B">Rubyに機能を追加する</h2>
+<h3 id="label-Ruby-E3-81-AB-E6-A9-9F-E8-83-BD-E3-82-92-E8-BF-BD-E5-8A-A0-E3-81-99-E3-82-8B">Rubyに機能を追加する</h3>
 
 <p>Rubyで提供されている関数を使えばRubyインタプリタに新しい機能 を追加することができます．Rubyでは以下の機能を追加する関数が
 提供されています．</p>
@@ -402,7 +404,7 @@ lenバイトまでの内容は保存される．lenはstrの容量を越えて�
 
 <p>では順に紹介します．</p>
 
-<h3 id="label-E3-82-AF-E3-83-A9-E3-82-B9-2F-E3-83-A2-E3-82-B8-E3-83-A5-E3-83-BC-E3-83-AB-E5-AE-9A-E7-BE-A9">クラス/モジュール定義</h3>
+<h4 id="label-E3-82-AF-E3-83-A9-E3-82-B9-2F-E3-83-A2-E3-82-B8-E3-83-A5-E3-83-BC-E3-83-AB-E5-AE-9A-E7-BE-A9">クラス/モジュール定義</h4>
 
 <p>クラスやモジュールを定義するためには，以下の関数を使います．</p>
 
@@ -417,7 +419,7 @@ VALUE rb_define_module(const char *name)</code></pre>
 <pre class="code ruby"><code class="ruby">VALUE rb_define_class_under(VALUE outer, const char *name, VALUE super)
 VALUE rb_define_module_under(VALUE outer, const char *name)</code></pre>
 
-<h3 id="label-E3-83-A1-E3-82-BD-E3-83-83-E3-83-89-2F-E7-89-B9-E7-95-B0-E3-83-A1-E3-82-BD-E3-83-83-E3-83-89-E5-AE-9A-E7-BE-A9">メソッド/特異メソッド定義</h3>
+<h4 id="label-E3-83-A1-E3-82-BD-E3-83-83-E3-83-89-2F-E7-89-B9-E7-95-B0-E3-83-A1-E3-82-BD-E3-83-83-E3-83-89-E5-AE-9A-E7-BE-A9">メソッド/特異メソッド定義</h4>
 
 <p>メソッドや特異メソッドを定義するには以下の関数を使います．</p>
 
@@ -494,7 +496,7 @@ void rb_undef_alloc_func(VALUE klass);</code></pre>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>VALUE</span> <span class='id identifier rubyid_rb_current_receiver'>rb_current_receiver</span><span class='lparen'>(</span><span class='id identifier rubyid_void'>void</span><span class='rparen'>)</span></code></pre>
 
-<h3 id="label-E5-AE-9A-E6-95-B0-E5-AE-9A-E7-BE-A9">定数定義</h3>
+<h4 id="label-E5-AE-9A-E6-95-B0-E5-AE-9A-E7-BE-A9">定数定義</h4>
 
 <p>拡張ライブラリが必要な定数はあらかじめ定義しておいた方が良い でしょう．定数を定義する関数は二つあります．</p>
 
@@ -503,7 +505,7 @@ void rb_define_global_const(const char *name, VALUE val)</code></pre>
 
 <p>前者は特定のクラス/モジュールに属する定数を定義するもの，後 者はグローバルな定数を定義するものです．</p>
 
-<h2 id="label-Ruby-E3-81-AE-E6-A9-9F-E8-83-BD-E3-82-92C-E3-81-8B-E3-82-89-E5-91-BC-E3-81-B3-E5-87-BA-E3-81-99">Rubyの機能をCから呼び出す</h2>
+<h3 id="label-Ruby-E3-81-AE-E6-A9-9F-E8-83-BD-E3-82-92C-E3-81-8B-E3-82-89-E5-91-BC-E3-81-B3-E5-87-BA-E3-81-99">Rubyの機能をCから呼び出す</h3>
 
 <p>既に『1.5 Rubyのデータを操作する』で一部紹介したような関数を 使えば，Rubyの機能を実現している関数を直接呼び出すことが出来 ます．</p>
 
@@ -511,7 +513,7 @@ void rb_define_global_const(const char *name, VALUE val)</code></pre>
 
 <p>それ以外にもRubyの機能を呼び出す方法はいくつかあります．</p>
 
-<h3 id="label-Ruby-E3-81-AE-E3-83-97-E3-83-AD-E3-82-B0-E3-83-A9-E3-83-A0-E3-82-92eval-E3-81-99-E3-82-8B">Rubyのプログラムをevalする</h3>
+<h4 id="label-Ruby-E3-81-AE-E3-83-97-E3-83-AD-E3-82-B0-E3-83-A9-E3-83-A0-E3-82-92eval-E3-81-99-E3-82-8B">Rubyのプログラムをevalする</h4>
 
 <p>CからRubyの機能を呼び出すもっとも簡単な方法として，文字列で 与えられたRubyのプログラムを評価する以下の関数があります．</p>
 
@@ -525,7 +527,7 @@ void rb_define_global_const(const char *name, VALUE val)</code></pre>
 
 <p>この関数はエラーが発生するとnilを返します．そして，成功時には *stateはゼロに，さもなくば非ゼロになります．</p>
 
-<h3 id="label-ID-E3-81-BE-E3-81-9F-E3-81-AF-E3-82-B7-E3-83-B3-E3-83-9C-E3-83-AB">IDまたはシンボル</h3>
+<h4 id="label-ID-E3-81-BE-E3-81-9F-E3-81-AF-E3-82-B7-E3-83-B3-E3-83-9C-E3-83-AB">IDまたはシンボル</h4>
 
 <p>Cから文字列を経由せずにRubyのメソッドを呼び出すこともできま す．その前に，Rubyインタプリタ内でメソッドや変数名を指定する
 時に使われているIDについて説明しておきましょう．</p>
@@ -561,7 +563,7 @@ rb_check_symbol_cstr(const char *ptr, long len, rb_encoding *enc)</code></pre>
 
 <p>これらの関数は，IDの代わりにシンボルを返すことを除けば上記の 関数と同じです．</p>
 
-<h3 id="label-C-E3-81-8B-E3-82-89Ruby-E3-81-AE-E3-83-A1-E3-82-BD-E3-83-83-E3-83-89-E3-82-92-E5-91-BC-E3-81-B3-E5-87-BA-E3-81-99">CからRubyのメソッドを呼び出す</h3>
+<h4 id="label-C-E3-81-8B-E3-82-89Ruby-E3-81-AE-E3-83-A1-E3-82-BD-E3-83-83-E3-83-89-E3-82-92-E5-91-BC-E3-81-B3-E5-87-BA-E3-81-99">CからRubyのメソッドを呼び出す</h4>
 
 <p>Cから文字列を経由せずにRubyのメソッドを呼び出すためには以下 の関数を使います．</p>
 
@@ -575,7 +577,7 @@ VALUE rb_apply(VALUE recv, ID mid, VALUE args)</code></pre>
 
 <p>applyには引数としてRubyの配列を与えます．</p>
 
-<h3 id="label-E5-A4-89-E6-95-B0-2F-E5-AE-9A-E6-95-B0-E3-82-92-E5-8F-82-E7-85-A7-2F-E6-9B-B4-E6-96-B0-E3-81-99-E3-82-8B">変数/定数を参照/更新する</h3>
+<h4 id="label-E5-A4-89-E6-95-B0-2F-E5-AE-9A-E6-95-B0-E3-82-92-E5-8F-82-E7-85-A7-2F-E6-9B-B4-E6-96-B0-E3-81-99-E3-82-8B">変数/定数を参照/更新する</h4>
 
 <p>Cから関数を使って参照・更新できるのは，定数，インスタンス変 数です．大域変数は一部のものはCの大域変数としてアクセスでき
 ます．ローカル変数を参照する方法は公開していません．</p>
@@ -593,11 +595,11 @@ VALUE rb_ivar_set(VALUE obj, ID id, VALUE val)</code></pre>
 
 <p>定数を新しく定義するためには『2.1.3 定数定義』で紹介さ れている関数を使ってください．</p>
 
-<h1 id="label-Ruby-E3-81-A8C-E3-81-A8-E3-81-AE-E6-83-85-E5-A0-B1-E5-85-B1-E6-9C-89">RubyとCとの情報共有</h1>
+<h2 id="label-Ruby-E3-81-A8C-E3-81-A8-E3-81-AE-E6-83-85-E5-A0-B1-E5-85-B1-E6-9C-89">RubyとCとの情報共有</h2>
 
 <p>C言語とRubyの間で情報を共有する方法について解説します．</p>
 
-<h2 id="label-C-E3-81-8B-E3-82-89-E5-8F-82-E7-85-A7-E3-81-A7-E3-81-8D-E3-82-8BRuby-E3-81-AE-E5-AE-9A-E6-95-B0">Cから参照できるRubyの定数</h2>
+<h3 id="label-C-E3-81-8B-E3-82-89-E5-8F-82-E7-85-A7-E3-81-A7-E3-81-8D-E3-82-8BRuby-E3-81-AE-E5-AE-9A-E6-95-B0">Cから参照できるRubyの定数</h3>
 
 <p>以下のRubyの定数はCのレベルから参照できます．</p>
 <dl class="rdoc-list note-list"><dt>Qtrue 
@@ -609,7 +611,7 @@ VALUE rb_ivar_set(VALUE obj, ID id, VALUE val)</code></pre>
 <p>C言語から見た「nil」．</p>
 </dd></dl>
 
-<h2 id="label-C-E3-81-A8Ruby-E3-81-A7-E5-85-B1-E6-9C-89-E3-81-95-E3-82-8C-E3-82-8B-E5-A4-A7-E5-9F-9F-E5-A4-89-E6-95-B0">CとRubyで共有される大域変数</h2>
+<h3 id="label-C-E3-81-A8Ruby-E3-81-A7-E5-85-B1-E6-9C-89-E3-81-95-E3-82-8C-E3-82-8B-E5-A4-A7-E5-9F-9F-E5-A4-89-E6-95-B0">CとRubyで共有される大域変数</h3>
 
 <p>CとRubyで大域変数を使って情報を共有できます．共有できる大域 変数にはいくつかの種類があります．そのなかでもっとも良く使わ
 れると思われるのはrb_define_variable()です．</p>
@@ -650,7 +652,7 @@ void (*setter)(VALUE val, ID id, VALUE *var);</code></pre>
 <pre class="code ruby"><code class="ruby">(*getter)(ID id);
 (*setter)(VALUE val, ID id);</code></pre>
 
-<h2 id="label-C-E3-81-AE-E3-83-87-E3-83-BC-E3-82-BF-E3-82-92Ruby-E3-82-AA-E3-83-96-E3-82-B8-E3-82-A7-E3-82-AF-E3-83-88-E3-81-AB-E3-81-99-E3-82-8B">CのデータをRubyオブジェクトにする</h2>
+<h3 id="label-C-E3-81-AE-E3-83-87-E3-83-BC-E3-82-BF-E3-82-92Ruby-E3-82-AA-E3-83-96-E3-82-B8-E3-82-A7-E3-82-AF-E3-83-88-E3-81-AB-E3-81-99-E3-82-8B">CのデータをRubyオブジェクトにする</h3>
 
 <p>Cの世界で定義されたデータ(構造体)をRubyのオブジェクトとして 取り扱いたい場合がありえます．このような場合はTypedData_XXX
 マクロ群を用いて構造体へのポインタとRubyのオブジェクトとを互 いに変換できます．</p>
@@ -658,7 +660,7 @@ void (*setter)(VALUE val, ID id, VALUE *var);</code></pre>
 <p>– 古い(非Typedな)Data_XXXマクロ群は非推奨になりました． 将来のバージョンのRubyでは古いマクロは動作しなくなる可能性 があります．
 ++</p>
 
-<h3 id="label-E6-A7-8B-E9-80-A0-E4-BD-93-E3-81-8B-E3-82-89-E3-82-AA-E3-83-96-E3-82-B8-E3-82-A7-E3-82-AF-E3-83-88-E3-81-B8">構造体からオブジェクトへ</h3>
+<h4 id="label-E6-A7-8B-E9-80-A0-E4-BD-93-E3-81-8B-E3-82-89-E3-82-AA-E3-83-96-E3-82-B8-E3-82-A7-E3-82-AF-E3-83-88-E3-81-B8">構造体からオブジェクトへ</h4>
 
 <p>構造体へのポインタsvalをRubyオブジェクトに変換するには次のマ クロを使います。</p>
 
@@ -737,7 +739,7 @@ dfreeがRuby内部のロック(GVL)を解放する可能性がない場合はこ
 <p>klass, data_typeはData_Wrap_Structと同じ働きをします．type
 は割り当てるC構造体の型です．割り当てられた構造体は変数sval に代入されます．この変数の型は (type*) である必要があります．</p>
 
-<h3 id="label-E3-82-AA-E3-83-96-E3-82-B8-E3-82-A7-E3-82-AF-E3-83-88-E3-81-8B-E3-82-89-E6-A7-8B-E9-80-A0-E4-BD-93-E3-81-B8">オブジェクトから構造体へ</h3>
+<h4 id="label-E3-82-AA-E3-83-96-E3-82-B8-E3-82-A7-E3-82-AF-E3-83-88-E3-81-8B-E3-82-89-E6-A7-8B-E9-80-A0-E4-BD-93-E3-81-B8">オブジェクトから構造体へ</h4>
 
 <p>TypedData_Wrap_StructやTypedData_Make_Structで生成したオブジェ
 クトから構造体へのポインタを復元するには以下のマクロを用いま す．</p>
@@ -748,19 +750,21 @@ dfreeがRuby内部のロック(GVL)を解放する可能性がない場合はこ
 
 <p>これらのマクロの使い方はちょっと分かりにくいので，後で説明す る例題を参照してください．</p>
 
-<h2 id="label-E3-83-87-E3-82-A3-E3-83-AC-E3-82-AF-E3-83-88-E3-83-AA-E3-82-92-E4-BD-9C-E3-82-8B">ディレクトリを作る</h2>
+<h2 id="label-E4-BE-8B-3A+dbm-E3-81-AE-E6-8B-A1-E5-BC-B5-E3-83-A9-E3-82-A4-E3-83-96-E3-83-A9-E3-83-AA-E3-81-AE-E4-BD-9C-E6-88-90">例: dbmの拡張ライブラリの作成</h2>
+
+<h3 id="label-E3-83-87-E3-82-A3-E3-83-AC-E3-82-AF-E3-83-88-E3-83-AA-E3-82-92-E4-BD-9C-E3-82-8B">ディレクトリを作る</h3>
 
 <pre class="code ruby"><code class="ruby">% mkdir ext/dbm</code></pre>
 
 <p>Ruby 1.1からは任意のディレクトリでダイナミックライブラリを作 ることができるようになりました．Rubyに静的にリンクする場合に
 はRubyを展開したディレクトリの下，extディレクトリの中に拡張 ライブラリ用のディレクトリを作る必要があります．名前は適当に 選んで構いません．</p>
 
-<h2 id="label-E8-A8-AD-E8-A8-88-E3-81-99-E3-82-8B">設計する</h2>
+<h3 id="label-E8-A8-AD-E8-A8-88-E3-81-99-E3-82-8B">設計する</h3>
 
 <p>まあ，当然なんですけど，どういう機能を実現するかどうかまず設 計する必要があります．どんなクラスをつくるか，そのクラスには
 どんなメソッドがあるか，クラスが提供する定数などについて設計 します．</p>
 
-<h2 id="label-C-E3-82-B3-E3-83-BC-E3-83-89-E3-82-92-E6-9B-B8-E3-81-8F">Cコードを書く</h2>
+<h3 id="label-C-E3-82-B3-E3-83-BC-E3-83-89-E3-82-92-E6-9B-B8-E3-81-8F">Cコードを書く</h3>
 
 <p>拡張ライブラリ本体となるC言語のソースを書きます．C言語のソー スがひとつの時には「ライブラリ名.c」を選ぶと良いでしょう．C
 言語のソースが複数の場合には逆に「ライブラリ名.c」というファ イル名は避ける必要があります．オブジェクトファイルとモジュー
@@ -795,7 +799,7 @@ Init_dbm(void)
 
 <p>DBMライブラリはdbmのデータと対応するオブジェクトになるはずで すから，Cの世界のdbmをRubyの世界に取り込む必要があります．</p>
 
-<p>dbm.cではData_Make_Structを以下のように使っています．</p>
+<p>dbm.cではTypedData_Make_Structを以下のように使っています．</p>
 
 <pre class="code ruby"><code class="ruby">struct dbmdata {
     int  di_size;
@@ -874,7 +878,7 @@ thread_initialize(VALUE thread, VALUE args)
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_void'>void</span> <span class='id identifier rubyid_rb_global_variable'>rb_global_variable</span><span class='lparen'>(</span><span class='const'>VALUE</span> <span class='op'>*</span><span class='id identifier rubyid_var'>var</span><span class='rparen'>)</span></code></pre>
 
-<h2 id="label-extconf.rb-E3-82-92-E7-94-A8-E6-84-8F-E3-81-99-E3-82-8B">extconf.rbを用意する</h2>
+<h3 id="label-extconf.rb-E3-82-92-E7-94-A8-E6-84-8F-E3-81-99-E3-82-8B">extconf.rbを用意する</h3>
 
 <p>Makefileを作る場合の雛型になるextconf.rbというファイルを作り ます．extconf.rbはライブラリのコンパイルに必要な条件のチェッ
 クなどを行うことが目的です．まず，</p>
@@ -901,7 +905,7 @@ $objs: リンクされるオブジェクトファイル名のリスト</code></p
 <p>ライブラリをコンパイルする条件が揃わず，そのライブラリをコン パイルしない時にはcreate_makefileを呼ばなければMakefileは生
 成されず，コンパイルも行われません．</p>
 
-<h2 id="label-depend-E3-82-92-E7-94-A8-E6-84-8F-E3-81-99-E3-82-8B">dependを用意する</h2>
+<h3 id="label-depend-E3-82-92-E7-94-A8-E6-84-8F-E3-81-99-E3-82-8B">dependを用意する</h3>
 
 <p>もし，ディレクトリにdependというファイルが存在すれば， Makefileが依存関係をチェックしてくれます．</p>
 
@@ -909,7 +913,7 @@ $objs: リンクされるオブジェクトファイル名のリスト</code></p
 
 <p>などで作ることが出来ます．あって損は無いでしょう．</p>
 
-<h2 id="label-Makefile-E3-82-92-E7-94-9F-E6-88-90-E3-81-99-E3-82-8B">Makefileを生成する</h2>
+<h3 id="label-Makefile-E3-82-92-E7-94-9F-E6-88-90-E3-81-99-E3-82-8B">Makefileを生成する</h3>
 
 <p>Makefileを実際に生成するためには</p>
 
@@ -928,7 +932,7 @@ $objs: リンクされるオブジェクトファイル名のリスト</code></p
 
 <p>ディレクトリをext以下に用意した場合にはRuby全体のmakeの時に 自動的にMakefileが生成されますので，このステップは不要です．</p>
 
-<h2 id="label-make-E3-81-99-E3-82-8B">makeする</h2>
+<h3 id="label-make-E3-81-99-E3-82-8B">makeする</h3>
 
 <p>動的リンクライブラリを生成する場合にはその場でmakeしてくださ い．必要であれば make install でインストールされます．</p>
 
@@ -940,21 +944,21 @@ $objs: リンクされるオブジェクトファイル名のリスト</code></p
 述されたプログラムがあり，Rubyライブラリに置きたい場合には， 拡張ライブラリ用のディレクトリの下に lib というディレクトリ を作り，そこに
 拡張子 .rb のファイルを置いておけば同時にイン ストールされます．</p>
 
-<h2 id="label-E3-83-87-E3-83-90-E3-83-83-E3-82-B0">デバッグ</h2>
+<h3 id="label-E3-83-87-E3-83-90-E3-83-83-E3-82-B0">デバッグ</h3>
 
 <p>まあ，デバッグしないと動かないでしょうね．ext/Setupにディレ クトリ名を書くと静的にリンクするのでデバッガが使えるようにな
 ります．その分コンパイルが遅くなりますけど．</p>
 
-<h2 id="label-E3-81-A7-E3-81-8D-E3-81-82-E3-81-8C-E3-82-8A">できあがり</h2>
+<h3 id="label-E3-81-A7-E3-81-8D-E3-81-82-E3-81-8C-E3-82-8A">できあがり</h3>
 
 <p>後はこっそり使うなり，広く公開するなり，売るなり，ご自由にお 使いください．Rubyの作者は拡張ライブラリに関して一切の権利を 主張しません．</p>
 
-<h1 id="label-Appendix+A.+Ruby-E3-81-AE-E3-82-BD-E3-83-BC-E3-82-B9-E3-82-B3-E3-83-BC-E3-83-89-E3-81-AE-E5-88-86-E9-A1-9E">Appendix A. Rubyのソースコードの分類</h1>
+<h2 id="label-Appendix+A.+Ruby-E3-81-AE-E3-82-BD-E3-83-BC-E3-82-B9-E3-82-B3-E3-83-BC-E3-83-89-E3-81-AE-E5-88-86-E9-A1-9E">Appendix A. Rubyのソースコードの分類</h2>
 
 <p>Rubyのソースはいくつかに分類することが出来ます．このうちクラ スライブラリの部分は基本的に拡張ライブラリと同じ作り方になっ
 ています．これらのソースは今までの説明でほとんど理解できると 思います．</p>
 
-<h2 id="label-Ruby-E8-A8-80-E8-AA-9E-E3-81-AE-E3-82-B3-E3-82-A2">Ruby言語のコア</h2>
+<h3 id="label-Ruby-E8-A8-80-E8-AA-9E-E3-81-AE-E3-82-B3-E3-82-A2">Ruby言語のコア</h3>
 <dl class="rdoc-list note-list"><dt>class.c    
 <dd>
 <p>クラスとモジュール</p>
@@ -975,7 +979,7 @@ $objs: リンクされるオブジェクトファイル名のリスト</code></p
 <p>変数と定数</p>
 </dd></dl>
 
-<h2 id="label-Ruby-E3-81-AE-E6-A7-8B-E6-96-87-E8-A7-A3-E6-9E-90-E5-99-A8">Rubyの構文解析器</h2>
+<h3 id="label-Ruby-E3-81-AE-E6-A7-8B-E6-96-87-E8-A7-A3-E6-9E-90-E5-99-A8">Rubyの構文解析器</h3>
 <dl class="rdoc-list note-list"><dt>parse.y       
 <dd>
 <p>字句解析器と構文定義</p>
@@ -990,7 +994,7 @@ $objs: リンクされるオブジェクトファイル名のリスト</code></p
 <p>自動生成</p>
 </dd></dl>
 
-<h2 id="label-Ruby-E3-81-AE-E8-A9-95-E4-BE-A1-E5-99-A8+-28-E9-80-9A-E7-A7-B0YARV-29">Rubyの評価器 (通称YARV)</h2>
+<h3 id="label-Ruby-E3-81-AE-E8-A9-95-E4-BE-A1-E5-99-A8+-28-E9-80-9A-E7-A7-B0YARV-29">Rubyの評価器 (通称YARV)</h3>
 
 <pre class="code ruby"><code class="ruby">compile.c
 eval.c
@@ -1016,7 +1020,7 @@ defs/opt_operand.def     : 最適化のための定義
   #=&gt; opt*.inc            : 自動生成
   #=&gt; vm.inc              : 自動生成</code></pre>
 
-<h2 id="label-E6-AD-A3-E8-A6-8F-E8-A1-A8-E7-8F-BE-E3-82-A8-E3-83-B3-E3-82-B8-E3-83-B3+-28-E9-AC-BC-E8-BB-8A-29">正規表現エンジン (鬼車)</h2>
+<h3 id="label-E6-AD-A3-E8-A6-8F-E8-A1-A8-E7-8F-BE-E3-82-A8-E3-83-B3-E3-82-B8-E3-83-B3+-28-E9-AC-BC-E8-BB-8A-29">正規表現エンジン (鬼車)</h3>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_regex'>regex</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span>
 <span class='id identifier rubyid_regcomp'>regcomp</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span>
@@ -1026,7 +1030,7 @@ defs/opt_operand.def     : 最適化のための定義
 <span class='id identifier rubyid_regparse'>regparse</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span>
 <span class='id identifier rubyid_regsyntax'>regsyntax</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span></code></pre>
 
-<h2 id="label-E3-83-A6-E3-83-BC-E3-83-86-E3-82-A3-E3-83-AA-E3-83-86-E3-82-A3-E9-96-A2-E6-95-B0">ユーティリティ関数</h2>
+<h3 id="label-E3-83-A6-E3-83-BC-E3-83-86-E3-82-A3-E3-83-AA-E3-83-86-E3-82-A3-E9-96-A2-E6-95-B0">ユーティリティ関数</h3>
 <dl class="rdoc-list note-list"><dt>debug.c    
 <dd>
 <p>Cデバッガ用のデバッグシンボル</p>
@@ -1044,7 +1048,7 @@ defs/opt_operand.def     : 最適化のための定義
 <p>その他のユーティリティ</p>
 </dd></dl>
 
-<h2 id="label-Ruby-E3-82-B3-E3-83-9E-E3-83-B3-E3-83-89-E3-81-AE-E5-AE-9F-E8-A3-85">Rubyコマンドの実装</h2>
+<h3 id="label-Ruby-E3-82-B3-E3-83-9E-E3-83-B3-E3-83-89-E3-81-AE-E5-AE-9F-E8-A3-85">Rubyコマンドの実装</h3>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_dmyext'>dmyext</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span>
 <span class='id identifier rubyid_dmydln'>dmydln</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span>
@@ -1058,7 +1062,7 @@ defs/opt_operand.def     : 最適化のための定義
 <span class='id identifier rubyid_gem_prelude'>gem_prelude</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span>
 <span class='id identifier rubyid_prelude'>prelude</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span></code></pre>
 
-<h2 id="label-E3-82-AF-E3-83-A9-E3-82-B9-E3-83-A9-E3-82-A4-E3-83-96-E3-83-A9-E3-83-AA">クラスライブラリ</h2>
+<h3 id="label-E3-82-AF-E3-83-A9-E3-82-B9-E3-83-A9-E3-82-A4-E3-83-96-E3-83-A9-E3-83-AA">クラスライブラリ</h3>
 <dl class="rdoc-list note-list"><dt>array.c      
 <dd>
 <p>Array</p>
@@ -1145,7 +1149,7 @@ defs/opt_operand.def     : 最適化のための定義
 <p>自動生成</p>
 </dd></dl>
 
-<h2 id="label-E5-A4-9A-E8-A8-80-E8-AA-9E-E5-8C-96">多言語化</h2>
+<h3 id="label-E5-A4-9A-E8-A8-80-E8-AA-9E-E5-8C-96">多言語化</h3>
 <dl class="rdoc-list note-list"><dt>encoding.c  
 <dd>
 <p>Encoding</p>
@@ -1160,24 +1164,24 @@ defs/opt_operand.def     : 最適化のための定義
 <p>コードポイント対応表</p>
 </dd></dl>
 
-<h2 id="label-goruby-E3-82-B3-E3-83-9E-E3-83-B3-E3-83-89-E3-81-AE-E5-AE-9F-E8-A3-85">gorubyコマンドの実装</h2>
+<h3 id="label-goruby-E3-82-B3-E3-83-9E-E3-83-B3-E3-83-89-E3-81-AE-E5-AE-9F-E8-A3-85">gorubyコマンドの実装</h3>
 
 <pre class="code ruby"><code class="ruby">goruby.c
 golf_prelude.rb      : goruby固有のライブラリ
   #=&gt; golf_prelude.c  : 自動生成</code></pre>
 
-<h1 id="label-Appendix+B.+-E6-8B-A1-E5-BC-B5-E7-94-A8-E9-96-A2-E6-95-B0-E3-83-AA-E3-83-95-E3-82-A1-E3-83-AC-E3-83-B3-E3-82-B9">Appendix B. 拡張用関数リファレンス</h1>
+<h2 id="label-Appendix+B.+-E6-8B-A1-E5-BC-B5-E7-94-A8-E9-96-A2-E6-95-B0-E3-83-AA-E3-83-95-E3-82-A1-E3-83-AC-E3-83-B3-E3-82-B9">Appendix B. 拡張用関数リファレンス</h2>
 
 <p>C言語からRubyの機能を利用するAPIは以下の通りである．</p>
 
-<h2 id="label-E5-9E-8B">型</h2>
+<h3 id="label-E5-9E-8B">型</h3>
 <dl class="rdoc-list note-list"><dt>VALUE 
 <dd>
 <p>Rubyオブジェクトを表現する型．必要に応じてキャストして用いる． 組み込み型を表現するCの型はruby.hに記述してあるRで始まる構造
 体である．VALUE型をこれらにキャストするためにRで始まる構造体 名を全て大文字にした名前のマクロが用意されている．</p>
 </dd></dl>
 
-<h2 id="label-E5-A4-89-E6-95-B0-E3-83-BB-E5-AE-9A-E6-95-B0">変数・定数</h2>
+<h3 id="label-E5-A4-89-E6-95-B0-E3-83-BB-E5-AE-9A-E6-95-B0">変数・定数</h3>
 <dl class="rdoc-list note-list"><dt>Qnil 
 <dd>
 <p>定数: nilオブジェクト</p>
@@ -1189,7 +1193,7 @@ golf_prelude.rb      : goruby固有のライブラリ
 <p>定数: falseオブジェクト</p>
 </dd></dl>
 
-<h2 id="label-C-E3-83-87-E3-83-BC-E3-82-BF-E3-81-AE-E3-82-AB-E3-83-97-E3-82-BB-E3-83-AB-E5-8C-96">Cデータのカプセル化</h2>
+<h3 id="label-C-E3-83-87-E3-83-BC-E3-82-BF-E3-81-AE-E3-82-AB-E3-83-97-E3-82-BB-E3-83-AB-E5-8C-96">Cデータのカプセル化</h3>
 <dl class="rdoc-list note-list"><dt>Data_Wrap_Struct(VALUE klass, void (*mark)(), void (*free)(), void *sval) 
 <dd>
 <p>Cの任意のポインタをカプセル化したRubyオブジェクトを返す．こ のポインタがRubyからアクセスされなくなった時，freeで指定した
@@ -1202,7 +1206,7 @@ golf_prelude.rb      : goruby固有のライブラリ
 <p>dataからtype型のポインタを取り出し変数svalに代入するマクロ．</p>
 </dd></dl>
 
-<h2 id="label-E5-9E-8B-E3-83-81-E3-82-A7-E3-83-83-E3-82-AF">型チェック</h2>
+<h3 id="label-E5-9E-8B-E3-83-81-E3-82-A7-E3-83-83-E3-82-AF">型チェック</h3>
 
 <pre class="code ruby"><code class="ruby">RB_TYPE_P(value, type)
 TYPE(value)
@@ -1213,7 +1217,7 @@ RB_FLOAT_TYPE_P(value)
 void Check_Type(VALUE value, int type)
 SafeStringValue(value)</code></pre>
 
-<h2 id="label-E5-9E-8B-E5-A4-89-E6-8F-9B">型変換</h2>
+<h3 id="label-E5-9E-8B-E5-A4-89-E6-8F-9B">型変換</h3>
 
 <pre class="code ruby"><code class="ruby">FIX2INT(value), INT2FIX(i)
 FIX2LONG(value), LONG2FIX(l)
@@ -1236,7 +1240,7 @@ StringValuePtr(value)
 StringValueCStr(value)
 rb_str_new2(s)</code></pre>
 
-<h2 id="label-E3-82-AF-E3-83-A9-E3-82-B9-2F-E3-83-A2-E3-82-B8-E3-83-A5-E3-83-BC-E3-83-AB-E5-AE-9A-E7-BE-A9">クラス/モジュール定義</h2>
+<h3 id="label-E3-82-AF-E3-83-A9-E3-82-B9-2F-E3-83-A2-E3-82-B8-E3-83-A5-E3-83-BC-E3-83-AB-E5-AE-9A-E7-BE-A9">クラス/モジュール定義</h3>
 <dl class="rdoc-list note-list"><dt>VALUE rb_define_class(const char *name, VALUE super) 
 <dd>
 <p>superのサブクラスとして新しいRubyクラスを定義する．</p>
@@ -1257,7 +1261,7 @@ rb_str_new2(s)</code></pre>
 <p>オブジェクトをモジュール(で定義されているメソッド)で拡張する．</p>
 </dd></dl>
 
-<h2 id="label-E5-A4-A7-E5-9F-9F-E5-A4-89-E6-95-B0-E5-AE-9A-E7-BE-A9">大域変数定義</h2>
+<h3 id="label-E5-A4-A7-E5-9F-9F-E5-A4-89-E6-95-B0-E5-AE-9A-E7-BE-A9">大域変数定義</h3>
 <dl class="rdoc-list note-list"><dt>void rb_define_variable(const char *name, VALUE *var) 
 <dd>
 <p>RubyとCとで共有するグローバル変数を定義する．変数名が`$&#39;で 始まらない時には自動的に追加される．nameとしてRubyの識別子
@@ -1278,7 +1282,7 @@ setterが呼ばれる．getterやsetterに0を指定した時にはhookを 指�
 <p>GCのため，Rubyプログラムからはアクセスされないが, Rubyオブ ジェクトを含む大域変数をマークする．</p>
 </dd></dl>
 
-<h2 id="label-E5-AE-9A-E6-95-B0">定数</h2>
+<h3 id="label-E5-AE-9A-E6-95-B0">定数</h3>
 <dl class="rdoc-list note-list"><dt>void rb_define_const(VALUE klass, const char *name, VALUE val) 
 <dd>
 <p>定数を定義する．</p>
@@ -1291,7 +1295,7 @@ setterが呼ばれる．getterやsetterに0を指定した時にはhookを 指�
 <p>と同じ意味．</p>
 </dd></dl>
 
-<h2 id="label-E3-83-A1-E3-82-BD-E3-83-83-E3-83-89-E5-AE-9A-E7-BE-A9">メソッド定義</h2>
+<h3 id="label-E3-83-A1-E3-82-BD-E3-83-83-E3-83-89-E5-AE-9A-E7-BE-A9">メソッド定義</h3>
 <dl class="rdoc-list note-list"><dt>rb_define_method(VALUE klass, const char *name, VALUE (*func)(ANYARGS), int argc) 
 <dd>
 <p>メソッドを定義する．argcはselfを除く引数の数．argcが-1の時, 関数には引数の数(selfを含まない)を第1引数, 引数の配列を第2
@@ -1361,7 +1365,7 @@ keyword” ArgumentErrorが発生します．</p>
 コピーされた別の新しいHash，そうでなければ0が保存されます．</p>
 </dd></dl>
 
-<h2 id="label-Ruby-E3-83-A1-E3-82-BD-E3-83-83-E3-83-89-E5-91-BC-E3-81-B3-E5-87-BA-E3-81-97">Rubyメソッド呼び出し</h2>
+<h3 id="label-Ruby-E3-83-A1-E3-82-BD-E3-83-83-E3-83-89-E5-91-BC-E3-81-B3-E5-87-BA-E3-81-97">Rubyメソッド呼び出し</h3>
 <dl class="rdoc-list note-list"><dt>VALUE rb_funcall(VALUE recv, ID mid, int narg, …) 
 <dd>
 <p>メソッド呼び出し．文字列からmidを得るためにはrb_intern()を 使う． private/protectedなメソッドでも呼び出せる．</p>
@@ -1389,7 +1393,7 @@ keyword” ArgumentErrorが発生します．</p>
 <p>objがidで示されるメソッドを持つかどうかを返す．</p>
 </dd></dl>
 
-<h2 id="label-E3-82-A4-E3-83-B3-E3-82-B9-E3-82-BF-E3-83-B3-E3-82-B9-E5-A4-89-E6-95-B0">インスタンス変数</h2>
+<h3 id="label-E3-82-A4-E3-83-B3-E3-82-B9-E3-82-BF-E3-83-B3-E3-82-B9-E5-A4-89-E6-95-B0">インスタンス変数</h3>
 <dl class="rdoc-list note-list"><dt>VALUE rb_iv_get(VALUE obj, const char *name) 
 <dd>
 <p>objのインスタンス変数の値を得る．`@&#39;で始まらないインスタン ス変数は Rubyプログラムからアクセスできない「隠れた」イン
@@ -1399,7 +1403,7 @@ keyword” ArgumentErrorが発生します．</p>
 <p>objのインスタンス変数をvalにセットする．</p>
 </dd></dl>
 
-<h2 id="label-E5-88-B6-E5-BE-A1-E6-A7-8B-E9-80-A0">制御構造</h2>
+<h3 id="label-E5-88-B6-E5-BE-A1-E6-A7-8B-E9-80-A0">制御構造</h3>
 <dl class="rdoc-list note-list"><dt>VALUE rb_block_call(VALUE obj, ID mid, int argc, VALUE * argv, VALUE (*func) (ANYARGS), VALUE data2) 
 <dd>
 <p>funcをブロックとして設定し，objをレシーバ，argcとargvを引数 としてmidメソッドを呼び出す．funcは第一引数にyieldされた値，
@@ -1441,7 +1445,7 @@ rb_set_errinfo(Qnil)でエラー情報をクリアしなければならない．
 <p>現在の最も内側のブロックをvalueで終了する．ブロックは引数で 与えられたvalueを返す．この関数は直接の呼び出し元に戻らない．</p>
 </dd></dl>
 
-<h2 id="label-E4-BE-8B-E5-A4-96-E3-83-BB-E3-82-A8-E3-83-A9-E3-83-BC">例外・エラー</h2>
+<h3 id="label-E4-BE-8B-E5-A4-96-E3-83-BB-E3-82-A8-E3-83-A9-E3-83-BC">例外・エラー</h3>
 <dl class="rdoc-list note-list"><dt>void rb_warning(const char *fmt, …) 
 <dd>
 <p>rb_verbose時に標準エラー出力に警告情報を表示する．引数は printf()と同じ．</p>
@@ -1462,7 +1466,7 @@ rb_set_errinfo(Qnil)でエラー情報をクリアしなければならない．
 <p>注意: “%”PRIsVALUEがObject#to_s(&#39;+&#39;フラグが指定されていると
 きはObject#inspect)を使ったVALUEの出力に利用できる．これは “%i”と衝突するため，整数には“%d”を使用すること．</p>
 
-<h2 id="label-Ruby-E3-81-AE-E5-88-9D-E6-9C-9F-E5-8C-96-E3-83-BB-E5-AE-9F-E8-A1-8C">Rubyの初期化・実行</h2>
+<h3 id="label-Ruby-E3-81-AE-E5-88-9D-E6-9C-9F-E5-8C-96-E3-83-BB-E5-AE-9F-E8-A1-8C">Rubyの初期化・実行</h3>
 
 <p>Rubyをアプリケーションに埋め込む場合には以下のインタフェース を使う．通常の拡張ライブラリには必要ない．</p>
 <dl class="rdoc-list note-list"><dt>void ruby_init() 
@@ -1480,7 +1484,7 @@ rb_set_errinfo(Qnil)でエラー情報をクリアしなければならない．
 <p>Rubyのスクリプト名($0)を設定する．</p>
 </dd></dl>
 
-<h2 id="label-E3-82-A4-E3-83-B3-E3-82-BF-E3-83-97-E3-83-AA-E3-82-BF-E3-81-AE-E3-82-A4-E3-83-99-E3-83-B3-E3-83-88-E3-81-AE-E3-83-95-E3-83-83-E3-82-AF">インタプリタのイベントのフック</h2>
+<h3 id="label-E3-82-A4-E3-83-B3-E3-82-BF-E3-83-97-E3-83-AA-E3-82-BF-E3-81-AE-E3-82-A4-E3-83-99-E3-83-B3-E3-83-88-E3-81-AE-E3-83-95-E3-83-83-E3-82-AF">インタプリタのイベントのフック</h3>
 <dl class="rdoc-list note-list"><dt>void rb_add_event_hook(rb_event_hook_func_t func, rb_event_flag_t events, VALUE data) 
 <dd>
 <p>指定されたインタプリタのイベントに対するフック関数を追加します． eventsは以下の値のorでなければなりません:</p>
@@ -1508,7 +1512,7 @@ rb_set_errinfo(Qnil)でエラー情報をクリアしなければならない．
 <p>指定されたフック関数を削除します．</p>
 </dd></dl>
 
-<h2 id="label-E3-83-A1-E3-83-A2-E3-83-AA-E4-BD-BF-E7-94-A8-E9-87-8F">メモリ使用量</h2>
+<h3 id="label-E3-83-A1-E3-83-A2-E3-83-AA-E4-BD-BF-E7-94-A8-E9-87-8F">メモリ使用量</h3>
 <dl class="rdoc-list note-list"><dt>void rb_gc_adjust_memory_usage(ssize_t diff) 
 <dd>
 <p>登録された外部のメモリ使用量を調整します．この関数で外部のライブラリが どのくらいメモリを使っているのかをGCに伝えることができます．正のdiffで
@@ -1517,7 +1521,7 @@ rb_set_errinfo(Qnil)でエラー情報をクリアしなければならない．
 確保されたりした場合などです．この関数はGCを引き起こすかもしれません．</p>
 </dd></dl>
 
-<h2 id="label-E4-BA-92-E6-8F-9B-E6-80-A7-E3-81-AE-E3-81-9F-E3-82-81-E3-81-AE-E3-83-9E-E3-82-AF-E3-83-AD">互換性のためのマクロ</h2>
+<h3 id="label-E4-BA-92-E6-8F-9B-E6-80-A7-E3-81-AE-E3-81-9F-E3-82-81-E3-81-AE-E3-83-9E-E3-82-AF-E3-83-AD">互換性のためのマクロ</h3>
 
 <p>APIの互換性をチェックするために以下のマクロがデフォルトで定義されています．</p>
 <dl class="rdoc-list note-list"><dt>NORETURN_STYLE_NEW 
@@ -1546,7 +1550,7 @@ st.h ではなく ruby/st.h を使用する．</p>
 <p>rb_add_event_hook() がフック関数に渡す data を第3引数として 受け取ることを意味する．</p>
 </dd></dl>
 
-<h1 id="label-Appendix+C.+extconf.rb-E3-81-A7-E4-BD-BF-E3-81-88-E3-82-8B-E9-96-A2-E6-95-B0-E3-81-9F-E3-81-A1">Appendix C. extconf.rbで使える関数たち</h1>
+<h2 id="label-Appendix+C.+extconf.rb-E3-81-A7-E4-BD-BF-E3-81-88-E3-82-8B-E9-96-A2-E6-95-B0-E3-81-9F-E3-81-A1">Appendix C. extconf.rbで使える関数たち</h2>
 
 <p>extconf.rbの中では利用可能なコンパイル条件チェックの関数は以 下の通りである．</p>
 <dl class="rdoc-list note-list"><dt>have_macro(macro, headers) 
@@ -1633,7 +1637,7 @@ $LDFLAGS, $libs にはそれぞれの値が 追加される．</p>
 <p>optionが指定された場合は，上記の配列の代わりにそのオプションを 指定して得られた出力をstripしたものを返す．</p>
 </dd></dl>
 
-<h1 id="label-Appendix+D.+-E4-B8-96-E4-BB-A3-E5-88-A5GC">Appendix D. 世代別GC</h1>
+<h2 id="label-Appendix+D.+-E4-B8-96-E4-BB-A3-E5-88-A5GC">Appendix D. 世代別GC</h2>
 
 <p>Ruby 2.1から世代別GCに対応しました．我々はこれをRGenGCと呼んでいます．
 RGenGCは，過去の拡張ライブラリに（ほぼ）互換性を保つように開発されている ため，拡張ライブラリ側の対応はほぼ不要です．</p>

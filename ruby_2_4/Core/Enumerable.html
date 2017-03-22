@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: Enumerable &mdash; Core Ruby-2.4.0 p0</title>
+<title>Module: Enumerable &mdash; Core Ruby-2.4.1 p110</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Ruby-2.4.0</a> &raquo; 
+        <a href='../index.html'>Ruby-2.4.1</a> &raquo; 
         <a href='index.html'>Core</a> &raquo; 
         <a href='_index.html#alpha_E'>Index (E)</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Enumerable&nbsp;&#x25B2;</a></span>
@@ -97,7 +97,7 @@
     </td></tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/enum.c#L3869'>enum.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/enumerator.c#L1665'>enumerator.c</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/enum.c#L3900'>enum.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/enumerator.c#L1665'>enumerator.c</a></span>
       </td>
     </tr>
   </tbody>
@@ -536,9 +536,7 @@ returns <code>false</code>.</p></div>
       <a href="#sort-instance_method" title="#sort (instance method)">#<strong>sort</strong>  &#x21d2; Array </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Returns an array containing the items in <em>enum</em> sorted, either
-according to their own <code><=></code> method, or by using the results of the
-supplied block.</p></div>
+      <div class='inline'><p>Returns an array containing the items in <em>enum</em> sorted.</p></div>
     </div>
   </li>
   <li>
@@ -631,7 +629,8 @@ will cause <code>#all?</code> to return <code>true</code> when none of the colle
 
 <pre class="code ruby"><code class="ruby"><span class='qwords'><span class='qwords_beg'>%w[</span><span class='tstring_content'>ant</span><span class='words_sep'> </span><span class='tstring_content'>bear</span><span class='words_sep'> </span><span class='tstring_content'>cat</span><span class='words_sep'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_word'>word</span><span class='op'>|</span> <span class='id identifier rubyid_word'>word</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;=</span> <span class='int'>3</span> <span class='rbrace'>}</span> <span class='comment'>#=&gt; true
 </span><span class='qwords'><span class='qwords_beg'>%w[</span><span class='tstring_content'>ant</span><span class='words_sep'> </span><span class='tstring_content'>bear</span><span class='words_sep'> </span><span class='tstring_content'>cat</span><span class='words_sep'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_word'>word</span><span class='op'>|</span> <span class='id identifier rubyid_word'>word</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;=</span> <span class='int'>4</span> <span class='rbrace'>}</span> <span class='comment'>#=&gt; false
-</span><span class='lbracket'>[</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='int'>99</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span>                              <span class='comment'>#=&gt; false</span></code></pre>
+</span><span class='lbracket'>[</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='int'>99</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span>                              <span class='comment'>#=&gt; false
+</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span>                                           <span class='comment'>#=&gt; true</span></code></pre>
 
   </div>
 </div>
@@ -658,7 +657,8 @@ of the collection members is not <code>false</code> or <code>nil</code>.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='qwords'><span class='qwords_beg'>%w[</span><span class='tstring_content'>ant</span><span class='words_sep'> </span><span class='tstring_content'>bear</span><span class='words_sep'> </span><span class='tstring_content'>cat</span><span class='words_sep'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_word'>word</span><span class='op'>|</span> <span class='id identifier rubyid_word'>word</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;=</span> <span class='int'>3</span> <span class='rbrace'>}</span> <span class='comment'>#=&gt; true
 </span><span class='qwords'><span class='qwords_beg'>%w[</span><span class='tstring_content'>ant</span><span class='words_sep'> </span><span class='tstring_content'>bear</span><span class='words_sep'> </span><span class='tstring_content'>cat</span><span class='words_sep'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_word'>word</span><span class='op'>|</span> <span class='id identifier rubyid_word'>word</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;=</span> <span class='int'>4</span> <span class='rbrace'>}</span> <span class='comment'>#=&gt; true
-</span><span class='lbracket'>[</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='int'>99</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>                              <span class='comment'>#=&gt; true</span></code></pre>
+</span><span class='lbracket'>[</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='int'>99</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>                              <span class='comment'>#=&gt; true
+</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>                                           <span class='comment'>#=&gt; false</span></code></pre>
 
   </div>
 </div>
@@ -1594,11 +1594,12 @@ return <em>a &lt;=&gt; b</em>.</p>
 </span><span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span>  <span class='comment'>#=&gt; &quot;albatross&quot;</span></code></pre>
 
 <p>If the <code>n</code> argument is given, maximum <code>n</code> elements are returned as an
-array.</p>
+array, sorted in descending order.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_a'>a</span> <span class='op'>=</span> <span class='qwords'><span class='qwords_beg'>%w[</span><span class='tstring_content'>albatross</span><span class='words_sep'> </span><span class='tstring_content'>dog</span><span class='words_sep'> </span><span class='tstring_content'>horse</span><span class='words_sep'>]</span></span>
 <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span>                                  <span class='comment'>#=&gt; [&quot;horse&quot;, &quot;dog&quot;]
-</span><span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span>  <span class='comment'>#=&gt; [&quot;albatross&quot;, &quot;horse&quot;]</span></code></pre>
+</span><span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span>  <span class='comment'>#=&gt; [&quot;albatross&quot;, &quot;horse&quot;]
+</span><span class='lbracket'>[</span><span class='int'>5</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>3</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='int'>2</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span><span class='lparen'>(</span><span class='int'>3</span><span class='rparen'>)</span>                    <span class='comment'>#=&gt; [5, 4, 3]</span></code></pre>
 
   </div>
 </div>
@@ -1627,8 +1628,9 @@ given block.</p>
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_a'>a</span> <span class='op'>=</span> <span class='qwords'><span class='qwords_beg'>%w(</span><span class='tstring_content'>albatross</span><span class='words_sep'> </span><span class='tstring_content'>dog</span><span class='words_sep'> </span><span class='tstring_content'>horse</span><span class='words_sep'>)</span></span>
 <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_max_by'>max_by</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span>   <span class='comment'>#=&gt; &quot;albatross&quot;</span></code></pre>
 
-<p>If the <code>n</code> argument is given, minimum <code>n</code> elements are returned as an
-array.</p>
+<p>If the <code>n</code> argument is given, maximum <code>n</code> elements are returned as an
+array. These <code>n</code> elements are sorted by the value from the given block, in
+descending order.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_a'>a</span> <span class='op'>=</span> <span class='qwords'><span class='qwords_beg'>%w[</span><span class='tstring_content'>albatross</span><span class='words_sep'> </span><span class='tstring_content'>dog</span><span class='words_sep'> </span><span class='tstring_content'>horse</span><span class='words_sep'>]</span></span>
 <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_max_by'>max_by</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span> <span class='comment'>#=&gt; [&quot;albatross&quot;, &quot;horse&quot;]</span></code></pre>
@@ -1730,12 +1732,13 @@ return <em>a &lt;=&gt; b</em>.</p>
 <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span>                                   <span class='comment'>#=&gt; &quot;albatross&quot;
 </span><span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span>  <span class='comment'>#=&gt; &quot;dog&quot;</span></code></pre>
 
-<p>If the <code>n</code> argument is given, minimum <code>n</code> elements are returned as an
+<p>If the <code>n</code> argument is given, minimum <code>n</code> elements are returned as a sorted
 array.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_a'>a</span> <span class='op'>=</span> <span class='qwords'><span class='qwords_beg'>%w[</span><span class='tstring_content'>albatross</span><span class='words_sep'> </span><span class='tstring_content'>dog</span><span class='words_sep'> </span><span class='tstring_content'>horse</span><span class='words_sep'>]</span></span>
 <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span>                                  <span class='comment'>#=&gt; [&quot;albatross&quot;, &quot;dog&quot;]
-</span><span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span>  <span class='comment'>#=&gt; [&quot;dog&quot;, &quot;horse&quot;]</span></code></pre>
+</span><span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span>  <span class='comment'>#=&gt; [&quot;dog&quot;, &quot;horse&quot;]
+</span><span class='lbracket'>[</span><span class='int'>5</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>3</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='int'>2</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span><span class='lparen'>(</span><span class='int'>3</span><span class='rparen'>)</span>                    <span class='comment'>#=&gt; [1, 2, 3]</span></code></pre>
 
   </div>
 </div>
@@ -1765,7 +1768,7 @@ given block.</p>
 <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_min_by'>min_by</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span>   <span class='comment'>#=&gt; &quot;dog&quot;</span></code></pre>
 
 <p>If the <code>n</code> argument is given, minimum <code>n</code> elements are returned as an
-array.</p>
+array. These <code>n</code> elements are sorted by the value from the given block.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_a'>a</span> <span class='op'>=</span> <span class='qwords'><span class='qwords_beg'>%w[</span><span class='tstring_content'>albatross</span><span class='words_sep'> </span><span class='tstring_content'>dog</span><span class='words_sep'> </span><span class='tstring_content'>horse</span><span class='words_sep'>]</span></span>
 <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_min_by'>min_by</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span> <span class='comment'>#=&gt; [&quot;dog&quot;, &quot;horse&quot;]</span></code></pre>
@@ -2143,9 +2146,10 @@ can be extracted by slice before Unix From line.</p>
 
 <span class='comment'># split mails in mbox (slice before Unix From line after an empty line)
 </span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>mbox</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
-  <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_slice_before'>slice_before</span><span class='lparen'>(</span><span class='label'>emp:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='op'>|</span>
-    <span class='id identifier rubyid_prevemp'>prevemp</span> <span class='op'>=</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_emp'>emp</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_emp'>emp</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_line'>line</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_emp'>emp</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_slice_before'>slice_before</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span>
+    <span class='id identifier rubyid_prevemp'>prevemp</span> <span class='op'>=</span> <span class='id identifier rubyid_emp'>emp</span>
+    <span class='id identifier rubyid_emp'>emp</span> <span class='op'>=</span> <span class='id identifier rubyid_line'>line</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_prevemp'>prevemp</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>From </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_mail'>mail</span><span class='op'>|</span>
     <span class='id identifier rubyid_mail'>mail</span><span class='period'>.</span><span class='id identifier rubyid_pop'>pop</span> <span class='kw'>if</span> <span class='id identifier rubyid_mail'>mail</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
@@ -2238,18 +2242,24 @@ returns <code>false</code> instead of <code>true</code>.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Returns an array containing the items in <em>enum</em> sorted, either
-according to their own <code><=></code> method, or by using the results of the
-supplied block. The block should return -1, 0, or +1 depending on the
-comparison between <em>a</em> and <em>b</em>. As of Ruby 1.8, the method
-<a href="#sort_by-instance_method" title="Enumerable#sort_by (method)">#sort_by</a> implements a built-in Schwartzian Transform, useful
-when key computation or comparison is expensive.</p>
+<p>Returns an array containing the items in <em>enum</em> sorted.</p>
 
-<p>The result is not guaranteed as stable.  When comparison of two elements
-returns <code>0</code>, the order of the elements is unpredictable.</p>
+<p>Comparisons for the sort will be done using the items&#39; own <code><=></code>
+operator or using an optional code block.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='qwords'><span class='qwords_beg'>%w(</span><span class='tstring_content'>rhea</span><span class='words_sep'> </span><span class='tstring_content'>kea</span><span class='words_sep'> </span><span class='tstring_content'>flea</span><span class='words_sep'>)</span></span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span>          <span class='comment'>#=&gt; [&quot;flea&quot;, &quot;kea&quot;, &quot;rhea&quot;]
+<p>The block must implement a comparison between <code>a</code> and <code>b</code> and return an
+integer less than 0 when <code>b</code> follows <code>a</code>, <code>0</code> when <code>a</code> and <code>b</code>
+are equivalent, or an integer greater than 0 when <code>a</code> follows <code>b</code>.</p>
+
+<p>The result is not guaranteed to be stable.  When the comparison of two
+elements returns <code>0</code>, the order of the elements is
+unpredictable.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='qwords'><span class='qwords_beg'>%w(</span><span class='tstring_content'>rhea</span><span class='words_sep'> </span><span class='tstring_content'>kea</span><span class='words_sep'> </span><span class='tstring_content'>flea</span><span class='words_sep'>)</span></span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span>           <span class='comment'>#=&gt; [&quot;flea&quot;, &quot;kea&quot;, &quot;rhea&quot;]
 </span><span class='lparen'>(</span><span class='int'>1</span><span class='op'>..</span><span class='int'>10</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_b'>b</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_a'>a</span> <span class='rbrace'>}</span>  <span class='comment'>#=&gt; [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]</span></code></pre>
+
+<p>See also <a href="#sort_by-instance_method" title="Enumerable#sort_by (method)">#sort_by</a>. It implements a Schwartzian transform which
+is useful when key computation or comparison is expensive.</p>
 
   </div>
 </div>
@@ -2271,12 +2281,12 @@ returns <code>0</code>, the order of the elements is unpredictable.</p>
 <p>Sorts <em>enum</em> using a set of keys generated by mapping the values in
 <em>enum</em> through the given block.</p>
 
-<p>The result is not guaranteed as stable.  When two keys are equal, the order
-of the corresponding elements is unpredictable.</p>
+<p>The result is not guaranteed to be stable.  When two keys are equal, the
+order of the corresponding elements is unpredictable.</p>
 
 <p>If no block is given, an enumerator is returned instead.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='qwords'><span class='qwords_beg'>%w{</span><span class='tstring_content'>apple</span><span class='words_sep'> </span><span class='tstring_content'>pear</span><span class='words_sep'> </span><span class='tstring_content'>fig</span><span class='words_sep'>}</span></span><span class='period'>.</span><span class='id identifier rubyid_sort_by'>sort_by</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_word'>word</span><span class='op'>|</span> <span class='id identifier rubyid_word'>word</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rbrace'>}</span>
+<pre class="code ruby"><code class="ruby"><span class='qwords'><span class='qwords_beg'>%w{</span><span class='tstring_content'>apple</span><span class='words_sep'> </span><span class='tstring_content'>pear</span><span class='words_sep'> </span><span class='tstring_content'>fig</span><span class='words_sep'>}</span></span><span class='period'>.</span><span class='id identifier rubyid_sort_by'>sort_by</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_word'>word</span><span class='op'>|</span> <span class='id identifier rubyid_word'>word</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span>
               <span class='comment'>#=&gt; [&quot;fig&quot;, &quot;pear&quot;, &quot;apple&quot;]</span></code></pre>
 
 <p>The current implementation of <code>sort_by</code> generates an array of
@@ -2320,7 +2330,7 @@ to generate the modification times directly.</p>
 <p>This still generates many unnecessary <a href="Time.html" title="Time (class)">::Time</a> objects. A more efficient
 technique is to cache the sort keys (modification times in this case)
 before the sort. Perl users often call this approach a Schwartzian
-Transform, after Randal Schwartz. We construct a temporary array, where
+transform, after Randal Schwartz. We construct a temporary array, where
 each element is an array containing our sort key along with the filename.
 We sort this array, and then extract the filename from the result.</p>
 

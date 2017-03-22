@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Module: Kernel &mdash; rubygems  Ruby-2.4.0 p0</title>
+<title>Module: Kernel &mdash; rubygems  Ruby-2.4.1 p110</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Ruby-2.4.0</a> &raquo; 
+        <a href='../index.html'>Ruby-2.4.1</a> &raquo; 
         <a href='index.html'>rubygems</a> &raquo; 
         <a href='_index.html#alpha_K'>Index (K)</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Kernel&nbsp;&#x25B2;</a></span>
@@ -73,7 +73,7 @@
   <tbody>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/core_ext/kernel_gem.rb#L8'>lib/rubygems/core_ext/kernel_gem.rb</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/core_ext/kernel_require.rb#L10'>lib/rubygems/core_ext/kernel_require.rb</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/core_ext/kernel_gem.rb#L8'>lib/rubygems/core_ext/kernel_gem.rb</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/core_ext/kernel_require.rb#L10'>lib/rubygems/core_ext/kernel_require.rb</a></span>
       </td>
     </tr>
   </tbody>
@@ -165,7 +165,7 @@ environment variable to skip activation of a gem.</p>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/core_ext/kernel_gem.rb#L44-L70'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/core_ext/kernel_gem.rb#L44-L70'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -256,7 +256,7 @@ file has already been loaded is preserved.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/lib/rubygems/core_ext/kernel_require.rb#L39-L136'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/lib/rubygems/core_ext/kernel_require.rb#L39-L136'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -371,7 +371,7 @@ file has already been loaded is preserved.</p>
   <span class='id identifier rubyid_spec'>spec</span> <span class='op'>=</span> <span class='const'><a href="Gem.html" title="Gem (module)">Gem</a></span><span class='period'>.</span><span class='id identifier rubyid_find_unresolved_default_spec'><a href="Gem.html#find_unresolved_default_spec-class_method" title="Gem.find_unresolved_default_spec (method)">find_unresolved_default_spec</a></span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_spec'>spec</span>
     <span class='const'><a href="Gem.html" title="Gem (module)">Gem</a></span><span class='period'>.</span><span class='id identifier rubyid_remove_unresolved_default_spec'><a href="Gem.html#remove_unresolved_default_spec-class_method" title="Gem.remove_unresolved_default_spec (method)">remove_unresolved_default_spec</a></span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_gem'>gem</span><span class='lparen'>(</span><span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='const'>Kernel</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_gem'>gem</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># If there are no unresolved deps, then we can use just try

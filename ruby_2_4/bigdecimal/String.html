@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Ruby-2.4.0</a> &raquo; 
+        <a href='../index.html'>Ruby-2.4.1</a> &raquo; 
         <a href='index.html'>bigdecimal</a> &raquo; 
         <a href='_index.html#alpha_S'>Index (S)</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>String&nbsp;&#x25B2;</a></span>
@@ -79,24 +79,10 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/ext/bigdecimal/lib/bigdecimal/util.rb#L48'>ext/bigdecimal/lib/bigdecimal/util.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/ext/bigdecimal/lib/bigdecimal/util.rb#L51'>ext/bigdecimal/lib/bigdecimal/util.rb</a>      </td>
     </tr>
   </tbody>
 </table>
-</div>
-<h2 id='h2_overview'>Overview</h2>
-<div id='overview_ds'>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p><a href="BigDecimal.html" title="BigDecimal (class)">::BigDecimal</a> extends the native <code>String</code> class to provide the
-<a href="#to_d-instance_method" title="String#to_d (method)">#to_d</a> method.</p>
-
-<p>When you require <a href="BigDecimal.html" title="BigDecimal (class)">::BigDecimal</a> in your application, this method will be
-available on <code>String</code> objects.</p>
-
-  </div>
-</div>
 </div>        
 
 <h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
@@ -107,7 +93,8 @@ available on <code>String</code> objects.</p>
       <a href="#to_d-instance_method" title="#to_d (instance method)">#<strong>to_d</strong>  &#x21d2; bigdecimal </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Convert <code>string</code> to a <a href="BigDecimal.html" title="BigDecimal (class)">::BigDecimal</a> and return it.</p></div>
+      <div class='inline'><p>Returns the result of interpreting leading characters in <code>str</code> as a
+<a href="BigDecimal.html" title="BigDecimal (class)">::BigDecimal</a>.</p></div>
     </div>
   </li>
 </ul>
@@ -119,30 +106,42 @@ available on <code>String</code> objects.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Convert <code>string</code> to a <a href="BigDecimal.html" title="BigDecimal (class)">::BigDecimal</a> and return it.</p>
+<p>Returns the result of interpreting leading characters in <code>str</code> as a
+<a href="BigDecimal.html" title="BigDecimal (class)">::BigDecimal</a>.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bigdecimal</span><span class='tstring_end'>&#39;</span></span>
 <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bigdecimal/util</span><span class='tstring_end'>&#39;</span></span>
 
-<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.5</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_to_d'>to_d</span>
-<span class='comment'># =&gt; 0.5e0</span></code></pre>
+<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.5</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_to_d'>to_d</span>             <span class='comment'># =&gt; 0.5e0
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>123.45e1</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_to_d'>to_d</span>        <span class='comment'># =&gt; 0.12345e4
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>45.67 degrees</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_to_d'>to_d</span>   <span class='comment'># =&gt; 0.4567e2</span></code></pre>
+
+<p>See also <a href="BigDecimal.html#new-class_method" title="BigDecimal.new (method)">BigDecimal.new</a>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_0/ext/bigdecimal/lib/bigdecimal/util.rb#L60-L62'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/ext/bigdecimal/lib/bigdecimal/util.rb#L67-L73'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-60
-61
-62</pre>
+67
+68
+69
+70
+71
+72
+73</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'ext/bigdecimal/lib/bigdecimal/util.rb', line 60</span></pre>
+<pre><span class='info file'># File 'ext/bigdecimal/lib/bigdecimal/util.rb', line 67</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_d'>to_d</span>
-  <span class='const'><a href="BigDecimal.html" title="BigDecimal (class)">BigDecimal</a></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='kw'>begin</span>
+    <span class='const'><a href="BigDecimal.html" title="BigDecimal (class)">BigDecimal</a></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='const'>ArgumentError</span>
+    <span class='const'><a href="BigDecimal.html" title="BigDecimal (class)">BigDecimal</a></span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
   </div>

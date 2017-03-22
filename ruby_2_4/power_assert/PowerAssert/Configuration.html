@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: PowerAssert::Configuration &mdash; power_assert  Ruby-2.4.0 p0</title>
+<title>Class: PowerAssert::Configuration &mdash; power_assert  Ruby-2.4.1 p110</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../../index.html'>Home</a> &raquo; 
-        <a href='../../index.html'>Ruby-2.4.0</a> &raquo; 
+        <a href='../../index.html'>Ruby-2.4.1</a> &raquo; 
         <a href='../index.html'>power_assert</a> &raquo; 
         <a href='../_index.html#alpha_C'>Index (C)</a> &raquo; 
         <a href="../PowerAssert.html" title="PowerAssert (module)">PowerAssert</a> &raquo; 
@@ -104,7 +104,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/k-tsj/power_assert/blob/v0.4.1/lib/power_assert/configuration.rb#L15'>lib/power_assert/configuration.rb</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/k-tsj/power_assert/blob/v1.0.1/lib/power_assert/configuration.rb#L15'>lib/power_assert/configuration.rb</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -113,6 +113,18 @@
 <h2 class='h2_sum' id='instance_Attribute_summary'>Instance Attribute Summary</h2>
 <div class='div_sum'>
 <ul class='summary full'>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#_colorize_message-instance_method" title="#_colorize_message (instance method)">#<strong>_colorize_message</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#_colorize_message=-instance_method" title="#_colorize_message= (instance method)">#<strong>_colorize_message=</strong>(bool)  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
   <li>
     <span class='summary_signature rw'>
       <a href="#_redefinition-instance_method" title="#_redefinition (instance method)">#<strong>_redefinition</strong>  </a>
@@ -133,18 +145,36 @@
   </li>
   <li>
     <span class='summary_signature rw'>
+      <a href="#_use_pp-instance_method" title="#_use_pp (instance method)">#<strong>_use_pp</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#_use_pp=-instance_method" title="#_use_pp= (instance method)">#<strong>_use_pp=</strong>(bool)  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
       <a href="#lazy_inspection-instance_method" title="#lazy_inspection (instance method)">#<strong>lazy_inspection</strong>  </a>
+    </span>
+    <span class='note title rw'>rw</span>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#lazy_inspection=-instance_method" title="#lazy_inspection= (instance method)">#<strong>lazy_inspection=</strong>(bool)  </a>
     </span>
     <span class='note title rw'>rw</span>
   </li>
 </ul>
 </div>
 <h2 class='y_details'>Instance Attribute Details</h2>
-<section class='method_details first' id="_redefinition-instance_method">
+<section class='method_details first' id="_colorize_message-instance_method">
   <h3 class='signature rw first'>
-    #<strong>_redefinition</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+    #<strong>_colorize_message</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v0.4.1/lib/power_assert/configuration.rb#L15-L15'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v1.0.1/lib/power_assert/configuration.rb#L15-L15'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -154,7 +184,57 @@
 <pre><span class='info file'># File 'lib/power_assert/configuration.rb', line 15</span></pre>
 <pre class='code ruby'>
 
-class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_redefinition)
+class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_redefinition, :_colorize_message, :_use_pp)
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="_colorize_message=-instance_method">
+  <h3 class='signature rw'>
+    #<strong>_colorize_message=</strong>(bool)   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v1.0.1/lib/power_assert/configuration.rb#L23-L28'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+23
+24
+25
+26
+27
+28</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'lib/power_assert/configuration.rb', line 23</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid__colorize_message='>_colorize_message=</span><span class='lparen'>(</span><span class='id identifier rubyid_bool'>bool</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_bool'>bool</span>
+    <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>pry</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+  <span class='kw'>super</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="_redefinition-instance_method">
+  <h3 class='signature rw'>
+    #<strong>_redefinition</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v1.0.1/lib/power_assert/configuration.rb#L15-L15'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+15</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'lib/power_assert/configuration.rb', line 15</span></pre>
+<pre class='code ruby'>
+
+class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_redefinition, :_colorize_message, :_use_pp)
 </pre>
   </div>
 </div>
@@ -164,7 +244,7 @@ class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_re
   <h3 class='signature rw'>
     #<strong>_trace_alias_method</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v0.4.1/lib/power_assert/configuration.rb#L15-L15'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v1.0.1/lib/power_assert/configuration.rb#L15-L15'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -174,7 +254,7 @@ class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_re
 <pre><span class='info file'># File 'lib/power_assert/configuration.rb', line 15</span></pre>
 <pre class='code ruby'>
 
-class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_redefinition)
+class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_redefinition, :_colorize_message, :_use_pp)
 </pre>
   </div>
 </div>
@@ -184,7 +264,7 @@ class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_re
   <h3 class='signature rw'>
     #<strong>_trace_alias_method=</strong>(bool)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v0.4.1/lib/power_assert/configuration.rb#L16-L21'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v1.0.1/lib/power_assert/configuration.rb#L16-L21'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -202,8 +282,60 @@ class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_re
 <span class='kw'>def</span> <span class='id identifier rubyid__trace_alias_method='>_trace_alias_method=</span><span class='lparen'>(</span><span class='id identifier rubyid_bool'>bool</span><span class='rparen'>)</span>
   <span class='kw'>super</span>
   <span class='kw'>if</span> <span class='const'><a href="../PowerAssert.html#SUPPORT_ALIAS_METHOD-constant" title="PowerAssert::SUPPORT_ALIAS_METHOD (constant)">SUPPORT_ALIAS_METHOD</a></span>
-    <span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_trace_alias_method option is obsolete. You no longer have to set it.</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>power_assert: _trace_alias_method option is obsolete. You no longer have to set it.</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="_use_pp-instance_method">
+  <h3 class='signature rw'>
+    #<strong>_use_pp</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v1.0.1/lib/power_assert/configuration.rb#L15-L15'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+15</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'lib/power_assert/configuration.rb', line 15</span></pre>
+<pre class='code ruby'>
+
+class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_redefinition, :_colorize_message, :_use_pp)
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="_use_pp=-instance_method">
+  <h3 class='signature rw'>
+    #<strong>_use_pp=</strong>(bool)   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v1.0.1/lib/power_assert/configuration.rb#L37-L43'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+37
+38
+39
+40
+41
+42
+43</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'lib/power_assert/configuration.rb', line 37</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid__use_pp='>_use_pp=</span><span class='lparen'>(</span><span class='id identifier rubyid_bool'>bool</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_bool'>bool</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>lazy_inspection option must be enabled when using pp</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_lazy_inspection'>lazy_inspection</span>
+    <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>pp</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+  <span class='kw'>super</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -214,7 +346,7 @@ class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_re
   <h3 class='signature rw'>
     #<strong>lazy_inspection</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v0.4.1/lib/power_assert/configuration.rb#L15-L15'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v1.0.1/lib/power_assert/configuration.rb#L15-L15'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -224,7 +356,37 @@ class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_re
 <pre><span class='info file'># File 'lib/power_assert/configuration.rb', line 15</span></pre>
 <pre class='code ruby'>
 
-class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_redefinition)
+class Configuration &lt; Struct.new(:lazy_inspection, :_trace_alias_method, :_redefinition, :_colorize_message, :_use_pp)
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="lazy_inspection=-instance_method">
+  <h3 class='signature rw'>
+    #<strong>lazy_inspection=</strong>(bool)   <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/k-tsj/power_assert/blob/v1.0.1/lib/power_assert/configuration.rb#L30-L35'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+30
+31
+32
+33
+34
+35</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'lib/power_assert/configuration.rb', line 30</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_lazy_inspection='>lazy_inspection=</span><span class='lparen'>(</span><span class='id identifier rubyid_bool'>bool</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_bool'>bool</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>lazy_inspection option must be enabled when using pp</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid__use_pp'>_use_pp</span>
+  <span class='kw'>end</span>
+  <span class='kw'>super</span>
+<span class='kw'>end</span>
 </pre>
   </div>
 </div>
