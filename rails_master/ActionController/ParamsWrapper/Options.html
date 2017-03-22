@@ -333,7 +333,7 @@ class Options &lt; Struct.new(:name, :format, :include, :exclude, :klass, :model
   <h3 class='signature rw  nodoc'>
     #<strong>include</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/params_wrapper.rb#L97-L112'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/params_wrapper.rb#L97-L116'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -353,7 +353,11 @@ class Options &lt; Struct.new(:name, :format, :include, :exclude, :klass, :model
 109
 110
 111
-112</pre>
+112
+113
+114
+115
+116</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'actionpack/lib/action_controller/metal/params_wrapper.rb', line 97</span></pre>
 <pre class='code ruby'>
@@ -369,7 +373,11 @@ class Options &lt; Struct.new(:name, :format, :include, :exclude, :klass, :model
 
     <span class='kw'>unless</span> <span class='kw'>super</span> <span class='op'>||</span> <span class='id identifier rubyid_exclude'>exclude</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_attribute_names'>attribute_names</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_attribute_names'>attribute_names</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
-        <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_include'>include</span> <span class='op'>=</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_attribute_names'>attribute_names</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_stored_attributes'>stored_attributes</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_stored_attributes'>stored_attributes</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+          <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_include'>include</span> <span class='op'>=</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_attribute_names'>attribute_names</span> <span class='op'>+</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_stored_attributes'>stored_attributes</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbeg'>:</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_include'>include</span> <span class='op'>=</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_attribute_names'>attribute_names</span>
+        <span class='kw'>end</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
@@ -467,15 +475,11 @@ class Options &lt; Struct.new(:name, :format, :include, :exclude, :klass, :model
   <h3 class='signature rw  nodoc'>
     #<strong>name</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/params_wrapper.rb#L114-L128'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/params_wrapper.rb#L118-L132'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-114
-115
-116
-117
 118
 119
 120
@@ -486,9 +490,13 @@ class Options &lt; Struct.new(:name, :format, :include, :exclude, :klass, :model
 125
 126
 127
-128</pre>
+128
+129
+130
+131
+132</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/params_wrapper.rb', line 114</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/params_wrapper.rb', line 118</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
@@ -549,15 +557,11 @@ try to find <code>Foo::Bar::User</code>, <code>Foo::User</code> and finally User
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/params_wrapper.rb#L138-L154'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/params_wrapper.rb#L142-L158'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-138
-139
-140
-141
 142
 143
 144
@@ -570,9 +574,13 @@ try to find <code>Foo::Bar::User</code>, <code>Foo::User</code> and finally User
 151
 152
 153
-154</pre>
+154
+155
+156
+157
+158</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/params_wrapper.rb', line 138</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/params_wrapper.rb', line 142</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__default_wrap_model'>_default_wrap_model</span>
