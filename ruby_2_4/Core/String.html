@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: String &mdash; Core Ruby-2.4.1 p110</title>
+<title>Class: String &mdash; Core Ruby-2.4.1 p111</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -89,7 +89,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/string.c#L10084'>string.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/complex.c#L1912'>complex.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/encoding.c#L991'>encoding.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/pack.c#L1868'>pack.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/rational.c#L2450'>rational.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/symbol.c#L660'>symbol.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/transcode.c#L2875'>transcode.c</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/string.c#L9999'>string.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/complex.c#L1926'>complex.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/encoding.c#L991'>encoding.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/pack.c#L1880'>pack.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/rational.c#L2523'>rational.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/symbol.c#L660'>symbol.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/transcode.c#L2875'>transcode.c</a></span>
       </td>
     </tr>
   </tbody>
@@ -232,8 +232,8 @@ concatenated to <em>str</em>.</p></div>
       <a href="#<=>-instance_method" title="#&lt;=&gt; (instance method)">#<strong>&lt;=&gt;</strong>(other_string)  &#x21d2; 1, ... </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Comparison---Returns -1, 0, +1, or <code>nil</code> depending on whether <code>string</code> is
-less than, equal to, or greater than <code>other_string</code>.</p></div>
+      <div class='inline'><p>Comparison---Returns -1, 0, +1 or nil depending on whether <code>string</code> is less
+than, equal to, or greater than <code>other_string</code>.</p></div>
     </div>
   </li>
   <li>
@@ -345,8 +345,8 @@ the remainder to lowercase.</p></div>
       <a href="#casecmp%3F-instance_method" title="#casecmp? (instance method)">#<strong>casecmp?</strong>(other_str)  &#x21d2; true, ... </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Returns <code>true</code> if <code>str</code> and <code>other_str</code> are equal after Unicode case
-folding, <code>false</code> if they are not equal.</p></div>
+      <div class='inline'><p>Returns true if str and other_other_str are equal after Unicode case
+folding, false if they are not equal, and nil if other_str is not a string.</p></div>
     </div>
   </li>
   <li>
@@ -1408,7 +1408,7 @@ concatenated to <em>str</em>.</p>
     
 <p>If the string is frozen, then return the string itself.</p>
 
-<p>If the string is not frozen, return a frozen, possibly pre-existing copy of
+<p>If the string is not frozen, then duplicate the string freeze it and return
 it.</p>
 
   </div>
@@ -1454,8 +1454,8 @@ are concatenated in order.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Comparison---Returns -1, 0, +1, or <code>nil</code> depending on whether <code>string</code> is
-less than, equal to, or greater than <code>other_string</code>.</p>
+<p>Comparison---Returns -1, 0, +1 or nil depending on whether <code>string</code> is less
+than, equal to, or greater than <code>other_string</code>.</p>
 
 <p><code>nil</code> is returned if the two values are incomparable.</p>
 
@@ -1806,14 +1806,10 @@ encodings.</p>
 case-insensitivity only works on characters A-Z/a-z, not all of Unicode.
 This is different from <a href="#casecmp%3F-instance_method" title="String#casecmp? (method)">#casecmp?</a>.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>aBcDeF</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcde</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>     <span class='comment'>#=&gt; 1
+<pre class="code ruby"><code class="ruby"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcdef</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcde</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>     <span class='comment'>#=&gt; 1
 </span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>aBcDeF</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcdef</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>    <span class='comment'>#=&gt; 0
-</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>aBcDeF</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcdefg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; -1
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcdef</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcdefg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; -1
 </span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcdef</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ABCDEF</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>    <span class='comment'>#=&gt; 0</span></code></pre>
-
-<p><code>nil</code> is returned if the two strings have incompatible encodings.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\u{e4 f6 fc}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_encode'>encode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ISO-8859-1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_casecmp'>casecmp</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\u{c4 d6 dc}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; nil</span></code></pre>
 
   </div>
 </div>
@@ -1826,18 +1822,14 @@ This is different from <a href="#casecmp%3F-instance_method" title="String#casec
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Returns <code>true</code> if <code>str</code> and <code>other_str</code> are equal after Unicode case
-folding, <code>false</code> if they are not equal.</p>
+<p>Returns true if str and other_other_str are equal after Unicode case
+folding, false if they are not equal, and nil if other_str is not a string.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>aBcDeF</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcde</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>     <span class='comment'>#=&gt; false
+<pre class="code ruby"><code class="ruby"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcdef</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcde</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>     <span class='comment'>#=&gt; false
 </span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>aBcDeF</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcdef</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>    <span class='comment'>#=&gt; true
-</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>aBcDeF</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcdefg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; false
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcdef</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcdefg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; false
 </span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abcdef</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ABCDEF</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>    <span class='comment'>#=&gt; true
-</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\u{e4 f6 fc}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\u{c4 d6 dc}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; true</span></code></pre>
-
-<p><code>nil</code> is returned if the two strings have incompatible encodings.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\u{e4 f6 fc}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_encode'>encode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ISO-8859-1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\u{c4 d6 dc}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; nil</span></code></pre>
+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\u{e4 f6 fc}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\u{c4 d6 dc}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'>#=&gt; true</span></code></pre>
 
   </div>
 </div>
@@ -2297,9 +2289,7 @@ enumerator if no block is given.</p>
   <div class='discussion'>
     
 <p>Passes the <a href="Integer.html" title="Integer (class)">::Integer</a> ordinal of each character in <em>str</em>, also known
-as a <em>codepoint</em> when applied to Unicode strings to the given block.
-For encodings other than UTF-8/UTF-16(BE|LE)/UTF-32(BE|LE), values are
-directly derived from the binary representation of each character.</p>
+as a <em>codepoint</em> when applied to Unicode strings to the given block.</p>
 
 <p>If no block is given, an enumerator is returned instead.</p>
 
@@ -2351,7 +2341,7 @@ is split into paragraphs delimited by multiple successive newlines.</p>
 <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>o\nworl</span><span class='tstring_end'>&quot;</span></span>
 <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>d</span><span class='tstring_end'>&quot;</span></span>
 <span class='const'>Example</span> <span class='id identifier rubyid_three'>three</span>
-<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hello\n\n</span><span class='tstring_end'>&quot;</span></span>
+<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hello\n\n\n</span><span class='tstring_end'>&quot;</span></span>
 <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>world</span><span class='tstring_end'>&quot;</span></span></code></pre>
 
   </div>

@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: Numeric &mdash; Core Ruby-2.4.1 p110</title>
+<title>Class: Numeric &mdash; Core Ruby-2.4.1 p111</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -98,7 +98,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/numeric.c#L5259'>numeric.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/complex.c#L1586'>complex.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/rational.c#L1941'>rational.c</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/numeric.c#L5147'>numeric.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/complex.c#L1600'>complex.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/rational.c#L1939'>rational.c</a></span>
       </td>
     </tr>
   </tbody>
@@ -354,14 +354,6 @@ two values are incomparable.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#clone-instance_method" title="#clone (instance method)">#<strong>clone</strong>(freeze:true)  &#x21d2; Numeric </a>
-    </span>
-    <div class='summary_desc'>
-      <div class='inline'><p>Returns the receiver.</p></div>
-    </div>
-  </li>
-  <li>
-    <span class='summary_signature '>
       <a href="#coerce-instance_method" title="#coerce (instance method)">#<strong>coerce</strong>  </a>
     </span>
   </li>
@@ -405,14 +397,6 @@ two values are incomparable.</p></div>
     <div class='summary_desc'>
       <div class='inline'><p>Returns an array containing the quotient and modulus obtained by dividing
 <code>num</code> by <code>numeric</code>.</p></div>
-    </div>
-  </li>
-  <li>
-    <span class='summary_signature '>
-      <a href="#dup-instance_method" title="#dup (instance method)">#<strong>dup</strong>  &#x21d2; Numeric </a>
-    </span>
-    <div class='summary_desc'>
-      <div class='inline'><p>Returns the receiver.</p></div>
     </div>
   </li>
   <li>
@@ -463,6 +447,14 @@ values.</p></div>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Alias for <a href="#imag-instance_method" title="Numeric#imag (method)">#imag</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#initialize_copy-instance_method" title="#initialize_copy (instance method)">#<strong>initialize_copy</strong>(y)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Numerics are immutable values, which should not be copied.</p></div>
     </div>
   </li>
   <li>
@@ -931,19 +923,6 @@ invoking <a href="Float.html#ceil-instance_method" title="Float#ceil (method)">F
 
 </section>
 
-<section class='method_details' id="clone-instance_method">
-  <h3 class='signature '>
-    #<strong>clone</strong>(freeze:true)  &#x21d2; <code>Numeric</code>   </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>Returns the receiver. <em>freeze</em> cannot be <code>false</code>.</p>
-
-  </div>
-</div>
-
-</section>
-
 <section class='method_details' id="coerce-instance_method">
   <h3 class='signature '>
     #<strong>coerce</strong>  
@@ -1068,19 +1047,6 @@ invoking <a href="Float.html#ceil-instance_method" title="Float#ceil (method)">F
 
 </section>
 
-<section class='method_details' id="dup-instance_method">
-  <h3 class='signature '>
-    #<strong>dup</strong>  &#x21d2; <code>Numeric</code>   </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>Returns the receiver.</p>
-
-  </div>
-</div>
-
-</section>
-
 <section class='method_details' id="eql?-instance_method">
   <h3 class='signature '>
     #<strong>eql?</strong>(numeric)  &#x21d2; <code>Boolean</code>   </h3>
@@ -1183,6 +1149,23 @@ numbers.</p>
 <div class='tags'>
   
 </div>
+</section>
+
+<section class='method_details' id="initialize_copy-instance_method">
+  <h3 class='signature '>
+    #<strong>initialize_copy</strong>(y)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Numerics are immutable values, which should not be copied.</p>
+
+<p>Any attempt to use this method on a <code>Numeric</code> will raise a
+<a href="TypeError.html" title="TypeError (class)">::TypeError</a>.</p>
+
+  </div>
+</div>
+
 </section>
 
 <section class='method_details' id="magnitude-instance_method">

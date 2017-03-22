@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: Random &mdash; Core Ruby-2.4.1 p110</title>
+<title>Class: Random &mdash; Core Ruby-2.4.1 p111</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -95,7 +95,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/random.c#L1604'>random.c</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/random.c#L1597'>random.c</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -134,7 +134,7 @@ period of 2**19937-1.</p>
   <li>
     <span id='DEFAULT-constant' class='summary_signature'>DEFAULT =</span>
     <br/>
-    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/random.c#L1620'># File 'random.c', line 1620</a>    <pre class='code c'><span class='id identifier rubyid_rand_default'>rand_default</span></pre>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/v2_4_1/random.c#L1613'># File 'random.c', line 1613</a>    <pre class='code c'><span class='id identifier rubyid_rand_default'>rand_default</span></pre>
   </li>
 </ul>
 </div>
@@ -170,18 +170,18 @@ period of 2**19937-1.</p>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#srand-class_method" title="srand (class method)">.<strong>srand</strong>(number = Random.new_seed)  &#x21d2; old_seed </a>
+      <a href="#raw_seed-class_method" title="raw_seed (class method)">.<strong>raw_seed</strong>(size)  &#x21d2; String </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Alias for <a href="Kernel.html#srand-class_method" title="Kernel.srand (method)">Kernel.srand</a>.</p></div>
+      <div class='inline'><p>Returns a raw seed string, using platform providing features.</p></div>
     </div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#urandom-class_method" title="urandom (class method)">.<strong>urandom</strong>(size)  &#x21d2; String </a>
+      <a href="#srand-class_method" title="srand (class method)">.<strong>srand</strong>(number = Random.new_seed)  &#x21d2; old_seed </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Returns a string, using platform providing features.</p></div>
+      <div class='inline'><p>Alias for <a href="Kernel.html#srand-class_method" title="Kernel.srand (method)">Kernel.srand</a>.</p></div>
     </div>
   </li>
 </ul>
@@ -296,6 +296,21 @@ value is specified as an argument.</p>
 </div>
 </section>
 
+<section class='method_details' id="raw_seed-class_method">
+  <h3 class='signature '>
+    .<strong>raw_seed</strong>(size)  &#x21d2; <a href="String.html" title="String (class)">String</a>   </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Returns a raw seed string, using platform providing features.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>Random</span><span class='period'>.</span><span class='id identifier rubyid_raw_seed'>raw_seed</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;\x78\x41\xBA\xAF\x7D\xEA\xD8\xEA&quot;</span></code></pre>
+
+  </div>
+</div>
+
+</section>
+
 <section class='method_details' id="srand-class_method">
   <h3 class='signature '>
     .<strong>srand</strong>(number = Random.new_seed)  &#x21d2; <code>old_seed</code>   </h3>
@@ -303,27 +318,6 @@ value is specified as an argument.</p>
   <div class='discussion'>
     
 <p>Alias for <a href="Kernel.html#srand-class_method" title="Kernel.srand (method)">Kernel.srand</a>.</p>
-
-  </div>
-</div>
-
-</section>
-
-<section class='method_details' id="urandom-class_method">
-  <h3 class='signature '>
-    .<strong>urandom</strong>(size)  &#x21d2; <a href="String.html" title="String (class)">String</a>   </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>Returns a string, using platform providing features. Returned value
-expected to be a cryptographically secure pseudo-random number in binary
-form.</p>
-
-<p>In 2017, Linux manpage random(7) writes that "no cryptographic primitive
-available today can hope to promise more than 256 bits of security".  So it
-might be questionable to pass size &gt; 32 to this method.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>Random</span><span class='period'>.</span><span class='id identifier rubyid_urandom'>urandom</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;\x78\x41\xBA\xAF\x7D\xEA\xD8\xEA&quot;</span></code></pre>
 
   </div>
 </div>
