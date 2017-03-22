@@ -570,10 +570,13 @@ function paneClk(e) {
     clickedBy = ( isList ? CB_LIST : CB_TOC );
     
     if (eA.hash !== '') {
-      if (eA.pathname !== window.location.pathname)
+      // craziness for IE11 handling of anchor elements properties
+      t = eA.href.slice( eA.href.search(/[^:/]\//) + 1, eA.href.length - eA.hash.length);
+      if (t !== window.location.pathname) {
         gotoDoc(eA.pathname + '#' + decodeURIComponent(eA.hash.replace(/%-/, '%25-')).slice(1));
-      else {
-        gotoDoc( decodeURIComponent( eA.hash.replace(/%-/, '%25-') ) );
+      } else {
+        aDOMNext.href = eA.href
+        gotoHash();
       }
     } else if ( !/\/#$/.test(eA.href) ) {
       t = eA.getAttribute('href');
@@ -2614,9 +2617,8 @@ function gotoHash() {
   if (aDOMCur.href === aDOMNext.href) return;
 
   aDOMCur.href = aDOMNext.href;
-  hash = aDOMCur.pathname + hash;
+  hash = aDOMCur.href;
   if (isWinHistory && (clickedBy !== CB_POP_STATE) ) {
-
     window.history.pushState({name: title, url: hash},
         title, hash.replace(/%-/, '%25-') );
   }
@@ -3043,7 +3045,7 @@ function getDocFragId(frag, id) {
   if (isGetElByIdInDocFrag)
     return frag.getElementById(id);
   else
-    var escId = id.replace(/[\`\-\[\]\/\{\}\(\)\*\+\?\!\.\\\^\$\|\=]/g, "\\$&")
+    var escId = id.replace(/[`\[\]/{}()*+?!.\^$|=@-]/g, "\\$&")
     return frag.querySelector('#' + escId);
 };
 
