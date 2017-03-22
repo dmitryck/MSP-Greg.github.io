@@ -120,7 +120,7 @@ redirect to `/posts`.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>docs/:article</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/wiki/%{article}</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></code></pre>
 
-<p>Note that if you return a path without a leading slash then the url is
+<p>Note that if you return a path without a leading slash then the URL is
 prefixed with the current SCRIPT_NAME environment variable. This is
 typically &#39;/&#39; but may be different in a mounted engine or where the
 application is deployed to a subdirectory of a website.</p>
@@ -142,7 +142,7 @@ Ruby would pass the block to <code>get</code> instead of <code>redirect</code>. 
 <code>{ ... }</code> instead.</p>
 
 <p>The options version of redirect allows you to supply only the parts of the
-url which need to change, it also supports interpolation of the path
+URL which need to change, it also supports interpolation of the path
 similar to the first example.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_get'>get</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>stores/:name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>       <span class='label'>to:</span> <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='label'>subdomain:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>stores</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/%{name}</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>

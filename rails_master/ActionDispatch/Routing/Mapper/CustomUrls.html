@@ -105,7 +105,7 @@ routes.</p></div>
       <a href="#resolve-instance_method" title="#resolve (instance method)">#<strong>resolve</strong>(*args, &amp;block)  </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p>Define custom polymorphic mappings of models to urls.</p></div>
+      <div class='inline'><p>Define custom polymorphic mappings of models to URLs.</p></div>
     </div>
   </li>
 </ul>
@@ -135,35 +135,35 @@ routing helpers, e.g:</p>
 <span class='kw'>end</span></code></pre>
 
 <p>The return value from the block passed to `direct` must be a valid set of
-arguments for `url_for` which will actually build the url string. This can
+arguments for `url_for` which will actually build the URL string. This can
 be one of the following:</p>
 
-<pre class="code ruby"><code class="ruby">* A string, which is treated as a generated url
+<pre class="code ruby"><code class="ruby">* A string, which is treated as a generated URL
 * A hash, e.g. { controller: &quot;pages&quot;, action: &quot;index&quot; }
 * An array, which is passed to `polymorphic_url`
 * An Active Model instance
 * An Active Model class</code></pre>
 
-<p>NOTE: Other url helpers can be called in the block but be careful not to
-invoke your custom url helper again otherwise it will result in a stack
-overflow error</p>
+<p>NOTE: Other URL helpers can be called in the block but be careful not to
+invoke your custom URL helper again otherwise it will result in a stack
+overflow error.</p>
 
 <p>You can also specify default options that will be passed through to your
-url helper definition, e.g:</p>
+URL helper definition, e.g:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_direct'>direct</span> <span class='symbeg'>:</span><span class='id identifier rubyid_browse'>browse</span><span class='comma'>,</span> <span class='label'>page:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>size:</span> <span class='int'>10</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_options'>options</span><span class='op'>|</span>
   <span class='lbracket'>[</span> <span class='symbeg'>:</span><span class='id identifier rubyid_products'>products</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_page'>page</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span><span class='period'>.</span><span class='id identifier rubyid_symbolize_keys'>symbolize_keys</span><span class='rparen'>)</span> <span class='rbracket'>]</span>
 <span class='kw'>end</span></code></pre>
 
 <p>In this instance the `params` object comes from the context in which the
-the block is executed, e.g. generating a url inside a controller action or
+the block is executed, e.g. generating a URL inside a controller action or
 a view. If the block is executed where there isn&#39;t a params object such
 as this:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'><a href="../../../Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_application'><a href="../../../Rails.html#application-class_method" title="Rails.application (method)">application</a></span><span class='period'>.</span><span class='id identifier rubyid_routes'>routes</span><span class='period'>.</span><span class='id identifier rubyid_url_helpers'>url_helpers</span><span class='period'>.</span><span class='id identifier rubyid_browse_path'>browse_path</span></code></pre>
 
 <p>then it will raise a `NameError`. Because of this you need to be aware of
-the context in which you will use your custom url helper when defining it.</p>
+the context in which you will use your custom URL helper when defining it.</p>
 
 <p>NOTE: The `direct` method can&#39;t be used inside of a scope block such as
 `namespace` or `scope` and will raise an error if it detects that it is.</p>
@@ -205,7 +205,7 @@ the context in which you will use your custom url helper when defining it.</p>
 <div class='docstring'>
   <div class='discussion'>
     
-<p>Define custom polymorphic mappings of models to urls. This alters the
+<p>Define custom polymorphic mappings of models to URLs. This alters the
 behavior of `polymorphic_url` and consequently the behavior of `link_to`
 and `form_for` when passed a model instance, e.g:</p>
 
@@ -218,7 +218,7 @@ and `form_for` when passed a model instance, e.g:</p>
 <p>This will now generate "/basket" when a `Basket` instance is passed to
 `link_to` or `form_for` instead of the standard "/baskets/:id".</p>
 
-<p>NOTE: This custom behavior only applies to simple polymorphic urls where a
+<p>NOTE: This custom behavior only applies to simple polymorphic URLs where a
 single model instance is passed and not more complicated forms, e.g:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='comment'># config/routes.rb
@@ -234,7 +234,7 @@ single model instance is passed and not more complicated forms, e.g:</p>
 <span class='id identifier rubyid_link_to'>link_to</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Profile</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_admin'>admin</span><span class='comma'>,</span> <span class='ivar'>@current_user</span><span class='rbracket'>]</span></code></pre>
 
 <p>The first `link_to` will generate "/profile" but the second will generate
-the standard polymorphic url of "/admin/users/1".</p>
+the standard polymorphic URL of "/admin/users/1".</p>
 
 <p>You can pass options to a polymorphic mapping - the arity for the block
 needs to be two as the instance is passed as the first argument, e.g:</p>
@@ -243,9 +243,9 @@ needs to be two as the instance is passed as the first argument, e.g:</p>
   <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_basket'>basket</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></code></pre>
 
-<p>This generates the url "/basket#items" because when the last item in an
+<p>This generates the URL "/basket#items" because when the last item in an
 array passed to `polymorphic_url` is a hash then it&#39;s treated as
-options to the url helper that gets called.</p>
+options to the URL helper that gets called.</p>
 
 <p>NOTE: The `resolve` method can&#39;t be used inside of a scope block such
 as `namespace` or `scope` and will raise an error if it detects that it is.</p>

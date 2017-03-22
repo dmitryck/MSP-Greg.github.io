@@ -301,7 +301,7 @@
   <span class='kw'>case</span> <span class='id identifier rubyid_value'>value</span>
   <span class='kw'>when</span> <span class='const'><a href="../../Type.html" title="ActiveRecord::Type (module)">Type</a></span><span class='op'>::</span><span class='const'><a href="../../Type.html#Binary-constant" title="ActiveRecord::Type::Binary (constant)">Binary</a></span><span class='op'>::</span><span class='const'>Data</span>
     <span class='comment'># Return a bind param hash with format as binary.
-</span>    <span class='comment'># See http://deveiate.org/code/pg/PGconn.html#method-i-exec_prepared-doc
+</span>    <span class='comment'># See https://deveiate.org/code/pg/PG/Connection.html#method-i-exec_prepared-doc
 </span>    <span class='comment'># for more information
 </span>    <span class='lbrace'>{</span> <span class='label'>value:</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span> <span class='label'>format:</span> <span class='int'>1</span> <span class='rbrace'>}</span>
   <span class='kw'>when</span> <span class='const'><a href="OID.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::OID (module)">OID</a></span><span class='op'>::</span><span class='const'><a href="OID/Xml.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Xml (class)">Xml</a></span><span class='op'>::</span><span class='const'><a href="OID/Xml/Data.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Xml::Data (class)">Data</a></span><span class='comma'>,</span> <span class='const'><a href="OID.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::OID (module)">OID</a></span><span class='op'>::</span><span class='const'><a href="OID/Bit.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Bit (class)">Bit</a></span><span class='op'>::</span><span class='const'><a href="OID/Bit/Data.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Bit::Data (class)">Data</a></span>
@@ -470,7 +470,7 @@
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quote_column_name'>quote_column_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
-</span>  <span class='ivar'>@quoted_column_names</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>PGconn</span><span class='period'>.</span><span class='id identifier rubyid_quote_ident'>quote_ident</span><span class='lparen'>(</span><span class='kw'>super</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
+</span>  <span class='ivar'>@quoted_column_names</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>PG</span><span class='op'>::</span><span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_quote_ident'>quote_ident</span><span class='lparen'>(</span><span class='kw'>super</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -546,7 +546,7 @@
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quote_schema_name'>quote_schema_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-  <span class='const'>PGconn</span><span class='period'>.</span><span class='id identifier rubyid_quote_ident'>quote_ident</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='const'>PG</span><span class='op'>::</span><span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_quote_ident'>quote_ident</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>

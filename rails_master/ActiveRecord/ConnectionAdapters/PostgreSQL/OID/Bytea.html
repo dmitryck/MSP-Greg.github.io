@@ -272,7 +272,7 @@ behavior for user and database inputs.</p></div></td>
 <span class='kw'>def</span> <span class='id identifier rubyid_deserialize'>deserialize</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="../../../Type.html" title="ActiveRecord::Type (module)">Type</a></span><span class='op'>::</span><span class='const'><a href="../../../Type.html#Binary-constant" title="ActiveRecord::Type::Binary (constant)">Binary</a></span><span class='op'>::</span><span class='const'>Data</span><span class='rparen'>)</span>
-  <span class='const'>PGconn</span><span class='period'>.</span><span class='id identifier rubyid_unescape_bytea'>unescape_bytea</span><span class='lparen'>(</span><span class='kw'>super</span><span class='rparen'>)</span>
+  <span class='const'>PG</span><span class='op'>::</span><span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_unescape_bytea'>unescape_bytea</span><span class='lparen'>(</span><span class='kw'>super</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>

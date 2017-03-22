@@ -363,13 +363,13 @@ address left, which was presumably set by one of those proxies.</p>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ips_from'>ips_from</span><span class='lparen'>(</span><span class='id identifier rubyid_header'>header</span><span class='rparen'>)</span> <span class='comment'># :doc:
 </span>  <span class='kw'>return</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='kw'>unless</span> <span class='id identifier rubyid_header'>header</span>
-  <span class='comment'># Split the comma-separated list into an array of strings
+  <span class='comment'># Split the comma-separated list into an array of strings.
 </span>  <span class='id identifier rubyid_ips'>ips</span> <span class='op'>=</span> <span class='id identifier rubyid_header'>header</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[,\s]+</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ips'>ips</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ip'>ip</span><span class='op'>|</span>
     <span class='kw'>begin</span>
-      <span class='comment'># Only return IPs that are valid according to the IPAddr#new method
+      <span class='comment'># Only return IPs that are valid according to the IPAddr#new method.
 </span>      <span class='id identifier rubyid_range'>range</span> <span class='op'>=</span> <span class='const'>IPAddr</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_ip'>ip</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_range'>to_range</span>
-      <span class='comment'># we want to make sure nobody is sneaking a netmask in
+      <span class='comment'># We want to make sure nobody is sneaking a netmask in.
 </span>      <span class='id identifier rubyid_range'>range</span><span class='period'>.</span><span class='id identifier rubyid_begin'>begin</span> <span class='op'>==</span> <span class='id identifier rubyid_range'>range</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span>
     <span class='kw'>rescue</span> <span class='const'>ArgumentError</span>
       <span class='kw'>nil</span>
