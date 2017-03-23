@@ -87,7 +87,7 @@
         <div class='box_22'>
           self,
           <a href="BasicSocket.html" title="BasicSocket (class)">::BasicSocket</a>,
-          IO
+          <a href="IO.html" title="IO (class)">::IO</a>
         </div>
       </td>
     </tr>
@@ -97,7 +97,7 @@
         <div class='box_22'>
           self,
           <a href="BasicSocket.html" title="BasicSocket (class)">::BasicSocket</a>,
-          IO
+          <a href="IO.html" title="IO (class)">::IO</a>
         </div>
       </td>
     </tr>
@@ -106,8 +106,8 @@
       <td class='box_rel'>
         <span class='inheritName'><a href="BasicSocket.html" title="BasicSocket (class)">BasicSocket</a></span>
         <ul class='fullTree'>
-          <li>Object</li>
-          <li class='next'>IO</li>
+          <li><a href="Object.html" title="Object (class)">::Object</a></li>
+          <li class='next'><a href="IO.html" title="IO (class)">IO</a></li>
           <li class='next'><a href="BasicSocket.html" title="BasicSocket (class)">BasicSocket</a></li>
           <li class='next'>Socket</li>
         </ul>
@@ -895,7 +895,7 @@ at a time.</p>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no sockets</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_loop'>loop</span> <span class='lbrace'>{</span>
-    <span class='id identifier rubyid_readable'>readable</span><span class='comma'>,</span> <span class='id identifier rubyid__'>_</span><span class='comma'>,</span> <span class='id identifier rubyid__'>_</span> <span class='op'>=</span> <span class='const'>IO</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='id identifier rubyid_sockets'>sockets</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_readable'>readable</span><span class='comma'>,</span> <span class='id identifier rubyid__'>_</span><span class='comma'>,</span> <span class='id identifier rubyid__'>_</span> <span class='op'>=</span> <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='id identifier rubyid_sockets'>sockets</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_readable'>readable</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
       <span class='id identifier rubyid_sock'>sock</span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span> <span class='op'>=</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_accept_nonblock'>accept_nonblock</span><span class='lparen'>(</span><span class='label'>exception:</span> <span class='kw'>false</span><span class='rparen'>)</span>
       <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_sock'>sock</span> <span class='op'>==</span> <span class='symbeg'>:</span><span class='id identifier rubyid_wait_readable'>wait_readable</span>
@@ -3044,7 +3044,7 @@ and IPv6 address for example, all of them are used.
 </span><span class='comment'># It services only one client at a time.
 </span><span class='const'>Socket</span><span class='period'>.</span><span class='id identifier rubyid_tcp_server_loop'>tcp_server_loop</span><span class='lparen'>(</span><span class='int'>16807</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_sock'>sock</span><span class='comma'>,</span> <span class='id identifier rubyid_client_addrinfo'>client_addrinfo</span><span class='op'>|</span>
   <span class='kw'>begin</span>
-    <span class='const'>IO</span><span class='period'>.</span><span class='id identifier rubyid_copy_stream'>copy_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_sock'>sock</span><span class='comma'>,</span> <span class='id identifier rubyid_sock'>sock</span><span class='rparen'>)</span>
+    <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='period'>.</span><span class='id identifier rubyid_copy_stream'>copy_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_sock'>sock</span><span class='comma'>,</span> <span class='id identifier rubyid_sock'>sock</span><span class='rparen'>)</span>
   <span class='kw'>ensure</span>
     <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
   <span class='kw'>end</span>
@@ -3056,7 +3056,7 @@ and IPv6 address for example, all of them are used.
 </span><span class='const'>Socket</span><span class='period'>.</span><span class='id identifier rubyid_tcp_server_loop'>tcp_server_loop</span><span class='lparen'>(</span><span class='int'>16807</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_sock'>sock</span><span class='comma'>,</span> <span class='id identifier rubyid_client_addrinfo'>client_addrinfo</span><span class='op'>|</span>
   <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span>
     <span class='kw'>begin</span>
-      <span class='const'>IO</span><span class='period'>.</span><span class='id identifier rubyid_copy_stream'>copy_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_sock'>sock</span><span class='comma'>,</span> <span class='id identifier rubyid_sock'>sock</span><span class='rparen'>)</span>
+      <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='period'>.</span><span class='id identifier rubyid_copy_stream'>copy_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_sock'>sock</span><span class='comma'>,</span> <span class='id identifier rubyid_sock'>sock</span><span class='rparen'>)</span>
     <span class='kw'>ensure</span>
       <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
     <span class='kw'>end</span>
@@ -3342,7 +3342,7 @@ argument.</p>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_udp_server_loop_on'>udp_server_loop_on</span><span class='lparen'>(</span><span class='id identifier rubyid_sockets'>sockets</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_b'>b</span><span class='rparen'>)</span> <span class='comment'># :yield: msg, msg_src
 </span>  <span class='id identifier rubyid_loop'>loop</span> <span class='lbrace'>{</span>
-    <span class='id identifier rubyid_readable'>readable</span><span class='comma'>,</span> <span class='id identifier rubyid__'>_</span><span class='comma'>,</span> <span class='id identifier rubyid__'>_</span> <span class='op'>=</span> <span class='const'>IO</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='id identifier rubyid_sockets'>sockets</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_readable'>readable</span><span class='comma'>,</span> <span class='id identifier rubyid__'>_</span><span class='comma'>,</span> <span class='id identifier rubyid__'>_</span> <span class='op'>=</span> <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='id identifier rubyid_sockets'>sockets</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_udp_server_recv'>udp_server_recv</span><span class='lparen'>(</span><span class='id identifier rubyid_readable'>readable</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_b'>b</span><span class='rparen'>)</span>
   <span class='rbrace'>}</span>
 <span class='kw'>end</span>
@@ -3613,8 +3613,8 @@ block is returned. The socket is closed when this method returns.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='comment'># talk to /tmp/sock socket.
 </span><span class='const'>Socket</span><span class='period'>.</span><span class='id identifier rubyid_unix'>unix</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/tmp/sock</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_sock'>sock</span><span class='op'>|</span>
-  <span class='id identifier rubyid_t'>t</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='const'>IO</span><span class='period'>.</span><span class='id identifier rubyid_copy_stream'>copy_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_sock'>sock</span><span class='comma'>,</span> <span class='const'>STDOUT</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-  <span class='const'>IO</span><span class='period'>.</span><span class='id identifier rubyid_copy_stream'>copy_stream</span><span class='lparen'>(</span><span class='const'>STDIN</span><span class='comma'>,</span> <span class='id identifier rubyid_sock'>sock</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_t'>t</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='period'>.</span><span class='id identifier rubyid_copy_stream'>copy_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_sock'>sock</span><span class='comma'>,</span> <span class='const'>STDOUT</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='period'>.</span><span class='id identifier rubyid_copy_stream'>copy_stream</span><span class='lparen'>(</span><span class='const'>STDIN</span><span class='comma'>,</span> <span class='id identifier rubyid_sock'>sock</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
 <span class='rbrace'>}</span></code></pre>
 
@@ -3687,7 +3687,7 @@ assuming that /tmp has sticky bit.</p>
 </span><span class='comment'># It services only one client at a time.
 </span><span class='const'>Socket</span><span class='period'>.</span><span class='id identifier rubyid_unix_server_loop'>unix_server_loop</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/tmp/sock</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_sock'>sock</span><span class='comma'>,</span> <span class='id identifier rubyid_client_addrinfo'>client_addrinfo</span><span class='op'>|</span>
   <span class='kw'>begin</span>
-    <span class='const'>IO</span><span class='period'>.</span><span class='id identifier rubyid_copy_stream'>copy_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_sock'>sock</span><span class='comma'>,</span> <span class='id identifier rubyid_sock'>sock</span><span class='rparen'>)</span>
+    <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='period'>.</span><span class='id identifier rubyid_copy_stream'>copy_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_sock'>sock</span><span class='comma'>,</span> <span class='id identifier rubyid_sock'>sock</span><span class='rparen'>)</span>
   <span class='kw'>ensure</span>
     <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
   <span class='kw'>end</span>
@@ -4242,8 +4242,8 @@ socket for the incoming connection, <em>client_socket</em>, and an
 <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_listen'>listen</span><span class='lparen'>(</span><span class='int'>5</span><span class='rparen'>)</span>
 <span class='kw'>begin</span> <span class='comment'># emulate blocking accept
 </span>  <span class='id identifier rubyid_client_socket'>client_socket</span><span class='comma'>,</span> <span class='id identifier rubyid_client_addrinfo'>client_addrinfo</span> <span class='op'>=</span> <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_accept_nonblock'>accept_nonblock</span>
-<span class='kw'>rescue</span> <span class='const'>IO</span><span class='op'>::</span><span class='const'>WaitReadable</span><span class='comma'>,</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EINTR</span>
-  <span class='const'>IO</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_socket'>socket</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='op'>::</span><span class='const'>WaitReadable</span><span class='comma'>,</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EINTR</span>
+  <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_socket'>socket</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>retry</span>
 <span class='kw'>end</span>
 <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>The client said, &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='period'>.</span><span class='id identifier rubyid_readline'>readline</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span>
@@ -4725,8 +4725,8 @@ successful, otherwise an exception is raised.</p>
 <span class='id identifier rubyid_sockaddr'>sockaddr</span> <span class='op'>=</span> <span class='const'>Socket</span><span class='period'>.</span><span class='id identifier rubyid_sockaddr_in'><a href="#sockaddr_in-class_method" title="Socket.sockaddr_in (method)">sockaddr_in</a></span><span class='lparen'>(</span><span class='int'>80</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>www.google.com</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>begin</span> <span class='comment'># emulate blocking connect
 </span>  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_connect_nonblock'>connect_nonblock</span><span class='lparen'>(</span><span class='id identifier rubyid_sockaddr'>sockaddr</span><span class='rparen'>)</span>
-<span class='kw'>rescue</span> <span class='const'>IO</span><span class='op'>::</span><span class='const'>WaitWritable</span>
-  <span class='const'>IO</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_socket'>socket</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># wait 3-way handshake completion
+<span class='kw'>rescue</span> <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='op'>::</span><span class='const'>WaitWritable</span>
+  <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_socket'>socket</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'># wait 3-way handshake completion
 </span>  <span class='kw'>begin</span>
     <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_connect_nonblock'>connect_nonblock</span><span class='lparen'>(</span><span class='id identifier rubyid_sockaddr'>sockaddr</span><span class='rparen'>)</span> <span class='comment'># check connection failure
 </span>  <span class='kw'>rescue</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EISCONN</span>
@@ -5172,8 +5172,8 @@ on UDP, etc.</p>
 <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='id identifier rubyid_client_addrinfo'>client_addrinfo</span> <span class='op'>=</span> <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span>
 <span class='kw'>begin</span> <span class='comment'># emulate blocking recvfrom
 </span>  <span class='id identifier rubyid_pair'>pair</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_recvfrom_nonblock'>recvfrom_nonblock</span><span class='lparen'>(</span><span class='int'>20</span><span class='rparen'>)</span>
-<span class='kw'>rescue</span> <span class='const'>IO</span><span class='op'>::</span><span class='const'>WaitReadable</span>
-  <span class='const'>IO</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='op'>::</span><span class='const'>WaitReadable</span>
+  <span class='const'><a href="IO.html" title="IO (class)">IO</a></span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>retry</span>
 <span class='kw'>end</span>
 <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_pair'>pair</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
