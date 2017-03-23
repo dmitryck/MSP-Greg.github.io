@@ -416,6 +416,11 @@ store is not appropriate for large application deployments. However, it can
 work well for small, low traffic sites with only a couple of server processes,
 as well as development and test environments.</p>
 
+<p>New Rails projects will be configured to use this implementation in the
+development environment by default. (Note that, because processes will not share
+cache data, if using <code>:memory_store</code> it will not be possible to manually read,
+write or expire the cache via the Rails console.)</p>
+
 <h3>ActiveSupport::Cache::FileStore</h3>
 
 <p>This cache store uses the file system to store entries. The path to the directory where the store files will be stored must be specified when initializing the cache.</p>
@@ -430,7 +435,8 @@ share a cache by using a shared file system, but that setup is not recommended.<
 <p>As the cache will grow until the disk is full, it is recommended to
 periodically clear out old entries.</p>
 
-<p>This is the default cache store implementation.</p>
+<p>This is the default cache store implementation (at <code>&quot;#{root}/tmp/cache/&quot;</code>) if
+no explicit <code>config.cache_store</code> is supplied.</p>
 
 <h3>ActiveSupport::Cache::MemCacheStore</h3>
 

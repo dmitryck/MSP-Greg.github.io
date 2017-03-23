@@ -272,7 +272,7 @@ production:
 
 <p>NOTE: <em>First, as is required by the W3C, use GET and POST appropriately. Secondly, a security token in non-GET requests will protect your application from CSRF.</em></p>
 
-<p>The HTTP protocol basically provides two main types of requests - GET and POST (and more, but they are not supported by most browsers). The World Wide Web Consortium (W3C) provides a checklist for choosing HTTP GET or POST:</p>
+<p>The HTTP protocol basically provides two main types of requests - GET and POST (DELETE, PUT, and PATCH should be used like POST). The World Wide Web Consortium (W3C) provides a checklist for choosing HTTP GET or POST:</p>
 
 <p><strong>Use GET if:</strong></p>
 
@@ -288,7 +288,7 @@ production:
 <li>The user is <em>held accountable for the results</em> of the interaction.</li>
 </ul>
 
-<p>If your web application is RESTful, you might be used to additional HTTP verbs, such as PATCH, PUT or DELETE. Most of today&#39;s web browsers, however, do not support them - only GET and POST. Rails uses a hidden <code>_method</code> field to handle this barrier.</p>
+<p>If your web application is RESTful, you might be used to additional HTTP verbs, such as PATCH, PUT or DELETE. Some legacy web browsers, however, do not support them - only GET and POST. Rails uses a hidden <code>_method</code> field to handle these cases.</p>
 
 <p><em>POST requests can be sent automatically, too</em>. In this example, the link <a href="http://www.harmless.com">www.harmless.com</a> is shown as the destination in the browser&#39;s status bar. But it has actually dynamically created a new form that sends a POST request.</p>
 

@@ -545,10 +545,6 @@ CallbackChain.</p></div></td>
       <a href="#supports_ranges%3F-instance_method" title="#supports_ranges? (instance method)">#<strong>supports_ranges?</strong>  &#x21d2; Boolean </a>
     </span>
     <span class='note title readonly'>readonly</span>
-    <div class='summary_desc'>
-      <div class='inline'><p><a href="../../Range.html" title="Range (class)">::Range</a> datatypes weren&#39;t introduced until
-<a href="PostgreSQL.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL (module)">PostgreSQL</a> 9.2.</p></div>
-    </div>
   </li>
   <li>
     <span class='summary_signature ro'>
@@ -1727,7 +1723,6 @@ characters.</p></div></td>
         <a class='i_m priv' href="Quoting.html#_quote-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#_quote (method)">#_quote</a>,
         <a class='i_m priv' href="Quoting.html#_type_cast-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#_type_cast (method)">#_type_cast</a>,
         <a class='i_m priv' href="Quoting.html#id_value_for_database-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#id_value_for_database (method)">#id_value_for_database</a>,
-        <a class='i_m priv' href="Quoting.html#type_casted_binds-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#type_casted_binds (method)">#type_casted_binds</a>,
         <a class='i_m priv' href="Quoting.html#types_which_need_no_typecasting-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#types_which_need_no_typecasting (method)">#types_which_need_no_typecasting</a>,
       </td>
     </tr>
@@ -1746,6 +1741,11 @@ characters.</p></div></td>
       <td><a class='i_m nodoc' href="Quoting.html#type_cast_from_column-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#type_cast_from_column (method)">#type_cast_from_column</a></td>
       <td><div class='inline'><p>If you are having to call this function, you are likely doing something
 wrong.</p></div></td>
+    </tr>
+    <tr>
+      <td colspan='2'>
+        <a class='i_m nodoc' href="Quoting.html#type_casted_binds-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#type_casted_binds (method)">#type_casted_binds</a>
+      </td>
     </tr>
   </tbody>
 </table></div>
@@ -2703,30 +2703,22 @@ adapter.</p>
   <h3 class='signature ro'>
     #<strong>supports_ranges?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p><a href="../../Range.html" title="Range (class)">::Range</a> datatypes weren&#39;t introduced until
-<a href="PostgreSQL.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL (module)">PostgreSQL</a> 9.2</p>
-
-  </div>
-</div>
-<div class='tags'>
-  
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L305-L307'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L304-L307'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+304
 305
 306
 307</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb', line 305</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb', line 304</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_ranges?'>supports_ranges?</span>
-  <span class='id identifier rubyid_postgresql_version'>postgresql_version</span> <span class='op'>&gt;=</span> <span class='int'>90200</span>
+  <span class='comment'># Range datatypes weren&#39;t introduced until PostgreSQL 9.2
+</span>  <span class='id identifier rubyid_postgresql_version'>postgresql_version</span> <span class='op'>&gt;=</span> <span class='int'>90200</span>
 <span class='kw'>end</span>
 </pre>
   </div>
