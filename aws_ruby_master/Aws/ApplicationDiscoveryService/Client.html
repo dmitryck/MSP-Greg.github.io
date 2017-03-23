@@ -306,7 +306,15 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#describe_export_configurations-instance_method" title="#describe_export_configurations (instance method)">#<strong>describe_export_configurations</strong>(options = {})  &#x21d2; Types::DescribeExportConfigurationsResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Retrieves the status of a given export process.</p></div>
+      <div class='inline'><p><p>Deprecated.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#describe_export_tasks-instance_method" title="#describe_export_tasks (instance method)">#<strong>describe_export_tasks</strong>(options = {})  &#x21d2; Types::DescribeExportTasksResponse </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Retrieve status of one or more export tasks.</p></div>
     </div>
   </li>
   <li>
@@ -330,7 +338,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#export_configurations-instance_method" title="#export_configurations (instance method)">#<strong>export_configurations</strong>(options = {})  &#x21d2; Types::ExportConfigurationsResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Exports all discovered configuration data to an Amazon S3 bucket or an application that enables you to view and evaluate the data.</p></div>
+      <div class='inline'><p><p>Deprecated.</p></div>
     </div>
   </li>
   <li>
@@ -346,7 +354,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#list_configurations-instance_method" title="#list_configurations (instance method)">#<strong>list_configurations</strong>(options = {})  &#x21d2; Types::ListConfigurationsResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Retrieves a list of configuration items according to criteria you specify in a filter.</p></div>
+      <div class='inline'><p><p>Retrieves a list of configuration items according to criteria that you specify in a filter.</p></div>
     </div>
   </li>
   <li>
@@ -354,7 +362,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#list_server_neighbors-instance_method" title="#list_server_neighbors (instance method)">#<strong>list_server_neighbors</strong>(options = {})  &#x21d2; Types::ListServerNeighborsResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Retrieves a list of servers which are one network hop away from a specified server.</p>.</p></div>
+      <div class='inline'><p><p>Retrieves a list of servers that are one network hop away from a specified server.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -362,7 +370,15 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#start_data_collection_by_agent_ids-instance_method" title="#start_data_collection_by_agent_ids (instance method)">#<strong>start_data_collection_by_agent_ids</strong>(options = {})  &#x21d2; Types::StartDataCollectionByAgentIdsResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Instructs the specified agents or Connectors to start collecting data.</p>.</p></div>
+      <div class='inline'><p><p>Instructs the specified agents or connectors to start collecting data.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#start_export_task-instance_method" title="#start_export_task (instance method)">#<strong>start_export_task</strong>(options = {})  &#x21d2; Types::StartExportTaskResponse </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>Export the configuration data about discovered configuration items and relationships to an S3 bucket in a specified format.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -370,7 +386,7 @@ configuring credentials statically and never commit them to source control.</p>
       <a href="#stop_data_collection_by_agent_ids-instance_method" title="#stop_data_collection_by_agent_ids (instance method)">#<strong>stop_data_collection_by_agent_ids</strong>(options = {})  &#x21d2; Types::StopDataCollectionByAgentIdsResponse </a>
     </span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>Instructs the specified agents or Connectors to stop collecting data.</p>.</p></div>
+      <div class='inline'><p><p>Instructs the specified agents or connectors to stop collecting data.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -941,7 +957,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:filters</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/Filter.html" title="Aws::ApplicationDiscoveryService::Types::Filter (class)">Types::Filter</a>&gt;)</span>
-            &mdash; <div class='inline'><p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "collectionStatus", "value": "STARTED"}</code> </p> <p>For a complete list of filter options and guidance about using them with this action, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/managing-agent.html">Managing AWS Application Discovery Service Agents and the AWS Application Discovery Connector </a>.</p>
+            &mdash; <div class='inline'><p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "collectionStatus", "value": "STARTED"}</code> </p>
 </div>        </li>
         <li>
           <span class='name'>:max_results</span>
@@ -977,7 +993,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves attributes for a list of configuration item IDs. All of the supplied IDs must be for the same asset type (server, application, process, or connection). Output fields are specific to the asset type selected. For example, the output for a <i>server</i> configuration item includes a list of attributes about the server, such as host name, operating system, and number of network cards.</p> <p>For a complete list of outputs for each asset type, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/querying-configuration-items.html#DescribeConfigurations">Querying Discovered Configuration Items</a>.</p>
+    <p>Retrieves attributes for a list of configuration item IDs. All of the supplied IDs must be for the same asset type (server, application, process, or connection). Output fields are specific to the asset type selected. For example, the output for a <i>server</i> configuration item includes a list of attributes about the server, such as host name, operating system, and number of network cards.</p> <p>For a complete list of outputs for each asset type, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations">Using the DescribeConfigurations Action</a>.</p>
 
   </div>
 </div>
@@ -1025,7 +1041,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves the status of a given export process. You can retrieve status from a maximum of 100 processes.</p>
+    <p>Deprecated. Use <code>DescribeExportTasks</code> instead.</p> <p>Retrieves the status of a given export process. You can retrieve status from a maximum of 100 processes.</p>
 
   </div>
 </div>
@@ -1064,7 +1080,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:next_token</span>
           <span class='type'>(<code>String</code>)</span>
-            &mdash; <div class='inline'><p>A token to get the next set of results. For example, if you specified 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you will get results in a set of 10. Use the token in the query to get the next set of 10.</p>
+            &mdash; <div class='inline'><p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1076,6 +1092,71 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 <ul>
 <li><a href="Types/DescribeExportConfigurationsResponse.html#exports_info-instance_method" title="Aws::ApplicationDiscoveryService::Types::DescribeExportConfigurationsResponse#exports_info (method)">#exports_info</a> =&gt; Array&lt;<a href="Types/ExportInfo.html" title="Aws::ApplicationDiscoveryService::Types::ExportInfo (class)">Types::ExportInfo</a>&gt;</li>
 <li><a href="Types/DescribeExportConfigurationsResponse.html#next_token-instance_method" title="Aws::ApplicationDiscoveryService::Types::DescribeExportConfigurationsResponse#next_token (method)">#next_token</a> =&gt; String</li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
+<section class='method_details' id="describe_export_tasks-instance_method">
+  <h3 class='signature '>
+    #<strong>describe_export_tasks</strong>(options = {})  &#x21d2; <a href="Types/DescribeExportTasksResponse.html" title="Aws::ApplicationDiscoveryService::Types::DescribeExportTasksResponse (class)">Types::DescribeExportTasksResponse</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Retrieve status of one or more export tasks. You can retrieve the status of up to 100 export tasks.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_describe_export_tasks'>describe_export_tasks</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>export_ids:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ConfigurationsExportId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='label'>max_results:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='label'>next_token:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NextToken</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_exports_info'>exports_info</span> <span class='comment'>#=&gt; Array
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_exports_info'>exports_info</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_export_id'>export_id</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_exports_info'>exports_info</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_export_status'>export_status</span> <span class='comment'>#=&gt; String, one of &quot;FAILED&quot;, &quot;SUCCEEDED&quot;, &quot;IN_PROGRESS&quot;
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_exports_info'>exports_info</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_status_message'>status_message</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_exports_info'>exports_info</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_configurations_download_url'>configurations_download_url</span> <span class='comment'>#=&gt; String
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_exports_info'>exports_info</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_export_request_time'>export_request_time</span> <span class='comment'>#=&gt; Time
+</span><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_next_token'>next_token</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:export_ids</span>
+          <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
+            &mdash; <div class='inline'><p>One or more unique identifiers used to query the status of an export request.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:max_results</span>
+          <span class='type'>(<code>Integer</code>)</span>
+            &mdash; <div class='inline'><p>The maximum number of volume results returned by <code>DescribeExportTasks</code> in paginated output. When this parameter is used, <code>DescribeExportTasks</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:next_token</span>
+          <span class='type'>(<code>String</code>)</span>
+            &mdash; <div class='inline'><p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeExportTasks</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is null when there are no more results to return.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/DescribeExportTasksResponse.html" title="Aws::ApplicationDiscoveryService::Types::DescribeExportTasksResponse (class)">Types::DescribeExportTasksResponse</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/DescribeExportTasksResponse.html#exports_info-instance_method" title="Aws::ApplicationDiscoveryService::Types::DescribeExportTasksResponse#exports_info (method)">#exports_info</a> =&gt; Array&lt;<a href="Types/ExportInfo.html" title="Aws::ApplicationDiscoveryService::Types::ExportInfo (class)">Types::ExportInfo</a>&gt;</li>
+<li><a href="Types/DescribeExportTasksResponse.html#next_token-instance_method" title="Aws::ApplicationDiscoveryService::Types::DescribeExportTasksResponse#next_token (method)">#next_token</a> =&gt; String</li>
 </ul>
 </div>
   </li>
@@ -1124,7 +1205,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:filters</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/TagFilter.html" title="Aws::ApplicationDiscoveryService::Types::TagFilter (class)">Types::TagFilter</a>&gt;)</span>
-            &mdash; <div class='inline'><p>You can filter the list using a <i>key</i>-<i>value</i> format. You can separate these items by using logical operators. Allowed filters include <code>tagKey</code>, <code>tagValue</code>, and <code>configurationId</code>. </p> <p>For a complete list of filter options and guidance about using them with this action, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/managing-agents.html">Managing AWS Application Discovery Service Agents and the AWS Application Discovery Connector </a>.</p>
+            &mdash; <div class='inline'><p>You can filter the list using a <i>key</i>-<i>value</i> format. You can separate these items by using logical operators. Allowed filters include <code>tagKey</code>, <code>tagValue</code>, and <code>configurationId</code>. </p>
 </div>        </li>
         <li>
           <span class='name'>:max_results</span>
@@ -1179,12 +1260,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:application_configuration_id</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>Configuration ID of an application from which each item will be disassociated.</p>
+            &mdash; <div class='inline'><p>Configuration ID of an application from which each item is disassociated.</p>
 </div>        </li>
         <li>
           <span class='name'>:configuration_ids</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p>Configuration ID of each item be be disassociated from an application.</p>
+            &mdash; <div class='inline'><p>Configuration ID of each item to be disassociated from an application.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1205,7 +1286,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Exports all discovered configuration data to an Amazon S3 bucket or an application that enables you to view and evaluate the data. Data includes tags and tag associations, processes, connections, servers, and system performance. This API returns an export ID which you can query using the <i>DescribeExportConfigurations</i> API. The system imposes a limit of two configuration exports in six hours.</p>
+    <p>Deprecated. Use <code>StartExportTask</code> instead.</p> <p>Exports all discovered configuration data to an Amazon S3 bucket or an application that enables you to view and evaluate the data. Data includes tags and tag associations, processes, connections, servers, and system performance. This API returns an export ID that you can query using the <i>DescribeExportConfigurations</i> API. The system imposes a limit of two configuration exports in six hours.</p>
 
   </div>
 </div>
@@ -1299,7 +1380,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves a list of configuration items according to criteria you specify in a filter. The filter criteria identify relationship requirements.</p>
+    <p>Retrieves a list of configuration items according to criteria that you specify in a filter. The filter criteria identifies the relationship requirements.</p>
 
   </div>
 </div>
@@ -1338,12 +1419,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:configuration_type</span>
           <span class='type'>(<code>required</code>, <code>String</code>)</span>
-            &mdash; <div class='inline'><p>A valid configuration identified by the Discovery Service. </p>
+            &mdash; <div class='inline'><p>A valid configuration identified by Application Discovery Service. </p>
 </div>        </li>
         <li>
           <span class='name'>:filters</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/Filter.html" title="Aws::ApplicationDiscoveryService::Types::Filter (class)">Types::Filter</a>&gt;)</span>
-            &mdash; <div class='inline'><p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p> <p>For a complete list of filter options and guidance about using them with this action, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/querying-configuration-items.html#ListConfigurations">Querying Discovered Configuration Items</a>. </p>
+            &mdash; <div class='inline'><p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p> <p>For a complete list of filter options and guidance about using them with this action, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations">Querying Discovered Configuration Items</a>. </p>
 </div>        </li>
         <li>
           <span class='name'>:max_results</span>
@@ -1358,7 +1439,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:order_by</span>
           <span class='type'>(<code>Array</code>&lt;<a href="Types/OrderByElement.html" title="Aws::ApplicationDiscoveryService::Types::OrderByElement (class)">Types::OrderByElement</a>&gt;)</span>
-            &mdash; <div class='inline'><p>Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/querying-configuration-items.html#ListConfigurations">Querying Discovered Configuration Items</a>.</p>
+            &mdash; <div class='inline'><p>Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations">Using the ListConfigurations Action</a>.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1384,7 +1465,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Retrieves a list of servers which are one network hop away from a specified server.</p>
+    <p>Retrieves a list of servers that are one network hop away from a specified server.</p>
 
   </div>
 </div>
@@ -1463,7 +1544,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Instructs the specified agents or Connectors to start collecting data.</p>
+    <p>Instructs the specified agents or connectors to start collecting data.</p>
 
   </div>
 </div>
@@ -1487,7 +1568,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:agent_ids</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p>The IDs of the agents or Connectors that you want to start collecting data. If you send a request to an agent/Connector ID that you do not have permission to contact, according to your AWS account, the service does not throw an exception. Instead, it returns the error in the <i>Description</i> field. If you send a request to multiple agents/Connectors and you do not have permission to contact some of those agents/Connectors, the system does not throw an exception. Instead, the system shows <code>Failed</code> in the <i>Description</i> field.</p>
+            &mdash; <div class='inline'><p>The IDs of the agents or connectors from which to start collecting data. If you send a request to an agent/connector ID that you do not have permission to contact, according to your AWS account, the service does not throw an exception. Instead, it returns the error in the <i>Description</i> field. If you send a request to multiple agents/connectors and you do not have permission to contact some of those agents/connectors, the system does not throw an exception. Instead, the system shows <code>Failed</code> in the <i>Description</i> field.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>
@@ -1506,13 +1587,59 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
 </div>
 </section>
 
+<section class='method_details' id="start_export_task-instance_method">
+  <h3 class='signature '>
+    #<strong>start_export_task</strong>(options = {})  &#x21d2; <a href="Types/StartExportTaskResponse.html" title="Aws::ApplicationDiscoveryService::Types::StartExportTaskResponse (class)">Types::StartExportTaskResponse</a> 
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>Export the configuration data about discovered configuration items and relationships to an S3 bucket in a specified format.</p>
+
+  </div>
+</div>
+<div class='tags'>
+    <div class='examples'>
+    <p class='tag_title'>Examples:</p>
+        <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_start_export_task'>start_export_task</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>export_data_format:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CSV</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'># accepts CSV, GRAPHML
+</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+        <p class='example_title'><div class='inline'><p>Response structure</p>
+</div></p>
+      <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_export_id'>export_id</span> <span class='comment'>#=&gt; String</span></code></pre>
+  </div>
+    <p class='tag_title'>Options Hash (<tt>options</tt>):</p>
+    <ul class='option'>
+        <li>
+          <span class='name'>:export_data_format</span>
+          <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
+            &mdash; <div class='inline'><p>The file format for the returned export data. Default value is <code>CSV</code>.</p>
+</div>        </li>
+    </ul>
+<p class='tag_title'>Returns:</p>
+<ul class='return'>
+  <li>
+    <span class='type'>(<a href="Types/StartExportTaskResponse.html" title="Aws::ApplicationDiscoveryService::Types::StartExportTaskResponse (class)">Types::StartExportTaskResponse</a>)</span>
+&mdash;    <div class='inline'><p>Returns a <a href="../../Seahorse/Client/Response.html" title="Seahorse::Client::Response (class)">response</a> object which responds to the following methods:</p>
+
+<ul>
+<li><a href="Types/StartExportTaskResponse.html#export_id-instance_method" title="Aws::ApplicationDiscoveryService::Types::StartExportTaskResponse#export_id (method)">#export_id</a> =&gt; String</li>
+</ul>
+</div>
+  </li>
+</ul>
+
+</div>
+</section>
+
 <section class='method_details' id="stop_data_collection_by_agent_ids-instance_method">
   <h3 class='signature '>
     #<strong>stop_data_collection_by_agent_ids</strong>(options = {})  &#x21d2; <a href="Types/StopDataCollectionByAgentIdsResponse.html" title="Aws::ApplicationDiscoveryService::Types::StopDataCollectionByAgentIdsResponse (class)">Types::StopDataCollectionByAgentIdsResponse</a> 
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>Instructs the specified agents or Connectors to stop collecting data.</p>
+    <p>Instructs the specified agents or connectors to stop collecting data.</p>
 
   </div>
 </div>
@@ -1536,7 +1663,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <li>
           <span class='name'>:agent_ids</span>
           <span class='type'>(<code>required</code>, <code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p>The IDs of the agents or Connectors that you want to stop collecting data.</p>
+            &mdash; <div class='inline'><p>The IDs of the agents or connectors from which to stop collecting data.</p>
 </div>        </li>
     </ul>
 <p class='tag_title'>Returns:</p>

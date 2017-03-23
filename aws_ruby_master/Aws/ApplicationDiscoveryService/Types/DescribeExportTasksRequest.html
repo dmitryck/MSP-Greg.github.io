@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: Aws::ApplicationDiscoveryService::Types::StopDataCollectionByAgentIdsRequest &mdash; aws-sdk-ruby-master</title>
+<title>Class: Aws::ApplicationDiscoveryService::Types::DescribeExportTasksRequest &mdash; aws-sdk-ruby-master</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../../css/highlight.github.css' />
@@ -19,7 +19,7 @@
 <link rel='stylesheet'  type='text/css' href='../../../../css/common.css' />
 
 <script type='text/javascript'>
-  var pathId = "Aws::ApplicationDiscoveryService::Types::StopDataCollectionByAgentIdsRequest",
+  var pathId = "Aws::ApplicationDiscoveryService::Types::DescribeExportTasksRequest",
     relpath = '../../../';
 
   var t2Info = {
@@ -53,11 +53,11 @@
     <div id='y_menu'>
         <a href='../../../../index.html'>Home</a> &raquo; 
         <a href='../../../index.html'>aws-sdk-ruby-master</a> &raquo; 
-        <a href='../../../_index.html#alpha_S'>Index (S)</a> &raquo; 
+        <a href='../../../_index.html#alpha_D'>Index (D)</a> &raquo; 
         <a href="../../../Aws.html" title="Aws (module)">Aws</a> &raquo; 
         <a href="../../ApplicationDiscoveryService.html" title="Aws::ApplicationDiscoveryService (module)">ApplicationDiscoveryService</a> &raquo; 
         <a href="../Types.html" title="Aws::ApplicationDiscoveryService::Types (module)">Types</a> &raquo; 
-        <span class='title'><a id='t2_doc_top' href='#'>StopDataCollectionByAgentIdsRequest&nbsp;&#x25B2;</a></span>
+        <span class='title'><a id='t2_doc_top' href='#'>DescribeExportTasksRequest&nbsp;&#x25B2;</a></span>
       </div>
 
     <a id='list_href' href="../../../class_list.html"></a>
@@ -66,7 +66,7 @@
     <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
   </header>
 <div id='content' class='class'>
-<h1>Class: Aws::ApplicationDiscoveryService::Types::StopDataCollectionByAgentIdsRequest</h1>
+<h1>Class: Aws::ApplicationDiscoveryService::Types::DescribeExportTasksRequest</h1>
 <div id='t2_rel_sf_div'>
 <table id='t2_rel_sf' class='y_box'>
   <thead>
@@ -99,7 +99,7 @@
         <ul class='fullTree'>
           <li>Object</li>
           <li class='next'>Struct</li>
-          <li class='next'>Aws::ApplicationDiscoveryService::Types::StopDataCollectionByAgentIdsRequest</li>
+          <li class='next'>Aws::ApplicationDiscoveryService::Types::DescribeExportTasksRequest</li>
         </ul>
       </td>
     </tr>
@@ -117,12 +117,14 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'><p>When passing StopDataCollectionByAgentIdsRequest as input to an Aws::Client method, you can use a
+    <div class='inline'><p>When passing DescribeExportTasksRequest as input to an Aws::Client method, you can use a
 vanilla Hash:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='lbrace'>{</span>
-  <span class='label'>agent_ids:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AgentId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'># required
-</span><span class='rbrace'>}</span></code></pre>
+  <span class='label'>export_ids:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ConfigurationsExportId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='label'>max_results:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='label'>next_token:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NextToken</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span></code></pre>
 </div>
   </div>
 
@@ -138,23 +140,71 @@ vanilla Hash:</p>
 <ul class='summary full'>
   <li>
     <span class='summary_signature rw'>
-      <a href="#agent_ids-instance_method" title="#agent_ids (instance method)">#<strong>agent_ids</strong>  &#x21d2; Array&lt;String&gt; </a>
+      <a href="#export_ids-instance_method" title="#export_ids (instance method)">#<strong>export_ids</strong>  &#x21d2; Array&lt;String&gt; </a>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The IDs of the agents or connectors from which to stop collecting data.</p>.</p></div>
+      <div class='inline'><p><p>One or more unique identifiers used to query the status of an export request.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#max_results-instance_method" title="#max_results (instance method)">#<strong>max_results</strong>  &#x21d2; Integer </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The maximum number of volume results returned by <code>DescribeExportTasks</code> in paginated output.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#next_token-instance_method" title="#next_token (instance method)">#<strong>next_token</strong>  &#x21d2; String </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeExportTasks</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter.</p></div>
     </div>
   </li>
 </ul>
 </div>
 <h2 class='y_details'>Instance Attribute Details</h2>
-<section class='method_details first' id="agent_ids-instance_method">
+<section class='method_details first' id="export_ids-instance_method">
   <h3 class='signature rw first'>
-    #<strong>agent_ids</strong>  &#x21d2; <code>Array</code>&lt;<code>String</code>&gt;  <span class="extras">(<span class='rw'>rw</span>)</span>
+    #<strong>export_ids</strong>  &#x21d2; <code>Array</code>&lt;<code>String</code>&gt;  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The IDs of the agents or connectors from which to stop collecting data.</p>
+    <p>One or more unique identifiers used to query the status of an export request.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="max_results-instance_method">
+  <h3 class='signature rw'>
+    #<strong>max_results</strong>  &#x21d2; <code>Integer</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The maximum number of volume results returned by <code>DescribeExportTasks</code> in paginated output. When this parameter is used, <code>DescribeExportTasks</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="next_token-instance_method">
+  <h3 class='signature rw'>
+    #<strong>next_token</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeExportTasks</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is null when there are no more results to return.</p>
 
   </div>
 </div>

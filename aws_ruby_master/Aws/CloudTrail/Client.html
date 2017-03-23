@@ -920,8 +920,8 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
 </div></p>
       <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_get_event_selectors'>get_event_selectors</span><span class='lparen'>(</span><span class='lbrace'>{</span>
-  <span class='label'>trail_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-<span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+  <span class='label'>trail_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
         <p class='example_title'><div class='inline'><p>Response structure</p>
 </div></p>
       <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_trail_arn'>trail_arn</span> <span class='comment'>#=&gt; String
@@ -937,7 +937,7 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
     <ul class='option'>
         <li>
           <span class='name'>:trail_name</span>
-          <span class='type'>(<code>String</code>)</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
 </div>        </li>
     </ul>
@@ -1260,9 +1260,9 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
         <p class='example_title'><div class='inline'><p>Request syntax with placeholder values</p>
 </div></p>
       <pre class='example code ruby'><code><span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_put_event_selectors'>put_event_selectors</span><span class='lparen'>(</span><span class='lbrace'>{</span>
-  <span class='label'>trail_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-  <span class='label'>event_selectors:</span> <span class='lbracket'>[</span>
-    <span class='lbrace'>{</span>
+  <span class='label'>trail_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
+</span>  <span class='label'>event_selectors:</span> <span class='lbracket'>[</span> <span class='comment'># required
+</span>    <span class='lbrace'>{</span>
       <span class='label'>read_write_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ReadOnly</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts ReadOnly, WriteOnly, All
 </span>      <span class='label'>include_management_events:</span> <span class='kw'>false</span><span class='comma'>,</span>
       <span class='label'>data_resources:</span> <span class='lbracket'>[</span>
@@ -1289,12 +1289,12 @@ sending the request.  See <a href="../Plugins/ParamValidator.html" title="Aws::P
     <ul class='option'>
         <li>
           <span class='name'>:trail_name</span>
-          <span class='type'>(<code>String</code>)</span>
+          <span class='type'>(<code>required</code>, <code>String</code>)</span>
             &mdash; <div class='inline'><p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
 </div>        </li>
         <li>
           <span class='name'>:event_selectors</span>
-          <span class='type'>(<code>Array</code>&lt;<a href="Types/EventSelector.html" title="Aws::CloudTrail::Types::EventSelector (class)">Types::EventSelector</a>&gt;)</span>
+          <span class='type'>(<code>required</code>, <code>Array</code>&lt;<a href="Types/EventSelector.html" title="Aws::CloudTrail::Types::EventSelector (class)">Types::EventSelector</a>&gt;)</span>
             &mdash; <div class='inline'><p>Specifies the settings for your event selectors. You can configure up to five event selectors for a trail.</p>
 </div>        </li>
     </ul>
