@@ -76,6 +76,7 @@
       <div class='box_1'>Modules:</div>
       <div class='box_11'>
           <a href="Deprecation/Behavior.html" title="ActiveSupport::Deprecation::Behavior (module)">Behavior</a>,
+        <a href="Deprecation/DeprecatedConstantAccessor.html" title="ActiveSupport::Deprecation::DeprecatedConstantAccessor (module)">DeprecatedConstantAccessor</a>,
         <a href="Deprecation/MethodWrapper.html" title="ActiveSupport::Deprecation::MethodWrapper (module)">MethodWrapper</a>,
         <a href="Deprecation/Reporting.html" title="ActiveSupport::Deprecation::Reporting (module)">Reporting</a>      </div>
     </td></tr>
@@ -107,7 +108,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation.rb#L6'>activesupport/lib/active_support/deprecation.rb</a><span class='defines'>,<br /><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation/behaviors.rb#L9'>activesupport/lib/active_support/deprecation/behaviors.rb</a>,<br/> <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation/instance_delegator.rb#L5'>activesupport/lib/active_support/deprecation/instance_delegator.rb</a>,<br/> <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation/method_wrappers.rb#L5'>activesupport/lib/active_support/deprecation/method_wrappers.rb</a>,<br/> <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation/proxy_wrappers.rb#L5'>activesupport/lib/active_support/deprecation/proxy_wrappers.rb</a>,<br/> <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation/reporting.rb#L4'>activesupport/lib/active_support/deprecation/reporting.rb</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation.rb#L6'>activesupport/lib/active_support/deprecation.rb</a><span class='defines'>,<br /><a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation/behaviors.rb#L9'>activesupport/lib/active_support/deprecation/behaviors.rb</a>,<br/> <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation/constant_accessor.rb#L4'>activesupport/lib/active_support/deprecation/constant_accessor.rb</a>,<br/> <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation/instance_delegator.rb#L5'>activesupport/lib/active_support/deprecation/instance_delegator.rb</a>,<br/> <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation/method_wrappers.rb#L5'>activesupport/lib/active_support/deprecation/method_wrappers.rb</a>,<br/> <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation/proxy_wrappers.rb#L5'>activesupport/lib/active_support/deprecation/proxy_wrappers.rb</a>,<br/> <a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation/reporting.rb#L4'>activesupport/lib/active_support/deprecation/reporting.rb</a></span>
       </td>
     </tr>
   </tbody>
@@ -292,20 +293,20 @@ library and the second is a library name</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation.rb#L35-L41'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation.rb#L36-L42'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-35
 36
 37
 38
 39
 40
-41</pre>
+41
+42</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/deprecation.rb', line 35</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/deprecation.rb', line 36</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_deprecation_horizon'>deprecation_horizon</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>5.2</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_gem_name'>gem_name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Rails</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -333,14 +334,14 @@ default.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation.rb#L29-L29'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/activesupport/lib/active_support/deprecation.rb#L30-L30'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-29</pre>
+30</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/deprecation.rb', line 29</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/deprecation.rb', line 30</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_deprecation_horizon'>deprecation_horizon</span>
