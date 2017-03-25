@@ -160,7 +160,7 @@ setting of these properties compared to using a Hash or a Struct.</p>
     <span id='InspectKey-constant' class='summary_signature nodoc'>InspectKey =</span>
     <span class='nodoc note title'>Internal use only</span>
     <br/>
-    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L305-L305'># File 'lib/ostruct.rb', line 305</a>    <pre class='code ruby'><span class='symbeg'>:</span><span class='id identifier rubyid___inspect_key__'>__inspect_key__</span></pre>
+    <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L308-L308'># File 'lib/ostruct.rb', line 308</a>    <pre class='code ruby'><span class='symbeg'>:</span><span class='id identifier rubyid___inspect_key__'>__inspect_key__</span></pre>
   </li>
 </ul>
 </div>
@@ -422,22 +422,22 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L94-L102'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L97-L105'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-94
-95
-96
 97
 98
 99
 100
 101
-102</pre>
+102
+103
+104
+105</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 94</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 97</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
@@ -465,14 +465,11 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L201-L218'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L204-L221'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-201
-202
-203
 204
 205
 206
@@ -487,9 +484,12 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
 215
 216
 217
-218</pre>
+218
+219
+220
+221</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 201</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 204</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_mid'>mid</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -520,17 +520,23 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
   <h3 class='signature  first'>
     .<strong>allocate</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L77-L77'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L77-L80'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-77</pre>
+77
+78
+79
+80</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'lib/ostruct.rb', line 77</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>alias</span> <span class='id identifier rubyid_allocate'>allocate</span> <span class='id identifier rubyid_new'>new</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_allocate'>allocate</span>
+  <span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='kw'>super</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='ivar'>@table</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_x'>x</span>
+<span class='kw'>end</span>
 </pre>
   </div>
 </div>
@@ -551,14 +557,14 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L169-L169'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L172-L172'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-169</pre>
+172</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 169</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 172</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='id identifier rubyid_modifiable'>modifiable</span> <span class='id identifier rubyid_modifiable?'>modifiable?</span> <span class='comment'># :nodoc:</span>
@@ -575,14 +581,14 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L333-L333'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L336-L336'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-333</pre>
+336</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 333</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 336</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_table'>table</span> <span class='comment'># :nodoc:</span>
@@ -602,14 +608,14 @@ a Hash, an <code>OpenStruct</code> or a Struct). For example:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L335-L335'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L338-L338'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-335</pre>
+338</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 335</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 338</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='id identifier rubyid_table!'>table!</span> <span class='id identifier rubyid_table'>table</span>
@@ -640,17 +646,17 @@ Hash tables are equal.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L350-L353'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L353-L356'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-350
-351
-352
-353</pre>
+353
+354
+355
+356</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 350</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 353</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
@@ -676,16 +682,16 @@ Hash tables are equal.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L230-L232'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L233-L235'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-230
-231
-232</pre>
+233
+234
+235</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 230</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 233</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -711,16 +717,16 @@ Hash tables are equal.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L245-L247'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L248-L250'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-245
-246
-247</pre>
+248
+249
+250</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 245</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 248</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>[]=</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -755,23 +761,23 @@ contained if it was defined.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L294-L303'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L297-L306'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-294
-295
-296
 297
 298
 299
 300
 301
 302
-303</pre>
+303
+304
+305
+306</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 294</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 297</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_field'>delete_field</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -813,21 +819,21 @@ step is <code>nil</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L269-L276'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L272-L279'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-269
-270
-271
 272
 273
 274
 275
-276</pre>
+276
+277
+278
+279</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 269</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 272</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_names'>names</span><span class='rparen'>)</span>
@@ -864,18 +870,18 @@ returns an enumerator if no block is given.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L134-L138'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L137-L141'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-134
-135
-136
 137
-138</pre>
+138
+139
+140
+141</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 134</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 137</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each_pair'>each_pair</span>
@@ -903,17 +909,17 @@ Hash tables are eql?.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L360-L363'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L363-L366'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-360
-361
-362
-363</pre>
+363
+364
+365
+366</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 360</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 363</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
@@ -929,17 +935,17 @@ Hash tables are eql?.</p>
   <h3 class='signature '>
     #<strong>freeze</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L191-L194'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L194-L197'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-191
-192
-193
-194</pre>
+194
+195
+196
+197</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 191</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 194</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_freeze'>freeze</span>
@@ -966,16 +972,16 @@ compare using <a href="#eql%3F-instance_method" title="OpenStruct#eql? (method)"
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L370-L372'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L373-L375'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-370
-371
-372</pre>
+373
+374
+375</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 370</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 373</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hash'>hash</span>
@@ -1000,17 +1006,17 @@ compare using <a href="#eql%3F-instance_method" title="OpenStruct#eql? (method)"
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L105-L108'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L108-L111'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-105
-106
-107
-108</pre>
+108
+109
+110
+111</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 105</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 108</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize_copy'>initialize_copy</span><span class='lparen'>(</span><span class='id identifier rubyid_orig'>orig</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -1034,14 +1040,11 @@ compare using <a href="#eql%3F-instance_method" title="OpenStruct#eql? (method)"
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L310-L330'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L313-L333'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-310
-311
-312
 313
 314
 315
@@ -1059,9 +1062,12 @@ compare using <a href="#eql%3F-instance_method" title="OpenStruct#eql? (method)"
 327
 328
 329
-330</pre>
+330
+331
+332
+333</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 310</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 313</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
@@ -1101,16 +1107,16 @@ compare using <a href="#eql%3F-instance_method" title="OpenStruct#eql? (method)"
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L143-L145'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L146-L148'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-143
-144
-145</pre>
+146
+147
+148</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 143</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 146</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_marshal_dump'>marshal_dump</span>
@@ -1132,16 +1138,16 @@ compare using <a href="#eql%3F-instance_method" title="OpenStruct#eql? (method)"
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L150-L152'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L153-L155'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-150
-151
-152</pre>
+153
+154
+155</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 150</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 153</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_marshal_load'>marshal_load</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
@@ -1170,21 +1176,21 @@ modified before granting access to the internal Hash table to be modified.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L158-L165'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L161-L168'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-158
-159
-160
 161
 162
 163
 164
-165</pre>
+165
+166
+167
+168</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 158</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 161</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_modifiable?'>modifiable?</span> <span class='comment'># :nodoc:
@@ -1214,14 +1220,14 @@ modified before granting access to the internal Hash table to be modified.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L188-L188'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L191-L191'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-188</pre>
+191</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 188</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 191</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='id identifier rubyid_new_ostruct_member'>new_ostruct_member</span> <span class='id identifier rubyid_new_ostruct_member!'>new_ostruct_member!</span> <span class='comment'># :nodoc:</span>
@@ -1247,21 +1253,21 @@ both the getter method and the setter method.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L177-L184'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L180-L187'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-177
-178
-179
 180
 181
 182
 183
-184</pre>
+184
+185
+186
+187</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 177</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 180</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new_ostruct_member!'>new_ostruct_member!</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -1291,17 +1297,17 @@ both the getter method and the setter method.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L196-L199'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L199-L202'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-196
-197
-198
-199</pre>
+199
+200
+201
+202</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 196</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 199</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_respond_to_missing?'>respond_to_missing?</span><span class='lparen'>(</span><span class='id identifier rubyid_mid'>mid</span><span class='comma'>,</span> <span class='id identifier rubyid_include_private'>include_private</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -1329,16 +1335,16 @@ attribute (as symbols) and their corresponding values.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L118-L120'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L121-L123'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-118
-119
-120</pre>
+121
+122
+123</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 118</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 121</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
@@ -1360,14 +1366,14 @@ attribute (as symbols) and their corresponding values.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L331-L331'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/lib/ostruct.rb#L334-L334'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-331</pre>
+334</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'lib/ostruct.rb', line 331</span></pre>
+<pre><span class='info file'># File 'lib/ostruct.rb', line 334</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='symbeg'>:</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='symbeg'>:</span><span class='id identifier rubyid_inspect'>inspect</span>
