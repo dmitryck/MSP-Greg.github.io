@@ -104,7 +104,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3113'>numeric.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/bignum.c#L6688'>bignum.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/rational.c#L1851'>rational.c</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3120'>numeric.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/trunk/bignum.c#L6688'>bignum.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/trunk/rational.c#L1851'>rational.c</a></span>
       </td>
     </tr>
   </tbody>
@@ -599,7 +599,7 @@ including <code>limit</code>.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#round-instance_method" title="#round (instance method)">#<strong>round</strong>([ndigits])  &#x21d2; Integer, Float </a>
+      <a href="#round-instance_method" title="#round (instance method)">#<strong>round</strong>([ndigits][, half: symbol])  &#x21d2; Integer, Float </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Rounds <code>int</code> to a given precision in decimal digits (default 0 digits).</p></div>
@@ -947,27 +947,11 @@ raised.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5202-L5232'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5218-L5248'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-5202
-5203
-5204
-5205
-5206
-5207
-5208
-5209
-5210
-5211
-5212
-5213
-5214
-5215
-5216
-5217
 5218
 5219
 5220
@@ -982,9 +966,25 @@ raised.</p>
 5229
 5230
 5231
-5232</pre>
+5232
+5233
+5234
+5235
+5236
+5237
+5238
+5239
+5240
+5241
+5242
+5243
+5244
+5245
+5246
+5247
+5248</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 5202</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 5218</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1034,18 +1034,11 @@ rb_int_s_isqrt(VALUE self, VALUE num)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3182-L3197'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3189-L3204'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3182
-3183
-3184
-3185
-3186
-3187
-3188
 3189
 3190
 3191
@@ -1054,9 +1047,16 @@ rb_int_s_isqrt(VALUE self, VALUE num)
 3194
 3195
 3196
-3197</pre>
+3197
+3198
+3199
+3200
+3201
+3202
+3203
+3204</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3182</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3189</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1090,18 +1090,18 @@ int_even_p(VALUE num)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3145-L3149'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3152-L3156'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3145
-3146
-3147
-3148
-3149</pre>
+3152
+3153
+3154
+3155
+3156</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3145</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3152</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1124,18 +1124,11 @@ int_int_p(VALUE num)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3158-L3173'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3165-L3180'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3158
-3159
-3160
-3161
-3162
-3163
-3164
 3165
 3166
 3167
@@ -1144,9 +1137,16 @@ int_int_p(VALUE num)
 3170
 3171
 3172
-3173</pre>
+3173
+3174
+3175
+3176
+3177
+3178
+3179
+3180</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3158</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3165</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1190,24 +1190,24 @@ int_odd_p(VALUE num)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3786-L3796'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3793-L3803'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3786
-3787
-3788
-3789
-3790
-3791
-3792
 3793
 3794
 3795
-3796</pre>
+3796
+3797
+3798
+3799
+3800
+3801
+3802
+3803</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3786</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3793</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1236,24 +1236,24 @@ rb_int_modulo(VALUE x, VALUE y)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4346-L4356'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4353-L4363'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4346
-4347
-4348
-4349
-4350
-4351
-4352
 4353
 4354
 4355
-4356</pre>
+4356
+4357
+4358
+4359
+4360
+4361
+4362
+4363</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4346</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4353</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1284,24 +1284,24 @@ Bignum.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3595-L3605'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3602-L3612'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3595
-3596
-3597
-3598
-3599
-3600
-3601
 3602
 3603
 3604
-3605</pre>
+3605
+3606
+3607
+3608
+3609
+3610
+3611
+3612</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3595</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3602</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1339,24 +1339,24 @@ fractional. The result may be an <code>Integer</code>, or a <a href="Float.html"
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3999-L4009'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4006-L4016'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3999
-4000
-4001
-4002
-4003
-4004
-4005
 4006
 4007
 4008
-4009</pre>
+4009
+4010
+4011
+4012
+4013
+4014
+4015
+4016</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3999</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4006</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1386,24 +1386,24 @@ of <code>numeric</code> and on the magnitude of the result. It may return a Bign
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3505-L3515'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3512-L3522'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3505
-3506
-3507
-3508
-3509
-3510
-3511
 3512
 3513
 3514
-3515</pre>
+3515
+3516
+3517
+3518
+3519
+3520
+3521
+3522</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3505</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3512</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1434,24 +1434,24 @@ Bignum.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3544-L3554'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3551-L3561'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3544
-3545
-3546
-3547
-3548
-3549
-3550
 3551
 3552
 3553
-3554</pre>
+3554
+3555
+3556
+3557
+3558
+3559
+3560
+3561</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3544</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3551</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1480,24 +1480,24 @@ rb_int_minus(VALUE x, VALUE y)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3373-L3383'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3380-L3390'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3373
-3374
-3375
-3376
-3377
-3378
-3379
 3380
 3381
 3382
-3383</pre>
+3383
+3384
+3385
+3386
+3387
+3388
+3389
+3390</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3373</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3380</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1527,24 +1527,24 @@ of <code>numeric</code> and on the magnitude of the result. It may return a Bign
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3716-L3726'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3723-L3733'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3716
-3717
-3718
-3719
-3720
-3721
-3722
 3723
 3724
 3725
-3726</pre>
+3726
+3727
+3728
+3729
+3730
+3731
+3732
+3733</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3716</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3723</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1573,24 +1573,24 @@ rb_int_div(VALUE x, VALUE y)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4208-L4218'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4215-L4225'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4208
-4209
-4210
-4211
-4212
-4213
-4214
 4215
 4216
 4217
-4218</pre>
+4218
+4219
+4220
+4221
+4222
+4223
+4224
+4225</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4208</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4215</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1619,24 +1619,24 @@ int_lt(VALUE x, VALUE y)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4461-L4471'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4468-L4478'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4461
-4462
-4463
-4464
-4465
-4466
-4467
 4468
 4469
 4470
-4471</pre>
+4471
+4472
+4473
+4474
+4475
+4476
+4477
+4478</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4461</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4468</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1666,24 +1666,24 @@ rb_int_lshift(VALUE x, VALUE y)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4248-L4258'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4255-L4265'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4248
-4249
-4250
-4251
-4252
-4253
-4254
 4255
 4256
 4257
-4258</pre>
+4258
+4259
+4260
+4261
+4262
+4263
+4264
+4265</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4248</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4255</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1718,26 +1718,26 @@ int_le(VALUE x, VALUE y)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4090-L4102'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4097-L4109'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4090
-4091
-4092
-4093
-4094
-4095
-4096
 4097
 4098
 4099
 4100
 4101
-4102</pre>
+4102
+4103
+4104
+4105
+4106
+4107
+4108
+4109</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4090</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4097</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1763,24 +1763,24 @@ rb_int_cmp(VALUE x, VALUE y)
     #<strong>==</strong>(y)  
     <span class='aliases'>Also known as: <span class='names'>#===</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4040-L4050'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4047-L4057'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4040
-4041
-4042
-4043
-4044
-4045
-4046
 4047
 4048
 4049
-4050</pre>
+4050
+4051
+4052
+4053
+4054
+4055
+4056
+4057</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4040</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4047</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1823,24 +1823,24 @@ rb_int_equal(VALUE x, VALUE y)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4130-L4140'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4137-L4147'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4130
-4131
-4132
-4133
-4134
-4135
-4136
 4137
 4138
 4139
-4140</pre>
+4140
+4141
+4142
+4143
+4144
+4145
+4146
+4147</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4130</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4137</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1870,24 +1870,24 @@ rb_int_gt(VALUE x, VALUE y)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4170-L4180'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4177-L4187'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4170
-4171
-4172
-4173
-4174
-4175
-4176
 4177
 4178
 4179
-4180</pre>
+4180
+4181
+4182
+4183
+4184
+4185
+4186
+4187</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4170</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4177</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -1916,24 +1916,24 @@ rb_int_ge(VALUE x, VALUE y)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4507-L4517'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4514-L4524'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4507
-4508
-4509
-4510
-4511
-4512
-4513
 4514
 4515
 4516
-4517</pre>
+4517
+4518
+4519
+4520
+4521
+4522
+4523
+4524</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4507</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4514</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -1975,24 +1975,24 @@ rb_int_rshift(VALUE x, VALUE y)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4567-L4577'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4574-L4584'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4567
-4568
-4569
-4570
-4571
-4572
-4573
 4574
 4575
 4576
-4577</pre>
+4577
+4578
+4579
+4580
+4581
+4582
+4583
+4584</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4567</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4574</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -2021,24 +2021,24 @@ int_aref(VALUE num, VALUE idx)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4416-L4426'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4423-L4433'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4416
-4417
-4418
-4419
-4420
-4421
-4422
 4423
 4424
 4425
-4426</pre>
+4426
+4427
+4428
+4429
+4430
+4431
+4432
+4433</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4416</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4423</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -2078,24 +2078,24 @@ int_xor(VALUE x, VALUE y)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4632-L4642'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4639-L4649'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4632
-4633
-4634
-4635
-4636
-4637
-4638
 4639
 4640
 4641
-4642</pre>
+4642
+4643
+4644
+4645
+4646
+4647
+4648
+4649</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4632</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4639</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -2166,24 +2166,24 @@ there is no such bit (zero or minus one), zero is returned.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4737-L4747'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4744-L4754'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4737
-4738
-4739
-4740
-4741
-4742
-4743
 4744
 4745
 4746
-4747</pre>
+4747
+4748
+4749
+4750
+4751
+4752
+4753
+4754</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4737</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4744</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -2220,28 +2220,28 @@ is positive, <code>self</code> for zero, and ceil up for negative.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5085-L5099'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5101-L5115'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-5085
-5086
-5087
-5088
-5089
-5090
-5091
-5092
-5093
-5094
-5095
-5096
-5097
-5098
-5099</pre>
+5101
+5102
+5103
+5104
+5105
+5106
+5107
+5108
+5109
+5110
+5111
+5112
+5113
+5114
+5115</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 5085</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 5101</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -2279,18 +2279,11 @@ value according to <code>encoding</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3289-L3331'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3296-L3338'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3289
-3290
-3291
-3292
-3293
-3294
-3295
 3296
 3297
 3298
@@ -2326,9 +2319,16 @@ value according to <code>encoding</code>.</p>
 3328
 3329
 3330
-3331</pre>
+3331
+3332
+3333
+3334
+3335
+3336
+3337
+3338</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3289</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3296</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -2493,18 +2493,11 @@ with radix <code>base</code> of <code>int</code>.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4822-L4854'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4829-L4861'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4822
-4823
-4824
-4825
-4826
-4827
-4828
 4829
 4830
 4831
@@ -2530,9 +2523,16 @@ with radix <code>base</code> of <code>int</code>.</p>
 4851
 4852
 4853
-4854</pre>
+4854
+4855
+4856
+4857
+4858
+4859
+4860
+4861</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4822</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4829</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -2584,24 +2584,24 @@ rb_int_digits(int argc, VALUE *argv, VALUE num)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3743-L3753'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3750-L3760'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3743
-3744
-3745
-3746
-3747
-3748
-3749
 3750
 3751
 3752
-3753</pre>
+3753
+3754
+3755
+3756
+3757
+3758
+3759
+3760</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3743</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3750</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -2630,24 +2630,24 @@ rb_int_idiv(VALUE x, VALUE y)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3868-L3878'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3875-L3885'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3868
-3869
-3870
-3871
-3872
-3873
-3874
 3875
 3876
 3877
-3878</pre>
+3878
+3879
+3880
+3881
+3882
+3883
+3884
+3885</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3868</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3875</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -2689,18 +2689,11 @@ including <code>limit</code>.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4925-L4947'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4932-L4954'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4925
-4926
-4927
-4928
-4929
-4930
-4931
 4932
 4933
 4934
@@ -2716,9 +2709,16 @@ including <code>limit</code>.</p>
 4944
 4945
 4946
-4947</pre>
+4947
+4948
+4949
+4950
+4951
+4952
+4953
+4954</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4925</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4932</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -2765,21 +2765,21 @@ int_downto(VALUE from, VALUE to)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3658-L3665'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3665-L3672'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3658
-3659
-3660
-3661
-3662
-3663
-3664
-3665</pre>
+3665
+3666
+3667
+3668
+3669
+3670
+3671
+3672</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3658</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3665</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -2813,28 +2813,28 @@ is positive, <code>self</code> for zero, and floor down for negative.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5053-L5067'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5069-L5083'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-5053
-5054
-5055
-5056
-5057
-5058
-5059
-5060
-5061
-5062
-5063
-5064
-5065
-5066
-5067</pre>
+5069
+5070
+5071
+5072
+5073
+5074
+5075
+5076
+5077
+5078
+5079
+5080
+5081
+5082
+5083</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 5053</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 5069</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -3012,14 +3012,14 @@ rb_lcm(VALUE self, VALUE other)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5425-L5425'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5441-L5441'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-5425</pre>
+5441</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 5425</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 5441</span></pre>
 <pre class='code cpp'>
 
 rb_define_method(rb_cInteger, &quot;magnitude&quot;, rb_int_abs, 0);
@@ -3044,14 +3044,14 @@ rb_define_method(rb_cInteger, &quot;magnitude&quot;, rb_int_abs, 0);
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5418-L5418'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5434-L5434'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-5418</pre>
+5434</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 5418</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 5434</span></pre>
 <pre class='code cpp'>
 
 rb_define_method(rb_cInteger, &quot;modulo&quot;, rb_int_modulo, 1);
@@ -3082,25 +3082,25 @@ rb_define_method(rb_cInteger, &quot;modulo&quot;, rb_int_modulo, 1);
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3214-L3225'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3221-L3232'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3214
-3215
-3216
-3217
-3218
-3219
-3220
 3221
 3222
 3223
 3224
-3225</pre>
+3225
+3226
+3227
+3228
+3229
+3230
+3231
+3232</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3214</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3221</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -3171,18 +3171,18 @@ integer_numerator(VALUE self)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3347-L3351'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3354-L3358'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3347
-3348
-3349
-3350
-3351</pre>
+3354
+3355
+3356
+3357
+3358</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3347</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3354</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -3208,25 +3208,25 @@ int_ord(VALUE num)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3239-L3250'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3246-L3257'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3239
-3240
-3241
-3242
-3243
-3244
-3245
 3246
 3247
 3248
 3249
-3250</pre>
+3250
+3251
+3252
+3253
+3254
+3255
+3256
+3257</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3239</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3246</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -3307,24 +3307,24 @@ integer_rationalize(int argc, VALUE *argv, VALUE self)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3820-L3830'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3827-L3837'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3820
-3821
-3822
-3823
-3824
-3825
-3826
 3827
 3828
 3829
-3830</pre>
+3830
+3831
+3832
+3833
+3834
+3835
+3836
+3837</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3820</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3827</span></pre>
 <pre class='code cpp'>
 
 VALUE
@@ -3345,7 +3345,7 @@ int_remainder(VALUE x, VALUE y)
 
 <section class='method_details' id="round-instance_method">
   <h3 class='signature '>
-    #<strong>round</strong>([ndigits])  &#x21d2; <code>Integer</code>, <a href="Float.html" title="Float (class)">Float</a>   </h3>
+    #<strong>round</strong>([ndigits][, half: symbol])  &#x21d2; <code>Integer</code>, <a href="Float.html" title="Float (class)">Float</a>   </h3>
 <div class='docstring'>
   <div class='discussion'>
     
@@ -3358,33 +3358,42 @@ is positive, <code>self</code> for zero, and round down for negative.</p>
 </span><span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span>     <span class='comment'>#=&gt; 1.0
 </span><span class='int'>15</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; 20</span></code></pre>
 
+<p>The <code>half:</code> optional keyword same as <a href="Float.html#round-instance_method" title="Float#round (method)">Float#round</a> is available.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='int'>25</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>half:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_up'>up</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; 30
+</span><span class='int'>25</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>half:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_even'>even</span><span class='rparen'>)</span> <span class='comment'>#=&gt; 20
+</span><span class='int'>25</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>half:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_down'>down</span><span class='rparen'>)</span> <span class='comment'>#=&gt; 20
+</span><span class='int'>35</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>half:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_up'>up</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; 40
+</span><span class='int'>35</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>half:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_even'>even</span><span class='rparen'>)</span> <span class='comment'>#=&gt; 40
+</span><span class='int'>35</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>half:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_down'>down</span><span class='rparen'>)</span> <span class='comment'>#=&gt; 30</span></code></pre>
+
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5018-L5035'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5034-L5051'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-5018
-5019
-5020
-5021
-5022
-5023
-5024
-5025
-5026
-5027
-5028
-5029
-5030
-5031
-5032
-5033
 5034
-5035</pre>
+5035
+5036
+5037
+5038
+5039
+5040
+5041
+5042
+5043
+5044
+5045
+5046
+5047
+5048
+5049
+5050
+5051</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 5018</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 5034</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -3427,24 +3436,24 @@ int_round(int argc, VALUE* argv, VALUE num)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4665-L4675'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4672-L4682'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4665
-4666
-4667
-4668
-4669
-4670
-4671
 4672
 4673
 4674
-4675</pre>
+4675
+4676
+4677
+4678
+4679
+4680
+4681
+4682</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4665</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4672</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -3506,18 +3515,11 @@ int_size(VALUE num)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4978-L5001'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4985-L5008'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4978
-4979
-4980
-4981
-4982
-4983
-4984
 4985
 4986
 4987
@@ -3534,9 +3536,16 @@ int_size(VALUE num)
 4998
 4999
 5000
-5001</pre>
+5001
+5002
+5003
+5004
+5005
+5006
+5007
+5008</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4978</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4985</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -3579,18 +3588,11 @@ result is infinity.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4589-L4605'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4596-L4612'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4589
-4590
-4591
-4592
-4593
-4594
-4595
 4596
 4597
 4598
@@ -3600,9 +3602,16 @@ result is infinity.</p>
 4602
 4603
 4604
-4605</pre>
+4605
+4606
+4607
+4608
+4609
+4610
+4611
+4612</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4589</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4596</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -3641,18 +3650,18 @@ return the receiver.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3132-L3136'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3139-L3143'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3132
-3133
-3134
-3135
-3136</pre>
+3139
+3140
+3141
+3142
+3143</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3132</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3139</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -3681,14 +3690,14 @@ int_to_i(VALUE num)
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5403-L5403'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5419-L5419'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-5403</pre>
+5419</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 5403</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 5419</span></pre>
 <pre class='code cpp'>
 
 rb_define_method(rb_cInteger, &quot;to_int&quot;, int_to_i, 0);
@@ -3754,24 +3763,24 @@ integer_to_r(VALUE self)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3445-L3455'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L3452-L3462'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-3445
-3446
-3447
-3448
-3449
-3450
-3451
 3452
 3453
 3454
-3455</pre>
+3455
+3456
+3457
+3458
+3459
+3460
+3461
+3462</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 3445</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 3452</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -3808,28 +3817,28 @@ is positive, <code>self</code> for zero, and truncate up for negative.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5117-L5131'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L5133-L5147'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-5117
-5118
-5119
-5120
-5121
-5122
-5123
-5124
-5125
-5126
-5127
-5128
-5129
-5130
-5131</pre>
+5133
+5134
+5135
+5136
+5137
+5138
+5139
+5140
+5141
+5142
+5143
+5144
+5145
+5146
+5147</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 5117</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 5133</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -3876,18 +3885,11 @@ including <code>limit</code>.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4879-L4901'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4886-L4908'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4879
-4880
-4881
-4882
-4883
-4884
-4885
 4886
 4887
 4888
@@ -3903,9 +3905,16 @@ including <code>limit</code>.</p>
 4898
 4899
 4900
-4901</pre>
+4901
+4902
+4903
+4904
+4905
+4906
+4907
+4908</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4879</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4886</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -3946,24 +3955,24 @@ int_upto(VALUE from, VALUE to)
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4381-L4391'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4388-L4398'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4381
-4382
-4383
-4384
-4385
-4386
-4387
 4388
 4389
 4390
-4391</pre>
+4391
+4392
+4393
+4394
+4395
+4396
+4397
+4398</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4381</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4388</span></pre>
 <pre class='code cpp'>
 
 static VALUE
@@ -3999,24 +4008,24 @@ of the digits.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4282-L4292'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/trunk/numeric.c#L4289-L4299'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-4282
-4283
-4284
-4285
-4286
-4287
-4288
 4289
 4290
 4291
-4292</pre>
+4292
+4293
+4294
+4295
+4296
+4297
+4298
+4299</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'numeric.c', line 4282</span></pre>
+<pre><span class='info file'># File 'numeric.c', line 4289</span></pre>
 <pre class='code cpp'>
 
 static VALUE
