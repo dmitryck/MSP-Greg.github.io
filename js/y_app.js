@@ -3790,6 +3790,7 @@ function clkContent(e) {
       }
     }
     if (cancel && eA) {
+      if (eA.className === 'repo') return true;
       clickedBy = CB_CONTENT;
       if (hash = eA.hash) {
         var a = eA.href.split('#');
