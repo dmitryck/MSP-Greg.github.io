@@ -349,16 +349,16 @@
   <h3 class='signature priv  nodoc first'>
     #<strong>associated_predicate_builder</strong>(association_name)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/predicate_builder.rb#L133-L135'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/predicate_builder.rb#L129-L131'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-133
-134
-135</pre>
+129
+130
+131</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/predicate_builder.rb', line 133</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/predicate_builder.rb', line 129</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_associated_predicate_builder'>associated_predicate_builder</span><span class='lparen'>(</span><span class='id identifier rubyid_association_name'>association_name</span><span class='rparen'>)</span>
@@ -397,16 +397,16 @@
   <h3 class='signature priv  nodoc'>
     #<strong>build_bind_param</strong>(column_name, value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/predicate_builder.rb#L167-L169'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/predicate_builder.rb#L162-L164'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-167
-168
-169</pre>
+162
+163
+164</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/predicate_builder.rb', line 167</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/predicate_builder.rb', line 162</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_build_bind_param'>build_bind_param</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -454,26 +454,24 @@
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/predicate_builder.rb#L157-L165'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/predicate_builder.rb#L153-L160'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+153
+154
+155
+156
 157
 158
 159
-160
-161
-162
-163
-164
-165</pre>
+160</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/predicate_builder.rb', line 157</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/predicate_builder.rb', line 153</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_be_bound?'>can_be_bound?</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_associated_with?'>associated_with?</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_value'>value</span>
   <span class='kw'>when</span> <span class='const'><a href="../Array.html" title="Array (class)">Array</a></span><span class='comma'>,</span> <span class='const'><a href="../Range.html" title="Range (class)">Range</a></span>
     <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_subtype'>subtype</span><span class='rparen'>)</span>
@@ -490,11 +488,15 @@
   <h3 class='signature priv  nodoc'>
     #<strong>convert_dot_notation_to_hash</strong>(attributes)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/predicate_builder.rb#L137-L151'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/predicate_builder.rb#L133-L147'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+133
+134
+135
+136
 137
 138
 139
@@ -505,13 +507,9 @@
 144
 145
 146
-147
-148
-149
-150
-151</pre>
+147</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/predicate_builder.rb', line 137</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/predicate_builder.rb', line 133</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_convert_dot_notation_to_hash'>convert_dot_notation_to_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
@@ -564,7 +562,7 @@
   <h3 class='signature prot  nodoc'>
     #<strong>create_binds_for_hash</strong>(attributes)   <span class="extras">(<span class='prot'>protected</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/predicate_builder.rb#L85-L129'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/predicate_builder.rb#L85-L125'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -609,11 +607,7 @@
 122
 123
 124
-125
-126
-127
-128
-129</pre>
+125</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'activerecord/lib/active_record/relation/predicate_builder.rb', line 85</span></pre>
 <pre class='code ruby'>
@@ -623,14 +617,19 @@
   <span class='id identifier rubyid_binds'>binds</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
 
   <span class='id identifier rubyid_attributes'>attributes</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+    <span class='id identifier rubyid_binds'>binds</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_bound_attributes'>bound_attributes</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="Relation.html" title="ActiveRecord::Relation (class)">Relation</a></span><span class='rparen'>)</span>
     <span class='kw'>case</span>
     <span class='kw'>when</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="../Hash.html" title="Hash (class)">Hash</a></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_has_column?'>has_column?</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_attrs'>attrs</span><span class='comma'>,</span> <span class='id identifier rubyid_bvs'>bvs</span> <span class='op'>=</span> <span class='id identifier rubyid_associated_predicate_builder'>associated_predicate_builder</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_create_binds_for_hash'>create_binds_for_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_attrs'>attrs</span>
       <span class='id identifier rubyid_binds'>binds</span> <span class='op'>+=</span> <span class='id identifier rubyid_bvs'>bvs</span>
-      <span class='kw'>next</span>
-    <span class='kw'>when</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="Relation.html" title="ActiveRecord::Relation (class)">Relation</a></span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_binds'>binds</span> <span class='op'>+=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_bound_attributes'>bound_attributes</span>
+    <span class='kw'>when</span> <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_associated_with?'>associated_with?</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
+      <span class='comment'># Find the foreign key when using queries such as:
+</span>      <span class='comment'># Post.where(author: author)
+</span>      <span class='comment'>#
+</span>      <span class='comment'># For polymorphic relationships, find the foreign key and type:
+</span>      <span class='comment'># PriceEstimate.where(estimate_of: treasure)
+</span>      <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><a href="PredicateBuilder/AssociationQueryHandler.html" title="ActiveRecord::PredicateBuilder::AssociationQueryHandler (class)">AssociationQueryHandler</a></span><span class='period'>.</span><span class='id identifier rubyid_value_for'><a href="PredicateBuilder/AssociationQueryHandler.html#value_for-class_method" title="ActiveRecord::PredicateBuilder::AssociationQueryHandler.value_for (method)">value_for</a></span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
     <span class='kw'>when</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><a href="../Range.html" title="Range (class)">Range</a></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_subtype'>subtype</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_first'>first</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_begin'>begin</span>
       <span class='id identifier rubyid_last'>last</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span>
@@ -649,15 +648,6 @@
         <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Arel</span><span class='op'>::</span><span class='const'>Nodes</span><span class='op'>::</span><span class='const'>BindParam</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
         <span class='id identifier rubyid_binds'>binds</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_build_bind_param'>build_bind_param</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
       <span class='kw'>end</span>
-    <span class='kw'>end</span>
-
-    <span class='comment'># Find the foreign key when using queries such as:
-</span>    <span class='comment'># Post.where(author: author)
-</span>    <span class='comment'>#
-</span>    <span class='comment'># For polymorphic relationships, find the foreign key and type:
-</span>    <span class='comment'># PriceEstimate.where(estimate_of: treasure)
-</span>    <span class='kw'>if</span> <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_associated_with?'>associated_with?</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><a href="PredicateBuilder/AssociationQueryHandler.html" title="ActiveRecord::PredicateBuilder::AssociationQueryHandler (class)">AssociationQueryHandler</a></span><span class='period'>.</span><span class='id identifier rubyid_value_for'><a href="PredicateBuilder/AssociationQueryHandler.html#value_for-class_method" title="ActiveRecord::PredicateBuilder::AssociationQueryHandler.value_for (method)">value_for</a></span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
@@ -712,16 +702,16 @@
   <h3 class='signature priv  nodoc'>
     #<strong>handler_for</strong>(object)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/predicate_builder.rb#L153-L155'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation/predicate_builder.rb#L149-L151'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-153
-154
-155</pre>
+149
+150
+151</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/relation/predicate_builder.rb', line 153</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/relation/predicate_builder.rb', line 149</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_handler_for'>handler_for</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>

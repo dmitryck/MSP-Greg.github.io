@@ -289,12 +289,11 @@ the records <a href="../Validations.html#errors-instance_method" title="ActiveMo
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/validations/numericality.rb#L86-L95'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/validations/numericality.rb#L87-L96'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-86
 87
 88
 89
@@ -303,9 +302,10 @@ the records <a href="../Validations.html#errors-instance_method" title="ActiveMo
 92
 93
 94
-95</pre>
+95
+96</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/validations/numericality.rb', line 86</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/validations/numericality.rb', line 87</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_allow_only_integer?'>allow_only_integer?</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='rparen'>)</span>
@@ -361,18 +361,18 @@ the records <a href="../Validations.html#errors-instance_method" title="ActiveMo
   <h3 class='signature priv  nodoc'>
     #<strong>filtered_options</strong>(value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/validations/numericality.rb#L80-L84'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/validations/numericality.rb#L81-L85'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-80
 81
 82
 83
-84</pre>
+84
+85</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/validations/numericality.rb', line 80</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/validations/numericality.rb', line 81</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_filtered_options'>filtered_options</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -396,16 +396,16 @@ the records <a href="../Validations.html#errors-instance_method" title="ActiveMo
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/validations/numericality.rb#L76-L78'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/validations/numericality.rb#L77-L79'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-76
 77
-78</pre>
+78
+79</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/validations/numericality.rb', line 76</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/validations/numericality.rb', line 77</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_is_integer?'>is_integer?</span><span class='lparen'>(</span><span class='id identifier rubyid_raw_value'>raw_value</span><span class='rparen'>)</span>
@@ -455,19 +455,21 @@ the records <a href="../Validations.html#errors-instance_method" title="ActiveMo
   <h3 class='signature priv  nodoc'>
     #<strong>parse_raw_value_as_a_number</strong>(raw_value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/validations/numericality.rb#L72-L74'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/validations/numericality.rb#L72-L75'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
 72
 73
-74</pre>
+74
+75</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'activemodel/lib/active_model/validations/numericality.rb', line 72</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse_raw_value_as_a_number'>parse_raw_value_as_a_number</span><span class='lparen'>(</span><span class='id identifier rubyid_raw_value'>raw_value</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_raw_value'>raw_value</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='kw'>if</span> <span class='id identifier rubyid_is_integer?'>is_integer?</span><span class='lparen'>(</span><span class='id identifier rubyid_raw_value'>raw_value</span><span class='rparen'>)</span>
   <span class='const'><a href="../../Kernel.html" title="Kernel (module)">Kernel</a></span><span class='period'>.</span><span class='const'>Float</span><span class='lparen'>(</span><span class='id identifier rubyid_raw_value'>raw_value</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_raw_value'>raw_value</span> <span class='op'>!~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A0[xX]</span><span class='regexp_end'>/</span></span>
 <span class='kw'>end</span>
 </pre>
@@ -486,17 +488,17 @@ the records <a href="../Validations.html#errors-instance_method" title="ActiveMo
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/validations/numericality.rb#L97-L100'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activemodel/lib/active_model/validations/numericality.rb#L98-L101'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-97
 98
 99
-100</pre>
+100
+101</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activemodel/lib/active_model/validations/numericality.rb', line 97</span></pre>
+<pre><span class='info file'># File 'activemodel/lib/active_model/validations/numericality.rb', line 98</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_record_attribute_changed_in_place?'>record_attribute_changed_in_place?</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='comma'>,</span> <span class='id identifier rubyid_attr_name'>attr_name</span><span class='rparen'>)</span>

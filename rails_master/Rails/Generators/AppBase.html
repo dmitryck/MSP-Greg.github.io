@@ -302,6 +302,12 @@ hook is being used.</p></div></td>
   </li>
   <li>
     <span class='summary_signature ro nodoc'>
+      <a href="#depends_on_system_test%3F-instance_method" title="#depends_on_system_test? (instance method)">#<strong>depends_on_system_test?</strong>  &#x21d2; Boolean </a>
+    </span>
+    <span class='note title readonly'>readonly</span>
+  </li>
+  <li>
+    <span class='summary_signature ro nodoc'>
       <a href="#os_supports_listen_out_of_the_box%3F-instance_method" title="#os_supports_listen_out_of_the_box? (instance method)">#<strong>os_supports_listen_out_of_the_box?</strong>  &#x21d2; Boolean </a>
     </span>
     <span class='note title readonly'>readonly</span>
@@ -626,19 +632,19 @@ the executor parameter provided.</p></div></td>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L105-L110'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L102-L107'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+102
+103
+104
 105
 106
-107
-108
-109
-110</pre>
+107</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 105</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 102</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
@@ -657,7 +663,7 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc first'>
     .<strong>add_shared_options_for</strong>(name)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L27-L103'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L27-L100'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -735,10 +741,7 @@ the executor parameter provided.</p></div></td>
 97
 98
 99
-100
-101
-102
-103</pre>
+100</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 27</span></pre>
 <pre class='code ruby'>
@@ -749,9 +752,6 @@ the executor parameter provided.</p></div></td>
 
   <span class='id identifier rubyid_class_option'>class_option</span> <span class='symbeg'>:</span><span class='id identifier rubyid_database'>database</span><span class='comma'>,</span>           <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='label'>aliases:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>default:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sqlite3</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
                                     <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Preconfigure for selected database (options: </span><span class='embexpr_beg'>#{</span><span class='const'><a href="#DATABASES-constant" title="Rails::Generators::AppBase::DATABASES (constant)">DATABASES</a></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
-
-  <span class='id identifier rubyid_class_option'>class_option</span> <span class='symbeg'>:</span><span class='id identifier rubyid_javascript'>javascript</span><span class='comma'>,</span>         <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='label'>aliases:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-j</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-                                    <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Preconfigure for selected JavaScript library</span><span class='tstring_end'>&quot;</span></span>
 
   <span class='id identifier rubyid_class_option'>class_option</span> <span class='symbeg'>:</span><span class='id identifier rubyid_webpack'>webpack</span><span class='comma'>,</span>            <span class='label'>type:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>nil</span><span class='comma'>,</span>
                                     <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Preconfigure for app-like JavaScript with Webpack (options: </span><span class='embexpr_beg'>#{</span><span class='const'><a href="#WEBPACKS-constant" title="Rails::Generators::AppBase::WEBPACKS (constant)">WEBPACKS</a></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -854,16 +854,16 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature ro  nodoc first'>
     #<strong>bundle_install?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L408-L410'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L400-L402'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-408
-409
-410</pre>
+400
+401
+402</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 408</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 400</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bundle_install?'>bundle_install?</span>
@@ -878,16 +878,16 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature ro  nodoc'>
     #<strong>depend_on_listen?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L416-L418'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L412-L414'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-416
-417
-418</pre>
+412
+413
+414</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 416</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 412</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_depend_on_listen?'>depend_on_listen?</span>
@@ -898,20 +898,44 @@ the executor parameter provided.</p></div></td>
 </div>
 </section>
 
-<section class='method_details' id="include_all_railties?-instance_method">
-  <h3 class='signature ro priv  nodoc'>
-    #<strong>include_all_railties?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>, <span class='priv'>private</span>)</span>
+<section class='method_details' id="depends_on_system_test?-instance_method">
+  <h3 class='signature ro  nodoc'>
+    #<strong>depends_on_system_test?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L200-L202'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L408-L410'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-200
-201
-202</pre>
+408
+409
+410</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 200</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 408</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_depends_on_system_test?'>depends_on_system_test?</span>
+  <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_skip_system_test'>skip_system_test</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_skip_test'>skip_test</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_api'>api</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="include_all_railties?-instance_method">
+  <h3 class='signature ro priv  nodoc'>
+    #<strong>include_all_railties?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>, <span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L197-L199'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+197
+198
+199</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 197</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_include_all_railties?'>include_all_railties?</span> <span class='comment'># :doc:
@@ -926,16 +950,16 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature ro priv  nodoc'>
     #<strong>keeps?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>, <span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L208-L210'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L205-L207'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-208
-209
-210</pre>
+205
+206
+207</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 208</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 205</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_keeps?'>keeps?</span> <span class='comment'># :doc:
@@ -950,16 +974,16 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature ro  nodoc'>
     #<strong>os_supports_listen_out_of_the_box?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L420-L422'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L416-L418'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-420
-421
-422</pre>
+416
+417
+418</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 420</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 416</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_os_supports_listen_out_of_the_box?'>os_supports_listen_out_of_the_box?</span>
@@ -994,16 +1018,16 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature ro  nodoc'>
     #<strong>spring_install?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L412-L414'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L404-L406'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-412
-413
-414</pre>
+404
+405
+406</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 412</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 404</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_spring_install?'>spring_install?</span>
@@ -1018,16 +1042,16 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature ro priv  nodoc'>
     #<strong>sqlite3?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>, <span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L212-L214'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L209-L211'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-212
-213
-214</pre>
+209
+210
+211</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 212</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 209</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sqlite3?'>sqlite3?</span> <span class='comment'># :doc:
@@ -1043,18 +1067,18 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature priv  nodoc first'>
     #<strong>add_gem_entry_filter</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L143-L147'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L140-L144'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+140
+141
+142
 143
-144
-145
-146
-147</pre>
+144</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 143</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 140</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_gem_entry_filter'>add_gem_entry_filter</span> <span class='comment'># :doc:
@@ -1071,18 +1095,18 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature priv  nodoc'>
     #<strong>apply_rails_template</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L168-L172'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L165-L169'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+165
+166
+167
 168
-169
-170
-171
-172</pre>
+169</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 168</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 165</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_apply_rails_template'>apply_rails_template</span> <span class='comment'># :doc:
@@ -1099,11 +1123,14 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>assets_gemfile_entry</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L306-L320'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L303-L317'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+303
+304
+305
 306
 307
 308
@@ -1115,12 +1142,9 @@ the executor parameter provided.</p></div></td>
 314
 315
 316
-317
-318
-319
-320</pre>
+317</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 306</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 303</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_assets_gemfile_entry'>assets_gemfile_entry</span>
@@ -1147,16 +1171,16 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature priv  nodoc'>
     #<strong>build</strong>(meth, *args)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L157-L159'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L154-L156'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-157
-158
-159</pre>
+154
+155
+156</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 157</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 154</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_meth'>meth</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span> <span class='comment'># :doc:
@@ -1171,20 +1195,20 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature priv  nodoc'>
     #<strong>builder</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L149-L155'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L146-L152'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+146
+147
+148
 149
 150
 151
-152
-153
-154
-155</pre>
+152</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 149</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 146</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_builder'>builder</span> <span class='comment'># :doc:
@@ -1203,11 +1227,19 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>bundle_command</strong>(command)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L384-L406'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L376-L398'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+376
+377
+378
+379
+380
+381
+382
+383
 384
 385
 386
@@ -1222,17 +1254,9 @@ the executor parameter provided.</p></div></td>
 395
 396
 397
-398
-399
-400
-401
-402
-403
-404
-405
-406</pre>
+398</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 384</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 376</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bundle_command'>bundle_command</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
@@ -1267,20 +1291,20 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>cable_gemfile_entry</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L376-L382'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L368-L374'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-376
-377
-378
-379
-380
-381
-382</pre>
+368
+369
+370
+371
+372
+373
+374</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 376</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 368</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cable_gemfile_entry'>cable_gemfile_entry</span>
@@ -1299,16 +1323,16 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>coffee_gemfile_entry</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L334-L336'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L331-L333'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-334
-335
-336</pre>
+331
+332
+333</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 334</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 331</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_coffee_gemfile_entry'>coffee_gemfile_entry</span>
@@ -1323,16 +1347,16 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature priv  nodoc'>
     #<strong>comment_if</strong>(value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L204-L206'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L201-L203'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-204
-205
-206</pre>
+201
+202
+203</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 204</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 201</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_comment_if'>comment_if</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='comment'># :doc:
@@ -1347,22 +1371,22 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>convert_database_option_for_jruby</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L296-L304'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L293-L301'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+293
+294
+295
 296
 297
 298
 299
 300
-301
-302
-303
-304</pre>
+301</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 296</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 293</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_convert_database_option_for_jruby'>convert_database_option_for_jruby</span>
@@ -1383,19 +1407,19 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature priv  nodoc'>
     #<strong>create_root</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L161-L166'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L158-L163'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+158
+159
+160
 161
 162
-163
-164
-165
-166</pre>
+163</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 161</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 158</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_root'>create_root</span> <span class='comment'># :doc:
@@ -1413,19 +1437,19 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature priv  nodoc'>
     #<strong>database_gemfile_entry</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L187-L192'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L184-L189'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+184
+185
+186
 187
 188
-189
-190
-191
-192</pre>
+189</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 187</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 184</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_database_gemfile_entry'>database_gemfile_entry</span> <span class='comment'># :doc:
@@ -1443,17 +1467,17 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>empty_directory_with_keep_file</strong>(destination, config = {})  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L441-L444'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L437-L440'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-441
-442
-443
-444</pre>
+437
+438
+439
+440</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 441</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 437</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_empty_directory_with_keep_file'>empty_directory_with_keep_file</span><span class='lparen'>(</span><span class='id identifier rubyid_destination'>destination</span><span class='comma'>,</span> <span class='id identifier rubyid_config'>config</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1469,11 +1493,14 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>gem_for_database</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L280-L294'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L277-L291'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+277
+278
+279
 280
 281
 282
@@ -1485,12 +1512,9 @@ the executor parameter provided.</p></div></td>
 288
 289
 290
-291
-292
-293
-294</pre>
+291</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 280</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 277</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gem_for_database'>gem_for_database</span>
@@ -1517,11 +1541,14 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature priv  nodoc'>
     #<strong>gemfile_entries</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L130-L141'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L127-L138'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+127
+128
+129
 130
 131
 132
@@ -1530,12 +1557,9 @@ the executor parameter provided.</p></div></td>
 135
 136
 137
-138
-139
-140
-141</pre>
+138</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 130</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 127</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gemfile_entries'>gemfile_entries</span> <span class='comment'># :doc:
@@ -1559,11 +1583,14 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature priv  nodoc'>
     #<strong>gemfile_entry</strong>(name, *args)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L114-L128'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L111-L125'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+111
+112
+113
 114
 115
 116
@@ -1575,12 +1602,9 @@ the executor parameter provided.</p></div></td>
 122
 123
 124
-125
-126
-127
-128</pre>
+125</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 114</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 111</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gemfile_entry'>gemfile_entry</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span> <span class='comment'># :doc:
@@ -1607,18 +1631,18 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>generate_spring_binstubs</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L435-L439'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L431-L435'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-435
-436
-437
-438
-439</pre>
+431
+432
+433
+434
+435</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 435</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 431</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generate_spring_binstubs'>generate_spring_binstubs</span>
@@ -1635,11 +1659,14 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>javascript_gemfile_entry</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L338-L357'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L335-L349'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+335
+336
+337
 338
 339
 340
@@ -1651,17 +1678,9 @@ the executor parameter provided.</p></div></td>
 346
 347
 348
-349
-350
-351
-352
-353
-354
-355
-356
-357</pre>
+349</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 338</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 335</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_javascript_gemfile_entry'>javascript_gemfile_entry</span>
@@ -1670,11 +1689,6 @@ the executor parameter provided.</p></div></td>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_gems'>gems</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_javascript_runtime_gemfile_entry'>javascript_runtime_gemfile_entry</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_gems'>gems</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_coffee_gemfile_entry'>coffee_gemfile_entry</span> <span class='kw'>unless</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_skip_coffee'>skip_coffee</span><span class='rbracket'>]</span>
-
-    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_javascript'>javascript</span><span class='rbracket'>]</span>
-      <span class='id identifier rubyid_gems'>gems</span> <span class='op'>&lt;&lt;</span> <span class='const'><a href="AppBase/GemfileEntry.html" title="Rails::Generators::AppBase::GemfileEntry (class)">GemfileEntry</a></span><span class='period'>.</span><span class='id identifier rubyid_version'><a href="AppBase/GemfileEntry.html#version-class_method" title="Rails::Generators::AppBase::GemfileEntry.version (method)">version</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_javascript'>javascript</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>-rails</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span>
-        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Use </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_javascript'>javascript</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> as the JavaScript library</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
 
     <span class='kw'>unless</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_skip_turbolinks'>skip_turbolinks</span><span class='rbracket'>]</span>
       <span class='id identifier rubyid_gems'>gems</span> <span class='op'>&lt;&lt;</span> <span class='const'><a href="AppBase/GemfileEntry.html" title="Rails::Generators::AppBase::GemfileEntry (class)">GemfileEntry</a></span><span class='period'>.</span><span class='id identifier rubyid_version'><a href="AppBase/GemfileEntry.html#version-class_method" title="Rails::Generators::AppBase::GemfileEntry.version (method)">version</a></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>turbolinks</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>~&gt; 5</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
@@ -1693,21 +1707,21 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>javascript_runtime_gemfile_entry</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L359-L366'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L351-L358'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-359
-360
-361
-362
-363
-364
-365
-366</pre>
+351
+352
+353
+354
+355
+356
+357
+358</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 359</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 351</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_javascript_runtime_gemfile_entry'>javascript_runtime_gemfile_entry</span>
@@ -1727,17 +1741,17 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>jbuilder_gemfile_entry</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L329-L332'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L326-L329'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-329
-330
-331
-332</pre>
+326
+327
+328
+329</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 329</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 326</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_jbuilder_gemfile_entry'>jbuilder_gemfile_entry</span>
@@ -1753,16 +1767,16 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>keep_file</strong>(destination)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L446-L448'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L442-L444'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-446
-447
-448</pre>
+442
+443
+444</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 446</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 442</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_keep_file'>keep_file</span><span class='lparen'>(</span><span class='id identifier rubyid_destination'>destination</span><span class='rparen'>)</span>
@@ -1777,20 +1791,20 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>psych_gemfile_entry</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L368-L374'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L360-L366'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-368
-369
-370
-371
-372
-373
-374</pre>
+360
+361
+362
+363
+364
+365
+366</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 368</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 360</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_psych_gemfile_entry'>psych_gemfile_entry</span>
@@ -1809,11 +1823,14 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>rails_gemfile_entry</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L248-L265'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L245-L262'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+245
+246
+247
 248
 249
 250
@@ -1828,12 +1845,9 @@ the executor parameter provided.</p></div></td>
 259
 260
 261
-262
-263
-264
-265</pre>
+262</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 248</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 245</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rails_gemfile_entry'>rails_gemfile_entry</span>
@@ -1863,11 +1877,14 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>rails_version_specifier</strong>(gem_version = Rails.gem_version)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L267-L278'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L264-L275'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+264
+265
+266
 267
 268
 269
@@ -1876,12 +1893,9 @@ the executor parameter provided.</p></div></td>
 272
 273
 274
-275
-276
-277
-278</pre>
+275</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 267</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 264</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rails_version_specifier'>rails_version_specifier</span><span class='lparen'>(</span><span class='id identifier rubyid_gem_version'>gem_version</span> <span class='op'>=</span> <span class='const'><a href="../../Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_gem_version'><a href="../../Rails.html#gem_version-class_method" title="Rails.gem_version (method)">gem_version</a></span><span class='rparen'>)</span>
@@ -1905,16 +1919,16 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>run_bundle</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L424-L426'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L420-L422'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-424
-425
-426</pre>
+420
+421
+422</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 424</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 420</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run_bundle'>run_bundle</span>
@@ -1929,19 +1943,19 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>run_webpack</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L428-L433'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L424-L429'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+424
+425
+426
+427
 428
-429
-430
-431
-432
-433</pre>
+429</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 428</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 424</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run_webpack'>run_webpack</span>
@@ -1959,11 +1973,14 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature priv  nodoc'>
     #<strong>set_default_accessors!</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L174-L185'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L171-L182'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+171
+172
+173
 174
 175
 176
@@ -1972,12 +1989,9 @@ the executor parameter provided.</p></div></td>
 179
 180
 181
-182
-183
-184
-185</pre>
+182</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 174</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 171</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_default_accessors!'>set_default_accessors!</span> <span class='comment'># :doc:
@@ -2001,19 +2015,19 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature nodoc'>
     #<strong>webpacker_gemfile_entry</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L322-L327'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L319-L324'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+319
+320
+321
 322
 323
-324
-325
-326
-327</pre>
+324</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 322</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 319</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_webpacker_gemfile_entry'>webpacker_gemfile_entry</span>
@@ -2031,18 +2045,18 @@ the executor parameter provided.</p></div></td>
   <h3 class='signature priv  nodoc'>
     #<strong>webserver_gemfile_entry</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L194-L198'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/railties/lib/rails/generators/app_base.rb#L191-L195'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+191
+192
+193
 194
-195
-196
-197
-198</pre>
+195</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 194</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/generators/app_base.rb', line 191</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_webserver_gemfile_entry'>webserver_gemfile_entry</span> <span class='comment'># :doc:
