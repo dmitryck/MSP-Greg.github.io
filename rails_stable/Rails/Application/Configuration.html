@@ -309,12 +309,6 @@
   </li>
   <li>
     <span class='summary_signature rw'>
-      <a href="#log_level=-instance_method" title="#log_level= (instance method)">#<strong>log_level=</strong>(value)  </a>
-    </span>
-    <span class='note title rw'>rw</span>
-  </li>
-  <li>
-    <span class='summary_signature rw'>
       <a href="#log_tags-instance_method" title="#log_tags (instance method)">#<strong>log_tags</strong>  </a>
     </span>
     <span class='note title rw'>rw</span>
@@ -532,11 +526,12 @@ stored in `config/database.yml`.</p></div>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L22-L56'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L21-L55'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+21
 22
 23
 24
@@ -570,10 +565,9 @@ stored in `config/database.yml`.</p></div>
 52
 53
 54
-55
-56</pre>
+55</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 22</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 21</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
@@ -592,7 +586,7 @@ stored in `config/database.yml`.</p></div>
   <span class='ivar'>@session_store</span>                   <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='ivar'>@time_zone</span>                       <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UTC</span><span class='tstring_end'>&quot;</span></span>
   <span class='ivar'>@beginning_of_week</span>               <span class='op'>=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_monday'>monday</span>
-  <span class='ivar'>@log_level</span>                       <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='ivar'>@log_level</span>                       <span class='op'>=</span> <span class='symbeg'>:</span><span class='id identifier rubyid_debug'>debug</span>
   <span class='ivar'>@generators</span>                      <span class='op'>=</span> <span class='id identifier rubyid_app_generators'>app_generators</span>
   <span class='ivar'>@cache_store</span>                     <span class='op'>=</span> <span class='lbracket'>[</span> <span class='symbeg'>:</span><span class='id identifier rubyid_file_store'>file_store</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_root'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span><span class='embexpr_end'>}</span><span class='tstring_content'>/tmp/cache/</span><span class='tstring_end'>&quot;</span></span> <span class='rbracket'>]</span>
   <span class='ivar'>@railties_order</span>                  <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_all'>all</span><span class='rbracket'>]</span>
@@ -651,7 +645,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -661,14 +655,14 @@ stored in `config/database.yml`.</p></div>
   <h3 class='signature rw'>
     #<strong>api_only</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L20-L20'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L19-L19'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-20</pre>
+19</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 20</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 19</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_encoding'>encoding</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_api_only'>api_only</span>
@@ -681,19 +675,19 @@ stored in `config/database.yml`.</p></div>
   <h3 class='signature rw'>
     #<strong>api_only=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L94-L99'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L93-L98'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+93
 94
 95
 96
 97
-98
-99</pre>
+98</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 94</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 93</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_api_only='>api_only=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -737,7 +731,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -773,7 +767,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -809,7 +803,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -845,7 +839,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -881,7 +875,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -891,16 +885,16 @@ stored in `config/database.yml`.</p></div>
   <h3 class='signature rw'>
     #<strong>colorize_logging</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L156-L158'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L151-L153'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-156
-157
-158</pre>
+151
+152
+153</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 156</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 151</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_colorize_logging'>colorize_logging</span>
@@ -915,17 +909,17 @@ stored in `config/database.yml`.</p></div>
   <h3 class='signature rw'>
     #<strong>colorize_logging=</strong>(val)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L160-L163'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L155-L158'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-160
-161
-162
-163</pre>
+155
+156
+157
+158</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 160</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 155</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_colorize_logging='>colorize_logging=</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span>
@@ -967,7 +961,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1003,7 +997,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1013,16 +1007,16 @@ stored in `config/database.yml`.</p></div>
   <h3 class='signature rw'>
     #<strong>debug_exception_response_format</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L101-L103'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L100-L102'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+100
 101
-102
-103</pre>
+102</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 101</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 100</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_debug_exception_response_format'>debug_exception_response_format</span>
@@ -1037,16 +1031,16 @@ stored in `config/database.yml`.</p></div>
   <h3 class='signature rw'>
     #<strong>debug_exception_response_format=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L105-L107'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L104-L106'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+104
 105
-106
-107</pre>
+106</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 105</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 104</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_debug_exception_response_format='>debug_exception_response_format=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1087,7 +1081,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1123,7 +1117,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1133,14 +1127,14 @@ stored in `config/database.yml`.</p></div>
   <h3 class='signature rw'>
     #<strong>encoding</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L20-L20'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L19-L19'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-20</pre>
+19</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 20</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 19</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_encoding'>encoding</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_api_only'>api_only</span>
@@ -1153,20 +1147,20 @@ stored in `config/database.yml`.</p></div>
   <h3 class='signature rw'>
     #<strong>encoding=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L86-L92'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L85-L91'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+85
 86
 87
 88
 89
 90
-91
-92</pre>
+91</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 86</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 85</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encoding='>encoding=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1211,7 +1205,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1247,7 +1241,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1283,7 +1277,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1319,7 +1313,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1355,7 +1349,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1391,7 +1385,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1427,7 +1421,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1437,41 +1431,33 @@ stored in `config/database.yml`.</p></div>
   <h3 class='signature rw'>
     #<strong>log_level</strong>   <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L152-L154'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L9-L17'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-152
-153
-154</pre>
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 152</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 9</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_log_level'>log_level</span>
-  <span class='ivar'>@log_level</span> <span class='op'>||=</span> <span class='lparen'>(</span><span class='const'><a href="../../Rails.html" title="Rails (module)">Rails</a></span><span class='period'>.</span><span class='id identifier rubyid_env'><a href="../../Rails.html#env-class_method" title="Rails.env (method)">env</a></span><span class='period'>.</span><span class='id identifier rubyid_production?'>production?</span> <span class='op'>?</span> <span class='symbeg'>:</span><span class='id identifier rubyid_info'>info</span> <span class='op'>:</span> <span class='symbeg'>:</span><span class='id identifier rubyid_debug'>debug</span><span class='rparen'>)</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="log_level=-instance_method">
-  <h3 class='signature rw'>
-    #<strong>log_level=</strong>(value)   <span class="extras">(<span class='rw'>rw</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L19-L19'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-19</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 19</span></pre>
-<pre class='code ruby'>
-
-<span class='id identifier rubyid_attr_writer'>attr_writer</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
+<span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbeg'>:</span><span class='id identifier rubyid_allow_concurrency'>allow_concurrency</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_asset_host'>asset_host</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_autoflush_log'>autoflush_log</span><span class='comma'>,</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_cache_classes'>cache_classes</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_cache_store'>cache_store</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_consider_all_requests_local'>consider_all_requests_local</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_console'>console</span><span class='comma'>,</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_eager_load'>eager_load</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_exceptions_app'>exceptions_app</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_file_watcher'>file_watcher</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_parameters'>filter_parameters</span><span class='comma'>,</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_force_ssl'>force_ssl</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_helpers_paths'>helpers_paths</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_logger'>logger</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_formatter'>log_formatter</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_tags'>log_tags</span><span class='comma'>,</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_railties_order'>railties_order</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_relative_url_root'>relative_url_root</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_secret_key_base'>secret_key_base</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_secret_token'>secret_token</span><span class='comma'>,</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1507,7 +1493,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1543,7 +1529,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1579,7 +1565,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1615,7 +1601,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1651,7 +1637,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1687,7 +1673,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1723,7 +1709,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1759,7 +1745,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1795,7 +1781,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1831,7 +1817,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1867,7 +1853,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1903,7 +1889,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1939,7 +1925,7 @@ stored in `config/database.yml`.</p></div>
               <span class='symbeg'>:</span><span class='id identifier rubyid_ssl_options'>ssl_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_public_file_server'>public_file_server</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_session_options'>session_options</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_time_zone'>time_zone</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reload_classes_only_on_change'>reload_classes_only_on_change</span><span class='comma'>,</span>
               <span class='symbeg'>:</span><span class='id identifier rubyid_beginning_of_week'>beginning_of_week</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_filter_redirect'>filter_redirect</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_enable_dependency_loading'>enable_dependency_loading</span><span class='comma'>,</span>
-              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span>
+              <span class='symbeg'>:</span><span class='id identifier rubyid_read_encrypted_secrets'>read_encrypted_secrets</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_log_level'>log_level</span>
 </pre>
   </div>
 </div>
@@ -1950,16 +1936,16 @@ stored in `config/database.yml`.</p></div>
   <h3 class='signature  first'>
     #<strong>annotations</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L196-L198'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L191-L193'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-196
-197
-198</pre>
+191
+192
+193</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 196</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 191</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_annotations'>annotations</span>
@@ -1982,11 +1968,12 @@ stored in `config/database.yml`.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L127-L150'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L126-L149'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+126
 127
 128
 129
@@ -2009,10 +1996,9 @@ stored in `config/database.yml`.</p>
 146
 147
 148
-149
-150</pre>
+149</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 127</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 126</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_database_configuration'>database_configuration</span>
@@ -2048,11 +2034,12 @@ stored in `config/database.yml`.</p>
   <h3 class='signature '>
     #<strong>load_defaults</strong>(target_version)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L58-L84'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L57-L83'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+57
 58
 59
 60
@@ -2078,10 +2065,9 @@ stored in `config/database.yml`.</p>
 80
 81
 82
-83
-84</pre>
+83</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 58</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 57</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load_defaults'>load_defaults</span><span class='lparen'>(</span><span class='id identifier rubyid_target_version'>target_version</span><span class='rparen'>)</span>
@@ -2120,11 +2106,12 @@ stored in `config/database.yml`.</p>
   <h3 class='signature '>
     #<strong>paths</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L109-L123'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L108-L122'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+108
 109
 110
 111
@@ -2138,10 +2125,9 @@ stored in `config/database.yml`.</p>
 119
 120
 121
-122
-123</pre>
+122</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 109</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 108</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_paths'>paths</span>
@@ -2168,11 +2154,16 @@ stored in `config/database.yml`.</p>
   <h3 class='signature ro'>
     #<strong>session_store</strong>(new_session_store = nil, **options)   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L165-L190'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/application/configuration.rb#L160-L185'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+160
+161
+162
+163
+164
 165
 166
 167
@@ -2193,14 +2184,9 @@ stored in `config/database.yml`.</p>
 182
 183
 184
-185
-186
-187
-188
-189
-190</pre>
+185</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 165</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/application/configuration.rb', line 160</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_session_store'>session_store</span><span class='lparen'>(</span><span class='id identifier rubyid_new_session_store'>new_session_store</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
