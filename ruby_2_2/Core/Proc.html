@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: Proc &mdash; Core Ruby-2.2.6 p396</title>
+<title>Class: Proc &mdash; Core Ruby-2.2.7 p470</title>
 
 <link rel='stylesheet'  type='text/css' href='../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Ruby-2.2.6</a> &raquo; 
+        <a href='../index.html'>Ruby-2.2.7</a> &raquo; 
         <a href='index.html'>Core</a> &raquo; 
         <a href='_index.html#alpha_P'>Index (P)</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Proc&nbsp;&#x25B2;</a></span>
@@ -79,7 +79,7 @@
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_2_6/proc.c#L2734'>proc.c</a>      </td>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_2_7/proc.c#L2739'>proc.c</a>      </td>
     </tr>
   </tbody>
 </table>
@@ -247,7 +247,7 @@ where the proc was defined.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#yield-instance_method" title="#call (instance method)">#<strong>call</strong>(params, ...)  &#x21d2; Object </a>
+      <a href="#yield-instance_method" title="#yield (instance method)">#<strong>yield</strong>(params, ...)  &#x21d2; Object </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Alias for <a href="#[]-instance_method" title="Proc#[] (method)">#[]</a>.</p></div>
@@ -397,6 +397,7 @@ have wrappers to define methods that behave as usual.</p>
     <div class='inline-block'>
       <span class='overload'>#<strong>call</strong>(params, ...)  &#x21d2; <a href="Object.html" title="Object (class)">Object</a> </span>
       <span class='overload'>#<strong>[]</strong>(params, ...)  &#x21d2; <a href="Object.html" title="Object (class)">Object</a> </span>
+      <span class='overload'>#<strong>yield</strong>(params, ...)  &#x21d2; <a href="Object.html" title="Object (class)">Object</a> </span>
     </div>
   </h3>
 <div class='docstring'>
@@ -418,6 +419,7 @@ parameter like <a href="#call-instance_method" title="Proc#call (method)">#call<
     <div class='inline-block'>
       <span class='overload'>#<strong>call</strong>(params, ...)  &#x21d2; <a href="Object.html" title="Object (class)">Object</a> </span>
       <span class='overload'>#<strong>[]</strong>(params, ...)  &#x21d2; <a href="Object.html" title="Object (class)">Object</a> </span>
+      <span class='overload'>#<strong>yield</strong>(params, ...)  &#x21d2; <a href="Object.html" title="Object (class)">Object</a> </span>
     </div>
     <span class='aliases'>Also known as: <span class='names'>#call, #===, #yield</span></span>
   </h3>
@@ -425,31 +427,30 @@ parameter like <a href="#call-instance_method" title="Proc#call (method)">#call<
   <div class='discussion'>
     
 <p>Invokes the block, setting the block&#39;s parameters to the values in
-<em>params</em> using something close to method calling semantics.
-Generates a warning if multiple values are passed to a proc that expects
-just one (previously this silently converted the parameters to an array). 
-Note that prc.() invokes prc.call() with the parameters given.  It&#39;s a
-syntax sugar to hide "call".</p>
+<em>params</em> using something close to method calling semantics. Returns
+the value of the last expression evaluated in the block.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_a_proc'>a_proc</span> <span class='op'>=</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="Proc.new (method)">new</a></span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_scalar'>scalar</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_values'>values</span><span class='op'>|</span> <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span> <span class='id identifier rubyid_value'>value</span><span class='op'>*</span><span class='id identifier rubyid_scalar'>scalar</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_a_proc'>a_proc</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='int'>9</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>2</span><span class='comma'>,</span> <span class='int'>3</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; [9, 18, 27]
+</span><span class='id identifier rubyid_a_proc'>a_proc</span><span class='lbracket'>[</span><span class='int'>9</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>2</span><span class='comma'>,</span> <span class='int'>3</span><span class='rbracket'>]</span>         <span class='comment'>#=&gt; [9, 18, 27]
+</span><span class='id identifier rubyid_a_proc'>a_proc</span><span class='period'>.</span><span class='lparen'>(</span><span class='int'>9</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>2</span><span class='comma'>,</span> <span class='int'>3</span><span class='rparen'>)</span>        <span class='comment'>#=&gt; [9, 18, 27]
+</span><span class='id identifier rubyid_a_proc'>a_proc</span><span class='period'>.</span><span class='id identifier rubyid_yield'>yield</span><span class='lparen'>(</span><span class='int'>9</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>2</span><span class='comma'>,</span> <span class='int'>3</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; [9, 18, 27]</span></code></pre>
+
+<p>Note that <code>prc.()</code> invokes <code>prc.call()</code> with the
+parameters given.  It&#39;s syntactic sugar to hide "call".</p>
 
 <p>For procs created using <code>lambda</code> or <code>-&gt;()</code> an error is
-generated if the wrong number of parameters are passed to a
-<code>Proc</code> with multiple parameters.  For procs created using
-<a href="#new-class_method" title="Proc.new (method)">.new</a> or <a href="Kernel.html#proc-class_method" title="Kernel.proc (method)">Kernel.proc</a>, extra parameters are silently discarded.</p>
+generated if the wrong number of parameters are passed to the proc. For
+procs created using <a href="#new-class_method" title="Proc.new (method)">.new</a> or <a href="Kernel.html#proc-class_method" title="Kernel.proc (method)">Kernel.proc</a>, extra parameters are
+silently discarded and missing parameters are set to <code>nil</code>.</p>
 
-<p>Returns the value of the last expression evaluated in the block. See also
-<a href="#yield-instance_method" title="Proc#yield (method)">#yield</a>.</p>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_a_proc'>a_proc</span> <span class='op'>=</span> <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span><span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span><span class='id identifier rubyid_b'>b</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_a_proc'>a_proc</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; [1, nil]
+</span>
+<span class='id identifier rubyid_a_proc'>a_proc</span> <span class='op'>=</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span><span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span><span class='id identifier rubyid_b'>b</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_a_proc'>a_proc</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>   <span class='comment'># ArgumentError: wrong number of arguments (given 1, expected 2)</span></code></pre>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_a_proc'>a_proc</span> <span class='op'>=</span> <span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="#new-class_method" title="Proc.new (method)">new</a></span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span> <span class='rbrace'>}</span><span class='rbrace'>}</span>
-<span class='id identifier rubyid_a_proc'>a_proc</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='int'>9</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>2</span><span class='comma'>,</span> <span class='int'>3</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; [9, 18, 27]
-</span><span class='id identifier rubyid_a_proc'>a_proc</span><span class='lbracket'>[</span><span class='int'>9</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>2</span><span class='comma'>,</span> <span class='int'>3</span><span class='rbracket'>]</span>        <span class='comment'>#=&gt; [9, 18, 27]
-</span><span class='id identifier rubyid_a_proc'>a_proc</span> <span class='op'>=</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span><span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='rbrace'>}</span>
-<span class='id identifier rubyid_a_proc'>a_proc</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>3</span><span class='rparen'>)</span></code></pre>
-
-<p><em>produces:</em></p>
-
-<pre class="code ruby"><code class="ruby">prog.rb:4:in `block in &lt;main&gt;&#39;: wrong number of arguments (3 for 2) (ArgumentError)
- from prog.rb:5:in `call&#39;
- from prog.rb:5:in `&lt;main&gt;&#39;</code></pre>
+<p>See also <a href="#lambda%3F-instance_method" title="Proc#lambda? (method)">#lambda?</a>.</p>
 
   </div>
 </div>
@@ -529,6 +530,7 @@ accepts either a <code>Proc</code> or a <a href="Binding.html" title="Binding (c
     <div class='inline-block'>
       <span class='overload'>#<strong>call</strong>(params, ...)  &#x21d2; <a href="Object.html" title="Object (class)">Object</a> </span>
       <span class='overload'>#<strong>[]</strong>(params, ...)  &#x21d2; <a href="Object.html" title="Object (class)">Object</a> </span>
+      <span class='overload'>#<strong>yield</strong>(params, ...)  &#x21d2; <a href="Object.html" title="Object (class)">Object</a> </span>
     </div>
   </h3>
 <div class='docstring'>
@@ -651,7 +653,7 @@ returns another curried proc that takes the rest of arguments.</p>
   <div class='discussion'>
     
 <p>Returns the Ruby source filename and line number containing this proc or
-<code>nil</code> if this proc was not defined in Ruby (i.e. native)</p>
+<code>nil</code> if this proc was not defined in Ruby (i.e. native).</p>
 
   </div>
 </div>
@@ -692,6 +694,7 @@ where the proc was defined.</p>
     <div class='inline-block'>
       <span class='overload'>#<strong>call</strong>(params, ...)  &#x21d2; <a href="Object.html" title="Object (class)">Object</a> </span>
       <span class='overload'>#<strong>[]</strong>(params, ...)  &#x21d2; <a href="Object.html" title="Object (class)">Object</a> </span>
+      <span class='overload'>#<strong>yield</strong>(params, ...)  &#x21d2; <a href="Object.html" title="Object (class)">Object</a> </span>
     </div>
   </h3>
 <div class='docstring'>
