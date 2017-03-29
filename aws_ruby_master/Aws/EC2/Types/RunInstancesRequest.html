@@ -199,6 +199,17 @@ vanilla Hash:</p>
     <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
   <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>ebs_optimized:</span> <span class='kw'>false</span><span class='comma'>,</span>
+  <span class='label'>tag_specifications:</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>resource_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>customer-gateway</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway
+</span>      <span class='label'>tags:</span> <span class='lbracket'>[</span>
+        <span class='lbrace'>{</span>
+          <span class='label'>key:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+          <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+        <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
 <span class='rbrace'>}</span></code></pre>
 </div>
   </div>
@@ -428,6 +439,15 @@ vanilla Hash:</p>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
       <div class='inline'><p><p>[EC2-VPC] The ID of the subnet to launch the instance into.</p>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#tag_specifications-instance_method" title="#tag_specifications (instance method)">#<strong>tag_specifications</strong>  &#x21d2; Array&lt;Types::TagSpecification&gt; </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The tags to apply to the resources during launch.</p></div>
     </div>
   </li>
   <li>
@@ -794,6 +814,21 @@ vanilla Hash:</p>
 <div class='docstring'>
   <div class='discussion'>
     <p>[EC2-VPC] The ID of the subnet to launch the instance into.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="tag_specifications-instance_method">
+  <h3 class='signature rw'>
+    #<strong>tag_specifications</strong>  &#x21d2; <code>Array</code>&lt;<a href="TagSpecification.html" title="Aws::EC2::Types::TagSpecification (class)">Types::TagSpecification</a>&gt;  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are applied to all instances or volumes that are created during launch.</p>
 
   </div>
 </div>

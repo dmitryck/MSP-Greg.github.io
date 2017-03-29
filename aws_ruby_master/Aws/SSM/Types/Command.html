@@ -156,7 +156,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The name of the SSM document requested for execution.</p>.</p></div>
+      <div class='inline'><p><p>The name of the document requested for execution.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -246,7 +246,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The parameter values to be inserted in the SSM document when executing the command.</p>.</p></div>
+      <div class='inline'><p><p>The parameter values to be inserted in the document when executing the command.</p>.</p></div>
     </div>
   </li>
   <li>
@@ -300,7 +300,7 @@
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>An array of search criteria that targets instances using a <code>Key</code>;<code>Value</code> combination that you specify.</p></div>
+      <div class='inline'><p><p>An array of search criteria that targets instances using a <code>Key</code>,<code>Value</code> combination that you specify.</p></div>
     </div>
   </li>
 </ul>
@@ -357,7 +357,7 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The name of the SSM document requested for execution.</p>
+    <p>The name of the document requested for execution.</p>
 
   </div>
 </div>
@@ -417,7 +417,7 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The maximum number of instances that are allowed to execute the command at the same time. You can specify a number of instances, such as 10, or a percentage of instances, such as 10%. The default value is 50. For more information about how to use <code>MaxConcurrency</code>, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/run-command.html">Executing a Command Using Amazon EC2 Run Command</a> (Linux) or <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/run-command.html">Executing a Command Using Amazon EC2 Run Command</a> (Windows). </p>
+    <p>The maximum number of instances that are allowed to execute the command at the same time. You can specify a number of instances, such as 10, or a percentage of instances, such as 10%. The default value is 50. For more information about how to use <code>MaxConcurrency</code>, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using Systems Manager Run Command</a>.</p>
 
   </div>
 </div>
@@ -432,7 +432,7 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The maximum number of errors allowed before the system stops sending the command to additional targets. You can specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 50. For more information about how to use <code>MaxErrors</code>, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/run-command.html">Executing a Command Using Amazon EC2 Run Command</a> (Linux) or <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/run-command.html">Executing a Command Using Amazon EC2 Run Command</a> (Windows).</p>
+    <p>The maximum number of errors allowed before the system stops sending the command to additional targets. You can specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 50. For more information about how to use <code>MaxErrors</code>, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using Systems Manager Run Command</a>.</p>
 
   </div>
 </div>
@@ -507,7 +507,7 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The parameter values to be inserted in the SSM document when executing the command.</p>
+    <p>The parameter values to be inserted in the document when executing the command.</p>
 
   </div>
 </div>
@@ -567,7 +567,7 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p><p>A detailed status of the command execution. <code>StatusDetails</code> includes more information than <code>Status</code> because it includes states resulting from error and concurrency control parameters. <code>StatusDetails</code> can show different results than <code>Status</code>. For more information about these statuses, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitor-commands.html">Monitor Commands</a> (Linux) or <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/monitor-commands.html">Monitor Commands</a> (Windows). <code>StatusDetails</code> can be one of the following values:</p> <ul> <li> <p>Pending – The command has not been sent to any instances.</p> </li> <li> <p>In Progress – The command has been sent to at least one instance but has not reached a final state on all instances.</p> </li> <li> <p>Success – The command successfully executed on all invocations. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out – The value of <code>MaxErrors</code> or more command invocations shows a status of <code>Delivery Timed Out</code>. This is a terminal state.</p> </li> <li> <p>Execution Timed Out – The value of <code>MaxErrors</code> or more command invocations shows a status of <code>Execution Timed Out</code>. This is a terminal state.</p> </li> <li> <p>Failed – The value of <code>MaxErrors</code> or more command invocations shows a status of <code>Failed</code>. This is a terminal state.</p> </li> <li> <p>Incomplete – The command was attempted on all instances and one or more invocations does not have a value of <code>Success</code> but not enough invocations failed for the status to be <code>Failed</code>. This is a terminal state.</p> </li> <li> <p>Canceled – The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Rate Exceeded – The number of instances targeted by the command exceeded the account limit for pending invocations. The system has canceled the command before executing it on any instance. This is a terminal state.</p> </li> </ul></p>
+    <p><p>A detailed status of the command execution. <code>StatusDetails</code> includes more information than <code>Status</code> because it includes states resulting from error and concurrency control parameters. <code>StatusDetails</code> can show different results than <code>Status</code>. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. <code>StatusDetails</code> can be one of the following values:</p> <ul> <li> <p>Pending – The command has not been sent to any instances.</p> </li> <li> <p>In Progress – The command has been sent to at least one instance but has not reached a final state on all instances.</p> </li> <li> <p>Success – The command successfully executed on all invocations. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out – The value of <code>MaxErrors</code> or more command invocations shows a status of <code>Delivery Timed Out</code>. This is a terminal state.</p> </li> <li> <p>Execution Timed Out – The value of <code>MaxErrors</code> or more command invocations shows a status of <code>Execution Timed Out</code>. This is a terminal state.</p> </li> <li> <p>Failed – The value of <code>MaxErrors</code> or more command invocations shows a status of <code>Failed</code>. This is a terminal state.</p> </li> <li> <p>Incomplete – The command was attempted on all instances and one or more invocations does not have a value of <code>Success</code> but not enough invocations failed for the status to be <code>Failed</code>. This is a terminal state.</p> </li> <li> <p>Canceled – The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Rate Exceeded – The number of instances targeted by the command exceeded the account limit for pending invocations. The system has canceled the command before executing it on any instance. This is a terminal state.</p> </li> </ul></p>
 
   </div>
 </div>
@@ -597,7 +597,7 @@
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>An array of search criteria that targets instances using a <code>Key</code>;<code>Value</code> combination that you specify. <code>Targets</code> is required if you don't provide one or more instance IDs in the call.</p>
+    <p>An array of search criteria that targets instances using a <code>Key</code>,<code>Value</code> combination that you specify. <code>Targets</code> is required if you don't provide one or more instance IDs in the call.</p>
 
   </div>
 </div>

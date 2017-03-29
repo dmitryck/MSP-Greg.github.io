@@ -833,6 +833,17 @@ collection. <a href="Client.html#describe_addresses-instance_method" title="Aws:
     <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
   <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>ebs_optimized:</span> <span class='kw'>false</span><span class='comma'>,</span>
+  <span class='label'>tag_specifications:</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>resource_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>customer-gateway</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway
+</span>      <span class='label'>tags:</span> <span class='lbracket'>[</span>
+        <span class='lbrace'>{</span>
+          <span class='label'>key:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+          <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+        <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
 <span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
         <p class='example_title'><div class='inline'><p>Basic usage</p>
 </div></p>
@@ -966,6 +977,11 @@ collection. <a href="Client.html#describe_addresses-instance_method" title="Aws:
           <span class='name'>:ebs_optimized</span>
           <span class='type'>(<code>Boolean</code>)</span>
             &mdash; <div class='inline'><p>Indicates whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance.</p> <p>Default: <code>false</code> </p>
+</div>        </li>
+        <li>
+          <span class='name'>:tag_specifications</span>
+          <span class='type'>(<code>Array</code>&lt;<a href="Types/TagSpecification.html" title="Aws::EC2::Types::TagSpecification (class)">Types::TagSpecification</a>&gt;)</span>
+            &mdash; <div class='inline'><p>The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are applied to all instances or volumes that are created during launch.</p>
 </div>        </li>
     </ul>
   <p class='tag_title'>See Also:</p>
@@ -1600,6 +1616,17 @@ collection. <a href="Client.html#describe_addresses-instance_method" title="Aws:
 </span>  <span class='label'>iops:</span> <span class='int'>1</span><span class='comma'>,</span>
   <span class='label'>encrypted:</span> <span class='kw'>false</span><span class='comma'>,</span>
   <span class='label'>kms_key_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>tag_specifications:</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>resource_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>customer-gateway</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway
+</span>      <span class='label'>tags:</span> <span class='lbracket'>[</span>
+        <span class='lbrace'>{</span>
+          <span class='label'>key:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+          <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+        <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
 <span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
         <p class='example_title'><div class='inline'><p>Basic usage</p>
 </div></p>
@@ -1648,6 +1675,11 @@ collection. <a href="Client.html#describe_addresses-instance_method" title="Aws:
           <span class='name'>:kms_key_id</span>
           <span class='type'>(<code>String</code>)</span>
             &mdash; <div class='inline'><p>The full ARN of the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted volume. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. The ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>. If a <code>KmsKeyId</code> is specified, the <code>Encrypted</code> flag must also be set.</p>
+</div>        </li>
+        <li>
+          <span class='name'>:tag_specifications</span>
+          <span class='type'>(<code>Array</code>&lt;<a href="Types/TagSpecification.html" title="Aws::EC2::Types::TagSpecification (class)">Types::TagSpecification</a>&gt;)</span>
+            &mdash; <div class='inline'><p>The tags to apply to the volume during creation.</p>
 </div>        </li>
     </ul>
   <p class='tag_title'>See Also:</p>
@@ -2775,7 +2807,7 @@ collection. <a href="Client.html#describe_placement_groups-instance_method" titl
         <li>
           <span class='name'>:billing_products</span>
           <span class='type'>(<code>Array</code>&lt;<code>String</code>&gt;)</span>
-            &mdash; <div class='inline'><p>The billing product codes.</p>
+            &mdash; <div class='inline'><p>The billing product codes. Your account must be authorized to specify billing product codes. Otherwise, you can use the AWS Marketplace to bill for the use of an AMI.</p>
 </div>        </li>
         <li>
           <span class='name'>:root_device_name</span>

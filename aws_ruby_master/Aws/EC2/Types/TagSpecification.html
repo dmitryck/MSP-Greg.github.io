@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>Class: Aws::SSM::Types::DeleteDocumentRequest &mdash; aws-sdk-ruby-master</title>
+<title>Class: Aws::EC2::Types::TagSpecification &mdash; aws-sdk-ruby-master</title>
 
 <link rel='stylesheet'  type='text/css' href='../../../../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../../../../css/highlight.github.css' />
@@ -19,7 +19,7 @@
 <link rel='stylesheet'  type='text/css' href='../../../../css/common.css' />
 
 <script type='text/javascript'>
-  var pathId = "Aws::SSM::Types::DeleteDocumentRequest",
+  var pathId = "Aws::EC2::Types::TagSpecification",
     relpath = '../../../';
 
   var t2Info = {
@@ -53,11 +53,11 @@
     <div id='y_menu'>
         <a href='../../../../index.html'>Home</a> &raquo; 
         <a href='../../../index.html'>aws-sdk-ruby-master</a> &raquo; 
-        <a href='../../../_index.html#alpha_D'>Index (D)</a> &raquo; 
+        <a href='../../../_index.html#alpha_T'>Index (T)</a> &raquo; 
         <a href="../../../Aws.html" title="Aws (module)">Aws</a> &raquo; 
-        <a href="../../SSM.html" title="Aws::SSM (module)">SSM</a> &raquo; 
-        <a href="../Types.html" title="Aws::SSM::Types (module)">Types</a> &raquo; 
-        <span class='title'><a id='t2_doc_top' href='#'>DeleteDocumentRequest&nbsp;&#x25B2;</a></span>
+        <a href="../../EC2.html" title="Aws::EC2 (module)">EC2</a> &raquo; 
+        <a href="../Types.html" title="Aws::EC2::Types (module)">Types</a> &raquo; 
+        <span class='title'><a id='t2_doc_top' href='#'>TagSpecification&nbsp;&#x25B2;</a></span>
       </div>
 
     <a id='list_href' href="../../../class_list.html"></a>
@@ -66,7 +66,7 @@
     <span id='y_measure_50pre' class='y_measure'><code>123456789_123456789_123456789_123456789_123456789_</code></span>
   </header>
 <div id='content' class='class'>
-<h1>Class: Aws::SSM::Types::DeleteDocumentRequest</h1>
+<h1>Class: Aws::EC2::Types::TagSpecification</h1>
 <div id='t2_rel_sf_div'>
 <table id='t2_rel_sf' class='y_box'>
   <thead>
@@ -99,7 +99,7 @@
         <ul class='fullTree'>
           <li>Object</li>
           <li class='next'>Struct</li>
-          <li class='next'>Aws::SSM::Types::DeleteDocumentRequest</li>
+          <li class='next'>Aws::EC2::Types::TagSpecification</li>
         </ul>
       </td>
     </tr>
@@ -117,15 +117,22 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'><p>When passing DeleteDocumentRequest as input to an Aws::Client method, you can use a
+    <div class='inline'><p>When passing TagSpecification as input to an Aws::Client method, you can use a
 vanilla Hash:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='lbrace'>{</span>
-  <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DocumentName</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># required
-</span><span class='rbrace'>}</span></code></pre>
+  <span class='label'>resource_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>customer-gateway</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># accepts customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway
+</span>  <span class='label'>tags:</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>key:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+      <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
+<span class='rbrace'>}</span></code></pre>
 </div>
   </div>
 
+<p>The tags to apply to a resource when the resource is being created.</p>
 
   </div>
 </div>
@@ -138,23 +145,47 @@ vanilla Hash:</p>
 <ul class='summary full'>
   <li>
     <span class='summary_signature rw'>
-      <a href="#name-instance_method" title="#name (instance method)">#<strong>name</strong>  &#x21d2; String </a>
+      <a href="#resource_type-instance_method" title="#resource_type (instance method)">#<strong>resource_type</strong>  &#x21d2; String </a>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The name of the document.</p>.</p></div>
+      <div class='inline'><p><p>The type of resource to tag.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#tags-instance_method" title="#tags (instance method)">#<strong>tags</strong>  &#x21d2; Array&lt;Types::Tag&gt; </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The tags to apply to the resource.</p>.</p></div>
     </div>
   </li>
 </ul>
 </div>
 <h2 class='y_details'>Instance Attribute Details</h2>
-<section class='method_details first' id="name-instance_method">
+<section class='method_details first' id="resource_type-instance_method">
   <h3 class='signature rw first'>
-    #<strong>name</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
+    #<strong>resource_type</strong>  &#x21d2; <code>String</code>  <span class="extras">(<span class='rw'>rw</span>)</span>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The name of the document.</p>
+    <p><p>The type of resource to tag. Currently, the resource types that support tagging on creation are <code>instance</code> and <code>volume</code>. </p><p>Possible values:</p><ul><li><tt>customer-gateway</tt></li><li><tt>dhcp-options</tt></li><li><tt>image</tt></li><li><tt>instance</tt></li><li><tt>internet-gateway</tt></li><li><tt>network-acl</tt></li><li><tt>network-interface</tt></li><li><tt>reserved-instances</tt></li><li><tt>route-table</tt></li><li><tt>snapshot</tt></li><li><tt>spot-instances-request</tt></li><li><tt>subnet</tt></li><li><tt>security-group</tt></li><li><tt>volume</tt></li><li><tt>vpc</tt></li><li><tt>vpn-connection</tt></li><li><tt>vpn-gateway</tt></li></ul></p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="tags-instance_method">
+  <h3 class='signature rw'>
+    #<strong>tags</strong>  &#x21d2; <code>Array</code>&lt;<a href="Tag.html" title="Aws::EC2::Types::Tag (class)">Types::Tag</a>&gt;  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The tags to apply to the resource.</p>
 
   </div>
 </div>

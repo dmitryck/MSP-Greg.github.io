@@ -143,6 +143,9 @@ vanilla Hash:</p>
       <span class='rbrace'>}</span><span class='comma'>,</span>
     <span class='rbracket'>]</span><span class='comma'>,</span>
   <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>retry_strategy:</span> <span class='lbrace'>{</span>
+    <span class='label'>attempts:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
 <span class='rbrace'>}</span></code></pre>
 </div>
   </div>
@@ -172,7 +175,7 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>A list of job names or IDs on which this job depends.</p></div>
+      <div class='inline'><p><p>A list of job IDs on which this job depends.</p></div>
     </div>
   </li>
   <li>
@@ -190,7 +193,7 @@ vanilla Hash:</p>
     </span>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
-      <div class='inline'><p><p>The name of the job.</p>.</p></div>
+      <div class='inline'><p><p>The name of the job.</p></div>
     </div>
   </li>
   <li>
@@ -209,6 +212,15 @@ vanilla Hash:</p>
     <span class='note title rw'>rw</span>
     <div class='summary_desc'>
       <div class='inline'><p><p>Additional parameters passed to the job that replace parameter substitution placeholders that are set in the job definition.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature rw'>
+      <a href="#retry_strategy-instance_method" title="#retry_strategy (instance method)">#<strong>retry_strategy</strong>  &#x21d2; Types::RetryStrategy </a>
+    </span>
+    <span class='note title rw'>rw</span>
+    <div class='summary_desc'>
+      <div class='inline'><p><p>The retry strategy to use for failed jobs from this <a>SubmitJob</a> operation.</p></div>
     </div>
   </li>
 </ul>
@@ -235,7 +247,7 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>A list of job names or IDs on which this job depends. A job can depend upon a maximum of 100 jobs. </p>
+    <p>A list of job IDs on which this job depends. A job can depend upon a maximum of 100 jobs. </p>
 
   </div>
 </div>
@@ -265,7 +277,7 @@ vanilla Hash:</p>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
-    <p>The name of the job.</p>
+    <p>The name of the job. A name must be 1 to 128 characters in length.</p> <p>Pattern: ^[a-zA-Z0-9_]+$</p>
 
   </div>
 </div>
@@ -296,6 +308,21 @@ vanilla Hash:</p>
 <div class='docstring'>
   <div class='discussion'>
     <p>Additional parameters passed to the job that replace parameter substitution placeholders that are set in the job definition. Parameters are specified as a key and value pair mapping. Parameters in a <code>SubmitJob</code> request override any corresponding parameter defaults from the job definition.</p>
+
+  </div>
+</div>
+<div class='tags'>
+  
+</div>
+</section>
+
+<section class='method_details' id="retry_strategy-instance_method">
+  <h3 class='signature rw'>
+    #<strong>retry_strategy</strong>  &#x21d2; <a href="RetryStrategy.html" title="Aws::Batch::Types::RetryStrategy (class)">Types::RetryStrategy</a>  <span class="extras">(<span class='rw'>rw</span>)</span>
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    <p>The retry strategy to use for failed jobs from this <a>SubmitJob</a> operation. When a retry strategy is specified here, it overrides the retry strategy defined in the job definition.</p>
 
   </div>
 </div>
