@@ -3015,11 +3015,9 @@ function commonXhrCB(docFrag, title, url, status, ms, msRcv) {
   oToc.bVis.className = oToc.d.vis ? CN_BTN_VIS : CN_HIDDEN;
   // Set source button state
   _id('src').className = state.showSource ? 'o' : 'c';
-  _id('src').disabled =
-    eContent.querySelector('section.method_details div.source_code') ? false : true;
+  _id('src').disabled = !eContent.querySelector('a.toggleSource')
   // Shows or hides TOC search (none for doc content)
   tocSearchShowHide(eContent);
-
 };
 
 /* To match Ruby CGI.escape /([^ a-zA-Z0-9_.-]+)/
@@ -3182,10 +3180,9 @@ function setWait(type) {
  * @param showCode [Boolean]     true to show source
  */
 function sourceShowHide(content, showCode) {
-  var src =  content.querySelectorAll('section.method_details div.source_code'),
+  var src =  content.querySelectorAll('section div.source_code'),
       sToggle = content.querySelectorAll('span.showSource a.toggleSource'),
       len,
-      tc,
       top = 0.0,
       eShow,
       hdrBottom = _id('y_header').getBoundingClientRect();
@@ -3213,18 +3210,16 @@ function sourceShowHide(content, showCode) {
   len = src.length - 1;
 
   if (showCode) {
-    tc = T_HIDE_SRC;
     _id('src').className = 'o';
     for (var i = len; i >= 0; i--) {
       src[i].classList.remove(CN_HIDDEN);
-      sToggle[i].textContent = tc;
+      sToggle[i].textContent = sToggle[i].textContent.replace(/^view/, 'hide');
     }
   } else {
-    tc = T_VIEW_SRC;
     _id('src').className = 'c';
     for (var i = len; i >= 0; i--) {
       src[i].classList.add(CN_HIDDEN);
-      sToggle[i].textContent = tc;
+      sToggle[i].textContent = sToggle[i].textContent.replace(/^hide/, 'view');
     }
   }
 
@@ -3392,9 +3387,10 @@ function addContent(content) {
     toc = oToc.generate(content, true);
     if (isServer && cls !== 'method') addPermaLinks(content);
   } else {
-    if ( _id('src') ) _id('src').disabled = true;   // Source open/close button
     toc = oToc.generate(content, false);
   }
+  t = content.querySelector('a.toggleSource');
+  if ( _id('src') ) _id('src').disabled = !t;   // Source open/close button
   return toc;
 }
 
@@ -3726,11 +3722,11 @@ function clkContent(e) {
     switch (cls[0]) {
     case 'toggleSource':
       var sourceCode = tgt.parentElement.parentElement.querySelector('div.source_code');
-      if (tgt.textContent === 'view source') {
-        tgt.textContent = 'hide source';
+      if ( tgt.textContent.startsWith('view') ) {
+        tgt.textContent = tgt.textContent.replace(/^view/, 'hide');
         sourceCode.classList.remove(CN_HIDDEN);
       } else {
-        tgt.textContent = 'view source';
+        tgt.textContent = tgt.textContent.replace(/^hide/, 'view');
         sourceCode.classList.add(CN_HIDDEN);
       }
       cancel = true;
