@@ -55,7 +55,7 @@
         <a href='../../../index.html'>Rails-master</a> &raquo; 
         <a href='../../../_index.html#alpha_S'>Index (S)</a> &raquo; 
         <a href="../../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
-        <a href="../../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
+        <a class='nodoc' href="../../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
         <a href="../SQLite3.html" title="ActiveRecord::ConnectionAdapters::SQLite3 (module)">SQLite3</a> &raquo; 
         <span class='title'><a class='nodoc' id='t2_doc_top' href='#'>SchemaStatements&nbsp;&#x25B2;</a></span>
       </div>
@@ -96,7 +96,19 @@
 <ul class='summary full nodoc'>
   <li>
     <span class='summary_signature priv nodoc'>
+      <a href="#create_table_definition-instance_method" title="#create_table_definition (instance method)">#<strong>create_table_definition</strong>(*args)  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
+    <span class='summary_signature priv nodoc'>
       <a href="#data_source_sql-instance_method" title="#data_source_sql (instance method)">#<strong>data_source_sql</strong>(name = nil, type: nil)  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
+    <span class='summary_signature priv nodoc'>
+      <a href="#new_column_from_field-instance_method" title="#new_column_from_field (instance method)">#<strong>new_column_from_field</strong>(table_name, field)  </a>
     </span>
     <span class='note title private'>private</span>
   </li>
@@ -106,29 +118,59 @@
     </span>
     <span class='note title private'>private</span>
   </li>
+  <li>
+    <span class='summary_signature priv nodoc'>
+      <a href="#schema_creation-instance_method" title="#schema_creation (instance method)">#<strong>schema_creation</strong>  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
 </ul>
 </div>
 <h2 class='y_details'>Instance Method Details</h2>
-<section class='method_details first' id="data_source_sql-instance_method">
+<section class='method_details first' id="create_table_definition-instance_method">
   <h3 class='signature priv  nodoc first'>
-    #<strong>data_source_sql</strong>(name = nil, type: nil)   <span class="extras">(<span class='priv'>private</span>)</span>
+    #<strong>create_table_definition</strong>(*args)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb#L6-L14'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb#L10-L12'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-6
-7
-8
-9
 10
 11
-12
-13
-14</pre>
+12</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb', line 6</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb', line 10</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_table_definition'>create_table_definition</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='const'><a href="../SQLite3.html" title="ActiveRecord::ConnectionAdapters::SQLite3 (module)">SQLite3</a></span><span class='op'>::</span><span class='const'><a href="TableDefinition.html" title="ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition (class)">TableDefinition</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../TableDefinition.html#new-class_method" title="ActiveRecord::ConnectionAdapters::TableDefinition.new (method)">new</a></span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="data_source_sql-instance_method">
+  <h3 class='signature priv  nodoc'>
+    #<strong>data_source_sql</strong>(name = nil, type: nil)   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb#L31-L39'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb', line 31</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_data_source_sql'>data_source_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -145,15 +187,17 @@
 </div>
 </section>
 
-<section class='method_details' id="quoted_scope-instance_method">
+<section class='method_details' id="new_column_from_field-instance_method">
   <h3 class='signature priv  nodoc'>
-    #<strong>quoted_scope</strong>(name = nil, type: nil)   <span class="extras">(<span class='priv'>private</span>)</span>
+    #<strong>new_column_from_field</strong>(table_name, field)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb#L16-L28'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb#L14-L29'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+14
+15
 16
 17
 18
@@ -166,9 +210,57 @@
 25
 26
 27
-28</pre>
+28
+29</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb', line 16</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb', line 14</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_new_column_from_field'>new_column_from_field</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_default'>default</span> <span class='op'>=</span> \
+    <span class='kw'>case</span> <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dflt_value</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^null$</span><span class='regexp_end'>/i</span></span>
+      <span class='kw'>nil</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^&#39;(.*)&#39;$</span><span class='regexp_end'>/m</span></span>
+      <span class='backref'>$1</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;&#39;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^&quot;(.*)&quot;$</span><span class='regexp_end'>/m</span></span>
+      <span class='backref'>$1</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&quot;&quot;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&quot;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dflt_value</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+    <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_type_metadata'>type_metadata</span> <span class='op'>=</span> <span class='id identifier rubyid_fetch_type_metadata'>fetch_type_metadata</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>type</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'><a href="../Column.html" title="ActiveRecord::ConnectionAdapters::Column (class)">Column</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../Column.html#new-class_method" title="ActiveRecord::ConnectionAdapters::Column.new (method)">new</a></span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_default'>default</span><span class='comma'>,</span> <span class='id identifier rubyid_type_metadata'>type_metadata</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>notnull</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>==</span> <span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>collation</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="quoted_scope-instance_method">
+  <h3 class='signature priv  nodoc'>
+    #<strong>quoted_scope</strong>(name = nil, type: nil)   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb#L41-L53'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb', line 41</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quoted_scope'>quoted_scope</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -183,6 +275,30 @@
   <span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span>
   <span class='id identifier rubyid_scope'>scope</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span> <span class='kw'>if</span> <span class='id identifier rubyid_type'>type</span>
   <span class='id identifier rubyid_scope'>scope</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="schema_creation-instance_method">
+  <h3 class='signature priv  nodoc'>
+    #<strong>schema_creation</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb#L6-L8'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+6
+7
+8</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3/schema_statements.rb', line 6</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_schema_creation'>schema_creation</span>
+  <span class='const'><a href="../SQLite3.html" title="ActiveRecord::ConnectionAdapters::SQLite3 (module)">SQLite3</a></span><span class='op'>::</span><span class='const'><a href="SchemaCreation.html" title="ActiveRecord::ConnectionAdapters::SQLite3::SchemaCreation (class)">SchemaCreation</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="../AbstractAdapter/SchemaCreation.html#new-class_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter::SchemaCreation.new (method)">new</a></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>

@@ -377,6 +377,12 @@ objects for time zones in the USA.</p></div>
   </li>
   <li>
     <span class='summary_signature priv'>
+      <a href="#load_country_zones-class_method" title=".load_country_zones (class method)">.<strong>load_country_zones</strong>(code)  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
+    <span class='summary_signature priv'>
       <a href="#zones_map-class_method" title=".zones_map (class method)">.<strong>zones_map</strong>  </a>
     </span>
     <span class='note title private'>private</span>
@@ -665,18 +671,18 @@ Ruby uses to represent time zone offsets (see <code>Time#utc_offset</code>).</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L277-L281'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L284-L288'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-277
-278
-279
-280
-281</pre>
+284
+285
+286
+287
+288</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 277</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 284</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_utc_offset'>utc_offset</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_tzinfo'>tzinfo</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -795,7 +801,7 @@ code.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L251-L258'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L251-L254'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -803,22 +809,14 @@ code.</p>
 251
 252
 253
-254
-255
-256
-257
-258</pre>
+254</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 251</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_country_zones'>country_zones</span><span class='lparen'>(</span><span class='id identifier rubyid_country_code'>country_code</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_code'>code</span> <span class='op'>=</span> <span class='id identifier rubyid_country_code'>country_code</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span>
-  <span class='ivar'>@country_zones</span><span class='lbracket'>[</span><span class='id identifier rubyid_code'>code</span><span class='rbracket'>]</span> <span class='op'>||=</span>
-    <span class='const'>TZInfo</span><span class='op'>::</span><span class='const'>Country</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_zone_identifiers'>zone_identifiers</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_tz_id'>tz_id</span><span class='op'>|</span>
-      <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='const'><a href="#MAPPING-constant" title="ActiveSupport::TimeZone::MAPPING (constant)">MAPPING</a></span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='lparen'>(</span><span class='id identifier rubyid_tz_id'>tz_id</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_name'>name</span> <span class='op'>&amp;&amp;</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
-    <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span><span class='period'>.</span><span class='id identifier rubyid_sort!'>sort!</span>
+  <span class='ivar'>@country_zones</span><span class='lbracket'>[</span><span class='id identifier rubyid_code'>code</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='id identifier rubyid_load_country_zones'>load_country_zones</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -863,6 +861,44 @@ code.</p>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_tzinfo'>find_tzinfo</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='const'>TZInfo</span><span class='op'>::</span><span class='const'>Timezone</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'><a href="#MAPPING-constant" title="ActiveSupport::TimeZone::MAPPING (constant)">MAPPING</a></span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="load_country_zones-class_method">
+  <h3 class='signature priv'>
+    .<strong>load_country_zones</strong>(code)   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L257-L266'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 257</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_load_country_zones'>load_country_zones</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_country'>country</span> <span class='op'>=</span> <span class='const'>TZInfo</span><span class='op'>::</span><span class='const'>Country</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_country'>country</span><span class='period'>.</span><span class='id identifier rubyid_zone_identifiers'>zone_identifiers</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_tz_id'>tz_id</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='const'><a href="#MAPPING-constant" title="ActiveSupport::TimeZone::MAPPING (constant)">MAPPING</a></span><span class='period'>.</span><span class='id identifier rubyid_value?'>value?</span><span class='lparen'>(</span><span class='id identifier rubyid_tz_id'>tz_id</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='lbracket'>[</span><span class='const'><a href="#MAPPING-constant" title="ActiveSupport::TimeZone::MAPPING (constant)">MAPPING</a></span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='lparen'>(</span><span class='id identifier rubyid_tz_id'>tz_id</span><span class='rparen'>)</span><span class='rbracket'>]</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_tz_id'>tz_id</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='const'>TZInfo</span><span class='op'>::</span><span class='const'>Timezone</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_tz_id'>tz_id</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_sort!'>sort!</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -947,19 +983,19 @@ objects for time zones in the USA.</p>
   <h3 class='signature priv'>
     .<strong>zones_map</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L261-L266'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L268-L273'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-261
-262
-263
-264
-265
-266</pre>
+268
+269
+270
+271
+272
+273</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 261</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 268</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_zones_map'>zones_map</span>
@@ -978,14 +1014,14 @@ objects for time zones in the USA.</p>
   <h3 class='signature ro first'>
     #<strong>name</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L270-L270'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L277-L277'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-270</pre>
+277</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 270</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 277</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span>
@@ -998,14 +1034,14 @@ objects for time zones in the USA.</p>
   <h3 class='signature ro'>
     #<strong>tzinfo</strong>   <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L271-L271'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L278-L278'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-271</pre>
+278</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 271</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 278</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_tzinfo'>tzinfo</span>
@@ -1027,19 +1063,19 @@ their offsets, and then by name.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L304-L309'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L311-L316'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-304
-305
-306
-307
-308
-309</pre>
+311
+312
+313
+314
+315
+316</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 304</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 311</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>&lt;=&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_zone'>zone</span><span class='rparen'>)</span>
@@ -1065,16 +1101,16 @@ their offsets, and then by name.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L313-L315'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L320-L322'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-313
-314
-315</pre>
+320
+321
+322</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 313</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 320</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='op'>=~</span><span class='lparen'>(</span><span class='id identifier rubyid_re'>re</span><span class='rparen'>)</span>
@@ -1101,16 +1137,16 @@ zone of <code>self</code> from number of seconds since the Unix epoch.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L338-L340'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L345-L347'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-338
-339
-340</pre>
+345
+346
+347</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 338</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 345</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='id identifier rubyid_secs'>secs</span><span class='rparen'>)</span>
@@ -1128,17 +1164,17 @@ zone of <code>self</code> from number of seconds since the Unix epoch.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L508-L511'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L515-L518'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-508
-509
-510
-511</pre>
+515
+516
+517
+518</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 508</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 515</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encode_with'>encode_with</span><span class='lparen'>(</span><span class='id identifier rubyid_coder'>coder</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -1166,16 +1202,16 @@ if the time zone is already UTC.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L298-L300'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L305-L307'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-298
-299
-300</pre>
+305
+306
+307</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 298</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 305</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_formatted_offset'>formatted_offset</span><span class='lparen'>(</span><span class='id identifier rubyid_colon'>colon</span> <span class='op'>=</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='id identifier rubyid_alternate_utc_string'>alternate_utc_string</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -1193,16 +1229,16 @@ if the time zone is already UTC.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L504-L506'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L511-L513'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-504
-505
-506</pre>
+511
+512
+513</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 504</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 511</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_init_with'>init_with</span><span class='lparen'>(</span><span class='id identifier rubyid_coder'>coder</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -1244,18 +1280,11 @@ zone of <code>self</code> from an ISO 8601 string.</p>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L355-L375'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L362-L382'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-355
-356
-357
-358
-359
-360
-361
 362
 363
 364
@@ -1269,9 +1298,16 @@ zone of <code>self</code> from an ISO 8601 string.</p>
 372
 373
 374
-375</pre>
+375
+376
+377
+378
+379
+380
+381
+382</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 355</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 362</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_iso8601'>iso8601</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
@@ -1315,17 +1351,17 @@ zone of <code>self</code> from given values.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L327-L330'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L334-L337'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-327
-328
-329
-330</pre>
+334
+335
+336
+337</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 327</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 334</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_local'>local</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
@@ -1349,16 +1385,16 @@ zone of <code>self</code> from given values.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L484-L486'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L491-L493'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-484
-485
-486</pre>
+491
+492
+493</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 484</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 491</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_local_to_utc'>local_to_utc</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='comma'>,</span> <span class='id identifier rubyid_dst'>dst</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
@@ -1384,16 +1420,16 @@ time in the time zone represented by <code>self</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L456-L458'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L463-L465'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-456
-457
-458</pre>
+463
+464
+465</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 456</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 463</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_now'>now</span>
@@ -1430,16 +1466,16 @@ components are supplied, then the day of the month defaults to 1:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L393-L395'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L400-L402'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-393
-394
-395</pre>
+400
+401
+402</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 393</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 400</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='comma'>,</span> <span class='id identifier rubyid_now'>now</span> <span class='op'>=</span> <span class='id identifier rubyid_now'>now</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1467,18 +1503,11 @@ components are supplied, then the day of the month defaults to 1:</p>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L514-L537'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L521-L544'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-514
-515
-516
-517
-518
-519
-520
 521
 522
 523
@@ -1495,9 +1524,16 @@ components are supplied, then the day of the month defaults to 1:</p>
 534
 535
 536
-537</pre>
+537
+538
+539
+540
+541
+542
+543
+544</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 514</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 521</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parts_to_time'>parts_to_time</span><span class='lparen'>(</span><span class='id identifier rubyid_parts'>parts</span><span class='comma'>,</span> <span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span>
@@ -1541,16 +1577,16 @@ components are supplied, then the day of the month defaults to 1:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L496-L498'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L503-L505'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-496
-497
-498</pre>
+503
+504
+505</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 496</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 503</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_period_for_local'>period_for_local</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='comma'>,</span> <span class='id identifier rubyid_dst'>dst</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
@@ -1573,16 +1609,16 @@ components are supplied, then the day of the month defaults to 1:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L490-L492'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L497-L499'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-490
-491
-492</pre>
+497
+498
+499</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 490</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 497</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_period_for_utc'>period_for_utc</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span>
@@ -1600,16 +1636,16 @@ components are supplied, then the day of the month defaults to 1:</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L500-L502'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L507-L509'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-500
-501
-502</pre>
+507
+508
+509</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 500</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 507</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_periods_for_local'>periods_for_local</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -1650,18 +1686,11 @@ for missing components.</p>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L409-L425'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L416-L432'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-409
-410
-411
-412
-413
-414
-415
 416
 417
 418
@@ -1671,9 +1700,16 @@ for missing components.</p>
 422
 423
 424
-425</pre>
+425
+426
+427
+428
+429
+430
+431
+432</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 409</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 416</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rfc3339'>rfc3339</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
@@ -1729,16 +1765,16 @@ components are supplied, then the day of the month defaults to 1:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L447-L449'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L454-L456'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-447
-448
-449</pre>
+454
+455
+456</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 447</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 454</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_strptime'>strptime</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='comma'>,</span> <span class='id identifier rubyid_format'>format</span><span class='comma'>,</span> <span class='id identifier rubyid_now'>now</span> <span class='op'>=</span> <span class='id identifier rubyid_now'>now</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1753,16 +1789,16 @@ components are supplied, then the day of the month defaults to 1:</p>
   <h3 class='signature priv'>
     #<strong>time_now</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L539-L541'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L546-L548'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-539
-540
-541</pre>
+546
+547
+548</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 539</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 546</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_time_now'>time_now</span>
@@ -1784,16 +1820,16 @@ components are supplied, then the day of the month defaults to 1:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L318-L320'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L325-L327'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-318
-319
-320</pre>
+325
+326
+327</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 318</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 325</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
@@ -1815,16 +1851,16 @@ components are supplied, then the day of the month defaults to 1:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L461-L463'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L468-L470'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-461
-462
-463</pre>
+468
+469
+470</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 461</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 468</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_today'>today</span>
@@ -1846,16 +1882,16 @@ components are supplied, then the day of the month defaults to 1:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L466-L468'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L473-L475'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-466
-467
-468</pre>
+473
+474
+475</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 466</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 473</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tomorrow'>tomorrow</span>
@@ -1877,20 +1913,20 @@ components are supplied, then the day of the month defaults to 1:</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L284-L290'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L291-L297'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-284
-285
-286
-287
-288
-289
-290</pre>
+291
+292
+293
+294
+295
+296
+297</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 284</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 291</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_utc_offset'>utc_offset</span>
@@ -1918,16 +1954,16 @@ by <code>self</code>. Returns a <a href="../Time.html" title="Time (class)">::Ti
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L478-L480'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L485-L487'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-478
-479
-480</pre>
+485
+486
+487</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 478</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 485</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_utc_to_local'>utc_to_local</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span>
@@ -1949,16 +1985,16 @@ by <code>self</code>. Returns a <a href="../Time.html" title="Time (class)">::Ti
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L471-L473'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/values/time_zone.rb#L478-L480'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-471
-472
-473</pre>
+478
+479
+480</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 471</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/values/time_zone.rb', line 478</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_yesterday'>yesterday</span>

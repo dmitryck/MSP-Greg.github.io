@@ -167,7 +167,7 @@ names to models.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#humanize-instance_method" title="#humanize (instance method)">#<strong>humanize</strong>(lower_case_and_underscored_word, options = {})  </a>
+      <a href="#humanize-instance_method" title="#humanize (instance method)">#<strong>humanize</strong>(lower_case_and_underscored_word, capitalize: true, keep_id_suffix: false)  </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Tweaks an attribute name for display to end users.</p></div>
@@ -244,7 +244,7 @@ string.</p></div>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#titleize-instance_method" title="#titleize (instance method)">#<strong>titleize</strong>(word)  </a>
+      <a href="#titleize-instance_method" title="#titleize (instance method)">#<strong>titleize</strong>(word, keep_id_suffix: false)  </a>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Capitalizes all the words and replaces some characters in the string to
@@ -312,23 +312,23 @@ that will match part by part the given constant.</p></div>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L380-L389'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L392-L401'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-380
-381
-382
-383
-384
-385
-386
-387
-388
-389</pre>
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 380</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 392</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_apply_inflections'>apply_inflections</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='comma'>,</span> <span class='id identifier rubyid_rules'>rules</span><span class='rparen'>)</span>
@@ -428,17 +428,17 @@ convert to an actual class follow <code>classify</code> with
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L187-L190'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L199-L202'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-187
-188
-189
-190</pre>
+199
+200
+201
+202</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 187</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 199</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_classify'>classify</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
@@ -465,24 +465,24 @@ that will match part by part the given constant.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L364-L374'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L376-L386'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-364
-365
-366
-367
-368
-369
-370
-371
-372
-373
-374</pre>
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 364</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 376</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_const_regexp'>const_regexp</span><span class='lparen'>(</span><span class='id identifier rubyid_camel_cased_word'>camel_cased_word</span><span class='rparen'>)</span>
@@ -529,23 +529,11 @@ unknown.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L258-L287'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L270-L299'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-258
-259
-260
-261
-262
-263
-264
-265
-266
-267
-268
-269
 270
 271
 272
@@ -563,9 +551,21 @@ unknown.</p>
 284
 285
 286
-287</pre>
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 258</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 270</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_constantize'>constantize</span><span class='lparen'>(</span><span class='id identifier rubyid_camel_cased_word'>camel_cased_word</span><span class='rparen'>)</span>
@@ -616,16 +616,16 @@ unknown.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L195-L197'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L207-L209'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-195
-196
-197</pre>
+207
+208
+209</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 195</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 207</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dasherize'>dasherize</span><span class='lparen'>(</span><span class='id identifier rubyid_underscored_word'>underscored_word</span><span class='rparen'>)</span>
@@ -655,16 +655,16 @@ unknown.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L225-L227'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L237-L239'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-225
-226
-227</pre>
+237
+238
+239</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 225</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 237</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_deconstantize'>deconstantize</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
@@ -693,21 +693,21 @@ unknown.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L207-L214'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L219-L226'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-207
-208
-209
-210
-211
-212
-213
-214</pre>
+219
+220
+221
+222
+223
+224
+225
+226</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 207</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 219</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_demodulize'>demodulize</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
@@ -740,16 +740,16 @@ put &#39;_&#39; between the name and &#39;id&#39;.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L236-L238'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L248-L250'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-236
-237
-238</pre>
+248
+249
+250</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 236</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 248</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_foreign_key'>foreign_key</span><span class='lparen'>(</span><span class='id identifier rubyid_class_name'>class_name</span><span class='comma'>,</span> <span class='id identifier rubyid_separate_class_name_and_id_with_underscore'>separate_class_name_and_id_with_underscore</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
@@ -762,7 +762,7 @@ put &#39;_&#39; between the name and &#39;id&#39;.</p>
 
 <section class='method_details' id="humanize-instance_method">
   <h3 class='signature '>
-    #<strong>humanize</strong>(lower_case_and_underscored_word, options = {})  
+    #<strong>humanize</strong>(lower_case_and_underscored_word, capitalize: true, keep_id_suffix: false)  
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -787,10 +787,14 @@ put &#39;_&#39; between the name and &#39;id&#39;.</p>
 <p>The capitalization of the first word can be turned off by setting the
 <code>:capitalize</code> option to false (default is true).</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>employee_salary</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>              <span class='comment'># =&gt; &quot;Employee salary&quot;
-</span><span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>author_id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>                    <span class='comment'># =&gt; &quot;Author&quot;
-</span><span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>author_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>capitalize:</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;author&quot;
-</span><span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>                          <span class='comment'># =&gt; &quot;Id&quot;</span></code></pre>
+<p>The trailing &#39;_id&#39; can be kept and capitalized by setting the
+optional parameter <code>keep_id_suffix</code> to true (default is false).</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>employee_salary</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>                  <span class='comment'># =&gt; &quot;Employee salary&quot;
+</span><span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>author_id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>                        <span class='comment'># =&gt; &quot;Author&quot;
+</span><span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>author_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>capitalize:</span> <span class='kw'>false</span><span class='rparen'>)</span>     <span class='comment'># =&gt; &quot;author&quot;
+</span><span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>                              <span class='comment'># =&gt; &quot;Id&quot;
+</span><span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>author_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>keep_id_suffix:</span> <span class='kw'>true</span><span class='rparen'>)</span>  <span class='comment'># =&gt; &quot;Author Id&quot;</span></code></pre>
 
 <p>If "SSL" was defined to be an acronym:</p>
 
@@ -798,14 +802,11 @@ put &#39;_&#39; between the name and &#39;id&#39;.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L124-L142'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L127-L147'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-124
-125
-126
 127
 128
 129
@@ -821,25 +822,32 @@ put &#39;_&#39; between the name and &#39;id&#39;.</p>
 139
 140
 141
-142</pre>
+142
+143
+144
+145
+146
+147</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 124</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 127</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='id identifier rubyid_lower_case_and_underscored_word'>lower_case_and_underscored_word</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='id identifier rubyid_lower_case_and_underscored_word'>lower_case_and_underscored_word</span><span class='comma'>,</span> <span class='label'>capitalize:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>keep_id_suffix:</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_lower_case_and_underscored_word'>lower_case_and_underscored_word</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
 
   <span class='id identifier rubyid_inflections'>inflections</span><span class='period'>.</span><span class='id identifier rubyid_humans'>humans</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='lparen'>(</span><span class='id identifier rubyid_rule'>rule</span><span class='comma'>,</span> <span class='id identifier rubyid_replacement'>replacement</span><span class='rparen'>)</span><span class='op'>|</span> <span class='kw'>break</span> <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_sub!'>sub!</span><span class='lparen'>(</span><span class='id identifier rubyid_rule'>rule</span><span class='comma'>,</span> <span class='id identifier rubyid_replacement'>replacement</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 
   <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_sub!'>sub!</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A_+</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_sub!'>sub!</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>_id\z</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_keep_id_suffix'>keep_id_suffix</span>
+    <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_sub!'>sub!</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>_id\z</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
   <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_tr!'>tr!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>_</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_gsub!'>gsub!</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>([a-z\d]*)</span><span class='regexp_end'>/i</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_match'>match</span><span class='op'>|</span>
     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_inflections'>inflections</span><span class='period'>.</span><span class='id identifier rubyid_acronyms'>acronyms</span><span class='lbracket'>[</span><span class='id identifier rubyid_match'>match</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_match'>match</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='id identifier rubyid_capitalize'>capitalize</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_capitalize'>capitalize</span>
     <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_sub!'>sub!</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A\w</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_match'>match</span><span class='op'>|</span> <span class='id identifier rubyid_match'>match</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span> <span class='rbrace'>}</span>
   <span class='kw'>end</span>
 
@@ -915,27 +923,27 @@ in an ordered sequence such as 1st, 2nd, 3rd, 4th.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L329-L342'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L341-L354'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-329
-330
-331
-332
-333
-334
-335
-336
-337
-338
-339
-340
 341
-342</pre>
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 329</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 341</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ordinal'>ordinal</span><span class='lparen'>(</span><span class='id identifier rubyid_number'>number</span><span class='rparen'>)</span>
@@ -976,16 +984,16 @@ ordered sequence such as 1st, 2nd, 3rd, 4th.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L353-L355'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L365-L367'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-353
-354
-355</pre>
+365
+366
+367</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 353</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 365</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ordinalize'>ordinalize</span><span class='lparen'>(</span><span class='id identifier rubyid_number'>number</span><span class='rparen'>)</span>
@@ -1160,21 +1168,21 @@ part of it) is unknown.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L311-L318'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L323-L330'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-311
-312
-313
-314
-315
-316
-317
-318</pre>
+323
+324
+325
+326
+327
+328
+329
+330</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 311</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 323</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_safe_constantize'>safe_constantize</span><span class='lparen'>(</span><span class='id identifier rubyid_camel_cased_word'>camel_cased_word</span><span class='rparen'>)</span>
@@ -1249,16 +1257,16 @@ This method uses the <a href="#pluralize-instance_method" title="ActiveSupport::
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L173-L175'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L185-L187'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-173
-174
-175</pre>
+185
+186
+187</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 173</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 185</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tableize'>tableize</span><span class='lparen'>(</span><span class='id identifier rubyid_class_name'>class_name</span><span class='rparen'>)</span>
@@ -1271,7 +1279,7 @@ This method uses the <a href="#pluralize-instance_method" title="ActiveSupport::
 
 <section class='method_details' id="titleize-instance_method">
   <h3 class='signature '>
-    #<strong>titleize</strong>(word)  
+    #<strong>titleize</strong>(word, keep_id_suffix: false)  
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -1280,29 +1288,38 @@ This method uses the <a href="#pluralize-instance_method" title="ActiveSupport::
 create a nicer looking title. <code>titleize</code> is meant for creating
 pretty output. It is not used in the <a href="../Rails.html" title="Rails (module)">::Rails</a> internals.</p>
 
+<p>The trailing &#39;_id&#39;,&#39;Id&#39;.. can be kept and capitalized by
+setting the optional parameter <code>keep_id_suffix</code> to true. By default, this
+parameter is false.</p>
+
 <p><code>titleize</code> is also aliased as <code>titlecase</code>.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_titleize'>titleize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>man from the boondocks</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>   <span class='comment'># =&gt; &quot;Man From The Boondocks&quot;
-</span><span class='id identifier rubyid_titleize'>titleize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>x-men: the last stand</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>    <span class='comment'># =&gt; &quot;X Men: The Last Stand&quot;
-</span><span class='id identifier rubyid_titleize'>titleize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TheManWithoutAPast</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>       <span class='comment'># =&gt; &quot;The Man Without A Past&quot;
-</span><span class='id identifier rubyid_titleize'>titleize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>raiders_of_the_lost_ark</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; &quot;Raiders Of The Lost Ark&quot;</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_titleize'>titleize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>man from the boondocks</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>                       <span class='comment'># =&gt; &quot;Man From The Boondocks&quot;
+</span><span class='id identifier rubyid_titleize'>titleize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>x-men: the last stand</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>                        <span class='comment'># =&gt; &quot;X Men: The Last Stand&quot;
+</span><span class='id identifier rubyid_titleize'>titleize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TheManWithoutAPast</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>                           <span class='comment'># =&gt; &quot;The Man Without A Past&quot;
+</span><span class='id identifier rubyid_titleize'>titleize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>raiders_of_the_lost_ark</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>                      <span class='comment'># =&gt; &quot;Raiders Of The Lost Ark&quot;
+</span><span class='id identifier rubyid_titleize'>titleize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>string_ending_with_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>keep_id_suffix:</span> <span class='kw'>true</span><span class='rparen'>)</span>  <span class='comment'># =&gt; &quot;String Ending With Id&quot;</span></code></pre>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L163-L165'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L173-L177'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-163
-164
-165</pre>
+173
+174
+175
+176
+177</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 163</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 173</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_titleize'>titleize</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='id identifier rubyid_underscore'>underscore</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\b(?&lt;!\w[&#39;’`])[a-z]</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_match'>match</span><span class='op'>|</span> <span class='id identifier rubyid_match'>match</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span> <span class='rbrace'>}</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_titleize'>titleize</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='comma'>,</span> <span class='label'>keep_id_suffix:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_humanize'>humanize</span><span class='lparen'>(</span><span class='id identifier rubyid_underscore'>underscore</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>keep_id_suffix:</span> <span class='id identifier rubyid_keep_id_suffix'>keep_id_suffix</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\b(?&lt;!\w[&#39;’`])[a-z]</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_match'>match</span><span class='op'>|</span>
+    <span class='id identifier rubyid_match'>match</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -1478,16 +1495,16 @@ of <a href="#camelize-instance_method" title="ActiveSupport::Inflector#camelize 
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L149-L151'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/methods.rb#L154-L156'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-149
-150
-151</pre>
+154
+155
+156</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 149</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/inflector/methods.rb', line 154</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_upcase_first'>upcase_first</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>

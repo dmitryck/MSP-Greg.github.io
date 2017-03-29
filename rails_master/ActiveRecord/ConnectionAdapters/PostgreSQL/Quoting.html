@@ -55,7 +55,7 @@
         <a href='../../../index.html'>Rails-master</a> &raquo; 
         <a href='../../../_index.html#alpha_Q'>Index (Q)</a> &raquo; 
         <a href="../../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
-        <a href="../../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
+        <a class='nodoc' href="../../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
         <a href="../PostgreSQL.html" title="ActiveRecord::ConnectionAdapters::PostgreSQL (module)">PostgreSQL</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Quoting&nbsp;&#x25B2;</a></span>
       </div>
@@ -146,6 +146,12 @@
   </li>
   <li>
     <span class='summary_signature priv'>
+      <a href="#lookup_cast_type-instance_method" title="#lookup_cast_type (instance method)">#<strong>lookup_cast_type</strong>(sql_type)  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
+    <span class='summary_signature priv'>
       <a href="#type_cast_array-instance_method" title="#type_cast_array (instance method)">#<strong>type_cast_array</strong>(values)  </a>
     </span>
     <span class='note title private'>private</span>
@@ -211,14 +217,11 @@
   <h3 class='signature priv first'>
     #<strong>_quote</strong>(value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb#L81-L102'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb#L84-L105'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-81
-82
-83
 84
 85
 86
@@ -237,9 +240,12 @@
 99
 100
 101
-102</pre>
+102
+103
+104
+105</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb', line 81</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb', line 84</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__quote'>_quote</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -273,14 +279,11 @@
   <h3 class='signature priv'>
     #<strong>_type_cast</strong>(value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb#L104-L118'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb#L107-L121'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-104
-105
-106
 107
 108
 109
@@ -292,9 +295,12 @@
 115
 116
 117
-118</pre>
+118
+119
+120
+121</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb', line 104</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb', line 107</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__type_cast'>_type_cast</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -321,19 +327,19 @@
   <h3 class='signature priv'>
     #<strong>determine_encoding_of_strings_in_array</strong>(value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb#L131-L136'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb#L134-L139'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-131
-132
-133
 134
 135
-136</pre>
+136
+137
+138
+139</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb', line 131</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb', line 134</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_determine_encoding_of_strings_in_array'>determine_encoding_of_strings_in_array</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -351,23 +357,23 @@
   <h3 class='signature priv'>
     #<strong>encode_array</strong>(array_data)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb#L120-L129'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb#L123-L132'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-120
-121
-122
 123
 124
 125
 126
 127
 128
-129</pre>
+129
+130
+131
+132</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb', line 120</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb', line 123</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encode_array'>encode_array</span><span class='lparen'>(</span><span class='id identifier rubyid_array_data'>array_data</span><span class='rparen'>)</span>
@@ -410,6 +416,30 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_escape_bytea'>escape_bytea</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='ivar'>@connection</span><span class='period'>.</span><span class='id identifier rubyid_escape_bytea'>escape_bytea</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="lookup_cast_type-instance_method">
+  <h3 class='signature priv'>
+    #<strong>lookup_cast_type</strong>(sql_type)   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb#L80-L82'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+80
+81
+82</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb', line 80</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_lookup_cast_type'>lookup_cast_type</span><span class='lparen'>(</span><span class='id identifier rubyid_sql_type'>sql_type</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_select_value'>select_value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_sql_type'>sql_type</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>::regtype::oid</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SCHEMA</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -733,19 +763,19 @@
   <h3 class='signature priv'>
     #<strong>type_cast_array</strong>(values)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb#L138-L143'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb#L141-L146'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-138
-139
-140
 141
 142
-143</pre>
+143
+144
+145
+146</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb', line 138</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/postgresql/quoting.rb', line 141</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type_cast_array'>type_cast_array</span><span class='lparen'>(</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>

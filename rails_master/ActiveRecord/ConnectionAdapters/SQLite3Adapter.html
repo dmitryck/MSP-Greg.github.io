@@ -55,7 +55,7 @@
         <a href='../../index.html'>Rails-master</a> &raquo; 
         <a href='../../_index.html#alpha_S'>Index (S)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
-        <a href="../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
+        <a class='nodoc' href="../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>SQLite3Adapter&nbsp;&#x25B2;</a></span>
       </div>
 
@@ -158,7 +158,7 @@ href="https://rubygems.org/gems/sqlite3">rubygems.org/gems/sqlite3</a>).</p>
   <li>
     <span id='COLLATE_REGEX-constant' class='summary_signature'>COLLATE_REGEX =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L521-L521'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 521</a>    <pre class='code ruby'><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>.*\&quot;(\w)\&quot;.*collate\s\&quot;(\w+)\&quot;.*</span><span class='regexp_end'>/i</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L497-L497'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 497</a>    <pre class='code ruby'><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>.*\&quot;(\w)\&quot;.*collate\s\&quot;(\w+)\&quot;.*</span><span class='regexp_end'>/i</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre>
   </li>
   <li>
     <span id='NATIVE_DATABASE_TYPES-constant' class='summary_signature'>NATIVE_DATABASE_TYPES =</span>
@@ -611,14 +611,6 @@ caching, otherwise returns <code>false</code></p></div></td>
   </li>
   <li>
     <span class='summary_signature '>
-      <a href="#new_column_from_field-instance_method" title="#new_column_from_field (instance method)">#<strong>new_column_from_field</strong>(table_name, field)  </a>
-    </span>
-    <div class='summary_desc'>
-      <div class='inline'><p>SCHEMA STATEMENTS ========================================.</p></div>
-    </div>
-  </li>
-  <li>
-    <span class='summary_signature '>
       <a href="#rename_table-instance_method" title="#rename_table (instance method)">#<strong>rename_table</strong>(table_name, new_name)  </a>
     </span>
     <div class='summary_desc'>
@@ -638,6 +630,12 @@ SQLite has an additional restriction on the ALTER TABLE statement.</p></div>
   <li>
     <span class='summary_signature priv'>
       <a href="#alter_table-instance_method" title="#alter_table (instance method)">#<strong>alter_table</strong>(table_name, options = {})  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
+    <span class='summary_signature priv'>
+      <a href="#arel_visitor-instance_method" title="#arel_visitor (instance method)">#<strong>arel_visitor</strong>  </a>
     </span>
     <span class='note title private'>private</span>
   </li>
@@ -672,18 +670,6 @@ SQLite has an additional restriction on the ALTER TABLE statement.</p></div>
   <li>
     <span class='summary_signature priv'>
       <a href="#copy_table_indexes-instance_method" title="#copy_table_indexes (instance method)">#<strong>copy_table_indexes</strong>(from, to, rename = {})  </a>
-    </span>
-    <span class='note title private'>private</span>
-  </li>
-  <li>
-    <span class='summary_signature priv'>
-      <a href="#create_table_definition-instance_method" title="#create_table_definition (instance method)">#<strong>create_table_definition</strong>(*args)  </a>
-    </span>
-    <span class='note title private'>private</span>
-  </li>
-  <li>
-    <span class='summary_signature priv'>
-      <a href="#extract_foreign_key_action-instance_method" title="#extract_foreign_key_action (instance method)">#<strong>extract_foreign_key_action</strong>(specifier)  </a>
     </span>
     <span class='note title private'>private</span>
   </li>
@@ -728,12 +714,6 @@ SQLite has an additional restriction on the ALTER TABLE statement.</p></div>
     <span class='summary_signature nodoc'>
       <a href="#add_reference-instance_method" title="#add_reference (instance method)">#<strong>add_reference</strong>(table_name, ref_name, **options)  </a>
       (also: #add_belongs_to)
-    </span>
-    <span class='nodoc note title'>Internal use only</span>
-  </li>
-  <li>
-    <span class='summary_signature nodoc'>
-      <a href="#arel_visitor-instance_method" title="#arel_visitor (instance method)">#<strong>arel_visitor</strong>  </a>
     </span>
     <span class='nodoc note title'>Internal use only</span>
   </li>
@@ -829,12 +809,6 @@ SQLite has an additional restriction on the ALTER TABLE statement.</p></div>
   </li>
   <li>
     <span class='summary_signature nodoc'>
-      <a href="#schema_creation-instance_method" title="#schema_creation (instance method)">#<strong>schema_creation</strong>  </a>
-    </span>
-    <span class='nodoc note title'>Internal use only</span>
-  </li>
-  <li>
-    <span class='summary_signature nodoc'>
       <a href="#update_table_definition-instance_method" title="#update_table_definition (instance method)">#<strong>update_table_definition</strong>(table_name, base)  </a>
     </span>
     <span class='nodoc note title'>Internal use only</span>
@@ -846,8 +820,11 @@ SQLite has an additional restriction on the ALTER TABLE statement.</p></div>
   <tbody>
     <tr>
       <td colspan='2'>
+        <a class='i_m priv nodoc' href="SQLite3/SchemaStatements.html#create_table_definition-instance_method" title="ActiveRecord::ConnectionAdapters::SQLite3::SchemaStatements#create_table_definition (method)">#create_table_definition</a>,
         <a class='i_m priv nodoc' href="SQLite3/SchemaStatements.html#data_source_sql-instance_method" title="ActiveRecord::ConnectionAdapters::SQLite3::SchemaStatements#data_source_sql (method)">#data_source_sql</a>,
-        <a class='i_m priv nodoc' href="SQLite3/SchemaStatements.html#quoted_scope-instance_method" title="ActiveRecord::ConnectionAdapters::SQLite3::SchemaStatements#quoted_scope (method)">#quoted_scope</a>
+        <a class='i_m priv nodoc' href="SQLite3/SchemaStatements.html#new_column_from_field-instance_method" title="ActiveRecord::ConnectionAdapters::SQLite3::SchemaStatements#new_column_from_field (method)">#new_column_from_field</a>,
+        <a class='i_m priv nodoc' href="SQLite3/SchemaStatements.html#quoted_scope-instance_method" title="ActiveRecord::ConnectionAdapters::SQLite3::SchemaStatements#quoted_scope (method)">#quoted_scope</a>,
+        <a class='i_m priv nodoc' href="SQLite3/SchemaStatements.html#schema_creation-instance_method" title="ActiveRecord::ConnectionAdapters::SQLite3::SchemaStatements#schema_creation (method)">#schema_creation</a>
       </td>
     </tr>
   </tbody>
@@ -899,7 +876,6 @@ the prepared statement cache.</p></div></td>
     </tr>
     <tr>
       <td colspan='2'>
-        <a class='i_m ' href="AbstractAdapter.html#collector-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#collector (method)">#collector</a>,
         <a class='i_m ' href="AbstractAdapter.html#combine_bind_parameters-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#combine_bind_parameters (method)">#combine_bind_parameters</a>,
       </td>
     </tr>
@@ -958,7 +934,6 @@ transactions and other connection-related server-side state.</p></div></td>
     </tr>
     <tr>
       <td colspan='2'>
-        <a class='i_m ' href="AbstractAdapter.html#schema_creation-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#schema_creation (method)">#schema_creation</a>,
         <a class='i_m ' href="AbstractAdapter.html#unprepared_statement-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#unprepared_statement (method)">#unprepared_statement</a>,
       </td>
     </tr>
@@ -969,7 +944,9 @@ stale).</p></div></td>
     </tr>
     <tr>
       <td colspan='2'>
+        <a class='i_m priv' href="AbstractAdapter.html#arel_visitor-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#arel_visitor (method)">#arel_visitor</a>,
         <a class='i_m priv' href="AbstractAdapter.html#can_perform_case_insensitive_comparison_for%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#can_perform_case_insensitive_comparison_for? (method)">#can_perform_case_insensitive_comparison_for?</a>,
+        <a class='i_m priv' href="AbstractAdapter.html#collector-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#collector (method)">#collector</a>,
         <a class='i_m priv' href="AbstractAdapter.html#column_for-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#column_for (method)">#column_for</a>,
         <a class='i_m priv' href="AbstractAdapter.html#extract_limit-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#extract_limit (method)">#extract_limit</a>,
         <a class='i_m priv' href="AbstractAdapter.html#extract_precision-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#extract_precision (method)">#extract_precision</a>,
@@ -982,7 +959,6 @@ stale).</p></div></td>
         <a class='i_m priv' href="AbstractAdapter.html#translate_exception-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#translate_exception (method)">#translate_exception</a>,
         <a class='i_m priv' href="AbstractAdapter.html#translate_exception_class-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#translate_exception_class (method)">#translate_exception_class</a>,
         <a class='i_m priv' href="AbstractAdapter.html#without_prepared_statement%3F-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#without_prepared_statement? (method)">#without_prepared_statement?</a>,
-        <a class='i_m nodoc' href="AbstractAdapter.html#arel_visitor-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#arel_visitor (method)">#arel_visitor</a>,
         <a class='i_m nodoc' href="AbstractAdapter.html#case_insensitive_comparison-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#case_insensitive_comparison (method)">#case_insensitive_comparison</a>,
         <a class='i_m nodoc' href="AbstractAdapter.html#case_sensitive_comparison-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#case_sensitive_comparison (method)">#case_sensitive_comparison</a>,
         <a class='i_m nodoc' href="AbstractAdapter.html#column_name_for_operation-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#column_name_for_operation (method)">#column_name_for_operation</a>,
@@ -993,12 +969,6 @@ stale).</p></div></td>
       <td><a class='i_m nodoc' href="AbstractAdapter.html#get_advisory_lock-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#get_advisory_lock (method)">#get_advisory_lock</a></td>
       <td><div class='inline'><p>This is meant to be implemented by the adapters that support advisory
 locks.</p></div></td>
-    </tr>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m nodoc' href="AbstractAdapter.html#lookup_cast_type-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#lookup_cast_type (method)">#lookup_cast_type</a>,
-        <a class='i_m nodoc' href="AbstractAdapter.html#new_column-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#new_column (method)">#new_column</a>,
-      </td>
     </tr>
     <tr class='i_ds'>
       <td><a class='i_m nodoc' href="AbstractAdapter.html#release_advisory_lock-instance_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter#release_advisory_lock (method)">#release_advisory_lock</a></td>
@@ -1122,11 +1092,6 @@ datatypes (Example: Adding an array option in the
 <h3 class='inherited'><a href="Quoting.html" title="ActiveRecord::ConnectionAdapters::Quoting (module)">Quoting</a> - Included</h3>
 <div class='inherited'><table class='inherited'>
   <tbody>
-    <tr>
-      <td colspan='2'>
-        <a class='i_m ' href="Quoting.html#fetch_type_metadata-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#fetch_type_metadata (method)">#fetch_type_metadata</a>,
-      </td>
-    </tr>
     <tr class='i_ds'>
       <td><a class='i_m ' href="Quoting.html#quote-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#quote (method)">#quote</a></td>
       <td><div class='inline'><p>Quotes the column value to help prevent <a
@@ -1171,6 +1136,7 @@ characters.</p></div></td>
         <a class='i_m priv' href="Quoting.html#_quote-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#_quote (method)">#_quote</a>,
         <a class='i_m priv' href="Quoting.html#_type_cast-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#_type_cast (method)">#_type_cast</a>,
         <a class='i_m priv' href="Quoting.html#id_value_for_database-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#id_value_for_database (method)">#id_value_for_database</a>,
+        <a class='i_m priv' href="Quoting.html#lookup_cast_type-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#lookup_cast_type (method)">#lookup_cast_type</a>,
         <a class='i_m priv' href="Quoting.html#types_which_need_no_typecasting-instance_method" title="ActiveRecord::ConnectionAdapters::Quoting#types_which_need_no_typecasting (method)">#types_which_need_no_typecasting</a>,
       </td>
     </tr>
@@ -1591,15 +1557,21 @@ supporting index lengths.</p></div></td>
         <a class='i_m priv' href="SchemaStatements.html#create_alter_table-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#create_alter_table (method)">#create_alter_table</a>,
         <a class='i_m priv' href="SchemaStatements.html#create_table_definition-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#create_table_definition (method)">#create_table_definition</a>,
         <a class='i_m priv' href="SchemaStatements.html#data_source_sql-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#data_source_sql (method)">#data_source_sql</a>,
+        <a class='i_m priv' href="SchemaStatements.html#extract_foreign_key_action-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#extract_foreign_key_action (method)">#extract_foreign_key_action</a>,
         <a class='i_m priv' href="SchemaStatements.html#extract_new_default_value-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#extract_new_default_value (method)">#extract_new_default_value</a>,
+        <a class='i_m priv' href="SchemaStatements.html#fetch_type_metadata-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#fetch_type_metadata (method)">#fetch_type_metadata</a>,
+        <a class='i_m priv' href="SchemaStatements.html#foreign_key_for-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#foreign_key_for (method)">#foreign_key_for</a>,
+        <a class='i_m priv' href="SchemaStatements.html#foreign_key_for!-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#foreign_key_for! (method)">#foreign_key_for!</a>,
         <a class='i_m priv' href="SchemaStatements.html#foreign_key_name-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#foreign_key_name (method)">#foreign_key_name</a>,
         <a class='i_m priv' href="SchemaStatements.html#index_column_names-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#index_column_names (method)">#index_column_names</a>,
         <a class='i_m priv' href="SchemaStatements.html#index_name_for_remove-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#index_name_for_remove (method)">#index_name_for_remove</a>,
         <a class='i_m priv' href="SchemaStatements.html#index_name_options-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#index_name_options (method)">#index_name_options</a>,
+        <a class='i_m priv' href="SchemaStatements.html#insert_versions_sql-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#insert_versions_sql (method)">#insert_versions_sql</a>,
         <a class='i_m priv' href="SchemaStatements.html#quoted_columns_for_index-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#quoted_columns_for_index (method)">#quoted_columns_for_index</a>,
         <a class='i_m priv' href="SchemaStatements.html#quoted_scope-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#quoted_scope (method)">#quoted_scope</a>,
         <a class='i_m priv' href="SchemaStatements.html#rename_column_indexes-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#rename_column_indexes (method)">#rename_column_indexes</a>,
         <a class='i_m priv' href="SchemaStatements.html#rename_table_indexes-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#rename_table_indexes (method)">#rename_table_indexes</a>,
+        <a class='i_m priv' href="SchemaStatements.html#schema_creation-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#schema_creation (method)">#schema_creation</a>,
         <a class='i_m priv' href="SchemaStatements.html#validate_index_length!-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#validate_index_length! (method)">#validate_index_length!</a>,
         <a class='i_m nodoc' href="SchemaStatements.html#add_index_options-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#add_index_options (method)">#add_index_options</a>,
       </td>
@@ -1617,13 +1589,10 @@ SELECT DISTINCT.</p></div></td>
       <td colspan='2'>
         <a class='i_m nodoc' href="SchemaStatements.html#dump_schema_information-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#dump_schema_information (method)">#dump_schema_information</a>,
         <a class='i_m nodoc' href="SchemaStatements.html#foreign_key_column_for-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#foreign_key_column_for (method)">#foreign_key_column_for</a>,
-        <a class='i_m nodoc' href="SchemaStatements.html#foreign_key_for-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#foreign_key_for (method)">#foreign_key_for</a>,
-        <a class='i_m nodoc' href="SchemaStatements.html#foreign_key_for!-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#foreign_key_for! (method)">#foreign_key_for!</a>,
         <a class='i_m nodoc' href="SchemaStatements.html#foreign_key_options-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#foreign_key_options (method)">#foreign_key_options</a>,
         <a class='i_m nodoc' href="SchemaStatements.html#index_name-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#index_name (method)">#index_name</a>,
         <a class='i_m nodoc' href="SchemaStatements.html#initialize_internal_metadata_table-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#initialize_internal_metadata_table (method)">#initialize_internal_metadata_table</a>,
         <a class='i_m nodoc' href="SchemaStatements.html#initialize_schema_migrations_table-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#initialize_schema_migrations_table (method)">#initialize_schema_migrations_table</a>,
-        <a class='i_m nodoc' href="SchemaStatements.html#insert_versions_sql-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#insert_versions_sql (method)">#insert_versions_sql</a>,
         <a class='i_m nodoc' href="SchemaStatements.html#internal_string_options_for_primary_key-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#internal_string_options_for_primary_key (method)">#internal_string_options_for_primary_key</a>,
         <a class='i_m nodoc' href="SchemaStatements.html#type_to_sql-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#type_to_sql (method)">#type_to_sql</a>,
         <a class='i_m nodoc' href="SchemaStatements.html#update_table_definition-instance_method" title="ActiveRecord::ConnectionAdapters::SchemaStatements#update_table_definition (method)">#update_table_definition</a>
@@ -1671,21 +1640,21 @@ SELECT DISTINCT.</p></div></td>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L95-L102'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L87-L94'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-95
-96
-97
-98
-99
-100
-101
-102</pre>
+87
+88
+89
+90
+91
+92
+93
+94</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 95</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 87</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span> <span class='id identifier rubyid_logger'>logger</span><span class='comma'>,</span> <span class='id identifier rubyid_connection_options'>connection_options</span><span class='comma'>,</span> <span class='id identifier rubyid_config'>config</span><span class='rparen'>)</span>
@@ -1706,16 +1675,16 @@ SELECT DISTINCT.</p></div></td>
   <h3 class='signature ro first'>
     #<strong>active?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L142-L144'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L134-L136'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-142
-143
-144</pre>
+134
+135
+136</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 142</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 134</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_active?'>active?</span>
@@ -1730,16 +1699,16 @@ SELECT DISTINCT.</p></div></td>
   <h3 class='signature ro'>
     #<strong>requires_reloading?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L122-L124'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L114-L116'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-122
-123
-124</pre>
+114
+115
+116</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 122</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 114</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_requires_reloading?'>requires_reloading?</span>
@@ -1754,16 +1723,16 @@ SELECT DISTINCT.</p></div></td>
   <h3 class='signature ro'>
     #<strong>supports_datetime_with_precision?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L134-L136'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L126-L128'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-134
-135
-136</pre>
+126
+127
+128</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 134</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 126</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_datetime_with_precision?'>supports_datetime_with_precision?</span>
@@ -1778,16 +1747,16 @@ SELECT DISTINCT.</p></div></td>
   <h3 class='signature ro'>
     #<strong>supports_ddl_transactions?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L104-L106'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L96-L98'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-104
-105
-106</pre>
+96
+97
+98</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 104</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 96</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_ddl_transactions?'>supports_ddl_transactions?</span>
@@ -1802,16 +1771,16 @@ SELECT DISTINCT.</p></div></td>
   <h3 class='signature ro'>
     #<strong>supports_explain?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L179-L181'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L171-L173'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-179
-180
-181</pre>
+171
+172
+173</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 179</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 171</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_explain?'>supports_explain?</span>
@@ -1826,16 +1795,16 @@ SELECT DISTINCT.</p></div></td>
   <h3 class='signature ro'>
     #<strong>supports_foreign_keys_in_create?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L126-L128'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L118-L120'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-126
-127
-128</pre>
+118
+119
+120</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 126</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 118</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_foreign_keys_in_create?'>supports_foreign_keys_in_create?</span>
@@ -1850,16 +1819,16 @@ SELECT DISTINCT.</p></div></td>
   <h3 class='signature ro'>
     #<strong>supports_index_sort_order?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L159-L161'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L151-L153'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-159
-160
-161</pre>
+151
+152
+153</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 159</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 151</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_index_sort_order?'>supports_index_sort_order?</span>
@@ -1874,16 +1843,16 @@ SELECT DISTINCT.</p></div></td>
   <h3 class='signature ro'>
     #<strong>supports_multi_insert?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L138-L140'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L130-L132'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-138
-139
-140</pre>
+130
+131
+132</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 138</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 130</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_multi_insert?'>supports_multi_insert?</span>
@@ -1898,16 +1867,16 @@ SELECT DISTINCT.</p></div></td>
   <h3 class='signature ro'>
     #<strong>supports_partial_index?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L112-L114'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L104-L106'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-112
-113
-114</pre>
+104
+105
+106</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 112</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 104</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_partial_index?'>supports_partial_index?</span>
@@ -1922,16 +1891,16 @@ SELECT DISTINCT.</p></div></td>
   <h3 class='signature ro'>
     #<strong>supports_savepoints?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L108-L110'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L100-L102'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-108
-109
-110</pre>
+100
+101
+102</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 108</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 100</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_savepoints?'>supports_savepoints?</span>
@@ -1956,16 +1925,16 @@ caching.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L118-L120'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L110-L112'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-118
-119
-120</pre>
+110
+111
+112</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 118</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 110</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_statement_cache?'>supports_statement_cache?</span>
@@ -1980,16 +1949,16 @@ caching.</p>
   <h3 class='signature ro'>
     #<strong>supports_views?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L130-L132'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L122-L124'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-130
-131
-132</pre>
+122
+123
+124</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 130</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 122</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supports_views?'>supports_views?</span>
@@ -2012,14 +1981,14 @@ caching.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L398-L398'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L374-L374'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-398</pre>
+374</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 398</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 374</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='symbeg'>:</span><span class='id identifier rubyid_add_belongs_to'>add_belongs_to</span> <span class='symbeg'>:</span><span class='id identifier rubyid_add_reference'>add_reference</span>
@@ -2035,22 +2004,22 @@ caching.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L342-L350'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L318-L326'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-342
-343
-344
-345
-346
-347
-348
-349
-350</pre>
+318
+319
+320
+321
+322
+323
+324
+325
+326</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 342</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 318</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_column'>add_column</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -2075,16 +2044,16 @@ caching.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L395-L397'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L371-L373'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-395
-396
-397</pre>
+371
+372
+373</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 395</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 371</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_reference'>add_reference</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_ref_name'>ref_name</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -2107,16 +2076,16 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L166-L168'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L158-L160'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-166
-167
-168</pre>
+158
+159
+160</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 166</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 158</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_allowed_index_name_length'>allowed_index_name_length</span>
@@ -2131,23 +2100,23 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
   <h3 class='signature priv'>
     #<strong>alter_table</strong>(table_name, options = {})   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L422-L431'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L398-L407'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-422
-423
-424
-425
-426
-427
-428
-429
-430
-431</pre>
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 422</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 398</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_alter_table'>alter_table</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -2166,26 +2135,23 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
 </section>
 
 <section class='method_details' id="arel_visitor-instance_method">
-  <h3 class='signature nodoc'>
-    #<strong>arel_visitor</strong>  
+  <h3 class='signature priv'>
+    #<strong>arel_visitor</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <div class='note nodoc inline-block'>
-    <strong>This method is for internal use only.</strong>
-  </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L91-L93'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L538-L540'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-91
-92
-93</pre>
+538
+539
+540</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 91</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 538</span></pre>
 <pre class='code ruby'>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_arel_visitor'>arel_visitor</span> <span class='comment'># :nodoc:
-</span>  <span class='const'>Arel</span><span class='op'>::</span><span class='const'>Visitors</span><span class='op'>::</span><span class='const'>SQLite</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_arel_visitor'>arel_visitor</span>
+  <span class='const'>Arel</span><span class='op'>::</span><span class='const'>Visitors</span><span class='op'>::</span><span class='const'>SQLite</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -2199,16 +2165,16 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L256-L258'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L248-L250'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-256
-257
-258</pre>
+248
+249
+250</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 256</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 248</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_begin_db_transaction'>begin_db_transaction</span> <span class='comment'>#:nodoc:
@@ -2226,26 +2192,26 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L375-L387'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L351-L363'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-375
-376
-377
-378
-379
-380
-381
-382
-383
-384
-385
-386
-387</pre>
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 375</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 351</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_change_column'>change_column</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -2273,20 +2239,20 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L358-L364'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L334-L340'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-358
-359
-360
-361
-362
-363
-364</pre>
+334
+335
+336
+337
+338
+339
+340</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 358</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 334</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_change_column_default'>change_column_default</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_default_or_changes'>default_or_changes</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -2308,21 +2274,21 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L366-L373'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L342-L349'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-366
-367
-368
-369
-370
-371
-372
-373</pre>
+342
+343
+344
+345
+346
+347
+348
+349</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 366</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 342</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_change_column_null'>change_column_null</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_null'>null</span><span class='comma'>,</span> <span class='id identifier rubyid_default'>default</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -2349,16 +2315,16 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L155-L157'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L147-L149'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-155
-156
-157</pre>
+147
+148
+149</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 155</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 147</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear_cache!'>clear_cache!</span>
@@ -2381,14 +2347,14 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L420-L420'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L396-L396'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-420</pre>
+396</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 420</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 396</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='id identifier rubyid_column_definitions'>column_definitions</span> <span class='id identifier rubyid_table_structure'>table_structure</span>
@@ -2404,16 +2370,16 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L260-L262'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L252-L254'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-260
-261
-262</pre>
+252
+253
+254</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 260</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 252</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_commit_db_transaction'>commit_db_transaction</span> <span class='comment'>#:nodoc:
@@ -2428,16 +2394,16 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
   <h3 class='signature priv'>
     #<strong>configure_connection</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L574-L576'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L542-L544'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-574
-575
-576</pre>
+542
+543
+544</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 574</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 542</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_configure_connection'>configure_connection</span>
@@ -2452,38 +2418,38 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
   <h3 class='signature priv'>
     #<strong>copy_table</strong>(from, to, options = {})   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L438-L462'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L414-L438'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-438
-439
-440
-441
-442
-443
-444
-445
-446
-447
-448
-449
-450
-451
-452
-453
-454
-455
-456
-457
-458
-459
-460
-461
-462</pre>
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 438</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 414</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_copy_table'>copy_table</span><span class='lparen'>(</span><span class='id identifier rubyid_from'>from</span><span class='comma'>,</span> <span class='id identifier rubyid_to'>to</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -2520,25 +2486,25 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
   <h3 class='signature priv'>
     #<strong>copy_table_contents</strong>(from, to, columns, rename = {})   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L487-L498'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L463-L474'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-487
-488
-489
-490
-491
-492
-493
-494
-495
-496
-497
-498</pre>
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 487</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 463</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_copy_table_contents'>copy_table_contents</span><span class='lparen'>(</span><span class='id identifier rubyid_from'>from</span><span class='comma'>,</span> <span class='id identifier rubyid_to'>to</span><span class='comma'>,</span> <span class='id identifier rubyid_columns'>columns</span><span class='comma'>,</span> <span class='id identifier rubyid_rename'>rename</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -2562,35 +2528,35 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
   <h3 class='signature priv'>
     #<strong>copy_table_indexes</strong>(from, to, rename = {})   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L464-L485'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L440-L461'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-464
-465
-466
-467
-468
-469
-470
-471
-472
-473
-474
-475
-476
-477
-478
-479
-480
-481
-482
-483
-484
-485</pre>
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 464</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 440</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_copy_table_indexes'>copy_table_indexes</span><span class='lparen'>(</span><span class='id identifier rubyid_from'>from</span><span class='comma'>,</span> <span class='id identifier rubyid_to'>to</span><span class='comma'>,</span> <span class='id identifier rubyid_rename'>rename</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -2620,30 +2586,6 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
 </div>
 </section>
 
-<section class='method_details' id="create_table_definition-instance_method">
-  <h3 class='signature priv'>
-    #<strong>create_table_definition</strong>(*args)   <span class="extras">(<span class='priv'>private</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L562-L564'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-562
-563
-564</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 562</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_create_table_definition'>create_table_definition</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='const'><a href="SQLite3.html" title="ActiveRecord::ConnectionAdapters::SQLite3 (module)">SQLite3</a></span><span class='op'>::</span><span class='const'><a href="SQLite3/TableDefinition.html" title="ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition (class)">TableDefinition</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="TableDefinition.html#new-class_method" title="ActiveRecord::ConnectionAdapters::TableDefinition.new (method)">new</a></span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
 <section class='method_details' id="disable_referential_integrity-instance_method">
   <h3 class='signature nodoc'>
     #<strong>disable_referential_integrity</strong>  
@@ -2658,23 +2600,23 @@ used by <a href="../../Rails.html" title="Rails (module)">::Rails</a> internally
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L185-L194'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L177-L186'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+177
+178
+179
+180
+181
+182
+183
+184
 185
-186
-187
-188
-189
-190
-191
-192
-193
-194</pre>
+186</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 185</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 177</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disable_referential_integrity'>disable_referential_integrity</span> <span class='comment'># :nodoc:
@@ -2704,18 +2646,18 @@ does nothing.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L148-L152'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L140-L144'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-148
-149
-150
-151
-152</pre>
+140
+141
+142
+143
+144</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 148</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 140</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disconnect!'>disconnect!</span>
@@ -2740,16 +2682,16 @@ does nothing.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L175-L177'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L167-L169'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-175
-176
-177</pre>
+167
+168
+169</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 175</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 167</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encoding'>encoding</span>
@@ -2765,17 +2707,17 @@ does nothing.</p>
     #<strong>exec_delete</strong>(sql, name = &quot;SQL&quot;, binds = [])  
     <span class='aliases'>Also known as: <span class='names'>#exec_update</span></span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L238-L241'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L230-L233'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-238
-239
-240
-241</pre>
+230
+231
+232
+233</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 238</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 230</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exec_delete'>exec_delete</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SQL</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_binds'>binds</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -2791,11 +2733,19 @@ does nothing.</p>
   <h3 class='signature '>
     #<strong>exec_query</strong>(sql, name = nil, binds = [], prepare: false)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L205-L236'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L197-L228'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+197
+198
+199
+200
+201
+202
+203
+204
 205
 206
 207
@@ -2819,17 +2769,9 @@ does nothing.</p>
 225
 226
 227
-228
-229
-230
-231
-232
-233
-234
-235
-236</pre>
+228</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 205</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 197</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exec_query'>exec_query</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_binds'>binds</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>prepare:</span> <span class='kw'>false</span><span class='rparen'>)</span>
@@ -2876,16 +2818,16 @@ does nothing.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L264-L266'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L256-L258'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-264
-265
-266</pre>
+256
+257
+258</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 264</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 256</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exec_rollback_db_transaction'>exec_rollback_db_transaction</span> <span class='comment'>#:nodoc:
@@ -2907,14 +2849,14 @@ does nothing.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L242-L242'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L234-L234'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-242</pre>
+234</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 242</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 234</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='symbeg'>:</span><span class='id identifier rubyid_exec_update'>exec_update</span> <span class='symbeg'>:</span><span class='id identifier rubyid_exec_delete'>exec_delete</span>
@@ -2930,20 +2872,20 @@ does nothing.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L248-L254'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L240-L246'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-248
-249
-250
-251
-252
-253
-254</pre>
+240
+241
+242
+243
+244
+245
+246</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 248</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 240</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -2962,17 +2904,17 @@ does nothing.</p>
   <h3 class='signature '>
     #<strong>explain</strong>(arel, binds = [])  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L200-L203'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L192-L195'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-200
-201
-202
-203</pre>
+192
+193
+194
+195</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 200</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 192</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_explain'>explain</span><span class='lparen'>(</span><span class='id identifier rubyid_arel'>arel</span><span class='comma'>,</span> <span class='id identifier rubyid_binds'>binds</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -2984,61 +2926,29 @@ does nothing.</p>
 </div>
 </section>
 
-<section class='method_details' id="extract_foreign_key_action-instance_method">
-  <h3 class='signature priv'>
-    #<strong>extract_foreign_key_action</strong>(specifier)   <span class="extras">(<span class='priv'>private</span>)</span>
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L566-L572'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-566
-567
-568
-569
-570
-571
-572</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 566</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_extract_foreign_key_action'>extract_foreign_key_action</span><span class='lparen'>(</span><span class='id identifier rubyid_specifier'>specifier</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_specifier'>specifier</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CASCADE</span><span class='tstring_end'>&quot;</span></span><span class='semicolon'>;</span> <span class='symbeg'>:</span><span class='id identifier rubyid_cascade'>cascade</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SET NULL</span><span class='tstring_end'>&quot;</span></span><span class='semicolon'>;</span> <span class='symbeg'>:</span><span class='id identifier rubyid_nullify'>nullify</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>RESTRICT</span><span class='tstring_end'>&quot;</span></span><span class='semicolon'>;</span> <span class='symbeg'>:</span><span class='id identifier rubyid_restrict'>restrict</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
 <section class='method_details' id="foreign_keys-instance_method">
   <h3 class='signature '>
     #<strong>foreign_keys</strong>(table_name)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L400-L411'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L376-L387'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-400
-401
-402
-403
-404
-405
-406
-407
-408
-409
-410
-411</pre>
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 400</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 376</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_foreign_keys'>foreign_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
@@ -3072,42 +2982,42 @@ does nothing.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L287-L315'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L263-L291'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
 287
 288
 289
 290
-291
-292
-293
-294
-295
-296
-297
-298
-299
-300
-301
-302
-303
-304
-305
-306
-307
-308
-309
-310
-311
-312
-313
-314
-315</pre>
+291</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 287</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 263</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_indexes'>indexes</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -3148,16 +3058,16 @@ does nothing.</p>
   <h3 class='signature '>
     #<strong>last_inserted_id</strong>(result)  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L244-L246'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L236-L238'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-244
-245
-246</pre>
+236
+237
+238</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 244</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 236</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_last_inserted_id'>last_inserted_id</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='rparen'>)</span>
@@ -3172,17 +3082,17 @@ does nothing.</p>
   <h3 class='signature priv'>
     #<strong>move_table</strong>(from, to, options = {}, &amp;block)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L433-L436'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L409-L412'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-433
-434
-435
-436</pre>
+409
+410
+411
+412</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 433</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 409</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_move_table'>move_table</span><span class='lparen'>(</span><span class='id identifier rubyid_from'>from</span><span class='comma'>,</span> <span class='id identifier rubyid_to'>to</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -3201,75 +3111,20 @@ does nothing.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L170-L172'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L162-L164'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-170
-171
-172</pre>
+162
+163
+164</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 170</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 162</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_native_database_types'>native_database_types</span> <span class='comment'>#:nodoc:
 </span>  <span class='const'><a href="#NATIVE_DATABASE_TYPES-constant" title="ActiveRecord::ConnectionAdapters::SQLite3Adapter::NATIVE_DATABASE_TYPES (constant)">NATIVE_DATABASE_TYPES</a></span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
-<section class='method_details' id="new_column_from_field-instance_method">
-  <h3 class='signature '>
-    #<strong>new_column_from_field</strong>(table_name, field)  
-  </h3>
-<div class='docstring'>
-  <div class='discussion'>
-    
-<p>SCHEMA STATEMENTS ========================================</p>
-
-  </div>
-</div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L270-L284'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-270
-271
-272
-273
-274
-275
-276
-277
-278
-279
-280
-281
-282
-283
-284</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 270</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_new_column_from_field'>new_column_from_field</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span> <span class='comment'># :nondoc:
-</span>  <span class='kw'>case</span> <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dflt_value</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^null$</span><span class='regexp_end'>/i</span></span>
-    <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dflt_value</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>nil</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^&#39;(.*)&#39;$</span><span class='regexp_end'>/m</span></span>
-    <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dflt_value</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='backref'>$1</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;&#39;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^&quot;(.*)&quot;$</span><span class='regexp_end'>/m</span></span>
-    <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dflt_value</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='backref'>$1</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&quot;&quot;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&quot;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_collation'>collation</span> <span class='op'>=</span> <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>collation</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_sql_type'>sql_type</span> <span class='op'>=</span> <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>type</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_type_metadata'>type_metadata</span> <span class='op'>=</span> <span class='id identifier rubyid_fetch_type_metadata'>fetch_type_metadata</span><span class='lparen'>(</span><span class='id identifier rubyid_sql_type'>sql_type</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_new_column'>new_column</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dflt_value</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_type_metadata'>type_metadata</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>notnull</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>==</span> <span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_collation'>collation</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -3283,17 +3138,17 @@ does nothing.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L317-L320'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L293-L296'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-317
-318
-319
-320</pre>
+293
+294
+295
+296</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 317</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 293</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_primary_keys'>primary_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -3312,18 +3167,18 @@ does nothing.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L352-L356'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L328-L332'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-352
-353
-354
-355
-356</pre>
+328
+329
+330
+331
+332</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 352</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 328</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove_column'>remove_column</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -3343,17 +3198,17 @@ does nothing.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L322-L325'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L298-L301'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-322
-323
-324
-325</pre>
+298
+299
+300
+301</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 322</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 298</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove_index'>remove_index</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -3372,18 +3227,18 @@ does nothing.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L389-L393'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L365-L369'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-389
-390
-391
-392
-393</pre>
+365
+366
+367
+368
+369</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 389</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 365</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rename_column'>rename_column</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_column_name'>column_name</span><span class='comma'>,</span> <span class='id identifier rubyid_new_column_name'>new_column_name</span><span class='rparen'>)</span> <span class='comment'>#:nodoc:
@@ -3411,17 +3266,17 @@ does nothing.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L331-L334'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L307-L310'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-331
-332
-333
-334</pre>
+307
+308
+309
+310</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 331</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 307</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rename_table'>rename_table</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_new_name'>new_name</span><span class='rparen'>)</span>
@@ -3433,47 +3288,20 @@ does nothing.</p>
 </div>
 </section>
 
-<section class='method_details' id="schema_creation-instance_method">
-  <h3 class='signature nodoc'>
-    #<strong>schema_creation</strong>  
-  </h3>
-  <div class='note nodoc inline-block'>
-    <strong>This method is for internal use only.</strong>
-  </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L87-L89'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-87
-88
-89</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 87</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_schema_creation'>schema_creation</span> <span class='comment'># :nodoc:
-</span>  <span class='const'><a href="SQLite3.html" title="ActiveRecord::ConnectionAdapters::SQLite3 (module)">SQLite3</a></span><span class='op'>::</span><span class='const'><a href="SQLite3/SchemaCreation.html" title="ActiveRecord::ConnectionAdapters::SQLite3::SchemaCreation (class)">SchemaCreation</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="AbstractAdapter/SchemaCreation.html#new-class_method" title="ActiveRecord::ConnectionAdapters::AbstractAdapter::SchemaCreation.new (method)">new</a></span> <span class='kw'>self</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
 <section class='method_details' id="sqlite_version-instance_method">
   <h3 class='signature priv'>
     #<strong>sqlite_version</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L500-L502'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L476-L478'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-500
-501
-502</pre>
+476
+477
+478</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 500</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 476</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sqlite_version'>sqlite_version</span>
@@ -3502,18 +3330,18 @@ does nothing.</p>
   </li>
 </ul>
 
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L415-L419'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L391-L395'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-415
-416
-417
-418
-419</pre>
+391
+392
+393
+394
+395</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 415</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 391</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_table_structure'>table_structure</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
@@ -3530,11 +3358,35 @@ does nothing.</p>
   <h3 class='signature priv'>
     #<strong>table_structure_with_collation</strong>(table_name, basic_structure)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L523-L560'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L499-L536'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
 523
 524
 525
@@ -3548,33 +3400,9 @@ does nothing.</p>
 533
 534
 535
-536
-537
-538
-539
-540
-541
-542
-543
-544
-545
-546
-547
-548
-549
-550
-551
-552
-553
-554
-555
-556
-557
-558
-559
-560</pre>
+536</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 523</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 499</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_table_structure_with_collation'>table_structure_with_collation</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_basic_structure'>basic_structure</span><span class='rparen'>)</span>
@@ -3624,29 +3452,29 @@ does nothing.</p>
   <h3 class='signature priv'>
     #<strong>translate_exception</strong>(exception, message)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L504-L519'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L480-L495'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-504
-505
-506
-507
-508
-509
-510
-511
-512
-513
-514
-515
-516
-517
-518
-519</pre>
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 504</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 480</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_translate_exception'>translate_exception</span><span class='lparen'>(</span><span class='id identifier rubyid_exception'>exception</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
@@ -3712,16 +3540,16 @@ SQLite has an additional restriction on the ALTER TABLE statement</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L338-L340'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L314-L316'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-338
-339
-340</pre>
+314
+315
+316</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 338</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb', line 314</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid_alter_table_type?'>valid_alter_table_type?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>

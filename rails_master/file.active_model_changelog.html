@@ -64,6 +64,35 @@
   </header>
 <div id='content' class='file'>
 <ul>
+<li><p>Fix methods <code>#keys</code>, <code>#values</code> in <a href="ActiveModel/Errors.html" title="ActiveModel::Errors (class)">::ActiveModel::Errors</a>.</p>
+
+<p>Change <code>#keys</code> to only return the keys that don&#39;t have empty messages.</p>
+
+<p>Change <code>#values</code> to only return the not empty values.</p>
+
+<p>Example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Before
+</span> <span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+ <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>     <span class='comment'># =&gt; []
+</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>   <span class='comment'># =&gt; []
+</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_messages'>messages</span> <span class='comment'># =&gt; {}
+</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>   <span class='comment'># =&gt; []
+</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_messages'>messages</span> <span class='comment'># =&gt; {:name =&gt; []}
+</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>     <span class='comment'># =&gt; [:name]
+</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>   <span class='comment'># =&gt; [[]]
+</span>
+ <span class='comment'># After
+</span> <span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'>Person</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+ <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>     <span class='comment'># =&gt; []
+</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>   <span class='comment'># =&gt; []
+</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_messages'>messages</span> <span class='comment'># =&gt; {}
+</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='lbracket'>[</span><span class='symbeg'>:</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>   <span class='comment'># =&gt; []
+</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_messages'>messages</span> <span class='comment'># =&gt; {:name =&gt; []}
+</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>     <span class='comment'># =&gt; []
+</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>   <span class='comment'># =&gt; []</span></code></pre>
+
+<p><em>bogdanvlviv</em></p></li>
 <li><p>Avoid converting integer as a string into float.</p>
 
 <p><em>namusyaka</em></p></li>

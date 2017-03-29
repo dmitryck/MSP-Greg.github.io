@@ -55,7 +55,7 @@
         <a href='../../index.html'>Rails-master</a> &raquo; 
         <a href='../../_index.html#alpha_Q'>Index (Q)</a> &raquo; 
         <a href="../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a> &raquo; 
-        <a href="../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
+        <a class='nodoc' href="../ConnectionAdapters.html" title="ActiveRecord::ConnectionAdapters (module)">ConnectionAdapters</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>Quoting&nbsp;&#x25B2;</a></span>
       </div>
 
@@ -94,11 +94,6 @@
 <h2 class='h2_sum' id='instance_Method_summary'>Instance Method Summary</h2>
 <div class='div_sum'>
 <ul class='summary full'>
-  <li>
-    <span class='summary_signature '>
-      <a href="#fetch_type_metadata-instance_method" title="#fetch_type_metadata (instance method)">#<strong>fetch_type_metadata</strong>(sql_type)  </a>
-    </span>
-  </li>
   <li>
     <span class='summary_signature '>
       <a href="#quote-instance_method" title="#quote (instance method)">#<strong>quote</strong>(value)  </a>
@@ -198,6 +193,12 @@ characters.</p></div>
   </li>
   <li>
     <span class='summary_signature priv'>
+      <a href="#lookup_cast_type-instance_method" title="#lookup_cast_type (instance method)">#<strong>lookup_cast_type</strong>(sql_type)  </a>
+    </span>
+    <span class='note title private'>private</span>
+  </li>
+  <li>
+    <span class='summary_signature priv'>
       <a href="#types_which_need_no_typecasting-instance_method" title="#types_which_need_no_typecasting (instance method)">#<strong>types_which_need_no_typecasting</strong>  </a>
     </span>
     <span class='note title private'>private</span>
@@ -252,11 +253,18 @@ wrong.</p></div>
   <h3 class='signature priv first'>
     #<strong>_quote</strong>(value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L174-L191'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L167-L184'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+167
+168
+169
+170
+171
+172
+173
 174
 175
 176
@@ -267,16 +275,9 @@ wrong.</p></div>
 181
 182
 183
-184
-185
-186
-187
-188
-189
-190
-191</pre>
+184</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 174</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 167</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__quote'>_quote</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -306,11 +307,18 @@ wrong.</p></div>
   <h3 class='signature priv'>
     #<strong>_type_cast</strong>(value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L193-L207'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L186-L200'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+186
+187
+188
+189
+190
+191
+192
 193
 194
 195
@@ -318,16 +326,9 @@ wrong.</p></div>
 197
 198
 199
-200
-201
-202
-203
-204
-205
-206
-207</pre>
+200</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 193</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 186</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__type_cast'>_type_cast</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -350,66 +351,52 @@ wrong.</p></div>
 </div>
 </section>
 
-<section class='method_details' id="fetch_type_metadata-instance_method">
-  <h3 class='signature '>
-    #<strong>fetch_type_metadata</strong>(sql_type)  
-  </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L64-L73'>GitHub</a>&#8202;]</span>
-<div class='source_code h'>
-  <pre class='lines_num'>
-
-
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73</pre>
-  <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 64</span></pre>
-<pre class='code ruby'>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_fetch_type_metadata'>fetch_type_metadata</span><span class='lparen'>(</span><span class='id identifier rubyid_sql_type'>sql_type</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_cast_type'>cast_type</span> <span class='op'>=</span> <span class='id identifier rubyid_lookup_cast_type'>lookup_cast_type</span><span class='lparen'>(</span><span class='id identifier rubyid_sql_type'>sql_type</span><span class='rparen'>)</span>
-  <span class='const'><a href="SqlTypeMetadata.html" title="ActiveRecord::ConnectionAdapters::SqlTypeMetadata (class)">SqlTypeMetadata</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="SqlTypeMetadata.html#new-class_method" title="ActiveRecord::ConnectionAdapters::SqlTypeMetadata.new (method)">new</a></span><span class='lparen'>(</span>
-    <span class='label'>sql_type:</span> <span class='id identifier rubyid_sql_type'>sql_type</span><span class='comma'>,</span>
-    <span class='label'>type:</span> <span class='id identifier rubyid_cast_type'>cast_type</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span>
-    <span class='label'>limit:</span> <span class='id identifier rubyid_cast_type'>cast_type</span><span class='period'>.</span><span class='id identifier rubyid_limit'>limit</span><span class='comma'>,</span>
-    <span class='label'>precision:</span> <span class='id identifier rubyid_cast_type'>cast_type</span><span class='period'>.</span><span class='id identifier rubyid_precision'>precision</span><span class='comma'>,</span>
-    <span class='label'>scale:</span> <span class='id identifier rubyid_cast_type'>cast_type</span><span class='period'>.</span><span class='id identifier rubyid_scale'>scale</span><span class='comma'>,</span>
-  <span class='rparen'>)</span>
-<span class='kw'>end</span>
-</pre>
-  </div>
-</div>
-</section>
-
 <section class='method_details' id="id_value_for_database-instance_method">
   <h3 class='signature priv'>
     #<strong>id_value_for_database</strong>(value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L164-L168'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L157-L161'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-164
-165
-166
-167
-168</pre>
+157
+158
+159
+160
+161</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 164</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 157</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_id_value_for_database'>id_value_for_database</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_primary_key'>primary_key</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_primary_key'>primary_key</span>
     <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='ivar'>@attributes</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='id identifier rubyid_primary_key'>primary_key</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_value_for_database'>value_for_database</span>
   <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="lookup_cast_type-instance_method">
+  <h3 class='signature priv'>
+    #<strong>lookup_cast_type</strong>(sql_type)   <span class="extras">(<span class='priv'>private</span>)</span>
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L153-L155'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+153
+154
+155</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 153</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_lookup_cast_type'>lookup_cast_type</span><span class='lparen'>(</span><span class='id identifier rubyid_sql_type'>sql_type</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_type_map'>type_map</span><span class='period'>.</span><span class='id identifier rubyid_lookup'>lookup</span><span class='lparen'>(</span><span class='id identifier rubyid_sql_type'>sql_type</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -510,16 +497,16 @@ attacks</a>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L82-L84'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L71-L73'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-82
-83
-84</pre>
+71
+72
+73</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 82</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 71</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quote_column_name'>quote_column_name</span><span class='lparen'>(</span><span class='id identifier rubyid_column_name'>column_name</span><span class='rparen'>)</span>
@@ -537,21 +524,21 @@ attacks</a>.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L103-L110'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L92-L99'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-103
-104
-105
-106
-107
-108
-109
-110</pre>
+92
+93
+94
+95
+96
+97
+98
+99</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 103</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 92</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quote_default_expression'>quote_default_expression</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -579,16 +566,16 @@ characters.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L77-L79'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L66-L68'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-77
-78
-79</pre>
+66
+67
+68</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 77</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 66</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quote_string'>quote_string</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='rparen'>)</span>
@@ -610,16 +597,16 @@ characters.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L87-L89'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L76-L78'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-87
-88
-89</pre>
+76
+77
+78</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 87</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 76</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quote_table_name'>quote_table_name</span><span class='lparen'>(</span><span class='id identifier rubyid_table_name'>table_name</span><span class='rparen'>)</span>
@@ -647,16 +634,16 @@ column name (as per syntax requirements).</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L99-L101'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L88-L90'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-99
-100
-101</pre>
+88
+89
+90</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 99</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 88</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quote_table_name_for_assignment'>quote_table_name_for_assignment</span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='comma'>,</span> <span class='id identifier rubyid_attr'>attr</span><span class='rparen'>)</span>
@@ -674,16 +661,16 @@ column name (as per syntax requirements).</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L151-L153'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L140-L142'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-151
-152
-153</pre>
+140
+141
+142</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 151</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 140</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quoted_binary'>quoted_binary</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -706,29 +693,29 @@ value is a <a href="../../Time.html" title="Time (class)">::Time</a> responding 
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L130-L145'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L119-L134'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
 130
 131
 132
 133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145</pre>
+134</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 130</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 119</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quoted_date'>quoted_date</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -756,16 +743,16 @@ value is a <a href="../../Time.html" title="Time (class)">::Time</a> responding 
   <h3 class='signature '>
     #<strong>quoted_false</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L120-L122'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L109-L111'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-120
-121
-122</pre>
+109
+110
+111</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 120</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 109</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quoted_false'>quoted_false</span>
@@ -783,16 +770,16 @@ value is a <a href="../../Time.html" title="Time (class)">::Time</a> responding 
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L147-L149'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L136-L138'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-147
-148
-149</pre>
+136
+137
+138</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 147</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 136</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quoted_time'>quoted_time</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -807,16 +794,16 @@ value is a <a href="../../Time.html" title="Time (class)">::Time</a> responding 
   <h3 class='signature '>
     #<strong>quoted_true</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L112-L114'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L101-L103'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-112
-113
-114</pre>
+101
+102
+103</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 112</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 101</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quoted_true'>quoted_true</span>
@@ -946,20 +933,20 @@ provided before reaching the connection adapter.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L155-L161'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L144-L150'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-155
-156
-157
-158
-159
-160
-161</pre>
+144
+145
+146
+147
+148
+149
+150</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 155</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 144</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type_casted_binds'>type_casted_binds</span><span class='lparen'>(</span><span class='id identifier rubyid_binds'>binds</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -978,16 +965,16 @@ provided before reaching the connection adapter.</p>
   <h3 class='signature priv'>
     #<strong>types_which_need_no_typecasting</strong>   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L170-L172'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L163-L165'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-170
-171
-172</pre>
+163
+164
+165</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 170</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 163</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_types_which_need_no_typecasting'>types_which_need_no_typecasting</span>
@@ -1002,16 +989,16 @@ provided before reaching the connection adapter.</p>
   <h3 class='signature '>
     #<strong>unquoted_false</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L124-L126'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L113-L115'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-124
-125
-126</pre>
+113
+114
+115</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 124</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 113</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unquoted_false'>unquoted_false</span>
@@ -1026,16 +1013,16 @@ provided before reaching the connection adapter.</p>
   <h3 class='signature '>
     #<strong>unquoted_true</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L116-L118'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L105-L107'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-116
-117
-118</pre>
+105
+106
+107</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 116</span></pre>
+<pre><span class='info file'># File 'activerecord/lib/active_record/connection_adapters/abstract/quoting.rb', line 105</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unquoted_true'>unquoted_true</span>
