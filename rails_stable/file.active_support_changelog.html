@@ -64,18 +64,30 @@
   </header>
 <div id='content' class='file'>
 <ul>
-<li>Add ActiveSupport::Deprecation::DeprecatedConstantAccessor</li>
-</ul>
+<li><p><a href="ActiveSupport/EventedFileUpdateChecker.html" title="ActiveSupport::EventedFileUpdateChecker (class)">::ActiveSupport::EventedFileUpdateChecker</a> no longer listens to
+directories outside of the application directory.</p>
+
+<p><em>radiospiel</em></p></li>
+<li><p>Return unmapped timezones from <code>country_zones</code></p>
+
+<p>If a country doesn&#39;t exist in the MAPPINGS hash then create a new
+<code>ActiveSupport::Timezone</code> instance using the supplied timezone id.</p>
+
+<p>Fixes #28431.</p>
+
+<p><em>Andrew White</em></p></li>
+<li><p>Add ActiveSupport::Deprecation::DeprecatedConstantAccessor</p>
 
 <p>Provides transparent deprecation of constants, compatible with exceptions.
-  Example usage:</p>
+Example usage:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>module</span> <span class='const'>Example</span>
-    <span class='id identifier rubyid_include'>include</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/Deprecation/DeprecatedConstantAccessor.html" title="ActiveSupport::Deprecation::DeprecatedConstantAccessor (module)">DeprecatedConstantAccessor</a></span>
-    <span class='id identifier rubyid_deprecate_constant'>deprecate_constant</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>OldException</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Elsewhere::NewException</span><span class='tstring_end'>&#39;</span></span>
-  <span class='kw'>end</span></code></pre>
+  <span class='id identifier rubyid_include'>include</span> <span class='const'><a href="ActiveSupport.html" title="ActiveSupport (module)">ActiveSupport</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/Deprecation.html" title="ActiveSupport::Deprecation (class)">Deprecation</a></span><span class='op'>::</span><span class='const'><a href="ActiveSupport/Deprecation/DeprecatedConstantAccessor.html" title="ActiveSupport::Deprecation::DeprecatedConstantAccessor (module)">DeprecatedConstantAccessor</a></span>
+  <span class='id identifier rubyid_deprecate_constant'>deprecate_constant</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>OldException</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Elsewhere::NewException</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></code></pre>
 
-<p><em>Dominic Cleal</em></p>
+<p><em>Dominic Cleal</em></p></li>
+</ul>
 
 <h2>Rails 5.1.0.rc1 (March 20, 2017)</h2>
 
