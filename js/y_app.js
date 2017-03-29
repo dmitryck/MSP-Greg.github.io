@@ -568,7 +568,7 @@ function paneClk(e) {
     this.clickedLI = eLI;
     this.clickedA = eA;
     clickedBy = ( isList ? CB_LIST : CB_TOC );
-    
+
     if (eA.hash !== '') {
       // craziness for IE11 handling of anchor elements properties
       t = eA.href.slice( eA.href.search(/[^:/]\//) + 1, eA.href.length - eA.hash.length);
@@ -1801,6 +1801,7 @@ function toc_Generate(content, isCode) {
       if (itemHref.length === 0) {
         proposedId = el.getAttribute('toc-id') || el.textContent.replace(/[^a-z0-9]+/ig, '-');;
         qs = /^[0-9]/.test(proposedId) ? '#\\' : '#';
+        if ( proposedId.startsWith('-') ) proposedId = "_" + proposedId;
         if (proposedId === null || proposedId === '' ||
             content.querySelector(qs + proposedId) ) {
           proposedId = title.replace(/[^a-z0-9]+/ig, '-');
