@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../../index.html'>Home</a> &raquo; 
-        <a href='../index.html'>Ruby-2.3.3</a> &raquo; 
+        <a href='../index.html'>Ruby-2.3.4</a> &raquo; 
         <a href='index.html'>socket</a> &raquo; 
         <a href='_index.html#alpha_B'>Index (B)</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>BasicSocket&nbsp;&#x25B2;</a></span>
@@ -86,7 +86,7 @@
         <div class='box_2'>Class Chain:</div>
         <div class='box_22'>
           self,
-          IO
+          <a href="IO.html" title="IO (class)">::IO</a>
         </div>
       </td>
     </tr>
@@ -95,24 +95,24 @@
         <div class='box_2'>Instance Chain:</div>
         <div class='box_22'>
           self,
-          IO
+          <a href="IO.html" title="IO (class)">::IO</a>
         </div>
       </td>
     </tr>
     <tr>
       <td id='t2_inherits' class='box_2 o'>Inherits:</td>
       <td class='box_rel'>
-        <span class='inheritName'>IO</span>
+        <span class='inheritName'><a href="IO.html" title="IO (class)">IO</a></span>
         <ul class='fullTree'>
-          <li>Object</li>
-          <li class='next'>IO</li>
+          <li><a href="Object.html" title="Object (class)">::Object</a></li>
+          <li class='next'><a href="IO.html" title="IO (class)">IO</a></li>
           <li class='next'>BasicSocket</li>
         </ul>
       </td>
     </tr>
     <tr class='single'>
       <td id='t2_defined_in' class='box_2 o'>Defined in:</td>
-      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_3/ext/socket/basicsocket.c#L694'>ext/socket/basicsocket.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_3/ext/socket/ancdata.c#L1302'>ext/socket/ancdata.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_3/ext/socket/lib/socket.rb#L235'>ext/socket/lib/socket.rb</a></span>
+      <td class='box_rel'><a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_4/ext/socket/basicsocket.c#L694'>ext/socket/basicsocket.c</a><span class='defines'>,<br /><a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_4/ext/socket/ancdata.c#L1302'>ext/socket/ancdata.c</a>,<br/> <a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_4/ext/socket/lib/socket.rb#L235'>ext/socket/lib/socket.rb</a></span>
       </td>
     </tr>
   </tbody>
@@ -570,7 +570,7 @@ domain socket which has no path is not suitable for connect.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_3/ext/socket/lib/socket.rb#L255-L276'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_4/ext/socket/lib/socket.rb#L255-L276'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -604,12 +604,12 @@ domain socket which has no path is not suitable for connect.</p>
 <span class='kw'>def</span> <span class='id identifier rubyid_connect_address'>connect_address</span>
   <span class='id identifier rubyid_addr'>addr</span> <span class='op'>=</span> <span class='id identifier rubyid_local_address'>local_address</span>
   <span class='id identifier rubyid_afamily'>afamily</span> <span class='op'>=</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_afamily'>afamily</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_afamily'>afamily</span> <span class='op'>==</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>AF_INET</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_afamily'>afamily</span> <span class='op'>==</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#AF_INET-constant" title="Socket::AF_INET (constant)">AF_INET</a></span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'><a href="SocketError.html" title="SocketError (class)">SocketError</a></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unbound IPv4 socket</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_ip_port'>ip_port</span> <span class='op'>==</span> <span class='int'>0</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_ip_address'>ip_address</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.0.0.0</span><span class='tstring_end'>&quot;</span></span>
       <span class='id identifier rubyid_addr'>addr</span> <span class='op'>=</span> <span class='const'><a href="Addrinfo.html" title="Addrinfo (class)">Addrinfo</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Addrinfo.html#new-class_method" title="Addrinfo.new (method)">new</a></span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AF_INET</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_ip_port'>ip_port</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_pfamily'>pfamily</span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_socktype'>socktype</span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_protocol'>protocol</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
-  <span class='kw'>elsif</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>AF_INET6</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_afamily'>afamily</span> <span class='op'>==</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>AF_INET6</span>
+  <span class='kw'>elsif</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#AF_INET6-constant" title="Socket::AF_INET6 (constant)">AF_INET6</a></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_afamily'>afamily</span> <span class='op'>==</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#AF_INET6-constant" title="Socket::AF_INET6 (constant)">AF_INET6</a></span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'><a href="SocketError.html" title="SocketError (class)">SocketError</a></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unbound IPv6 socket</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_ip_port'>ip_port</span> <span class='op'>==</span> <span class='int'>0</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_ip_address'>ip_address</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='tstring_end'>&quot;</span></span>
       <span class='id identifier rubyid_addr'>addr</span> <span class='op'>=</span> <span class='const'><a href="Addrinfo.html" title="Addrinfo (class)">Addrinfo</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Addrinfo.html#new-class_method" title="Addrinfo.new (method)">new</a></span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AF_INET6</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_ip_port'>ip_port</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::1</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_pfamily'>pfamily</span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_socktype'>socktype</span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_protocol'>protocol</span><span class='rparen'>)</span>
@@ -618,7 +618,7 @@ domain socket which has no path is not suitable for connect.</p>
     <span class='kw'>elsif</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_ip_address'>ip_address</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::ffff:0.0.0.0</span><span class='tstring_end'>&quot;</span></span> <span class='comment'># MacOS X 10.6 returns &quot;::ffff:a.b.c.d&quot; for IPv4-mapped IPv6 address.
 </span>      <span class='id identifier rubyid_addr'>addr</span> <span class='op'>=</span> <span class='const'><a href="Addrinfo.html" title="Addrinfo (class)">Addrinfo</a></span><span class='period'>.</span><span class='id identifier rubyid_new'><a href="Addrinfo.html#new-class_method" title="Addrinfo.new (method)">new</a></span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AF_INET6</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_ip_port'>ip_port</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::1</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_pfamily'>pfamily</span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_socktype'>socktype</span><span class='comma'>,</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_protocol'>protocol</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
-  <span class='kw'>elsif</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>AF_UNIX</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_afamily'>afamily</span> <span class='op'>==</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>AF_UNIX</span>
+  <span class='kw'>elsif</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#AF_UNIX-constant" title="Socket::AF_UNIX (constant)">AF_UNIX</a></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_afamily'>afamily</span> <span class='op'>==</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#AF_UNIX-constant" title="Socket::AF_UNIX (constant)">AF_UNIX</a></span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'><a href="SocketError.html" title="SocketError (class)">SocketError</a></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unbound Unix socket</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_unix_path'>unix_path</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_addr'>addr</span>
@@ -726,7 +726,7 @@ prefix, is also accepted.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_reuseaddr'>reuseaddr</span> <span class='op'>=</span> <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_getsockopt'>getsockopt</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='const'>SOCKET</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='const'>REUSEADDR</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_bool'>bool</span>
 
-<span class='id identifier rubyid_optval'>optval</span> <span class='op'>=</span> <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_getsockopt'>getsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>SOL_SOCKET</span><span class='comma'>,</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>SO_REUSEADDR</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_optval'>optval</span> <span class='op'>=</span> <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_getsockopt'>getsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#SOL_SOCKET-constant" title="Socket::SOL_SOCKET (constant)">SOL_SOCKET</a></span><span class='comma'>,</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#SO_REUSEADDR-constant" title="Socket::SO_REUSEADDR (constant)">SO_REUSEADDR</a></span><span class='rparen'>)</span>
 <span class='id identifier rubyid_optval'>optval</span> <span class='op'>=</span> <span class='id identifier rubyid_optval'>optval</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>i</span><span class='tstring_end'>&quot;</span></span>
 <span class='id identifier rubyid_reuseaddr'>reuseaddr</span> <span class='op'>=</span> <span class='id identifier rubyid_optval'>optval</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>?</span> <span class='kw'>false</span> <span class='op'>:</span> <span class='kw'>true</span></code></pre>
 
@@ -735,7 +735,7 @@ prefix, is also accepted.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_ipttl'>ipttl</span> <span class='op'>=</span> <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_getsockopt'>getsockopt</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='const'>IP</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='const'>TTL</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_int'>int</span>
 
-<span class='id identifier rubyid_optval'>optval</span> <span class='op'>=</span> <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_getsockopt'>getsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>IPPROTO_IP</span><span class='comma'>,</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>IP_TTL</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_optval'>optval</span> <span class='op'>=</span> <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_getsockopt'>getsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#IPPROTO_IP-constant" title="Socket::IPPROTO_IP (constant)">IPPROTO_IP</a></span><span class='comma'>,</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#IP_TTL-constant" title="Socket::IP_TTL (constant)">IP_TTL</a></span><span class='rparen'>)</span>
 <span class='id identifier rubyid_ipttl'>ipttl</span> <span class='op'>=</span> <span class='id identifier rubyid_optval'>optval</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>i</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span></code></pre>
 
 <p>Option values may be structs. Decoding them can be complex as it involves
@@ -753,7 +753,7 @@ as:</p>
 <pre class="code ruby"><code class="ruby"><span class='comment'># Socket::Option knows linger structure.
 </span><span class='id identifier rubyid_onoff'>onoff</span><span class='comma'>,</span> <span class='id identifier rubyid_linger'>linger</span> <span class='op'>=</span> <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_getsockopt'>getsockopt</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='const'>SOCKET</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='const'>LINGER</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_linger'>linger</span>
 
-<span class='id identifier rubyid_optval'>optval</span> <span class='op'>=</span>  <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_getsockopt'>getsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>SOL_SOCKET</span><span class='comma'>,</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>SO_LINGER</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_optval'>optval</span> <span class='op'>=</span>  <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_getsockopt'>getsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#SOL_SOCKET-constant" title="Socket::SOL_SOCKET (constant)">SOL_SOCKET</a></span><span class='comma'>,</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#SO_LINGER-constant" title="Socket::SO_LINGER (constant)">SO_LINGER</a></span><span class='rparen'>)</span>
 <span class='id identifier rubyid_onoff'>onoff</span><span class='comma'>,</span> <span class='id identifier rubyid_linger'>linger</span> <span class='op'>=</span> <span class='id identifier rubyid_optval'>optval</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ii</span><span class='tstring_end'>&quot;</span></span>
 <span class='id identifier rubyid_onoff'>onoff</span> <span class='op'>=</span> <span class='id identifier rubyid_onoff'>onoff</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>?</span> <span class='kw'>false</span> <span class='op'>:</span> <span class='kw'>true</span></code></pre>
 
@@ -803,7 +803,7 @@ even if it is not empty at the beginning.</p>
 <pre class="code ruby"><code class="ruby"><span class='const'><a href="UNIXSocket.html" title="UNIXSocket (class)">UNIXSocket</a></span><span class='period'>.</span><span class='id identifier rubyid_pair'><a href="UNIXSocket.html#pair-class_method" title="UNIXSocket.pair (method)">pair</a></span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_s1'>s1</span><span class='comma'>,</span> <span class='id identifier rubyid_s2'>s2</span><span class='op'>|</span>
   <span class='id identifier rubyid_s1'>s1</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello World</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_s2'>s2</span><span class='period'>.</span><span class='id identifier rubyid_recv'>recv</span><span class='lparen'>(</span><span class='int'>4</span><span class='rparen'>)</span>                     <span class='comment'>#=&gt; &quot;Hell&quot;
-</span>  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_s2'>s2</span><span class='period'>.</span><span class='id identifier rubyid_recv'>recv</span><span class='lparen'>(</span><span class='int'>4</span><span class='comma'>,</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>MSG_PEEK</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;o Wo&quot;
+</span>  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_s2'>s2</span><span class='period'>.</span><span class='id identifier rubyid_recv'>recv</span><span class='lparen'>(</span><span class='int'>4</span><span class='comma'>,</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#MSG_PEEK-constant" title="Socket::MSG_PEEK (constant)">MSG_PEEK</a></span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;o Wo&quot;
 </span>  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_s2'>s2</span><span class='period'>.</span><span class='id identifier rubyid_recv'>recv</span><span class='lparen'>(</span><span class='int'>4</span><span class='rparen'>)</span>                     <span class='comment'>#=&gt; &quot;o Wo&quot;
 </span>  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_s2'>s2</span><span class='period'>.</span><span class='id identifier rubyid_recv'>recv</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span>                    <span class='comment'>#=&gt; &quot;rld\n&quot;
 </span><span class='rbrace'>}</span></code></pre>
@@ -842,7 +842,7 @@ UDP, etc.</p>
 <p>serv = <a href="TCPServer.html" title="TCPServer (class)">::TCPServer</a>.new("127.0.0.1", 0) 	af, port, host, addr = serv.addr
 	c = <a href="TCPSocket.html" title="TCPSocket (class)">::TCPSocket</a>.new(addr, port) 	s = serv.accept 	c.send "aaa", 0 	begin #
 emulate blocking recv. 	  p s.recv_nonblock(10) #=&gt; "aaa" 	rescue
-<code>IO::WaitReadable</code> 	  <a href="s">IO.select(</a>) 	  retry 	end</p>
+<code>IO::WaitReadable</code> 	  <a href="IO.html" title="IO (class)">::IO</a>.<a href="s">select(</a>) 	  retry 	end</p>
 
 <p>Refer to <a href="Socket.html#recvfrom-instance_method" title="Socket#recvfrom (method)">Socket#recvfrom</a> for the exceptions that may be thrown if the
 call to <em>recv_nonblock</em> fails.</p>
@@ -865,7 +865,7 @@ return the symbol :wait_writable instead.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_3/ext/socket/lib/socket.rb#L374-L376'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_4/ext/socket/lib/socket.rb#L374-L376'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -895,7 +895,7 @@ return the symbol :wait_writable instead.</p>
 
 <p><em>maxmesglen</em> is the maximum length of mesg to receive.</p>
 
-<p><em>flags</em> is bitwise OR of MSG_* constants such as <code>Socket::MSG_PEEK</code>.</p>
+<p><em>flags</em> is bitwise OR of MSG_* constants such as <a href="Socket.html#MSG_PEEK-constant" title="Socket::MSG_PEEK (constant)">Socket::MSG_PEEK</a>.</p>
 
 <p><em>maxcontrollen</em> is the maximum length of controls (ancillary data)
 to receive.</p>
@@ -909,7 +909,7 @@ SCM_RIGHTS control message. In this case, recvmsg closes the passed file
 descriptors immediately. This is the default behavior.</p>
 
 <p>If :scm_rights value is neither nil nor false, application expects
-SCM_RIGHTS control message. In this case, recvmsg creates IO objects for
+SCM_RIGHTS control message. In this case, recvmsg creates <a href="IO.html" title="IO (class)">::IO</a> objects for
 each file descriptors for <a href="Socket/AncillaryData.html#unix_rights-instance_method" title="Socket::AncillaryData#unix_rights (method)">Socket::AncillaryData#unix_rights</a> method.</p>
 
 <p>The return value is 4-elements array.</p>
@@ -921,7 +921,7 @@ socket. It is an <a href="Addrinfo.html" title="Addrinfo (class)">::Addrinfo</a>
 TCP, sender_addrinfo is platform dependent.</p>
 
 <p><em>rflags</em> is a flags on the received message which is bitwise OR of
-MSG_* constants such as <code>Socket::MSG_TRUNC</code>. It will be nil if the system
+MSG_* constants such as <a href="Socket.html#MSG_TRUNC-constant" title="Socket::MSG_TRUNC (constant)">Socket::MSG_TRUNC</a>. It will be nil if the system
 uses 4.3BSD style old recvmsg system call.</p>
 
 <p><em>controls</em> is ancillary data which is an array of
@@ -944,7 +944,7 @@ MSG_PEEK is used. Buffer full and MSG_CTRUNC are checked for truncation.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_3/ext/socket/lib/socket.rb#L429-L431'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_4/ext/socket/lib/socket.rb#L429-L431'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -982,7 +982,7 @@ exception, but return the symbol :wait_writable instead.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_3/ext/socket/lib/socket.rb#L445-L448'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_4/ext/socket/lib/socket.rb#L445-L448'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1063,7 +1063,7 @@ exception, but return the symbol :wait_writable instead.</p>
 
 <p><em>mesg</em> is a string to send.</p>
 
-<p><em>flags</em> is bitwise OR of MSG_* constants such as <code>Socket::MSG_OOB</code>.</p>
+<p><em>flags</em> is bitwise OR of MSG_* constants such as <a href="Socket.html#MSG_OOB-constant" title="Socket::MSG_OOB (constant)">Socket::MSG_OOB</a>.</p>
 
 <p><em>dest_sockaddr</em> is a destination socket address for connection-less
 socket. It should be a sockaddr such as a result of <a href="Socket.html#sockaddr_in-class_method" title="Socket.sockaddr_in (method)">Socket.sockaddr_in</a>.
@@ -1088,7 +1088,7 @@ of bytes sent.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_3/ext/socket/lib/socket.rb#L307-L309'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_4/ext/socket/lib/socket.rb#L307-L309'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1126,7 +1126,7 @@ exception, but return the symbol :wait_writable instead.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_3/ext/socket/lib/socket.rb#L323-L326'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/ruby/ruby/blob/v2_3_4/ext/socket/lib/socket.rb#L323-L326'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
@@ -1194,14 +1194,14 @@ passed as for a Fixnum. Note that <code>false</code> must be passed, not
 <code>#setsockopt</code> could be called like this:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_setsockopt'>setsockopt</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='const'>SOCKET</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='const'>REUSEADDR</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_setsockopt'>setsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>SOL_SOCKET</span><span class='comma'>,</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>SO_REUSEADDR</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_setsockopt'>setsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#SOL_SOCKET-constant" title="Socket::SOL_SOCKET (constant)">SOL_SOCKET</a></span><span class='comma'>,</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#SO_REUSEADDR-constant" title="Socket::SO_REUSEADDR (constant)">SO_REUSEADDR</a></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
 <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_setsockopt'>setsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket/Option.html" title="Socket::Option (class)">Option</a></span><span class='period'>.</span><span class='id identifier rubyid_bool'><a href="Socket/Option.html#bool-class_method" title="Socket::Option.bool (method)">bool</a></span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='const'>INET</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='const'>SOCKET</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='const'>REUSEADDR</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='rparen'>)</span></code></pre>
 
 <p>Some socket options are integers with numeric values, in this case
 <code>#setsockopt</code> could be called like this:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_setsockopt'>setsockopt</span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='const'>IP</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='const'>TTL</span><span class='comma'>,</span> <span class='int'>255</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_setsockopt'>setsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>IPPROTO_IP</span><span class='comma'>,</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>IP_TTL</span><span class='comma'>,</span> <span class='int'>255</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_setsockopt'>setsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#IPPROTO_IP-constant" title="Socket::IPPROTO_IP (constant)">IPPROTO_IP</a></span><span class='comma'>,</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#IP_TTL-constant" title="Socket::IP_TTL (constant)">IP_TTL</a></span><span class='comma'>,</span> <span class='int'>255</span><span class='rparen'>)</span>
 <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_setsockopt'>setsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket/Option.html" title="Socket::Option (class)">Option</a></span><span class='period'>.</span><span class='id identifier rubyid_int'><a href="Socket/Option.html#int-class_method" title="Socket::Option.int (method)">int</a></span><span class='lparen'>(</span><span class='symbeg'>:</span><span class='const'>INET</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='const'>IP</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='const'>TTL</span><span class='comma'>,</span> <span class='int'>255</span><span class='rparen'>)</span><span class='rparen'>)</span></code></pre>
 
 <p>Option values may be structs. Passing them can be complex as it involves
@@ -1216,8 +1216,8 @@ example is an <code>ip_mreq</code>, which may be defined in your system headers 
 <p>In this case <code>#setsockopt</code> could be called like this:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_optval'>optval</span> <span class='op'>=</span> <span class='const'>IPAddr</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>224.0.0.251</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_hton'>hton</span> <span class='op'>+</span>
-         <span class='const'>IPAddr</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>INADDR_ANY</span><span class='comma'>,</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>AF_INET</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_hton'>hton</span>
-<span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_setsockopt'>setsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>IPPROTO_IP</span><span class='comma'>,</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'>IP_ADD_MEMBERSHIP</span><span class='comma'>,</span> <span class='id identifier rubyid_optval'>optval</span><span class='rparen'>)</span></code></pre>
+         <span class='const'>IPAddr</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#INADDR_ANY-constant" title="Socket::INADDR_ANY (constant)">INADDR_ANY</a></span><span class='comma'>,</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#AF_INET-constant" title="Socket::AF_INET (constant)">AF_INET</a></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_hton'>hton</span>
+<span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_setsockopt'>setsockopt</span><span class='lparen'>(</span><span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#IPPROTO_IP-constant" title="Socket::IPPROTO_IP (constant)">IPPROTO_IP</a></span><span class='comma'>,</span> <span class='const'><a href="Socket.html" title="Socket (class)">Socket</a></span><span class='op'>::</span><span class='const'><a href="Socket.html#IP_ADD_MEMBERSHIP-constant" title="Socket::IP_ADD_MEMBERSHIP (constant)">IP_ADD_MEMBERSHIP</a></span><span class='comma'>,</span> <span class='id identifier rubyid_optval'>optval</span><span class='rparen'>)</span></code></pre>
 
   </div>
 </div>
@@ -1242,12 +1242,12 @@ example is an <code>ip_mreq</code>, which may be defined in your system headers 
 
 <p><em>how</em> can be symbol or string:</p>
 <ul><li>
-<p>:RD, :SHUT_RD, "RD" and "SHUT_RD" are accepted as <code>Socket::SHUT_RD</code>.</p>
+<p>:RD, :SHUT_RD, "RD" and "SHUT_RD" are accepted as <a href="Socket.html#SHUT_RD-constant" title="Socket::SHUT_RD (constant)">Socket::SHUT_RD</a>.</p>
 </li><li>
-<p>:WR, :SHUT_WR, "WR" and "SHUT_WR" are accepted as <code>Socket::SHUT_WR</code>.</p>
+<p>:WR, :SHUT_WR, "WR" and "SHUT_WR" are accepted as <a href="Socket.html#SHUT_WR-constant" title="Socket::SHUT_WR (constant)">Socket::SHUT_WR</a>.</p>
 </li><li>
 <p>:RDWR, :SHUT_RDWR, "RDWR" and "SHUT_RDWR" are accepted as
-<code>Socket::SHUT_RDWR</code>.</p>
+<a href="Socket.html#SHUT_RDWR-constant" title="Socket::SHUT_RDWR (constant)">Socket::SHUT_RDWR</a>.</p>
 
 <p>UNIXSocket.pair {|s1, s2|</p>
 

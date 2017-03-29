@@ -8,7 +8,7 @@
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='rgba(228,228,228,1.0)'>
 
-<title>File: Extension &mdash; Ruby-2.3.3</title>
+<title>File: Extension &mdash; Ruby-2.3.4</title>
 
 <link rel='stylesheet'  type='text/css' href='../css/y_fonts.css' />
 <link rel='stylesheet'  type='text/css' href='../css/highlight.github.css' />
@@ -52,7 +52,7 @@
   <header id='y_header'>
     <div id='y_menu'>
         <a href='../index.html'>Home</a> &raquo; 
-        <a href='index.html'>Ruby-2.3.3</a> &raquo; 
+        <a href='index.html'>Ruby-2.3.4</a> &raquo; 
         <a href='_index.html'>Index</a> &raquo; 
         <span class='title'><a id='t2_doc_top' href='#'>File: Extension&nbsp;&#x25B2;</a></span>
             </div>
@@ -1540,10 +1540,9 @@ is negative) number of IDs are optional.  If a mandatory key is not
 contained in <code>keyword_hash</code>, raises "missing keyword"
 <code>ArgumentError</code>.  If an optional key is not present in
 <code>keyword_hash</code>, the corresponding element in <code>values</code>
-is not changed. If <code>optional</code> is negative, rest of
-<code>keyword_hash</code> are stored in the next to optional
-<code>values</code> as a new Hash, otherwise raises "unknown keyword"
-<code>ArgumentError</code>.</p>
+is set to <code>Qundef</code>. If <code>optional</code> is negative, rest
+of <code>keyword_hash</code> are ignored, otherwise raises "unknown
+keyword" <code>ArgumentError</code>.</p>
 
 <p>Be warned, handling keyword arguments in the C API is less efficient than
 handling them in Ruby.  Consider using a Ruby wrapper method around a
