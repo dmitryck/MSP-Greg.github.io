@@ -427,20 +427,34 @@
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L207-L209'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L207-L216'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
 207
 208
-209</pre>
+209
+210
+211
+212
+213
+214
+215
+216</pre>
   <div class='lines_code'>
 <pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 207</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_existent'>existent</span>
-  <span class='id identifier rubyid_expanded'>expanded</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span> <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_f'>f</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_expanded'>expanded</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
+    <span class='id identifier rubyid_does_exist'>does_exist</span> <span class='op'>=</span> <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_f'>f</span><span class='rparen'>)</span>
+
+    <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_does_exist'>does_exist</span> <span class='op'>&amp;&amp;</span> <span class='const'><a href="../../File.html" title="File (class)">File</a></span><span class='period'>.</span><span class='id identifier rubyid_symlink?'>symlink?</span><span class='lparen'>(</span><span class='id identifier rubyid_f'>f</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>File </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'> is a symlink that does not point to a valid file</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_does_exist'>does_exist</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
   </div>
@@ -451,16 +465,16 @@
   <h3 class='signature '>
     #<strong>existent_directories</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L211-L213'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L218-L220'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-211
-212
-213</pre>
+218
+219
+220</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 211</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 218</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_existent_directories'>existent_directories</span>
@@ -621,14 +635,14 @@
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L215-L215'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/5-1-stable/railties/lib/rails/paths.rb#L222-L222'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-215</pre>
+222</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 215</span></pre>
+<pre><span class='info file'># File 'railties/lib/rails/paths.rb', line 222</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>alias</span> <span class='id identifier rubyid_to_a'>to_a</span> <span class='id identifier rubyid_expanded'>expanded</span>
