@@ -1801,7 +1801,7 @@ function toc_Generate(content, isCode) {
       if (itemHref.length === 0) {
         proposedId = el.getAttribute('toc-id') || el.textContent.replace(/[^a-z0-9]+/ig, '-');;
         qs = /^[0-9]/.test(proposedId) ? '#\\' : '#';
-        if ( proposedId.startsWith('-') ) proposedId = "_" + proposedId;
+        if ( /^-/.test(proposedId) ) proposedId = "_" + proposedId;
         if (proposedId === null || proposedId === '' ||
             content.querySelector(qs + proposedId) ) {
           proposedId = title.replace(/[^a-z0-9]+/ig, '-');
