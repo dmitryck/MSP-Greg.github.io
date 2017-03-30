@@ -564,6 +564,11 @@ for the controller.</p></div></td>
 <ul class='summary full'>
   <li>
     <span class='summary_signature '>
+      <a href="#make_response!-class_method" title=".make_response! (class method)">.<strong>make_response!</strong>(request)  </a>
+    </span>
+  </li>
+  <li>
+    <span class='summary_signature '>
       <a href="#without_modules-class_method" title=".without_modules (class method)">.<strong>without_modules</strong>(*modules)  </a>
     </span>
     <div class='summary_desc'>
@@ -2339,8 +2344,36 @@ the action.</p></div></td>
 
   <p class='notice'>This class inherits a constructor from <a href="Metal.html#new-class_method" title="ActionController::Metal.new (method)">ActionController::Metal</a></p>
 <h2 class='y_details'>Class Method Details</h2>
-<section class='method_details first' id="without_modules-class_method">
+<section class='method_details first' id="make_response!-class_method">
   <h3 class='signature  first'>
+    .<strong>make_response!</strong>(request)  
+  </h3>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/base.rb#L264-L268'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+264
+265
+266
+267
+268</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/base.rb', line 264</span></pre>
+<pre class='code ruby'>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_make_response!'>make_response!</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
+  <span class='const'><a href="../ActionDispatch.html" title="ActionDispatch (module)">ActionDispatch</a></span><span class='op'>::</span><span class='const'><a href="../ActionDispatch/Response.html" title="ActionDispatch::Response (class)">Response</a></span><span class='period'>.</span><span class='id identifier rubyid_create'><a href="../ActionDispatch/Response.html#create-class_method" title="ActionDispatch::Response.create (method)">create</a></span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_res'>res</span><span class='op'>|</span>
+    <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="without_modules-class_method">
+  <h3 class='signature '>
     .<strong>without_modules</strong>(*modules)  
   </h3>
 <div class='docstring'>

@@ -280,6 +280,7 @@ respond to <code>to_sym</code>.</p></div>
   <li>
     <span class='summary_signature '>
       <a href="#reverse_merge-instance_method" title="#reverse_merge (instance method)">#<strong>reverse_merge</strong>(other_hash)  </a>
+      (also: #with_defaults)
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Merges the caller into <code>other_hash</code>.</p></div>
@@ -288,7 +289,7 @@ respond to <code>to_sym</code>.</p></div>
   <li>
     <span class='summary_signature '>
       <a href="#reverse_merge!-instance_method" title="#reverse_merge! (instance method)">#<strong>reverse_merge!</strong>(other_hash)  </a>
-      (also: #reverse_update)
+      (also: #reverse_update, #with_defaults!)
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Destructive <a href="#reverse_merge-instance_method" title="Hash#reverse_merge (method)">#reverse_merge</a>.</p></div>
@@ -427,6 +428,22 @@ value.</p></div>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Destructively converts all values using the <code>block</code> operations.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#with_defaults-instance_method" title="#with_defaults (instance method)">#<strong>with_defaults</strong>(other_hash)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Alias for <a href="#reverse_merge-instance_method" title="Hash#reverse_merge (method)">#reverse_merge</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#with_defaults!-instance_method" title="#with_defaults! (instance method)">#<strong>with_defaults!</strong>(other_hash)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Alias for <a href="#reverse_merge!-instance_method" title="Hash#reverse_merge! (method)">#reverse_merge!</a>.</p></div>
     </div>
   </li>
   <li>
@@ -1407,6 +1424,7 @@ known toggles:</p>
 <section class='method_details' id="reverse_merge-instance_method">
   <h3 class='signature '>
     #<strong>reverse_merge</strong>(other_hash)  
+    <span class='aliases'>Also known as: <span class='names'>#with_defaults</span></span>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -1447,7 +1465,7 @@ values.</p>
 <section class='method_details' id="reverse_merge!-instance_method">
   <h3 class='signature '>
     #<strong>reverse_merge!</strong>(other_hash)  
-    <span class='aliases'>Also known as: <span class='names'>#reverse_update</span></span>
+    <span class='aliases'>Also known as: <span class='names'>#reverse_update, #with_defaults!</span></span>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -1456,17 +1474,17 @@ values.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/hash/reverse_merge.rb#L17-L20'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/hash/reverse_merge.rb#L18-L21'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-17
 18
 19
-20</pre>
+20
+21</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/core_ext/hash/reverse_merge.rb', line 17</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/core_ext/hash/reverse_merge.rb', line 18</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reverse_merge!'>reverse_merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_other_hash'>other_hash</span><span class='rparen'>)</span>
@@ -1489,14 +1507,14 @@ values.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/hash/reverse_merge.rb#L21-L21'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/hash/reverse_merge.rb#L22-L22'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-21</pre>
+22</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'activesupport/lib/active_support/core_ext/hash/reverse_merge.rb', line 21</span></pre>
+<pre><span class='info file'># File 'activesupport/lib/active_support/core_ext/hash/reverse_merge.rb', line 22</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reverse_update'>reverse_update</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reverse_merge!'>reverse_merge!</span>
@@ -2181,6 +2199,60 @@ with other methods:</p>
     <span class='kw'>self</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="with_defaults-instance_method">
+  <h3 class='signature '>
+    #<strong>with_defaults</strong>(other_hash)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Alias for <a href="#reverse_merge-instance_method" title="Hash#reverse_merge (method)">#reverse_merge</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/hash/reverse_merge.rb#L15-L15'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+15</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activesupport/lib/active_support/core_ext/hash/reverse_merge.rb', line 15</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_with_defaults'>with_defaults</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reverse_merge'>reverse_merge</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="with_defaults!-instance_method">
+  <h3 class='signature '>
+    #<strong>with_defaults!</strong>(other_hash)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Alias for <a href="#reverse_merge!-instance_method" title="Hash#reverse_merge! (method)">#reverse_merge!</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/hash/reverse_merge.rb#L23-L23'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+23</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'activesupport/lib/active_support/core_ext/hash/reverse_merge.rb', line 23</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_with_defaults!'>with_defaults!</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reverse_merge!'>reverse_merge!</span>
 </pre>
   </div>
 </div>

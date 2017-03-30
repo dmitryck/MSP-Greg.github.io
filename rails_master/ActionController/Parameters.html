@@ -166,12 +166,12 @@ runtime.</p>
   <li>
     <span id='EMPTY_ARRAY-constant' class='summary_signature'>EMPTY_ARRAY =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L863-L863'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 863</a>    <pre class='code ruby'><span class='lbracket'>[</span><span class='rbracket'>]</span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L865-L865'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 865</a>    <pre class='code ruby'><span class='lbracket'>[</span><span class='rbracket'>]</span></pre>
   </li>
   <li>
     <span id='EMPTY_HASH-constant' class='summary_signature'>EMPTY_HASH =</span>
     <br/>
-    <a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L864-L864'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 864</a>    <pre class='code ruby'><span class='lbrace'>{</span><span class='rbrace'>}</span></pre>
+    <a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L866-L866'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 866</a>    <pre class='code ruby'><span class='lbrace'>{</span><span class='rbrace'>}</span></pre>
   </li>
   <li>
     <span id='PERMITTED_SCALAR_TYPES-constant' class='summary_signature'>PERMITTED_SCALAR_TYPES =</span>
@@ -189,7 +189,7 @@ as first element to quickly short-circuit the common case.</p>
 
   </div>
 </div>
-    <a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L821-L835'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 821</a>    <pre class='code ruby'><span class='lbracket'>[</span>
+    <a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L823-L837'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 823</a>    <pre class='code ruby'><span class='lbracket'>[</span>
   <span class='const'><a href="../String.html" title="String (class)">String</a></span><span class='comma'>,</span>
   <span class='const'><a href="../Symbol.html" title="Symbol (class)">Symbol</a></span><span class='comma'>,</span>
   <span class='const'><a href="../NilClass.html" title="NilClass (class)">NilClass</a></span><span class='comma'>,</span>
@@ -572,6 +572,7 @@ the block evaluates to true removed.</p></div>
   <li>
     <span class='summary_signature '>
       <a href="#reverse_merge-instance_method" title="#reverse_merge (instance method)">#<strong>reverse_merge</strong>(other_hash)  </a>
+      (also: #with_defaults)
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Returns a new <code>Parameters</code> with all keys from current
@@ -581,6 +582,7 @@ hash merged into <code>other_hash</code>.</p></div>
   <li>
     <span class='summary_signature '>
       <a href="#reverse_merge!-instance_method" title="#reverse_merge! (instance method)">#<strong>reverse_merge!</strong>(other_hash)  </a>
+      (also: #with_defaults!)
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Returns current <code>Parameters</code> instance with current hash
@@ -700,6 +702,22 @@ running <code>block</code> once for every key.</p></div>
     </span>
     <div class='summary_desc'>
       <div class='inline'><p>Returns values that were assigned to the given <a href="#keys-instance_method" title="ActionController::Parameters#keys (method)">#keys</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#with_defaults-instance_method" title="#with_defaults (instance method)">#<strong>with_defaults</strong>(other_hash)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Alias for <a href="#reverse_merge-instance_method" title="ActionController::Parameters#reverse_merge (method)">#reverse_merge</a>.</p></div>
+    </div>
+  </li>
+  <li>
+    <span class='summary_signature '>
+      <a href="#with_defaults!-instance_method" title="#with_defaults! (instance method)">#<strong>with_defaults!</strong>(other_hash)  </a>
+    </span>
+    <div class='summary_desc'>
+      <div class='inline'><p>Alias for <a href="#reverse_merge!-instance_method" title="ActionController::Parameters#reverse_merge! (method)">#reverse_merge!</a>.</p></div>
     </div>
   </li>
   <li>
@@ -945,20 +963,20 @@ and should be of no concern. One way to change these is to specify
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L689-L695'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L691-L697'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-689
-690
 691
 692
 693
 694
-695</pre>
+695
+696
+697</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 689</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 691</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_hook_into_yaml_loading'>hook_into_yaml_loading</span> <span class='comment'># :nodoc:
@@ -998,16 +1016,16 @@ and should be of no concern. One way to change these is to specify
   <h3 class='signature ro prot'>
     #<strong>fields_for_style?</strong>  &#x21d2; <code>Boolean</code>  <span class="extras">(<span class='readonly'>readonly</span>, <span class='prot'>protected</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L732-L734'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L734-L736'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-732
-733
-734</pre>
+734
+735
+736</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 732</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 734</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_fields_for_style?'>fields_for_style?</span>
@@ -1050,14 +1068,14 @@ and should be of no concern. One way to change these is to specify
   <h3 class='signature ro prot'>
     #<strong>parameters</strong>   <span class="extras">(<span class='readonly'>readonly</span>, <span class='prot'>protected</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L726-L726'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L728-L728'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-726</pre>
+728</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 726</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 728</span></pre>
 <pre class='code ruby'>
 
 <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='symbeg'>:</span><span class='id identifier rubyid_parameters'>parameters</span>
@@ -1070,16 +1088,16 @@ and should be of no concern. One way to change these is to specify
   <h3 class='signature rw prot'>
     #<strong>permitted=</strong>(new_permitted)   <span class="extras">(<span class='rw'>rw</span>, <span class='prot'>protected</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L728-L730'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L730-L732'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-728
-729
-730</pre>
+730
+731
+732</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 728</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 730</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_permitted='>permitted=</span><span class='lparen'>(</span><span class='id identifier rubyid_new_permitted'>new_permitted</span><span class='rparen'>)</span>
@@ -1275,18 +1293,18 @@ when <a href="#permit-instance_method" title="ActionController::Parameters#permi
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L853-L857'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L855-L859'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-853
-854
 855
 856
-857</pre>
+857
+858
+859</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 853</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 855</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_array_of_permitted_scalars?'>array_of_permitted_scalars?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1332,18 +1350,18 @@ parameters.</p>
   <h3 class='signature priv'>
     #<strong>convert_hashes_to_parameters</strong>(key, value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L758-L762'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L760-L764'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-758
-759
 760
 761
-762</pre>
+762
+763
+764</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 758</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 760</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_convert_hashes_to_parameters'>convert_hashes_to_parameters</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1360,13 +1378,11 @@ parameters.</p>
   <h3 class='signature priv'>
     #<strong>convert_parameters_to_hashes</strong>(value, using)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L743-L756'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L745-L758'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-743
-744
 745
 746
 747
@@ -1378,9 +1394,11 @@ parameters.</p>
 753
 754
 755
-756</pre>
+756
+757
+758</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 743</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 745</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_convert_parameters_to_hashes'>convert_parameters_to_hashes</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_using'>using</span><span class='rparen'>)</span>
@@ -1406,13 +1424,11 @@ parameters.</p>
   <h3 class='signature priv'>
     #<strong>convert_value_to_parameters</strong>(value)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L764-L776'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L766-L778'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-764
-765
 766
 767
 768
@@ -1423,9 +1439,11 @@ parameters.</p>
 773
 774
 775
-776</pre>
+776
+777
+778</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 764</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 766</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_convert_value_to_parameters'>convert_value_to_parameters</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1494,18 +1512,18 @@ build a new array object per fetch.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L719-L723'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L721-L725'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-719
-720
 721
 722
-723</pre>
+723
+724
+725</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 719</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 721</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_deep_dup'>deep_dup</span>
@@ -1650,13 +1668,11 @@ the result of block.</p>
   <h3 class='signature priv'>
     #<strong>each_element</strong>(object)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L778-L791'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L780-L793'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-778
-779
 780
 781
 782
@@ -1668,9 +1684,11 @@ the result of block.</p>
 788
 789
 790
-791</pre>
+791
+792
+793</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 778</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 780</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each_element'>each_element</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
@@ -1951,13 +1969,11 @@ its result returned.</p>
   <h3 class='signature priv'>
     #<strong>hash_filter</strong>(params, filter)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L865-L890'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L867-L892'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-865
-866
 867
 868
 869
@@ -1981,9 +1997,11 @@ its result returned.</p>
 887
 888
 889
-890</pre>
+890
+891
+892</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 865</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 867</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hash_filter'>hash_filter</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span><span class='rparen'>)</span>
@@ -2054,13 +2072,11 @@ its result returned.</p>
   <div class='note nodoc inline-block'>
     <strong>This method is for internal use only.</strong>
   </div><div></div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L698-L714'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L700-L716'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-698
-699
 700
 701
 702
@@ -2075,9 +2091,11 @@ its result returned.</p>
 711
 712
 713
-714</pre>
+714
+715
+716</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 698</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 700</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_init_with'>init_with</span><span class='lparen'>(</span><span class='id identifier rubyid_coder'>coder</span><span class='rparen'>)</span> <span class='comment'># :nodoc:
@@ -2106,17 +2124,17 @@ its result returned.</p>
   <h3 class='signature priv'>
     #<strong>initialize_copy</strong>(source)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L924-L927'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L926-L929'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-924
-925
 926
-927</pre>
+927
+928
+929</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 924</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 926</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize_copy'>initialize_copy</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span>
@@ -2132,16 +2150,16 @@ its result returned.</p>
   <h3 class='signature '>
     #<strong>inspect</strong>  
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L685-L687'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L687-L689'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-685
-686
-687</pre>
+687
+688
+689</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 685</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 687</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
@@ -2283,18 +2301,18 @@ merged into current hash.</p>
   <h3 class='signature priv'>
     #<strong>new_instance_with_inherited_permitted_status</strong>(hash)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L737-L741'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L739-L743'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-737
-738
 739
 740
-741</pre>
+741
+742
+743</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 737</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 739</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new_instance_with_inherited_permitted_status'>new_instance_with_inherited_permitted_status</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
@@ -2318,16 +2336,16 @@ merged into current hash.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L859-L861'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L861-L863'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-859
-860
-861</pre>
+861
+862
+863</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 859</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 861</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_non_scalar?'>non_scalar?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2532,13 +2550,11 @@ assignment. Returns <code>self</code>.</p>
   <h3 class='signature priv'>
     #<strong>permit_any_in_array</strong>(array)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L909-L922'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L911-L924'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-909
-910
 911
 912
 913
@@ -2550,9 +2566,11 @@ assignment. Returns <code>self</code>.</p>
 919
 920
 921
-922</pre>
+922
+923
+924</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 909</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 911</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_permit_any_in_array'>permit_any_in_array</span><span class='lparen'>(</span><span class='id identifier rubyid_array'>array</span><span class='rparen'>)</span>
@@ -2578,13 +2596,11 @@ assignment. Returns <code>self</code>.</p>
   <h3 class='signature priv'>
     #<strong>permit_any_in_parameters</strong>(params)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L892-L907'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L894-L909'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-892
-893
 894
 895
 896
@@ -2598,9 +2614,11 @@ assignment. Returns <code>self</code>.</p>
 904
 905
 906
-907</pre>
+907
+908
+909</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 892</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 894</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_permit_any_in_parameters'>permit_any_in_parameters</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
@@ -2635,16 +2653,16 @@ assignment. Returns <code>self</code>.</p>
 </div>
 <div class='tags'>
   
-</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L837-L839'>GitHub</a>&#8202;]</span>
+</div>  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L839-L841'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-837
-838
-839</pre>
+839
+840
+841</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 837</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 839</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_permitted_scalar?'>permitted_scalar?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2659,13 +2677,11 @@ assignment. Returns <code>self</code>.</p>
   <h3 class='signature priv'>
     #<strong>permitted_scalar_filter</strong>(params, key)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L841-L851'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L843-L853'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-841
-842
 843
 844
 845
@@ -2674,9 +2690,11 @@ assignment. Returns <code>self</code>.</p>
 848
 849
 850
-851</pre>
+851
+852
+853</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 841</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 843</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_permitted_scalar_filter'>permitted_scalar_filter</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
@@ -2884,6 +2902,7 @@ user_params, profile_params = params.require([:user, :profile])</code></pre>
 <section class='method_details' id="reverse_merge-instance_method">
   <h3 class='signature '>
     #<strong>reverse_merge</strong>(other_hash)  
+    <span class='aliases'>Also known as: <span class='names'>#with_defaults</span></span>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -2920,6 +2939,7 @@ hash merged into <code>other_hash</code>.</p>
 <section class='method_details' id="reverse_merge!-instance_method">
   <h3 class='signature '>
     #<strong>reverse_merge!</strong>(other_hash)  
+    <span class='aliases'>Also known as: <span class='names'>#with_defaults!</span></span>
   </h3>
 <div class='docstring'>
   <div class='discussion'>
@@ -2929,17 +2949,17 @@ merged into <code>other_hash</code>.</p>
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L673-L676'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L674-L677'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-673
 674
 675
-676</pre>
+676
+677</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 673</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 674</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reverse_merge!'>reverse_merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_other_hash'>other_hash</span><span class='rparen'>)</span>
@@ -3104,16 +3124,16 @@ matter as we are using <a href="../top-level-namespace.html#HashWithIndifferentA
 
   </div>
 </div>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L681-L683'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L683-L685'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-681
-682
-683</pre>
+683
+684
+685</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 681</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 683</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stringify_keys'>stringify_keys</span> <span class='comment'># :nodoc:
@@ -3404,16 +3424,16 @@ running <code>block</code> once for every key. The values are unchanged.</p>
   <h3 class='signature priv'>
     #<strong>unpermitted_keys</strong>(params)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L806-L808'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L808-L810'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-806
-807
-808</pre>
+808
+809
+810</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 806</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 808</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unpermitted_keys'>unpermitted_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
@@ -3428,13 +3448,11 @@ running <code>block</code> once for every key. The values are unchanged.</p>
   <h3 class='signature priv'>
     #<strong>unpermitted_parameters!</strong>(params)   <span class="extras">(<span class='priv'>private</span>)</span>
   </h3>
-  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L793-L804'>GitHub</a>&#8202;]</span>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L795-L806'>GitHub</a>&#8202;]</span>
 <div class='source_code h'>
   <pre class='lines_num'>
 
 
-793
-794
 795
 796
 797
@@ -3444,9 +3462,11 @@ running <code>block</code> once for every key. The values are unchanged.</p>
 801
 802
 803
-804</pre>
+804
+805
+806</pre>
   <div class='lines_code'>
-<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 793</span></pre>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 795</span></pre>
 <pre class='code ruby'>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unpermitted_parameters!'>unpermitted_parameters!</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
@@ -3523,6 +3543,60 @@ running <code>block</code> once for every key. The values are unchanged.</p>
 <span class='kw'>def</span> <span class='id identifier rubyid_values_at'>values_at</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_keys'>keys</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_convert_value_to_parameters'>convert_value_to_parameters</span><span class='lparen'>(</span><span class='ivar'>@parameters</span><span class='period'>.</span><span class='id identifier rubyid_values_at'>values_at</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_keys'>keys</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="with_defaults-instance_method">
+  <h3 class='signature '>
+    #<strong>with_defaults</strong>(other_hash)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Alias for <a href="#reverse_merge-instance_method" title="ActionController::Parameters#reverse_merge (method)">#reverse_merge</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L670-L670'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+670</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 670</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_with_defaults'>with_defaults</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reverse_merge'>reverse_merge</span>
+</pre>
+  </div>
+</div>
+</section>
+
+<section class='method_details' id="with_defaults!-instance_method">
+  <h3 class='signature '>
+    #<strong>with_defaults!</strong>(other_hash)  
+  </h3>
+<div class='docstring'>
+  <div class='discussion'>
+    
+<p>Alias for <a href="#reverse_merge!-instance_method" title="ActionController::Parameters#reverse_merge! (method)">#reverse_merge!</a>.</p>
+
+  </div>
+</div>
+  <span class='link_repo'>[&#8202;<a class='repo' href='https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/strong_parameters.rb#L678-L678'>GitHub</a>&#8202;]</span>
+<div class='source_code h'>
+  <pre class='lines_num'>
+
+
+678</pre>
+  <div class='lines_code'>
+<pre><span class='info file'># File 'actionpack/lib/action_controller/metal/strong_parameters.rb', line 678</span></pre>
+<pre class='code ruby'>
+
+<span class='id identifier rubyid_alias_method'>alias_method</span> <span class='symbeg'>:</span><span class='id identifier rubyid_with_defaults!'>with_defaults!</span><span class='comma'>,</span> <span class='symbeg'>:</span><span class='id identifier rubyid_reverse_merge!'>reverse_merge!</span>
 </pre>
   </div>
 </div>
